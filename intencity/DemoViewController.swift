@@ -10,9 +10,16 @@ import UIKit
 
 class DemoViewController: UIViewController, UIPageViewControllerDataSource {
 
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var next: UIButton!
+    
     var pageViewController: UIPageViewController!
     var demoPages: [DemoView] = []
-        
+    
+    var viewControllers: NSArray = []
+    
+    var index: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,16 +32,25 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
-        let startVC = self.viewControllerAtIndex(0)
-        let viewControllers = NSArray(object: startVC)
         
-        self.pageViewController.setViewControllers(viewControllers as? [UIViewController], direction: .Forward, animated: true, completion: nil)
+        let startVC = self.viewControllerAtIndex(index)
+        viewControllers = NSArray(object: startVC)
         
-        self.pageViewController.view.frame = CGRectMake(0, 30, self.view.frame.width, self.view.frame.size.height - 60)
+        setViewController()
+        
+        // 37 is apparently the height of the page indicator.
+//        self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.size.height + 37)
         
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
+        
+        // Bring the common elements to the front.
+        self.view.bringSubviewToFront(pageControl)
+        self.view.bringSubviewToFront(next)
+        
+        // Sets the number of dots in the page control.
+        self.pageControl.numberOfPages = demoPages.count;
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +65,8 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
     
     func viewControllerAtIndex(index: Int) -> UIViewController
     {
+        self.index = index
+        
         let pageCount = self.demoPages.count
         let demoView = self.demoPages[index]
         let pageTitle = demoView.title
@@ -64,12 +82,16 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         
         if (pageTitle == "")
         {
+            pageControl.hidden = true
+            next.hidden = true
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
             vc.pageIndex = index
             return vc
         }
         else
         {
+            pageControl.hidden = false
+            next.hidden = false
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("DemoContentViewController") as! DemoContentViewController
             vc.titleText = pageTitle
             vc.descriptionText = demoView.description
@@ -87,6 +109,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
     {
         let vc = viewController as! PageViewController
         var index = vc.pageIndex as Int
+        self.pageControl.currentPage = index
         
         if (index == 0 || index == NSNotFound)
         {
@@ -102,6 +125,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
     {
         let vc = viewController as! PageViewController
         var index = vc.pageIndex as Int
+        self.pageControl.currentPage = index
         
         if (index == NSNotFound)
         {
@@ -113,26 +137,32 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         if (index == self.demoPages.count)
         {
             return nil
-//            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-//            
-//            return storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
         }
-//        else if (index > pageTitleCount)
-//        {
-//            return nil
-//        }
         
         return self.viewControllerAtIndex(index)
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int
+    @IBAction func nextClicked(sender: AnyObject)
     {
-        return self.demoPages.count
+        setViewController()
     }
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
+    func setViewController()
     {
-        return 0
+        let startVC : NSArray = viewControllers
+        
+        self.pageViewController.setViewControllers(startVC as? [UIViewController], direction: .Forward, animated: true, completion: nil)
     }
+
+    
+//    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int
+//    {
+//        return self.demoPages.count
+//    }
+//    
+//    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
+//    {
+//        return 0
+//    }
 }
 

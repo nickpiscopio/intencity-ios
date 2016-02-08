@@ -36,9 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         //Add condition here to go to the intencity or demo.
-        let pageController = UIPageControl.appearance()
-        pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
-        pageController.currentPageIndicatorTintColor = UIColor.blackColor()
+//        let pageController = UIPageControl.appearance()
+//        pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
+//        pageController.currentPageIndicatorTintColor = UIColor.blackColor()
         
         return true
     }

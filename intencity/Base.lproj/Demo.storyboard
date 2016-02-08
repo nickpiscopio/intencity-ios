@@ -27,7 +27,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uvz-bc-jnO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvz-bc-jnO">
                                 <rect key="frame" x="180" y="127" width="240" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="1Ir-xI-aAH"/>
@@ -102,6 +102,7 @@
                             <constraint firstItem="uvz-bc-jnO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kfk-UP-h7A"/>
                             <constraint firstItem="Tg0-Cs-YPp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LcO-lO-QgK"/>
                             <constraint firstItem="Y6r-Y3-1cB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="TGf-Ne-tsf"/>
+                            <constraint firstItem="uvz-bc-jnO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZF0-yN-Y4A"/>
                             <constraint firstItem="uvz-bc-jnO" firstAttribute="top" secondItem="Y6r-Y3-1cB" secondAttribute="bottom" constant="20" id="fGl-JX-1RC"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uvz-bc-jnO" secondAttribute="bottom" constant="73" id="nco-QE-OSX"/>
                             <constraint firstItem="uvz-bc-jnO" firstAttribute="centerX" secondItem="Y6r-Y3-1cB" secondAttribute="centerX" id="qre-vE-JaE"/>
@@ -111,6 +112,7 @@
                             <mask key="constraints">
                                 <exclude reference="8wj-kd-fEY"/>
                                 <exclude reference="zV3-yJ-45e"/>
+                                <exclude reference="nco-QE-OSX"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
@@ -144,14 +146,26 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxQ-mi-DHK">
                                 <rect key="frame" x="548" y="550" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextClicked:" destination="Wma-3H-cLi" eventType="touchUpInside" id="CUS-xz-CxQ"/>
+                                </connections>
                             </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="5XO-lk-6YQ">
+                                <rect key="frame" x="171" y="550" width="258" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="oxQ-mi-DHK" secondAttribute="bottom" constant="20" symbolic="YES" id="1H0-mk-VUb"/>
+                            <constraint firstItem="bhx-Xy-bgB" firstAttribute="top" secondItem="5XO-lk-6YQ" secondAttribute="bottom" constant="15" id="Klq-FY-qD1"/>
+                            <constraint firstItem="5XO-lk-6YQ" firstAttribute="centerX" secondItem="nrX-9b-YJu" secondAttribute="centerX" id="bTl-h1-jW2"/>
                             <constraint firstItem="oxQ-mi-DHK" firstAttribute="trailing" secondItem="nrX-9b-YJu" secondAttribute="trailingMargin" id="bzR-Gf-JJ7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="next" destination="oxQ-mi-DHK" id="TVe-nX-o0P"/>
+                        <outlet property="pageControl" destination="5XO-lk-6YQ" id="YLD-o7-VGK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zth-EG-a38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
