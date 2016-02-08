@@ -14,6 +14,8 @@
 		BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460FF1C68D53200F60ADC /* PageViewController.swift */; };
 		BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2491C68F48E00E520CB /* LoginViewController.swift */; };
 		BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */; };
+		BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD9EF2531C691C7100E520CB /* Localizable.strings */; };
+		BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2561C692A6900E520CB /* DemoView.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* MainViewController.swift */; };
 		BDFE97181C68EC9B00C2AEA3 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97171C68EC9B00C2AEA3 /* Loading.xib */; };
@@ -29,6 +31,8 @@
 		BD5460FF1C68D53200F60ADC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		BD9EF2491C68F48E00E520CB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoContentViewController.swift; sourceTree = "<group>"; };
+		BD9EF2521C691C7100E520CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BD9EF2561C692A6900E520CB /* DemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BDFE97171C68EC9B00C2AEA3 /* Loading.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Loading.xib; path = ../Loading.xib; sourceTree = "<group>"; };
@@ -49,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				BD5460EC1C68D34400F60ADC /* intencity */,
+				BD9EF2551C691C8900E520CB /* Resources */,
 				BD5460EB1C68D34400F60ADC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +72,7 @@
 				BD5460ED1C68D34400F60ADC /* AppDelegate.swift */,
 				BD5460FF1C68D53200F60ADC /* PageViewController.swift */,
 				BD5460EF1C68D34400F60ADC /* DemoViewController.swift */,
+				BD9EF2561C692A6900E520CB /* DemoView.swift */,
 				BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */,
 				BD9EF2491C68F48E00E520CB /* LoginViewController.swift */,
 				BDFE97151C68E6FC00C2AEA3 /* MainViewController.swift */,
@@ -76,6 +82,15 @@
 				BD5460F41C68D34400F60ADC /* Assets.xcassets */,
 				BD5460F91C68D34400F60ADC /* Info.plist */,
 			);
+			path = intencity;
+			sourceTree = "<group>";
+		};
+		BD9EF2551C691C8900E520CB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BD9EF2531C691C7100E520CB /* Localizable.strings */,
+			);
+			name = Resources;
 			path = intencity;
 			sourceTree = "<group>";
 		};
@@ -139,6 +154,7 @@
 			files = (
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
 				BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */,
+				BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */,
 				BDFE97181C68EC9B00C2AEA3 /* Loading.xib in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
 			);
@@ -157,6 +173,7 @@
 				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
 				BDFE97161C68E6FC00C2AEA3 /* MainViewController.swift in Sources */,
+				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +186,15 @@
 				BD5460F21C68D34400F60ADC /* Base */,
 			);
 			name = Demo.storyboard;
+			sourceTree = "<group>";
+		};
+		BD9EF2531C691C7100E520CB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD9EF2521C691C7100E520CB /* Base */,
+			);
+			name = Localizable.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

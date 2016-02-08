@@ -11,16 +11,22 @@ import UIKit
 class DemoViewController: UIViewController, UIPageViewControllerDataSource {
 
     var pageViewController: UIPageViewController!
-    var pageTitles: NSArray!
-    var pageImages: NSArray!
+    var demoPages: [DemoView] = []
     
 //    var index: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.pageTitles = NSArray(objects: "Explore", "Today Widgets", "")
-        self.pageImages = NSArray(objects: "demo_intencity", "demo_fitness_guru", "")
+        createNewDemoPage("app_name", description: "demo_description", imageName: "demo_intencity")
+        createNewDemoPage("demo_fitness_guru_title", description: "demo_fitness_guru_description", imageName: "demo_intencity")
+        createNewDemoPage("demo_fitness_direction_title", description: "demo_fitness_direction_description", imageName: "demo_intencity")
+        createNewDemoPage("demo_fitness_log_title", description: "demo_fitness_log_description", imageName: "demo_intencity")
+        createNewDemoPage("demo_ranking_title", description: "demo_ranking_description", imageName: "demo_intencity")
+        createNewDemoPage("", description: "", imageName: "")
+        
+//        self.demoPages = NSArray(objects: DemoPage(title: NSLocalizedString("demo_title", comment: ""), description: , NSLocalizedString("demo_title", comment: ""), "")
+//        self.pageImages = NSArray(objects: "demo_intencity", "demo_fitness_guru", "")
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
@@ -41,16 +47,22 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         // Dispose of any resources that can be recreated.
     }
     
+    func createNewDemoPage(title: String, description: String, imageName: String)
+    {
+        self.demoPages.append(DemoView(title: NSLocalizedString(title, comment: ""), description: NSLocalizedString(description, comment: ""), imageName: imageName))
+    }
+    
     func viewControllerAtIndex(index: Int) -> UIViewController
     {
-        let pageTitleCount = self.pageTitles.count
-        let pageTitle = self.pageImages[index] as! String
+        let pageCount = self.demoPages.count
+        let demoView = self.demoPages[index]
+        let pageTitle = demoView.title
         
-        if (pageTitleCount == 0)
+        if (pageCount == 0)
         {
             return DemoContentViewController()
         }
-        else if (index >= self.pageTitles.count)
+        else if (index >= pageCount)
         {
             return LoginViewController()
         }
@@ -64,8 +76,9 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         else
         {
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("DemoContentViewController") as! DemoContentViewController
-            vc.imageFile = pageTitle
-            vc.titleText = self.pageTitles[index] as! String
+            vc.titleText = pageTitle
+            vc.descriptionText = demoView.description
+            vc.imageFile = demoView.imageName
             vc.pageIndex = index
             
             return vc;
@@ -101,7 +114,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         
         index++
         
-        if (index == self.pageTitles.count)
+        if (index == self.demoPages.count)
         {
             return nil
 //            let storyboard = UIStoryboard(name: "Login", bundle: nil)
@@ -118,7 +131,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int
     {
-        return self.pageTitles.count
+        return self.demoPages.count
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int

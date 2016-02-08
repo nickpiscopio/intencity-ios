@@ -11,16 +11,20 @@ import UIKit
 class DemoContentViewController: PageViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
     var titleText: String!
+    var descriptionText: String!
     var imageFile: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.imageView.image = UIImage(named: self.imageFile)
+        
         self.titleLabel.text = self.titleText
+        self.descriptionLabel.text = self.descriptionText
+        
+        self.imageView.image = UIImage(named: self.imageFile)
     }
 
     override func didReceiveMemoryWarning() {
