@@ -14,18 +14,20 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
     var pageTitles: NSArray!
     var pageImages: NSArray!
     
+//    var index: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.pageTitles = NSArray(objects: "Explore", "Today Widgets")
-        self.pageImages = NSArray(objects: "demo_intencity", "demo_fitness_guru")
+        self.pageTitles = NSArray(objects: "Explore", "Today Widgets", "")
+        self.pageImages = NSArray(objects: "demo_intencity", "demo_fitness_guru", "")
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
-        let startVC = self.viewControllerAtIndex(0) as ContentViewController
-        let viewController = NSArray(object: startVC)
+        let startVC = self.viewControllerAtIndex(0)
+        let viewControllers = NSArray(object: startVC)
         
-        self.pageViewController.setViewControllers(viewController as? [UIViewController], direction: .Forward, animated: true, completion: nil)
+        self.pageViewController.setViewControllers(viewControllers as? [UIViewController], direction: .Forward, animated: true, completion: nil)
         
         self.pageViewController.view.frame = CGRectMake(0, 30, self.view.frame.width, self.view.frame.size.height - 60)
         
@@ -39,40 +41,57 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-    func viewControllerAtIndex(index: Int) -> ContentViewController
+    func viewControllerAtIndex(index: Int) -> UIViewController
     {
-        if ((self.pageTitles.count == 0) || index >= self.pageTitles.count)
+        let pageTitleCount = self.pageTitles.count
+        let pageTitle = self.pageImages[index] as! String
+        
+        if (pageTitleCount == 0)
         {
-            return ContentViewController()
+            return DemoContentViewController()
+        }
+        else if (index >= self.pageTitles.count)
+        {
+            return LoginViewController()
         }
         
-        let vc: ContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! ContentViewController
-        vc.imageFile = self.pageImages[index] as! String
-        vc.titleText = self.pageTitles[index] as! String
-        vc.pageIndex = index
-        
-        return vc
+        if (pageTitle == "")
+        {
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+            vc.pageIndex = index
+            return vc
+        }
+        else
+        {
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("DemoContentViewController") as! DemoContentViewController
+            vc.imageFile = pageTitle
+            vc.titleText = self.pageTitles[index] as! String
+            vc.pageIndex = index
+            
+            return vc;
+        }
     }
     
     //MARK - PageViewController Datasource
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
     {
-        let vc = viewController as! ContentViewController
+        let vc = viewController as! PageViewController
         var index = vc.pageIndex as Int
+        
         if (index == 0 || index == NSNotFound)
         {
             return nil
         }
         
-        index--;
+        index--
         
         return self.viewControllerAtIndex(index)
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
     {
-        let vc = viewController as! ContentViewController
+        let vc = viewController as! PageViewController
         var index = vc.pageIndex as Int
         
         if (index == NSNotFound)
@@ -80,12 +99,19 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
             return nil
         }
         
-        index++;
+        index++
         
         if (index == self.pageTitles.count)
         {
             return nil
+//            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+//            
+//            return storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
         }
+//        else if (index > pageTitleCount)
+//        {
+//            return nil
+//        }
         
         return self.viewControllerAtIndex(index)
     }
