@@ -16,6 +16,7 @@
 		BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */; };
 		BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD9EF2531C691C7100E520CB /* Localizable.strings */; };
 		BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2561C692A6900E520CB /* DemoView.swift */; };
+		BD9EF2591C693A6400E520CB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2581C693A6400E520CB /* Color.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* MainViewController.swift */; };
 		BDFE97181C68EC9B00C2AEA3 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97171C68EC9B00C2AEA3 /* Loading.xib */; };
@@ -33,6 +34,7 @@
 		BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoContentViewController.swift; sourceTree = "<group>"; };
 		BD9EF2521C691C7100E520CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BD9EF2561C692A6900E520CB /* DemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
+		BD9EF2581C693A6400E520CB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BDFE97171C68EC9B00C2AEA3 /* Loading.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Loading.xib; path = ../Loading.xib; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				BDFE97131C68E62C00C2AEA3 /* Main.storyboard */,
 				BD5460F41C68D34400F60ADC /* Assets.xcassets */,
 				BD5460F91C68D34400F60ADC /* Info.plist */,
+				BD9EF2581C693A6400E520CB /* Color.swift */,
 			);
 			path = intencity;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */,
 				BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */,
 				BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */,
+				BD9EF2591C693A6400E520CB /* Color.swift in Sources */,
 				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
 				BDFE97161C68E6FC00C2AEA3 /* MainViewController.swift in Sources */,

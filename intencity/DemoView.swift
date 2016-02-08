@@ -6,11 +6,12 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct DemoView
 {
     var title: String
     var description: String
     var imageName: String
+    var backgroundColor: UIColor
 }

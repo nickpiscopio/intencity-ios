@@ -12,21 +12,16 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
 
     var pageViewController: UIPageViewController!
     var demoPages: [DemoView] = []
-    
-//    var index: Int = 0
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createNewDemoPage("app_name", description: "demo_description", imageName: "demo_intencity")
-        createNewDemoPage("demo_fitness_guru_title", description: "demo_fitness_guru_description", imageName: "demo_intencity")
-        createNewDemoPage("demo_fitness_direction_title", description: "demo_fitness_direction_description", imageName: "demo_intencity")
-        createNewDemoPage("demo_fitness_log_title", description: "demo_fitness_log_description", imageName: "demo_intencity")
-        createNewDemoPage("demo_ranking_title", description: "demo_ranking_description", imageName: "demo_intencity")
-        createNewDemoPage("", description: "", imageName: "")
-        
-//        self.demoPages = NSArray(objects: DemoPage(title: NSLocalizedString("demo_title", comment: ""), description: , NSLocalizedString("demo_title", comment: ""), "")
-//        self.pageImages = NSArray(objects: "demo_intencity", "demo_fitness_guru", "")
+        createNewDemoPage("app_name", description: "demo_description", imageName: "demo_intencity", backgroundColor: Color.primary)
+        createNewDemoPage("demo_fitness_guru_title", description: "demo_fitness_guru_description", imageName: "demo_fitness_guru", backgroundColor: Color.secondary_light)
+        createNewDemoPage("demo_fitness_direction_title", description: "demo_fitness_direction_description", imageName: "demo_intencity", backgroundColor: Color.secondary_dark)
+        createNewDemoPage("demo_fitness_log_title", description: "demo_fitness_log_description", imageName: "demo_intencity", backgroundColor: Color.secondary_light)
+        createNewDemoPage("demo_ranking_title", description: "demo_ranking_description", imageName: "demo_intencity", backgroundColor: Color.primary)
+        createNewDemoPage("", description: "", imageName: "", backgroundColor: Color.white)
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
@@ -47,9 +42,9 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-    func createNewDemoPage(title: String, description: String, imageName: String)
+    func createNewDemoPage(title: String, description: String, imageName: String, backgroundColor: UIColor)
     {
-        self.demoPages.append(DemoView(title: NSLocalizedString(title, comment: ""), description: NSLocalizedString(description, comment: ""), imageName: imageName))
+        self.demoPages.append(DemoView(title: NSLocalizedString(title, comment: ""), description: NSLocalizedString(description, comment: ""), imageName: imageName, backgroundColor: backgroundColor))
     }
     
     func viewControllerAtIndex(index: Int) -> UIViewController
@@ -80,6 +75,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
             vc.descriptionText = demoView.description
             vc.imageFile = demoView.imageName
             vc.pageIndex = index
+            vc.backgroundColor = demoView.backgroundColor
             
             return vc;
         }
