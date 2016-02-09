@@ -76,7 +76,7 @@
 "confirm_password" = "Confirm Password";
 
 /*  */
-"terms_checkbox" = "I agree to the @Terms of Use@.";
+"terms_checkbox" = "I agree to the Terms of Use.";
 
 /*  */
 "sign_in" = "SIGN IN";
@@ -119,6 +119,8 @@
 
 /*  */
 "title_create_account" = "Create Account";
+
+"create_account_button" = "CREATE ACCOUNT";
 
 /*  */
 "title_terms" = "Terms of Use";

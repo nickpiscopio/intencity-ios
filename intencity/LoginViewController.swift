@@ -13,12 +13,34 @@ class LoginViewController: PageViewController
 {
     var backgroundColor: UIColor!
     
+    @IBOutlet weak var emailTextField: IntencityTextField!
+    @IBOutlet weak var passwordTextField: IntencityTextField!
+    @IBOutlet weak var forgotPasswordButton: IntencityButtonNoBackground!
+    @IBOutlet weak var createAccountButton: IntencityButtonNoBackground!
+    @IBOutlet weak var termsButton: UIButton!
+    @IBOutlet weak var termsCheckBox: UIButton!
+    @IBOutlet weak var termsLabel: UIButton!
+    @IBOutlet weak var signInButton: IntencityButton!
+    @IBOutlet weak var tryIntencityButton: IntencityButtonNoBackground!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
+        // Sets the background color of the view.
         self.view.backgroundColor = backgroundColor
-    }
+        
+        emailTextField?.placeholder = NSLocalizedString("email", comment: "")
+        passwordTextField?.placeholder = NSLocalizedString("password", comment: "")
+        
+        forgotPasswordButton?.setTitle(NSLocalizedString("forgot_password", comment: ""), forState: .Normal)
+        createAccountButton?.setTitle(NSLocalizedString("create_account", comment: ""), forState: .Normal)
+        signInButton?.setTitle(NSLocalizedString("sign_in", comment: ""), forState: .Normal)
+        tryIntencityButton?.setTitle(NSLocalizedString("try_intencity", comment: ""), forState: .Normal)
+        
+        termsLabel?.setTitle(NSLocalizedString("terms_checkbox", comment: ""), forState: .Normal)
+        termsLabel.setTitleColor(Color.secondary_dark, forState: .Normal)
+}
 
     override func didReceiveMemoryWarning()
     {
@@ -75,10 +97,22 @@ class LoginViewController: PageViewController
     */
     @IBAction func termsOfUseClicked(sender: UIButton)
     {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TermsOfUseViewController") as! TermsOfUseViewController
+        let unchecked = UIImage(named: "checkbox_unchecked")
+        let checked = UIImage(named: "checkbox_checked")
         
-        let navigationController = UINavigationController(rootViewController: vc)
-        
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        if (termsButton.currentImage!.isEqual(unchecked))
+        {
+            termsButton.setImage(checked, forState: .Normal)
+            
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TermsOfUseViewController") as! TermsOfUseViewController
+            
+            let navigationController = UINavigationController(rootViewController: vc)
+            
+            self.presentViewController(navigationController, animated: true, completion: nil)
+        }
+        else
+        {
+            termsButton.setImage(unchecked, forState: .Normal)
+        }
     }
 }
