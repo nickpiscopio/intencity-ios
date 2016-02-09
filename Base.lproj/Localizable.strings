@@ -12,11 +12,14 @@
  * Exported at: Mon, 08 Feb 2016 19:25:04 +0000
  */
 
+"separator" = "&#183;";
+
 /*  */
 "app_name" = "Intencity";
 
 /*  */
 "copyright" = "© Intencity 2016. All Rights Reserved.";
+
 
 /*  */
 "welcome_title" = "Welcome!";

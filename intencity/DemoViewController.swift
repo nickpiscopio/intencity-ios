@@ -28,7 +28,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         createNewDemoPage("demo_fitness_direction_title", description: "demo_fitness_direction_description", imageName: "demo_intencity", backgroundColor: Color.secondary_dark)
         createNewDemoPage("demo_fitness_log_title", description: "demo_fitness_log_description", imageName: "demo_intencity", backgroundColor: Color.secondary_light)
         createNewDemoPage("demo_ranking_title", description: "demo_ranking_description", imageName: "demo_intencity", backgroundColor: Color.primary)
-        createNewDemoPage("", description: "", imageName: "", backgroundColor: Color.white)
+        createNewDemoPage("", description: "", imageName: "", backgroundColor: Color.page_background)
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
@@ -84,8 +84,12 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         {
             pageControl.hidden = true
             next.hidden = true
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+            let storyboard : UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+            let vc : LoginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+            vc.backgroundColor = demoView.backgroundColor
+            
             vc.pageIndex = index
+            
             return vc
         }
         else

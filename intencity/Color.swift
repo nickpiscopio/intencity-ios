@@ -1,14 +1,18 @@
 //
-//  Constant.swift
+//  Color.swift
 //  Intencity
+//
+//  This is a struct for the Intencity's colors.
 //
 //  Created by Nick Piscopio on 2/8/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
-//
+
 import UIKit
 
 struct Color
 {
+    static let transparent = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.0)
+    
     static let white = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     
     static let primary = UIColor(red: 48.0/255.0, green: 157.0/255.0, blue: 219.0/255.0, alpha: 1.0)
@@ -22,6 +26,4 @@ struct Color
     static let card_button_select  = UIColor(red: 243.0/255.0, green: 243.0/255.0, blue: 243.0/255.0, alpha: 1.0)
     static let card_button_delete_select  = UIColor(red: 255.0/255.0, green: 1.0/255.0, blue: 1.0/255.0, alpha: 1.0)
     static let card_button_delete_deselect  = UIColor(red: 255.0/255.0, green: 60.0/255.0, blue: 60.0/255.0, alpha: 1.0)
-    
-//    var primary = UIColor(red: 48, green: 157, blue: 219, alpha: 1)
 }

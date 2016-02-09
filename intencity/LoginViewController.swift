@@ -10,11 +10,13 @@ import UIKit
 
 class LoginViewController: PageViewController
 {
+    var backgroundColor: UIColor!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = backgroundColor
     }
 
     override func didReceiveMemoryWarning()
@@ -25,9 +27,24 @@ class LoginViewController: PageViewController
     
     @IBAction func loginClicked(sender: UIButton)
     {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController")        
-        self.presentViewController(initialViewController, animated: true, completion: nil)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController")        
+//        self.presentViewController(initialViewController, animated: true, completion: nil)
+    }
+    
+    /*
+        The click function for the forgot password button.
+    
+        sender  The Button being pressed.
+    */
+    @IBAction func forgotPasswordClicked(sender: UIButton)
+    {
+        let storyboard : UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("ForgotPasswordViewController") as! ForgotPasswordViewController
+        
+        let navigationController = UINavigationController(rootViewController: vc)
+
+        self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
 
