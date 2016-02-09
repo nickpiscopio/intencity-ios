@@ -2,6 +2,8 @@
 //  Dimention.swift
 //  Intencity
 //
+//  This is a struct for the Intencity's dimentions.
+//
 //  Created by Nick Piscopio on 2/9/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 //

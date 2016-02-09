@@ -1,16 +1,16 @@
 //
-//  ForgotPasswordViewController.swift
+//  CreateAccountViewController.swift
 //  Intencity
 //
-//  This is the controller class for Forgot Password.
+//  The controller for the create account view.
 //
 //  Created by Nick Piscopio on 2/9/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController
-{
+class CreateAccountViewController: UIViewController
+{    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class ForgotPasswordViewController: UIViewController
         self.view.backgroundColor = Color.page_background
         
         // Sets the title for the screen.
-        self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("title_forgot_password", comment: "")
+        self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("title_create_account", comment: "")
         
         // Adds a back image to the navigation bar.
         // We need this because we can't add a standard navigation bar without disrupting the page view controller.
@@ -32,6 +32,18 @@ class ForgotPasswordViewController: UIViewController
     }
     
     /*
+        The click function for creating an account.
+    */
+    @IBAction func createAccountClicked(sender: UIButton)
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController")
+        
+        self.presentViewController(initialViewController, animated: true, completion: nil)
+    }
+    
+    /*
         The function to dismiss the current view controller.
     */
     func goBack()
@@ -39,3 +51,4 @@ class ForgotPasswordViewController: UIViewController
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
+

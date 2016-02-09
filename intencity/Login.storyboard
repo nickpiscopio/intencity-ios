@@ -63,24 +63,30 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9M-1z-dHi">
                                 <rect key="frame" x="43" y="299" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="rOs-Wn-Hem"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6F-8a-iVl" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
                                 <rect key="frame" x="20" y="332" width="560" height="30"/>
                                 <state key="normal" title="SIGN IN"/>
                                 <connections>
-                                    <action selector="loginClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="F7V-09-yXP"/>
+                                    <action selector="loginClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="oI8-ID-Efg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxd-FN-Bcn" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
                                 <rect key="frame" x="219" y="378" width="163" height="30"/>
                                 <state key="normal" title="TRY INTENCITY"/>
+                                <connections>
+                                    <action selector="loginClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="U5d-Qb-ePd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsH-Sf-J8e" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
                                 <rect key="frame" x="311" y="260" width="179" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Create an account"/>
                                 <connections>
-                                    <action selector="forgotPasswordClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="CQI-LR-hU4"/>
+                                    <action selector="createAccountClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="K0r-DS-nBg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -141,6 +147,128 @@
             </objects>
             <point key="canvasLocation" x="2798" y="49"/>
         </scene>
+        <!--Terms Of Use View Controller-->
+        <scene sceneID="TBy-GQ-iCG">
+            <objects>
+                <viewController storyboardIdentifier="TermsOfUseViewController" id="kM9-Q9-Ms0" customClass="TermsOfUseViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xBi-OL-aTT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y9e-kB-RW9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rky-4M-9tW">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="y44-1h-ZaS">
+                                <rect key="frame" x="215" y="0.0" width="171" height="153"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="y44-1h-ZaS" secondAttribute="height" multiplier="19:17" id="HQM-GN-XTT"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="HQM-GN-XTT"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XIP-VO-jkI">
+                                <rect key="frame" x="0.0" y="161" width="600" height="375"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="XIP-VO-jkI" secondAttribute="trailing" id="R9a-ZF-gvu"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="XIP-VO-jkI" secondAttribute="bottom" constant="-64" id="RHw-aC-ejB"/>
+                            <constraint firstItem="y44-1h-ZaS" firstAttribute="centerX" secondItem="rky-4M-9tW" secondAttribute="centerX" id="ZM5-w1-qlw"/>
+                            <constraint firstItem="y44-1h-ZaS" firstAttribute="top" secondItem="xBi-OL-aTT" secondAttribute="bottom" constant="10" id="bU4-0o-bu8"/>
+                            <constraint firstItem="XIP-VO-jkI" firstAttribute="top" secondItem="y44-1h-ZaS" secondAttribute="bottom" constant="8" id="jah-YM-L55"/>
+                            <constraint firstItem="Y9e-kB-RW9" firstAttribute="top" secondItem="XIP-VO-jkI" secondAttribute="bottom" id="jjk-OG-7kW"/>
+                            <constraint firstItem="XIP-VO-jkI" firstAttribute="leading" secondItem="rky-4M-9tW" secondAttribute="leadingMargin" id="mf0-Pw-tms"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="webView" destination="XIP-VO-jkI" id="vwv-K4-CO6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWK-lj-9yn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2798" y="-630"/>
+        </scene>
+        <!--Create Account View Controller-->
+        <scene sceneID="Vgd-ge-YDf">
+            <objects>
+                <viewController storyboardIdentifier="CreateAccountViewController" id="pKO-UR-RFM" customClass="CreateAccountViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dG2-bi-hav"/>
+                        <viewControllerLayoutGuide type="bottom" id="MEQ-g5-SoC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PrH-sx-anP">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Lz-8C-GIo" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="84" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dOC-GD-vdE" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="122" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZVc-JV-gjZ" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="8" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E4L-D1-beC" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="46" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bPC-E4-7cI" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="160" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gA7-RM-1qc" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="198" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="I agree to the Terms of Use." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TuE-YP-Dhc">
+                                <rect key="frame" x="97" y="240" width="212" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frk-V7-pfZ">
+                                <rect key="frame" x="43" y="236" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSB-Fz-jKO" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="269" width="560" height="30"/>
+                                <state key="normal" title="CREATE ACCOUNT"/>
+                                <connections>
+                                    <action selector="loginClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="RrE-4Z-xq6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QSB-Fz-jKO" firstAttribute="top" secondItem="TuE-YP-Dhc" secondAttribute="bottom" constant="8" id="1lV-dW-tFI"/>
+                            <constraint firstItem="TuE-YP-Dhc" firstAttribute="leading" secondItem="Frk-V7-pfZ" secondAttribute="trailing" constant="8" id="4Yy-C8-ZFa"/>
+                            <constraint firstItem="bPC-E4-7cI" firstAttribute="top" secondItem="5Lz-8C-GIo" secondAttribute="bottom" constant="8" id="OkL-Rx-QCr"/>
+                            <constraint firstItem="TuE-YP-Dhc" firstAttribute="centerY" secondItem="Frk-V7-pfZ" secondAttribute="centerY" id="hSY-Cj-aCF"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gNv-YL-OoU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2804" y="733"/>
+        </scene>
         <!--Forgot Password-->
         <scene sceneID="kTp-lv-RvG">
             <objects>
@@ -153,48 +281,52 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7n-Fx-jnc">
-                                <rect key="frame" x="20" y="312" width="560" height="30"/>
-                                <state key="normal" title="RESET PASSWORD"/>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p2P-2m-kAb">
-                                <rect key="frame" x="215" y="28" width="171" height="153"/>
+                                <rect key="frame" x="215" y="63" width="171" height="153"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sy8-e2-BrZ" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="20" y="189" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sy8-e2-BrZ" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="253" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Enter email below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QW8-Ob-Vs5">
+                                <rect key="frame" x="20" y="224" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7n-Fx-jnc" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="314" width="560" height="30"/>
+                                <state key="normal" title="RESET PASSWORD"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="centerY" secondItem="s7n-Fx-jnc" secondAttribute="centerY" id="0KR-ZY-HUP"/>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="top" secondItem="QW8-Ob-Vs5" secondAttribute="bottom" constant="8" id="1v1-GD-Yzg"/>
                             <constraint firstItem="s7n-Fx-jnc" firstAttribute="centerY" secondItem="NUu-GR-43m" secondAttribute="centerY" id="6Jo-uy-w2a"/>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="centerY" secondItem="NUu-GR-43m" secondAttribute="centerY" id="D39-1C-wEh"/>
+                            <constraint firstItem="s7n-Fx-jnc" firstAttribute="leading" secondItem="NUu-GR-43m" secondAttribute="leadingMargin" id="Dqh-1O-6i4"/>
+                            <constraint firstItem="s7n-Fx-jnc" firstAttribute="trailing" secondItem="NUu-GR-43m" secondAttribute="trailingMargin" id="O5H-J9-4LH"/>
                             <constraint firstItem="s7n-Fx-jnc" firstAttribute="centerX" secondItem="NUu-GR-43m" secondAttribute="centerX" id="UGc-N5-9Gs"/>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="centerX" secondItem="NUu-GR-43m" secondAttribute="centerX" id="UaP-DT-aSe"/>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="leading" secondItem="NUu-GR-43m" secondAttribute="leadingMargin" id="dP6-vb-sOP"/>
+                            <constraint firstItem="s7n-Fx-jnc" firstAttribute="top" secondItem="Sy8-e2-BrZ" secondAttribute="bottom" constant="8" id="lq4-GG-KIj"/>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="width" secondItem="NUu-GR-43m" secondAttribute="width" id="xjl-H7-bWH"/>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="trailing" secondItem="NUu-GR-43m" secondAttribute="trailingMargin" id="zzf-kH-AIb"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="xjl-H7-bWH"/>
+                                <exclude reference="6Jo-uy-w2a"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgB-yB-7zY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3443" y="49"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="LSh-7N-Ie2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zes-aL-Xrk" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Fa-jV-m4Z">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="5lO-DF-tff" kind="relationship" relationship="rootViewController" id="TLd-QK-soj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6to-0Z-whe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1986" y="49"/>
         </scene>
     </scenes>
     <resources>

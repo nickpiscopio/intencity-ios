@@ -85,7 +85,7 @@
 "try_intencity" = "TRY INTENCITY";
 
 /*  */
-"title_forgot_password" = "Forgot password";
+"title_forgot_password" = "Forgot Password";
 
 /*  */
 "reset_password_message" = "Enter your email, and we'll send you a new password.";

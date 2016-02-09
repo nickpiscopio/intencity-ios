@@ -1,15 +1,16 @@
 //
 //  ViewController.swift
-//  intencity
+//  Intencity
+//
+//  This is the controller for the demo screens.
 //
 //  Created by Nick Piscopio on 2/8/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
-//
 
 import UIKit
 
-class DemoViewController: UIViewController, UIPageViewControllerDataSource {
-
+class DemoViewController: UIViewController, UIPageViewControllerDataSource
+{
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var next: UIButton!
     
@@ -20,9 +21,11 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
     
     var index: Int = 0
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
+        // Adds all the demo screens to the page controller.
         createNewDemoPage("app_name", description: "demo_description", imageName: "demo_intencity", backgroundColor: Color.primary)
         createNewDemoPage("demo_fitness_guru_title", description: "demo_fitness_guru_description", imageName: "demo_fitness_guru", backgroundColor: Color.secondary_light)
         createNewDemoPage("demo_fitness_direction_title", description: "demo_fitness_direction_description", imageName: "demo_intencity", backgroundColor: Color.secondary_dark)
@@ -33,7 +36,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
         
-        let startVC = self.viewControllerAtIndex(index)
+        let startVC = self.displayViewControllerAtIndex(index)
         viewControllers = NSArray(object: startVC)
         
         setViewController()
@@ -53,17 +56,33 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         self.pageControl.numberOfPages = demoPages.count;
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    /*
+        Adds all the demo screens to the page controller.
+    
+        title               The title for the demo screen.
+        description         The description for the demo screen.
+        imageName           The name of the image that will be displayed on the screen.
+                            This can be found in the Assets.xcassets.
+        backgroundColor     The background color for the demo screen.
+    */
     func createNewDemoPage(title: String, description: String, imageName: String, backgroundColor: UIColor)
     {
         self.demoPages.append(DemoView(title: NSLocalizedString(title, comment: ""), description: NSLocalizedString(description, comment: ""), imageName: imageName, backgroundColor: backgroundColor))
     }
     
-    func viewControllerAtIndex(index: Int) -> UIViewController
+    /*
+        Displays the view controller at a specified index.
+        
+        index   The index of the view to show.
+    
+        return  The view controller to show.
+    */
+    func displayViewControllerAtIndex(index: Int) -> UIViewController
     {
         self.index = index
         
@@ -107,8 +126,9 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         }
     }
     
-    //MARK - PageViewController Datasource
-    
+    /*
+        The function that is called to create a view before the current view.
+    */
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
     {
         let vc = viewController as! PageViewController
@@ -122,9 +142,12 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
         
         index--
         
-        return self.viewControllerAtIndex(index)
+        return self.displayViewControllerAtIndex(index)
     }
     
+    /*
+        The function that is called to create a view after the current view.
+    */
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
     {
         let vc = viewController as! PageViewController
@@ -143,7 +166,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource {
             return nil
         }
         
-        return self.viewControllerAtIndex(index)
+        return self.displayViewControllerAtIndex(index)
     }
     
     @IBAction func nextClicked(sender: AnyObject)
