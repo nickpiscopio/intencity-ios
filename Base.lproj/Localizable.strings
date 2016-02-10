@@ -12,8 +12,10 @@
  * Exported at: Mon, 08 Feb 2016 19:25:04 +0000
  */
 
-"separator" = "&#183;";
+// iOS Specific Strings
+"ok" = "OK";
 
+// Intencity Strings
 /*  */
 "app_name" = "Intencity";
 

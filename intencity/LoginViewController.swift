@@ -9,7 +9,7 @@
 
 import UIKit
 
-class LoginViewController: PageViewController
+class LoginViewController: PageViewController, ServiceDelegate
 {
     var backgroundColor: UIColor!
     
@@ -22,6 +22,9 @@ class LoginViewController: PageViewController
     @IBOutlet weak var termsLabel: UIButton!
     @IBOutlet weak var signInButton: IntencityButton!
     @IBOutlet weak var tryIntencityButton: IntencityButtonNoBackground!
+    
+    let unchecked = UIImage(named: "checkbox_unchecked")
+    let checked = UIImage(named: "checkbox_checked")
     
     override func viewDidLoad()
     {
@@ -45,7 +48,6 @@ class LoginViewController: PageViewController
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     /*
@@ -55,11 +57,57 @@ class LoginViewController: PageViewController
     */
     @IBAction func loginClicked(sender: UIButton)
     {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let email = emailTextField.text!
+        let password = passwordTextField.text!
         
-        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController")
+        if (email.isEmpty || password.isEmpty)
+        {
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("fill_in_fields", comment: ""))
+        }
+        else if (!isTermsChecked())
+        {
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("accept_terms", comment: ""))
+        }
+        else
+        {
+            let params = "email=\(email)&password=\(password)"
+            
+            ServiceTask(delegate: self, serviceURL: "http://www.intencityapp.com/dev/services/mobile/user_credentials.php", params: params)
+        }
+    }
+    
+    func onRetrievalSuccessful(result: String)
+    {
+        dispatch_async(dispatch_get_main_queue())
+        {
+            let response = result.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            if (response == Constant.COULD_NOT_FIND_EMAIL || response == Constant.INVALID_PASSWORD)
+            {
+                Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""))
+            }
+            else
+            {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                let initialViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController")
+                
+                self.presentViewController(initialViewController, animated: true, completion: nil)
+
+            }
+        }
+    }
+    
+    func onRetrievalFailed()
+    {
         
-        self.presentViewController(initialViewController, animated: true, completion: nil)
+    }
+    
+    /*
+        Checks to see if the terms checkbox is checked.
+    */
+    func isTermsChecked() -> Bool
+    {
+        return termsButton.currentImage!.isEqual(checked)
     }
     
     /*
@@ -97,10 +145,7 @@ class LoginViewController: PageViewController
     */
     @IBAction func termsOfUseClicked(sender: UIButton)
     {
-        let unchecked = UIImage(named: "checkbox_unchecked")
-        let checked = UIImage(named: "checkbox_checked")
-        
-        if (termsButton.currentImage!.isEqual(unchecked))
+        if (!isTermsChecked())
         {
             termsButton.setImage(checked, forState: .Normal)
             
