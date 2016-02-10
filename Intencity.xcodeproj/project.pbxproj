@@ -31,7 +31,7 @@
 		BD9EF2C21C6B869E00E520CB /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C11C6B869E00E520CB /* Constant.swift */; };
 		BD9EF2C41C6B8A6700E520CB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C31C6B8A6700E520CB /* Util.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
-		BDFE97161C68E6FC00C2AEA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* MainViewController.swift */; };
+		BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */; };
 		BDFE97181C68EC9B00C2AEA3 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97171C68EC9B00C2AEA3 /* Loading.xib */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +62,7 @@
 		BD9EF2C11C6B869E00E520CB /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		BD9EF2C31C6B8A6700E520CB /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		BDFE97151C68E6FC00C2AEA3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
 		BDFE97171C68EC9B00C2AEA3 /* Loading.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Loading.xib; path = ../Loading.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,7 +152,7 @@
 				BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */,
 				BD9EF2491C68F48E00E520CB /* LoginViewController.swift */,
 				BD9EF2B51C6A8AF500E520CB /* TermsOfUseViewController.swift */,
-				BDFE97151C68E6FC00C2AEA3 /* MainViewController.swift */,
+				BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */,
 				BD9EF2A71C6A310200E520CB /* ForgotPasswordViewController.swift */,
 			);
 			name = Controllers;
@@ -275,7 +275,7 @@
 				BD9EF2B01C6A52FA00E520CB /* IntencityButton.swift in Sources */,
 				BD9EF2B21C6A56CE00E520CB /* IntencityButtonNoBackground.swift in Sources */,
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
-				BDFE97161C68E6FC00C2AEA3 /* MainViewController.swift in Sources */,
+				BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */,
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
 			);

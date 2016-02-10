@@ -89,7 +89,7 @@ class LoginViewController: PageViewController, ServiceDelegate
             {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
-                let initialViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController")
+                let initialViewController = storyboard.instantiateViewControllerWithIdentifier("IntencityTabView")
                 
                 self.presentViewController(initialViewController, animated: true, completion: nil)
 
