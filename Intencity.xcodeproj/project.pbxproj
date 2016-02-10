@@ -30,6 +30,9 @@
 		BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2BE1C6B829500E520CB /* ServiceDelegate.swift */; };
 		BD9EF2C21C6B869E00E520CB /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C11C6B869E00E520CB /* Constant.swift */; };
 		BD9EF2C41C6B8A6700E520CB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C31C6B8A6700E520CB /* Util.swift */; };
+		BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C51C6BEFB800E520CB /* IntencityTabBarController.swift */; };
+		BD9EF2C81C6BF4CC00E520CB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C71C6BF4CC00E520CB /* MenuViewController.swift */; };
+		BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */; };
 		BDFE97181C68EC9B00C2AEA3 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97171C68EC9B00C2AEA3 /* Loading.xib */; };
@@ -61,6 +64,9 @@
 		BD9EF2BE1C6B829500E520CB /* ServiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceDelegate.swift; sourceTree = "<group>"; };
 		BD9EF2C11C6B869E00E520CB /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		BD9EF2C31C6B8A6700E520CB /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		BD9EF2C51C6BEFB800E520CB /* IntencityTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityTabBarController.swift; sourceTree = "<group>"; };
+		BD9EF2C71C6BF4CC00E520CB /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
 		BDFE97171C68EC9B00C2AEA3 /* Loading.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Loading.xib; path = ../Loading.xib; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 				BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */,
 				BD9EF2491C68F48E00E520CB /* LoginViewController.swift */,
 				BD9EF2B51C6A8AF500E520CB /* TermsOfUseViewController.swift */,
+				BD9EF2C51C6BEFB800E520CB /* IntencityTabBarController.swift */,
+				BD9EF2C71C6BF4CC00E520CB /* MenuViewController.swift */,
+				BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */,
 				BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */,
 				BD9EF2A71C6A310200E520CB /* ForgotPasswordViewController.swift */,
 			);
@@ -263,11 +272,13 @@
 				BD9EF2B61C6A8AF500E520CB /* TermsOfUseViewController.swift in Sources */,
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,
+				BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */,
 				BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */,
 				BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */,
 				BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */,
 				BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */,
 				BD9EF2591C693A6400E520CB /* Color.swift in Sources */,
+				BD9EF2C81C6BF4CC00E520CB /* MenuViewController.swift in Sources */,
 				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
 				BD9EF2A81C6A310200E520CB /* ForgotPasswordViewController.swift in Sources */,
 				BD9EF2C21C6B869E00E520CB /* Constant.swift in Sources */,
@@ -278,6 +289,7 @@
 				BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */,
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
+				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

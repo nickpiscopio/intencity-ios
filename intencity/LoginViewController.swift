@@ -86,7 +86,7 @@ class LoginViewController: PageViewController, ServiceDelegate
                 Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""))
             }
             else
-            {
+            {                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
                 let initialViewController = storyboard.instantiateViewControllerWithIdentifier("IntencityTabView")

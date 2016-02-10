@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
+        // Adds the title bar color.
         UINavigationBar.appearance().barTintColor = Color.primary
         UINavigationBar.appearance().barStyle = UIBarStyle.Black
         UINavigationBar.appearance().tintColor = Color.white

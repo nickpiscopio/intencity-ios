@@ -1,15 +1,13 @@
 //
-//  MainViewController.swift
+//  MenuViewController.swift
 //  Intencity
 //
-//  The view controller for the Fitness Log.
-//
-//  Created by Nick Piscopio on 2/8/16.
+//  Created by Nick Piscopio on 2/10/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
 
-class FitnessLogViewController: UIViewController
+class MenuViewController: UIViewController
 {
     override func viewDidLoad()
     {
@@ -19,9 +17,9 @@ class FitnessLogViewController: UIViewController
         self.view.backgroundColor = Color.page_background
         
         // Sets the title for the screen.
-        self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("app_name", comment: "")
+        self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("title_menu", comment: "")
     }
-
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
