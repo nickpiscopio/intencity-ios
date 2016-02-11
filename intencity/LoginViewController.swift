@@ -81,19 +81,29 @@ class LoginViewController: PageViewController, ServiceDelegate
         }
     }
     
+    /*
+        The button click for trying Intencity.
+     */
     @IBAction func tryIntencityClicked(sender: AnyObject)
     {
-        trialAccountType = Constant.ACCOUNT_TYPE_MOBILE_TRIAL
-        trialDateCreated = NSDate().timeIntervalSince1970 * 1000
-        let createdDateString = String(format:"%f", trialDateCreated)
-        let firstName = "Anonymous";
-        let lastName = "User";
-        trialEmail = lastName +  createdDateString + "@intencity.fit";
-        let password = createdDateString;
-
-        ServiceTask(event: ServiceEvent.TRIAL, delegate: self,
-            serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
-            params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType))
+        if (isTermsChecked())
+        {
+            trialAccountType = Constant.ACCOUNT_TYPE_MOBILE_TRIAL
+            trialDateCreated = NSDate().timeIntervalSince1970 * 1000
+            let createdDateString = String(format:"%f", trialDateCreated)
+            let firstName = "Anonymous";
+            let lastName = "User";
+            trialEmail = lastName +  createdDateString + "@intencity.fit";
+            let password = createdDateString;
+            
+            ServiceTask(event: ServiceEvent.TRIAL, delegate: self,
+                serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
+                params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType))
+        }
+        else
+        {
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("accept_terms", comment: ""))
+        }
     }
 
     /*
