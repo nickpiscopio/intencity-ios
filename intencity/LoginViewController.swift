@@ -23,8 +23,8 @@ class LoginViewController: PageViewController, ServiceDelegate
     @IBOutlet weak var signInButton: IntencityButton!
     @IBOutlet weak var tryIntencityButton: IntencityButtonNoBackground!
     
-    let unchecked = UIImage(named: "checkbox_unchecked")
-    let checked = UIImage(named: "checkbox_checked")
+    let unchecked = UIImage(named: Constant.CHECKBOX_UNCHECKED)
+    let checked = UIImage(named: Constant.CHECKBOX_CHECKED)
     
     override func viewDidLoad()
     {
@@ -95,18 +95,11 @@ class LoginViewController: PageViewController, ServiceDelegate
                 
             let accountType = json![Constant.COLUMN_ACCOUNT_TYPE] as! String
             let email = json![Constant.COLUMN_EMAIL] as! String
-            let encryptedEmail = try! email.aesEncrypt(Key.key, iv: Key.iv)
 
-            Util.saveLoginData(encryptedEmail, accountType: accountType, createdDate: 0)
-                
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                
-            let initialViewController = storyboard.instantiateViewControllerWithIdentifier("IntencityTabView")
-                
-            self.presentViewController(initialViewController, animated: true, completion: nil)
+            Util.loadIntencity(self, email: email, accountType: accountType, createdDate: 0)
         }
     }
-        
+    
     /*
         The function called when we fail to get the user's credentials back from the server.
     */

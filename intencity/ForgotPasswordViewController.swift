@@ -38,7 +38,7 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
     @IBAction func resetPassword(sender: AnyObject)
     {
         let email = emailTextField.text!
-        if (!Util.validateText(email, regEx: Constant.REGEX_EMAIL))
+        if (!Util.isFieldValid(email, regEx: Constant.REGEX_EMAIL))
         {
             Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("email_validation_error", comment: ""))
         }

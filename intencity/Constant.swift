@@ -15,6 +15,8 @@ struct Constant
     static let DEMO_STORYBOARD = "Demo"
     static let MAIN_VIEW = "IntencityTabView"
     static let DEMO_VIEW = "DemoViewController"
+    static let CHECKBOX_UNCHECKED = "checkbox_unchecked"
+    static let CHECKBOX_CHECKED = "checkbox_checked"
     
     // General Constants
     static let CODE_FAILED: Double = -1.0;
@@ -153,7 +155,6 @@ struct Constant
         return PARAMETER_EMAIL + email + PARAMETER_AMPERSAND + PARAMETER_PASSWORD + password;
     }
     
-    // Will need to rewrite these as functions for swift.
 
     /**
     * Generates the forgot password parameter to send to the server.
@@ -166,27 +167,29 @@ struct Constant
     {
         return PARAMETER_EMAIL + email;
     }
+
+    /**
+    * Generates the create account parameters.
+    *
+    * @param firstName     The first name of the user.
+    * @param lastName      The last name of the user.
+    * @param email         The user's email.
+    * @param password      The password of the user.
+    * @param accountType   The account type of the user.
+    *
+    * @return  The parameters for creating an account.
+    */
+    static func getAccountParameters(firstName: String, lastName: String, email: String, password: String, accountType: String) -> String
+    {
+        return PARAMETER_FIRST_NAME + firstName + PARAMETER_AMPERSAND +
+                PARAMETER_LAST_NAME + lastName + PARAMETER_AMPERSAND +
+                PARAMETER_EMAIL + email + PARAMETER_AMPERSAND +
+                PARAMETER_PASSWORD + password + PARAMETER_AMPERSAND +
+                PARAMETER_ACCOUNT_TYPE + accountType;
+    }
+    
+    // Will need to rewrite these as functions for swift.
 //
-//    /**
-//    * Generates the create account parameters.
-//    *
-//    * @param firstName     The first name of the user.
-//    * @param lastName      The last name of the user.
-//    * @param email         The user's email.
-//    * @param password      The password of the user.
-//    * @param accountType   The account type of the user.
-//    *
-//    * @return  The parameters for creating an account.
-//    */
-//    public static String getAccountParameters(String firstName, String lastName, String email, String password, String accountType)
-//    {
-//    return PARAMETER_FIRST_NAME + firstName + PARAMETER_AMPERSAND +
-//    PARAMETER_LAST_NAME + lastName + PARAMETER_AMPERSAND +
-//    PARAMETER_EMAIL + email + PARAMETER_AMPERSAND +
-//    PARAMETER_PASSWORD + password + PARAMETER_AMPERSAND +
-//    PARAMETER_ACCOUNT_TYPE + accountType;
-//    }
-//    
 //    /**
 //    * Generates the stored procedure parameters.
 //    *

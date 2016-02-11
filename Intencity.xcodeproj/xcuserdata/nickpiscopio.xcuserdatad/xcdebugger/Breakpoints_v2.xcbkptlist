@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "intencity/Util.swift"
-            timestampString = "476893893.589835"
+            timestampString = "476919819.497304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "saveLoginData(_:accountType:createdDate:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "loadIntencity(_:email:accountType:createdDate:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
