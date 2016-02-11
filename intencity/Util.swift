@@ -25,4 +25,20 @@ class Util
         
         controller.presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    /*
+        Saves the login information to NSUserDefaults.
+    */
+    static func saveLoginData(email: String, accountType: String, createdDate: UInt32)
+    {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setObject(email, forKey: Constant.USER_ACCOUNT_EMAIL)
+        defaults.setObject(accountType, forKey: Constant.USER_ACCOUNT_TYPE)
+        
+        if (createdDate > 0)
+        {
+            defaults.setObject(String(createdDate), forKey: Constant.USER_TRIAL_CREATED_DATE)
+        }
+    }
 }

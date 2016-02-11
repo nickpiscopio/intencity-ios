@@ -19,30 +19,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UINavigationBar.appearance().barStyle = UIBarStyle.Black
         UINavigationBar.appearance().tintColor = Color.white
         
-        // Override point for customization after application launch.
+        var storyboardName: String
+        var viewName: String
         
-//        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-//        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        
-//        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController")
-//        
-//        self.window?.rootViewController = initialViewController
-//        self.window?.makeKeyAndVisible()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if (defaults.stringForKey(Constant.USER_ACCOUNT_EMAIL) != nil)
+        {
+            storyboardName = Constant.MAIN_STORYBOARD
+            viewName = Constant.MAIN_VIEW
+        }
+        else
+        {
+            storyboardName = Constant.DEMO_STORYBOARD
+            viewName = Constant.DEMO_VIEW
+        }
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        let storyboard = UIStoryboard(name: "Demo", bundle: nil)
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
         
-        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("DemoViewController")
+        let initialViewController = storyboard.instantiateViewControllerWithIdentifier(viewName)
         
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
-        
-        //Add condition here to go to the intencity or demo.
-//        let pageController = UIPageControl.appearance()
-//        pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
-//        pageController.currentPageIndicatorTintColor = UIColor.blackColor()
         
         return true
     }

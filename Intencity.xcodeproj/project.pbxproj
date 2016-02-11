@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD1053801C6CC2B3004C10C7 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10537F1C6CC2B3004C10C7 /* Encryption.swift */; };
+		BD1053951C6CC6FD004C10C7 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD10538C1C6CC6DF004C10C7 /* CryptoSwift.framework */; };
+		BD1053991C6CC9BD004C10C7 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1053981C6CC9BD004C10C7 /* JSON.swift */; };
+		BD10539B1C6CD071004C10C7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10539A1C6CD071004C10C7 /* Key.swift */; };
 		BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460ED1C68D34400F60ADC /* AppDelegate.swift */; };
 		BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460EF1C68D34400F60ADC /* DemoViewController.swift */; };
 		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
@@ -38,7 +42,49 @@
 		BDFE97181C68EC9B00C2AEA3 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97171C68EC9B00C2AEA3 /* Loading.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BD10538B1C6CC6DF004C10C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD1053831C6CC6DF004C10C7 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = "CryptoSwift iOS";
+		};
+		BD10538D1C6CC6DF004C10C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD1053831C6CC6DF004C10C7 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5596BDBB1BC8F220007E38D5;
+			remoteInfo = "CryptoSwift watchOS";
+		};
+		BD10538F1C6CC6DF004C10C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD1053831C6CC6DF004C10C7 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75DF77721BC8EB59006E9520;
+			remoteInfo = "CryptoSwift OSX";
+		};
+		BD1053911C6CC6DF004C10C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD1053831C6CC6DF004C10C7 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75D614BF1BD844F2001358B2;
+			remoteInfo = "CryptoSwift tvOS";
+		};
+		BD1053931C6CC6DF004C10C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD1053831C6CC6DF004C10C7 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = CryptoSwiftTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		BD10537F1C6CC2B3004C10C7 /* Encryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
+		BD1053831C6CC6DF004C10C7 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../../Desktop/CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
+		BD1053981C6CC9BD004C10C7 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSON.swift; path = ../JSON.swift; sourceTree = "<group>"; };
+		BD10539A1C6CD071004C10C7 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		BD5460EA1C68D34400F60ADC /* Intencity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intencity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5460ED1C68D34400F60ADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5460EF1C68D34400F60ADC /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -77,15 +123,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD1053951C6CC6FD004C10C7 /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD1053841C6CC6DF004C10C7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD10538C1C6CC6DF004C10C7 /* CryptoSwift.framework */,
+				BD10538E1C6CC6DF004C10C7 /* CryptoSwift.framework */,
+				BD1053901C6CC6DF004C10C7 /* CryptoSwift.framework */,
+				BD1053921C6CC6DF004C10C7 /* CryptoSwift.framework */,
+				BD1053941C6CC6DF004C10C7 /* CryptoSwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD1053961C6CC729004C10C7 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				BD1053971C6CC989004C10C7 /* Extenstions */,
+				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		BD1053971C6CC989004C10C7 /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				BD10537F1C6CC2B3004C10C7 /* Encryption.swift */,
+				BD1053981C6CC9BD004C10C7 /* JSON.swift */,
+			);
+			name = Extenstions;
+			sourceTree = "<group>";
+		};
 		BD5460E11C68D34400F60ADC = {
 			isa = PBXGroup;
 			children = (
+				BD1053831C6CC6DF004C10C7 /* CryptoSwift.xcodeproj */,
 				BD5460EC1C68D34400F60ADC /* intencity */,
 				BD9EF2551C691C8900E520CB /* Resources */,
 				BD5460EB1C68D34400F60ADC /* Products */,
@@ -110,9 +188,9 @@
 				BD9EF2C01C6B829A00E520CB /* Delegates */,
 				BD9EF2BD1C6B722300E520CB /* Tasks */,
 				BD9EF2601C6A20E300E520CB /* Views */,
+				BD1053961C6CC729004C10C7 /* Util */,
 				BD5460F41C68D34400F60ADC /* Assets.xcassets */,
 				BD5460F91C68D34400F60ADC /* Info.plist */,
-				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
 			);
 			path = intencity;
 			sourceTree = "<group>";
@@ -145,6 +223,7 @@
 				BD9EF2581C693A6400E520CB /* Color.swift */,
 				BD9EF2AD1C6A49C500E520CB /* Dimention.swift */,
 				BD9EF2C11C6B869E00E520CB /* Constant.swift */,
+				BD10539A1C6CD071004C10C7 /* Key.swift */,
 			);
 			name = Structs;
 			sourceTree = "<group>";
@@ -239,12 +318,56 @@
 			mainGroup = BD5460E11C68D34400F60ADC;
 			productRefGroup = BD5460EB1C68D34400F60ADC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BD1053841C6CC6DF004C10C7 /* Products */;
+					ProjectRef = BD1053831C6CC6DF004C10C7 /* CryptoSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BD5460E91C68D34400F60ADC /* intencity */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BD10538C1C6CC6DF004C10C7 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = BD10538B1C6CC6DF004C10C7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BD10538E1C6CC6DF004C10C7 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = BD10538D1C6CC6DF004C10C7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BD1053901C6CC6DF004C10C7 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = BD10538F1C6CC6DF004C10C7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BD1053921C6CC6DF004C10C7 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = BD1053911C6CC6DF004C10C7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BD1053941C6CC6DF004C10C7 /* CryptoSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CryptoSwiftTests.xctest;
+			remoteRef = BD1053931C6CC6DF004C10C7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BD5460E81C68D34400F60ADC /* Resources */ = {
@@ -268,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD1053801C6CC2B3004C10C7 /* Encryption.swift in Sources */,
 				BD9EF2BC1C6B701D00E520CB /* ServiceTask.swift in Sources */,
 				BD9EF2B61C6A8AF500E520CB /* TermsOfUseViewController.swift in Sources */,
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
@@ -282,6 +406,7 @@
 				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
 				BD9EF2A81C6A310200E520CB /* ForgotPasswordViewController.swift in Sources */,
 				BD9EF2C21C6B869E00E520CB /* Constant.swift in Sources */,
+				BD1053991C6CC9BD004C10C7 /* JSON.swift in Sources */,
 				BD9EF2C41C6B8A6700E520CB /* Util.swift in Sources */,
 				BD9EF2B01C6A52FA00E520CB /* IntencityButton.swift in Sources */,
 				BD9EF2B21C6A56CE00E520CB /* IntencityButtonNoBackground.swift in Sources */,
@@ -289,6 +414,7 @@
 				BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */,
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
+				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
 				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,13 @@ import Foundation
 
 struct Constant
 {
+    // iOS Constants
+    static let MAIN_STORYBOARD = "Main"
+    static let DEMO_STORYBOARD = "Demo"
+    static let MAIN_VIEW = "IntencityTabView"
+    static let DEMO_VIEW = "DemoViewController"
+    
+    // General Constants
     static let CODE_FAILED: Double = -1.0;
     static let CODE_FAILED_REPOPULATE = -2;
     static let REQUIRED_PASSWORD_LENGTH = 8;
@@ -34,6 +41,7 @@ struct Constant
     static let ACCOUNT_CREATED = "Account created";
     static let SHARED_PREFERENCES = "com.intencity.intencity.shared.preferences";
     
+    static let USER_ACCOUNT_ID = "com.intencity.intencity.user.id";
     static let USER_ACCOUNT_EMAIL = "com.intencity.intencity.user.email";
     static let USER_ACCOUNT_TYPE = "com.intencity.intencity.user.account.type";
     static let USER_TRIAL_CREATED_DATE = "com.intencity.intencity.user.trial.created.date";

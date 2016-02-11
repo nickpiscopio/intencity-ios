@@ -80,19 +80,28 @@ class LoginViewController: PageViewController, ServiceDelegate
     {
         dispatch_async(dispatch_get_main_queue())
         {
-            let response = result.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            if (response == Constant.COULD_NOT_FIND_EMAIL || response == Constant.INVALID_PASSWORD)
+            let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            if (parsedResponse == Constant.COULD_NOT_FIND_EMAIL || parsedResponse == Constant.INVALID_PASSWORD)
             {
                 Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""))
             }
             else
-            {                
+            {
+                // This gets saved as NSDictionary, so there is no order
+                // ID, Email, Hashed password, AccountType
+                let json: AnyObject? = result.parseJSONString
+                
+                let accountType = json![Constant.COLUMN_ACCOUNT_TYPE] as! String
+                let email = json![Constant.COLUMN_EMAIL] as! String
+                let encryptedEmail = try! email.aesEncrypt(Key.key, iv: Key.iv)
+
+                Util.saveLoginData(encryptedEmail, accountType: accountType, createdDate: 0)
+                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
                 let initialViewController = storyboard.instantiateViewControllerWithIdentifier("IntencityTabView")
                 
                 self.presentViewController(initialViewController, animated: true, completion: nil)
-
             }
         }
     }
