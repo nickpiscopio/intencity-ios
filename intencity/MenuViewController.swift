@@ -2,6 +2,8 @@
 //  MenuViewController.swift
 //  Intencity
 //
+//  The view controller for the menu.
+//
 //  Created by Nick Piscopio on 2/10/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
@@ -17,7 +19,7 @@ class MenuViewController: UIViewController
         self.view.backgroundColor = Color.page_background
         
         // Sets the title for the screen.
-        self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("title_menu", comment: "")
+        self.navigationItem.title = NSLocalizedString("title_menu", comment: "")
     }
     
     override func didReceiveMemoryWarning()

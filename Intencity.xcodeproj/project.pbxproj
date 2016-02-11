@@ -17,6 +17,8 @@
 		BD9479F91C6CE39D003F3767 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9479F81C6CE39D003F3767 /* CryptoSwift.framework */; };
 		BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9479FA1C6CE43C003F3767 /* JSON.swift */; };
 		BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD9479FC1C6CE452003F3767 /* Loading.storyboard */; };
+		BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A011C6CED31003F3767 /* LoginNavController.swift */; };
+		BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A031C6CF252003F3767 /* IntencityError.swift */; };
 		BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2491C68F48E00E520CB /* LoginViewController.swift */; };
 		BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */; };
 		BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD9EF2531C691C7100E520CB /* Localizable.strings */; };
@@ -56,6 +58,8 @@
 		BD9479FA1C6CE43C003F3767 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		BD9479FC1C6CE452003F3767 /* Loading.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		BD947A001C6CE598003F3767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BD947A011C6CED31003F3767 /* LoginNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavController.swift; sourceTree = "<group>"; };
+		BD947A031C6CF252003F3767 /* IntencityError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityError.swift; sourceTree = "<group>"; };
 		BD9EF2491C68F48E00E520CB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoContentViewController.swift; sourceTree = "<group>"; };
 		BD9EF2561C692A6900E520CB /* DemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				BD1053971C6CC989004C10C7 /* Extenstions */,
+				BD947A031C6CF252003F3767 /* IntencityError.swift */,
 				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
 			);
 			name = Util;
@@ -192,6 +197,7 @@
 				BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */,
 				BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */,
 				BD9EF2A71C6A310200E520CB /* ForgotPasswordViewController.swift */,
+				BD947A011C6CED31003F3767 /* LoginNavController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 				BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */,
 				BD9EF2591C693A6400E520CB /* Color.swift in Sources */,
 				BD9EF2C81C6BF4CC00E520CB /* MenuViewController.swift in Sources */,
+				BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */,
 				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
 				BD9EF2A81C6A310200E520CB /* ForgotPasswordViewController.swift in Sources */,
 				BD9EF2C21C6B869E00E520CB /* Constant.swift in Sources */,
@@ -321,6 +328,7 @@
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
+				BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */,
 				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

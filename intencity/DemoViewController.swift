@@ -104,10 +104,8 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
             pageControl.hidden = true
             next.hidden = true
             let storyboard : UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
-            let vc : LoginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+            let vc = storyboard.instantiateViewControllerWithIdentifier("LoginNavController") as! LoginNavController
             vc.backgroundColor = demoView.backgroundColor
-            
-            vc.pageIndex = index
             
             return vc
         }
@@ -150,9 +148,20 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
     */
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
     {
-        let vc = viewController as! PageViewController
-        var index = vc.pageIndex as Int
-        self.pageControl.currentPage = index
+        var index: Int
+        do
+        {
+            index = try getCurrentIndex(viewController)
+            
+            self.pageControl.currentPage = index
+        }
+        catch
+        {
+            // If we can't determine the index, then we must be on the login screen.
+            // The index for the login screen will be the last item in the list.
+            index = demoPages.count - 1
+        }
+    
         
         if (index == NSNotFound)
         {
@@ -179,6 +188,22 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         let startVC : NSArray = viewControllers
         
         self.pageViewController.setViewControllers(startVC as? [UIViewController], direction: .Forward, animated: true, completion: nil)
+    }
+    
+    /*
+        Tries to get the current index.
+    
+        returns     The view controller index.
+        throws      A cast error if it cannot get the index.
+    */
+    func getCurrentIndex(viewController: UIViewController) throws -> Int
+    {
+        if let vc = viewController as? PageViewController
+        {
+            return vc.pageIndex
+        }
+        
+        throw IntencityError.CastError
     }
 
     

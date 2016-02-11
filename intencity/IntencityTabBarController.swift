@@ -15,13 +15,9 @@ class IntencityTabBarController: UITabBarController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        // Sets the background color of this view.
-        self.view.backgroundColor = Color.page_background
-        
-        // Adds a back image to the navigation bar.
-        // We need this because we can't add a standard navigation bar without disrupting the page view controller.
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named: "back_button.png"), style:.Plain, target:self, action:"goBack");
+
+        // Change the color of teh tab bar.
+        self.tabBar.backgroundColor = Color.page_background
     }
     
     override func didReceiveMemoryWarning()

@@ -28,11 +28,7 @@ class CreateAccountViewController: UIViewController
         self.view.backgroundColor = Color.page_background
         
         // Sets the title for the screen.
-        self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("title_create_account", comment: "")
-        
-        // Adds a back image to the navigation bar.
-        // We need this because we can't add a standard navigation bar without disrupting the page view controller.
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named: "back_button.png"), style:.Plain, target:self, action:"goBack");
+        self.navigationItem.title = NSLocalizedString("title_create_account", comment: "")
         
         firstNameTextField?.placeholder = NSLocalizedString("first_name", comment: "")
         lastNameTextField?.placeholder = NSLocalizedString("last_name", comment: "")
@@ -86,14 +82,6 @@ class CreateAccountViewController: UIViewController
         let initialViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController")
         
         self.presentViewController(initialViewController, animated: true, completion: nil)
-    }
-    
-    /*
-        The function to dismiss the current view controller.
-    */
-    func goBack()
-    {
-        dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

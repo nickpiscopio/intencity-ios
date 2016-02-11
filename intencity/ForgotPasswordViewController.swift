@@ -19,23 +19,11 @@ class ForgotPasswordViewController: UIViewController
         self.view.backgroundColor = Color.page_background
         
         // Sets the title for the screen.
-        self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("title_forgot_password", comment: "")
-        
-        // Adds a back image to the navigation bar.
-        // We need this because we can't add a standard navigation bar without disrupting the page view controller.
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named: "back_button.png"), style:.Plain, target:self, action:"goBack");
+        self.navigationItem.title = NSLocalizedString("title_forgot_password", comment: "")
     }
     
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-    }
-    
-    /*
-        The function to dismiss the current view controller.
-    */
-    func goBack()
-    {
-        dismissViewControllerAnimated(true, completion: nil)
     }
 }

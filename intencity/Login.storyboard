@@ -24,7 +24,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Forgot Password?"/>
                                 <connections>
-                                    <action selector="forgotPasswordClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="VnW-Ok-j56"/>
+                                    <segue destination="Mqc-NP-a7F" kind="show" id="3fB-Yg-YIX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsH-Sf-J8e" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
@@ -32,7 +32,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Create an account"/>
                                 <connections>
-                                    <action selector="createAccountClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="K0r-DS-nBg"/>
+                                    <segue destination="pKO-UR-RFM" kind="show" id="XOa-EP-Yrm"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="mUE-1g-EhU">
@@ -71,7 +71,7 @@
                                     <action selector="loginClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="oI8-ID-Efg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxd-FN-Bcn" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxd-FN-Bcn" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
                                 <rect key="frame" x="219" y="378" width="163" height="30"/>
                                 <state key="normal" title="TRY INTENCITY"/>
                                 <connections>
@@ -88,6 +88,13 @@
                                 <state key="normal" title="I agree to the terms of use"/>
                                 <connections>
                                     <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="Tai-WZ-KIk"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDl-uu-taj">
+                                <rect key="frame" x="3" y="299" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="kM9-Q9-Ms0" kind="show" identifier="SegueToTerms" id="IGy-eo-F4g"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -158,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q97-DG-idN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2798" y="49"/>
+            <point key="canvasLocation" x="2804" y="49"/>
         </scene>
         <!--Terms Of Use View Controller-->
         <scene sceneID="TBy-GQ-iCG">
@@ -460,7 +467,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgB-yB-7zY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3443" y="49"/>
+            <point key="canvasLocation" x="3486" y="49"/>
+        </scene>
+        <!--Login Nav Controller-->
+        <scene sceneID="J54-9u-Tk0">
+            <objects>
+                <navigationController storyboardIdentifier="LoginNavController" automaticallyAdjustsScrollViewInsets="NO" id="ho7-go-iZe" customClass="LoginNavController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SqV-fp-7Mt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5lO-DF-tff" kind="relationship" relationship="rootViewController" id="9zv-jX-kNt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OTI-zZ-NU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2056" y="49"/>
         </scene>
     </scenes>
     <resources>

@@ -33,6 +33,9 @@ class LoginViewController: PageViewController, ServiceDelegate
         // Sets the background color of the view.
         self.view.backgroundColor = backgroundColor
         
+        // Sets the title for the screen.
+        self.navigationItem.title = NSLocalizedString("sign_in_title", comment: "")
+        
         emailTextField?.placeholder = NSLocalizedString("email", comment: "")
         passwordTextField?.placeholder = NSLocalizedString("password", comment: "")
         
@@ -43,7 +46,7 @@ class LoginViewController: PageViewController, ServiceDelegate
         
         termsLabel?.setTitle(NSLocalizedString("terms_checkbox", comment: ""), forState: .Normal)
         termsLabel.setTitleColor(Color.secondary_dark, forState: .Normal)
-}
+    }
 
     override func didReceiveMemoryWarning()
     {
@@ -76,6 +79,9 @@ class LoginViewController: PageViewController, ServiceDelegate
         }
     }
     
+    /*
+        The function called when we get the user's credentials back from the server successfully.
+    */
     func onRetrievalSuccessful(result: String)
     {
         dispatch_async(dispatch_get_main_queue())
@@ -106,6 +112,10 @@ class LoginViewController: PageViewController, ServiceDelegate
         }
     }
     
+    
+    /*
+        The function called when we fail to get the user's credentials back from the server.
+    */
     func onRetrievalFailed()
     {
         
@@ -120,34 +130,6 @@ class LoginViewController: PageViewController, ServiceDelegate
     }
     
     /*
-        The click function for the forgot password button.
-    
-        sender  The Button being pressed.
-    */
-    @IBAction func forgotPasswordClicked(sender: UIButton)
-    {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ForgotPasswordViewController") as! ForgotPasswordViewController
-        
-        let navigationController = UINavigationController(rootViewController: vc)
-
-        self.presentViewController(navigationController, animated: true, completion: nil)
-    }
-    
-    /*
-        The click function for the create account button.
-    
-        sender  The Button being pressed.
-    */
-    @IBAction func createAccountClicked(sender: UIButton)
-    {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateAccountViewController") as! CreateAccountViewController
-        
-        let navigationController = UINavigationController(rootViewController: vc)
-        
-        self.presentViewController(navigationController, animated: true, completion: nil)
-    }
-    
-    /*
         The click function for the terms of use checkbox and label.
     
         sender  The Button being pressed.
@@ -158,11 +140,7 @@ class LoginViewController: PageViewController, ServiceDelegate
         {
             termsButton.setImage(checked, forState: .Normal)
             
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TermsOfUseViewController") as! TermsOfUseViewController
-            
-            let navigationController = UINavigationController(rootViewController: vc)
-            
-            self.presentViewController(navigationController, animated: true, completion: nil)
+            self.performSegueWithIdentifier("SegueToTerms", sender: sender)
         }
         else
         {
