@@ -45,7 +45,7 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
         else
         {
             startresetPassword()
-            ServiceTask(delegate: self, serviceURL: Constant.SERVICE_FORGOT_PASSWORD, params: Constant.getForgotPasswordParameter(email))
+            ServiceTask(event: ServiceEvent.GENERIC, delegate: self, serviceURL: Constant.SERVICE_FORGOT_PASSWORD, params: Constant.getForgotPasswordParameter(email))
         }
     }
     
@@ -66,7 +66,7 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
         forgotPasswordLabel.hidden = false
     }
     
-    func onRetrievalSuccessful(result: String)
+    func onRetrievalSuccessful(event: Int, result: String)
     {
         
             Util.displayAlert(self, title:  NSLocalizedString("forgot_password_email_sent_title", comment: ""), message: NSLocalizedString("forgot_password_email_sent", comment: ""))
@@ -74,7 +74,7 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
             self.stopRestPassword()
     }
     
-    func onRetrievalFailed()
+    func onRetrievalFailed(event: Int)
     {
         Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error_email", comment: ""))
         

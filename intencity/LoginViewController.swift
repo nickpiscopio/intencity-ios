@@ -26,6 +26,10 @@ class LoginViewController: PageViewController, ServiceDelegate
     let unchecked = UIImage(named: Constant.CHECKBOX_UNCHECKED)
     let checked = UIImage(named: Constant.CHECKBOX_CHECKED)
     
+    var trialEmail: String = ""
+    var trialAccountType: String = ""
+    var trialDateCreated: Double = 0
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -73,39 +77,62 @@ class LoginViewController: PageViewController, ServiceDelegate
         }
         else
         {
-            ServiceTask(delegate: self, serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS, params: Constant.getValidateUserCredentialsServiceParameters(email, password: password))
+            ServiceTask(event: ServiceEvent.LOGIN, delegate: self, serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS, params: Constant.getValidateUserCredentialsServiceParameters(email, password: password))
         }
     }
     
+    @IBAction func tryIntencityClicked(sender: AnyObject)
+    {
+        trialAccountType = Constant.ACCOUNT_TYPE_MOBILE_TRIAL
+        trialDateCreated = NSDate().timeIntervalSince1970 * 1000
+        let createdDateString = String(format:"%f", trialDateCreated)
+        let firstName = "Anonymous";
+        let lastName = "User";
+        trialEmail = lastName +  createdDateString + "@intencity.fit";
+        let password = createdDateString;
+
+        ServiceTask(event: ServiceEvent.TRIAL, delegate: self,
+            serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
+            params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType))
+    }
+
     /*
         The function called when we get the user's credentials back from the server successfully.
     */
-    func onRetrievalSuccessful(result: String)
+    func onRetrievalSuccessful(event: Int, result: String)
     {
-        let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "")
-        if (parsedResponse == Constant.COULD_NOT_FIND_EMAIL || parsedResponse == Constant.INVALID_PASSWORD)
+        if (event == ServiceEvent.LOGIN)
         {
-            Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""))
+            let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "")
+            if (parsedResponse == Constant.COULD_NOT_FIND_EMAIL || parsedResponse == Constant.INVALID_PASSWORD)
+            {
+                Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""))
+            }
+            else
+            {
+                // This gets saved as NSDictionary, so there is no order
+                // ID, Email, Hashed password, AccountType
+                let json: AnyObject? = result.parseJSONString
+                
+                let accountType = json![Constant.COLUMN_ACCOUNT_TYPE] as! String
+                let email = json![Constant.COLUMN_EMAIL] as! String
+                
+                Util.loadIntencity(self, email: email, accountType: accountType, createdDate: 0)
+            }
         }
         else
         {
-            // This gets saved as NSDictionary, so there is no order
-            // ID, Email, Hashed password, AccountType
-            let json: AnyObject? = result.parseJSONString
-                
-            let accountType = json![Constant.COLUMN_ACCOUNT_TYPE] as! String
-            let email = json![Constant.COLUMN_EMAIL] as! String
-
-            Util.loadIntencity(self, email: email, accountType: accountType, createdDate: 0)
+            Util.loadIntencity(self, email: trialEmail, accountType: trialAccountType, createdDate: trialDateCreated)
         }
+        
     }
     
     /*
         The function called when we fail to get the user's credentials back from the server.
     */
-    func onRetrievalFailed()
+    func onRetrievalFailed(Event: Int)
     {
-        
+        Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""))
     }
     
     /*
@@ -114,6 +141,16 @@ class LoginViewController: PageViewController, ServiceDelegate
     func isTermsChecked() -> Bool
     {
         return termsButton.currentImage!.isEqual(checked)
+    }
+    
+    func startLogin()
+    {
+    
+    }
+    
+    func stopLogin()
+    {
+        
     }
     
     /*

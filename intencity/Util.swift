@@ -29,7 +29,7 @@ class Util
     /*
         Saves the login information to NSUserDefaults.
     */
-    static func loadIntencity(controller: UIViewController, email: String, accountType: String, createdDate: UInt32)
+    static func loadIntencity(controller: UIViewController, email: String, accountType: String, createdDate: Double)
     {
         let defaults = NSUserDefaults.standardUserDefaults()
         
@@ -40,7 +40,7 @@ class Util
         
         if (createdDate > 0)
         {
-            defaults.setObject(String(createdDate), forKey: Constant.USER_TRIAL_CREATED_DATE)
+            defaults.setObject(String(format:"%f", createdDate), forKey: Constant.USER_TRIAL_CREATED_DATE)
         }
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

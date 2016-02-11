@@ -149,7 +149,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         {
             startCreateAccount()
             
-            ServiceTask(delegate: self,
+            ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
                 serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
                 params: Constant.getAccountParameters(firstName, lastName: lastName, email: replacePlus(email), password: password, accountType: Constant.ACCOUNT_TYPE_NORMAL))
         }
@@ -205,7 +205,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         activityIndicator.stopAnimating()
     }
     
-    func onRetrievalSuccessful(result: String)
+    func onRetrievalSuccessful(event: Int, result: String)
     {
         let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "")
         if (parsedResponse == Constant.EMAIL_EXISTS)
@@ -226,7 +226,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         }
     }
     
-    func onRetrievalFailed()
+    func onRetrievalFailed(event: Int)
     {
         Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""))
     }

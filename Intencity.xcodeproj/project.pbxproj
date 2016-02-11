@@ -20,6 +20,7 @@
 		BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A011C6CED31003F3767 /* LoginNavController.swift */; };
 		BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A031C6CF252003F3767 /* IntencityError.swift */; };
 		BD947A061C6D3F30003F3767 /* Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A051C6D3F30003F3767 /* Integer.swift */; };
+		BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A091C6D4B90003F3767 /* ServiceEvent.swift */; };
 		BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2491C68F48E00E520CB /* LoginViewController.swift */; };
 		BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */; };
 		BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD9EF2531C691C7100E520CB /* Localizable.strings */; };
@@ -62,6 +63,7 @@
 		BD947A011C6CED31003F3767 /* LoginNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavController.swift; sourceTree = "<group>"; };
 		BD947A031C6CF252003F3767 /* IntencityError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityError.swift; sourceTree = "<group>"; };
 		BD947A051C6D3F30003F3767 /* Integer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integer.swift; sourceTree = "<group>"; };
+		BD947A091C6D4B90003F3767 /* ServiceEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceEvent.swift; path = ../ServiceEvent.swift; sourceTree = "<group>"; };
 		BD9EF2491C68F48E00E520CB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoContentViewController.swift; sourceTree = "<group>"; };
 		BD9EF2561C692A6900E520CB /* DemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		BD9EF2611C6A210300E520CB /* Structs */ = {
 			isa = PBXGroup;
 			children = (
+				BD947A091C6D4B90003F3767 /* ServiceEvent.swift */,
 				BD9EF2561C692A6900E520CB /* DemoView.swift */,
 				BD9EF2581C693A6400E520CB /* Color.swift */,
 				BD9EF2AD1C6A49C500E520CB /* Dimention.swift */,
@@ -328,6 +331,7 @@
 				BD9EF2B01C6A52FA00E520CB /* IntencityButton.swift in Sources */,
 				BD9EF2B21C6A56CE00E520CB /* IntencityButtonNoBackground.swift in Sources */,
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
+				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
 				BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */,
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,

@@ -75,7 +75,7 @@
                                 <rect key="frame" x="219" y="378" width="163" height="30"/>
                                 <state key="normal" title="TRY INTENCITY"/>
                                 <connections>
-                                    <action selector="loginClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="U5d-Qb-ePd"/>
+                                    <action selector="tryIntencityClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="r6L-f0-0hy"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="&quot;email&quot;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ukk-qD-wJJ" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">

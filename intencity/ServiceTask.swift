@@ -9,7 +9,7 @@
 import Foundation
 class ServiceTask
 {
-    init(delegate: ServiceDelegate, serviceURL: String, params: NSString)
+    init(event: Int, delegate: ServiceDelegate, serviceURL: String, params: NSString)
     {
         let failed = "FAILURE"
         let request = NSMutableURLRequest(URL: NSURL(string: serviceURL)!)
@@ -20,7 +20,7 @@ class ServiceTask
             guard error == nil && data != nil else
             {
                 print("error=\(error)")
-                delegate.onRetrievalFailed()
+                delegate.onRetrievalFailed(event)
                 return
             }
             
@@ -29,7 +29,7 @@ class ServiceTask
             {
                 print("statusCode: \(httpStatus.statusCode)")
                 print("response = \(response)")
-                delegate.onRetrievalFailed()
+                delegate.onRetrievalFailed(event)
                 return
             }
 
@@ -40,14 +40,14 @@ class ServiceTask
                 dispatch_async(dispatch_get_main_queue())
                 {
                     // Print the response
-                    delegate.onRetrievalSuccessful(responseString as String)
+                    delegate.onRetrievalSuccessful(event, result: responseString as String)
                 }
             }
             else
             {
                 dispatch_async(dispatch_get_main_queue())
                 {
-                    delegate.onRetrievalFailed()
+                    delegate.onRetrievalFailed(event)
                 }
             }
         }
