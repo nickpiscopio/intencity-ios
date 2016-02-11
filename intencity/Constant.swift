@@ -147,26 +147,26 @@ struct Constant
     static let SPACE_REGEX = "\\s";
     static let REGEX_EMAIL = "[a-zA-Z0-9]+([\\-\\.\\{\\}\\^\\+*_~]*[a-zA-Z0-9]+)*@[a-zA-Z0-9]+([\\.\\-]*[a-zA-Z0-9]+)*[\\.][a-zA-Z]{2}[A-Za-z]*";
     static let REGEX_FIELD = "[a-zA-Z0-9]+[\\-\\.\\{\\}\\^\\*\\(\\)\\[\\]\\$/;:,*_~!@#%]*";
-
-
+    
+    static func getValidateUserCredentialsServiceParameters(email: String, password: String) -> String
+    {
+        return PARAMETER_EMAIL + email + PARAMETER_AMPERSAND + PARAMETER_PASSWORD + password;
+    }
+    
     // Will need to rewrite these as functions for swift.
-//    public static String getValidateUserCredentialsServiceParameters(String email, String password)
-//    {
-//    return PARAMETER_EMAIL + email + PARAMETER_AMPERSAND + PARAMETER_PASSWORD + password;
-//    }
-//    
-//    /**
-//    * Generates the forgot password parameter to send to the server.
-//    *
-//    * @param email     The user's email to add to the url.
-//    *
-//    * @return  The generated url parameter.
-//    */
-//    public static String getForgotPasswordParameter(String email)
-//    {
-//    return PARAMETER_EMAIL + email;
-//    }
-//    
+
+    /**
+    * Generates the forgot password parameter to send to the server.
+    *
+    * @param email     The user's email to add to the url.
+    *
+    * @return  The generated url parameter.
+    */
+    static func getForgotPasswordParameter(email: String) -> String
+    {
+        return PARAMETER_EMAIL + email;
+    }
+//
 //    /**
 //    * Generates the create account parameters.
 //    *

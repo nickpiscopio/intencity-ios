@@ -73,9 +73,7 @@ class LoginViewController: PageViewController, ServiceDelegate
         }
         else
         {
-            let params = "email=\(email)&password=\(password)"
-            
-            ServiceTask(delegate: self, serviceURL: "http://www.intencityapp.com/dev/services/mobile/user_credentials.php", params: params)
+            ServiceTask(delegate: self, serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS, params: Constant.getValidateUserCredentialsServiceParameters(email, password: password))
         }
     }
     
@@ -84,35 +82,31 @@ class LoginViewController: PageViewController, ServiceDelegate
     */
     func onRetrievalSuccessful(result: String)
     {
-        dispatch_async(dispatch_get_main_queue())
+        let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "")
+        if (parsedResponse == Constant.COULD_NOT_FIND_EMAIL || parsedResponse == Constant.INVALID_PASSWORD)
         {
-            let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            if (parsedResponse == Constant.COULD_NOT_FIND_EMAIL || parsedResponse == Constant.INVALID_PASSWORD)
-            {
-                Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""))
-            }
-            else
-            {
-                // This gets saved as NSDictionary, so there is no order
-                // ID, Email, Hashed password, AccountType
-                let json: AnyObject? = result.parseJSONString
+            Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""))
+        }
+        else
+        {
+            // This gets saved as NSDictionary, so there is no order
+            // ID, Email, Hashed password, AccountType
+            let json: AnyObject? = result.parseJSONString
                 
-                let accountType = json![Constant.COLUMN_ACCOUNT_TYPE] as! String
-                let email = json![Constant.COLUMN_EMAIL] as! String
-                let encryptedEmail = try! email.aesEncrypt(Key.key, iv: Key.iv)
+            let accountType = json![Constant.COLUMN_ACCOUNT_TYPE] as! String
+            let email = json![Constant.COLUMN_EMAIL] as! String
+            let encryptedEmail = try! email.aesEncrypt(Key.key, iv: Key.iv)
 
-                Util.saveLoginData(encryptedEmail, accountType: accountType, createdDate: 0)
+            Util.saveLoginData(encryptedEmail, accountType: accountType, createdDate: 0)
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
-                let initialViewController = storyboard.instantiateViewControllerWithIdentifier("IntencityTabView")
+            let initialViewController = storyboard.instantiateViewControllerWithIdentifier("IntencityTabView")
                 
-                self.presentViewController(initialViewController, animated: true, completion: nil)
-            }
+            self.presentViewController(initialViewController, animated: true, completion: nil)
         }
     }
-    
-    
+        
     /*
         The function called when we fail to get the user's credentials back from the server.
     */

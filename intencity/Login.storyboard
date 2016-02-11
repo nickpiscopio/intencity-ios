@@ -420,42 +420,55 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p2P-2m-kAb">
-                                <rect key="frame" x="215" y="63" width="171" height="153"/>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sy8-e2-BrZ" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
                                 <rect key="frame" x="20" y="253" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Enter email below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QW8-Ob-Vs5">
-                                <rect key="frame" x="20" y="224" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter email below" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QW8-Ob-Vs5">
+                                <rect key="frame" x="20" y="224.5" width="560" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7n-Fx-jnc" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="20" y="314" width="560" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7n-Fx-jnc" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="291" width="560" height="30"/>
                                 <state key="normal" title="RESET PASSWORD"/>
+                                <connections>
+                                    <action selector="resetPassword:" destination="Mqc-NP-a7F" eventType="touchUpInside" id="A6Y-8J-ENe"/>
+                                </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iV1-mM-G5A">
+                                <rect key="frame" x="290" y="209" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p2P-2m-kAb">
+                                <rect key="frame" x="215" y="48" width="171" height="153"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="centerY" secondItem="s7n-Fx-jnc" secondAttribute="centerY" id="0KR-ZY-HUP"/>
-                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="top" secondItem="QW8-Ob-Vs5" secondAttribute="bottom" constant="8" id="1v1-GD-Yzg"/>
+                            <constraint firstItem="s7n-Fx-jnc" firstAttribute="trailing" secondItem="NUu-GR-43m" secondAttribute="trailingMargin" id="1L3-J8-FOc"/>
                             <constraint firstItem="s7n-Fx-jnc" firstAttribute="centerY" secondItem="NUu-GR-43m" secondAttribute="centerY" id="6Jo-uy-w2a"/>
-                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="centerY" secondItem="NUu-GR-43m" secondAttribute="centerY" id="D39-1C-wEh"/>
-                            <constraint firstItem="s7n-Fx-jnc" firstAttribute="leading" secondItem="NUu-GR-43m" secondAttribute="leadingMargin" id="Dqh-1O-6i4"/>
-                            <constraint firstItem="s7n-Fx-jnc" firstAttribute="trailing" secondItem="NUu-GR-43m" secondAttribute="trailingMargin" id="O5H-J9-4LH"/>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="top" secondItem="QW8-Ob-Vs5" secondAttribute="bottom" constant="8" id="B6E-B9-OrW"/>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="centerX" secondItem="NUu-GR-43m" secondAttribute="centerX" id="H1d-ju-B9K"/>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="trailing" secondItem="NUu-GR-43m" secondAttribute="trailingMargin" id="Idp-aV-7tl"/>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="centerY" secondItem="NUu-GR-43m" secondAttribute="centerY" id="LFU-f8-JDq"/>
+                            <constraint firstItem="s7n-Fx-jnc" firstAttribute="top" secondItem="Sy8-e2-BrZ" secondAttribute="bottom" constant="8" id="Mhi-Mu-QtB"/>
                             <constraint firstItem="s7n-Fx-jnc" firstAttribute="centerX" secondItem="NUu-GR-43m" secondAttribute="centerX" id="UGc-N5-9Gs"/>
                             <constraint firstItem="Sy8-e2-BrZ" firstAttribute="centerX" secondItem="NUu-GR-43m" secondAttribute="centerX" id="UaP-DT-aSe"/>
-                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="leading" secondItem="NUu-GR-43m" secondAttribute="leadingMargin" id="dP6-vb-sOP"/>
-                            <constraint firstItem="s7n-Fx-jnc" firstAttribute="top" secondItem="Sy8-e2-BrZ" secondAttribute="bottom" constant="8" id="lq4-GG-KIj"/>
+                            <constraint firstItem="QW8-Ob-Vs5" firstAttribute="trailing" secondItem="NUu-GR-43m" secondAttribute="trailingMargin" id="UqP-di-VJn"/>
+                            <constraint firstItem="s7n-Fx-jnc" firstAttribute="leading" secondItem="NUu-GR-43m" secondAttribute="leadingMargin" id="hRP-nD-Dul"/>
+                            <constraint firstItem="QW8-Ob-Vs5" firstAttribute="leading" secondItem="NUu-GR-43m" secondAttribute="leadingMargin" id="hvb-Na-9as"/>
+                            <constraint firstItem="iV1-mM-G5A" firstAttribute="top" secondItem="p2P-2m-kAb" secondAttribute="bottom" constant="8" id="lwB-dT-F5w"/>
+                            <constraint firstItem="QW8-Ob-Vs5" firstAttribute="top" secondItem="p2P-2m-kAb" secondAttribute="bottom" constant="8" id="nE7-PV-ol1"/>
+                            <constraint firstItem="p2P-2m-kAb" firstAttribute="centerX" secondItem="NUu-GR-43m" secondAttribute="centerX" id="tcK-wo-EJT"/>
+                            <constraint firstItem="iV1-mM-G5A" firstAttribute="centerX" secondItem="NUu-GR-43m" secondAttribute="centerX" id="usO-S4-ma7"/>
+                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="leading" secondItem="NUu-GR-43m" secondAttribute="leadingMargin" id="wHG-Z5-AFM"/>
                             <constraint firstItem="Sy8-e2-BrZ" firstAttribute="width" secondItem="NUu-GR-43m" secondAttribute="width" id="xjl-H7-bWH"/>
-                            <constraint firstItem="Sy8-e2-BrZ" firstAttribute="trailing" secondItem="NUu-GR-43m" secondAttribute="trailingMargin" id="zzf-kH-AIb"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="H1d-ju-B9K"/>
                                 <exclude reference="UaP-DT-aSe"/>
                                 <exclude reference="xjl-H7-bWH"/>
                                 <exclude reference="6Jo-uy-w2a"/>
@@ -464,6 +477,12 @@
                         </variation>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="iV1-mM-G5A" id="Y7O-fQ-nWU"/>
+                        <outlet property="emailTextField" destination="Sy8-e2-BrZ" id="YtL-dX-fCk"/>
+                        <outlet property="forgotPasswordLabel" destination="QW8-Ob-Vs5" id="VNK-1e-LCF"/>
+                        <outlet property="resetPasswordButton" destination="s7n-Fx-jnc" id="tnd-8a-rx6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgB-yB-7zY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

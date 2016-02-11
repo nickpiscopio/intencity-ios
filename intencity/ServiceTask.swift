@@ -11,6 +11,7 @@ class ServiceTask
 {
     init(delegate: ServiceDelegate, serviceURL: String, params: NSString)
     {
+        let failed = "FAILURE"
         let request = NSMutableURLRequest(URL: NSURL(string: serviceURL)!)
         request.HTTPMethod = "POST"
         request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
@@ -31,10 +32,24 @@ class ServiceTask
                 delegate.onRetrievalFailed()
                 return
             }
-            
-            // Print the response
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            delegate.onRetrievalSuccessful(responseString! as String)
+
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
+            let parsedResponse = responseString.stringByReplacingOccurrencesOfString("\"", withString: "")
+            if (parsedResponse != failed)
+            {
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    // Print the response
+                    delegate.onRetrievalSuccessful(responseString as String)
+                }
+            }
+            else
+            {
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    delegate.onRetrievalFailed()
+                }
+            }
         }
         
         task.resume()

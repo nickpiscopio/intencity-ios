@@ -41,4 +41,14 @@ class Util
             defaults.setObject(String(createdDate), forKey: Constant.USER_TRIAL_CREATED_DATE)
         }
     }
+    
+    /*
+        Validates a string of text against a regular expression.
+    */
+    static func validateText(str : String, regEx: String) -> Bool
+    {
+        let regex = try! NSRegularExpression(pattern: regEx, options: [])
+        
+        return regex.numberOfMatchesInString(str, options: [], range: NSMakeRange(0, str.characters.count)) > 0
+    }
 }
