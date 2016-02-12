@@ -13,11 +13,4 @@ struct Key
 {
     // Length 32
     static let key = "rTUvGkBKnYlEYFgCEUmJvUMvwRgfEFeP"
-    
-    // Length 16
-    static let iv = "pZAyFyKInlvIPrbU"
-    
-    // Encrypt and decrypt.
-    // let enc = try! s.aesEncrypt(key, iv: iv)
-    // let dec = try! enc.aesDecrypt(key, iv: iv)
 }

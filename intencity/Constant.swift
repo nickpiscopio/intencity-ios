@@ -2,9 +2,10 @@
 //  Constant.swift
 //  Intencity
 //
+//  Intencity's Constants.
+//
 //  Created by Nick Piscopio on 2/10/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
-//
 
 import Foundation
 
@@ -157,28 +158,28 @@ struct Constant
     
 
     /**
-    * Generates the forgot password parameter to send to the server.
-    *
-    * @param email     The user's email to add to the url.
-    *
-    * @return  The generated url parameter.
-    */
+     * Generates the forgot password parameter to send to the server.
+     *
+     * @param email     The user's email to add to the url.
+     *
+     * @return  The generated url parameter.
+     */
     static func getForgotPasswordParameter(email: String) -> String
     {
         return PARAMETER_EMAIL + email;
     }
 
     /**
-    * Generates the create account parameters.
-    *
-    * @param firstName     The first name of the user.
-    * @param lastName      The last name of the user.
-    * @param email         The user's email.
-    * @param password      The password of the user.
-    * @param accountType   The account type of the user.
-    *
-    * @return  The parameters for creating an account.
-    */
+     * Generates the create account parameters.
+     *
+     * @param firstName     The first name of the user.
+     * @param lastName      The last name of the user.
+     * @param email         The user's email.
+     * @param password      The password of the user.
+     * @param accountType   The account type of the user.
+     *
+     * @return  The parameters for creating an account.
+     */
     static func getAccountParameters(firstName: String, lastName: String, email: String, password: String, accountType: String) -> String
     {
         return PARAMETER_FIRST_NAME + firstName + PARAMETER_AMPERSAND +
@@ -188,67 +189,67 @@ struct Constant
                 PARAMETER_ACCOUNT_TYPE + accountType;
     }
 
-    /*
-        Generates the stored procedure parameters.
-    
-        name          The name of the stored procedure to call.
-        variables     The variable to send into the stored procedure.
-    
-        return  The stored procedure method call with the parameters included.
-    */
+    /**
+     *  Generates the stored procedure parameters.
+     *
+     * @param name          The name of the stored procedure to call.
+     * @param variables     The variable to send into the stored procedure.
+     *
+     * @return  The stored procedure method call with the parameters included.
+     */
     static func generateStoredProcedureParameters(name: String, variables: Array<String>) -> String
     {
         var storedProcedureParameters = PARAMETER_DATA + name + PARAMETER_AMPERSAND + PARAMETER_VARIABLE
     
-        let length = variables.count;
+        let length = variables.count
     
         for (var i = 0; i < length; i++)
         {
-            storedProcedureParameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i];
+            storedProcedureParameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i]
         }
-    
+
         return storedProcedureParameters;
     }
-//
-//    /**
-//    * Generates the URL string to update the user's equipment list or the user's exclusion list.
-//    *
-//    * @param email         The user's email.
-//    * @param variables     The list items to update.
-//    *
-//    * @return  The generated URL string.
-//    */
-//    public static String generateListVariables(String email, ArrayList<String> variables)
-//    {
-//    String parameters = PARAMETER_EMAIL + email;
-//    
-//    int length = variables.size();
-//    for (int i = 0; i < length; i++)
-//    {
-//    if (i == 0)
-//    {
-//    parameters += PARAMETER_AMPERSAND + PARAMETER_INSERTS;
-//    }
-//    
-//    parameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables.get(i);
-//    }
-//    
-//    return parameters;
-//    }
-//    
-//    /**
-//    * Generates the change password URL string.
-//    *
-//    * @param email             The user's email to change the password.
-//    * @param currentPassword   The user's current password.
-//    * @param newPassword       The user's new password.
-//    *
-//    * @return  The change password URL string.
-//    */
-//    public static String generateChangePasswordVariables(String email, String currentPassword, String newPassword)
-//    {
-//    return PARAMETER_EMAIL + email +
-//    PARAMETER_AMPERSAND + PARAMETER_CURRENT_PASSWORD + currentPassword +
-//    PARAMETER_AMPERSAND + PARAMETER_PASSWORD + newPassword;
-//    }
+
+    /**
+     * Generates the URL string to update the user's equipment list or the user's exclusion list.
+     *
+     * @param email         The user's email.
+     * @param variables     The list items to update.
+     *
+     * @return  The generated URL string.
+     */
+    static func generateListVariables(email: String, variables: Array<String>) -> String
+    {
+        var parameters = PARAMETER_EMAIL + email
+    
+        let length = variables.count
+        for (var i = 0; i < length; i++)
+        {
+            if (i == 0)
+            {
+                parameters += PARAMETER_AMPERSAND + PARAMETER_INSERTS
+            }
+    
+            parameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i]
+        }
+        
+        return parameters
+    }
+    
+    /**
+     * Generates the change password URL string.
+     *
+     * @param email             The user's email to change the password.
+     * @param currentPassword   The user's current password.
+     * @param newPassword       The user's new password.
+     *
+     * @return  The change password URL string.
+     */
+    static func generateChangePasswordVariables(email: String, currentPassword: String, newPassword: String) -> String
+    {
+        return PARAMETER_EMAIL + email +
+                PARAMETER_AMPERSAND + PARAMETER_CURRENT_PASSWORD + currentPassword +
+                PARAMETER_AMPERSAND + PARAMETER_PASSWORD + newPassword;
+    }
 }
