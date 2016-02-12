@@ -20,6 +20,8 @@ class FitnessLogViewController: UIViewController
         
         // Sets the title for the screen.
         self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("app_name", comment: "")
+        
+        print("email \(Util.getEmailFromDefaults())")
     }
 
     override func didReceiveMemoryWarning()

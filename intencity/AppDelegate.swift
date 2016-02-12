@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         var viewName: String
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        if (defaults.stringForKey(Constant.USER_ACCOUNT_EMAIL) != nil)
+        if (defaults.dataForKey(Constant.USER_ACCOUNT_EMAIL) != nil)
         {
             storyboardName = Constant.MAIN_STORYBOARD
             viewName = Constant.MAIN_VIEW

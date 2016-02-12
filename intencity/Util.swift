@@ -33,7 +33,10 @@ class Util
     {
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        let encryptedEmail = try! email.aesEncrypt(Key.key, iv: Key.iv)
+        let emailAsData = email.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        // Documentation: https://github.com/RNCryptor/RNCryptor
+        let encryptedEmail = RNCryptor.encryptData(emailAsData!, password: Key.key)
         
         defaults.setObject(encryptedEmail, forKey: Constant.USER_ACCOUNT_EMAIL)
         defaults.setObject(accountType, forKey: Constant.USER_ACCOUNT_TYPE)
@@ -71,5 +74,27 @@ class Util
     static func checkStringLength(text: String, length: Int) -> Bool
     {
         return text.characters.count >= length;
+    }
+    
+    /* 
+        Decrypts and returns the email from the defaults.
+    
+        Documentation: https://github.com/RNCryptor/RNCryptor
+    */
+    static func getEmailFromDefaults() -> String
+    {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let encryptedEmail = defaults.dataForKey(Constant.USER_ACCOUNT_EMAIL)
+        
+        do
+        {
+            let originalData = try RNCryptor.decryptData(encryptedEmail!, password: Key.key)
+            return String(data: originalData, encoding: NSUTF8StringEncoding)!
+            
+        }
+        catch
+        {
+            return ""
+        }
     }
 }

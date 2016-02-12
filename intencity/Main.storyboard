@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, Ranking!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0v-5d-KRZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hello, Ranking!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0v-5d-KRZ">
                                 <rect key="frame" x="243" y="225" width="115" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="115" id="Wcp-qH-YY5"/>
@@ -33,6 +33,11 @@
                             <constraint firstItem="dNP-Dx-cWX" firstAttribute="top" secondItem="L0v-5d-KRZ" secondAttribute="bottom" constant="241" id="HO1-Z4-Z0P"/>
                             <constraint firstItem="L0v-5d-KRZ" firstAttribute="centerX" secondItem="GY8-ex-XCa" secondAttribute="centerX" id="ssr-KR-dhD"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HO1-Z4-Z0P"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="pJU-af-MoM">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="6UB-wh-LYy">
@@ -91,7 +96,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, Intencity!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iK-sS-Ume">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hello, Intencity!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iK-sS-Ume">
                                 <rect key="frame" x="241" y="225" width="119" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -104,6 +109,11 @@
                             <constraint firstItem="c11-yH-fVC" firstAttribute="top" secondItem="2iK-sS-Ume" secondAttribute="bottom" constant="241" id="yVV-et-khO"/>
                             <constraint firstItem="2iK-sS-Ume" firstAttribute="centerY" secondItem="n8E-dv-mh1" secondAttribute="centerY" id="zoN-FV-gn0"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="yVV-et-khO"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="KlJ-Jv-PRs">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="c3l-ac-jjQ">
