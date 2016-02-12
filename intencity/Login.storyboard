@@ -100,6 +100,9 @@
                                     <segue destination="kM9-Q9-Ms0" kind="show" identifier="SegueToTerms" id="IGy-eo-F4g"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HSi-Bb-bGt">
+                                <rect key="frame" x="290" y="172" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -124,6 +127,7 @@
                             <constraint firstItem="Zlc-Av-b4z" firstAttribute="leading" secondItem="38y-gE-STT" secondAttribute="leadingMargin" id="T93-md-faN"/>
                             <constraint firstItem="lxd-FN-Bcn" firstAttribute="leading" secondItem="B6F-8a-iVl" secondAttribute="trailing" constant="-334" id="YgZ-u6-49z"/>
                             <constraint firstItem="B6F-8a-iVl" firstAttribute="top" secondItem="vaS-8x-1Lq" secondAttribute="bottom" constant="3" id="akd-gW-LPl"/>
+                            <constraint firstItem="HSi-Bb-bGt" firstAttribute="centerX" secondItem="38y-gE-STT" secondAttribute="centerX" id="bvN-1h-8Ha"/>
                             <constraint firstItem="B6F-8a-iVl" firstAttribute="centerY" secondItem="38y-gE-STT" secondAttribute="centerY" id="cQk-WZ-6ah"/>
                             <constraint firstItem="Ukk-qD-wJJ" firstAttribute="top" secondItem="mUE-1g-EhU" secondAttribute="bottom" constant="8" id="csx-JW-5hh"/>
                             <constraint firstItem="o9M-1z-dHi" firstAttribute="leading" secondItem="38y-gE-STT" secondAttribute="leadingMargin" id="e7r-10-4vU"/>
@@ -132,6 +136,7 @@
                             <constraint firstItem="mUE-1g-EhU" firstAttribute="centerX" secondItem="38y-gE-STT" secondAttribute="centerX" id="kmP-7V-PjN"/>
                             <constraint firstItem="Ukk-qD-wJJ" firstAttribute="trailing" secondItem="38y-gE-STT" secondAttribute="trailingMargin" constant="20" id="mrM-iC-9eV"/>
                             <constraint firstItem="Zlc-Av-b4z" firstAttribute="top" secondItem="Ukk-qD-wJJ" secondAttribute="bottom" constant="8" id="pcl-hg-hS8"/>
+                            <constraint firstItem="HSi-Bb-bGt" firstAttribute="top" secondItem="mUE-1g-EhU" secondAttribute="bottom" constant="-9" id="q2b-4M-1mZ"/>
                             <constraint firstItem="Zlc-Av-b4z" firstAttribute="trailing" secondItem="38y-gE-STT" secondAttribute="trailingMargin" id="quA-WP-mi2"/>
                             <constraint firstItem="lxd-FN-Bcn" firstAttribute="centerX" secondItem="38y-gE-STT" secondAttribute="centerX" id="tMB-BX-ksf"/>
                             <constraint firstItem="mUE-1g-EhU" firstAttribute="top" secondItem="hvO-MJ-Zno" secondAttribute="bottom" constant="8" id="tZp-Be-Zyn"/>
@@ -160,10 +165,12 @@
                     <navigationItem key="navigationItem" title="Log In" id="fRt-VZ-PIT"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="HSi-Bb-bGt" id="4lO-73-t7c"/>
                         <outlet property="createAccountButton" destination="RsH-Sf-J8e" id="ex4-JL-Abu"/>
                         <outlet property="emailTextField" destination="Ukk-qD-wJJ" id="baT-76-xmF"/>
                         <outlet property="forgotPasswordButton" destination="6k2-ph-j3M" id="l7O-pQ-kWK"/>
                         <outlet property="passwordTextField" destination="Zlc-Av-b4z" id="kBy-Pt-KSr"/>
+                        <outlet property="separator" destination="Uo0-dq-Wsp" id="d3e-LZ-OWq"/>
                         <outlet property="signInButton" destination="B6F-8a-iVl" id="Ze7-nn-jmb"/>
                         <outlet property="termsButton" destination="o9M-1z-dHi" id="9KF-tM-jFf"/>
                         <outlet property="termsCheckBox" destination="o9M-1z-dHi" id="Ky3-F9-vBC"/>

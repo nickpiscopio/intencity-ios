@@ -23,6 +23,9 @@ class LoginViewController: PageViewController, ServiceDelegate
     @IBOutlet weak var signInButton: IntencityButton!
     @IBOutlet weak var tryIntencityButton: IntencityButtonNoBackground!
     
+    @IBOutlet weak var separator: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     let unchecked = UIImage(named: Constant.CHECKBOX_UNCHECKED)
     let checked = UIImage(named: Constant.CHECKBOX_CHECKED)
     
@@ -50,6 +53,8 @@ class LoginViewController: PageViewController, ServiceDelegate
         
         termsLabel?.setTitle(NSLocalizedString("terms_checkbox", comment: ""), forState: .Normal)
         termsLabel.setTitleColor(Color.secondary_dark, forState: .Normal)
+        
+        activityIndicator.hidesWhenStopped = true
     }
 
     override func didReceiveMemoryWarning()
@@ -111,12 +116,16 @@ class LoginViewController: PageViewController, ServiceDelegate
     */
     func onRetrievalSuccessful(event: Int, result: String)
     {
+        startLogin()
+        
         if (event == ServiceEvent.LOGIN)
         {
             let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "")
             if (parsedResponse == Constant.COULD_NOT_FIND_EMAIL || parsedResponse == Constant.INVALID_PASSWORD)
             {
                 Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""))
+                
+                stopLogin()
             }
             else
             {
@@ -143,6 +152,8 @@ class LoginViewController: PageViewController, ServiceDelegate
     func onRetrievalFailed(Event: Int)
     {
         Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""))
+        
+        stopLogin()
     }
     
     /*
@@ -155,12 +166,35 @@ class LoginViewController: PageViewController, ServiceDelegate
     
     func startLogin()
     {
-    
+        activityIndicator.startAnimating()
+        activityIndicator.hidden = false
+        
+        emailTextField.hidden = true
+        passwordTextField.hidden = true
+        forgotPasswordButton.hidden = true
+        createAccountButton.hidden = true
+        termsCheckBox.hidden = true
+        termsButton.hidden = true
+        termsLabel.hidden = true
+        signInButton.hidden = true
+        tryIntencityButton.hidden = true
+        separator.hidden = true
     }
     
     func stopLogin()
     {
+        emailTextField.hidden = false
+        passwordTextField.hidden = false
+        forgotPasswordButton.hidden = false
+        createAccountButton.hidden = false
+        termsCheckBox.hidden = false
+        termsButton.hidden = false
+        termsLabel.hidden = false
+        signInButton.hidden = false
+        tryIntencityButton.hidden = false
+        separator.hidden = false
         
+        activityIndicator.stopAnimating()
     }
     
     /*
