@@ -18,6 +18,7 @@ class RankingViewController: UIViewController
         
         // Sets the title for the screen.
         self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("app_name", comment: "")
+
     }
     
     override func didReceiveMemoryWarning()

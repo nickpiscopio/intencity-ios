@@ -20,6 +20,15 @@ class MenuViewController: UIViewController
         
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("title_menu", comment: "")
+        
+        self.tabBarController?.tabBar.hidden = true
+    }
+    
+    override func viewWillDisappear(animated : Bool)
+    {
+        super.viewWillDisappear(animated)
+        
+        self.tabBarController?.tabBar.hidden = false
     }
     
     override func didReceiveMemoryWarning()
