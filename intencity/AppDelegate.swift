@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UINavigationBar.appearance().barTintColor = Color.primary
         UINavigationBar.appearance().barStyle = UIBarStyle.Black
         UINavigationBar.appearance().tintColor = Color.white
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
 
         var storyboardName: String
         var viewName: String
