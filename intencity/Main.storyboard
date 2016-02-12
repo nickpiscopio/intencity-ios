@@ -147,11 +147,11 @@
             </objects>
             <point key="canvasLocation" x="-6" y="517"/>
         </scene>
-        <!--Item 1-->
+        <!--Navigation Controller-->
         <scene sceneID="sH4-kr-xDW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GAw-dT-upC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="SO2-VI-GsF"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_icon_fitness_log" id="SO2-VI-GsF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sp9-I6-P1K">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -166,11 +166,11 @@
             </objects>
             <point key="canvasLocation" x="814" y="186"/>
         </scene>
-        <!--Item 2-->
+        <!--Navigation Controller-->
         <scene sceneID="jub-Qt-YSj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fzZ-fb-sV9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="fhA-qM-xU5"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_icon_ranking" id="fhA-qM-xU5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lht-qG-IPQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -186,6 +186,10 @@
             <point key="canvasLocation" x="814" y="847"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_icon_fitness_log" width="15" height="25"/>
+        <image name="tab_icon_ranking" width="30" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="z41-nb-wwL"/>
     </inferredMetricsTieBreakers>

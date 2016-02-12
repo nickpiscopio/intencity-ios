@@ -15,15 +15,28 @@ class IntencityTabBarController: UITabBarController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        // Change the color of teh tab bar.
-        self.tabBar.backgroundColor = Color.page_background
+        
+        if let items = tabBar.items
+        {
+            for item in items
+            {
+                item.title = ""
+                item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+            }
+        }
+    }
+    
+    override func viewWillLayoutSubviews()
+    {
+        // Sets the tab bar height
+        var tabFrame = self.tabBar.frame
+        tabFrame.size.height = Dimention.TAB_BAR_HEIGHT
+        tabFrame.origin.y = self.view.frame.size.height - Dimention.TAB_BAR_HEIGHT
+        self.tabBar.frame = tabFrame
     }
     
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
-

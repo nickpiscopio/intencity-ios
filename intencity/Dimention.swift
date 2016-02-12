@@ -12,10 +12,10 @@ import UIKit
 
 struct Dimention
 {
-    static let radius: CGFloat = 3.0
-    static let borderWidth: CGFloat = 2.0
-    static let shadow: CGFloat = 1.0
-    static let shadowOpacity: Float = 1.0
-    
-    static let cardButtonPadding: CGFloat = 10.0
+    static let RADIUS: CGFloat = 3.0
+    static let BORDER_WIDTH: CGFloat = 2.0
+    static let SHADOW: CGFloat = 1.0
+    static let SHADOW_OPACITY: Float = 1.0
+    static let CARD_BUTTON_PADDING: CGFloat = 10.0
+    static let TAB_BAR_HEIGHT: CGFloat = 40.0
 }

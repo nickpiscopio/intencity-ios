@@ -23,9 +23,9 @@ class IntencityButtonNoBackground: UIButton
         self.setTitleColor(Color.primary, forState: .Normal)
         self.setTitleColor(Color.primary, forState: .Highlighted)
         
-        self.layer.borderWidth = Dimention.borderWidth
-        self.layer.cornerRadius = Dimention.radius
-        self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.cardButtonPadding, Dimention.cardButtonPadding, Dimention.cardButtonPadding, Dimention.cardButtonPadding)
+        self.layer.borderWidth = Dimention.BORDER_WIDTH
+        self.layer.cornerRadius = Dimention.RADIUS
+        self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING)
         
         // The callbacks for the button states.
         self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
