@@ -22,10 +22,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate
         self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("app_name", comment: "")
         
         let variables = [ Util.getEmailFromDefaults() ]
-        
-        let variable = Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables:  variables)
-
-        let stored = Constant.SERVICE_STORED_PROCEDURE
 
         ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
@@ -42,21 +38,13 @@ class FitnessLogViewController: UIViewController, ServiceDelegate
         if (event == ServiceEvent.GENERIC)
         {
             // This gets saved as NSDictionary, so there is no order
-            // ID, Email, Hashed password, AccountType
             let json: AnyObject? = result.parseJSONString
-            
-//            print("Muscle groups: \(result)")
-            
-            // New way to do JSON?
-            // https://github.com/lingoer/SwiftyJSON
 
-            for (key, value) in json as! NSDictionary
+            for muscleGroups in json as! NSArray
             {
-                print("key: \"\(key as! String)\"")
-                print("value: \"\(value as! String)\"")
+                print("muscleGroup: \"\(muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String)\"")
+                print("recommended: \"\(muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as! String)\"")
             }
-            
-            print("Muscle groups: \(json)")
         }
     }
     

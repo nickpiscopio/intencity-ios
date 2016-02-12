@@ -20,8 +20,7 @@ extension String
                 do
                 {
                     // Returns the JSON object if it can parse it properly.
-                    return try NSJSONSerialization.JSONObjectWithData(jsonData, options: []) as? NSDictionary
-                    
+                    return try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
                 }
                 catch let error as NSError
                 {
