@@ -187,31 +187,29 @@ struct Constant
                 PARAMETER_PASSWORD + password + PARAMETER_AMPERSAND +
                 PARAMETER_ACCOUNT_TYPE + accountType;
     }
+
+    /*
+        Generates the stored procedure parameters.
     
-    // Will need to rewrite these as functions for swift.
+        name          The name of the stored procedure to call.
+        variables     The variable to send into the stored procedure.
+    
+        return  The stored procedure method call with the parameters included.
+    */
+    static func generateStoredProcedureParameters(name: String, variables: Array<String>) -> String
+    {
+        var storedProcedureParameters = PARAMETER_DATA + name + PARAMETER_AMPERSAND + PARAMETER_VARIABLE
+    
+        let length = variables.count;
+    
+        for (var i = 0; i < length; i++)
+        {
+            storedProcedureParameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i];
+        }
+    
+        return storedProcedureParameters;
+    }
 //
-//    /**
-//    * Generates the stored procedure parameters.
-//    *
-//    * @param name          The name of the stored procedure to call.
-//    * @param variables     The variable to send into the stored procedure.
-//    *
-//    * @return  The stored procedure method call with the parameters included.
-//    */
-//    public static String generateStoredProcedureParameters(String name, String... variables)
-//    {
-//    String storedProcedureParameters = PARAMETER_DATA + name + PARAMETER_AMPERSAND + PARAMETER_VARIABLE;
-//    
-//    int length = variables.length;
-//    
-//    for (int i = 0; i < length; i++)
-//    {
-//    storedProcedureParameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i];
-//    }
-//    
-//    return storedProcedureParameters;
-//    }
-//    
 //    /**
 //    * Generates the URL string to update the user's equipment list or the user's exclusion list.
 //    *

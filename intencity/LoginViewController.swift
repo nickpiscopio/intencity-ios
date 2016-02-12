@@ -143,7 +143,6 @@ class LoginViewController: PageViewController, ServiceDelegate
         {
             Util.loadIntencity(self, email: trialEmail, accountType: trialAccountType, createdDate: trialDateCreated)
         }
-        
     }
     
     /*
