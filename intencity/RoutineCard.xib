@@ -17,11 +17,11 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How would you like to exercise today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kid-2F-LAr">
                         <rect key="frame" x="56" y="17" width="290" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" red="0.39215686274509803" green="0.4392156862745098" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="checkbox_checked" translatesAutoresizingMaskIntoConstraints="NO" id="3Ef-kw-zPq">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="icon_fitness_log" translatesAutoresizingMaskIntoConstraints="NO" id="3Ef-kw-zPq">
                         <rect key="frame" x="19" y="15" width="29" height="26"/>
                     </imageView>
                     <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fas-Pg-9kc">
@@ -35,8 +35,9 @@
                         <rect key="frame" x="0.0" y="245" width="538" height="1"/>
                         <color key="backgroundColor" red="0.39215686274509803" green="0.4392156862745098" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T15-9u-ndX" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T15-9u-ndX" customClass="IntencityCardButton" customModule="Intencity" customModuleProvider="target">
                         <rect key="frame" x="246" y="270" width="46" height="30"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <state key="normal" title="Button"/>
                         <connections>
                             <action selector="startExercising:" destination="ivz-ap-zhs" eventType="touchUpInside" id="m2v-gK-VJ2"/>
@@ -57,7 +58,7 @@
                     <constraint firstAttribute="bottomMargin" secondItem="T15-9u-ndX" secondAttribute="bottom" id="cy8-J7-Bhr"/>
                     <constraint firstAttribute="trailingMargin" secondItem="fas-Pg-9kc" secondAttribute="trailing" constant="10" id="eMo-gi-cgF"/>
                     <constraint firstItem="fas-Pg-9kc" firstAttribute="top" secondItem="kid-2F-LAr" secondAttribute="bottom" id="mqN-cJ-8Xl"/>
-                    <constraint firstItem="kid-2F-LAr" firstAttribute="leading" secondItem="3Ef-kw-zPq" secondAttribute="trailing" constant="18" id="yNf-Jx-IGO"/>
+                    <constraint firstItem="kid-2F-LAr" firstAttribute="leading" secondItem="3Ef-kw-zPq" secondAttribute="trailing" constant="16" id="yNf-Jx-IGO"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -74,6 +75,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="checkbox_checked" width="18" height="18"/>
+        <image name="icon_fitness_log" width="11" height="18"/>
     </resources>
 </document>

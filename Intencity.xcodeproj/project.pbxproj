@@ -45,6 +45,7 @@
 		BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */; };
 		BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */; };
 		BDD721D11C6FA30B003C242C /* IntencityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721D01C6FA30B003C242C /* IntencityCard.swift */; };
+		BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineDelegate.swift; sourceTree = "<group>"; };
 		BDD721D01C6FA30B003C242C /* IntencityCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCard.swift; sourceTree = "<group>"; };
+		BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButton.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,6 +257,7 @@
 				BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */,
 				BD9EF2B11C6A56CE00E520CB /* IntencityButtonNoBackground.swift */,
 				BDD721D01C6FA30B003C242C /* IntencityCard.swift */,
+				BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */,
 			);
 			name = UIElements;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				BD9EF2BC1C6B701D00E520CB /* ServiceTask.swift in Sources */,
 				BD947A2B1C6E2C01003F3767 /* RNCryptor.swift in Sources */,
 				BD9EF2B61C6A8AF500E520CB /* TermsOfUseViewController.swift in Sources */,
+				BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */,
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,
 				BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */,
