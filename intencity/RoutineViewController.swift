@@ -4,11 +4,10 @@
 //
 //  Created by Nick Piscopio on 2/13/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
-//
 
 import UIKit
 
-class RoutineViewController: UITableViewCell
+class RoutineViewController: IntencityCard
 {
     @IBOutlet weak var routinePickerView: UIPickerView!
     
@@ -18,32 +17,36 @@ class RoutineViewController: UITableViewCell
     
     var selectedRoutine = ""
     
-    @IBOutlet weak var startButton: StartExerciseButton!
+    @IBOutlet weak var routineTitle: UILabel!
+    @IBOutlet weak var startButton: UIButton!
     
     override func awakeFromNib()
     {
         super.awakeFromNib()
+        
+        routineTitle.text = NSLocalizedString("title_routine", comment: "")
+        startButton.setTitle(NSLocalizedString("start", comment: ""), forState: .Normal)
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(selected: Bool, animated: Bool)
+    {
         super.setSelected(selected, animated: animated)
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+    {
         return 1
     }
     
-    /* func pickerView(pickerView: UIPickerView, numberOfRowsInComponent: component) {
-    return colors.count
-    }*/
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
         return pickerDataSource.count
     }
     
     // pragma MARK: UIPickerViewDelegate
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
+    {
         return pickerDataSource[row]
     }
     
@@ -51,6 +54,10 @@ class RoutineViewController: UITableViewCell
     {
         selectedRoutine = pickerDataSource[row]
     }
+    
+    /**
+     * The start button click.
+     */
     @IBAction func startExercising(sender: AnyObject)
     {
         delegate!.onStartExercising(selectedRoutine)
