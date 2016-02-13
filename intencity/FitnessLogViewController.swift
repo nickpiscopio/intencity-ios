@@ -9,8 +9,12 @@
 
 import UIKit
 
-class FitnessLogViewController: UIViewController, ServiceDelegate
+class FitnessLogViewController: UITableViewController, ServiceDelegate, RoutineDelegate
 {
+    var numberOfCells = 0
+    
+    var displayMuscleGroups = [String]()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -26,6 +30,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate
         ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables:  variables))
+        
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.estimatedRowHeight = 44.0; // set to whatever your "average" cell
+        
+        let nib = UINib(nibName: "RoutineCard", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "RoutineCell")
     }
 
     override func didReceiveMemoryWarning()
@@ -42,14 +54,66 @@ class FitnessLogViewController: UIViewController, ServiceDelegate
 
             for muscleGroups in json as! NSArray
             {
-                print("muscleGroup: \"\(muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String)\"")
-                print("recommended: \"\(muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as! String)\"")
+                let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
+                
+                displayMuscleGroups.append(muscleGroup)
+//                print("muscleGroup: \"\(muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String)\"")
+//                print("recommended: \"\(muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as! String)\"")
             }
+            
+            animateTable()
         }
     }
     
     func onRetrievalFailed(event: Int)
     {
         // Add code for when we can't get the muscle groups.
+    }
+    
+    /**
+     * The callback for when the user selects to start exercising.
+     */
+    func onStartExercising(routine: String)
+    {
+        print("selected delegate value: \"\(routine)\"")
+    }
+    
+    func animateTable()
+    {
+        numberOfCells = 1
+        
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesInRange: range)
+        self.tableView.reloadSections(sections, withRowAnimation: .Top)
+    }
+    
+    // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
+    
+    // MARK: - UITableViewDataSource
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // Return the number of sections.
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return the number of rows in the section.
+        
+        // Later make this the array count.
+        // We will make an array of classes.
+        return numberOfCells
+    }
+    
+//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Section \(section)"
+//    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("RoutineCell") as! RoutineViewController
+        
+        cell.pickerDataSource = displayMuscleGroups;
+        cell.delegate = self
+        
+        return cell
     }
 }
