@@ -63,7 +63,7 @@
                 <outlet property="routinePickerView" destination="fas-Pg-9kc" id="yYs-ai-VnZ"/>
                 <outlet property="startButton" destination="T15-9u-ndX" id="DHw-2U-HNd"/>
             </connections>
-            <point key="canvasLocation" x="817" y="659.5"/>
+            <point key="canvasLocation" x="818" y="662.5"/>
         </tableViewCell>
     </objects>
     <resources>

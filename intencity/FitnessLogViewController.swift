@@ -14,6 +14,7 @@ class FitnessLogViewController: UITableViewController, ServiceDelegate, RoutineD
     var numberOfCells = 0
     
     var displayMuscleGroups = [String]()
+    var recommended = 0;
     
     override func viewDidLoad()
     {
@@ -51,15 +52,18 @@ class FitnessLogViewController: UITableViewController, ServiceDelegate, RoutineD
         {
             // This gets saved as NSDictionary, so there is no order
             let json: AnyObject? = result.parseJSONString
+            
+            var recommended = ""
 
             for muscleGroups in json as! NSArray
             {
                 let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
+                recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as! String
                 
                 displayMuscleGroups.append(muscleGroup)
-//                print("muscleGroup: \"\(muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String)\"")
-//                print("recommended: \"\(muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as! String)\"")
             }
+    
+            self.recommended = (recommended == "") ? 0 : displayMuscleGroups.indexOf(recommended)!
             
             animateTable()
         }
@@ -104,16 +108,19 @@ class FitnessLogViewController: UITableViewController, ServiceDelegate, RoutineD
         return numberOfCells
     }
     
-//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "Section \(section)"
-//    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCellWithIdentifier("RoutineCell") as! RoutineViewController
         
-        cell.pickerDataSource = displayMuscleGroups;
         cell.delegate = self
+        cell.pickerDataSource = displayMuscleGroups
+        cell.selectedRoutine = displayMuscleGroups[recommended]
+        cell.routinePickerView.selectRow(recommended, inComponent: 0, animated: false)
         
         return cell
     }
+    
+    //    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    //        return "Section \(section)"
+    //    }
 }
