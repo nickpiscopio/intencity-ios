@@ -18,11 +18,16 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var nextExerciseButton: UIButton!
+    
     var email = "";
     
     var state = "";
     
-    var exercises = [Exercise]()
+    var currentExercises = [Exercise]()
+    var allExercises = [Exercise]()
+    
+    var exerciseIndex = 0;
     
     override func viewDidLoad()
     {
@@ -95,6 +100,26 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         // Add code for when we can't get the muscle groups.
     }
     
+    /**
+     * The button click to get the next exercise.
+     */
+    @IBAction func nextExerciseClicked(sender: AnyObject)
+    {
+        if (currentExercises.count < allExercises.count)
+        {
+            // Get the next exercise.
+            currentExercises.append(allExercises[exerciseIndex++])
+            
+            insertRow()
+        }
+    }
+    
+    /**
+     * Loads the table views.
+     * 
+     * @param state     The state of the fitness log.
+     * @param result    The results to parse from the webservice.
+     */
     func loadTableViewItems(state: String, result: String)
     {
         // This gets saved as NSDictionary, so there is no order
@@ -102,6 +127,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         if (state == Constant.ROUTINE_CELL)
         {
+            nextExerciseButton.hidden = true
             var recommended = ""
             
             for muscleGroups in json as! NSArray
@@ -116,6 +142,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
         else
         {
+            nextExerciseButton.hidden = false
+            
             for muscleGroups in json as! NSArray
             {
                 let exerciseName = muscleGroups[Constant.COLUMN_EXERCISE_NAME] as! String
@@ -127,7 +155,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 
                 let exercise = Exercise(name: exerciseName)
                 
-                exercises.append(exercise)
+                allExercises.append(exercise)
             }
         }
         
@@ -159,13 +187,48 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         return nibNamed
     }
     
+    /**
+     * Animates the table being added to the screen.
+    */
     func animateTable()
     {
-        numberOfCells = state == Constant.ROUTINE_CELL ? 1 : exercises.count
-        
+        numberOfCells = 1
+            
         let range = NSMakeRange(0, self.tableView.numberOfSections)
         let sections = NSIndexSet(indexesInRange: range)
+            
         self.tableView.reloadSections(sections, withRowAnimation: .Top)
+    }
+    
+    /**
+     * Animates a row being added to the screen.
+    */
+    func insertRow()
+    {
+        var currentExerciseCount = currentExercises.count
+        
+//        var indexPaths = [NSIndexPath]()
+//        
+//        if (currentExerciseCount % 2 != 1)
+//        {
+//            let indexPath = NSIndexPath(forRow: currentExerciseCount - 1, inSection: 0)
+//            
+//            indexPaths.append(NSIndexPath(forRow: currentExerciseCount - 1, inSection: 0))
+//            
+//            tableView.beginUpdates()
+//            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+//            tableView.endUpdates()
+//        }
+//        else
+//        {
+//            currentExerciseCount--
+//        }
+        
+        
+        let indexPath = NSIndexPath(forRow: currentExercises.count - 1, inSection: 0)
+        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Top)
+        
+        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
     }
     
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
@@ -186,27 +249,46 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+//        let exerciseCount = currentExercises.count
+//        var sections = 1
+//        
+//        if (state == Constant.EXERCISE_CELL && exerciseCount > 0)
+//        {
+//            sections = exerciseCount
+//        }
+        
         // Return the number of sections.
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return the number of rows in the section.
         
-        // Later make this the array count.
-        // We will make an array of classes.
-        return state == Constant.ROUTINE_CELL ? numberOfCells : exercises.count
+//        let exerciseCount = currentExercises.count
+//        var sections = 0
+//        
+//        if (state == Constant.EXERCISE_CELL && exerciseCount > 0)
+//        {
+//            sections = exerciseCount
+//        }
+//        else if state == Constant.ROUTINE_CELL
+//        {
+//            sections = 1
+//        }
+        
+        // Return the number of rows in the section.
+        return state == Constant.ROUTINE_CELL ? numberOfCells : currentExercises.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let index = indexPath.row;
-        if (index % 2 == 1)
-        {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.HEADER_CELL) as! HeaderCellController
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            return cell
-        }
+//        let index = indexPath.row;
+//        if (index % 2 == 1)
+//        {
+//            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.HEADER_CELL) as! HeaderCellController
+//            cell.selectionStyle = UITableViewCellSelectionStyle.None
+//            return cell
+//        }
         
         if (state == Constant.ROUTINE_CELL)
         {
@@ -217,12 +299,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
             // CompletedMuscleGroup starts at 1.
             cell.selectedRoutineNumber = recommended + 1
-            cell.routinePickerView.selectRow(recommended, inComponent: 0, animated: false)            
+            cell.routinePickerView.selectRow(recommended, inComponent: 0, animated: false)
             return cell
         }
         else
         {
-            let exercise = exercises[indexPath.item]
+            let exercise = currentExercises[indexPath.item]
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.exerciseName.text = exercise.name

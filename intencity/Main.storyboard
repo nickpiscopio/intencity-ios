@@ -106,15 +106,24 @@
                                     <outlet property="delegate" destination="rOj-ca-F3T" id="qQA-dw-qec"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB6-pG-d8R">
+                                <rect key="frame" x="527" y="441" width="73" height="44"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextExerciseClicked:" destination="rOj-ca-F3T" eventType="touchUpInside" id="ZEd-QC-Xoq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="c11-yH-fVC" firstAttribute="top" secondItem="JB6-pG-d8R" secondAttribute="bottom" constant="16" id="AIG-Hf-HDU"/>
                             <constraint firstItem="2e8-Nz-bng" firstAttribute="leading" secondItem="n8E-dv-mh1" secondAttribute="leadingMargin" id="GW3-aR-IUL"/>
                             <constraint firstItem="2e8-Nz-bng" firstAttribute="centerX" secondItem="n8E-dv-mh1" secondAttribute="centerX" id="YID-ko-Q7b"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2e8-Nz-bng" secondAttribute="trailing" id="YJM-Qe-rTh"/>
                             <constraint firstItem="2e8-Nz-bng" firstAttribute="bottom" secondItem="n8E-dv-mh1" secondAttribute="bottomMargin" id="aCq-1F-Sea"/>
                             <constraint firstItem="2e8-Nz-bng" firstAttribute="height" secondItem="n8E-dv-mh1" secondAttribute="height" id="bpl-aL-Axo"/>
                             <constraint firstItem="2e8-Nz-bng" firstAttribute="width" secondItem="n8E-dv-mh1" secondAttribute="width" id="mIB-WL-yXc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JB6-pG-d8R" secondAttribute="trailing" constant="16" id="tj8-cD-1UX"/>
                             <constraint firstItem="2e8-Nz-bng" firstAttribute="centerY" secondItem="n8E-dv-mh1" secondAttribute="centerY" id="xBQ-Uz-Dyr"/>
                             <constraint firstItem="2e8-Nz-bng" firstAttribute="top" secondItem="n8E-dv-mh1" secondAttribute="topMargin" id="xvL-5J-N4j"/>
                         </constraints>
@@ -136,6 +145,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="nextExerciseButton" destination="JB6-pG-d8R" id="sQn-8y-bn7"/>
                         <outlet property="tableView" destination="2e8-Nz-bng" id="CLu-ye-0eQ"/>
                     </connections>
                 </viewController>
