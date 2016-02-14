@@ -15,7 +15,7 @@ class RoutineViewController: IntencityCard
     
     var pickerDataSource = [String]()
     
-    var selectedRoutine = ""
+    var selectedRoutineNumber = 0
     
     @IBOutlet weak var routineTitle: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -52,7 +52,9 @@ class RoutineViewController: IntencityCard
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        selectedRoutine = pickerDataSource[row]
+        // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
+        // CompletedMuscleGroup starts at 1.
+        selectedRoutineNumber = row + 1
     }
     
     /**
@@ -60,6 +62,6 @@ class RoutineViewController: IntencityCard
      */
     @IBAction func startExercising(sender: AnyObject)
     {
-        delegate!.onStartExercising(selectedRoutine)
+        delegate!.onStartExercising(selectedRoutineNumber)
     }
 }
