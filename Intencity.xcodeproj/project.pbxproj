@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		BD10539B1C6CD071004C10C7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10539A1C6CD071004C10C7 /* Key.swift */; };
+		BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */; };
+		BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC221C70F0A400F993CE /* Exercise.swift */; };
+		BD36EC271C70FD6D00F993CE /* HeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC261C70FD6D00F993CE /* HeaderCellController.swift */; };
+		BD36EC291C71048600F993CE /* ExerciseCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD36EC281C71048600F993CE /* ExerciseCard.xib */; };
+		BD36EC2B1C71048F00F993CE /* HeaderCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD36EC2A1C71048F00F993CE /* HeaderCard.xib */; };
 		BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460ED1C68D34400F60ADC /* AppDelegate.swift */; };
 		BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460EF1C68D34400F60ADC /* DemoViewController.swift */; };
 		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
@@ -21,7 +26,7 @@
 		BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A091C6D4B90003F3767 /* ServiceEvent.swift */; };
 		BD947A2B1C6E2C01003F3767 /* RNCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A2A1C6E2C01003F3767 /* RNCryptor.swift */; };
 		BD947A361C6F6E5F003F3767 /* RoutineCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD947A351C6F6E5F003F3767 /* RoutineCard.xib */; };
-		BD947A381C6F6F50003F3767 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A371C6F6F50003F3767 /* RoutineViewController.swift */; };
+		BD947A381C6F6F50003F3767 /* RoutineCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A371C6F6F50003F3767 /* RoutineCellController.swift */; };
 		BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2491C68F48E00E520CB /* LoginViewController.swift */; };
 		BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */; };
 		BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD9EF2531C691C7100E520CB /* Localizable.strings */; };
@@ -52,6 +57,11 @@
 
 /* Begin PBXFileReference section */
 		BD10539A1C6CD071004C10C7 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellController.swift; sourceTree = "<group>"; };
+		BD36EC221C70F0A400F993CE /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		BD36EC261C70FD6D00F993CE /* HeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCellController.swift; sourceTree = "<group>"; };
+		BD36EC281C71048600F993CE /* ExerciseCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseCard.xib; sourceTree = "<group>"; };
+		BD36EC2A1C71048F00F993CE /* HeaderCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCard.xib; sourceTree = "<group>"; };
 		BD5460EA1C68D34400F60ADC /* Intencity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intencity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5460ED1C68D34400F60ADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5460EF1C68D34400F60ADC /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -69,7 +79,7 @@
 		BD947A291C6E2C01003F3767 /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
 		BD947A2A1C6E2C01003F3767 /* RNCryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNCryptor.swift; sourceTree = "<group>"; };
 		BD947A351C6F6E5F003F3767 /* RoutineCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutineCard.xib; sourceTree = "<group>"; };
-		BD947A371C6F6F50003F3767 /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
+		BD947A371C6F6F50003F3767 /* RoutineCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCellController.swift; sourceTree = "<group>"; };
 		BD9EF2491C68F48E00E520CB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoContentViewController.swift; sourceTree = "<group>"; };
 		BD9EF2561C692A6900E520CB /* DemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
@@ -125,6 +135,16 @@
 				BD9479FA1C6CE43C003F3767 /* JSON.swift */,
 			);
 			name = Extenstions;
+			sourceTree = "<group>";
+		};
+		BD36EC201C70EB6600F993CE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */,
+				BD947A371C6F6F50003F3767 /* RoutineCellController.swift */,
+				BD36EC261C70FD6D00F993CE /* HeaderCellController.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		BD5460E11C68D34400F60ADC = {
@@ -183,11 +203,11 @@
 		BD947A2E1C6E32C1003F3767 /* Intencity */ = {
 			isa = PBXGroup;
 			children = (
+				BD36EC201C70EB6600F993CE /* Cells */,
 				BD9EF2C51C6BEFB800E520CB /* IntencityTabBarController.swift */,
 				BD9EF2C71C6BF4CC00E520CB /* MenuViewController.swift */,
 				BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */,
 				BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */,
-				BD947A371C6F6F50003F3767 /* RoutineViewController.swift */,
 				BD947A011C6CED31003F3767 /* LoginNavController.swift */,
 			);
 			name = Intencity;
@@ -218,6 +238,8 @@
 			isa = PBXGroup;
 			children = (
 				BD947A351C6F6E5F003F3767 /* RoutineCard.xib */,
+				BD36EC2A1C71048F00F993CE /* HeaderCard.xib */,
+				BD36EC281C71048600F993CE /* ExerciseCard.xib */,
 				BD5460F11C68D34400F60ADC /* Demo.storyboard */,
 				BD9EF2651C6A278800E520CB /* Login.storyboard */,
 				BDFE97131C68E62C00C2AEA3 /* Main.storyboard */,
@@ -236,6 +258,7 @@
 				BD947A051C6D3F30003F3767 /* Integer.swift */,
 				BD9EF2C11C6B869E00E520CB /* Constant.swift */,
 				BD10539A1C6CD071004C10C7 /* Key.swift */,
+				BD36EC221C70F0A400F993CE /* Exercise.swift */,
 			);
 			name = Structs;
 			sourceTree = "<group>";
@@ -338,10 +361,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD947A361C6F6E5F003F3767 /* RoutineCard.xib in Resources */,
+				BD36EC291C71048600F993CE /* ExerciseCard.xib in Resources */,
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
 				BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */,
 				BD9EF2661C6A278800E520CB /* Login.storyboard in Resources */,
 				BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */,
+				BD36EC2B1C71048F00F993CE /* HeaderCard.xib in Resources */,
 				BD9EF2B81C6A941F00E520CB /* terms.html in Resources */,
 				BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
@@ -360,6 +385,7 @@
 				BD9EF2B61C6A8AF500E520CB /* TermsOfUseViewController.swift in Sources */,
 				BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */,
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
+				BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */,
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,
 				BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */,
 				BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */,
@@ -376,17 +402,19 @@
 				BD9EF2C21C6B869E00E520CB /* Constant.swift in Sources */,
 				BD9EF2C41C6B8A6700E520CB /* Util.swift in Sources */,
 				BD947A061C6D3F30003F3767 /* Integer.swift in Sources */,
-				BD947A381C6F6F50003F3767 /* RoutineViewController.swift in Sources */,
+				BD947A381C6F6F50003F3767 /* RoutineCellController.swift in Sources */,
 				BD9EF2B01C6A52FA00E520CB /* IntencityButton.swift in Sources */,
 				BD9EF2B21C6A56CE00E520CB /* IntencityButtonNoBackground.swift in Sources */,
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
 				BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */,
+				BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */,
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
 				BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */,
 				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,
+				BD36EC271C70FD6D00F993CE /* HeaderCellController.swift in Sources */,
 				BDD721D11C6FA30B003C242C /* IntencityCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

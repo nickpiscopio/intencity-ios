@@ -20,6 +20,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     var email = "";
     
+    var state = "";
+    
+    var exercises = [Exercise]()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -39,10 +43,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         tableView.backgroundColor = Color.transparent
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.rowHeight = UITableViewAutomaticDimension;
-        tableView.estimatedRowHeight = 44.0; // set to whatever your "average" cell
+        tableView.estimatedRowHeight = 10.0; // set to whatever your "average" cell
         
-        let nib = UINib(nibName: "RoutineCard", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "RoutineCell")
+        state = Constant.ROUTINE_CELL
+
+        // Load the cells we are going to use in the tableview.
+        setNib("HeaderCard", cellName: Constant.HEADER_CELL)
+        setNib("RoutineCard", cellName: Constant.ROUTINE_CELL)
+        setNib("ExerciseCard", cellName: Constant.EXERCISE_CELL)
     }
 
     override func didReceiveMemoryWarning()
@@ -55,23 +63,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         switch (event)
         {
             case ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS:
-                // This gets saved as NSDictionary, so there is no order
-                let json: AnyObject? = result.parseJSONString
                 
-                var recommended = ""
+                loadTableViewItems(state, result: result)
                 
-                for muscleGroups in json as! NSArray
-                {
-                    let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
-                    recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as! String
-                    
-                    displayMuscleGroups.append(muscleGroup)
-                }
-                
-                self.recommended = (recommended == "") ? 0 : displayMuscleGroups.indexOf(recommended)!
-                
-                animateTable()
-
                 break
             case ServiceEvent.SET_CURRENT_MUSCLE_GROUP:
                 
@@ -84,7 +78,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 break
             
             case ServiceEvent.GET_EXERCISES_FOR_TODAY:
-                    print("exercises for today: \"\(result)\"")
+                print("exercises for today: \"\(result)\"")
+                    
+                state = Constant.EXERCISE_CELL
+                    
+                loadTableViewItems(state, result: result)
                 break
             default:
                 break
@@ -95,6 +93,45 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     func onRetrievalFailed(event: Int)
     {
         // Add code for when we can't get the muscle groups.
+    }
+    
+    func loadTableViewItems(state: String, result: String)
+    {
+        // This gets saved as NSDictionary, so there is no order
+        let json: AnyObject? = result.parseJSONString
+        
+        if (state == Constant.ROUTINE_CELL)
+        {
+            var recommended = ""
+            
+            for muscleGroups in json as! NSArray
+            {
+                let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
+                recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as! String
+                
+                displayMuscleGroups.append(muscleGroup)
+            }
+            
+            self.recommended = (recommended == "") ? 0 : displayMuscleGroups.indexOf(recommended)!
+        }
+        else
+        {
+            for muscleGroups in json as! NSArray
+            {
+                let exerciseName = muscleGroups[Constant.COLUMN_EXERCISE_NAME] as! String
+//                let weight = muscleGroups[Constant.COLUMN_EXERCISE_WEIGHT] as! String
+//                let reps = muscleGroups[Constant.COLUMN_EXERCISE_REPS] as! String
+//                let duration = muscleGroups[Constant.COLUMN_EXERCISE_DURATION] as! String
+//                let difficulty = muscleGroups[Constant.COLUMN_EXERCISE_DIFFICULTY] as! String
+//                let notes = muscleGroups[Constant.COLUMN_NOTES] as! String
+                
+                let exercise = Exercise(name: exerciseName)
+                
+                exercises.append(exercise)
+            }
+        }
+        
+        animateTable()
     }
     
     /**
@@ -114,9 +151,17 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
     }
     
+    func setNib(nibNamed: String, cellName: String) ->String
+    {
+        let nib = UINib(nibName: nibNamed, bundle: nil)
+        self.tableView.registerNib(nib, forCellReuseIdentifier: cellName)
+        
+        return nibNamed
+    }
+    
     func animateTable()
     {
-        numberOfCells = 1
+        numberOfCells = state == Constant.ROUTINE_CELL ? 1 : exercises.count
         
         let range = NSMakeRange(0, self.tableView.numberOfSections)
         let sections = NSIndexSet(indexesInRange: range)
@@ -150,21 +195,39 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         // Later make this the array count.
         // We will make an array of classes.
-        return numberOfCells
+        return state == Constant.ROUTINE_CELL ? numberOfCells : exercises.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("RoutineCell") as! RoutineViewController
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.delegate = self
-        cell.pickerDataSource = displayMuscleGroups
-        // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
-        // CompletedMuscleGroup starts at 1.
-        cell.selectedRoutineNumber = recommended + 1
-        cell.routinePickerView.selectRow(recommended, inComponent: 0, animated: false)
+        let index = indexPath.row;
+        if (index % 2 == 1)
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.HEADER_CELL) as! HeaderCellController
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            return cell
+        }
         
-        return cell
+        if (state == Constant.ROUTINE_CELL)
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.delegate = self
+            cell.pickerDataSource = displayMuscleGroups
+            // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
+            // CompletedMuscleGroup starts at 1.
+            cell.selectedRoutineNumber = recommended + 1
+            cell.routinePickerView.selectRow(recommended, inComponent: 0, animated: false)            
+            return cell
+        }
+        else
+        {
+            let exercise = exercises[indexPath.item]
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.exerciseName.text = exercise.name
+            return cell
+        }
     }
     
     //    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

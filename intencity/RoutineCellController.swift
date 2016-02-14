@@ -1,5 +1,5 @@
 //
-//  RoutineViewController.swift
+//  RoutineCellController.swift
 //  Intencity
 //
 //  Created by Nick Piscopio on 2/13/16.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RoutineViewController: IntencityCard
+class RoutineCellController: IntencityCard
 {
     @IBOutlet weak var routinePickerView: UIPickerView!
     

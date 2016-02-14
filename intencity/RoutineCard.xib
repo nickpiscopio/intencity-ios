@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutineCell" rowHeight="302" id="ivz-ap-zhs" customClass="RoutineViewController" customModule="Intencity" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutineCell" rowHeight="302" id="ivz-ap-zhs" customClass="RoutineCellController" customModule="Intencity" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="538" height="302"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ivz-ap-zhs" id="JRG-r7-AVG">
@@ -71,7 +71,7 @@
                 <outlet property="routineTitle" destination="kid-2F-LAr" id="9Ns-G6-ttu"/>
                 <outlet property="startButton" destination="T15-9u-ndX" id="DHw-2U-HNd"/>
             </connections>
-            <point key="canvasLocation" x="818" y="654"/>
+            <point key="canvasLocation" x="687" y="926"/>
         </tableViewCell>
     </objects>
     <resources>

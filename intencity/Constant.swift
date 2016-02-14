@@ -14,6 +14,9 @@ struct Constant
     // iOS Constants
     static let MAIN_STORYBOARD = "Main"
     static let DEMO_STORYBOARD = "Demo"
+    static let HEADER_CELL = "HeaderCell"
+    static let ROUTINE_CELL = "RoutineCell"
+    static let EXERCISE_CELL = "ExerciseCell"
     static let MAIN_VIEW = "IntencityTabView"
     static let DEMO_VIEW = "DemoViewController"
     static let CHECKBOX_UNCHECKED = "checkbox_unchecked"
