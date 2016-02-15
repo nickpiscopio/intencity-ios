@@ -205,28 +205,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     */
     func insertRow()
     {
-        var currentExerciseCount = currentExercises.count
-        
-//        var indexPaths = [NSIndexPath]()
-//        
-//        if (currentExerciseCount % 2 != 1)
-//        {
-//            let indexPath = NSIndexPath(forRow: currentExerciseCount - 1, inSection: 0)
-//            
-//            indexPaths.append(NSIndexPath(forRow: currentExerciseCount - 1, inSection: 0))
-//            
-//            tableView.beginUpdates()
-//            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-//            tableView.endUpdates()
-//        }
-//        else
-//        {
-//            currentExerciseCount--
-//        }
-        
+        var currentExerciseCount = currentExercises.count        
         
         let indexPath = NSIndexPath(forRow: currentExercises.count - 1, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Top)
+        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Bottom)
         
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
     }
@@ -235,46 +217,13 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     // MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return Dimention.LAYOUT_MARGIN
-    }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-    {
-        let returnedView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, Dimention.LAYOUT_MARGIN)) //set these values as necessary
-        returnedView.backgroundColor = Color.transparent
-        
-        return returnedView
-    }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
-//        let exerciseCount = currentExercises.count
-//        var sections = 1
-//        
-//        if (state == Constant.EXERCISE_CELL && exerciseCount > 0)
-//        {
-//            sections = exerciseCount
-//        }
-        
-        // Return the number of sections.
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-//        let exerciseCount = currentExercises.count
-//        var sections = 0
-//        
-//        if (state == Constant.EXERCISE_CELL && exerciseCount > 0)
-//        {
-//            sections = exerciseCount
-//        }
-//        else if state == Constant.ROUTINE_CELL
-//        {
-//            sections = 1
-//        }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         
         // Return the number of rows in the section.
         return state == Constant.ROUTINE_CELL ? numberOfCells : currentExercises.count
@@ -282,14 +231,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-//        let index = indexPath.row;
-//        if (index % 2 == 1)
-//        {
-//            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.HEADER_CELL) as! HeaderCellController
-//            cell.selectionStyle = UITableViewCellSelectionStyle.None
-//            return cell
-//        }
-        
         if (state == Constant.ROUTINE_CELL)
         {
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
@@ -307,7 +248,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             let exercise = currentExercises[indexPath.item]
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.exerciseName.text = exercise.name
+            cell.exerciseName.setTitle(exercise.name, forState: .Normal)
             return cell
         }
     }

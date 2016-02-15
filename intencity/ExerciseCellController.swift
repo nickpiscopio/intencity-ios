@@ -7,12 +7,17 @@
 
 import UIKit
 
-class ExerciseCellController: IntencityCard
+class ExerciseCellController: UITableViewCell
 {
-    @IBOutlet weak var exerciseName: UILabel!
-    
+   
+    @IBOutlet weak var exerciseName: UIButton!
     override func awakeFromNib()
     {
         super.awakeFromNib()
+        
+        self.backgroundColor = Color.page_background
+    }
+    @IBAction func exerciseClicked(sender: AnyObject) {
+        print("Exercise clicked: \(exerciseName.titleLabel?.text)")
     }
 }

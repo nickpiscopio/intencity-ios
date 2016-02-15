@@ -12,7 +12,7 @@
 		BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC221C70F0A400F993CE /* Exercise.swift */; };
 		BD36EC271C70FD6D00F993CE /* HeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC261C70FD6D00F993CE /* HeaderCellController.swift */; };
 		BD36EC291C71048600F993CE /* ExerciseCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD36EC281C71048600F993CE /* ExerciseCard.xib */; };
-		BD36EC2B1C71048F00F993CE /* HeaderCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD36EC2A1C71048F00F993CE /* HeaderCard.xib */; };
+		BD36EC2D1C7170EB00F993CE /* IntencityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC2C1C7170EB00F993CE /* IntencityCardView.swift */; };
 		BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460ED1C68D34400F60ADC /* AppDelegate.swift */; };
 		BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460EF1C68D34400F60ADC /* DemoViewController.swift */; };
 		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
@@ -61,7 +61,7 @@
 		BD36EC221C70F0A400F993CE /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		BD36EC261C70FD6D00F993CE /* HeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCellController.swift; sourceTree = "<group>"; };
 		BD36EC281C71048600F993CE /* ExerciseCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseCard.xib; sourceTree = "<group>"; };
-		BD36EC2A1C71048F00F993CE /* HeaderCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCard.xib; sourceTree = "<group>"; };
+		BD36EC2C1C7170EB00F993CE /* IntencityCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardView.swift; sourceTree = "<group>"; };
 		BD5460EA1C68D34400F60ADC /* Intencity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intencity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5460ED1C68D34400F60ADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5460EF1C68D34400F60ADC /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -238,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				BD947A351C6F6E5F003F3767 /* RoutineCard.xib */,
-				BD36EC2A1C71048F00F993CE /* HeaderCard.xib */,
 				BD36EC281C71048600F993CE /* ExerciseCard.xib */,
 				BD5460F11C68D34400F60ADC /* Demo.storyboard */,
 				BD9EF2651C6A278800E520CB /* Login.storyboard */,
@@ -280,6 +279,7 @@
 				BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */,
 				BD9EF2B11C6A56CE00E520CB /* IntencityButtonNoBackground.swift */,
 				BDD721D01C6FA30B003C242C /* IntencityCard.swift */,
+				BD36EC2C1C7170EB00F993CE /* IntencityCardView.swift */,
 				BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */,
 			);
 			name = UIElements;
@@ -366,7 +366,6 @@
 				BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */,
 				BD9EF2661C6A278800E520CB /* Login.storyboard in Resources */,
 				BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */,
-				BD36EC2B1C71048F00F993CE /* HeaderCard.xib in Resources */,
 				BD9EF2B81C6A941F00E520CB /* terms.html in Resources */,
 				BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
@@ -393,6 +392,7 @@
 				BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */,
 				BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */,
 				BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */,
+				BD36EC2D1C7170EB00F993CE /* IntencityCardView.swift in Sources */,
 				BD9EF2591C693A6400E520CB /* Color.swift in Sources */,
 				BD9EF2C81C6BF4CC00E520CB /* MenuViewController.swift in Sources */,
 				BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */,
