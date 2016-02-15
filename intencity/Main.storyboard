@@ -118,7 +118,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdM-dc-QJv">
                                 <rect key="frame" x="20" y="240" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -127,11 +127,11 @@
                         <constraints>
                             <constraint firstItem="wNx-yN-83c" firstAttribute="centerX" secondItem="Dsb-4N-xEQ" secondAttribute="centerX" id="04q-ay-bdA"/>
                             <constraint firstItem="JzD-KD-Abt" firstAttribute="centerX" secondItem="Dsb-4N-xEQ" secondAttribute="centerX" id="6LW-1i-vG9"/>
-                            <constraint firstItem="DdM-dc-QJv" firstAttribute="top" secondItem="F1h-Cf-mNJ" secondAttribute="bottom" constant="-1" id="IA6-O9-XrP"/>
+                            <constraint firstItem="DdM-dc-QJv" firstAttribute="top" secondItem="F1h-Cf-mNJ" secondAttribute="bottom" constant="5" id="IA6-O9-XrP"/>
                             <constraint firstItem="wNx-yN-83c" firstAttribute="width" secondItem="Dsb-4N-xEQ" secondAttribute="width" id="IhQ-wV-tGO"/>
                             <constraint firstItem="F1h-Cf-mNJ" firstAttribute="top" secondItem="JzD-KD-Abt" secondAttribute="bottom" constant="3" id="JAY-CD-LGb"/>
                             <constraint firstItem="JzD-KD-Abt" firstAttribute="width" secondItem="Dsb-4N-xEQ" secondAttribute="width" id="K8o-rz-3qQ"/>
-                            <constraint firstItem="wNx-yN-83c" firstAttribute="top" secondItem="DdM-dc-QJv" secondAttribute="bottom" constant="8" id="aFL-bb-iGr"/>
+                            <constraint firstItem="wNx-yN-83c" firstAttribute="top" secondItem="DdM-dc-QJv" secondAttribute="bottom" constant="5" id="aFL-bb-iGr"/>
                             <constraint firstAttribute="leadingMargin" secondItem="DdM-dc-QJv" secondAttribute="leading" id="d19-0h-wLD"/>
                             <constraint firstItem="JzD-KD-Abt" firstAttribute="top" secondItem="ZIP-RK-moG" secondAttribute="bottom" id="gPC-JD-NRS"/>
                             <constraint firstAttribute="bottomMargin" secondItem="wNx-yN-83c" secondAttribute="bottom" id="yXb-Gp-jcx"/>
