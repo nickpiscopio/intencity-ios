@@ -29,24 +29,13 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="DMe-Bb-4t9" firstAttribute="centerY" secondItem="IVx-zu-wHc" secondAttribute="centerY" id="000-vS-pwq"/>
-                    <constraint firstItem="lfl-b4-22u" firstAttribute="leading" secondItem="DMe-Bb-4t9" secondAttribute="trailing" constant="8" id="B9A-Ea-3xO"/>
-                    <constraint firstItem="DMe-Bb-4t9" firstAttribute="leading" secondItem="IVx-zu-wHc" secondAttribute="leadingMargin" constant="17" id="HuC-BG-VdN"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="lfl-b4-22u" secondAttribute="bottom" constant="2.5" id="JYP-sQ-59X"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="DMe-Bb-4t9" secondAttribute="bottom" id="OyA-1H-nut"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="lfl-b4-22u" secondAttribute="trailing" id="Tqe-rq-L8z"/>
-                    <constraint firstItem="DMe-Bb-4t9" firstAttribute="top" secondItem="IVx-zu-wHc" secondAttribute="topMargin" constant="3" id="eZi-Fb-Kxd"/>
-                    <constraint firstItem="lfl-b4-22u" firstAttribute="top" secondItem="IVx-zu-wHc" secondAttribute="topMargin" constant="3" id="gBJ-tb-vjo"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="lfl-b4-22u" secondAttribute="bottom" constant="3" id="lLC-Kq-wz1"/>
-                    <constraint firstItem="DMe-Bb-4t9" firstAttribute="height" secondItem="IVx-zu-wHc" secondAttribute="height" id="nIf-0t-tzW"/>
+                    <constraint firstItem="DMe-Bb-4t9" firstAttribute="top" secondItem="IVx-zu-wHc" secondAttribute="topMargin" constant="3" id="6eB-eZ-uAq"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="lfl-b4-22u" secondAttribute="trailing" id="7Ux-E0-WdT"/>
+                    <constraint firstItem="lfl-b4-22u" firstAttribute="top" secondItem="IVx-zu-wHc" secondAttribute="topMargin" constant="3" id="Edx-wi-hWJ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="lfl-b4-22u" secondAttribute="bottom" constant="2.5" id="Okz-4x-fg7"/>
+                    <constraint firstItem="lfl-b4-22u" firstAttribute="leading" secondItem="DMe-Bb-4t9" secondAttribute="trailing" constant="8" id="RxG-9F-7I0"/>
+                    <constraint firstItem="DMe-Bb-4t9" firstAttribute="leading" secondItem="IVx-zu-wHc" secondAttribute="leadingMargin" constant="17" id="ann-Rf-7qf"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="000-vS-pwq"/>
-                        <exclude reference="nIf-0t-tzW"/>
-                        <exclude reference="JYP-sQ-59X"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="stepDescription" destination="lfl-b4-22u" id="vyz-Vw-Clw"/>
