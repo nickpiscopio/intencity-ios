@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UINavigationBar.appearance().barTintColor = Color.primary
         UINavigationBar.appearance().barStyle = UIBarStyle.Black
         UINavigationBar.appearance().tintColor = Color.white
+        UINavigationBar.appearance().translucent = false
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         // Sets the tab bar colors.

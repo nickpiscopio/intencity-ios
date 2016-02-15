@@ -1,13 +1,13 @@
 PODS:
   - RNCryptor (4.0.0)
-  - youtube-ios-player-helper (0.1.5)
+  - youtube-ios-player-helper (0.1.4)
 
 DEPENDENCIES:
   - RNCryptor (~> 4.0.0-beta)
-  - youtube-ios-player-helper (~> 0.1.4)
+  - youtube-ios-player-helper (= 0.1.4)
 
 SPEC CHECKSUMS:
   RNCryptor: 59d6483908115af5c12b884db23392024e52a5fe
-  youtube-ios-player-helper: 8706bb155ffee74fbe5f2f5cf41c2dafe60dc155
+  youtube-ios-player-helper: 84b1485ebb4b7c6b619c6e05edcb55186723a7c6
 
 COCOAPODS: 0.39.0

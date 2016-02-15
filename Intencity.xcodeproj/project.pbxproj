@@ -55,11 +55,12 @@
 		BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */; };
-		FA0F5BDA91864D736CEB3A7B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B639B36984DE79BC8DABA /* Pods.framework */; };
+		F386C2DCFFCB6795EEF5B587 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B639B36984DE79BC8DABA /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		149BA7352CB3DC04F109302E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9427C3694822D3AE0479F268 /* Pods_intencity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intencity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD10539A1C6CD071004C10C7 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellController.swift; sourceTree = "<group>"; };
 		BD36EC221C70F0A400F993CE /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -119,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA0F5BDA91864D736CEB3A7B /* Pods.framework in Frameworks */,
+				F386C2DCFFCB6795EEF5B587 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				C82B639B36984DE79BC8DABA /* Pods.framework */,
+				9427C3694822D3AE0479F268 /* Pods_intencity.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

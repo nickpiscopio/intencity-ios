@@ -8,18 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		00F4709E2C010DA3F85CBB8A2ED7BC76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		0485D344894A9B6F515F9B439180CE47 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09329E5B9C336F209899168C240532C /* YTPlayerView.m */; };
-		1D85D7DFDE76DF8F5876D34B74AB579D /* YTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 19AAAE7442586E260F696176957B7C43 /* YTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3284A01FEB5F6BC9D1459DD99C76AE58 /* youtube-ios-player-helper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CB67528422BDA966674C840C66E5FE9B /* youtube-ios-player-helper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3308030E6B415D04517AC9B7B1537BBA /* RNCryptor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AC34CA28FC54A97BAC56234E87234 /* RNCryptor-dummy.m */; };
-		3D4FB5EB76D96A3784C3A15835BC0FC4 /* RNCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = F6B8DF5D3B33EA0105630662510F1E32 /* RNCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6CE80A1570E9911CFEFBDBE0AE632A6E /* RNCryptor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 18114708FDC646380CD989F4663F7E3F /* RNCryptor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0485D344894A9B6F515F9B439180CE47 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C891D202B617E12A44EFD49FE06A979 /* YTPlayerView.m */; };
+		1D85D7DFDE76DF8F5876D34B74AB579D /* YTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = F925A4422C8C39EB8AE65E2EC1ABD9A9 /* YTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2B841E7E6463116F4670BB452DDA2E3D /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 4B204CB24DC1C800C3AB0AC7F1BAB908 /* Assets */; };
+		3284A01FEB5F6BC9D1459DD99C76AE58 /* youtube-ios-player-helper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F598E461EBAA6B36E1FEC0D29E00411 /* youtube-ios-player-helper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3308030E6B415D04517AC9B7B1537BBA /* RNCryptor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 42098F0FB50163E67C44F3A53509E781 /* RNCryptor-dummy.m */; };
+		3D4FB5EB76D96A3784C3A15835BC0FC4 /* RNCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 528F9B64B76E0E94D5E4710B8A708486 /* RNCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CE80A1570E9911CFEFBDBE0AE632A6E /* RNCryptor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AE4827E859616BBA418560956B9DA4BD /* RNCryptor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E192C5B2B230D62DA760C1381A7352B /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D9D40F83D7870B9FFD9EE960FFA6A983 /* Assets.bundle */; };
 		8332E86739D64342C0C59196241EA9B6 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
 		90530E18D6DE40A57840F8A6003F1738 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		91FAD979959CB755FDECE023A27B7E20 /* youtube-ios-player-helper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA934497CF8439CC3D2AA35F258EEEB /* youtube-ios-player-helper-dummy.m */; };
+		91FAD979959CB755FDECE023A27B7E20 /* youtube-ios-player-helper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4ABBC7A25F3FAE752E9E81D76E5849 /* youtube-ios-player-helper-dummy.m */; };
 		98E6C9E4C539C76EE0C9EA750EB5B71E /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A715DB5153417BC73F9D44327EDCCCA4 /* RNCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A394978B9E0415E78DA611FB6B0D2A /* RNCryptor.swift */; };
+		A715DB5153417BC73F9D44327EDCCCA4 /* RNCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56077BA69AAE9E8B9AC4D470A2ABA5 /* RNCryptor.swift */; };
 		E79E1AC3C994F1250328EA61E4ED5FDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,38 +49,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0684CC78002E77202334E054D93206E7 /* youtube-ios-player-helper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "youtube-ios-player-helper.xcconfig"; sourceTree = "<group>"; };
-		0B55050911BBDC44B97BADA434093790 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18114708FDC646380CD989F4663F7E3F /* RNCryptor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-umbrella.h"; sourceTree = "<group>"; };
-		19AAAE7442586E260F696176957B7C43 /* YTPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = Classes/YTPlayerView.h; sourceTree = "<group>"; };
+		0F598E461EBAA6B36E1FEC0D29E00411 /* youtube-ios-player-helper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-umbrella.h"; sourceTree = "<group>"; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
-		3D9AC34CA28FC54A97BAC56234E87234 /* RNCryptor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RNCryptor-dummy.m"; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		5D9A5067EEA1B327CF7D820A0FDA4EFD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6BA934497CF8439CC3D2AA35F258EEEB /* youtube-ios-player-helper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "youtube-ios-player-helper-dummy.m"; sourceTree = "<group>"; };
-		716791AFD54C5D1C081EAC9B69780854 /* RNCryptor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RNCryptor.xcconfig; sourceTree = "<group>"; };
+		42098F0FB50163E67C44F3A53509E781 /* RNCryptor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RNCryptor-dummy.m"; sourceTree = "<group>"; };
+		49C59EB96D6B9D054A34D79C4F3EBB3A /* youtube-ios-player-helper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "youtube-ios-player-helper.modulemap"; sourceTree = "<group>"; };
+		4B204CB24DC1C800C3AB0AC7F1BAB908 /* Assets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		528F9B64B76E0E94D5E4710B8A708486 /* RNCryptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
+		57DD64A58841C1A7329FCDDE9D1F7BA4 /* youtube-ios-player-helper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "youtube-ios-player-helper.xcconfig"; sourceTree = "<group>"; };
+		5C891D202B617E12A44EFD49FE06A979 /* YTPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = Classes/YTPlayerView.m; sourceTree = "<group>"; };
+		5F4ABBC7A25F3FAE752E9E81D76E5849 /* youtube-ios-player-helper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "youtube-ios-player-helper-dummy.m"; sourceTree = "<group>"; };
+		688EEF3800DD9670EABB8EACAFB43206 /* RNCryptor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RNCryptor.modulemap; sourceTree = "<group>"; };
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
+		7F9E362C87B2B61A991AE2510EEB62F5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		94A394978B9E0415E78DA611FB6B0D2A /* RNCryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RNCryptor.swift; sourceTree = "<group>"; };
 		977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		9C56077BA69AAE9E8B9AC4D470A2ABA5 /* RNCryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RNCryptor.swift; sourceTree = "<group>"; };
+		AE4827E859616BBA418560956B9DA4BD /* RNCryptor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-umbrella.h"; sourceTree = "<group>"; };
 		AF57563F815A0BDDF6BAB447A6C6A175 /* RNCryptor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RNCryptor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2109C80012BC19CB901A403FE880F32 /* RNCryptor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RNCryptor.xcconfig; sourceTree = "<group>"; };
 		B22EC03C37CBB363ADD2FE4C8E214F36 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		C042F2BEE3167FF724BE104407DB6EC1 /* RNCryptor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RNCryptor.modulemap; sourceTree = "<group>"; };
-		CB67528422BDA966674C840C66E5FE9B /* youtube-ios-player-helper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-umbrella.h"; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D09329E5B9C336F209899168C240532C /* YTPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = Classes/YTPlayerView.m; sourceTree = "<group>"; };
 		D9D40F83D7870B9FFD9EE960FFA6A983 /* Assets.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assets.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		E1037A6EBF7CA1080307BC7C992C917A /* RNCryptor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-prefix.pch"; sourceTree = "<group>"; };
-		E50DF0BCAE7350B35498FF76997572EE /* youtube-ios-player-helper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-prefix.pch"; sourceTree = "<group>"; };
+		E358A7740BAB8EE8A2990389E3D392EA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E768F559B9CE0C794CE1F1C52D692586 /* RNCryptor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-prefix.pch"; sourceTree = "<group>"; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE987BF42CDD4F485C4F90F6E24E31D7 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = youtube_ios_player_helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6B8DF5D3B33EA0105630662510F1E32 /* RNCryptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
-		F8D79AE7363A2FEA03FB56583B3B0F5E /* youtube-ios-player-helper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "youtube-ios-player-helper.modulemap"; sourceTree = "<group>"; };
+		F124AAC6B4DD873A36DFE577386255AD /* youtube-ios-player-helper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-prefix.pch"; sourceTree = "<group>"; };
+		F925A4422C8C39EB8AE65E2EC1ABD9A9 /* YTPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = Classes/YTPlayerView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,24 +119,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		151334420279A8828E41CAEB631EAD9E /* youtube-ios-player-helper */ = {
+		0A28D51BC37D55EA15F8415C1CFFDD65 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				19AAAE7442586E260F696176957B7C43 /* YTPlayerView.h */,
-				D09329E5B9C336F209899168C240532C /* YTPlayerView.m */,
-				6EEA7C204FA822C8E19A5AD40938F301 /* Support Files */,
+				E358A7740BAB8EE8A2990389E3D392EA /* Info.plist */,
+				49C59EB96D6B9D054A34D79C4F3EBB3A /* youtube-ios-player-helper.modulemap */,
+				57DD64A58841C1A7329FCDDE9D1F7BA4 /* youtube-ios-player-helper.xcconfig */,
+				5F4ABBC7A25F3FAE752E9E81D76E5849 /* youtube-ios-player-helper-dummy.m */,
+				F124AAC6B4DD873A36DFE577386255AD /* youtube-ios-player-helper-prefix.pch */,
+				0F598E461EBAA6B36E1FEC0D29E00411 /* youtube-ios-player-helper-umbrella.h */,
 			);
-			path = "youtube-ios-player-helper";
-			sourceTree = "<group>";
-		};
-		52C040EC2E0FB58455C886B3BC8E452D /* RNCryptor */ = {
-			isa = PBXGroup;
-			children = (
-				F6B8DF5D3B33EA0105630662510F1E32 /* RNCryptor.h */,
-				94A394978B9E0415E78DA611FB6B0D2A /* RNCryptor.swift */,
-				DC29CE71C411C970DDA07B4A5151BEE6 /* Support Files */,
-			);
-			path = RNCryptor;
+			name = "Support Files";
+			path = "../Target Support Files/youtube-ios-player-helper";
 			sourceTree = "<group>";
 		};
 		5980325D784FA2DF9EE8FB1ED5AE82EB /* Products */ = {
@@ -146,20 +142,6 @@
 				EE987BF42CDD4F485C4F90F6E24E31D7 /* youtube_ios_player_helper.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		6EEA7C204FA822C8E19A5AD40938F301 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0B55050911BBDC44B97BADA434093790 /* Info.plist */,
-				F8D79AE7363A2FEA03FB56583B3B0F5E /* youtube-ios-player-helper.modulemap */,
-				0684CC78002E77202334E054D93206E7 /* youtube-ios-player-helper.xcconfig */,
-				6BA934497CF8439CC3D2AA35F258EEEB /* youtube-ios-player-helper-dummy.m */,
-				E50DF0BCAE7350B35498FF76997572EE /* youtube-ios-player-helper-prefix.pch */,
-				CB67528422BDA966674C840C66E5FE9B /* youtube-ios-player-helper-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/youtube-ios-player-helper";
 			sourceTree = "<group>";
 		};
 		75D98FF52E597A11900E131B6C4E1ADA /* Pods */ = {
@@ -185,10 +167,43 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				CE3746420F5F5622A5811D695F058B78 /* Pods */,
+				F457DEBD9A1D8316E6F6187C767B179E /* Pods */,
 				5980325D784FA2DF9EE8FB1ED5AE82EB /* Products */,
 				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		878C8F89604530A43614CDD4B190F3CD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7F9E362C87B2B61A991AE2510EEB62F5 /* Info.plist */,
+				688EEF3800DD9670EABB8EACAFB43206 /* RNCryptor.modulemap */,
+				B2109C80012BC19CB901A403FE880F32 /* RNCryptor.xcconfig */,
+				42098F0FB50163E67C44F3A53509E781 /* RNCryptor-dummy.m */,
+				E768F559B9CE0C794CE1F1C52D692586 /* RNCryptor-prefix.pch */,
+				AE4827E859616BBA418560956B9DA4BD /* RNCryptor-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RNCryptor";
+			sourceTree = "<group>";
+		};
+		958425610A44E7D8A548BA8A7315321D /* youtube-ios-player-helper */ = {
+			isa = PBXGroup;
+			children = (
+				F925A4422C8C39EB8AE65E2EC1ABD9A9 /* YTPlayerView.h */,
+				5C891D202B617E12A44EFD49FE06A979 /* YTPlayerView.m */,
+				986CEB2AE5E3DE6A31549EDAC9BD87BF /* Resources */,
+				0A28D51BC37D55EA15F8415C1CFFDD65 /* Support Files */,
+			);
+			path = "youtube-ios-player-helper";
+			sourceTree = "<group>";
+		};
+		986CEB2AE5E3DE6A31549EDAC9BD87BF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4B204CB24DC1C800C3AB0AC7F1BAB908 /* Assets */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		B7B80995527643776607AFFA75B91E24 /* Targets Support Files */ = {
@@ -207,6 +222,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BCE4DE80716E6F362475142967B2F3B8 /* RNCryptor */ = {
+			isa = PBXGroup;
+			children = (
+				528F9B64B76E0E94D5E4710B8A708486 /* RNCryptor.h */,
+				9C56077BA69AAE9E8B9AC4D470A2ABA5 /* RNCryptor.swift */,
+				878C8F89604530A43614CDD4B190F3CD /* Support Files */,
+			);
+			path = RNCryptor;
+			sourceTree = "<group>";
+		};
 		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,27 +240,13 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		CE3746420F5F5622A5811D695F058B78 /* Pods */ = {
+		F457DEBD9A1D8316E6F6187C767B179E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				52C040EC2E0FB58455C886B3BC8E452D /* RNCryptor */,
-				151334420279A8828E41CAEB631EAD9E /* youtube-ios-player-helper */,
+				BCE4DE80716E6F362475142967B2F3B8 /* RNCryptor */,
+				958425610A44E7D8A548BA8A7315321D /* youtube-ios-player-helper */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		DC29CE71C411C970DDA07B4A5151BEE6 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5D9A5067EEA1B327CF7D820A0FDA4EFD /* Info.plist */,
-				C042F2BEE3167FF724BE104407DB6EC1 /* RNCryptor.modulemap */,
-				716791AFD54C5D1C081EAC9B69780854 /* RNCryptor.xcconfig */,
-				3D9AC34CA28FC54A97BAC56234E87234 /* RNCryptor-dummy.m */,
-				E1037A6EBF7CA1080307BC7C992C917A /* RNCryptor-prefix.pch */,
-				18114708FDC646380CD989F4663F7E3F /* RNCryptor-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/RNCryptor";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,7 +323,7 @@
 			buildPhases = (
 				4E824960C46CEDE2BBC2E6B8F54DD224 /* Sources */,
 				1DF5D2135DF583B6FEADA4B5A9004ED3 /* Frameworks */,
-				5F2AA42F0A3F03FAFD44562C7F9B8078 /* Resources */,
+				EB6624620FA1B649EEF9095DCE936B3C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -380,10 +391,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5F2AA42F0A3F03FAFD44562C7F9B8078 /* Resources */ = {
+		EB6624620FA1B649EEF9095DCE936B3C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B841E7E6463116F4670BB452DDA2E3D /* Assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +461,7 @@
 /* Begin XCBuildConfiguration section */
 		4A46AD8EF64F84263005B68DEA32A5C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0684CC78002E77202334E054D93206E7 /* youtube-ios-player-helper.xcconfig */;
+			baseConfigurationReference = 57DD64A58841C1A7329FCDDE9D1F7BA4 /* youtube-ios-player-helper.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -506,7 +518,7 @@
 		};
 		4FA6495DC06D8B5392C47126FBACC75C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0684CC78002E77202334E054D93206E7 /* youtube-ios-player-helper.xcconfig */;
+			baseConfigurationReference = 57DD64A58841C1A7329FCDDE9D1F7BA4 /* youtube-ios-player-helper.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				PRODUCT_NAME = Assets;
@@ -588,7 +600,7 @@
 		};
 		8F75A838D834C8FFF7DE9032BA274FF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 716791AFD54C5D1C081EAC9B69780854 /* RNCryptor.xcconfig */;
+			baseConfigurationReference = B2109C80012BC19CB901A403FE880F32 /* RNCryptor.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -616,7 +628,7 @@
 		};
 		B8454313C261015EB9D6602900063ABF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0684CC78002E77202334E054D93206E7 /* youtube-ios-player-helper.xcconfig */;
+			baseConfigurationReference = 57DD64A58841C1A7329FCDDE9D1F7BA4 /* youtube-ios-player-helper.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -677,7 +689,7 @@
 		};
 		D724AEA917F7D26B3C4C09451F702180 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0684CC78002E77202334E054D93206E7 /* youtube-ios-player-helper.xcconfig */;
+			baseConfigurationReference = 57DD64A58841C1A7329FCDDE9D1F7BA4 /* youtube-ios-player-helper.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				PRODUCT_NAME = Assets;
@@ -689,7 +701,7 @@
 		};
 		E1F5A23E5664CF044C2A3B6473F6D5D1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 716791AFD54C5D1C081EAC9B69780854 /* RNCryptor.xcconfig */;
+			baseConfigurationReference = B2109C80012BC19CB901A403FE880F32 /* RNCryptor.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
