@@ -21,6 +21,7 @@ class MenuViewController: UIViewController
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("title_menu", comment: "")
         
+        // Hides the tab bar.
         self.tabBarController?.tabBar.hidden = true
     }
     

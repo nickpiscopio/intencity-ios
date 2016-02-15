@@ -97,4 +97,39 @@ class Util
             return ""
         }
     }
+    
+    /**
+     * Initializes a specified tableview.
+     *
+     * @param table                 The UITableView to add the cell.
+     * @param removeSeparators      Boolean on whether to remove the cell separators or not.
+     */
+    static func initTableView(table: UITableView, removeSeparators: Bool)
+    {
+        table.backgroundColor = Color.transparent
+        
+        if (removeSeparators)
+        {
+            // Removes the cel separators.
+            table.separatorStyle = UITableViewCellSeparatorStyle.None
+        }
+        
+        // Sets the height of the cell to be automatic.
+        table.rowHeight = UITableViewAutomaticDimension;
+        // Set to whatever your "average" cell
+        table.estimatedRowHeight = 10.0;
+    }
+    
+    /**
+     * Adds the cell associated with the table.
+     *
+     * @param table         The UITableView to add the cell.
+     * @param nibNamed      The XIB file to load.
+     * @param cellNamed     The cell identifier.
+     */
+    static func addUITableViewCell(table: UITableView, nibNamed: String, cellName: String)
+    {
+        let nib = UINib(nibName: nibNamed, bundle: nil)
+        table.registerNib(nib, forCellReuseIdentifier: cellName)
+    }
 }

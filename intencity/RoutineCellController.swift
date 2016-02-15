@@ -10,15 +10,14 @@ import UIKit
 class RoutineCellController: IntencityCard
 {
     @IBOutlet weak var routinePickerView: UIPickerView!
+    @IBOutlet weak var routineTitle: UILabel!
+    @IBOutlet weak var startButton: UIButton!
     
     weak var delegate: RoutineDelegate?
     
     var pickerDataSource = [String]()
     
-    var selectedRoutineNumber = 0
-    
-    @IBOutlet weak var routineTitle: UILabel!
-    @IBOutlet weak var startButton: UIButton!
+    var selectedRoutineNumber = 0  
     
     override func awakeFromNib()
     {

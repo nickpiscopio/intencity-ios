@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABAB19DEF42F7419FF43BB92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9E3C85490FC03DA06E7A39 /* libPods.a */; };
 		BD10539B1C6CD071004C10C7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10539A1C6CD071004C10C7 /* Key.swift */; };
 		BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */; };
 		BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC221C70F0A400F993CE /* Exercise.swift */; };
-		BD36EC271C70FD6D00F993CE /* HeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC261C70FD6D00F993CE /* HeaderCellController.swift */; };
+		BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */; };
 		BD36EC291C71048600F993CE /* ExerciseCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD36EC281C71048600F993CE /* ExerciseCard.xib */; };
 		BD36EC2D1C7170EB00F993CE /* IntencityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC2C1C7170EB00F993CE /* IntencityCardView.swift */; };
+		BD36EC2F1C72068900F993CE /* ExerciseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */; };
+		BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC301C72080F00F993CE /* DirectionViewController.swift */; };
+		BD36EC331C720C6B00F993CE /* Direction.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD36EC321C720C6B00F993CE /* Direction.xib */; };
 		BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460ED1C68D34400F60ADC /* AppDelegate.swift */; };
 		BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460EF1C68D34400F60ADC /* DemoViewController.swift */; };
 		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
@@ -56,12 +60,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		149BA7352CB3DC04F109302E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BD10539A1C6CD071004C10C7 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellController.swift; sourceTree = "<group>"; };
 		BD36EC221C70F0A400F993CE /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
-		BD36EC261C70FD6D00F993CE /* HeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCellController.swift; sourceTree = "<group>"; };
+		BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionCellController.swift; sourceTree = "<group>"; };
 		BD36EC281C71048600F993CE /* ExerciseCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseCard.xib; sourceTree = "<group>"; };
 		BD36EC2C1C7170EB00F993CE /* IntencityCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardView.swift; sourceTree = "<group>"; };
+		BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDelegate.swift; sourceTree = "<group>"; };
+		BD36EC301C72080F00F993CE /* DirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewController.swift; sourceTree = "<group>"; };
+		BD36EC321C720C6B00F993CE /* Direction.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Direction.xib; sourceTree = "<group>"; };
 		BD5460EA1C68D34400F60ADC /* Intencity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intencity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5460ED1C68D34400F60ADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5460EF1C68D34400F60ADC /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +113,8 @@
 		BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButton.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
+		EB9E3C85490FC03DA06E7A39 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC489527A4C448980D231596 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,12 +122,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABAB19DEF42F7419FF43BB92 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E71F0E20D049781B6EB533F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB9E3C85490FC03DA06E7A39 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BD1053961C6CC729004C10C7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +161,7 @@
 			children = (
 				BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */,
 				BD947A371C6F6F50003F3767 /* RoutineCellController.swift */,
-				BD36EC261C70FD6D00F993CE /* HeaderCellController.swift */,
+				BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -153,6 +172,8 @@
 				BD5460EC1C68D34400F60ADC /* intencity */,
 				BD9EF2551C691C8900E520CB /* Resources */,
 				BD5460EB1C68D34400F60ADC /* Products */,
+				D6767112EB4CDF081AF45A57 /* Pods */,
+				8E71F0E20D049781B6EB533F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,6 +230,7 @@
 				BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */,
 				BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */,
 				BD947A011C6CED31003F3767 /* LoginNavController.swift */,
+				BD36EC301C72080F00F993CE /* DirectionViewController.swift */,
 			);
 			name = Intencity;
 			sourceTree = "<group>";
@@ -239,6 +261,7 @@
 			children = (
 				BD947A351C6F6E5F003F3767 /* RoutineCard.xib */,
 				BD36EC281C71048600F993CE /* ExerciseCard.xib */,
+				BD36EC321C720C6B00F993CE /* Direction.xib */,
 				BD5460F11C68D34400F60ADC /* Demo.storyboard */,
 				BD9EF2651C6A278800E520CB /* Login.storyboard */,
 				BDFE97131C68E62C00C2AEA3 /* Main.storyboard */,
@@ -298,8 +321,18 @@
 			children = (
 				BD9EF2BE1C6B829500E520CB /* ServiceDelegate.swift */,
 				BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */,
+				BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */,
 			);
 			name = Delegates;
+			sourceTree = "<group>";
+		};
+		D6767112EB4CDF081AF45A57 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC489527A4C448980D231596 /* Pods.debug.xcconfig */,
+				149BA7352CB3DC04F109302E /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,9 +342,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD5460FC1C68D34400F60ADC /* Build configuration list for PBXNativeTarget "intencity" */;
 			buildPhases = (
+				68F00C2A332486E9B5012753 /* Check Pods Manifest.lock */,
 				BD5460E61C68D34400F60ADC /* Sources */,
 				BD5460E71C68D34400F60ADC /* Frameworks */,
 				BD5460E81C68D34400F60ADC /* Resources */,
+				9CA0F421B26334D50BFA385E /* Embed Pods Frameworks */,
+				1046AEF17C686E5F37EE9965 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -366,6 +402,7 @@
 				BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */,
 				BD9EF2661C6A278800E520CB /* Login.storyboard in Resources */,
 				BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */,
+				BD36EC331C720C6B00F993CE /* Direction.xib in Resources */,
 				BD9EF2B81C6A941F00E520CB /* terms.html in Resources */,
 				BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
@@ -374,6 +411,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1046AEF17C686E5F37EE9965 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68F00C2A332486E9B5012753 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9CA0F421B26334D50BFA385E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BD5460E61C68D34400F60ADC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -381,6 +466,7 @@
 			files = (
 				BD9EF2BC1C6B701D00E520CB /* ServiceTask.swift in Sources */,
 				BD947A2B1C6E2C01003F3767 /* RNCryptor.swift in Sources */,
+				BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */,
 				BD9EF2B61C6A8AF500E520CB /* TermsOfUseViewController.swift in Sources */,
 				BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */,
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
@@ -397,6 +483,7 @@
 				BD9EF2C81C6BF4CC00E520CB /* MenuViewController.swift in Sources */,
 				BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */,
 				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
+				BD36EC2F1C72068900F993CE /* ExerciseDelegate.swift in Sources */,
 				BD9EF2A81C6A310200E520CB /* ForgotPasswordViewController.swift in Sources */,
 				BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */,
 				BD9EF2C21C6B869E00E520CB /* Constant.swift in Sources */,
@@ -414,7 +501,7 @@
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
 				BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */,
 				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,
-				BD36EC271C70FD6D00F993CE /* HeaderCellController.swift in Sources */,
+				BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */,
 				BDD721D11C6FA30B003C242C /* IntencityCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +614,7 @@
 		};
 		BD5460FD1C68D34400F60ADC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC489527A4C448980D231596 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -543,6 +631,7 @@
 		};
 		BD5460FE1C68D34400F60ADC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 149BA7352CB3DC04F109302E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (

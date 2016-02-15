@@ -17,6 +17,8 @@ struct Constant
     static let HEADER_CELL = "HeaderCell"
     static let ROUTINE_CELL = "RoutineCell"
     static let EXERCISE_CELL = "ExerciseCell"
+    static let DIRECTION_CELL = "DirectionCell"
+    
     static let MAIN_VIEW = "IntencityTabView"
     static let DEMO_VIEW = "DemoViewController"
     static let CHECKBOX_UNCHECKED = "checkbox_unchecked"

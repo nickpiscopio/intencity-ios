@@ -9,7 +9,7 @@
 
 import UIKit
 
-class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate
+class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate
 {
     var numberOfCells = 0
     
@@ -45,17 +45,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
         
-        tableView.backgroundColor = Color.transparent
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        tableView.rowHeight = UITableViewAutomaticDimension;
-        tableView.estimatedRowHeight = 10.0; // set to whatever your "average" cell
-        
         state = Constant.ROUTINE_CELL
+        
+        // Initialize the tableview.
+        Util.initTableView(tableView, removeSeparators: true)
 
         // Load the cells we are going to use in the tableview.
-        setNib("HeaderCard", cellName: Constant.HEADER_CELL)
-        setNib("RoutineCard", cellName: Constant.ROUTINE_CELL)
-        setNib("ExerciseCard", cellName: Constant.EXERCISE_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: "RoutineCard", cellName: Constant.ROUTINE_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: "ExerciseCard", cellName: Constant.EXERCISE_CELL)
     }
 
     override func didReceiveMemoryWarning()
@@ -179,12 +176,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
     }
     
-    func setNib(nibNamed: String, cellName: String) ->String
+    func onExerciseClicked(name: String)
     {
-        let nib = UINib(nibName: nibNamed, bundle: nil)
-        self.tableView.registerNib(nib, forCellReuseIdentifier: cellName)
+        let directionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DirectionViewController") as! DirectionViewController
+        directionViewController.exerciseName = name
         
-        return nibNamed
+        self.navigationController!.pushViewController(directionViewController, animated: true)
     }
     
     /**
@@ -205,8 +202,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     */
     func insertRow()
     {
-        var currentExerciseCount = currentExercises.count        
-        
         let indexPath = NSIndexPath(forRow: currentExercises.count - 1, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Bottom)
         
@@ -247,6 +242,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         {
             let exercise = currentExercises[indexPath.item]
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
+            cell.delegate = self
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.exerciseName.setTitle(exercise.name, forState: .Normal)
             return cell

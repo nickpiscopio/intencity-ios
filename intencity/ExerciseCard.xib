@@ -18,7 +18,7 @@
                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zle-31-bG7" customClass="IntencityCardView" customModule="Intencity" customModuleProvider="target">
                         <rect key="frame" x="137" y="8" width="240" height="77.5"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXP-OT-VPb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXP-OT-VPb" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
                                 <rect key="frame" x="19" y="24" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>

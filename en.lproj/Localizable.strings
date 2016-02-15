@@ -418,7 +418,7 @@
 "title_direction" = "DIRECTIONS";
 
 /*  */
-"submitted_by" = "Submitted by: %1$s";
+"submitted_by" = "Submitted by: %1$@";
 
 /* About */
 "title_mission" = "MISSION";
