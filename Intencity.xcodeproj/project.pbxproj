@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ABAB19DEF42F7419FF43BB92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9E3C85490FC03DA06E7A39 /* libPods.a */; };
 		BD10539B1C6CD071004C10C7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10539A1C6CD071004C10C7 /* Key.swift */; };
 		BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */; };
 		BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC221C70F0A400F993CE /* Exercise.swift */; };
@@ -28,7 +27,6 @@
 		BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A031C6CF252003F3767 /* IntencityError.swift */; };
 		BD947A061C6D3F30003F3767 /* Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A051C6D3F30003F3767 /* Integer.swift */; };
 		BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A091C6D4B90003F3767 /* ServiceEvent.swift */; };
-		BD947A2B1C6E2C01003F3767 /* RNCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A2A1C6E2C01003F3767 /* RNCryptor.swift */; };
 		BD947A361C6F6E5F003F3767 /* RoutineCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD947A351C6F6E5F003F3767 /* RoutineCard.xib */; };
 		BD947A381C6F6F50003F3767 /* RoutineCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A371C6F6F50003F3767 /* RoutineCellController.swift */; };
 		BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2491C68F48E00E520CB /* LoginViewController.swift */; };
@@ -57,6 +55,7 @@
 		BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */; };
+		FA0F5BDA91864D736CEB3A7B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B639B36984DE79BC8DABA /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,8 +83,6 @@
 		BD947A031C6CF252003F3767 /* IntencityError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityError.swift; sourceTree = "<group>"; };
 		BD947A051C6D3F30003F3767 /* Integer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integer.swift; sourceTree = "<group>"; };
 		BD947A091C6D4B90003F3767 /* ServiceEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceEvent.swift; path = ../ServiceEvent.swift; sourceTree = "<group>"; };
-		BD947A291C6E2C01003F3767 /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
-		BD947A2A1C6E2C01003F3767 /* RNCryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNCryptor.swift; sourceTree = "<group>"; };
 		BD947A351C6F6E5F003F3767 /* RoutineCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutineCard.xib; sourceTree = "<group>"; };
 		BD947A371C6F6F50003F3767 /* RoutineCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCellController.swift; sourceTree = "<group>"; };
 		BD9EF2491C68F48E00E520CB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +110,7 @@
 		BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButton.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
-		EB9E3C85490FC03DA06E7A39 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C82B639B36984DE79BC8DABA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC489527A4C448980D231596 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABAB19DEF42F7419FF43BB92 /* libPods.a in Frameworks */,
+				FA0F5BDA91864D736CEB3A7B /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +129,7 @@
 		8E71F0E20D049781B6EB533F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EB9E3C85490FC03DA06E7A39 /* libPods.a */,
+				C82B639B36984DE79BC8DABA /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,7 +137,6 @@
 		BD1053961C6CC729004C10C7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				BD947A2F1C6E3319003F3767 /* Encryption */,
 				BD1053971C6CC989004C10C7 /* Extenstions */,
 				BD947A031C6CF252003F3767 /* IntencityError.swift */,
 				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
@@ -233,15 +229,6 @@
 				BD36EC301C72080F00F993CE /* DirectionViewController.swift */,
 			);
 			name = Intencity;
-			sourceTree = "<group>";
-		};
-		BD947A2F1C6E3319003F3767 /* Encryption */ = {
-			isa = PBXGroup;
-			children = (
-				BD947A291C6E2C01003F3767 /* RNCryptor.h */,
-				BD947A2A1C6E2C01003F3767 /* RNCryptor.swift */,
-			);
-			name = Encryption;
 			sourceTree = "<group>";
 		};
 		BD9EF2551C691C8900E520CB /* Resources */ = {
@@ -465,7 +452,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD9EF2BC1C6B701D00E520CB /* ServiceTask.swift in Sources */,
-				BD947A2B1C6E2C01003F3767 /* RNCryptor.swift in Sources */,
 				BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */,
 				BD9EF2B61C6A8AF500E520CB /* TermsOfUseViewController.swift in Sources */,
 				BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */,
@@ -625,7 +611,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.intencity;
 				PRODUCT_NAME = Intencity;
-				SWIFT_OBJC_BRIDGING_HEADER = intencity/RNCryptor.h;
 			};
 			name = Debug;
 		};
@@ -642,7 +627,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.intencity;
 				PRODUCT_NAME = Intencity;
-				SWIFT_OBJC_BRIDGING_HEADER = intencity/RNCryptor.h;
 			};
 			name = Release;
 		};

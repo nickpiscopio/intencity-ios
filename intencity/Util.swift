@@ -8,6 +8,7 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
+import RNCryptor
 
 class Util
 {

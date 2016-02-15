@@ -12,24 +12,24 @@ import Foundation
 extension String
 {
     var parseJSONString: AnyObject?
+    {
+        let data = self.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            
+        if let jsonData = data
         {
-            let data = self.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            
-            if let jsonData = data
+            do
             {
-                do
-                {
-                    // Returns the JSON object if it can parse it properly.
-                    return try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
-                }
-                catch let error as NSError
-                {
-                    // Prints the error if the parsing fails
-                    print(error.localizedDescription)
-                }
+                // Returns the JSON object if it can parse it properly.
+                return try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
             }
+            catch let error as NSError
+            {
+                // Prints the error if the parsing fails
+                print(error.localizedDescription)
+            }
+        }
             
-            // Returns nil if the parsing fails.
-            return nil
+        // Returns nil if the parsing fails.
+        return nil
     }
 }
