@@ -176,9 +176,25 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
     }
     
+    /**
+     * The callback for when an exercise is clicked in the exercise list.
+     *
+     * @param name  The name of the exercise clicked.
+     */
     func onExerciseClicked(name: String)
     {
         let directionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DirectionViewController") as! DirectionViewController
+        directionViewController.exerciseName = name
+        
+        self.navigationController!.pushViewController(directionViewController, animated: true)
+    }
+    
+    /**
+     * The callback for when the edit button is clicked.
+     */
+    func onEditClicked(name: String)
+    {
+        let directionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StatViewController") as! StatViewController
         directionViewController.exerciseName = name
         
         self.navigationController!.pushViewController(directionViewController, animated: true)
@@ -242,9 +258,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         {
             let exercise = currentExercises[indexPath.item]
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
-            cell.delegate = self
             cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.exerciseName.setTitle(exercise.name, forState: .Normal)
+            cell.delegate = self            
+            cell.exerciseButton.setTitle(exercise.name, forState: .Normal)
             return cell
         }
     }

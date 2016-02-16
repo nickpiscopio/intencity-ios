@@ -21,6 +21,7 @@
 		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
 		BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F41C68D34400F60ADC /* Assets.xcassets */; };
 		BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460FF1C68D53200F60ADC /* PageViewController.swift */; };
+		BD74A2591C735EA700E6ABD2 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74A2581C735EA700E6ABD2 /* StatViewController.swift */; };
 		BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9479FA1C6CE43C003F3767 /* JSON.swift */; };
 		BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD9479FC1C6CE452003F3767 /* Loading.storyboard */; };
 		BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A011C6CED31003F3767 /* LoginNavController.swift */; };
@@ -77,6 +78,7 @@
 		BD5460F41C68D34400F60ADC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5460F91C68D34400F60ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD5460FF1C68D53200F60ADC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		BD74A2581C735EA700E6ABD2 /* StatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
 		BD9479FA1C6CE43C003F3767 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		BD9479FC1C6CE452003F3767 /* Loading.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		BD947A001C6CE598003F3767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */,
 				BD947A011C6CED31003F3767 /* LoginNavController.swift */,
 				BD36EC301C72080F00F993CE /* DirectionViewController.swift */,
+				BD74A2581C735EA700E6ABD2 /* StatViewController.swift */,
 			);
 			name = Intencity;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */,
 				BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */,
 				BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */,
+				BD74A2591C735EA700E6ABD2 /* StatViewController.swift in Sources */,
 				BD36EC2D1C7170EB00F993CE /* IntencityCardView.swift in Sources */,
 				BD9EF2591C693A6400E520CB /* Color.swift in Sources */,
 				BD9EF2C81C6BF4CC00E520CB /* MenuViewController.swift in Sources */,
