@@ -259,9 +259,19 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             let exercise = currentExercises[indexPath.item]
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.delegate = self            
+            cell.delegate = self
             cell.exerciseButton.setTitle(exercise.name, forState: .Normal)
             return cell
+        }
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
         }
     }
     
