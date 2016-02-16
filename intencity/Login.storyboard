@@ -117,7 +117,6 @@
                             <constraint firstItem="RsH-Sf-J8e" firstAttribute="top" secondItem="Zlc-Av-b4z" secondAttribute="bottom" constant="2" id="Ruf-o5-8cv"/>
                             <constraint firstItem="mUE-1g-EhU" firstAttribute="top" secondItem="hvO-MJ-Zno" secondAttribute="bottom" constant="16" id="S17-YB-CYn"/>
                             <constraint firstItem="Zlc-Av-b4z" firstAttribute="leading" secondItem="38y-gE-STT" secondAttribute="leadingMargin" id="T93-md-faN"/>
-                            <constraint firstItem="B6F-8a-iVl" firstAttribute="top" secondItem="vaS-8x-1Lq" secondAttribute="bottom" constant="3" id="akd-gW-LPl"/>
                             <constraint firstItem="HSi-Bb-bGt" firstAttribute="centerX" secondItem="38y-gE-STT" secondAttribute="centerX" id="bvN-1h-8Ha"/>
                             <constraint firstItem="o9M-1z-dHi" firstAttribute="leading" secondItem="38y-gE-STT" secondAttribute="leadingMargin" id="e7r-10-4vU"/>
                             <constraint firstItem="Ukk-qD-wJJ" firstAttribute="leading" secondItem="38y-gE-STT" secondAttribute="leadingMargin" id="f7t-xR-6Ne"/>
@@ -130,11 +129,6 @@
                             <constraint firstItem="RsH-Sf-J8e" firstAttribute="leading" secondItem="Uo0-dq-Wsp" secondAttribute="trailing" id="vYx-s0-g5t"/>
                             <constraint firstItem="Uo0-dq-Wsp" firstAttribute="centerY" secondItem="RsH-Sf-J8e" secondAttribute="centerY" id="vsN-x5-QfV"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="akd-gW-LPl"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="fRt-VZ-PIT"/>
                     <nil key="simulatedTopBarMetrics"/>
