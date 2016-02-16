@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RoutineCellController: IntencityCard
+class RoutineCellController: UITableViewCell
 {
     @IBOutlet weak var routinePickerView: UIPickerView!
     @IBOutlet weak var routineTitle: UILabel!
@@ -22,6 +22,8 @@ class RoutineCellController: IntencityCard
     override func awakeFromNib()
     {
         super.awakeFromNib()
+        
+        backgroundColor = Color.transparent
         
         routineTitle.text = NSLocalizedString("title_routine", comment: "")
         startButton.setTitle(NSLocalizedString("start", comment: ""), forState: .Normal)

@@ -18,36 +18,39 @@
                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zle-31-bG7" customClass="IntencityCardView" customModule="Intencity" customModuleProvider="target">
                         <rect key="frame" x="8" y="7" width="522" height="77.5"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-yN-aVA" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="8" width="46" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="exerciseClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="59J-ap-scd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNb-aK-YzW" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="476" y="8" width="46" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="EditedClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="tFw-f0-y5Y"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="orh-wm-HrL">
+                                <rect key="frame" x="0.0" y="0.0" width="522" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-yN-aVA" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="473" height="44"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="exerciseClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="59J-ap-scd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNb-aK-YzW" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                        <rect key="frame" x="483" y="0.0" width="39" height="44"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="EditedClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="tFw-f0-y5Y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="eoQ-yN-aVA" secondAttribute="bottom" constant="5" id="PfA-to-NG5"/>
-                            <constraint firstItem="tNb-aK-YzW" firstAttribute="top" secondItem="Zle-31-bG7" secondAttribute="top" constant="5" id="mMq-Dd-dVI"/>
-                            <constraint firstAttribute="bottom" secondItem="tNb-aK-YzW" secondAttribute="bottom" constant="5" id="mTw-MK-N8G"/>
-                            <constraint firstItem="eoQ-yN-aVA" firstAttribute="top" secondItem="Zle-31-bG7" secondAttribute="top" constant="5" id="maL-CA-teK"/>
+                            <constraint firstItem="orh-wm-HrL" firstAttribute="leading" secondItem="Zle-31-bG7" secondAttribute="leading" id="A6V-jG-nnF"/>
+                            <constraint firstItem="orh-wm-HrL" firstAttribute="top" secondItem="Zle-31-bG7" secondAttribute="top" id="DSG-e3-sen"/>
+                            <constraint firstAttribute="bottom" secondItem="orh-wm-HrL" secondAttribute="bottom" id="GKl-q6-GK5"/>
+                            <constraint firstAttribute="trailing" secondItem="orh-wm-HrL" secondAttribute="trailing" id="Hwf-oO-Lm0"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="leadingMargin" secondItem="eoQ-yN-aVA" secondAttribute="leading" constant="-6" id="0yb-eN-86o"/>
                     <constraint firstItem="Zle-31-bG7" firstAttribute="top" secondItem="UFj-wN-m2V" secondAttribute="topMargin" id="2f7-iv-sXb"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="tNb-aK-YzW" secondAttribute="trailing" constant="6" id="6sx-qB-wLu"/>
                     <constraint firstItem="Zle-31-bG7" firstAttribute="bottom" secondItem="UFj-wN-m2V" secondAttribute="bottomMargin" id="KqZ-6U-3pY"/>
                     <constraint firstItem="Zle-31-bG7" firstAttribute="leading" secondItem="UFj-wN-m2V" secondAttribute="leadingMargin" id="eHF-6L-lJy"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Zle-31-bG7" secondAttribute="trailing" id="kgO-FG-pwB"/>

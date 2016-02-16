@@ -29,6 +29,7 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
         
         // Sets the elements' text.
         forgotPasswordLabel.text = NSLocalizedString("reset_password_message", comment: "")
+        forgotPasswordLabel.textColor = Color.secondary_dark
         emailTextField?.placeholder = NSLocalizedString("email", comment: "")
         resetPasswordButton?.setTitle(NSLocalizedString("reset", comment: ""), forState: .Normal)
         

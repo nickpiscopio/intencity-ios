@@ -6,6 +6,7 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
@@ -48,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
+        
+        // Moves the view up with the keyboard is active.
+        IQKeyboardManager.sharedManager().enable = true
         
         return true
     }

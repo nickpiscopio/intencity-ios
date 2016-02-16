@@ -27,6 +27,7 @@ class TermsOfUseViewController: UIViewController
         let localfilePath = NSBundle.mainBundle().URLForResource("terms", withExtension: "html");
         let myRequest = NSURLRequest(URL: localfilePath!);
         webView.loadRequest(myRequest);
+        webView.scrollView.bounces = false
     }
     
     override func didReceiveMemoryWarning()

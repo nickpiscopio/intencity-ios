@@ -219,25 +219,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="c11-yH-fVC" firstAttribute="top" secondItem="JB6-pG-d8R" secondAttribute="bottom" constant="16" id="AIG-Hf-HDU"/>
-                            <constraint firstItem="2e8-Nz-bng" firstAttribute="leading" secondItem="n8E-dv-mh1" secondAttribute="leadingMargin" id="GW3-aR-IUL"/>
-                            <constraint firstItem="2e8-Nz-bng" firstAttribute="centerX" secondItem="n8E-dv-mh1" secondAttribute="centerX" id="YID-ko-Q7b"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2e8-Nz-bng" secondAttribute="trailing" id="YJM-Qe-rTh"/>
-                            <constraint firstItem="2e8-Nz-bng" firstAttribute="bottom" secondItem="n8E-dv-mh1" secondAttribute="bottomMargin" id="aCq-1F-Sea"/>
-                            <constraint firstItem="2e8-Nz-bng" firstAttribute="height" secondItem="n8E-dv-mh1" secondAttribute="height" id="bpl-aL-Axo"/>
-                            <constraint firstItem="2e8-Nz-bng" firstAttribute="width" secondItem="n8E-dv-mh1" secondAttribute="width" id="mIB-WL-yXc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JB6-pG-d8R" secondAttribute="trailing" constant="16" id="tj8-cD-1UX"/>
-                            <constraint firstItem="2e8-Nz-bng" firstAttribute="centerY" secondItem="n8E-dv-mh1" secondAttribute="centerY" id="xBQ-Uz-Dyr"/>
-                            <constraint firstItem="2e8-Nz-bng" firstAttribute="top" secondItem="n8E-dv-mh1" secondAttribute="topMargin" id="xvL-5J-N4j"/>
+                            <constraint firstItem="2e8-Nz-bng" firstAttribute="top" secondItem="n8E-dv-mh1" secondAttribute="top" id="I9W-dD-Emk"/>
+                            <constraint firstAttribute="trailing" secondItem="2e8-Nz-bng" secondAttribute="trailing" id="JQ1-7Y-dAo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JB6-pG-d8R" secondAttribute="trailing" id="LSu-XZ-VLc"/>
+                            <constraint firstItem="2e8-Nz-bng" firstAttribute="leading" secondItem="n8E-dv-mh1" secondAttribute="leading" id="MGx-yn-iTv"/>
+                            <constraint firstItem="c11-yH-fVC" firstAttribute="top" secondItem="JB6-pG-d8R" secondAttribute="bottom" id="TVI-33-jAY"/>
+                            <constraint firstAttribute="bottom" secondItem="2e8-Nz-bng" secondAttribute="bottom" id="jjx-tz-8jg"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="YID-ko-Q7b"/>
-                                <exclude reference="bpl-aL-Axo"/>
-                                <exclude reference="mIB-WL-yXc"/>
-                                <exclude reference="xBQ-Uz-Dyr"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="KlJ-Jv-PRs">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="c3l-ac-jjQ">
@@ -317,6 +305,10 @@
         <scene sceneID="cya-5m-jlt">
             <objects>
                 <viewController id="sdX-3P-1GU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UQK-QP-oh7"/>
+                        <viewControllerLayoutGuide type="bottom" id="7b6-BH-wG0"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rXZ-Ce-vf7">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="41"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -352,7 +344,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uc6-a6-vsA">
                                         <rect key="frame" x="377" y="0.0" width="184" height="41"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Intensity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bj2-g4-7P5">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intensity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bj2-g4-7P5">
                                                 <rect key="frame" x="68" y="0.0" width="49" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
