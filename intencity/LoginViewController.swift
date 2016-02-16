@@ -82,6 +82,8 @@ class LoginViewController: PageViewController, ServiceDelegate
         }
         else
         {
+            startLogin()
+            
             ServiceTask(event: ServiceEvent.LOGIN, delegate: self, serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS, params: Constant.getValidateUserCredentialsServiceParameters(email, password: password))
         }
     }
@@ -101,6 +103,8 @@ class LoginViewController: PageViewController, ServiceDelegate
             trialEmail = lastName +  createdDateString + "@intencity.fit";
             let password = createdDateString;
             
+            startLogin()
+            
             ServiceTask(event: ServiceEvent.TRIAL, delegate: self,
                 serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
                 params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType))
@@ -116,8 +120,6 @@ class LoginViewController: PageViewController, ServiceDelegate
     */
     func onRetrievalSuccessful(event: Int, result: String)
     {
-        startLogin()
-        
         if (event == ServiceEvent.LOGIN)
         {
             let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "")

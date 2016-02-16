@@ -125,17 +125,17 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if (state == Constant.ROUTINE_CELL)
         {
             nextExerciseButton.hidden = true
-            var recommended = ""
+            var recommended: String?
             
             for muscleGroups in json as! NSArray
             {
                 let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
-                recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as! String
+                recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as? String
                 
                 displayMuscleGroups.append(muscleGroup)
             }
             
-            self.recommended = (recommended == "") ? 0 : displayMuscleGroups.indexOf(recommended)!
+            self.recommended = (recommended == nil || recommended! == "") ? 0 : displayMuscleGroups.indexOf(recommended!)!
         }
         else
         {
