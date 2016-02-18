@@ -289,8 +289,4 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // handle delete (by removing the data from your array and updating the tableview)
         }
     }
-    
-    //    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    //        return "Section \(section)"
-    //    }
 }

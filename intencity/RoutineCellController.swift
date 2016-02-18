@@ -43,9 +43,25 @@ class RoutineCellController: UITableViewCell
 
         dropDown.anchorView = routineButton
         dropDown.bottomOffset = CGPoint(x: 0, y: routineButton.bounds.height + routineButton.bounds.height / 2)
+        // We set the width here to the largest item in the data source.
+        // We do this so the drop down doesn't keep resizing every time an item is selcted.
         dropDown.width = 147
     }
     
+    /**
+     * Sets the data source for the dropdown.
+     */
+    func setDropDownDataSource(recommended: Int)
+    {
+        dropDown.dataSource = dataSource
+        dropDown.selectRowAtIndex(recommended)
+        
+        self.routineButton.setTitle(dataSource[recommended], forState: .Normal)
+    }
+    
+    /**
+     * The drop down click.
+     */
     @IBAction func showOrDismiss(sender: AnyObject)
     {
         if dropDown.hidden
@@ -56,12 +72,6 @@ class RoutineCellController: UITableViewCell
         {
             dropDown.hide()
         }
-    }
-    
-    func setDropDownDataSource(recommended: Int)
-    {
-        dropDown.dataSource = dataSource
-        dropDown.selectRowAtIndex(recommended)
     }
 
     /**
