@@ -18,6 +18,7 @@ struct Constant
     static let ROUTINE_CELL = "RoutineCell"
     static let EXERCISE_CELL = "ExerciseCell"
     static let DIRECTION_CELL = "DirectionCell"
+    static let SET_CELL = "SetCell"
     
     static let MAIN_VIEW = "IntencityTabView"
     static let DEMO_VIEW = "DemoViewController"

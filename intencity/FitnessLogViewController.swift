@@ -102,6 +102,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     @IBAction func nextExerciseClicked(sender: AnyObject)
     {
+        addExercise()
+    }
+    
+    /**
+     * Adds an exercise to teh currentExercises.
+     */
+    func addExercise()
+    {
         if (currentExercises.count < allExercises.count)
         {
             // Get the next exercise.
@@ -211,6 +219,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         let sections = NSIndexSet(indexesInRange: range)
             
         self.tableView.reloadSections(sections, withRowAnimation: .Top)
+        
+        if (state == Constant.EXERCISE_CELL)
+        {
+            // Start the view off by inserting a row
+            addExercise()
+        }
     }
     
     /**
@@ -269,7 +283,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             // handle delete (by removing the data from your array and updating the tableview)
         }
