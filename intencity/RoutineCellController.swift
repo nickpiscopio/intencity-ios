@@ -6,16 +6,20 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
+import DropDown
 
 class RoutineCellController: UITableViewCell
 {
-    @IBOutlet weak var routinePickerView: UIPickerView!
     @IBOutlet weak var routineTitle: UILabel!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var routineButton: UIButton!
+    @IBOutlet weak var routineDropDown: UIButton!
     
     weak var delegate: RoutineDelegate?
     
-    var pickerDataSource = [String]()
+    var dropDown = DropDown()
+    
+    var dataSource = [String]()
     
     var selectedRoutineNumber = 0  
     
@@ -27,37 +31,39 @@ class RoutineCellController: UITableViewCell
         
         routineTitle.text = NSLocalizedString("title_routine", comment: "")
         startButton.setTitle(NSLocalizedString("start", comment: ""), forState: .Normal)
+        
+        routineButton.setTitleColor(Color.secondary_dark, forState: .Normal)
+        
+        dropDown.selectionAction = { [unowned self] (index, item) in
+            // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
+            // CompletedMuscleGroup starts at 1.
+            self.selectedRoutineNumber = index + 1
+            self.routineButton.setTitle(item, forState: .Normal)
+        }
+
+        dropDown.anchorView = routineButton
+        dropDown.bottomOffset = CGPoint(x: 0, y: routineButton.bounds.height + routineButton.bounds.height / 2)
+        dropDown.width = 147
     }
     
-    override func setSelected(selected: Bool, animated: Bool)
+    @IBAction func showOrDismiss(sender: AnyObject)
     {
-        super.setSelected(selected, animated: animated)
+        if dropDown.hidden
+        {
+            dropDown.show()
+        }
+        else
+        {
+            dropDown.hide()
+        }
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+    func setDropDownDataSource(recommended: Int)
     {
-        return 1
+        dropDown.dataSource = dataSource
+        dropDown.selectRowAtIndex(recommended)
     }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
-    {
-        return pickerDataSource.count
-    }
-    
-    // pragma MARK: UIPickerViewDelegate
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
-    {
-        return pickerDataSource[row]
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-    {
-        // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
-        // CompletedMuscleGroup starts at 1.
-        selectedRoutineNumber = row + 1
-    }
-    
+
     /**
      * The start button click.
      */

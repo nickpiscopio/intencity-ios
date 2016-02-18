@@ -84,11 +84,13 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods/DropDown.framework"
   install_framework "Pods/IQKeyboardManagerSwift.framework"
   install_framework "Pods/RNCryptor.framework"
   install_framework "Pods/youtube_ios_player_helper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods/DropDown.framework"
   install_framework "Pods/IQKeyboardManagerSwift.framework"
   install_framework "Pods/RNCryptor.framework"
   install_framework "Pods/youtube_ios_player_helper.framework"

@@ -7,6 +7,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import DropDown
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
@@ -52,6 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         // Moves the view up with the keyboard is active.
         IQKeyboardManager.sharedManager().enable = true
+        
+        // Starts the DropDown listening for the keyboard.
+        // Documentation: https://cocoapods.org/pods/DropDown
+        DropDown.startListeningToKeyboard()
+        DropDown.appearance().textColor = Color.secondary_dark
         
         return true
     }

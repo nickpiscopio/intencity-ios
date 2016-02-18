@@ -261,11 +261,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.delegate = self
-            cell.pickerDataSource = displayMuscleGroups
+            cell.dataSource = displayMuscleGroups
             // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
             // CompletedMuscleGroup starts at 1.
             cell.selectedRoutineNumber = recommended + 1
-            cell.routinePickerView.selectRow(recommended, inComponent: 0, animated: false)
+            cell.setDropDownDataSource(recommended)
             return cell
         }
         else

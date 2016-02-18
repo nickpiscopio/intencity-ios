@@ -1,14 +1,17 @@
 PODS:
+  - DropDown (0.1.4)
   - IQKeyboardManagerSwift (4.0.0)
   - RNCryptor (4.0.0)
   - youtube-ios-player-helper (0.1.4)
 
 DEPENDENCIES:
+  - DropDown
   - IQKeyboardManagerSwift
   - RNCryptor (~> 4.0.0-beta)
   - youtube-ios-player-helper (= 0.1.4)
 
 SPEC CHECKSUMS:
+  DropDown: 09ab078ba0f11d426689526b45d4d5179420e321
   IQKeyboardManagerSwift: ede2a27b4e1ce053d03073b9c7fa439322f5e405
   RNCryptor: 59d6483908115af5c12b884db23392024e52a5fe
   youtube-ios-player-helper: 84b1485ebb4b7c6b619c6e05edcb55186723a7c6
