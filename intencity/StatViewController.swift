@@ -8,6 +8,7 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
+import DropDown
 
 class StatViewController: UIViewController, SetDelegate
 {
@@ -20,6 +21,8 @@ class StatViewController: UIViewController, SetDelegate
     @IBOutlet weak var IntensityTitleLabel: UILabel!
     var exerciseName: String!
     var sets: [Set] = []
+    
+    let dropDown = DropDown()
     
     override func viewDidLoad()
     {
@@ -35,7 +38,6 @@ class StatViewController: UIViewController, SetDelegate
         self.tabBarController?.tabBar.hidden = true
         
         weightTitleLabel.text = NSLocalizedString("title_weight", comment: "")
-        durationTitleLabel.setTitle(NSLocalizedString("title_reps", comment: ""), forState: .Normal)
         IntensityTitleLabel.text = NSLocalizedString("title_intensity", comment: "")
         
         weightTitleLabel.textColor = Color.secondary_light
@@ -51,6 +53,33 @@ class StatViewController: UIViewController, SetDelegate
         Util.addUITableViewCell(tableView, nibNamed: "Set", cellName: Constant.SET_CELL)
         
         addSet()
+        
+        // Initialize the duration dropdown.
+        dropDown.dataSource = [ NSLocalizedString("title_reps", comment: ""), NSLocalizedString("title_time", comment: "") ]
+        dropDown.selectionAction = { [unowned self] (index, item) in
+            self.durationTitleLabel.setTitle(item, forState: .Normal)
+        }
+        dropDown.anchorView = durationTitleLabel
+        dropDown.bottomOffset = CGPoint(x: 0, y:durationTitleLabel.bounds.height / 2)
+        // We set the width here to the largest item in the data source.
+        // We do this so the drop down doesn't keep resizing every time an item is selcted.
+        dropDown.width = 53
+        dropDown.selectRowAtIndex(0)
+    }
+    
+    /**
+     * The drop down click.
+     */
+    @IBAction func showOrDismiss(sender: AnyObject)
+    {
+        if dropDown.hidden
+        {
+            dropDown.show()
+        }
+        else
+        {
+            dropDown.hide()
+        }
     }
     
     override func didReceiveMemoryWarning()

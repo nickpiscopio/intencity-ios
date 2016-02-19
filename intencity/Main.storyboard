@@ -127,10 +127,16 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <state key="normal" title="Reps"/>
+                                                <connections>
+                                                    <action selector="showOrDismiss:" destination="9cA-AX-d3G" eventType="touchUpInside" id="C7G-fw-DFL"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8b-es-Fi3">
                                                 <rect key="frame" x="60" y="0.0" width="60" height="50"/>
                                                 <state key="normal" image="dropdown"/>
+                                                <connections>
+                                                    <action selector="showOrDismiss:" destination="9cA-AX-d3G" eventType="touchUpInside" id="BaH-Bj-LGj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -148,8 +154,8 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-6G-chg">
-                                <rect key="frame" x="0.0" y="133" width="600" height="6"/>
-                                <color key="backgroundColor" red="0.25490196078431371" green="0.25098039215686274" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="133" width="600" height="1"/>
+                                <color key="backgroundColor" red="0.80784313725490198" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ewp-6K-JeQ"/>
                                 </constraints>
@@ -181,7 +187,7 @@
                             <constraint firstItem="ekD-Ql-pDp" firstAttribute="top" secondItem="4pw-iJ-a0e" secondAttribute="bottom" constant="16" id="e1H-Yt-FGs"/>
                             <constraint firstAttribute="trailing" secondItem="95q-Y4-L8P" secondAttribute="trailing" id="e1t-jh-HbW"/>
                             <constraint firstItem="YQi-6G-chg" firstAttribute="top" secondItem="ZXw-Kz-8Nt" secondAttribute="bottom" constant="1" id="hxp-Zc-5Pp"/>
-                            <constraint firstItem="95q-Y4-L8P" firstAttribute="top" secondItem="YQi-6G-chg" secondAttribute="bottom" constant="5" id="l2p-Qs-9iT"/>
+                            <constraint firstItem="95q-Y4-L8P" firstAttribute="top" secondItem="YQi-6G-chg" secondAttribute="bottom" id="l2p-Qs-9iT"/>
                             <constraint firstAttribute="trailing" secondItem="FkK-UA-N1i" secondAttribute="trailing" constant="16" id="vW1-qE-KIl"/>
                             <constraint firstItem="ekD-Ql-pDp" firstAttribute="top" secondItem="95q-Y4-L8P" secondAttribute="bottom" id="wal-YG-fKv"/>
                             <constraint firstAttribute="trailing" secondItem="4pw-iJ-a0e" secondAttribute="trailing" constant="16" id="xNB-6r-vRd"/>
