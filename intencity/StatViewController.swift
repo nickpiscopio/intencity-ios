@@ -109,12 +109,17 @@ class StatViewController: UIViewController, SetDelegate
     {
         let index = indexPath.row
         let set = sets[index]
+        let difficulty = set.difficulty
+        let reps = set.reps
+        let duration = reps > 0 ? String(reps) : set.duration
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.SET_CELL) as! SetCellController
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.delegate = self
         cell.index = index
-        cell.weightTextField.text = String(set.reps)
-        cell.intensityLabel.text = String(set.difficulty)
+        cell.weightTextField.text = String(set.weight)
+        cell.durationTextField.text = duration
+        cell.dropDown.selectRowAtIndex(difficulty - 1)
+        cell.intensityButton.setTitle(String(difficulty), forState: .Normal)
         cell.setNumberLabel.text = "\(index + 1)"
         return cell
     }
@@ -140,7 +145,20 @@ class StatViewController: UIViewController, SetDelegate
      */
     func addSet()
     {
-        let set = Set(webId: 0, weight: 0, reps: Int(Constant.CODE_FAILED), duration: String(Constant.CODE_FAILED), difficulty: 10, notes: notesTextField.text!)
+        var weight: Float = 0.0
+        var difficulty = 10
+        
+        let totalSets = sets.count
+        
+        if (totalSets > 0)
+        {
+            let lastSet = totalSets - 1
+            
+            weight = sets[lastSet].weight
+            difficulty = sets[lastSet].difficulty
+        }
+        
+        let set = Set(webId: Int(Constant.CODE_FAILED), weight: weight, reps: Int(Constant.CODE_FAILED), duration: String(Constant.CODE_FAILED), difficulty: difficulty, notes: notesTextField.text!)
         sets.append(set)
         
         insertRow()
@@ -158,7 +176,7 @@ class StatViewController: UIViewController, SetDelegate
     }
     
     /**
-     * Calls the callback for when the weight is updated.
+     * The callback for when the weight is updated.
      */
     func onWeightUpdated(index: Int, weight: Float)
     {
@@ -166,7 +184,7 @@ class StatViewController: UIViewController, SetDelegate
     }
     
     /**
-     * Calls the callback for when the reps are updated.
+     * The callback for when the reps are updated.
      */
     func onRepsUpdated(index: Int, reps: Int)
     {
@@ -174,10 +192,18 @@ class StatViewController: UIViewController, SetDelegate
     }
     
     /**
-     * Calls the callback for when the duration is updated.
+     * The callback for when the duration is updated.
      */
     func onTimeUpdated(index: Int, time: String)
     {
         sets[index].duration = time
+    }
+    
+    /**
+     * The callback for when the intensity is updated.
+     */
+    func onIntensityUpdated(index: Int, intensity: Int)
+    {
+        sets[index].difficulty = intensity
     }
 }

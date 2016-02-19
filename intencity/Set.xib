@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="wCa-oy-OQb">
-                        <rect key="frame" x="0.0" y="3" width="533" height="45.5"/>
+                        <rect key="frame" x="0.0" y="3" width="533" height="46"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMe-Bb-4t9">
                                 <rect key="frame" x="0.0" y="17" width="111" height="12"/>
@@ -24,18 +24,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aqS-MP-NZT">
-                                <rect key="frame" x="141" y="8" width="110.5" height="30"/>
+                                <rect key="frame" x="141" y="8" width="111" height="30"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pqy-0f-2Ue">
-                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="87" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
                                         <connections>
                                             <action selector="weightFinishedEditing:" destination="d89-Nv-ATs" eventType="editingDidEnd" id="mcV-jN-RGb"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LBS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVC-b4-yJi">
-                                        <rect key="frame" x="91.5" y="0.0" width="19" height="30"/>
+                                        <rect key="frame" x="92" y="0.0" width="19" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -43,25 +43,31 @@
                                 </subviews>
                             </stackView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZWu-49-fzY">
-                                <rect key="frame" x="281.5" y="8" width="111" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="282" y="8" width="111" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                                 <connections>
                                     <action selector="durationFinishedEditing:" destination="d89-Nv-ATs" eventType="editingDidEnd" id="DuJ-Iu-3cZ"/>
                                 </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TdJ-09-TAm">
-                                <rect key="frame" x="422.5" y="12.5" width="110.5" height="20.5"/>
+                                <rect key="frame" x="423" y="10" width="111" height="27"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLK-FT-MMJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="55" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="B47-pi-AAC">
-                                        <rect key="frame" x="55" y="6" width="55.5" height="9"/>
-                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNQ-00-GKN">
+                                        <rect key="frame" x="0.0" y="0.0" width="55" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="10"/>
+                                        <connections>
+                                            <action selector="showOrDismiss:" destination="d89-Nv-ATs" eventType="touchUpInside" id="FpS-b6-VJj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-Tu-FZe">
+                                        <rect key="frame" x="55" y="3" width="56" height="22"/>
+                                        <state key="normal" image="dropdown"/>
+                                        <connections>
+                                            <action selector="showOrDismiss:" destination="d89-Nv-ATs" eventType="touchUpInside" id="LqI-7s-Ufk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -76,8 +82,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="durationTextField" destination="ZWu-49-fzY" id="KwL-2P-VGc"/>
-                <outlet property="intensityDropDownImageView" destination="B47-pi-AAC" id="Rqe-mP-F3G"/>
-                <outlet property="intensityLabel" destination="jLK-FT-MMJ" id="05v-4s-3de"/>
+                <outlet property="intensityButton" destination="vNQ-00-GKN" id="Fba-lA-p9r"/>
+                <outlet property="intensityDropDown" destination="ga0-Tu-FZe" id="wwf-dt-fD7"/>
                 <outlet property="setNumberLabel" destination="DMe-Bb-4t9" id="nQN-Xb-2Vn"/>
                 <outlet property="weightLabel" destination="cVC-b4-yJi" id="941-iR-nye"/>
                 <outlet property="weightTextField" destination="Pqy-0f-2Ue" id="FWP-oL-UUy"/>
