@@ -17,7 +17,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     var recommended = 0;
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var nextExerciseButton: UIButton!
     
     var email = "";
@@ -28,6 +27,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     var allExercises = [Exercise]()
     
     var exerciseIndex = 0;
+    
+    var selectedRoutine: String!
     
     override func viewDidLoad()
     {
@@ -53,6 +54,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "RoutineCard", cellName: Constant.ROUTINE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: "ExerciseCard", cellName: Constant.EXERCISE_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: "ExerciseListHeader", cellName: Constant.EXERCISE_LIST_HEADER)
     }
 
     override func didReceiveMemoryWarning()
@@ -132,7 +134,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         if (state == Constant.ROUTINE_CELL)
         {
-            nextExerciseButton.hidden = true
             var recommended: String?
             
             for muscleGroups in json as! NSArray
@@ -172,16 +173,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func onStartExercising(routine: Int)
     {
-        print("selected delegate value: \"\(routine)\"")
-        
-        let variables = Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables:  [ email,  String(routine)])
-        
-        print("variables \"\(variables)\"")
+        selectedRoutine = displayMuscleGroups[routine - 1]
         
         ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables:  [ email,  String(routine)]))
-        
+            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables:  [ email,  String(routine)]))        
     }
     
     /**
@@ -252,6 +248,24 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         // Return the number of rows in the section.
         return state == Constant.ROUTINE_CELL ? numberOfCells : currentExercises.count
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        if (state == Constant.EXERCISE_CELL)
+        {
+            let  headerCell = tableView.dequeueReusableCellWithIdentifier("ExerciseListHeader") as! ExerciseListHeaderController
+            headerCell.routineNameLabel.text = selectedRoutine
+            
+            return headerCell.contentView
+        }
+    
+        return nil       
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+        return state == Constant.EXERCISE_CELL ? 60 : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell

@@ -131,7 +131,7 @@
                                                     <action selector="showOrDismiss:" destination="9cA-AX-d3G" eventType="touchUpInside" id="C7G-fw-DFL"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8b-es-Fi3">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8b-es-Fi3">
                                                 <rect key="frame" x="60" y="0.0" width="60" height="50"/>
                                                 <state key="normal" image="dropdown"/>
                                                 <connections>

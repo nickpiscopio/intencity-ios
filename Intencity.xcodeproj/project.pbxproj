@@ -57,6 +57,8 @@
 		BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */; };
 		BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */; };
 		BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */; };
+		BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */; };
+		BDE8BED61C77700900DBFB31 /* ExerciseListHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */; };
 		F386C2DCFFCB6795EEF5B587 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B639B36984DE79BC8DABA /* Pods.framework */; };
@@ -117,6 +119,8 @@
 		BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineDelegate.swift; sourceTree = "<group>"; };
 		BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButton.swift; sourceTree = "<group>"; };
+		BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseListHeader.xib; sourceTree = "<group>"; };
+		BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseListHeaderController.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
 		C82B639B36984DE79BC8DABA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +169,7 @@
 		BD36EC201C70EB6600F993CE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */,
 				BD03C7B41C760A4E00D8911A /* SetCellController.swift */,
 				BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */,
 				BD947A371C6F6F50003F3767 /* RoutineCellController.swift */,
@@ -258,6 +263,7 @@
 		BD9EF2601C6A20E300E520CB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */,
 				BD947A351C6F6E5F003F3767 /* RoutineCard.xib */,
 				BD36EC281C71048600F993CE /* ExerciseCard.xib */,
 				BD36EC321C720C6B00F993CE /* Direction.xib */,
@@ -401,6 +407,7 @@
 				BD36EC291C71048600F993CE /* ExerciseCard.xib in Resources */,
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
 				BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */,
+				BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */,
 				BD03C7B31C76082B00D8911A /* Set.xib in Resources */,
 				BD9EF2661C6A278800E520CB /* Login.storyboard in Resources */,
 				BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */,
@@ -498,6 +505,7 @@
 				BD9EF2B21C6A56CE00E520CB /* IntencityButtonNoBackground.swift in Sources */,
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
+				BDE8BED61C77700900DBFB31 /* ExerciseListHeaderController.swift in Sources */,
 				BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */,
 				BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */,
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,

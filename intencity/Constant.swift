@@ -14,7 +14,7 @@ struct Constant
     // iOS Constants
     static let MAIN_STORYBOARD = "Main"
     static let DEMO_STORYBOARD = "Demo"
-    static let HEADER_CELL = "HeaderCell"
+    static let EXERCISE_LIST_HEADER = "ExerciseListHeader"
     static let ROUTINE_CELL = "RoutineCell"
     static let EXERCISE_CELL = "ExerciseCell"
     static let DIRECTION_CELL = "DirectionCell"

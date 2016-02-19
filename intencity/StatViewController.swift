@@ -64,6 +64,7 @@ class StatViewController: UIViewController, SetDelegate
         // We set the width here to the largest item in the data source.
         // We do this so the drop down doesn't keep resizing every time an item is selcted.
         dropDown.width = 53
+        durationTitleLabel.setTitle(NSLocalizedString("title_reps", comment: ""), forState: .Normal)
         dropDown.selectRowAtIndex(0)
     }
     
