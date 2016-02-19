@@ -14,6 +14,10 @@ class StatViewController: UIViewController, SetDelegate
     @IBOutlet weak var notesTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var durationTitleLabel: UIButton!
+    @IBOutlet weak var weightTitleLabel: UILabel!
+    @IBOutlet weak var durationDropDownImage: UIButton!
+    @IBOutlet weak var IntensityTitleLabel: UILabel!
     var exerciseName: String!
     var sets: [Set] = []
     
@@ -29,6 +33,14 @@ class StatViewController: UIViewController, SetDelegate
         
         // Hides the tab bar.
         self.tabBarController?.tabBar.hidden = true
+        
+        weightTitleLabel.text = NSLocalizedString("title_weight", comment: "")
+        durationTitleLabel.setTitle(NSLocalizedString("title_reps", comment: ""), forState: .Normal)
+        IntensityTitleLabel.text = NSLocalizedString("title_intensity", comment: "")
+        
+        weightTitleLabel.textColor = Color.secondary_light
+        IntensityTitleLabel.textColor = Color.secondary_light
+        durationTitleLabel.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
         
         notesTextField?.placeholder = NSLocalizedString("note_hint", comment: "")
         
