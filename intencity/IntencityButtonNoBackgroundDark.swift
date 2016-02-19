@@ -2,7 +2,7 @@
 //  IntencityButtonNoBackground.swift
 //  Intencity
 //
-//  This class is Intencity's version of a button that doesn't have a background until selected.
+//  This class is Intencity's version of a button that doesn't have a background  until selected.
 //
 //  Created by Nick Piscopio on 2/9/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
@@ -10,7 +10,7 @@
 import UIKit
 import QuartzCore
 
-class IntencityButtonNoBackground: UIButton
+class IntencityButtonNoBackgroundDark: UIButton
 {
     required init?(coder aDecoder: NSCoder)
     {
@@ -45,6 +45,6 @@ class IntencityButtonNoBackground: UIButton
      */
     func buttonDown()
     {
-        self.layer.backgroundColor = Color.shadow.CGColor
+        self.layer.backgroundColor = Color.shadow_dark.CGColor
     }
 }

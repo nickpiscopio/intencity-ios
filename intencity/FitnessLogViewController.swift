@@ -177,7 +177,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables:  [ email,  String(routine)]))        
+            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables:  [ email,  String(routine)]))
     }
     
     /**
@@ -265,7 +265,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return state == Constant.EXERCISE_CELL ? 60 : 0
+        return state == Constant.EXERCISE_CELL ? 50 : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
