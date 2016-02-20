@@ -265,7 +265,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return state == Constant.EXERCISE_CELL ? 50 : 0
+        return state == Constant.EXERCISE_CELL ? 65 : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
