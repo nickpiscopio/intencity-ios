@@ -82,10 +82,10 @@ class SetCellController: UITableViewCell
      */
     @IBAction func durationFinishedEditing(sender: AnyObject)
     {
-        let duration: Int? = Int(durationTextField.text!)
+        let duration: String? = durationTextField.text!
         if (duration != nil)
         {
-            delegate?.onRepsUpdated(index, reps: duration!)
+            delegate?.onDurationUpdated(index, duration: duration!)
         }        
     }
 }

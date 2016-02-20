@@ -12,7 +12,6 @@ import Foundation
 @objc protocol SetDelegate
 {    
     func onWeightUpdated(index: Int, weight: Float)
-    func onRepsUpdated(index: Int, reps: Int)
-    func onTimeUpdated(index: Int, time: String)
+    func onDurationUpdated(index: Int, duration: String)
     func onIntensityUpdated(index: Int, intensity: Int)
 }

@@ -58,6 +58,8 @@ class StatViewController: UIViewController, SetDelegate
         dropDown.dataSource = [ NSLocalizedString("title_reps", comment: ""), NSLocalizedString("title_time", comment: "") ]
         dropDown.selectionAction = { [unowned self] (index, item) in
             self.durationTitleLabel.setTitle(item, forState: .Normal)
+            
+            self.setDuration(item)
         }
         dropDown.anchorView = durationTitleLabel
         dropDown.bottomOffset = CGPoint(x: 0, y:durationTitleLabel.bounds.height / 2)
@@ -142,6 +144,43 @@ class StatViewController: UIViewController, SetDelegate
     }
     
     /**
+     * Changes the sets to either be time or reps based.
+     */
+    func setDuration(type: String)
+    {
+        let length = sets.count
+        for var i = 0; i < length; i++
+        {
+            var duration = ""
+            var reps = 0
+            
+            if (type == NSLocalizedString("title_reps", comment: ""))
+            {
+                duration = String(Constant.CODE_FAILED)
+                reps = Int(sets[i].duration.stringByReplacingOccurrencesOfString(":", withString: ""))!
+            }
+            else
+            {
+                let time = String(format: "%06d", sets[i].reps)
+
+                if let regex = try? NSRegularExpression(pattern: "..(?!$)", options: .CaseInsensitive)
+                {
+                    duration = regex.stringByReplacingMatchesInString(time, options: .WithTransparentBounds, range: NSMakeRange(0, time.characters.count), withTemplate: "$0:")
+                }
+                
+                reps = Int(Constant.CODE_FAILED)
+            }
+            
+            sets[i].duration = duration
+            sets[i].reps = reps
+        }
+        
+        // reload table after done
+        
+        tableView.reloadData()
+    }
+    
+    /**
      * Adds a new set for an exercise
      */
     func addSet()
@@ -187,17 +226,17 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * The callback for when the reps are updated.
      */
-    func onRepsUpdated(index: Int, reps: Int)
+    func onDurationUpdated(index: Int, duration: String)
     {
-        sets[index].reps = reps
-    }
-    
-    /**
-     * The callback for when the duration is updated.
-     */
-    func onTimeUpdated(index: Int, time: String)
-    {
-        sets[index].duration = time
+        if (dropDown.selectedItem! == NSLocalizedString("title_reps", comment: ""))
+        {
+            sets[index].reps = Int(duration)!
+        }
+        else
+        {
+            sets[index].duration = duration
+        }
+        
     }
     
     /**
