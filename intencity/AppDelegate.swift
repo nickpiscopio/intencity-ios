@@ -59,6 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         DropDown.startListeningToKeyboard()
         DropDown.appearance().textColor = Color.secondary_dark
         
+        // Create the database if it doesn't exist.
+        DBHelper().createDB()
+        
         return true
     }
 

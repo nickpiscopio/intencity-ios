@@ -10,3 +10,5 @@ pod 'RNCryptor', '~> 4.0.0-beta'
 pod 'IQKeyboardManagerSwift'
 
 pod 'DropDown'
+
+pod 'FMDB'

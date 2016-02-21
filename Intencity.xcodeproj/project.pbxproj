@@ -60,6 +60,8 @@
 		BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */; };
 		BDE8BED61C77700900DBFB31 /* ExerciseListHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */; };
 		BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */; };
+		BDF44A331C79F46D00B47CD1 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A321C79F46D00B47CD1 /* DBHelper.swift */; };
+		BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */; };
 		F386C2DCFFCB6795EEF5B587 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B639B36984DE79BC8DABA /* Pods.framework */; };
@@ -123,6 +125,8 @@
 		BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseListHeader.xib; sourceTree = "<group>"; };
 		BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseListHeaderController.swift; sourceTree = "<group>"; };
 		BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundDark.swift; sourceTree = "<group>"; };
+		BDF44A321C79F46D00B47CD1 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTable.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
 		C82B639B36984DE79BC8DABA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +213,7 @@
 				BD9EF2C01C6B829A00E520CB /* Delegates */,
 				BD9EF2BD1C6B722300E520CB /* Tasks */,
 				BD9EF2601C6A20E300E520CB /* Views */,
+				BDF44A341C79F61B00B47CD1 /* Helper */,
 				BD1053961C6CC729004C10C7 /* Util */,
 			);
 			path = intencity;
@@ -334,6 +339,15 @@
 				BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */,
 			);
 			name = Delegates;
+			sourceTree = "<group>";
+		};
+		BDF44A341C79F61B00B47CD1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BDF44A321C79F46D00B47CD1 /* DBHelper.swift */,
+				BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		D6767112EB4CDF081AF45A57 /* Pods */ = {
@@ -507,9 +521,11 @@
 				BD9EF2B01C6A52FA00E520CB /* IntencityButton.swift in Sources */,
 				BD9EF2B21C6A56CE00E520CB /* IntencityButtonNoBackground.swift in Sources */,
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
+				BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */,
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
 				BDE8BED61C77700900DBFB31 /* ExerciseListHeaderController.swift in Sources */,
 				BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */,
+				BDF44A331C79F46D00B47CD1 /* DBHelper.swift in Sources */,
 				BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */,
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
