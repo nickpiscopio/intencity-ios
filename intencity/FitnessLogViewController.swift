@@ -24,11 +24,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     var state = "";
     
     var currentExercises = [Exercise]()
-    var allExercises = [Exercise]()
     
-    var exerciseIndex = 0;
-    
-    var selectedRoutine: String!
+    var exerciseData: ExerciseData!
     
     override func viewDidLoad()
     {
@@ -55,6 +52,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         Util.addUITableViewCell(tableView, nibNamed: "RoutineCard", cellName: Constant.ROUTINE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: "ExerciseCard", cellName: Constant.EXERCISE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: "ExerciseListHeader", cellName: Constant.EXERCISE_LIST_HEADER)
+        
+        // Creates the instance of the exercise data so we can store the exercises in the database later.
+        exerciseData = ExerciseData.getInstance()
     }
 
     override func didReceiveMemoryWarning()
@@ -112,10 +112,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func addExercise()
     {
-        if (currentExercises.count < allExercises.count)
+        if (currentExercises.count < exerciseData.exerciseList.count)
         {
             // Get the next exercise.
-            currentExercises.append(allExercises[exerciseIndex++])
+            currentExercises.append(exerciseData.exerciseList[exerciseData.exerciseIndex++])
             
             insertRow()
         }
@@ -168,7 +168,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 
                 let exercise = Exercise(name: exerciseName, sets: sets)
                 
-                allExercises.append(exercise)
+                exerciseData.exerciseList.append(exercise)
             }
         }
         
@@ -180,7 +180,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func onStartExercising(routine: Int)
     {
-        selectedRoutine = displayMuscleGroups[routine - 1]
+        exerciseData.routineName = displayMuscleGroups[routine - 1]
         
         ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
@@ -267,7 +267,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if (state == Constant.EXERCISE_CELL)
         {
             let  headerCell = tableView.dequeueReusableCellWithIdentifier("ExerciseListHeader") as! ExerciseListHeaderController
-            headerCell.routineNameLabel.text = selectedRoutine
+            headerCell.routineNameLabel.text = exerciseData.routineName
             
             return headerCell.contentView
         }

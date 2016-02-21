@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "intencity/FitnessLogViewController.swift"
-            timestampString = "477757829.454704"
+            timestampString = "477765374.841032"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "onRetrievalSuccessful(_:result:)"
             landmarkType = "5">
          </BreakpointContent>
