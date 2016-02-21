@@ -35,7 +35,7 @@ class DBHelper
                                 ExerciseTable.COLUMN_NOTES + DB_TEXT_TYPE +
                                 " );"
     
-    func createDB()
+    func openDb() -> FMDatabase
     {
         let documents = try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
         let fileURL = documents.URLByAppendingPathComponent(DATABASE_NAME)
@@ -44,8 +44,15 @@ class DBHelper
         if !database.open()
         {
             print("Unable to open database")
-            return
+//            return
         }
+        
+        return database
+    }
+    
+    func createDB()
+    {
+        let database = openDb()
         
         do
         {
@@ -58,4 +65,9 @@ class DBHelper
         
         database.close()
     }
+    
+//    func insertIntDb(exerciseList: Array<Exercise>, index: Int)
+//    {
+//        let database = openDb()
+//    }
 }

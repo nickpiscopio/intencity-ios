@@ -57,6 +57,7 @@
 		BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */; };
 		BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */; };
 		BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */; };
+		BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F01C7A0445005817D0 /* ExerciseData.swift */; };
 		BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */; };
 		BDE8BED61C77700900DBFB31 /* ExerciseListHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */; };
 		BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */; };
@@ -122,6 +123,7 @@
 		BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineDelegate.swift; sourceTree = "<group>"; };
 		BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButton.swift; sourceTree = "<group>"; };
+		BDE493F01C7A0445005817D0 /* ExerciseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
 		BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseListHeader.xib; sourceTree = "<group>"; };
 		BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseListHeaderController.swift; sourceTree = "<group>"; };
 		BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundDark.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 			children = (
 				BDF44A321C79F46D00B47CD1 /* DBHelper.swift */,
 				BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */,
+				BDE493F01C7A0445005817D0 /* ExerciseData.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,
 				BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */,
 				BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */,
+				BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */,
 				BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */,
 				BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */,
 				BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */,

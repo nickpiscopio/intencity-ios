@@ -153,13 +153,20 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             for muscleGroups in json as! NSArray
             {
                 let exerciseName = muscleGroups[Constant.COLUMN_EXERCISE_NAME] as! String
-//                let weight = muscleGroups[Constant.COLUMN_EXERCISE_WEIGHT] as! String
-//                let reps = muscleGroups[Constant.COLUMN_EXERCISE_REPS] as! String
-//                let duration = muscleGroups[Constant.COLUMN_EXERCISE_DURATION] as! String
-//                let difficulty = muscleGroups[Constant.COLUMN_EXERCISE_DIFFICULTY] as! String
-//                let notes = muscleGroups[Constant.COLUMN_NOTES] as! String
+                let weight = muscleGroups[Constant.COLUMN_EXERCISE_WEIGHT]
+                let reps = muscleGroups[Constant.COLUMN_EXERCISE_REPS]
+                let duration = muscleGroups[Constant.COLUMN_EXERCISE_DURATION]
+                let difficulty = muscleGroups[Constant.COLUMN_EXERCISE_DIFFICULTY]
+                let notes = muscleGroups[Constant.COLUMN_NOTES]
+
+                let sets = [ Set(webId: Int(Constant.CODE_FAILED),
+                                weight: !(weight is NSNull) ? Float(weight as! String)! : Float(Constant.CODE_FAILED),
+                                reps: !(reps is NSNull) ? Int(reps as! String)! : Int(Constant.CODE_FAILED),
+                                duration: !(duration is NSNull) ? duration as! String : Constant.RETURN_NULL,
+                                difficulty: !(difficulty is NSNull) ? Int(difficulty as! String)! : 10,
+                                notes: !(notes is NSNull) ? notes as! String : "") ]
                 
-                let exercise = Exercise(name: exerciseName)
+                let exercise = Exercise(name: exerciseName, sets: sets)
                 
                 allExercises.append(exercise)
             }
@@ -195,13 +202,18 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     /**
      * The callback for when the edit button is clicked.
+     *
+     * @param index     The index of the exercise that was clicked.
      */
-    func onEditClicked(name: String)
+    func onEditClicked(index: Int)
     {
-        let directionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StatViewController") as! StatViewController
-        directionViewController.exerciseName = name
+        let exercise = currentExercises[index]
         
-        self.navigationController!.pushViewController(directionViewController, animated: true)
+        let statViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StatViewController") as! StatViewController
+        statViewController.exerciseName = exercise.name
+        statViewController.sets = exercise.sets
+        
+        self.navigationController!.pushViewController(statViewController, animated: true)
     }
     
     /**
@@ -284,10 +296,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
         else
         {
-            let exercise = currentExercises[indexPath.item]
+            let index = indexPath.item
+            let exercise = currentExercises[index]
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.delegate = self
+            cell.index = index
             cell.exerciseButton.setTitle(exercise.name, forState: .Normal)
             return cell
         }

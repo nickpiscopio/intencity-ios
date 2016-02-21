@@ -10,5 +10,5 @@ import Foundation
 @objc protocol ExerciseDelegate
 {
     func onExerciseClicked(name: String)
-    func onEditClicked(name: String)
+    func onEditClicked(index: Int)
 }

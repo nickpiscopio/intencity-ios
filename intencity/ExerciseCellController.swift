@@ -14,6 +14,8 @@ class ExerciseCellController: UITableViewCell
     
     weak var delegate: ExerciseDelegate?
     
+    var index: Int!
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()
@@ -33,6 +35,6 @@ class ExerciseCellController: UITableViewCell
     
     @IBAction func EditedClicked(sender: AnyObject)
     {
-        delegate?.onEditClicked((exerciseButton.titleLabel?.text)!)
+        delegate?.onEditClicked(index)
     }
 }

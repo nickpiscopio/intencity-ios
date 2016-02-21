@@ -52,8 +52,6 @@ class StatViewController: UIViewController, SetDelegate
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "Set", cellName: Constant.SET_CELL)
         
-        addSet()
-        
         // Initialize the duration dropdown.
         dropDown.dataSource = [ NSLocalizedString("title_reps", comment: ""), NSLocalizedString("title_time", comment: "") ]
         dropDown.selectionAction = { [unowned self] (index, item) in
