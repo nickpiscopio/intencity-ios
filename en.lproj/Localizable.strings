@@ -197,7 +197,7 @@
 "no_friends" = "We couldn't find the users you follow.";
 
 /*  */
-"rankings_updated" = "Approximate ranking reset:\n%1$s";
+"rankings_updated" = "Approximate ranking reset:\n%1$@";
 
 /* Routine Strings */
 "title_routine" = "What routine would you like to do?";
@@ -359,7 +359,7 @@
 "finish_workout" = "FINISH";
 
 /* Menu Strings */
-"notifications" = "Notifications %1$s";
+"notifications" = "Notifications %1$@";
 
 /*  */
 "title_notifications" = "Notifications";

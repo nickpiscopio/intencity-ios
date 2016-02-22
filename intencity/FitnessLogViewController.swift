@@ -53,7 +53,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "RoutineCard", cellName: Constant.ROUTINE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: "ExerciseCard", cellName: Constant.EXERCISE_CELL)
-        Util.addUITableViewCell(tableView, nibNamed: "ExerciseListHeader", cellName: Constant.EXERCISE_LIST_HEADER)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.EXERCISE_LIST_HEADER, cellName: Constant.EXERCISE_LIST_HEADER)
         
         // Creates the instance of the exercise data so we can store the exercises in the database later.
         exerciseData = ExerciseData.getInstance()
@@ -271,7 +271,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     {
         if (state == Constant.EXERCISE_CELL)
         {
-            let  headerCell = tableView.dequeueReusableCellWithIdentifier("ExerciseListHeader") as! ExerciseListHeaderController
+            let  headerCell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
             headerCell.routineNameLabel.text = exerciseData.routineName
             
             return headerCell.contentView
