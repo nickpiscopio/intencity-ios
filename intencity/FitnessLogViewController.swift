@@ -206,7 +206,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      * @param index     The index of the exercise that was clicked.
      */
     func onEditClicked(index: Int)
-    {        
+    {
         let statViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StatViewController") as! StatViewController
         statViewController.index = index
         

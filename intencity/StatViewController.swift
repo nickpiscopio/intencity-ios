@@ -138,14 +138,19 @@ class StatViewController: UIViewController, SetDelegate
     {
         let index = indexPath.row
         let set = sets[index]
+        let weight: Float = set.weight
+        let weightValue: String = weight > 0.0 ? String(weight) : ""
         let difficulty = set.difficulty
         let reps = set.reps
-        let duration = reps > 0 ? String(reps) : set.duration
+        let repsValue = reps > 0 ? String(reps) : ""
+        let time = set.duration
+        let timeValue = time != Constant.RETURN_NULL ? time : ""        
+        let duration = reps > 0 ? repsValue : timeValue
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.SET_CELL) as! SetCellController
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.delegate = self
         cell.index = index
-        cell.weightTextField.text = String(set.weight)
+        cell.weightTextField.text = weightValue
         cell.durationTextField.text = duration
         cell.dropDown.selectRowAtIndex(difficulty - 1)
         cell.intensityButton.setTitle(String(difficulty), forState: .Normal)
