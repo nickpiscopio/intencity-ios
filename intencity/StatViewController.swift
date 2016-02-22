@@ -170,7 +170,7 @@ class StatViewController: UIViewController, SetDelegate
         }
         else
         {
-            Util.displayAlert(self, title: NSLocalizedString("title_add_set_error", comment: ""), message: NSLocalizedString("message_add_set_error", comment: ""))
+            Util.displayAlert(self, title: NSLocalizedString("title_add_set_error", comment: ""), message: NSLocalizedString("message_add_set_error", comment: ""), actions: [])
         }
     }
     

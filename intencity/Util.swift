@@ -13,21 +13,6 @@ import RNCryptor
 class Util
 {
     /**
-     * Displays a standard alert to the user.
-     *
-     * @param controller      The UIViewController that called this function.
-     * @param title           The title of the alert to display.
-     * @param message         The message of the alert to display.
-     */
-    static func displayAlert(controller: UIViewController, title: String, message: String)
-    {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: UIAlertActionStyle.Default,handler: nil))
-        
-        controller.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    /**
      * Displays an alert that has actions.
      *
      * @param controller    The controller that is displaying the alert.
@@ -35,19 +20,21 @@ class Util
      * @param message       The message of the alert.
      * @param actions       The array of callbacks for the alert.
      */
-    static func displayActionableAlert(controller: UIViewController, title: String, message: String, actions: [UIAlertAction])
+    static func displayAlert(controller: UIViewController, title: String, message: String, actions: [UIAlertAction])
     {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         
-        for action in actions
+        if actions.count > 0
         {
-            alert.addAction(action)
+            for action in actions
+            {
+                alert.addAction(action)
+            }
         }
-        
-        // Support display in iPad
-        let view = controller.view
-        alert.popoverPresentationController?.sourceView = view
-        alert.popoverPresentationController?.sourceRect = CGRectMake(view.bounds.size.width / 2.0, view.bounds.size.height / 2.0, 1.0, 1.0)
+        else
+        {
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil))
+        }
         
         controller.presentViewController(alert, animated: true, completion: nil)
     }

@@ -41,7 +41,7 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
         let email = emailTextField.text!
         if (!Util.isFieldValid(email, regEx: Constant.REGEX_EMAIL))
         {
-            Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("email_validation_error", comment: ""))
+            Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("email_validation_error", comment: ""), actions: [])
         }
         else
         {
@@ -70,14 +70,14 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
     func onRetrievalSuccessful(event: Int, result: String)
     {
         
-            Util.displayAlert(self, title:  NSLocalizedString("forgot_password_email_sent_title", comment: ""), message: NSLocalizedString("forgot_password_email_sent", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("forgot_password_email_sent_title", comment: ""), message: NSLocalizedString("forgot_password_email_sent", comment: ""), actions: [])
             
             self.stopRestPassword()
     }
     
     func onRetrievalFailed(event: Int)
     {
-        Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error_email", comment: ""))
+        Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error_email", comment: ""), actions: [])
         
         stopRestPassword()
     }

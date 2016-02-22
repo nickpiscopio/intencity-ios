@@ -112,38 +112,38 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
             !Util.checkStringLength(email, length: 1) || !Util.checkStringLength(confirmEmail, length: 1) ||
             !Util.checkStringLength(password, length: 1) || !Util.checkStringLength(confirmPassword, length: 1))
         {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("fill_in_fields", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("fill_in_fields", comment: ""), actions: [])
         }
         // Check if the email is valid.
         else if (!Util.isFieldValid(email, regEx: Constant.REGEX_EMAIL))
         {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("email_validation_error", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("email_validation_error", comment: ""), actions: [])
         }
         // Check if the first and last name have valid characters.
         else if (!Util.isFieldValid(firstName, regEx: Constant.REGEX_FIELD) || !Util.isFieldValid(lastName, regEx: Constant.REGEX_FIELD))
         {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("field_validation_error", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("field_validation_error", comment: ""), actions: [])
         }
             // Check to see if the emails match.
         else if (email != confirmEmail)
         {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("email_match_error", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("email_match_error", comment: ""), actions: [])
         }
         // Check to see if the password is greater than the password length needed.
         // Check to see if the password is valid.
         else if (!Util.checkStringLength(password, length: Constant.REQUIRED_PASSWORD_LENGTH) || !Util.isFieldValid(password, regEx: Constant.REGEX_FIELD))
         {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("password_validation_error", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("password_validation_error", comment: ""), actions: [])
         }
         // Check to see if the passwords match.
         else if (password != confirmPassword)
         {
-             Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("password_match_error", comment: ""))
+             Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("password_match_error", comment: ""), actions: [])
         }
         // Check to see if the user has accepted the terms.
         else if (!isTermsChecked())
         {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("accept_terms", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("accept_terms", comment: ""), actions: [])
         }
         else
         {
@@ -212,7 +212,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         {
             stopCreateAcount()
             
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("email_exists", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("email_exists", comment: ""), actions: [])
         }
         else if (parsedResponse == Constant.ACCOUNT_CREATED)
         {
@@ -222,13 +222,13 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         {
             stopCreateAcount()
             
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
         }
     }
     
     func onRetrievalFailed(event: Int)
     {
-        Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""))
+        Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
     }
     
     /*

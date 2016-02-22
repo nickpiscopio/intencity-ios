@@ -74,11 +74,11 @@ class LoginViewController: PageViewController, ServiceDelegate
         
         if (email.isEmpty || password.isEmpty)
         {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("fill_in_fields", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("fill_in_fields", comment: ""), actions: [])
         }
         else if (!isTermsChecked())
         {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("accept_terms", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("accept_terms", comment: ""), actions: [])
         }
         else
         {
@@ -95,24 +95,34 @@ class LoginViewController: PageViewController, ServiceDelegate
     {
         if (isTermsChecked())
         {
-            trialAccountType = Constant.ACCOUNT_TYPE_MOBILE_TRIAL
-            trialDateCreated = NSDate().timeIntervalSince1970 * 1000
-            let createdDateString = String(format:"%f", trialDateCreated)
-            let firstName = "Anonymous";
-            let lastName = "User";
-            trialEmail = lastName +  createdDateString + "@intencity.fit";
-            let password = createdDateString;
-            
-            startLogin()
-            
-            ServiceTask(event: ServiceEvent.TRIAL, delegate: self,
-                serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
-                params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType))
+            let actions = [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: self.createTrial) ]
+
+            Util.displayAlert(self, title:  NSLocalizedString("trial_account_title", comment: ""), message: NSLocalizedString("trial_account_message", comment: ""), actions: actions)
         }
         else
         {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("accept_terms", comment: ""))
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("accept_terms", comment: ""), actions: [])
         }
+    }
+    
+    /**
+     * Creates teh trial account.
+     */
+    func createTrial(alertAction: UIAlertAction!)
+    {
+        trialAccountType = Constant.ACCOUNT_TYPE_MOBILE_TRIAL
+        trialDateCreated = NSDate().timeIntervalSince1970 * 1000
+        let createdDateString = String(format:"%f", trialDateCreated)
+        let firstName = "Anonymous";
+        let lastName = "User";
+        trialEmail = lastName +  createdDateString + "@intencity.fit";
+        let password = createdDateString;
+        
+        startLogin()
+        
+        ServiceTask(event: ServiceEvent.TRIAL, delegate: self,
+            serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
+            params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType))
     }
 
     /*
@@ -125,7 +135,7 @@ class LoginViewController: PageViewController, ServiceDelegate
             let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "")
             if (parsedResponse == Constant.COULD_NOT_FIND_EMAIL || parsedResponse == Constant.INVALID_PASSWORD)
             {
-                Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""))
+                Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""), actions: [])
                 
                 stopLogin()
             }
@@ -152,7 +162,7 @@ class LoginViewController: PageViewController, ServiceDelegate
     */
     func onRetrievalFailed(Event: Int)
     {
-        Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""))
+        Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
         
         stopLogin()
     }
