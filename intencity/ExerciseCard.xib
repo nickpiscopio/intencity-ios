@@ -20,7 +20,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="orh-wm-HrL">
                                 <rect key="frame" x="0.0" y="0.0" width="506" height="52"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-yN-aVA" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-yN-aVA" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="11" width="457" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Button"/>
@@ -28,7 +28,7 @@
                                             <action selector="exerciseClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="59J-ap-scd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tNb-aK-YzW" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tNb-aK-YzW" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
                                         <rect key="frame" x="467" y="13" width="39" height="27"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                         <state key="normal" title="Button"/>
