@@ -12,13 +12,13 @@ import RNCryptor
 
 class Util
 {
-    /*
-        Displays a standard alert to the user.
-        
-        controller      The UIViewController that called this function.
-        title           The title of the alert to display.
-        message         The message of the alert to display.
-    */
+    /**
+     * Displays a standard alert to the user.
+     *
+     * @param controller      The UIViewController that called this function.
+     * @param title           The title of the alert to display.
+     * @param message         The message of the alert to display.
+     */
     static func displayAlert(controller: UIViewController, title: String, message: String)
     {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -27,9 +27,34 @@ class Util
         controller.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    /*
-        Saves the login information to NSUserDefaults.
-    */
+    /**
+     * Displays an alert that has actions.
+     *
+     * @param controller    The controller that is displaying the alert.
+     * @param title         The title of the alert.
+     * @param message       The message of the alert.
+     * @param actions       The array of callbacks for the alert.
+     */
+    static func displayActionableAlert(controller: UIViewController, title: String, message: String, actions: [UIAlertAction])
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+        
+        for action in actions
+        {
+            alert.addAction(action)
+        }
+        
+        // Support display in iPad
+        let view = controller.view
+        alert.popoverPresentationController?.sourceView = view
+        alert.popoverPresentationController?.sourceRect = CGRectMake(view.bounds.size.width / 2.0, view.bounds.size.height / 2.0, 1.0, 1.0)
+        
+        controller.presentViewController(alert, animated: true, completion: nil)
+    }
+
+    /**
+     * Saves the login information to NSUserDefaults.
+     */
     static func loadIntencity(controller: UIViewController, email: String, accountType: String, createdDate: Double)
     {
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -53,35 +78,35 @@ class Util
         
         controller.presentViewController(initialViewController, animated: true, completion: nil)
     }
-    
-    /*
-        Validates a string of text against a regular expression.
-    */
+
+    /**
+     * Validates a string of text against a regular expression.
+     */
     static func isFieldValid(str : String, regEx: String) -> Bool
     {
         let regex = try! NSRegularExpression(pattern: regEx, options: [])
         
         return regex.numberOfMatchesInString(str, options: [], range: NSMakeRange(0, str.characters.count)) > 0
     }
-    
-    /*
-        Checks if the user has entered text in the edit text.
-    
-        text      The edit text to check.
-        length    The value the edit text string should be greater than.
-    
-        return Boolean value of if the user has entered text in the edit text.
-    */
+
+    /**
+     * Checks if the user has entered text in the edit text.
+     *
+     * @param text      The edit text to check.
+     * @param length    The value the edit text string should be greater than.
+     *
+     * @return Boolean value of if the user has entered text in the edit text.
+     */
     static func checkStringLength(text: String, length: Int) -> Bool
     {
         return text.characters.count >= length;
     }
     
-    /* 
-        Decrypts and returns the email from the defaults.
-    
-        Documentation: https://github.com/RNCryptor/RNCryptor
-    */
+    /**
+     * Decrypts and returns the email from the defaults.
+     *
+     * Documentation: https://github.com/RNCryptor/RNCryptor
+     */
     static func getEmailFromDefaults() -> String
     {
         let defaults = NSUserDefaults.standardUserDefaults()

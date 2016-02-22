@@ -27,6 +27,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     var exerciseData: ExerciseData!
     
+    var isSwipeOpen = false
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -194,10 +196,13 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func onExerciseClicked(name: String)
     {
-        let directionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DirectionViewController") as! DirectionViewController
-        directionViewController.exerciseName = name
-        
-        self.navigationController!.pushViewController(directionViewController, animated: true)
+        if (!isSwipeOpen)
+        {
+            let directionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DirectionViewController") as! DirectionViewController
+            directionViewController.exerciseName = name
+            
+            self.navigationController!.pushViewController(directionViewController, animated: true)
+        }
     }
     
     /**
@@ -207,10 +212,13 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func onEditClicked(index: Int)
     {
-        let statViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StatViewController") as! StatViewController
-        statViewController.index = index
+        if (!isSwipeOpen)
+        {
+            let statViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StatViewController") as! StatViewController
+            statViewController.index = index
         
-        self.navigationController!.pushViewController(statViewController, animated: true)
+            self.navigationController!.pushViewController(statViewController, animated: true)
+        }
     }
     
     /**
@@ -304,7 +312,32 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
     }
     
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?
+    {
+        isSwipeOpen = true
+        
+        let remove = UITableViewRowAction(style: .Normal, title: NSLocalizedString("hide", comment: "")) { action, index in
+            
+            let exerciseName = self.exerciseData.exerciseList[indexPath.row].name
+            let actions = [ UIAlertAction(title: NSLocalizedString("hide_for_now", comment: ""), style: .Default, handler: self.hideExercise),
+                            UIAlertAction(title: NSLocalizedString("hide_forever", comment: ""), style: .Destructive, handler: self.hideExercise),
+                            UIAlertAction(title: NSLocalizedString("do_not_hide", comment: ""), style: .Cancel, handler: self.cancelRemoval) ]
+            Util.displayActionableAlert(self, title: String(format: NSLocalizedString("hide_exercise", comment: ""), exerciseName), message: "", actions: actions)
+        }
+        
+        remove.backgroundColor = Color.card_button_delete_select
+        
+        return [remove]
+    }
+    
+    func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath)
+    {
+        self.isSwipeOpen = false
+    }
+
+    
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // the cells you would like the actions to appear needs to be editable
         return true
     }
     
@@ -313,5 +346,30 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             // handle delete (by removing the data from your array and updating the tableview)
         }
+        
+        self.isSwipeOpen = false
+    }
+    
+    func hideExercise(alertAction: UIAlertAction!) -> Void
+    {
+        print("hide clicked")
+//        if let indexPath = deletePlanetIndexPath {
+//            tableView.beginUpdates()
+//            
+//            planets.removeAtIndex(indexPath.row)
+//            
+//            // Note that indexPath is wrapped in an array:  [indexPath]
+//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+//            
+//            deletePlanetIndexPath = nil
+//            
+//            tableView.endUpdates()
+//        }
+    }
+    
+    func cancelRemoval(alertAction: UIAlertAction!)
+    {
+        print("cancel clicked")
+//        deletePlanetIndexPath = nil
     }
 }

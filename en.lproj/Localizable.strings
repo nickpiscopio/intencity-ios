@@ -15,7 +15,8 @@
 // iOS Specific Strings
 "ok" = "OK";
 "sign_in_title" = "Sign In";
-
+"hide" = "Hide";
+"hide_exercise" = "Hide %1$@";
 
 // Intencity Strings
 /*  */
@@ -326,9 +327,6 @@
 
 /*  */
 "warm_ups_title" = "Warm-Ups";
-
-/*  */
-"hide_exercise_title" = "Hide exercise";
 
 /*  */
 "hide_for_now" = "Hide for now";
