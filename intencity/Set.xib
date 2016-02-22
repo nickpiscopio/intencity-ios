@@ -26,12 +26,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aqS-MP-NZT">
                                 <rect key="frame" x="141" y="8" width="111" height="30"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pqy-0f-2Ue">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pqy-0f-2Ue">
                                         <rect key="frame" x="0.0" y="0.0" width="87" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
                                         <connections>
-                                            <action selector="weightFinishedEditing:" destination="d89-Nv-ATs" eventType="editingDidEnd" id="mcV-jN-RGb"/>
+                                            <action selector="weightFinishedEditing:" destination="d89-Nv-ATs" eventType="editingDidEnd" id="AZV-Eu-X7d"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LBS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVC-b4-yJi">
@@ -47,7 +47,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                                 <connections>
-                                    <action selector="durationFinishedEditing:" destination="d89-Nv-ATs" eventType="editingDidEnd" id="DuJ-Iu-3cZ"/>
+                                    <action selector="durationFinishedEditing:" destination="d89-Nv-ATs" eventType="editingDidEnd" id="1sX-Qe-lNB"/>
                                 </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TdJ-09-TAm">

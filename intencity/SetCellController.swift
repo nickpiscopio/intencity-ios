@@ -6,7 +6,7 @@
 //
 //  Created by Nick Piscopio on 2/18/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
-//
+
 import UIKit
 import DropDown
 
@@ -67,14 +67,15 @@ class SetCellController: UITableViewCell
             dropDown.hide()
         }
     }
-
     
     /**
      * Calls the callback when the weight is done being edited.
      */
     @IBAction func weightFinishedEditing(sender: AnyObject)
     {
-        delegate?.onWeightUpdated(index, weight: Float(weightTextField.text!)!)
+        let weight = weightTextField.text
+        
+        delegate?.onWeightUpdated(index, weight: weight != "" ? Float(weight!)! : 0.0)
     }
     
     /**

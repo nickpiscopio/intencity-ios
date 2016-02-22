@@ -14,28 +14,40 @@ class StatViewController: UIViewController, SetDelegate
 {
     @IBOutlet weak var notesTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var durationTitleLabel: UIButton!
     @IBOutlet weak var weightTitleLabel: UILabel!
     @IBOutlet weak var durationDropDownImage: UIButton!
     @IBOutlet weak var IntensityTitleLabel: UILabel!
-    var exerciseName: String!
-    var sets: [Set] = []
     
     let dropDown = DropDown()
+    
+    var exerciseName: String!
+    var sets: [Set] = []    
+    var index: Int!
+    
+    var repsString = ""
+    var timeString = ""
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        let exercise = ExerciseData.getInstance().exerciseList[index]
+        
+        // Sets the title for the screen.
+        self.navigationItem.title = exercise.name
+        
+        // Sets the sets from the exercise.
+        sets = exercise.sets
+        
         // Sets the background color of this view.
         self.view.backgroundColor = Color.page_background
         
-        // Sets the title for the screen.
-        self.navigationItem.title = exerciseName
-        
         // Hides the tab bar.
         self.tabBarController?.tabBar.hidden = true
+        
+        repsString = NSLocalizedString("title_reps", comment: "")
+        timeString = NSLocalizedString("title_time", comment: "")
         
         weightTitleLabel.text = NSLocalizedString("title_weight", comment: "")
         IntensityTitleLabel.text = NSLocalizedString("title_intensity", comment: "")
@@ -53,7 +65,7 @@ class StatViewController: UIViewController, SetDelegate
         Util.addUITableViewCell(tableView, nibNamed: "Set", cellName: Constant.SET_CELL)
         
         // Initialize the duration dropdown.
-        dropDown.dataSource = [ NSLocalizedString("title_reps", comment: ""), NSLocalizedString("title_time", comment: "") ]
+        dropDown.dataSource = [ repsString, timeString ]
         dropDown.selectionAction = { [unowned self] (index, item) in
             self.durationTitleLabel.setTitle(item, forState: .Normal)
             
@@ -64,8 +76,18 @@ class StatViewController: UIViewController, SetDelegate
         // We set the width here to the largest item in the data source.
         // We do this so the drop down doesn't keep resizing every time an item is selcted.
         dropDown.width = 53
-        durationTitleLabel.setTitle(NSLocalizedString("title_reps", comment: ""), forState: .Normal)
-        dropDown.selectRowAtIndex(0)
+        
+        let duration = sets[0].duration
+        if(duration != Constant.RETURN_NULL)
+        {
+            durationTitleLabel.setTitle(timeString, forState: .Normal)
+            dropDown.selectRowAtIndex(1)
+        }
+        else
+        {
+            durationTitleLabel.setTitle(repsString, forState: .Normal)
+            dropDown.selectRowAtIndex(0)
+        }
     }
     
     /**
@@ -76,6 +98,8 @@ class StatViewController: UIViewController, SetDelegate
         if dropDown.hidden
         {
             dropDown.show()
+            
+            UIResponder.getCurrentFirstResponder()?.resignFirstResponder()
         }
         else
         {
@@ -88,11 +112,15 @@ class StatViewController: UIViewController, SetDelegate
         super.didReceiveMemoryWarning()
     }
 
-    override func viewWillDisappear(animated : Bool)
+    override func viewDidDisappear(animated: Bool)
     {
-        super.viewWillDisappear(animated)
+        super.viewDidDisappear(animated)
         
+        // Shows the tab bar again.
         self.tabBarController?.tabBar.hidden = false
+        
+        // Takes all the sets and puts them back into the exercise.
+        ExerciseData.getInstance().exerciseList[index].sets = sets
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -152,29 +180,44 @@ class StatViewController: UIViewController, SetDelegate
             var duration = ""
             var reps = 0
             
-            if (type == NSLocalizedString("title_reps", comment: ""))
+            var durationSet = false
+            
+            if (type == repsString)
             {
-                duration = String(Constant.CODE_FAILED)
-                reps = Int(sets[i].duration.stringByReplacingOccurrencesOfString(":", withString: ""))!
+                let durationValue = sets[i].duration
+                if (durationValue != String(Constant.RETURN_NULL))
+                {
+                    duration = String(Constant.RETURN_NULL)
+                    reps = Int(durationValue.stringByReplacingOccurrencesOfString(":", withString: ""))!
+                    
+                    durationSet = true
+                }
             }
             else
             {
-                let time = String(format: "%06d", sets[i].reps)
-
-                if let regex = try? NSRegularExpression(pattern: "..(?!$)", options: .CaseInsensitive)
+                let repsValue = sets[i].reps
+                if (repsValue != Int(Constant.CODE_FAILED))
                 {
-                    duration = regex.stringByReplacingMatchesInString(time, options: .WithTransparentBounds, range: NSMakeRange(0, time.characters.count), withTemplate: "$0:")
+                    let time = String(format: "%06d", repsValue)
+                    
+                    if let regex = try? NSRegularExpression(pattern: "..(?!$)", options: .CaseInsensitive)
+                    {
+                        duration = regex.stringByReplacingMatchesInString(time, options: .WithTransparentBounds, range: NSMakeRange(0, time.characters.count), withTemplate: "$0:")
+                    }
+                    
+                    reps = Int(Constant.CODE_FAILED)
+
+                    durationSet = true
                 }
-                
-                reps = Int(Constant.CODE_FAILED)
             }
             
-            sets[i].duration = duration
-            sets[i].reps = reps
+            if (durationSet)
+            {
+                sets[i].duration = duration
+                sets[i].reps = reps
+            }
         }
-        
-        // reload table after done
-        
+
         tableView.reloadData()
     }
     
@@ -226,7 +269,7 @@ class StatViewController: UIViewController, SetDelegate
      */
     func onDurationUpdated(index: Int, duration: String)
     {
-        if (dropDown.selectedItem! == NSLocalizedString("title_reps", comment: ""))
+        if (dropDown.selectedItem! == repsString)
         {
             sets[index].reps = Int(duration)!
         }
@@ -234,7 +277,6 @@ class StatViewController: UIViewController, SetDelegate
         {
             sets[index].duration = duration
         }
-        
     }
     
     /**

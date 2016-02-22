@@ -206,12 +206,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      * @param index     The index of the exercise that was clicked.
      */
     func onEditClicked(index: Int)
-    {
-        let exercise = currentExercises[index]
-        
+    {        
         let statViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StatViewController") as! StatViewController
-        statViewController.exerciseName = exercise.name
-        statViewController.sets = exercise.sets
+        statViewController.index = index
         
         self.navigationController!.pushViewController(statViewController, animated: true)
     }
@@ -225,7 +222,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             
         let range = NSMakeRange(0, self.tableView.numberOfSections)
         let sections = NSIndexSet(indexesInRange: range)
-            
+        
         self.tableView.reloadSections(sections, withRowAnimation: .Top)
         
         if (state == Constant.EXERCISE_CELL)
