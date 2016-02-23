@@ -104,19 +104,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5z-by-cgY">
-                                <rect key="frame" x="277" y="289" width="47" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="adB-xm-spq">
+                                <rect key="frame" x="0.0" y="36" width="600" height="564"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Lts-ev-T20">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="fLE-ek-hD3">
+                                                <rect key="frame" x="76" y="0.0" width="449" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="aWd-2c-3mK"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pee-bR-eBK">
+                                                <rect key="frame" x="287" y="150" width="27" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlW-k3-UEY">
+                                                <rect key="frame" x="286" y="150" width="28" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jox-yY-bOe">
+                                        <rect key="frame" x="0.0" y="166" width="600" height="398"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Pf6-nm-Lpd" id="ZCc-HG-fjy"/>
+                                            <outlet property="delegate" destination="Pf6-nm-Lpd" id="lqj-D8-qSI"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="h5z-by-cgY" firstAttribute="centerX" secondItem="VqZ-Eg-q5R" secondAttribute="centerX" id="1ii-w5-5XK"/>
-                            <constraint firstItem="h5z-by-cgY" firstAttribute="centerY" secondItem="VqZ-Eg-q5R" secondAttribute="centerY" id="6aU-Og-pY5"/>
+                            <constraint firstAttribute="trailing" secondItem="adB-xm-spq" secondAttribute="trailing" id="Q2S-N9-HTe"/>
+                            <constraint firstItem="BA6-XT-aqn" firstAttribute="top" secondItem="adB-xm-spq" secondAttribute="bottom" id="VdP-pT-RnN"/>
+                            <constraint firstItem="adB-xm-spq" firstAttribute="leading" secondItem="VqZ-Eg-q5R" secondAttribute="leading" id="iKs-cx-4Ju"/>
+                            <constraint firstItem="adB-xm-spq" firstAttribute="top" secondItem="VBq-KJ-Gwv" secondAttribute="bottom" constant="16" id="se2-Rk-xl4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="jox-yY-bOe" id="hWs-uC-3JO"/>
+                        <outlet property="versionDescription" destination="VlW-k3-UEY" id="SRU-1S-Cql"/>
+                        <outlet property="versionTitle" destination="pee-bR-eBK" id="vcf-4H-axh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6VQ-Dz-GZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -571,6 +608,7 @@
     </scenes>
     <resources>
         <image name="dropdown" width="18" height="9"/>
+        <image name="intencity_logo" width="449" height="354"/>
         <image name="tab_icon_fitness_log" width="11" height="18"/>
         <image name="tab_icon_ranking" width="23" height="19"/>
     </resources>

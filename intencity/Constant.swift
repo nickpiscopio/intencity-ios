@@ -25,6 +25,8 @@ struct Constant
     static let SET_CELL = "SetCell"
     static let MENU_CELL = "MenuCell"
     static let MENU_HEADER_CELL = "MenuHeaderCell"
+    static let ABOUT_CELL = "AboutCell"
+    static let ABOUT_FOOTER_CELL = "AboutFooterCell"    
     
     static let TERMS_VIEW_CONTROLLER = "TermsViewController"
     static let LOG_OUT = "LogOut"

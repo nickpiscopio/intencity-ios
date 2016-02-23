@@ -20,11 +20,16 @@
 		BD36EC2F1C72068900F993CE /* ExerciseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */; };
 		BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC301C72080F00F993CE /* DirectionViewController.swift */; };
 		BD36EC331C720C6B00F993CE /* Direction.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD36EC321C720C6B00F993CE /* Direction.xib */; };
+		BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */; };
+		BD4B8EB91C7CEACD00AD579B /* AboutFooterCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB81C7CEACD00AD579B /* AboutFooterCellController.swift */; };
+		BD4B8EBB1C7CEB1D00AD579B /* AboutFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */; };
 		BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460ED1C68D34400F60ADC /* AppDelegate.swift */; };
 		BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460EF1C68D34400F60ADC /* DemoViewController.swift */; };
 		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
 		BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F41C68D34400F60ADC /* Assets.xcassets */; };
 		BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460FF1C68D53200F60ADC /* PageViewController.swift */; };
+		BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */; };
+		BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */; };
 		BD74A2591C735EA700E6ABD2 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74A2581C735EA700E6ABD2 /* StatViewController.swift */; };
 		BD7C7E7C1C7C9ABD005AFFDD /* MenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */; };
 		BD7C7E7E1C7C9E48005AFFDD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E7D1C7C9E48005AFFDD /* AboutViewController.swift */; };
@@ -97,6 +102,9 @@
 		BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDelegate.swift; sourceTree = "<group>"; };
 		BD36EC301C72080F00F993CE /* DirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewController.swift; sourceTree = "<group>"; };
 		BD36EC321C720C6B00F993CE /* Direction.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Direction.xib; sourceTree = "<group>"; };
+		BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSection.swift; sourceTree = SOURCE_ROOT; };
+		BD4B8EB81C7CEACD00AD579B /* AboutFooterCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutFooterCellController.swift; sourceTree = "<group>"; };
+		BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutFooterCell.xib; sourceTree = "<group>"; };
 		BD5460EA1C68D34400F60ADC /* Intencity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intencity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5460ED1C68D34400F60ADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5460EF1C68D34400F60ADC /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +112,8 @@
 		BD5460F41C68D34400F60ADC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5460F91C68D34400F60ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD5460FF1C68D53200F60ADC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
+		BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCellController.swift; sourceTree = "<group>"; };
 		BD74A2581C735EA700E6ABD2 /* StatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
 		BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuRow.swift; sourceTree = SOURCE_ROOT; };
 		BD7C7E7D1C7C9E48005AFFDD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +214,8 @@
 		BD36EC201C70EB6600F993CE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */,
+				BD4B8EB81C7CEACD00AD579B /* AboutFooterCellController.swift */,
 				BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */,
 				BD03C7B41C760A4E00D8911A /* SetCellController.swift */,
 				BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */,
@@ -316,6 +328,8 @@
 			isa = PBXGroup;
 			children = (
 				BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */,
+				BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */,
+				BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */,
 				BD947A351C6F6E5F003F3767 /* RoutineCard.xib */,
 				BD36EC281C71048600F993CE /* ExerciseCard.xib */,
 				BD36EC321C720C6B00F993CE /* Direction.xib */,
@@ -335,6 +349,7 @@
 			children = (
 				BD947A091C6D4B90003F3767 /* ServiceEvent.swift */,
 				BDE493F61C7B961D005817D0 /* MenuSection.swift */,
+				BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */,
 				BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */,
 				BD9EF2561C692A6900E520CB /* DemoView.swift */,
 				BD03C7B61C760DE200D8911A /* Set.swift */,
@@ -482,7 +497,9 @@
 				BD36EC331C720C6B00F993CE /* Direction.xib in Resources */,
 				BD9EF2B81C6A941F00E520CB /* terms.html in Resources */,
 				BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */,
+				BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */,
 				BDE493F91C7B9A26005817D0 /* Menu.xib in Resources */,
+				BD4B8EBB1C7CEB1D00AD579B /* AboutFooterCell.xib in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,10 +610,13 @@
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
 				BD7C7E811C7CA0A6005AFFDD /* NotificationViewController.swift in Sources */,
 				BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */,
+				BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */,
+				BD4B8EB91C7CEACD00AD579B /* AboutFooterCellController.swift in Sources */,
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
 				BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */,
 				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,
 				BD03C7BB1C761B6000D8911A /* SetDelegate.swift in Sources */,
+				BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */,
 				BD7C7E7E1C7C9E48005AFFDD /* AboutViewController.swift in Sources */,
 				BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */,
 			);

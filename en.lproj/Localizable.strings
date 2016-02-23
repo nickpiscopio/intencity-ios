@@ -12,6 +12,14 @@
  * Exported at: Mon, 08 Feb 2016 19:25:04 +0000
  */
 
+// Non translatable strings
+"name_characters" = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\'";
+
+"founders" = "Nick Piscopio\nChris Piscopio";
+"contributors" = "Lisa Troncelliti\nHalen Dang\nChad Reynolds\nRandy Dang\nChristina Dang\nLaura D\'Alfonso\nKha Dang\nPhiladelphia University";
+
+"emdash" = "—";
+
 // iOS Specific Strings
 "ok" = "OK";
 "sign_in_title" = "Sign In";
@@ -24,7 +32,6 @@
 
 /*  */
 "copyright" = "© Intencity 2016. All Rights Reserved.";
-
 
 /*  */
 "welcome_title" = "Welcome!";

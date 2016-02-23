@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="127" id="mUa-E6-E8U" customClass="AboutCellController" customModule="Intencity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="445" height="127"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mUa-E6-E8U" id="aN7-eC-0sM">
+                <rect key="frame" x="0.0" y="0.0" width="445" height="126.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRU-DG-Qdm" customClass="IntencityCardView" customModule="Intencity" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="445" height="128"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="U46-Ka-Cr8">
+                                <rect key="frame" x="32" y="32" width="381" height="87"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gp9-2n-dPB">
+                                        <rect key="frame" x="0.0" y="0.0" width="381" height="67"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoG-l3-uZ0">
+                                        <rect key="frame" x="0.0" y="72" width="381" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="U46-Ka-Cr8" firstAttribute="leading" secondItem="hRU-DG-Qdm" secondAttribute="leading" constant="16" id="M0m-MB-htL"/>
+                            <constraint firstItem="U46-Ka-Cr8" firstAttribute="top" secondItem="hRU-DG-Qdm" secondAttribute="top" constant="16" id="ThI-Ay-W1Z"/>
+                            <constraint firstAttribute="bottom" secondItem="U46-Ka-Cr8" secondAttribute="bottom" constant="16" id="mXy-uZ-CsL"/>
+                            <constraint firstAttribute="trailing" secondItem="U46-Ka-Cr8" secondAttribute="trailing" constant="16" id="prK-ta-DwH"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="hRU-DG-Qdm" secondAttribute="trailing" constant="16" id="EoJ-Gb-uuL"/>
+                    <constraint firstItem="hRU-DG-Qdm" firstAttribute="top" secondItem="aN7-eC-0sM" secondAttribute="top" id="bmV-pp-zOW"/>
+                    <constraint firstItem="hRU-DG-Qdm" firstAttribute="leading" secondItem="aN7-eC-0sM" secondAttribute="leading" constant="16" id="uQW-wg-zQF"/>
+                    <constraint firstAttribute="bottom" secondItem="hRU-DG-Qdm" secondAttribute="bottom" constant="8" id="y7i-N9-AZX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellBackgroundView" destination="aN7-eC-0sM" id="O2z-b5-poC"/>
+                <outlet property="cellDescription" destination="DoG-l3-uZ0" id="ygH-m3-eQh"/>
+                <outlet property="cellHeader" destination="Gp9-2n-dPB" id="iCd-fm-Fwm"/>
+            </connections>
+            <point key="canvasLocation" x="765.5" y="540.5"/>
+        </tableViewCell>
+    </objects>
+</document>
