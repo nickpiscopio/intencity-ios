@@ -59,11 +59,29 @@ class Util
             defaults.setObject(String(format:"%f", createdDate), forKey: Constant.USER_TRIAL_CREATED_DATE)
         }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
         
-        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("IntencityTabView")
+        let viewController = storyboard.instantiateViewControllerWithIdentifier("IntencityTabView")
         
-        controller.presentViewController(initialViewController, animated: true, completion: nil)
+        controller.presentViewController(viewController, animated: true, completion: nil)
+    }
+    
+    /**
+     * Logs the user out.
+     */
+    static func logOut(controller: UIViewController)
+    {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.removeObjectForKey(Constant.USER_ACCOUNT_EMAIL)
+        defaults.removeObjectForKey(Constant.USER_ACCOUNT_TYPE)
+        defaults.removeObjectForKey(Constant.USER_TRIAL_CREATED_DATE)
+        // NEED last exercise time
+
+        let storyboard = UIStoryboard(name: Constant.LOGIN_STORYBOARD, bundle: nil)
+        
+        let viewController = storyboard.instantiateViewControllerWithIdentifier(Constant.LOGIN_NAV_CONTROLLER)
+        
+        controller.presentViewController(viewController, animated: true, completion: nil)
     }
 
     /**

@@ -26,6 +26,13 @@
 		BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F41C68D34400F60ADC /* Assets.xcassets */; };
 		BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460FF1C68D53200F60ADC /* PageViewController.swift */; };
 		BD74A2591C735EA700E6ABD2 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74A2581C735EA700E6ABD2 /* StatViewController.swift */; };
+		BD7C7E7C1C7C9ABD005AFFDD /* MenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */; };
+		BD7C7E7E1C7C9E48005AFFDD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E7D1C7C9E48005AFFDD /* AboutViewController.swift */; };
+		BD7C7E811C7CA0A6005AFFDD /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E801C7CA0A6005AFFDD /* NotificationViewController.swift */; };
+		BD7C7E831C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E821C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift */; };
+		BD7C7E851C7CA0CF005AFFDD /* EditEquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E841C7CA0CF005AFFDD /* EditEquipmentViewController.swift */; };
+		BD7C7E871C7CA0DA005AFFDD /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E861C7CA0DA005AFFDD /* ChangePasswordViewController.swift */; };
+		BD7C7E891C7CA0E9005AFFDD /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E881C7CA0E9005AFFDD /* DeleteAccountViewController.swift */; };
 		BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9479FA1C6CE43C003F3767 /* JSON.swift */; };
 		BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD9479FC1C6CE452003F3767 /* Loading.storyboard */; };
 		BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A011C6CED31003F3767 /* LoginNavController.swift */; };
@@ -46,7 +53,7 @@
 		BD9EF2B01C6A52FA00E520CB /* IntencityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */; };
 		BD9EF2B21C6A56CE00E520CB /* IntencityButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2B11C6A56CE00E520CB /* IntencityButtonNoBackground.swift */; };
 		BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2B31C6A894E00E520CB /* CreateAccountViewController.swift */; };
-		BD9EF2B61C6A8AF500E520CB /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2B51C6A8AF500E520CB /* TermsOfUseViewController.swift */; };
+		BD9EF2B61C6A8AF500E520CB /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2B51C6A8AF500E520CB /* TermsViewController.swift */; };
 		BD9EF2B81C6A941F00E520CB /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = BD9EF2B71C6A941F00E520CB /* terms.html */; };
 		BD9EF2BC1C6B701D00E520CB /* ServiceTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2BB1C6B701D00E520CB /* ServiceTask.swift */; };
 		BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2BE1C6B829500E520CB /* ServiceDelegate.swift */; };
@@ -98,6 +105,13 @@
 		BD5460F91C68D34400F60ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD5460FF1C68D53200F60ADC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		BD74A2581C735EA700E6ABD2 /* StatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
+		BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuRow.swift; sourceTree = SOURCE_ROOT; };
+		BD7C7E7D1C7C9E48005AFFDD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		BD7C7E801C7CA0A6005AFFDD /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		BD7C7E821C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHiddenExercisesViewController.swift; sourceTree = "<group>"; };
+		BD7C7E841C7CA0CF005AFFDD /* EditEquipmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEquipmentViewController.swift; sourceTree = "<group>"; };
+		BD7C7E861C7CA0DA005AFFDD /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		BD7C7E881C7CA0E9005AFFDD /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		BD9479FA1C6CE43C003F3767 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		BD9479FC1C6CE452003F3767 /* Loading.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		BD947A001C6CE598003F3767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -118,7 +132,7 @@
 		BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButton.swift; sourceTree = "<group>"; };
 		BD9EF2B11C6A56CE00E520CB /* IntencityButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackground.swift; sourceTree = "<group>"; };
 		BD9EF2B31C6A894E00E520CB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
-		BD9EF2B51C6A8AF500E520CB /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
+		BD9EF2B51C6A8AF500E520CB /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		BD9EF2B71C6A941F00E520CB /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
 		BD9EF2BB1C6B701D00E520CB /* ServiceTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTask.swift; sourceTree = "<group>"; };
 		BD9EF2BE1C6B829500E520CB /* ServiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +250,19 @@
 			path = intencity;
 			sourceTree = "<group>";
 		};
+		BD7C7E7F1C7CA08B005AFFDD /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				BD7C7E801C7CA0A6005AFFDD /* NotificationViewController.swift */,
+				BD7C7E821C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift */,
+				BD7C7E841C7CA0CF005AFFDD /* EditEquipmentViewController.swift */,
+				BD7C7E861C7CA0DA005AFFDD /* ChangePasswordViewController.swift */,
+				BD7C7E7D1C7C9E48005AFFDD /* AboutViewController.swift */,
+				BD7C7E881C7CA0E9005AFFDD /* DeleteAccountViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		BD947A2C1C6E3297003F3767 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,7 +278,7 @@
 			children = (
 				BD9EF2B31C6A894E00E520CB /* CreateAccountViewController.swift */,
 				BD9EF2491C68F48E00E520CB /* LoginViewController.swift */,
-				BD9EF2B51C6A8AF500E520CB /* TermsOfUseViewController.swift */,
+				BD9EF2B51C6A8AF500E520CB /* TermsViewController.swift */,
 				BD9EF2A71C6A310200E520CB /* ForgotPasswordViewController.swift */,
 			);
 			name = Login;
@@ -261,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				BD36EC201C70EB6600F993CE /* Cells */,
+				BD7C7E7F1C7CA08B005AFFDD /* Menu */,
 				BD9EF2C51C6BEFB800E520CB /* IntencityTabBarController.swift */,
 				BD9EF2C71C6BF4CC00E520CB /* MenuViewController.swift */,
 				BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */,
@@ -307,6 +335,7 @@
 			children = (
 				BD947A091C6D4B90003F3767 /* ServiceEvent.swift */,
 				BDE493F61C7B961D005817D0 /* MenuSection.swift */,
+				BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */,
 				BD9EF2561C692A6900E520CB /* DemoView.swift */,
 				BD03C7B61C760DE200D8911A /* Set.swift */,
 				BD9EF2581C693A6400E520CB /* Color.swift */,
@@ -518,18 +547,20 @@
 				BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */,
 				BDE493FB1C7B9A58005817D0 /* MenuCellController.swift in Sources */,
 				BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */,
-				BD9EF2B61C6A8AF500E520CB /* TermsOfUseViewController.swift in Sources */,
+				BD9EF2B61C6A8AF500E520CB /* TermsViewController.swift in Sources */,
 				BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */,
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
 				BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */,
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,
 				BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */,
+				BD7C7E7C1C7C9ABD005AFFDD /* MenuRow.swift in Sources */,
 				BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */,
 				BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */,
 				BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */,
 				BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */,
 				BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */,
 				BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */,
+				BD7C7E851C7CA0CF005AFFDD /* EditEquipmentViewController.swift in Sources */,
 				BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */,
 				BD74A2591C735EA700E6ABD2 /* StatViewController.swift in Sources */,
 				BD36EC2D1C7170EB00F993CE /* IntencityCardView.swift in Sources */,
@@ -537,6 +568,7 @@
 				BD9EF2C81C6BF4CC00E520CB /* MenuViewController.swift in Sources */,
 				BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */,
 				BDE493F71C7B961D005817D0 /* MenuSection.swift in Sources */,
+				BD7C7E891C7CA0E9005AFFDD /* DeleteAccountViewController.swift in Sources */,
 				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
 				BD36EC2F1C72068900F993CE /* ExerciseDelegate.swift in Sources */,
 				BD9EF2A81C6A310200E520CB /* ForgotPasswordViewController.swift in Sources */,
@@ -550,18 +582,22 @@
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
 				BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */,
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
+				BD7C7E831C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift in Sources */,
 				BDE493FF1C7B9B5B005817D0 /* MenuHeaderCellController.swift in Sources */,
+				BD7C7E871C7CA0DA005AFFDD /* ChangePasswordViewController.swift in Sources */,
 				BDE8BED61C77700900DBFB31 /* ExerciseListHeaderController.swift in Sources */,
 				BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */,
 				BDF44A331C79F46D00B47CD1 /* DBHelper.swift in Sources */,
 				BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */,
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
+				BD7C7E811C7CA0A6005AFFDD /* NotificationViewController.swift in Sources */,
 				BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */,
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
 				BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */,
 				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,
 				BD03C7BB1C761B6000D8911A /* SetDelegate.swift in Sources */,
+				BD7C7E7E1C7C9E48005AFFDD /* AboutViewController.swift in Sources */,
 				BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

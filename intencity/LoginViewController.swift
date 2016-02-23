@@ -11,8 +11,6 @@ import UIKit
 
 class LoginViewController: PageViewController, ServiceDelegate
 {
-    var backgroundColor: UIColor!
-    
     @IBOutlet weak var emailTextField: IntencityTextField!
     @IBOutlet weak var passwordTextField: IntencityTextField!
     @IBOutlet weak var forgotPasswordButton: IntencityButtonNoBackground!
@@ -38,7 +36,7 @@ class LoginViewController: PageViewController, ServiceDelegate
         super.viewDidLoad()
 
         // Sets the background color of the view.
-        self.view.backgroundColor = backgroundColor
+        self.view.backgroundColor = Color.page_background
         
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("sign_in_title", comment: "")

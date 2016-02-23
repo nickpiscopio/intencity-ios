@@ -12,8 +12,12 @@ import Foundation
 struct Constant
 {
     // iOS Constants
-    static let MAIN_STORYBOARD = "Main"
     static let DEMO_STORYBOARD = "Demo"
+    static let LOGIN_STORYBOARD = "Login"    
+    static let MAIN_STORYBOARD = "Main"
+    
+    static let LOGIN_NAV_CONTROLLER = "LoginNavController"
+    
     static let EXERCISE_LIST_HEADER = "ExerciseListHeader"
     static let ROUTINE_CELL = "RoutineCell"
     static let EXERCISE_CELL = "ExerciseCell"
@@ -21,6 +25,9 @@ struct Constant
     static let SET_CELL = "SetCell"
     static let MENU_CELL = "MenuCell"
     static let MENU_HEADER_CELL = "MenuHeaderCell"
+    
+    static let TERMS_VIEW_CONTROLLER = "TermsViewController"
+    static let LOG_OUT = "LogOut"
     
     static let MAIN_VIEW = "IntencityTabView"
     static let DEMO_VIEW = "DemoViewController"

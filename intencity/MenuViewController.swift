@@ -29,23 +29,28 @@ class MenuViewController: UIViewController
         self.tabBarController?.tabBar.hidden = true
         
         // Notification section.
-        menu.append(MenuSection(title: "", rows: [String(format: NSLocalizedString("notifications", comment: ""), "(0)")]))
+        let notificationRow = [ MenuRow(title: String(format: NSLocalizedString("notifications", comment: ""), "(0)"), viewController: "NotificationViewController") ]
+
+        menu.append(MenuSection(title: "", rows: notificationRow))
         
         // The settings section.
-        menu.append(MenuSection(title: NSLocalizedString("title_settings", comment: ""),
-                                rows: [ NSLocalizedString("edit_exclusion", comment: ""),
-                                        NSLocalizedString("edit_equipment", comment: ""),
-                                        NSLocalizedString("change_password", comment: ""),
-                                        NSLocalizedString("title_log_out", comment: "") ]))
+        let settingsRows = [ MenuRow(title: NSLocalizedString("edit_exclusion", comment: ""), viewController: "EditExclusionViewController"),
+                             MenuRow(title: NSLocalizedString("edit_equipment", comment: ""), viewController: "EditEquipmentViewController"),
+                             MenuRow(title: NSLocalizedString("change_password", comment: ""), viewController: "ChangePasswordViewController"),
+                             MenuRow(title: NSLocalizedString("title_log_out", comment: ""), viewController: Constant.LOG_OUT) ]
+
+        menu.append(MenuSection(title: NSLocalizedString("title_settings", comment: ""), rows: settingsRows))
         
         // The info section.
-        menu.append(MenuSection(title: NSLocalizedString("title_info", comment: ""),
-                                rows: [ NSLocalizedString("title_about", comment: ""),
-                                        NSLocalizedString("title_terms", comment: "") ]))
+        let infoRows = [ MenuRow(title: NSLocalizedString("title_about", comment: ""), viewController: "AboutViewController"),
+                         MenuRow(title: NSLocalizedString("title_terms", comment: ""), viewController: Constant.TERMS_VIEW_CONTROLLER) ]
+        
+        menu.append(MenuSection(title: NSLocalizedString("title_info", comment: ""), rows: infoRows))
         
         // The account settings section.
-        menu.append(MenuSection(title: NSLocalizedString("title_account_settings", comment: ""),
-                                rows: [ NSLocalizedString("title_delete_account", comment: "") ]))
+        let accountSettingsRow = [ MenuRow(title: NSLocalizedString("title_delete_account", comment: ""), viewController: "DeleteAccountViewController") ]
+        
+        menu.append(MenuSection(title: NSLocalizedString("title_account_settings", comment: ""), rows: accountSettingsRow))
         
         // Initialize the tableview.
         Util.initTableView(tableView, removeSeparators: true)
@@ -98,12 +103,65 @@ class MenuViewController: UIViewController
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        // Gets the title from the row in the section.
-        let title = menu[indexPath.section].rows[indexPath.row]
+        // Gets the row in the section.
+        let row = menu[indexPath.section].rows[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_CELL) as! MenuCellController
-        cell.title.text = title
+        cell.title.text = row.title
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        // Deselects the row.
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        // Gets the row in the section.
+        let row = menu[indexPath.section].rows[indexPath.row]
+        
+        let viewController = row.viewController
+        
+        if (viewController == Constant.LOG_OUT)
+        {
+            Util.logOut(self)
+        }
+        else
+        {
+            var storyboardName = ""
+            var viewControllerName = ""
+            
+            if (viewController == Constant.TERMS_VIEW_CONTROLLER)
+            {
+                // Push to the terms view.
+                
+                storyboardName = Constant.LOGIN_STORYBOARD
+                
+                viewControllerName = Constant.TERMS_VIEW_CONTROLLER
+            }
+            else
+            {
+                // We do not set the storyboardName here.
+                // We do this so we can just use the main storyboard.
+                viewControllerName = row.viewController
+            }
+            
+            pushViewController(storyboardName, identifier: viewControllerName)
+
+        }
+    }
+    
+    /**
+     * Pushes the view controller from a menu item click
+     *
+     * @param identifier    The string identifier of the view to open.
+     */
+    func pushViewController(storyboardName: String, identifier: String)
+    {
+        let storyboard = storyboardName == "" ? self.storyboard : UIStoryboard(name: storyboardName, bundle: nil)
+        
+        let viewController = storyboard!.instantiateViewControllerWithIdentifier(identifier)
+            
+        self.navigationController!.pushViewController(viewController, animated: true)
     }
 }

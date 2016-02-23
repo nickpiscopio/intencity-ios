@@ -1,5 +1,5 @@
 //
-//  TermsOfUseViewController.swift
+//  TermsViewController.swift
 //  Intencity
 //
 //  This is the controller for the terms of use.
@@ -9,7 +9,7 @@
 
 import UIKit
 
-class TermsOfUseViewController: UIViewController
+class TermsViewController: UIViewController
 {
     @IBOutlet weak var webView: UIWebView!
     
@@ -23,6 +23,10 @@ class TermsOfUseViewController: UIViewController
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("title_terms", comment: "")
         
+        // Hides the tab bar.
+        // This is needed for when we have the terms in the menu.
+        self.tabBarController?.tabBar.hidden = true
+        
         // Do any additional setup after loading the view, typically from a nib.
         let localfilePath = NSBundle.mainBundle().URLForResource("terms", withExtension: "html");
         let myRequest = NSURLRequest(URL: localfilePath!);
@@ -33,6 +37,5 @@ class TermsOfUseViewController: UIViewController
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

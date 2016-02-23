@@ -374,19 +374,19 @@
 "title_about" = "About";
 
 /*  */
-"title_log_out" = "Log out";
+"title_log_out" = "Log Out";
 
 /*  */
-"title_delete_account" = "Delete account";
+"title_delete_account" = "Delete Account";
 
 /* Settings Strings */
-"edit_exclusion" = "Edit hidden exercises";
+"edit_exclusion" = "Edit Hidden Exercises";
 
 /*  */
-"edit_equipment" = "Edit equipment";
+"edit_equipment" = "Edit Equipment";
 
 /*  */
-"change_password" = "Change password";
+"change_password" = "Change Password";
 
 /*  */
 "no_items" = "No hidden exercises found.";

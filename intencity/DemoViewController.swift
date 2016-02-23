@@ -103,8 +103,8 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         {
             pageControl.hidden = true
             next.hidden = true
-            let storyboard : UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("LoginNavController") as! LoginNavController
+            let storyboard : UIStoryboard = UIStoryboard(name: Constant.LOGIN_STORYBOARD, bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier(Constant.LOGIN_NAV_CONTROLLER) as! LoginNavController
             vc.backgroundColor = demoView.backgroundColor
             
             return vc

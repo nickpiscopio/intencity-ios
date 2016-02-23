@@ -92,6 +92,36 @@
             </objects>
             <point key="canvasLocation" x="2467" y="-493"/>
         </scene>
+        <!--About View Controller-->
+        <scene sceneID="1Vx-QU-LFE">
+            <objects>
+                <viewController storyboardIdentifier="AboutViewController" id="Pf6-nm-Lpd" customClass="AboutViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VBq-KJ-Gwv"/>
+                        <viewControllerLayoutGuide type="bottom" id="BA6-XT-aqn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VqZ-Eg-q5R">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5z-by-cgY">
+                                <rect key="frame" x="277" y="289" width="47" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h5z-by-cgY" firstAttribute="centerX" secondItem="VqZ-Eg-q5R" secondAttribute="centerX" id="1ii-w5-5XK"/>
+                            <constraint firstItem="h5z-by-cgY" firstAttribute="centerY" secondItem="VqZ-Eg-q5R" secondAttribute="centerY" id="6aU-Og-pY5"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6VQ-Dz-GZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3206" y="-493"/>
+        </scene>
         <!--Stat View Controller-->
         <scene sceneID="nC9-ZO-xUT">
             <objects>
@@ -387,6 +417,156 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ywr-Yb-lfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="814" y="847"/>
+        </scene>
+        <!--Notification View Controller-->
+        <scene sceneID="uEY-2t-rdd">
+            <objects>
+                <viewController storyboardIdentifier="NotificationViewController" id="J0C-Be-Z2N" customClass="NotificationViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cCF-hv-pzi"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rrn-FK-7zi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bog-u6-b9e">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3C-2c-4Qq">
+                                <rect key="frame" x="252" y="289" width="97" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="o3C-2c-4Qq" firstAttribute="centerX" secondItem="Bog-u6-b9e" secondAttribute="centerX" id="lOR-am-ixc"/>
+                            <constraint firstItem="o3C-2c-4Qq" firstAttribute="centerY" secondItem="Bog-u6-b9e" secondAttribute="centerY" id="ugg-fU-svw"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eba-8d-qfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3206" y="-3103"/>
+        </scene>
+        <!--Edit Exclusion View Controller-->
+        <scene sceneID="gz8-FN-qDY">
+            <objects>
+                <viewController storyboardIdentifier="EditExclusionViewController" id="vfw-Fr-n1e" customClass="EditExclusionViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xuz-LS-rdK"/>
+                        <viewControllerLayoutGuide type="bottom" id="OyF-EZ-J5J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CWW-uN-OoN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hidden Exercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gng-0j-XWE">
+                                <rect key="frame" x="234" y="289" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gng-0j-XWE" firstAttribute="centerX" secondItem="CWW-uN-OoN" secondAttribute="centerX" id="H4c-Qj-lac"/>
+                            <constraint firstItem="Gng-0j-XWE" firstAttribute="centerY" secondItem="CWW-uN-OoN" secondAttribute="centerY" id="iXd-Ke-Zb3"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tvR-ef-mgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3206" y="-2454"/>
+        </scene>
+        <!--Edit Equipment View Controller-->
+        <scene sceneID="5kb-Bd-8No">
+            <objects>
+                <viewController storyboardIdentifier="EditEquipmentViewController" id="qSp-wp-Jqa" customClass="EditEquipmentViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Me8-7i-66O"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jly-aE-GB4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rgY-u1-so9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Edit Equipment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgJ-zZ-6kH">
+                                <rect key="frame" x="250" y="289" width="116" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LgJ-zZ-6kH" firstAttribute="centerY" secondItem="rgY-u1-so9" secondAttribute="centerY" id="bS4-ax-PO5"/>
+                            <constraint firstItem="LgJ-zZ-6kH" firstAttribute="centerX" secondItem="rgY-u1-so9" secondAttribute="centerX" id="xeK-i0-OrX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wnm-4R-1hC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3206" y="-1800"/>
+        </scene>
+        <!--Change Password View Controller-->
+        <scene sceneID="CuP-Xp-rx5">
+            <objects>
+                <viewController storyboardIdentifier="ChangePasswordViewController" id="mZD-uF-JbS" customClass="ChangePasswordViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zWC-eX-GDN"/>
+                        <viewControllerLayoutGuide type="bottom" id="TPO-Ib-feq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dfo-5h-zD1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWB-Kl-dKg">
+                                <rect key="frame" x="228" y="289" width="138" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lWB-Kl-dKg" firstAttribute="centerX" secondItem="Dfo-5h-zD1" secondAttribute="centerX" id="GIs-Pt-yUN"/>
+                            <constraint firstItem="lWB-Kl-dKg" firstAttribute="centerY" secondItem="Dfo-5h-zD1" secondAttribute="centerY" id="UEh-Qn-EWF"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vuf-ze-hp7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3206" y="-1147"/>
+        </scene>
+        <!--Delete Account View Controller-->
+        <scene sceneID="0nH-XT-fcF">
+            <objects>
+                <viewController storyboardIdentifier="DeleteAccountViewController" id="A75-vA-Zpj" customClass="DeleteAccountViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L8p-kn-3m3"/>
+                        <viewControllerLayoutGuide type="bottom" id="uhi-11-wLs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l83-Wt-f12">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ib7-I0-Xo4">
+                                <rect key="frame" x="241" y="289" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ib7-I0-Xo4" firstAttribute="centerY" secondItem="l83-Wt-f12" secondAttribute="centerY" id="7Qh-t6-mRB"/>
+                            <constraint firstItem="ib7-I0-Xo4" firstAttribute="centerX" secondItem="l83-Wt-f12" secondAttribute="centerX" id="JM9-Pr-ojB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CWq-8R-9sZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3206" y="191"/>
         </scene>
     </scenes>
     <resources>
