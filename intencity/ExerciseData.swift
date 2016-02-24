@@ -7,6 +7,8 @@
 //  Created by Nick Piscopio on 2/21/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
+import Foundation
+
 class ExerciseData
 {
     static var instance: ExerciseData!
@@ -29,5 +31,23 @@ class ExerciseData
     {
         routineName = ""
         exerciseIndex = 0
+        
+        addWarmUp()
+    }
+    
+    /**
+     * Adds the warm-up exercise to the exercise list.
+     */
+    func addWarmUp()
+    {
+        exerciseList.append(Exercise(name: NSLocalizedString("warm_up", comment: ""), description: NSLocalizedString("warm_up_description", comment: ""), sets: []))
+    }
+    
+    /**
+     * Adds the stretch exercise to the exercise list.
+     */
+    func addStretch()
+    {
+        exerciseList.append(Exercise(name: NSLocalizedString("stretch", comment: ""), description: NSLocalizedString("stretch_description", comment: ""), sets: []))
     }
 }

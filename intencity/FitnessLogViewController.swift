@@ -15,7 +15,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     @IBOutlet weak var nextExerciseButton: UIButton!
     
     // THIS WILL CHANGE TO 7 LATER WHEN ADDING WARM UP AND STRETCH.
-    var totalExercises = 5
+    var totalExercises = 7
     
     var numberOfCells = 0
     
@@ -115,7 +115,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     }
     
     /**
-     * Adds an exercise to teh currentExercises.
+     * Adds an exercise to the currentExercises.
      */
     func addExercise()
     {
@@ -190,10 +190,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                                 difficulty: !(difficulty is NSNull) ? Int(difficulty as! String)! : 10,
                                 notes: !(notes is NSNull) ? notes as! String : "") ]
                 
-                let exercise = Exercise(name: exerciseName, sets: sets)
+                let exercise = Exercise(name: exerciseName, description: "", sets: sets)
                 
                 exerciseData.exerciseList.append(exercise)
             }
+            
+            exerciseData.addStretch()
         }
         
         animateTable()
@@ -321,11 +323,18 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         {
             let index = indexPath.item
             let exercise = currentExercises[index]
+            let description = exercise.description
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.delegate = self
             cell.index = index
             cell.exerciseButton.setTitle(exercise.name, forState: .Normal)
+            
+            if (!description.isEmpty)
+            {
+                cell.setDescription(description)
+            }
+            
             return cell
         }
     }

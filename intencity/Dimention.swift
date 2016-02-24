@@ -16,6 +16,7 @@ struct Dimention
     static let SHADOW: CGFloat = 1.0
     static let SHADOW_OPACITY: Float = 1.0
     static let CARD_BUTTON_PADDING: CGFloat = 10.0
+    static let EXERCISE_DESCRIPTION_PADDING: CGFloat = 30.0
     static let TAB_BAR_HEIGHT: CGFloat = 40.0
     static let LAYOUT_MARGIN: CGFloat = 16.0
 }

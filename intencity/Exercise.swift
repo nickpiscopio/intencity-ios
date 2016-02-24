@@ -10,5 +10,6 @@
 struct Exercise
 {
     var name: String
+    var description: String
     var sets: [Set]
 }
