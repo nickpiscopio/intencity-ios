@@ -59,7 +59,7 @@ class StatViewController: UIViewController, SetDelegate
         notesTextField?.placeholder = NSLocalizedString("note_hint", comment: "")
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: false)
+        Util.initTableView(tableView, removeSeparators: false, addFooter: false)
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "Set", cellName: Constant.SET_CELL)

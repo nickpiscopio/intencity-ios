@@ -53,7 +53,7 @@ class MenuViewController: UIViewController
         menu.append(MenuSection(title: NSLocalizedString("title_account_settings", comment: ""), rows: accountSettingsRow))
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: true)
+        Util.initTableView(tableView, removeSeparators: true, addFooter: false)
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "MenuHeader", cellName: Constant.MENU_HEADER_CELL)

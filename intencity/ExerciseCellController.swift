@@ -42,6 +42,9 @@ class ExerciseCellController: UITableViewCell
         
         let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: stackView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: Dimention.LAYOUT_MARGIN)
         view.addConstraint(heightConstraint)
+        
+        // REMOVE THIS LINE WHEN WE HAVE THE SEARCH IMPLEMENTED FOR WARM-UPS AND STRETCHES.
+        exerciseButton.enabled = true
     }
     
     /**
@@ -59,6 +62,9 @@ class ExerciseCellController: UITableViewCell
         editButton.hidden = true
         
         exerciseButton.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
+        
+        // REMOVE THIS LINE WHEN WE HAVE THE SEARCH IMPLEMENTED FOR WARM-UPS AND STRETCHES.
+        exerciseButton.enabled = false
     }
     
     @IBAction func exerciseClicked(sender: AnyObject)

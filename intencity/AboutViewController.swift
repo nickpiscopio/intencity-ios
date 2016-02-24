@@ -37,7 +37,7 @@ class AboutViewController: UIViewController
         versionDescription.text = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: true)
+        Util.initTableView(tableView, removeSeparators: true, addFooter: false)
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.ABOUT_CELL, cellName: Constant.ABOUT_CELL)

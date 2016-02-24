@@ -53,7 +53,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         state = Constant.ROUTINE_CELL
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: true)
+        Util.initTableView(tableView, removeSeparators: true, addFooter: true)
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "RoutineCard", cellName: Constant.ROUTINE_CELL)

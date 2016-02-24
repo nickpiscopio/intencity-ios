@@ -134,8 +134,9 @@ class Util
      *
      * @param table                 The UITableView to add the cell.
      * @param removeSeparators      Boolean on whether to remove the cell separators or not.
+     * @param addFooter             Adds a footer to the table.
      */
-    static func initTableView(table: UITableView, removeSeparators: Bool)
+    static func initTableView(table: UITableView, removeSeparators: Bool, addFooter: Bool)
     {
         table.backgroundColor = Color.transparent
         
@@ -149,6 +150,14 @@ class Util
         table.rowHeight = UITableViewAutomaticDimension;
         // Set to whatever your "average" cell
         table.estimatedRowHeight = 10.0;
+        
+        if (addFooter)
+        {
+            let footerView = UIView()
+            footerView.frame = CGRectMake(0, 0, table.frame.size.width, Dimention.TABLE_FOOTER_HEIGHT)
+            footerView.backgroundColor = Color.transparent
+            table.tableFooterView = footerView
+        }
     }
     
     /**

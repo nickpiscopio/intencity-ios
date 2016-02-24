@@ -36,7 +36,7 @@ class DirectionViewController: UIViewController, ServiceDelegate
         directionTitleLabel.text = ""
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: true)
+        Util.initTableView(tableView, removeSeparators: true, addFooter: false)
         Util.addUITableViewCell(tableView, nibNamed: "Direction", cellName: Constant.DIRECTION_CELL)
         
         ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
