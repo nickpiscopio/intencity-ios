@@ -119,7 +119,19 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func addExercise()
     {
-        if (currentExercises.count < totalExercises)
+        let currentExerciseCount = currentExercises.count
+        // If there is 1 exercise left, we want to display the stretch.
+        // We remove all the unnecessary exercises.
+        if (totalExercises - currentExerciseCount <= 1)
+        {
+            let stretch = exerciseData.exerciseList[exerciseData.exerciseList.count - 1]
+            
+            exerciseData.exerciseList.removeAll()
+            exerciseData.exerciseList = currentExercises
+            exerciseData.exerciseList.append(stretch)
+        }
+        
+        if (currentExerciseCount < totalExercises)
         {
             // Get the next exercise.
             currentExercises.append(exerciseData.exerciseList[exerciseData.exerciseIndex++])
@@ -333,6 +345,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             if (!description.isEmpty)
             {
                 cell.setDescription(description)
+            }
+            else
+            {
+                cell.setAsExercise()
             }
             
             return cell

@@ -25,10 +25,23 @@ class ExerciseCellController: UITableViewCell
         
         self.backgroundColor = Color.page_background
         
-        exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
-        
         editButton.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
         editButton.setTitle(NSLocalizedString("edit", comment: ""), forState: .Normal)
+    }
+    
+    /**
+     * Sets the card as an exercise.
+     */
+    func setAsExercise()
+    {
+        exerciseDescription.hidden = true
+        
+        editButton.hidden = false
+        
+        exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
+        
+        let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: stackView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: Dimention.LAYOUT_MARGIN)
+        view.addConstraint(heightConstraint)
     }
     
     /**
