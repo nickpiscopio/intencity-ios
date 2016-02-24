@@ -365,7 +365,7 @@
                                     <outlet property="delegate" destination="rOj-ca-F3T" id="qQA-dw-qec"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB6-pG-d8R">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB6-pG-d8R">
                                 <rect key="frame" x="527" y="441" width="73" height="44"/>
                                 <state key="normal" title="Next"/>
                                 <connections>

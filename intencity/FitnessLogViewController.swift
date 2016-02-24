@@ -11,13 +11,16 @@ import UIKit
 
 class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate
 {
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nextExerciseButton: UIButton!
+    
+    // THIS WILL CHANGE TO 7 LATER WHEN ADDING WARM UP AND STRETCH.
+    var totalExercises = 5
+    
     var numberOfCells = 0
     
     var displayMuscleGroups = [String]()
     var recommended = 0;
-    
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var nextExerciseButton: UIButton!
     
     var email = "";
     
@@ -28,6 +31,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     var exerciseData: ExerciseData!
     
     var isSwipeOpen = false
+    
+    var exerciseListHeader: ExerciseListHeaderController!
     
     override func viewDidLoad()
     {
@@ -106,26 +111,38 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     @IBAction func nextExerciseClicked(sender: AnyObject)
     {
-        addExercise(false)
+        addExercise()
     }
     
     /**
      * Adds an exercise to teh currentExercises.
      */
-    func addExercise(removedExercise: Bool)
+    func addExercise()
     {
-        if (currentExercises.count < exerciseData.exerciseList.count - 1)
+        if (currentExercises.count < totalExercises)
         {
-            if (!removedExercise)
-            {
-                exerciseData.exerciseIndex++
-            }
-            
             // Get the next exercise.
-            currentExercises.append(exerciseData.exerciseList[exerciseData.exerciseIndex])
+            currentExercises.append(exerciseData.exerciseList[exerciseData.exerciseIndex++])
             
             insertRow()
+            
+            updateExerciseTotal()
         }
+    }
+    
+    /**
+     * Updates the number of exercises left.
+     */
+    func updateExerciseTotal()
+    {
+        let totalExerciseCount = exerciseData.exerciseList.count
+        
+        if (totalExerciseCount < totalExercises)
+        {
+            totalExercises = totalExerciseCount
+        }
+        
+        exerciseListHeader.exerciseTotalLabel.text = "\(currentExercises.count) / \(totalExercises)"
     }
     
     /**
@@ -241,7 +258,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if (state == Constant.EXERCISE_CELL)
         {
             // Start the view off by inserting a row
-            addExercise(false)
+            addExercise()
         }
     }
     
@@ -257,9 +274,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     }
     
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
-    
-    // MARK: - UITableViewDataSource
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 1
@@ -276,10 +290,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     {
         if (state == Constant.EXERCISE_CELL)
         {
-            let  headerCell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
-            headerCell.routineNameLabel.text = exerciseData.routineName
-            
-            return headerCell.contentView
+            exerciseListHeader = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
+            exerciseListHeader.routineNameLabel.text = exerciseData.routineName            
+            return exerciseListHeader.contentView
         }
     
         return nil       
@@ -339,18 +352,17 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     {
         self.isSwipeOpen = false
     }
-
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
         return true
     }
     
-//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//        self.isSwipeOpen = false
-//    }
-    
+    /**
+     * Hides an exercise in the exercise list.
+     *
+     * @param indexPath The index path for the exercise to hide.
+     */
     func hideExercise(indexPath: NSIndexPath)(alertAction: UIAlertAction!) -> Void
     {
         tableView.beginUpdates()
@@ -359,16 +371,18 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             
         currentExercises.removeAtIndex(index)
         exerciseData.exerciseList.removeAtIndex(index)
-            
+        
+        exerciseData.exerciseIndex--
+        
+        updateExerciseTotal()
+        
         // Note that indexPath is wrapped in an array:  [indexPath]
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
-        addExercise(true)
+        addExercise()
             
         tableView.endUpdates()
     }
     
-    func cancelRemoval(indexPath: NSIndexPath)(alertAction: UIAlertAction!)
-    {
-    }
+    func cancelRemoval(indexPath: NSIndexPath)(alertAction: UIAlertAction!) { }
 }
