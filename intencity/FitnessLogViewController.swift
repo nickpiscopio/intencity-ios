@@ -106,18 +106,23 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     @IBAction func nextExerciseClicked(sender: AnyObject)
     {
-        addExercise()
+        addExercise(false)
     }
     
     /**
      * Adds an exercise to teh currentExercises.
      */
-    func addExercise()
+    func addExercise(removedExercise: Bool)
     {
-        if (currentExercises.count < exerciseData.exerciseList.count)
+        if (currentExercises.count < exerciseData.exerciseList.count - 1)
         {
+            if (!removedExercise)
+            {
+                exerciseData.exerciseIndex++
+            }
+            
             // Get the next exercise.
-            currentExercises.append(exerciseData.exerciseList[exerciseData.exerciseIndex++])
+            currentExercises.append(exerciseData.exerciseList[exerciseData.exerciseIndex])
             
             insertRow()
         }
@@ -236,7 +241,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if (state == Constant.EXERCISE_CELL)
         {
             // Start the view off by inserting a row
-            addExercise()
+            addExercise(false)
         }
     }
     
@@ -319,9 +324,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         let remove = UITableViewRowAction(style: .Normal, title: NSLocalizedString("hide", comment: "")) { action, index in
             
             let exerciseName = self.exerciseData.exerciseList[indexPath.row].name
-            let actions = [ UIAlertAction(title: NSLocalizedString("hide_for_now", comment: ""), style: .Default, handler: self.hideExercise),
-                            UIAlertAction(title: NSLocalizedString("hide_forever", comment: ""), style: .Destructive, handler: self.hideExercise),
-                            UIAlertAction(title: NSLocalizedString("do_not_hide", comment: ""), style: .Cancel, handler: self.cancelRemoval) ]
+            let actions = [ UIAlertAction(title: NSLocalizedString("hide_for_now", comment: ""), style: .Default, handler: self.hideExercise(indexPath)),
+                            UIAlertAction(title: NSLocalizedString("hide_forever", comment: ""), style: .Destructive, handler: self.hideExercise(indexPath)),
+                            UIAlertAction(title: NSLocalizedString("do_not_hide", comment: ""), style: .Cancel, handler: self.cancelRemoval(indexPath)) ]
             Util.displayAlert(self, title: String(format: NSLocalizedString("hide_exercise", comment: ""), exerciseName), message: "", actions: actions)
         }
         
@@ -336,40 +341,34 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     }
 
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // the cells you would like the actions to appear needs to be editable
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+//    {
+//        self.isSwipeOpen = false
+//    }
+    
+    func hideExercise(indexPath: NSIndexPath)(alertAction: UIAlertAction!) -> Void
     {
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
-        }
+        tableView.beginUpdates()
+            
+        let index = indexPath.row
+            
+        currentExercises.removeAtIndex(index)
+        exerciseData.exerciseList.removeAtIndex(index)
+            
+        // Note that indexPath is wrapped in an array:  [indexPath]
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
-        self.isSwipeOpen = false
+        addExercise(true)
+            
+        tableView.endUpdates()
     }
     
-    func hideExercise(alertAction: UIAlertAction!) -> Void
+    func cancelRemoval(indexPath: NSIndexPath)(alertAction: UIAlertAction!)
     {
-        print("hide clicked")
-//        if let indexPath = deletePlanetIndexPath {
-//            tableView.beginUpdates()
-//            
-//            planets.removeAtIndex(indexPath.row)
-//            
-//            // Note that indexPath is wrapped in an array:  [indexPath]
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-//            
-//            deletePlanetIndexPath = nil
-//            
-//            tableView.endUpdates()
-//        }
-    }
-    
-    func cancelRemoval(alertAction: UIAlertAction!)
-    {
-        print("cancel clicked")
-//        deletePlanetIndexPath = nil
     }
 }
