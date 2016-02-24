@@ -59,7 +59,7 @@ class StatViewController: UIViewController, SetDelegate
         notesTextField?.placeholder = NSLocalizedString("note_hint", comment: "")
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: false, addFooter: false)
+        Util.initTableView(tableView, removeSeparators: false, addFooter: true)
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "Set", cellName: Constant.SET_CELL)
@@ -72,7 +72,7 @@ class StatViewController: UIViewController, SetDelegate
             self.setDuration(item)
         }
         dropDown.anchorView = durationTitleLabel
-        dropDown.bottomOffset = CGPoint(x: 0, y:durationTitleLabel.bounds.height / 2)
+        dropDown.bottomOffset = CGPoint(x: 0, y: durationTitleLabel.bounds.height / 2)
         // We set the width here to the largest item in the data source.
         // We do this so the drop down doesn't keep resizing every time an item is selcted.
         dropDown.width = 53

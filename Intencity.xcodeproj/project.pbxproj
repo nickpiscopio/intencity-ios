@@ -20,6 +20,7 @@
 		BD36EC2F1C72068900F993CE /* ExerciseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */; };
 		BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC301C72080F00F993CE /* DirectionViewController.swift */; };
 		BD36EC331C720C6B00F993CE /* Direction.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD36EC321C720C6B00F993CE /* Direction.xib */; };
+		BD37E3AC1C7E3906004A30F7 /* IntencityButtonRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */; };
 		BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */; };
 		BD4B8EB91C7CEACD00AD579B /* AboutFooterCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB81C7CEACD00AD579B /* AboutFooterCellController.swift */; };
 		BD4B8EBB1C7CEB1D00AD579B /* AboutFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */; };
@@ -103,6 +104,7 @@
 		BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDelegate.swift; sourceTree = "<group>"; };
 		BD36EC301C72080F00F993CE /* DirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewController.swift; sourceTree = "<group>"; };
 		BD36EC321C720C6B00F993CE /* Direction.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Direction.xib; sourceTree = "<group>"; };
+		BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonRound.swift; sourceTree = "<group>"; };
 		BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSection.swift; sourceTree = SOURCE_ROOT; };
 		BD4B8EB81C7CEACD00AD579B /* AboutFooterCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutFooterCellController.swift; sourceTree = "<group>"; };
 		BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutFooterCell.xib; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 			children = (
 				BD9EF2AB1C6A496800E520CB /* IntencityTextField.swift */,
 				BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */,
+				BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */,
 				BD9EF2B11C6A56CE00E520CB /* IntencityButtonNoBackground.swift */,
 				BD4B8EBE1C7E039F00AD579B /* IntencityPaddedLabel.swift */,
 				BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */,
@@ -592,6 +595,7 @@
 				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
 				BD36EC2F1C72068900F993CE /* ExerciseDelegate.swift in Sources */,
 				BD9EF2A81C6A310200E520CB /* ForgotPasswordViewController.swift in Sources */,
+				BD37E3AC1C7E3906004A30F7 /* IntencityButtonRound.swift in Sources */,
 				BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */,
 				BD9EF2C21C6B869E00E520CB /* Constant.swift in Sources */,
 				BD9EF2C41C6B8A6700E520CB /* Util.swift in Sources */,
