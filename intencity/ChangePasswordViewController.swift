@@ -51,4 +51,9 @@ class ChangePasswordViewController: UIViewController
         
         self.navigationController!.pushViewController(viewController, animated: true)
     }
+    
+    @IBAction func changePasswordClicked(sender: AnyObject)
+    {
+        
+    }
 }
