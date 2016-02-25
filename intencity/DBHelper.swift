@@ -105,23 +105,24 @@ class DBHelper
                 let difficulty = set.difficulty
                 let notes = set.notes
                 
-                let webIdInsert = webId > 0 ? ExerciseTable.COLUMN_WEB_ID + DB_COMMA_SEP : ""
-                let weightInsert = weight > 0 ? ExerciseTable.COLUMN_WEIGHT + DB_COMMA_SEP : ""
-                let repsInsert = reps > 0 ? ExerciseTable.COLUMN_REP + DB_COMMA_SEP : ""
-                let durationInsert = !duration.isEmpty && duration != Constant.RETURN_NULL ? ExerciseTable.COLUMN_DURATION + DB_COMMA_SEP : ""
-                let difficultyInsert = difficulty > 0 ? ExerciseTable.COLUMN_DIFFICULTY : ""
-                let notesInsert = !notes.isEmpty ? DB_COMMA_SEP + ExerciseTable.COLUMN_NOTES : ""
+                let webIdInsert = webId > 0 ? DB_COMMA_SEP + ExerciseTable.COLUMN_WEB_ID : ""
+                let weightInsert = weight > 0 ? DB_COMMA_SEP + ExerciseTable.COLUMN_WEIGHT : ""
+                let repsInsert = reps > 0 ? DB_COMMA_SEP + ExerciseTable.COLUMN_REP : ""
+                let durationInsert = !duration.isEmpty && duration != Constant.RETURN_NULL ? DB_COMMA_SEP + ExerciseTable.COLUMN_DURATION : ""
+                let difficultyInsert = difficulty > 0 ? DB_COMMA_SEP + ExerciseTable.COLUMN_DIFFICULTY : ""
+                let notesInsert = notes != Constant.RETURN_NULL && notes != "" ? DB_COMMA_SEP + ExerciseTable.COLUMN_NOTES : ""
                 
-                let webIdValue = webId > 0 ? String(webId) + DB_COMMA_SEP : ""
-                let weightValue = weight > 0 ? String(weight) + DB_COMMA_SEP : ""
-                let repsValue = reps > 0 ? String(reps) + DB_COMMA_SEP : ""
-                let durationValue = !duration.isEmpty && duration != Constant.RETURN_NULL ? "'" + duration + "'" + DB_COMMA_SEP : ""
-                let difficultyValue = difficulty > 0 ? String(difficulty) : ""
-                let notesValue = !notes.isEmpty ? DB_COMMA_SEP + "'" + notes + "'" : ""
+                let webIdValue = webId > 0 ? DB_COMMA_SEP + String(webId) : ""
+                let weightValue = weight > 0 ? DB_COMMA_SEP + String(weight) : ""
+                let repsValue = reps > 0 ? DB_COMMA_SEP + String(reps) : ""
+                let durationValue = !duration.isEmpty && duration != Constant.RETURN_NULL ? DB_COMMA_SEP + "'" + duration + "'" : ""
+                let difficultyValue = difficulty > 0 ? DB_COMMA_SEP + String(difficulty) : ""
+                let notesValue = notes != Constant.RETURN_NULL && notes != "" ? DB_COMMA_SEP + "'" + notes + "'" : ""
                 
                 let columns = "(" + ExerciseTable.COLUMN_ROUTINE_NAME + DB_COMMA_SEP +
                                     ExerciseTable.COLUMN_INDEX + DB_COMMA_SEP +
                                     ExerciseTable.COLUMN_NAME + DB_COMMA_SEP +
+                                    ExerciseTable.COLUMN_DESCRIPTION +
                                     webIdInsert +
                                     weightInsert +
                                     repsInsert +
@@ -131,7 +132,8 @@ class DBHelper
                 
                 let values = "'" + routineName + "'" + DB_COMMA_SEP +
                                 String(index) + DB_COMMA_SEP +
-                                "'" + exercise.name + "'" + DB_COMMA_SEP + 
+                                "'" + exercise.name + "'" + DB_COMMA_SEP +
+                                "'" + exercise.description + "'" +
                                 webIdValue +
                                 weightValue +
                                 repsValue +
@@ -173,8 +175,10 @@ class DBHelper
             
             var lastExerciseName = ""
             
+            var exerciseIndex = 0
+            
             while result.next()
-            {
+            {                
                 var exercise: Exercise!
 
                 if (index <= 0)
@@ -195,11 +199,11 @@ class DBHelper
                 {
                     lastExerciseName = name
                     
-                    exercise.name = name
-
-                    exercise.description = description
+                    exercise = Exercise(name: name, description: description != nil ? description : "", sets: [])
                     
                     exercises.append(exercise)
+
+                    exerciseIndex = exercises.count - 1
                 }
                 
                 // Sets
@@ -210,9 +214,17 @@ class DBHelper
                 let difficulty = result.stringForColumn(ExerciseTable.COLUMN_DIFFICULTY)
                 let notes = result.stringForColumn(ExerciseTable.COLUMN_NOTES)
                 
-                let sets = [ Set(webId: Int(webId)!, weight: Float(weight)!, reps: Int(reps)!, duration: duration, difficulty: Int(difficulty)!, notes: notes) ]
+                let set = Set(webId: webId != nil ? Int(webId)! : Int(Constant.CODE_FAILED),
+                                 weight: weight != nil ? Float(weight)! : 0.0,
+                                 reps: reps != nil ? Int(reps)! : Int(Constant.CODE_FAILED),
+                                 duration: duration != nil ? duration : Constant.RETURN_NULL,
+                                 difficulty: difficulty != nil ? Int(difficulty)! : Int(Constant.CODE_FAILED),
+                                 notes: notes != nil ? notes : Constant.RETURN_NULL)
                 
-                exercise.sets = sets
+                var sets = exercises[exerciseIndex].sets
+                sets.append(set)
+                
+                exercises[exerciseIndex].sets = sets
             }
         }
         catch let error as NSError

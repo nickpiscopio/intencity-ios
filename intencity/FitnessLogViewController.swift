@@ -14,6 +14,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextExerciseButton: UIButton!
     
+    let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
+    
     // THIS WILL CHANGE TO 7 LATER WHEN ADDING WARM UP AND STRETCH.
     var totalExercises = 7
     
@@ -82,16 +84,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 break
             case ServiceEvent.SET_CURRENT_MUSCLE_GROUP:
                 
-                let variables = Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY, variables:  [ email ])
-                print("variables2 \"\(variables)\"")
-                
                 ServiceTask(event: ServiceEvent.GET_EXERCISES_FOR_TODAY, delegate: self,
                     serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                     params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY, variables:  [ email ]))
                 break
             
             case ServiceEvent.GET_EXERCISES_FOR_TODAY:
-                print("exercises for today: \"\(result)\"")
                     
                 state = Constant.EXERCISE_CELL
                     
@@ -170,6 +168,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         // This gets saved as NSDictionary, so there is no order
         let json: AnyObject? = result.parseJSONString
         
+        var indexToLoad = 1
+        
         if (state == Constant.ROUTINE_CELL)
         {
             var recommended: String?
@@ -185,9 +185,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // Get the saved exercises from the local database.
             savedExercises = DBHelper().getRecords()
             
-            if (savedExercises != nil)
+            if (savedExercises.routineName != "")
             {
-                displayMuscleGroups.append(NSLocalizedString("routine_continue", comment: ""))
+                displayMuscleGroups.append(CONTINUE_STRING)
                 
                 self.recommended = displayMuscleGroups.count - 1
             }
@@ -199,32 +199,43 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         else
         {
             nextExerciseButton.hidden = false
-            
-            for muscleGroups in json as! NSArray
-            {
-                let exerciseName = muscleGroups[Constant.COLUMN_EXERCISE_NAME] as! String
-                let weight = muscleGroups[Constant.COLUMN_EXERCISE_WEIGHT]
-                let reps = muscleGroups[Constant.COLUMN_EXERCISE_REPS]
-                let duration = muscleGroups[Constant.COLUMN_EXERCISE_DURATION]
-                let difficulty = muscleGroups[Constant.COLUMN_EXERCISE_DIFFICULTY]
-                let notes = muscleGroups[Constant.COLUMN_NOTES]
 
-                let sets = [ Set(webId: Int(Constant.CODE_FAILED),
-                                weight: !(weight is NSNull) ? Float(weight as! String)! : Float(Constant.CODE_FAILED),
-                                reps: !(reps is NSNull) ? Int(reps as! String)! : Int(Constant.CODE_FAILED),
-                                duration: !(duration is NSNull) ? duration as! String : Constant.RETURN_NULL,
-                                difficulty: !(difficulty is NSNull) ? Int(difficulty as! String)! : 10,
-                                notes: !(notes is NSNull) ? notes as! String : "") ]
+            // This means we got results back from the web database.
+            if (result != "")
+            {
+                for muscleGroups in json as! NSArray
+                {
+                    let exerciseName = muscleGroups[Constant.COLUMN_EXERCISE_NAME] as! String
+                    let weight = muscleGroups[Constant.COLUMN_EXERCISE_WEIGHT]
+                    let reps = muscleGroups[Constant.COLUMN_EXERCISE_REPS]
+                    let duration = muscleGroups[Constant.COLUMN_EXERCISE_DURATION]
+                    let difficulty = muscleGroups[Constant.COLUMN_EXERCISE_DIFFICULTY]
+                    let notes = muscleGroups[Constant.COLUMN_NOTES]
+                    
+                    let sets = [ Set(webId: Int(Constant.CODE_FAILED),
+                        weight: !(weight is NSNull) ? Float(weight as! String)! : Float(Constant.CODE_FAILED),
+                        reps: !(reps is NSNull) ? Int(reps as! String)! : Int(Constant.CODE_FAILED),
+                        duration: !(duration is NSNull) ? duration as! String : Constant.RETURN_NULL,
+                        difficulty: !(difficulty is NSNull) ? Int(difficulty as! String)! : 10,
+                        notes: !(notes is NSNull) ? notes as! String : "") ]
+                    
+                    let exercise = Exercise(name: exerciseName, description: "", sets: sets)
+                    
+                    exerciseData.exerciseList.append(exercise)
+                }
                 
-                let exercise = Exercise(name: exerciseName, description: "", sets: sets)
-                
-                exerciseData.exerciseList.append(exercise)
+                exerciseData.addStretch()
             }
-            
-            exerciseData.addStretch()
+            // This means we got the results from the iOS database.
+            else
+            {
+                exerciseData.exerciseList = savedExercises.exercises
+                
+                indexToLoad = savedExercises.index
+            }
         }
         
-        animateTable()
+        animateTable(indexToLoad)
     }
     
     /**
@@ -232,11 +243,24 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func onStartExercising(routine: Int)
     {
-        exerciseData.routineName = displayMuscleGroups[routine - 1]
+        let routineName = displayMuscleGroups[routine - 1]
         
-        ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
-            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables:  [ email,  String(routine)]))
+        if (routineName == CONTINUE_STRING)
+        {
+            exerciseData.routineName = savedExercises.routineName
+            
+            state = Constant.EXERCISE_CELL
+            
+            loadTableViewItems(state, result: "")
+        }
+        else
+        {
+            exerciseData.routineName = routineName
+            
+            ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
+                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(routine) ]))
+        }
     }
     
     /**
@@ -273,8 +297,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     /**
      * Animates the table being added to the screen.
-    */
-    func animateTable()
+     *
+     * @param loadNextExercise  A boolean value of whether to load the next exercise or not.
+     */
+    func animateTable(indexToLoad: Int)
     {
         numberOfCells = 1
             
@@ -285,14 +311,16 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         if (state == Constant.EXERCISE_CELL)
         {
-            // Start the view off by inserting a row
-            addExercise()
+            for (var i = 0; i < indexToLoad; i++)
+            {
+                addExercise()
+            }
         }
     }
     
     /**
      * Animates a row being added to the screen.
-    */
+     */
     func insertRow()
     {
         let indexPath = NSIndexPath(forRow: currentExercises.count - 1, inSection: 0)
@@ -344,7 +372,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // CompletedMuscleGroup starts at 1.
             cell.selectedRoutineNumber = recommended + 1
             cell.setDropDownDataSource(recommended)
-            cell.setDropDownWidth(displayMuscleGroups.contains(NSLocalizedString("routine_continue", comment: "")))
+            cell.setDropDownWidth(displayMuscleGroups.contains(CONTINUE_STRING))
             return cell
         }
         else
@@ -417,7 +445,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         updateExerciseTotal()
         
-        // Note that indexPath is wrapped in an array:  [indexPath]
+        // Note that indexPath is wrapped in an array: [indexPath]
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
         addExercise()
