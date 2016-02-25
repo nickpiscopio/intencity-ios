@@ -41,7 +41,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="pJU-af-MoM">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="6UB-wh-LYy">
+                        <barButtonItem key="rightBarButtonItem" title="Menu" id="6UB-wh-LYy">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="Kz2-vl-MdR"/>
                             </connections>
@@ -391,7 +391,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KlJ-Jv-PRs">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="c3l-ac-jjQ">
+                        <barButtonItem key="rightBarButtonItem" title="Menu" id="c3l-ac-jjQ">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="z41-nb-wwL"/>
                             </connections>
@@ -566,19 +566,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWB-Kl-dKg">
-                                <rect key="frame" x="228" y="289" width="138" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Jl0-qj-V4D">
+                                <rect key="frame" x="12" y="32" width="568" height="170"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ogG-5c-wth">
+                                        <rect key="frame" x="0.0" y="0.0" width="568" height="127"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TZn-gn-hjr">
+                                                <rect key="frame" x="0.0" y="0.0" width="568" height="57"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t0o-dL-bGw" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="568" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Rvg-co-s9g">
+                                                        <rect key="frame" x="0.0" y="30" width="568" height="27"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52d-Uk-CvQ" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="38" height="27"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <connections>
+                                                                    <action selector="forgotPasswordClicked:" destination="mZD-uF-JbS" eventType="touchUpInside" id="WOk-M2-ig7"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2jc-30-j3A">
+                                                <rect key="frame" x="0.0" y="62" width="568" height="65"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zJS-a7-udV" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="568" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ixd-ZG-yH1" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="35" width="568" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cu2-rm-Lqr" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="143" width="568" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lWB-Kl-dKg" firstAttribute="centerX" secondItem="Dfo-5h-zD1" secondAttribute="centerX" id="GIs-Pt-yUN"/>
-                            <constraint firstItem="lWB-Kl-dKg" firstAttribute="centerY" secondItem="Dfo-5h-zD1" secondAttribute="centerY" id="UEh-Qn-EWF"/>
+                            <constraint firstItem="Jl0-qj-V4D" firstAttribute="leading" secondItem="Dfo-5h-zD1" secondAttribute="leading" constant="16" id="0n4-w5-HN2"/>
+                            <constraint firstItem="Jl0-qj-V4D" firstAttribute="top" secondItem="zWC-eX-GDN" secondAttribute="bottom" constant="16" id="0r6-GX-h8u"/>
+                            <constraint firstAttribute="trailing" secondItem="Jl0-qj-V4D" secondAttribute="trailing" constant="16" id="OHC-Tt-4sg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="changePasswordButton" destination="cu2-rm-Lqr" id="L6l-J8-pAd"/>
+                        <outlet property="confirmNewPasswordTextField" destination="ixd-ZG-yH1" id="zID-Kp-wOz"/>
+                        <outlet property="forgotPasswordButton" destination="52d-Uk-CvQ" id="yWh-KS-l8s"/>
+                        <outlet property="newPasswordTextField" destination="zJS-a7-udV" id="rWN-Kh-WgH"/>
+                        <outlet property="oldPasswordTextField" destination="t0o-dL-bGw" id="iO9-TV-KAl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vuf-ze-hp7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -623,6 +678,6 @@
         <image name="tab_icon_ranking" width="23" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z41-nb-wwL"/>
+        <segue reference="Kz2-vl-MdR"/>
     </inferredMetricsTieBreakers>
 </document>
