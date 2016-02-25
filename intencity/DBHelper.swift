@@ -151,4 +151,77 @@ class DBHelper
         
         database.close()
     }
+    
+    /**
+     *  Gets the records from the database.
+     */
+    func getRecords() -> SavedExercise
+    {
+        var routineName = ""
+        var exercises = [Exercise]()
+        var index = 0
+        
+        let database = openDb()
+        
+        // Get the list of exercises from the database that were saved.
+        // These are exercises the user might want to continue with later.
+        let getExercises = "SELECT * FROM " + ExerciseTable.TABLE_NAME + ";";
+        
+        do
+        {
+            let result = try database.executeQuery(getExercises, values: nil)
+            
+            var lastExerciseName = ""
+            
+            while result.next()
+            {
+                var exercise: Exercise!
+
+                if (index <= 0)
+                {
+                    index = Int(result.stringForColumn(ExerciseTable.COLUMN_INDEX))!
+                }
+                
+                routineName = result.stringForColumn(ExerciseTable.COLUMN_ROUTINE_NAME)
+                
+                // Exercise
+                let name = result.stringForColumn(ExerciseTable.COLUMN_NAME)
+                let description = result.stringForColumn(ExerciseTable.COLUMN_DESCRIPTION)
+                
+                // If the last exercise name is equal to the last exercise we just got,
+                // or if the exercise is the first in the list,
+                // then we want to create a new exercise object.
+                if (lastExerciseName != name)
+                {
+                    lastExerciseName = name
+                    
+                    exercise.name = name
+
+                    exercise.description = description
+                    
+                    exercises.append(exercise)
+                }
+                
+                // Sets
+                let webId = result.stringForColumn(ExerciseTable.COLUMN_WEB_ID)
+                let weight = result.stringForColumn(ExerciseTable.COLUMN_WEIGHT)
+                let reps = result.stringForColumn(ExerciseTable.COLUMN_REP)
+                let duration = result.stringForColumn(ExerciseTable.COLUMN_DURATION)
+                let difficulty = result.stringForColumn(ExerciseTable.COLUMN_DIFFICULTY)
+                let notes = result.stringForColumn(ExerciseTable.COLUMN_NOTES)
+                
+                let sets = [ Set(webId: Int(webId)!, weight: Float(weight)!, reps: Int(reps)!, duration: duration, difficulty: Int(difficulty)!, notes: notes) ]
+                
+                exercise.sets = sets
+            }
+        }
+        catch let error as NSError
+        {
+            print ("Failed to get records from the database: \(error)")
+        }
+        
+        database.close()
+        
+        return SavedExercise(routineName: routineName, exercises: exercises, index: index)
+    }
 }

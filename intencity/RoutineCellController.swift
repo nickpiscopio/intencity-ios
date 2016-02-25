@@ -43,9 +43,16 @@ class RoutineCellController: UITableViewCell
 
         dropDown.anchorView = routineButton
         dropDown.bottomOffset = CGPoint(x: 0, y: routineButton.bounds.height + routineButton.bounds.height / 2)
+    }
+    
+    /**
+     * Sets the width of the drop down based on if the "continue" sting is sincluded.
+     */
+    func setDropDownWidth(continueIncluded: Bool)
+    {
         // We set the width here to the largest item in the data source.
         // We do this so the drop down doesn't keep resizing every time an item is selcted.
-        dropDown.width = 147
+        dropDown.width = continueIncluded ? 181 : 147
     }
     
     /**

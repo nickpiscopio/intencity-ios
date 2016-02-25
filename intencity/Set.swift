@@ -15,7 +15,7 @@ struct Set
     var reps: Int
     
     // This will need to be converted to a long later to accept times.
-    var duration: String;
+    var duration: String
     var difficulty: Int
     
     var notes: String

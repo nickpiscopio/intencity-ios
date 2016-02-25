@@ -34,6 +34,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     var exerciseListHeader: ExerciseListHeaderController!
     
+    var savedExercises: SavedExercise!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -180,7 +182,19 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 displayMuscleGroups.append(muscleGroup)
             }
             
-            self.recommended = (recommended == nil || recommended! == "") ? 0 : displayMuscleGroups.indexOf(recommended!)!
+            // Get the saved exercises from the local database.
+            savedExercises = DBHelper().getRecords()
+            
+            if (savedExercises != nil)
+            {
+                displayMuscleGroups.append(NSLocalizedString("routine_continue", comment: ""))
+                
+                self.recommended = displayMuscleGroups.count - 1
+            }
+            else
+            {
+                self.recommended = (recommended == nil || recommended! == "") ? 0 : displayMuscleGroups.indexOf(recommended!)!
+            }
         }
         else
         {
@@ -321,6 +335,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     {
         if (state == Constant.ROUTINE_CELL)
         {
+            
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.delegate = self
@@ -329,6 +344,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // CompletedMuscleGroup starts at 1.
             cell.selectedRoutineNumber = recommended + 1
             cell.setDropDownDataSource(recommended)
+            cell.setDropDownWidth(displayMuscleGroups.contains(NSLocalizedString("routine_continue", comment: "")))
             return cell
         }
         else
