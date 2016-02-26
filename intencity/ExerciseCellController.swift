@@ -94,7 +94,7 @@ class ExerciseCellController: UITableViewCell
         let weight = set.weight
         let reps = set.reps
         let duration = set.duration
-        let durationInt = duration != "" && duration != Constant.RETURN_NULL ? Int(duration.stringByReplacingOccurrencesOfString(":", withString: ""))! : Int(Constant.CODE_FAILED)
+        let durationInt = Util.convertToInt(set.duration)
         
         if reps > 0 || durationInt > 0
         {

@@ -172,4 +172,37 @@ class Util
         let nib = UINib(nibName: nibNamed, bundle: nil)
         table.registerNib(nib, forCellReuseIdentifier: cellName)
     }
+    
+    /**
+     * Converts the duration to an integer.
+     *
+     * @param duration      The duration to convert.
+     *
+     * @return  The converted value.
+     */
+    static func convertToInt(duration: String) -> Int
+    {
+        return duration != "" && duration != Constant.RETURN_NULL && duration != String(Constant.CODE_FAILED) ? Int(duration.stringByReplacingOccurrencesOfString(":", withString: ""))! : Int(Constant.CODE_FAILED)
+    }
+    
+    /**
+     * Converts the duration to an integer.
+     *
+     * @param duration      The duration to convert.
+     *
+     * @return  The converted value.
+     */
+    static func convertToTime(reps: Int) -> String
+    {
+        let time = String(format: "%06d", reps)
+        
+        var duration = ""
+        
+        if let regex = try? NSRegularExpression(pattern: "..(?!$)", options: .CaseInsensitive)
+        {
+            duration = regex.stringByReplacingMatchesInString(time, options: .WithTransparentBounds, range: NSMakeRange(0, time.characters.count), withTemplate: "$0:")
+        }
+        
+        return duration
+    }
 }

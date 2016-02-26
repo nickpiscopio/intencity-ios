@@ -80,7 +80,7 @@ class StatViewController: UIViewController, SetDelegate
         dropDown.width = 53
         
         let duration = sets[0].duration
-        if(duration != Constant.RETURN_NULL)
+        if(duration != Constant.RETURN_NULL && Util.convertToInt(duration) > 0)
         {
             durationTitleLabel.setTitle(timeString, forState: .Normal)
             dropDown.selectRowAtIndex(1)
@@ -90,6 +90,15 @@ class StatViewController: UIViewController, SetDelegate
             durationTitleLabel.setTitle(repsString, forState: .Normal)
             dropDown.selectRowAtIndex(0)
         }
+
+        // The save button.
+        let saveButton: UIButton = UIButton(type: UIButtonType.Custom) as UIButton
+        saveButton.addTarget(self, action: "savePressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        saveButton.setTitle(NSLocalizedString("save", comment: ""), forState: UIControlState.Normal)
+        saveButton.setTitleColor(Color.white, forState: UIControlState.Normal)
+        saveButton.sizeToFit()
+        let saveButtonItem:UIBarButtonItem = UIBarButtonItem(customView: saveButton)
+        self.navigationItem.rightBarButtonItem  = saveButtonItem
     }
     
     /**
@@ -113,19 +122,13 @@ class StatViewController: UIViewController, SetDelegate
     {
         super.didReceiveMemoryWarning()
     }
-
+    
     override func viewDidDisappear(animated: Bool)
     {
         super.viewDidDisappear(animated)
         
         // Shows the tab bar again.
         self.tabBarController?.tabBar.hidden = false
-        
-        // Takes all the sets and puts them back into the exercise.
-        ExerciseData.getInstance().exerciseList[index].sets = sets
-        
-        // Tell the previous screen that the set was updated.
-        delegate?.onSetUpdated()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -149,8 +152,8 @@ class StatViewController: UIViewController, SetDelegate
         let reps = set.reps
         let repsValue = reps > 0 ? String(reps) : ""
         let time = set.duration
-        let timeValue = time != Constant.RETURN_NULL ? time : ""        
-        let duration = reps > 0 ? repsValue : timeValue
+        let timeValue = time != Constant.RETURN_NULL ? time : ""
+        let duration = Util.convertToInt(time) > 0 ? timeValue : repsValue
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.SET_CELL) as! SetCellController
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.delegate = self
@@ -198,7 +201,7 @@ class StatViewController: UIViewController, SetDelegate
                 if (durationValue != String(Constant.RETURN_NULL))
                 {
                     duration = String(Constant.RETURN_NULL)
-                    reps = Int(durationValue.stringByReplacingOccurrencesOfString(":", withString: ""))!
+                    reps = Util.convertToInt(durationValue)
                     
                     durationSet = true
                 }
@@ -208,12 +211,7 @@ class StatViewController: UIViewController, SetDelegate
                 let repsValue = sets[i].reps
                 if (repsValue != Int(Constant.CODE_FAILED))
                 {
-                    let time = String(format: "%06d", repsValue)
-                    
-                    if let regex = try? NSRegularExpression(pattern: "..(?!$)", options: .CaseInsensitive)
-                    {
-                        duration = regex.stringByReplacingMatchesInString(time, options: .WithTransparentBounds, range: NSMakeRange(0, time.characters.count), withTemplate: "$0:")
-                    }
+                    duration = Util.convertToTime(repsValue)
                     
                     reps = Int(Constant.CODE_FAILED)
 
@@ -229,6 +227,60 @@ class StatViewController: UIViewController, SetDelegate
         }
 
         tableView.reloadData()
+    }
+    
+    /**
+     * The function for when the save button is pressed.
+     */
+    func savePressed(sender:UIBarButtonItem)
+    {
+        let set = sets[sets.count - 1]
+        let duration = set.duration
+        let durationValue = Util.convertToInt(duration)
+        
+        if set.reps > 0 || durationValue > 0
+        {
+            saveSets(false)
+        }
+        else
+        {
+            Util.displayAlert(self, title: NSLocalizedString("button_remove_set", comment: ""),
+                message: NSLocalizedString("message_remove_last_set", comment: ""),
+                actions: [ UIAlertAction(title: NSLocalizedString("button_remove_set", comment: ""), style: .Destructive, handler: removeLastSetClicked),
+                    UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Cancel, handler: nil) ])
+        }
+    }
+    
+    /**
+     * The action for the remove last set alert button.
+     */
+    func removeLastSetClicked(alertAction: UIAlertAction!) -> Void
+    {
+        saveSets(true)
+    }
+    
+    /**
+     * The function for when the save button is pressed.
+     */
+    func saveSets(removeLastSet: Bool)
+    {
+        if (removeLastSet)
+        {
+            sets.removeLast()
+            
+            if (sets.count == 0)
+            {
+                addSet()
+            }
+        }
+        
+        self.navigationController!.popToRootViewControllerAnimated(true)
+        
+        // Takes all the sets and puts them back into the exercise.
+        ExerciseData.getInstance().exerciseList[index].sets = sets
+        
+        // Tell the previous screen that the set was updated.
+        delegate?.onSetUpdated()
     }
     
     /**
@@ -249,10 +301,13 @@ class StatViewController: UIViewController, SetDelegate
             difficulty = sets[lastSet].difficulty
         }
         
-        let set = Set(webId: Int(Constant.CODE_FAILED), weight: weight, reps: Int(Constant.CODE_FAILED), duration: String(Constant.CODE_FAILED), difficulty: difficulty, notes: notesTextField.text!)
+        let set = Set(webId: Int(Constant.CODE_FAILED), weight: weight, reps: 0, duration: Util.convertToTime(0), difficulty: difficulty, notes: notesTextField.text!)
         sets.append(set)
         
-        insertRow()
+        if (totalSets > 0)
+        {
+            insertRow()
+        }        
     }
     
     /**
@@ -271,7 +326,10 @@ class StatViewController: UIViewController, SetDelegate
      */
     func onWeightUpdated(index: Int, weight: Float)
     {
-        sets[index].weight = weight
+        if (index <= sets.count - 1)
+        {
+            sets[index].weight = weight
+        }
     }
     
     /**
@@ -279,13 +337,16 @@ class StatViewController: UIViewController, SetDelegate
      */
     func onDurationUpdated(index: Int, duration: String)
     {
-        if (dropDown.selectedItem! == repsString)
+        if (index <= sets.count - 1)
         {
-            sets[index].reps = Int(duration)!
-        }
-        else
-        {
-            sets[index].duration = duration
+            if (dropDown.selectedItem! == repsString)
+            {
+                sets[index].reps = Util.convertToInt(duration)
+            }
+            else
+            {
+                sets[index].duration = duration
+            }
         }
     }
     
@@ -294,6 +355,9 @@ class StatViewController: UIViewController, SetDelegate
      */
     func onIntensityUpdated(index: Int, intensity: Int)
     {
-        sets[index].difficulty = intensity
+        if (index <= sets.count - 1)
+        {
+            sets[index].difficulty = intensity
+        }
     }
 }

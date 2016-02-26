@@ -372,7 +372,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     {
         if (state == Constant.ROUTINE_CELL)
         {
-            
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.delegate = self
