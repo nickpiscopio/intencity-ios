@@ -70,6 +70,7 @@
 		BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C51C6BEFB800E520CB /* IntencityTabBarController.swift */; };
 		BD9EF2C81C6BF4CC00E520CB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C71C6BF4CC00E520CB /* MenuViewController.swift */; };
 		BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */; };
+		BDAF87A71C80B6B3001114A4 /* IntencityButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAF87A61C80B6B3001114A4 /* IntencityButtonView.swift */; };
 		BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */; };
 		BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */; };
 		BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F01C7A0445005817D0 /* ExerciseData.swift */; };
@@ -157,6 +158,7 @@
 		BD9EF2C51C6BEFB800E520CB /* IntencityTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityTabBarController.swift; sourceTree = "<group>"; };
 		BD9EF2C71C6BF4CC00E520CB /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		BDAF87A61C80B6B3001114A4 /* IntencityButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonView.swift; sourceTree = "<group>"; };
 		BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineDelegate.swift; sourceTree = "<group>"; };
 		BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButton.swift; sourceTree = "<group>"; };
 		BDE493F01C7A0445005817D0 /* ExerciseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
@@ -201,20 +203,20 @@
 		BD1053961C6CC729004C10C7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				BD1053971C6CC989004C10C7 /* Extenstions */,
+				BD1053971C6CC989004C10C7 /* Extensions */,
 				BD947A031C6CF252003F3767 /* IntencityError.swift */,
 				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
 		};
-		BD1053971C6CC989004C10C7 /* Extenstions */ = {
+		BD1053971C6CC989004C10C7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */,
 				BD9479FA1C6CE43C003F3767 /* JSON.swift */,
 			);
-			name = Extenstions;
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		BD36EC201C70EB6600F993CE /* Cells */ = {
@@ -386,6 +388,7 @@
 				BD9EF2AB1C6A496800E520CB /* IntencityTextField.swift */,
 				BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */,
 				BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */,
+				BDAF87A61C80B6B3001114A4 /* IntencityButtonView.swift */,
 				BD9EF2B11C6A56CE00E520CB /* IntencityButtonNoBackground.swift */,
 				BD4B8EBE1C7E039F00AD579B /* IntencityPaddedLabel.swift */,
 				BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */,
@@ -619,6 +622,7 @@
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
 				BD7C7E811C7CA0A6005AFFDD /* NotificationViewController.swift in Sources */,
+				BDAF87A71C80B6B3001114A4 /* IntencityButtonView.swift in Sources */,
 				BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */,
 				BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */,
 				BD4B8EB91C7CEACD00AD579B /* AboutFooterCellController.swift in Sources */,

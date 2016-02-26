@@ -27,6 +27,11 @@ class IntencityButtonRound: UIButton
         self.layer.shadowRadius = Dimention.SHADOW
         self.layer.cornerRadius = Dimention.RADIUS_ROUNDED_BUTTON
         self.layer.backgroundColor = Color.secondary_dark.CGColor
+        
+        // The callbacks for the button states.
+        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpOutside)
+        self.addTarget(self, action: "buttonDown", forControlEvents: .TouchDown)
     }
     
     /*

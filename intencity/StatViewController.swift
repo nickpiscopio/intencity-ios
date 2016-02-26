@@ -19,6 +19,8 @@ class StatViewController: UIViewController, SetDelegate
     @IBOutlet weak var durationDropDownImage: UIButton!
     @IBOutlet weak var IntensityTitleLabel: UILabel!
     
+    weak var delegate: ExerciseDelegate?
+    
     let dropDown = DropDown()
     
     var exerciseName: String!
@@ -121,6 +123,9 @@ class StatViewController: UIViewController, SetDelegate
         
         // Takes all the sets and puts them back into the exercise.
         ExerciseData.getInstance().exerciseList[index].sets = sets
+        
+        // Tell the previous screen that the set was updated.
+        delegate?.onSetUpdated()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int

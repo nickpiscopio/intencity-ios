@@ -289,10 +289,19 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if (!isSwipeOpen)
         {
             let statViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StatViewController") as! StatViewController
+            statViewController.delegate = self
             statViewController.index = index
         
             self.navigationController!.pushViewController(statViewController, animated: true)
         }
+    }
+    
+    /**
+     * The callback for when the sets are updated.
+     */
+    func onSetUpdated()
+    {
+        tableView.reloadData()
     }
     
     /**
@@ -378,13 +387,17 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         else
         {
             let index = indexPath.item
-            let exercise = currentExercises[index]
+            let exercise = exerciseData.exerciseList[index]
             let description = exercise.description
+            let sets = exercise.sets
+            let set = sets[sets.count - 1]
+
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.delegate = self
             cell.index = index
             cell.exerciseButton.setTitle(exercise.name, forState: .Normal)
+            cell.setEditText(set)
             
             if (!description.isEmpty)
             {

@@ -14,6 +14,15 @@ class ExerciseCellController: UITableViewCell
     @IBOutlet weak var exerciseButton: UIButton!
     @IBOutlet weak var exerciseDescription: UILabel!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var editStackView: UIStackView!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var lbsLabel: UILabel!
+    @IBOutlet weak var slashLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var repsLabel: UILabel!
+    
+    @IBOutlet weak var backgroundEditView: UIView!
+    let EDIT_STRING = NSLocalizedString("edit", comment: "")
     
     weak var delegate: ExerciseDelegate?
     
@@ -24,9 +33,17 @@ class ExerciseCellController: UITableViewCell
         super.awakeFromNib()
         
         self.backgroundColor = Color.page_background
+
+        backgroundEditView.hidden = true
         
-        editButton.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
-        editButton.setTitle(NSLocalizedString("edit", comment: ""), forState: .Normal)
+        weightLabel.textColor = Color.secondary_light
+        lbsLabel.textColor = Color.secondary_light
+        slashLabel.textColor = Color.secondary_light
+        durationLabel.textColor = Color.secondary_light
+        repsLabel.textColor = Color.secondary_light
+        
+        lbsLabel.text = NSLocalizedString("title_lbs", comment: "")
+        repsLabel.text = NSLocalizedString("title_reps", comment: "")
     }
     
     /**
@@ -37,6 +54,7 @@ class ExerciseCellController: UITableViewCell
         exerciseDescription.hidden = true
         
         editButton.hidden = false
+        editStackView.hidden = false
         
         exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
         
@@ -60,6 +78,7 @@ class ExerciseCellController: UITableViewCell
         exerciseDescription.hidden = false
         
         editButton.hidden = true
+        editStackView.hidden = true
         
         exerciseButton.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
         
@@ -67,13 +86,75 @@ class ExerciseCellController: UITableViewCell
         exerciseButton.enabled = false
     }
     
+    /**
+     * Sets the edit button text
+     */
+    func setEditText(set: Set)
+    {
+        let weight = set.weight
+        let reps = set.reps
+        let duration = set.duration
+        let durationInt = duration != "" && duration != Constant.RETURN_NULL ? Int(duration.stringByReplacingOccurrencesOfString(":", withString: ""))! : Int(Constant.CODE_FAILED)
+        
+        if reps > 0 || durationInt > 0
+        {
+            if (weight > 0)
+            {
+                weightLabel.text = "\(weight)"
+                weightLabel.hidden = false
+                lbsLabel.hidden = false
+                slashLabel.hidden = false
+            }
+            else
+            {
+                weightLabel.hidden = true
+                lbsLabel.hidden = true
+                slashLabel.hidden = true
+            }
+            
+            if (reps > 0)
+            {
+                durationLabel.text = "\(reps)"
+                durationLabel.hidden = false
+                repsLabel.hidden = false
+            }
+            else
+            {
+                durationLabel.text = duration
+                durationLabel.hidden = false
+                repsLabel.hidden = true
+            }
+        }
+        else
+        {
+            weightLabel.text = EDIT_STRING
+            
+            weightLabel.hidden = false
+            lbsLabel.hidden = true
+            repsLabel.hidden = true
+            durationLabel.hidden = true
+            slashLabel.hidden = true
+        }
+
+    }
+    
+    @IBAction func editPressed(sender: AnyObject)
+    {
+        backgroundEditView.hidden = false
+    }
+    
+    @IBAction func editReleased(sender: AnyObject)
+    {
+        backgroundEditView.hidden = true
+    }
+    
+    @IBAction func editClicked(sender: AnyObject)
+    {
+        delegate?.onEditClicked(index)
+    }
+    
     @IBAction func exerciseClicked(sender: AnyObject)
     {
         delegate?.onExerciseClicked((exerciseButton.titleLabel?.text)!)
-    }
-    
-    @IBAction func EditedClicked(sender: AnyObject)
-    {
-        delegate?.onEditClicked(index)
     }
 }
