@@ -274,6 +274,7 @@ class StatViewController: UIViewController, SetDelegate
             }
         }
         
+        // Navigates the user back to the previous screen.
         self.navigationController!.popToRootViewControllerAnimated(true)
         
         // Takes all the sets and puts them back into the exercise.

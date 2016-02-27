@@ -11,7 +11,7 @@ import Foundation
 
 struct Constant
 {
-    // iOS Constants
+    // -- START iOS CONSTANTS --
     static let DEMO_STORYBOARD = "Demo"
     static let LOGIN_STORYBOARD = "Login"    
     static let MAIN_STORYBOARD = "Main"
@@ -36,7 +36,11 @@ struct Constant
     static let CHECKBOX_UNCHECKED = "checkbox_unchecked"
     static let CHECKBOX_CHECKED = "checkbox_checked"
     
-    // General Constants
+    // It is really 75, but from the implementation we will need 76.
+    static let MAX_TEXT_FIELD_LENGTH = 76;
+    // -- END iOS CONSTANTS --
+    
+    // -- START GENERIC CONSTANTS --
     static let CODE_FAILED: Double = -1.0;
     static let CODE_FAILED_REPOPULATE = -2;
     static let REQUIRED_PASSWORD_LENGTH = 8;
