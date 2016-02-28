@@ -16,9 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: Color.white]
+        
         // Sets the title bar color.
         UINavigationBar.appearance().barTintColor = Color.primary
-        UINavigationBar.appearance().barStyle = UIBarStyle.Black
+        UINavigationBar.appearance().titleTextAttributes = titleDict as? [String : AnyObject]
         UINavigationBar.appearance().tintColor = Color.white
         UINavigationBar.appearance().translucent = false
         UIApplication.sharedApplication().statusBarStyle = .LightContent
@@ -99,4 +101,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }
-
