@@ -30,6 +30,7 @@ class LoginViewController: PageViewController, ServiceDelegate
     var trialEmail: String = ""
     var trialAccountType: String = ""
     var trialDateCreated: Double = 0
+    var termsString = NSLocalizedString("terms_checkbox", comment: "")
     
     override func viewDidLoad()
     {
@@ -48,9 +49,8 @@ class LoginViewController: PageViewController, ServiceDelegate
         createAccountButton?.setTitle(NSLocalizedString("create_account", comment: ""), forState: .Normal)
         signInButton?.setTitle(NSLocalizedString("sign_in", comment: ""), forState: .Normal)
         tryIntencityButton?.setTitle(NSLocalizedString("try_intencity", comment: ""), forState: .Normal)
-        
-        termsLabel?.setTitle(NSLocalizedString("terms_checkbox", comment: ""), forState: .Normal)
-        termsLabel.setTitleColor(Color.secondary_dark, forState: .Normal)
+    
+        initTermsText()
         
         activityIndicator.hidesWhenStopped = true
     }
@@ -60,11 +60,39 @@ class LoginViewController: PageViewController, ServiceDelegate
         super.didReceiveMemoryWarning()
     }
     
-    /*
-        The click function for the login button.
+    /**
+     * Initialize the terms of use text attributes.
+     */
+    func initTermsText()
+    {
+        let termsStrings = termsString.componentsSeparatedByString("@")
+        
+        let attributredTerms0 = termsStrings[0]
+        let attributredTerms1 = termsStrings[1]
+        let attributredTerms2 = termsStrings[2]
+        
+        var termsMutableString0 = NSMutableAttributedString()
+        var termsMutableString1 = NSMutableAttributedString()
+        var termsMutableString2 = NSMutableAttributedString()
+        
+        termsMutableString0 = NSMutableAttributedString(string: attributredTerms0, attributes: nil)
+        termsMutableString1 = NSMutableAttributedString(string: attributredTerms1, attributes: nil)
+        termsMutableString2 = NSMutableAttributedString(string: attributredTerms2, attributes: nil)
+        
+        termsMutableString0.addAttribute(NSForegroundColorAttributeName, value: Color.secondary_dark, range: NSRange(location: 0, length:attributredTerms0.characters.count))
+        termsMutableString1.addAttribute(NSForegroundColorAttributeName, value: Color.primary, range: NSRange(location: 0, length: attributredTerms1.characters.count))
+        termsMutableString2.addAttribute(NSForegroundColorAttributeName, value: Color.secondary_dark, range: NSRange(location: 0, length:attributredTerms2.characters.count))
+        
+        termsMutableString0.appendAttributedString(termsMutableString1)
+        termsMutableString0.appendAttributedString(termsMutableString2)
+        
+        termsLabel.setTitleColor(Color.secondary_dark, forState: .Normal)
+        termsLabel.setAttributedTitle(termsMutableString0, forState: .Normal)
+    }
     
-        sender  The Button being pressed.
-    */
+    /**
+     * The click function for the login button.
+     */
     @IBAction func loginClicked(sender: UIButton)
     {
         let email = emailTextField.text!
@@ -86,8 +114,8 @@ class LoginViewController: PageViewController, ServiceDelegate
         }
     }
     
-    /*
-        The button click for trying Intencity.
+    /**
+     * The button click for trying Intencity.
      */
     @IBAction func tryIntencityClicked(sender: AnyObject)
     {
@@ -104,7 +132,7 @@ class LoginViewController: PageViewController, ServiceDelegate
     }
     
     /**
-     * Creates teh trial account.
+     * Creates the trial account.
      */
     func createTrial(alertAction: UIAlertAction!)
     {
@@ -122,10 +150,10 @@ class LoginViewController: PageViewController, ServiceDelegate
             serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
             params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType))
     }
-
-    /*
-        The function called when we get the user's credentials back from the server successfully.
-    */
+    
+    /**
+     * The function called when we get the user's credentials back from the server successfully.
+     */
     func onRetrievalSuccessful(event: Int, result: String)
     {
         if (event == ServiceEvent.LOGIN)
@@ -155,9 +183,9 @@ class LoginViewController: PageViewController, ServiceDelegate
         }
     }
     
-    /*
-        The function called when we fail to get the user's credentials back from the server.
-    */
+    /**
+     * The function called when we fail to get the user's credentials back from the server.
+     */
     func onRetrievalFailed(Event: Int)
     {
         Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
@@ -165,9 +193,9 @@ class LoginViewController: PageViewController, ServiceDelegate
         stopLogin()
     }
     
-    /*
-        Checks to see if the terms checkbox is checked.
-    */
+    /**
+     * Checks to see if the terms checkbox is checked.
+     */
     func isTermsChecked() -> Bool
     {
         return termsButton.currentImage!.isEqual(checked)
@@ -206,11 +234,9 @@ class LoginViewController: PageViewController, ServiceDelegate
         activityIndicator.stopAnimating()
     }
     
-    /*
-        The click function for the terms of use checkbox and label.
-    
-        sender  The Button being pressed.
-    */
+    /**
+     * The click function for the terms of use checkbox and label.
+     */
     @IBAction func termsOfUseClicked(sender: UIButton)
     {
         if (!isTermsChecked())

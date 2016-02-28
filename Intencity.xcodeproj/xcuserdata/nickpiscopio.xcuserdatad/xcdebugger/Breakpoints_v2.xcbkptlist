@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "intencity/LoginViewController.swift"
-            timestampString = "477939217.377506"
+            timestampString = "478362652.175016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "tryIntencityClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
