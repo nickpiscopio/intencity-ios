@@ -22,6 +22,7 @@
 		BD36EC331C720C6B00F993CE /* Direction.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD36EC321C720C6B00F993CE /* Direction.xib */; };
 		BD37E3AC1C7E3906004A30F7 /* IntencityButtonRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */; };
 		BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37E3AD1C7F4273004A30F7 /* SavedExercise.swift */; };
+		BD43E11A1C8355E9002F14C6 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */; };
 		BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */; };
 		BD4B8EB91C7CEACD00AD579B /* AboutFooterCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB81C7CEACD00AD579B /* AboutFooterCellController.swift */; };
 		BD4B8EBB1C7CEB1D00AD579B /* AboutFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */; };
@@ -108,6 +109,7 @@
 		BD36EC321C720C6B00F993CE /* Direction.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Direction.xib; sourceTree = "<group>"; };
 		BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonRound.swift; sourceTree = "<group>"; };
 		BD37E3AD1C7F4273004A30F7 /* SavedExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedExercise.swift; sourceTree = "<group>"; };
+		BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSection.swift; sourceTree = SOURCE_ROOT; };
 		BD4B8EB81C7CEACD00AD579B /* AboutFooterCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutFooterCellController.swift; sourceTree = "<group>"; };
 		BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutFooterCell.xib; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */,
+				BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */,
 				BD9479FA1C6CE43C003F3767 /* JSON.swift */,
 			);
 			name = Extensions;
@@ -578,6 +581,7 @@
 				BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */,
 				BD9EF2B61C6A8AF500E520CB /* TermsViewController.swift in Sources */,
 				BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */,
+				BD43E11A1C8355E9002F14C6 /* UIView+RoundedCorners.swift in Sources */,
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
 				BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */,
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,

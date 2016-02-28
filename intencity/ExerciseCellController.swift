@@ -9,6 +9,7 @@ import UIKit
 
 class ExerciseCellController: UITableViewCell
 {
+    @IBOutlet weak var exerciseView: UIView!
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var exerciseButton: UIButton!
@@ -28,6 +29,8 @@ class ExerciseCellController: UITableViewCell
     
     var index: Int!
     
+    var deleteHeight: CGFloat = 0
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()
@@ -44,6 +47,44 @@ class ExerciseCellController: UITableViewCell
         
         lbsLabel.text = NSLocalizedString("title_lbs", comment: "")
         repsLabel.text = NSLocalizedString("title_reps", comment: "")
+    }
+    
+    /**
+     * Edits the UI of the delete button.
+     */
+    override func layoutSubviews()
+    {
+        super.layoutSubviews()
+        
+        var subViews = self.subviews
+        let subviewsCount = subviews.count
+        
+        // Gets the new height of the delete button.
+        deleteHeight = exerciseView.frame.height - Dimention.LAYOUT_MARGIN / 2
+        
+        for (var i = 0; i < subviewsCount; i++)
+        {
+            let view = subViews[0]
+            
+            let classView = String(view.classForCoder)
+
+            // The subview of the delete button.
+            if (classView == "UITableViewCellDeleteConfirmationView")
+            {
+                let delete = view
+                
+                var deleteFrame = delete.frame
+                deleteFrame.size.height = deleteHeight
+                
+                // Rounds the corners of the delete button
+                let path = UIBezierPath(roundedRect:delete.bounds, byRoundingCorners:[.TopLeft, .BottomLeft], cornerRadii: CGSizeMake(Dimention.RADIUS, Dimention.RADIUS))
+                let maskLayer = CAShapeLayer()
+                maskLayer.path = path.CGPath
+                
+                delete.layer.mask = maskLayer
+                delete.frame = deleteFrame
+            }
+        }
     }
     
     /**

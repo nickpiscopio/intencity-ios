@@ -436,7 +436,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
-        return true
+        // Only edit the cells if the user is exercising.
+        return state == Constant.EXERCISE_CELL
     }
     
     /**

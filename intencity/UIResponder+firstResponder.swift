@@ -8,7 +8,7 @@ import UIKit
 
 extension UIResponder
 {
-    //Class var not supported in 1.0
+    // Class var not supported in 1.0
     private struct CurrentFirstResponder
     {
         weak static var currentFirstResponder: UIResponder?

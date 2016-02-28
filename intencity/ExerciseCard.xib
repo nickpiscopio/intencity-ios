@@ -143,6 +143,7 @@
                 <outlet property="editStackView" destination="Izd-Gx-VZ4" id="jBo-zK-Axx"/>
                 <outlet property="exerciseButton" destination="eoQ-yN-aVA" id="it5-IC-W1b"/>
                 <outlet property="exerciseDescription" destination="bFx-wR-uQe" id="HBf-Q4-eSq"/>
+                <outlet property="exerciseView" destination="UFj-wN-m2V" id="keH-UL-aDJ"/>
                 <outlet property="lbsLabel" destination="848-PZ-yys" id="0uI-3Y-4Km"/>
                 <outlet property="repsLabel" destination="kL6-yc-Ot8" id="Ofv-18-4gH"/>
                 <outlet property="slashLabel" destination="CCd-YF-UOV" id="6wn-9u-WR4"/>
