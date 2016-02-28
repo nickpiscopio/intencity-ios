@@ -15,4 +15,6 @@ struct ServiceEvent
     static let GET_ALL_DISPLAY_MUSCLE_GROUPS = 3
     static let SET_CURRENT_MUSCLE_GROUP = 4
     static let GET_EXERCISES_FOR_TODAY = 5
+    static let VALIDATE_USER_CREDENTIALS = 6
+    static let REMOVE_ACCOUNT = 7
 }

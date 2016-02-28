@@ -659,7 +659,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="SMm-nz-5rA">
-                                <rect key="frame" x="20" y="34" width="568" height="108"/>
+                                <rect key="frame" x="20" y="34" width="568" height="144"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4HI-WI-99T">
                                         <rect key="frame" x="0.0" y="0.0" width="568" height="65"/>
@@ -673,7 +673,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZuG-g0-Zr2" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="35" width="568" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -685,6 +685,9 @@
                                             <action selector="deleteClicked:" destination="A75-vA-Zpj" eventType="touchUpInside" id="bgU-Rs-VZ5"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4Wj-tX-cLc">
+                                        <rect key="frame" x="0.0" y="124" width="568" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -696,6 +699,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="4Wj-tX-cLc" id="ySK-2I-y3g"/>
                         <outlet property="deleteButton" destination="7HC-DS-cjx" id="jmR-wp-2EL"/>
                         <outlet property="deleteDescription" destination="qXX-bJ-Sej" id="Eyn-sS-bW6"/>
                         <outlet property="passwordTextField" destination="ZuG-g0-Zr2" id="XjU-cI-nEQ"/>
