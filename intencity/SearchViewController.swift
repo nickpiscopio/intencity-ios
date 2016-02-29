@@ -17,6 +17,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     
     var searchBar: UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 300, 20))
     
+    var currentExercises = [Exercise]()
     var exercises = [Exercise]()
     var users = [User]()
     
@@ -158,13 +159,29 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let index = indexPath.row
+        let exercise = exercises[index]
         
-        let result = state == ServiceEvent.SEARCH_FOR_EXERCISE ? exercises[index] : users[index]
+        let currentExerciseCount = currentExercises.count
+        
+        var hasExerciseAlready = false
+        
+        for (var i = 0; i < currentExerciseCount; i++)
+        {
+            if (currentExercises[i].exerciseName == exercise.exerciseName)
+            {
+                hasExerciseAlready = true
+                
+                break
+            }
+        }
+        
+        let result = state == ServiceEvent.SEARCH_FOR_EXERCISE ? exercise : users[index]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.SEARCH_CELL) as! SearchCellController
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.exerciseSearchDelegate = self
         cell.setSearchResult(state, result: result)
+        cell.addButton.hidden = hasExerciseAlready
         
         return cell
     }

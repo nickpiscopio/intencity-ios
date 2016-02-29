@@ -163,6 +163,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             
             updateExerciseTotal()
         }
+        
+        // Set the current exercises in the exercise list header so we can exclude adding exercises that we already have when searching.
+        exerciseListHeader.currentExercises = currentExercises
     }
     
     /**

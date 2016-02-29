@@ -15,9 +15,11 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
     @IBOutlet weak var exerciseTotalLabel: UILabel!
     @IBOutlet weak var routineNameLabel: UILabel!
     
+    weak var exerciseSearchDelegate: ExerciseSearchDelegate!
+    
     var navigationController: UINavigationController!
     
-    weak var exerciseSearchDelegate: ExerciseSearchDelegate!
+    var currentExercises = [Exercise]()
     
     override func awakeFromNib()
     {
@@ -36,6 +38,7 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
         let viewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as! SearchViewController
         viewController.state = ServiceEvent.SEARCH_FOR_EXERCISE
         viewController.exerciseSearchDelegate = self
+        viewController.currentExercises = currentExercises
         
         self.navigationController!.pushViewController(viewController, animated: true)
     }
