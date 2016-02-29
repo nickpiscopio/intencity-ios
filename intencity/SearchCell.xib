@@ -14,18 +14,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="483" height="68.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="cNh-Ut-TSv">
-                        <rect key="frame" x="16" y="16" width="451" height="37"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cNh-Ut-TSv">
+                        <rect key="frame" x="16" y="8" width="451" height="52.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqy-EC-40n">
-                                <rect key="frame" x="0.0" y="0.0" width="229" height="37"/>
+                                <rect key="frame" x="0.0" y="0.0" width="31" height="52.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GU-YX-uft">
-                                <rect key="frame" x="229" y="0.0" width="222" height="37"/>
-                                <state key="normal" title="Add"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GU-YX-uft" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="437" y="0.0" width="14" height="52.5"/>
+                                <state key="normal" image="add_button_dark"/>
                                 <connections>
                                     <action selector="addClicked:" destination="khE-xj-Tco" eventType="touchUpInside" id="NxY-Sv-AVW"/>
                                 </connections>
@@ -35,8 +35,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="cNh-Ut-TSv" firstAttribute="leading" secondItem="m8C-DC-35L" secondAttribute="leading" constant="16" id="5po-Wx-Yoy"/>
-                    <constraint firstItem="cNh-Ut-TSv" firstAttribute="top" secondItem="m8C-DC-35L" secondAttribute="top" constant="16" id="A7y-qq-bQ4"/>
-                    <constraint firstAttribute="bottom" secondItem="cNh-Ut-TSv" secondAttribute="bottom" constant="16" id="KZX-Mm-xl2"/>
+                    <constraint firstItem="cNh-Ut-TSv" firstAttribute="top" secondItem="m8C-DC-35L" secondAttribute="top" constant="8" id="A7y-qq-bQ4"/>
+                    <constraint firstAttribute="bottom" secondItem="cNh-Ut-TSv" secondAttribute="bottom" constant="8" id="KZX-Mm-xl2"/>
                     <constraint firstAttribute="trailing" secondItem="cNh-Ut-TSv" secondAttribute="trailing" constant="16" id="MCK-3u-NEd"/>
                 </constraints>
             </tableViewCellContentView>
@@ -48,4 +48,7 @@
             <point key="canvasLocation" x="545.5" y="447.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="add_button_dark" width="14" height="14"/>
+    </resources>
 </document>
