@@ -109,6 +109,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
                 {
                     exercises = ExerciseDao().parseJson(json)
                 }
+                else
+                {
+                    exercises.removeAll()
+                }
 
                 break
             case ServiceEvent.SEARCH_FOR_USER:
@@ -122,8 +126,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     
     func onRetrievalFailed(event: Int)
     {
+        exercises.removeAll()
         
-        
+        tableView.reloadData()
     }
     
     /**
@@ -185,5 +190,4 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         
         return cell
     }
-
 }
