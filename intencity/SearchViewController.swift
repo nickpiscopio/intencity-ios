@@ -105,7 +105,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             case ServiceEvent.SEARCH_FOR_EXERCISE:
                 
                 // This means we got results back from the web database.
-                if (result != "")
+                if (result != "" && result != Constant.RETURN_NULL)
                 {
                     exercises = ExerciseDao().parseJson(json)
                 }
