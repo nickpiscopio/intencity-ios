@@ -356,7 +356,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if (state == Constant.EXERCISE_CELL)
         {
             exerciseListHeader = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
-            exerciseListHeader.routineNameLabel.text = exerciseData.routineName            
+            exerciseListHeader.routineNameLabel.text = exerciseData.routineName
+            exerciseListHeader.navigationController = self.navigationController
             return exerciseListHeader.contentView
         }
     

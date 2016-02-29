@@ -161,6 +161,40 @@
             </objects>
             <point key="canvasLocation" x="3206" y="-493"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="oHp-f6-hhL">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="gnf-ri-d6B" customClass="SearchViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ed6-Zb-Jzn"/>
+                        <viewControllerLayoutGuide type="bottom" id="wzi-AW-ltS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Bf-Zo-ZkN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsW-95-dqM">
+                                <rect key="frame" x="273" y="289" width="54" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="48U-O5-Oea"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PsW-95-dqM" firstAttribute="top" secondItem="ed6-Zb-Jzn" secondAttribute="bottom" constant="269" id="KLN-Ii-oz1"/>
+                            <constraint firstItem="PsW-95-dqM" firstAttribute="centerX" secondItem="3Bf-Zo-ZkN" secondAttribute="centerX" id="Zfr-ev-nbs"/>
+                            <constraint firstItem="PsW-95-dqM" firstAttribute="centerY" secondItem="3Bf-Zo-ZkN" secondAttribute="centerY" id="reN-aJ-rfC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oH3-yy-IK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1624" y="-1959"/>
+        </scene>
         <!--Stat View Controller-->
         <scene sceneID="nC9-ZO-xUT">
             <objects>

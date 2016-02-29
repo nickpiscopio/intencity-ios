@@ -16,6 +16,7 @@ class IntencityTextField: UITextField
     {
         super.init(coder: aDecoder)
         
+        self.textColor = Color.secondary_dark
         self.layer.backgroundColor = Color.white.CGColor
         self.layer.borderColor = Color.white.CGColor
         self.layer.borderWidth = Dimention.BORDER_WIDTH

@@ -15,6 +15,8 @@ class ExerciseListHeaderController: UITableViewCell
     @IBOutlet weak var exerciseTotalLabel: UILabel!
     @IBOutlet weak var routineNameLabel: UILabel!
     
+    var navigationController: UINavigationController!
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()
@@ -23,5 +25,19 @@ class ExerciseListHeaderController: UITableViewCell
         
         exerciseTotalLabel.textColor = Color.white
         routineNameLabel.textColor = Color.white
+    }
+    
+    @IBAction func searchClicked(sender: AnyObject)
+    {
+        let storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
+        
+        let viewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController")
+        
+        self.navigationController!.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func infoClicked(sender: AnyObject)
+    {
+        
     }
 }
