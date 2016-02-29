@@ -9,7 +9,7 @@
 
 import UIKit
 
-class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate
+class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate, ExerciseSearchDelegate
 {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextExerciseButton: UIButton!
@@ -104,6 +104,29 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     func onRetrievalFailed(event: Int)
     {
         // Add code for when we can't get the muscle groups.
+    }
+    
+    /**
+     * The callback for when an exercise is added from searching.
+     */
+    func onExerciseAdded(exercise: Exercise)
+    {
+        var exercises = exerciseData.exerciseList
+        let exerciseCount = exercises.count
+        
+        for (var i = 0; i < exerciseCount - 1; i++)
+        {
+            if (exercise.exerciseName == exercises[i].exerciseName)
+            {
+                exercises.removeAtIndex(i)
+            }
+        }
+        
+        exercises.insert(exercise, atIndex: currentExercises.count)
+        
+        exerciseData.exerciseList = exercises
+        
+        addExercise()
     }
     
     /**
@@ -219,7 +242,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                         difficulty: !(difficulty is NSNull) ? Int(difficulty as! String)! : 10,
                         notes: !(notes is NSNull) ? notes as! String : "") ]
                     
-                    let exercise = Exercise(name: exerciseName, description: "", sets: sets)
+                    let exercise = Exercise(exerciseName: exerciseName, exerciseDescription: "", sets: sets)
                     
                     exerciseData.exerciseList.append(exercise)
                 }
@@ -358,6 +381,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             exerciseListHeader = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
             exerciseListHeader.routineNameLabel.text = exerciseData.routineName
             exerciseListHeader.navigationController = self.navigationController
+            exerciseListHeader.exerciseSearchDelegate = self
             return exerciseListHeader.contentView
         }
     
@@ -388,7 +412,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         {
             let index = indexPath.item
             let exercise = exerciseData.exerciseList[index]
-            let description = exercise.description
+            let description = exercise.exerciseDescription
             let sets = exercise.sets
             let set = sets[sets.count - 1]
 
@@ -396,7 +420,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.delegate = self
             cell.index = index
-            cell.exerciseButton.setTitle(exercise.name, forState: .Normal)
+            cell.exerciseButton.setTitle(exercise.exerciseName, forState: .Normal)
             cell.setEditText(set)
             
             if (!description.isEmpty)
@@ -418,7 +442,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         let remove = UITableViewRowAction(style: .Normal, title: NSLocalizedString("hide", comment: "")) { action, index in
             
-            let exerciseName = self.exerciseData.exerciseList[indexPath.row].name
+            let exerciseName = self.exerciseData.exerciseList[indexPath.row].exerciseName
             let actions = [ UIAlertAction(title: NSLocalizedString("hide_for_now", comment: ""), style: .Default, handler: self.hideExercise(indexPath)),
                             UIAlertAction(title: NSLocalizedString("hide_forever", comment: ""), style: .Destructive, handler: self.hideExercise(indexPath)),
                             UIAlertAction(title: NSLocalizedString("do_not_hide", comment: ""), style: .Cancel, handler: self.cancelRemoval(indexPath)) ]

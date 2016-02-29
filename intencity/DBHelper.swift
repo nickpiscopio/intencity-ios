@@ -132,8 +132,8 @@ class DBHelper
                 
                 let values = "'" + routineName + "'" + DB_COMMA_SEP +
                                 String(index) + DB_COMMA_SEP +
-                                "'" + exercise.name + "'" + DB_COMMA_SEP +
-                                "'" + exercise.description + "'" +
+                                "'" + exercise.exerciseName + "'" + DB_COMMA_SEP +
+                                "'" + exercise.exerciseDescription + "'" +
                                 webIdValue +
                                 weightValue +
                                 repsValue +
@@ -199,7 +199,7 @@ class DBHelper
                 {
                     lastExerciseName = name
                     
-                    exercise = Exercise(name: name, description: description != nil ? description : "", sets: [])
+                    exercise = Exercise(exerciseName: name, exerciseDescription: description != nil ? description : "", sets: [])
                     
                     exercises.append(exercise)
 

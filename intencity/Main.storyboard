@@ -108,10 +108,10 @@
                                 <rect key="frame" x="0.0" y="36" width="600" height="564"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Lts-ev-T20">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="fLE-ek-hD3">
-                                                <rect key="frame" x="76" y="0.0" width="449" height="150"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="fLE-ek-hD3">
+                                                <rect key="frame" x="76" y="0.0" width="449" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="dBN-M3-JhH">
                                                         <variation key="heightClass=compact-widthClass=compact" constant="50"/>
@@ -119,13 +119,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pee-bR-eBK">
-                                                <rect key="frame" x="287" y="150" width="27" height="0.0"/>
+                                                <rect key="frame" x="287" y="42" width="27" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlW-k3-UEY">
-                                                <rect key="frame" x="286" y="150" width="28" height="0.0"/>
+                                                <rect key="frame" x="286" y="42" width="28" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -133,7 +133,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jox-yY-bOe">
-                                        <rect key="frame" x="0.0" y="166" width="600" height="398"/>
+                                        <rect key="frame" x="0.0" y="58" width="600" height="506"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="dataSource" destination="Pf6-nm-Lpd" id="ZCc-HG-fjy"/>
@@ -173,23 +173,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsW-95-dqM">
-                                <rect key="frame" x="273" y="289" width="54" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="54" id="48U-O5-Oea"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FkI-X0-17w">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gnf-ri-d6B" id="41e-MZ-VoC"/>
+                                    <outlet property="delegate" destination="gnf-ri-d6B" id="hpY-II-C07"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PsW-95-dqM" firstAttribute="top" secondItem="ed6-Zb-Jzn" secondAttribute="bottom" constant="269" id="KLN-Ii-oz1"/>
-                            <constraint firstItem="PsW-95-dqM" firstAttribute="centerX" secondItem="3Bf-Zo-ZkN" secondAttribute="centerX" id="Zfr-ev-nbs"/>
-                            <constraint firstItem="PsW-95-dqM" firstAttribute="centerY" secondItem="3Bf-Zo-ZkN" secondAttribute="centerY" id="reN-aJ-rfC"/>
+                            <constraint firstItem="wzi-AW-ltS" firstAttribute="top" secondItem="FkI-X0-17w" secondAttribute="bottom" id="Gq0-yC-D77"/>
+                            <constraint firstItem="FkI-X0-17w" firstAttribute="top" secondItem="3Bf-Zo-ZkN" secondAttribute="top" id="M3J-ZK-Duf"/>
+                            <constraint firstItem="FkI-X0-17w" firstAttribute="leading" secondItem="3Bf-Zo-ZkN" secondAttribute="leading" id="TAY-E0-Aq2"/>
+                            <constraint firstAttribute="trailing" secondItem="FkI-X0-17w" secondAttribute="trailing" id="nqi-vB-eGG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="FkI-X0-17w" id="6MU-vY-0mx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oH3-yy-IK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

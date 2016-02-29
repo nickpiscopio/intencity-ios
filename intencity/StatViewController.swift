@@ -37,7 +37,7 @@ class StatViewController: UIViewController, SetDelegate
         let exercise = ExerciseData.getInstance().exerciseList[index]
         
         // Sets the title for the screen.
-        self.navigationItem.title = exercise.name
+        self.navigationItem.title = exercise.exerciseName
         
         // Sets the sets from the exercise.
         sets = exercise.sets

@@ -9,13 +9,15 @@
 
 import UIKit
 
-class ExerciseListHeaderController: UITableViewCell
+class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
 {
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var exerciseTotalLabel: UILabel!
     @IBOutlet weak var routineNameLabel: UILabel!
     
     var navigationController: UINavigationController!
+    
+    weak var exerciseSearchDelegate: ExerciseSearchDelegate!
     
     override func awakeFromNib()
     {
@@ -31,7 +33,9 @@ class ExerciseListHeaderController: UITableViewCell
     {
         let storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
         
-        let viewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController")
+        let viewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as! SearchViewController
+        viewController.state = ServiceEvent.SEARCH_FOR_EXERCISE
+        viewController.exerciseSearchDelegate = self
         
         self.navigationController!.pushViewController(viewController, animated: true)
     }
@@ -39,5 +43,13 @@ class ExerciseListHeaderController: UITableViewCell
     @IBAction func infoClicked(sender: AnyObject)
     {
         
+    }
+    
+    /**
+     * The callback for when an exercise is added from searching.
+     */
+    func onExerciseAdded(exercise: Exercise)
+    {
+        exerciseSearchDelegate.onExerciseAdded(exercise)
     }
 }

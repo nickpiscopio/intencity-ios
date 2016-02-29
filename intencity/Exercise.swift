@@ -2,14 +2,23 @@
 //  Exercise.swift
 //  Intencity
 //
-//  The struct for the exercises the user does.
+//  The class for the exercises the user does.
 //
 //  Created by Nick Piscopio on 2/14/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
-struct Exercise
+import Foundation
+
+class Exercise: NSObject
 {
-    var name: String
-    var description: String
-    var sets: [Set]
+    var exerciseName = ""
+    var exerciseDescription = ""
+    var sets: [Set] = []
+    
+    init(exerciseName: String, exerciseDescription: String, sets: [Set])
+    {
+        self.exerciseName = exerciseName
+        self.exerciseDescription = exerciseDescription
+        self.sets = sets
+    }
 }

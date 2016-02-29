@@ -40,7 +40,7 @@ class ExerciseData
      */
     func addWarmUp()
     {
-        exerciseList.append(Exercise(name: NSLocalizedString("warm_up", comment: ""), description: NSLocalizedString("warm_up_description", comment: ""), sets: getDefaultSet()))
+        exerciseList.append(Exercise(exerciseName: NSLocalizedString("warm_up", comment: ""), exerciseDescription: NSLocalizedString("warm_up_description", comment: ""), sets: getDefaultSet()))
     }
     
     /**
@@ -48,7 +48,7 @@ class ExerciseData
      */
     func addStretch()
     {
-        exerciseList.append(Exercise(name: NSLocalizedString("stretch", comment: ""), description: NSLocalizedString("stretch_description", comment: ""), sets: getDefaultSet()))
+        exerciseList.append(Exercise(exerciseName: NSLocalizedString("stretch", comment: ""), exerciseDescription: NSLocalizedString("stretch_description", comment: ""), sets: getDefaultSet()))
     }
     
     /**

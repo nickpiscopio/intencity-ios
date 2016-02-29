@@ -17,4 +17,6 @@ struct ServiceEvent
     static let GET_EXERCISES_FOR_TODAY = 5
     static let VALIDATE_USER_CREDENTIALS = 6
     static let REMOVE_ACCOUNT = 7
+    static let SEARCH_FOR_EXERCISE = 8
+    static let SEARCH_FOR_USER = 9
 }
