@@ -22,4 +22,5 @@ struct Dimention
     static let TAB_BAR_HEIGHT: CGFloat = 40.0
     static let LAYOUT_MARGIN: CGFloat = 16.0
     static let TABLE_FOOTER_HEIGHT: CGFloat = 77.0
+    static let FONT_SIZE_NORMAL: CGFloat = 12.0
 }

@@ -31,9 +31,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         // Sets the background color of this view.
         self.view.backgroundColor = Color.page_background
         
+        // Hides the tab bar.
+        self.tabBarController?.tabBar.hidden = true
+        
         let image: UIImage = UIImage(named: "magnifying_glass")!
         searchBar.setImage(image, forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
         searchBar.delegate = self
+        searchBar.becomeFirstResponder()
         
 //        searchBar.setImage(nil, forSearchBarIcon: UISearchBarIcon.Clear, state: UIControlState.Normal)
         
@@ -48,10 +52,17 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         self.navigationItem.titleView = searchBar
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: false, addFooter: false)
+        Util.initTableView(tableView, removeSeparators: true, addFooter: false)
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.SEARCH_CELL, cellName: Constant.SEARCH_CELL)
+    }
+    
+    override func viewWillDisappear(animated : Bool)
+    {
+        super.viewWillDisappear(animated)
+        
+        self.tabBarController?.tabBar.hidden = false
     }
 
     override func didReceiveMemoryWarning()
@@ -152,6 +163,20 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
+        if (exercises.count <= 0 && users.count <= 0)
+        {
+            let emptyTableLabel = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height))
+            emptyTableLabel.text = NSLocalizedString("no_results", comment: "")
+            emptyTableLabel.textColor = Color.secondary_light
+            emptyTableLabel.font = emptyTableLabel.font.fontWithSize(Dimention.FONT_SIZE_NORMAL)
+            emptyTableLabel.textAlignment = .Center
+            emptyTableLabel.sizeToFit()
+
+            tableView.backgroundView = emptyTableLabel;
+            
+            return 0;
+        }
+        
         return 1
     }
     

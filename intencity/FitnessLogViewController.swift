@@ -227,29 +227,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             nextExerciseButton.hidden = false
 
             // This means we got results back from the web database.
-            if (result != "")
+            if (result != "" && result != Constant.RETURN_NULL)
             {
-                for muscleGroups in json as! NSArray
-                {
-                    let exerciseName = muscleGroups[Constant.COLUMN_EXERCISE_NAME] as! String
-                    let weight = muscleGroups[Constant.COLUMN_EXERCISE_WEIGHT]
-                    let reps = muscleGroups[Constant.COLUMN_EXERCISE_REPS]
-                    let duration = muscleGroups[Constant.COLUMN_EXERCISE_DURATION]
-                    let difficulty = muscleGroups[Constant.COLUMN_EXERCISE_DIFFICULTY]
-                    let notes = muscleGroups[Constant.COLUMN_NOTES]
-                    
-                    let sets = [ Set(webId: Int(Constant.CODE_FAILED),
-                        weight: !(weight is NSNull) ? Float(weight as! String)! : Float(Constant.CODE_FAILED),
-                        reps: !(reps is NSNull) ? Int(reps as! String)! : Int(Constant.CODE_FAILED),
-                        duration: !(duration is NSNull) ? duration as! String : Constant.RETURN_NULL,
-                        difficulty: !(difficulty is NSNull) ? Int(difficulty as! String)! : 10,
-                        notes: !(notes is NSNull) ? notes as! String : "") ]
-                    
-                    let exercise = Exercise(exerciseName: exerciseName, exerciseDescription: "", sets: sets)
-                    
-                    exerciseData.exerciseList.append(exercise)
-                }
-                
+                exerciseData.exerciseList.appendContentsOf(ExerciseDao().parseJson(json))
                 exerciseData.addStretch()
             }
             // This means we got the results from the iOS database.
