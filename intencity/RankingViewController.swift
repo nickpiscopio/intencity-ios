@@ -105,6 +105,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         cell.addButton.hidden = true
         cell.name.text = user.getName()
         cell.rankingLabel.text = String(index + 1)
+        cell.pointsLabel.text = String(user.earnedPoints)
         
         let totalBadges = user.totalBadges
         

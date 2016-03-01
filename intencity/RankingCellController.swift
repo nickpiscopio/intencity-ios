@@ -19,6 +19,8 @@ class RankingCellController: UITableViewCell, ServiceDelegate
     @IBOutlet weak var badgeTotalLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var badgeView: UIStackView!
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var pointsSuffix: UILabel!
     
     var user: User!
     
@@ -33,10 +35,14 @@ class RankingCellController: UITableViewCell, ServiceDelegate
         
         cellBackgroundView.backgroundColor = Color.white
         
-        rankingLabel.textColor = Color.secondary_dark
+        rankingLabel.textColor = Color.secondary_light
         name.textColor = Color.secondary_dark
         xLabel.textColor = Color.secondary_dark
         badgeTotalLabel.textColor = Color.secondary_dark
+        pointsSuffix.textColor = Color.secondary_dark
+        pointsLabel.textColor = Color.secondary_dark
+        
+        pointsSuffix.text = NSLocalizedString("points", comment: "")
     }
     
     @IBAction func addClicked(sender: AnyObject)

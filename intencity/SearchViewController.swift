@@ -284,6 +284,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             cell.name.text = user.getName()
             cell.email = email
             cell.userId = String(user.id)
+            cell.pointsLabel.text = String(user.earnedPoints)
             
             let totalBadges = user.totalBadges
             
