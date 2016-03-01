@@ -9,7 +9,7 @@
 
 import UIKit
 
-class RankingCellController: UITableViewCell
+class RankingCellController: UITableViewCell, ServiceDelegate
 {
     @IBOutlet weak var cellBackgroundView: UIView!
     
@@ -21,6 +21,9 @@ class RankingCellController: UITableViewCell
     @IBOutlet weak var badgeView: UIStackView!
     
     var user: User!
+    
+    var email: String!
+    var userId: String!
 
     weak var userSearchDelegate: UserSearchDelegate!
     
@@ -38,7 +41,9 @@ class RankingCellController: UITableViewCell
     
     @IBAction func addClicked(sender: AnyObject)
     {
-        userSearchDelegate.onUserAdded(user)
+        ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
+            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_FOLLOW_USER, variables: [ email, userId ]))
     }
     
     /**
@@ -52,4 +57,19 @@ class RankingCellController: UITableViewCell
         
         name.text = user.getName()
     }
+    
+    /**
+     * The callback for if the user is followed successfully.
+     */
+    func onRetrievalSuccessful(event: Int, result: String)
+    {
+        addButton.hidden = true
+        
+        userSearchDelegate.onUserAdded()
+    }
+    
+    /**
+     * The callback for if the user doesn't get added.
+     */
+    func onRetrievalFailed(event: Int) { }
 }

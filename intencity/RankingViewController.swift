@@ -77,9 +77,10 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         // for when it fails.
     }
     
-    func onUserAdded(user: User)
+    func onUserAdded()
     {
-        // MIGHT NOT BE NEEDED.
+        // At least 1 user was added, so we are refreshing the list.
+        getFollowing()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int

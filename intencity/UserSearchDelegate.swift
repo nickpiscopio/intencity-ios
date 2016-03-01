@@ -9,5 +9,5 @@ import Foundation
 
 @objc protocol UserSearchDelegate
 {
-    func onUserAdded(user: User)
+    func onUserAdded()
 }

@@ -13,6 +13,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
 {
     @IBOutlet weak var tableView: UITableView!
     
+    weak var exerciseSearchDelegate: ExerciseSearchDelegate!
+    weak var userSearchDelegate: UserSearchDelegate!
+    
     var state: Int!
     
     var searchBar: UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 300, 20))
@@ -23,8 +26,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     var currentUsers = [User]()
     var users = [User]()
     
-    weak var exerciseSearchDelegate: ExerciseSearchDelegate!
-    weak var userSearchDelegate: UserSearchDelegate!
+    var email = ""
+    
+    var addedUser = false
     
     override func viewDidLoad()
     {
@@ -44,6 +48,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         Util.addUITableViewCell(tableView, nibNamed: Constant.RANKING_CELL, cellName: Constant.RANKING_CELL)
         
         initSearchBar()
+        
+        email = Util.getEmailFromDefaults()
     }
     
     override func viewWillDisappear(animated : Bool)
@@ -51,6 +57,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         super.viewWillDisappear(animated)
         
         self.tabBarController?.tabBar.hidden = false
+        
+        if (addedUser)
+        {
+             userSearchDelegate.onUserAdded()
+        }
     }
 
     override func didReceiveMemoryWarning()
@@ -183,9 +194,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     /**
      * The callback for when a user is added from searching.
      */
-    func onUserAdded(user: User)
+    func onUserAdded()
     {
-        userSearchDelegate.onUserAdded(user)
+        addedUser = true
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -271,6 +282,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             cell.addButton.hidden = isAreadyFollowing
             cell.rankingLabel.hidden = true
             cell.name.text = user.getName()
+            cell.email = email
+            cell.userId = String(user.id)
             
             let totalBadges = user.totalBadges
             
