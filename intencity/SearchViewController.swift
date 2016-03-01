@@ -19,6 +19,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     
     var currentExercises = [Exercise]()
     var exercises = [Exercise]()
+    
+    var currentUsers = [User]()
     var users = [User]()
     
     weak var exerciseSearchDelegate: ExerciseSearchDelegate!
@@ -38,7 +40,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         Util.initTableView(tableView, removeSeparators: true, addFooter: false)
 
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.SEARCH_CELL, cellName: Constant.SEARCH_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.SEARCH_EXERCISE_CELL, cellName: Constant.SEARCH_EXERCISE_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.RANKING_CELL, cellName: Constant.RANKING_CELL)
         
         initSearchBar()
     }
@@ -56,7 +59,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     }
     
     /**
-     * Initializes teh search bar.
+     * Initializes the search bar.
      */
     func initSearchBar()
     {
@@ -94,9 +97,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         // Get all the users from the database with the search query minus the spaces.
         var query = searchBar.text!
         
+        var event = 0
+        
         if (state == ServiceEvent.SEARCH_FOR_EXERCISE)
         {
             urlParameters = Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SEARCH_EXERCISES, variables: [ email, query ])
+            
+            event = ServiceEvent.SEARCH_FOR_EXERCISE
         }
         else
         {
@@ -106,9 +113,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             }
             
             urlParameters = Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SEARCH_USERS, variables: [ email, query ])
+            
+            event = ServiceEvent.SEARCH_FOR_USER
         }
         
-        ServiceTask(event: ServiceEvent.SEARCH_FOR_EXERCISE, delegate: self, serviceURL: Constant.SERVICE_STORED_PROCEDURE, params: urlParameters)
+        ServiceTask(event: event, delegate: self, serviceURL: Constant.SERVICE_STORED_PROCEDURE, params: urlParameters)
         
         searchBar.endEditing(true)
     }
@@ -134,6 +143,17 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
 
                 break
             case ServiceEvent.SEARCH_FOR_USER:
+                
+                // This means we got results back from the web database.
+                if (result != "" && result != Constant.RETURN_NULL)
+                {
+                    users = UserDao().parseJson(json)
+                }
+                else
+                {
+                    users.removeAll()
+                }
+                
                 break
             default:
                 break
@@ -179,12 +199,16 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             emptyTableLabel.textAlignment = .Center
             emptyTableLabel.sizeToFit()
 
-            tableView.backgroundView = emptyTableLabel;
+            tableView.backgroundView = emptyTableLabel
             
-            return 0;
+            return 0
         }
-        
-        return 1
+        else
+        {
+            tableView.backgroundView = nil
+            
+            return 1
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -196,30 +220,59 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let index = indexPath.row
-        let exercise = exercises[index]
         
-        let currentExerciseCount = currentExercises.count
-        
-        var hasExerciseAlready = false
-        
-        for (var i = 0; i < currentExerciseCount; i++)
+        if (state == ServiceEvent.SEARCH_FOR_EXERCISE)
         {
-            if (currentExercises[i].exerciseName == exercise.exerciseName)
+            let exercise = exercises[index]
+            
+            let currentExerciseCount = currentExercises.count
+            
+            var hasExerciseAlready = false
+            
+            for (var i = 0; i < currentExerciseCount; i++)
             {
-                hasExerciseAlready = true
-                
-                break
+                if (currentExercises[i].exerciseName == exercise.exerciseName)
+                {
+                    hasExerciseAlready = true
+                    
+                    break
+                }
             }
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.SEARCH_EXERCISE_CELL) as! SearchExerciseCellController
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.exerciseSearchDelegate = self
+            cell.setExerciseResult(exercise)
+            cell.addButton.hidden = hasExerciseAlready
+            
+            return cell
         }
-        
-        let result = state == ServiceEvent.SEARCH_FOR_EXERCISE ? exercise : users[index]
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.SEARCH_CELL) as! SearchCellController
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.exerciseSearchDelegate = self
-        cell.setSearchResult(state, result: result)
-        cell.addButton.hidden = hasExerciseAlready
-        
-        return cell
+        else
+        {
+            let user = users[index]
+            
+            let currentUserCount = currentUsers.count
+            
+            var isAreadyFollowing = false
+            
+            for (var i = 0; i < currentUserCount; i++)
+            {
+                if (currentUsers[i].getName() == user.getName())
+                {
+                    isAreadyFollowing = true
+                    
+                    break
+                }
+            }
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.RANKING_CELL) as! RankingCellController
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.userSearchDelegate = self
+            cell.addButton.hidden = isAreadyFollowing
+            cell.rankingLabel.hidden = true
+            cell.name.text = user.getName()
+            
+            return cell
+        }
     }
 }

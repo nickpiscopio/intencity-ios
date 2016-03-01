@@ -1,5 +1,5 @@
 //
-//  Exercise.swift
+//  ExerciseDao.swift
 //  Intencity
 //
 //  The data access object for exercise.

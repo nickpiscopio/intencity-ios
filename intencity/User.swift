@@ -11,11 +11,21 @@ import Foundation
 
 class User: NSObject
 {
-    var id = Constant.CODE_FAILED
-    var followingId = Constant.CODE_FAILED
-    var earnedPoints = Constant.CODE_FAILED
-    var totalBadges = Constant.CODE_FAILED
+    var id = Int(Constant.CODE_FAILED)
+    var followingId = Int(Constant.CODE_FAILED)
+    var earnedPoints = Int(Constant.CODE_FAILED)
+    var totalBadges = Int(Constant.CODE_FAILED)
     
     var firstName = ""
     var lastName = ""
+    
+    /**
+     * Concatinates the user's first and last name.
+     *
+     * @return The user's name.
+     */
+    func getName() -> String
+    {
+        return firstName + " " + lastName
+    }
 }

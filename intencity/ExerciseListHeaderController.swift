@@ -35,7 +35,7 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
     {
         let storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
         
-        let viewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as! SearchViewController
+        let viewController = storyboard.instantiateViewControllerWithIdentifier(Constant.SEARCH_VIEW_CONTROLLER) as! SearchViewController
         viewController.state = ServiceEvent.SEARCH_FOR_EXERCISE
         viewController.exerciseSearchDelegate = self
         viewController.currentExercises = currentExercises
