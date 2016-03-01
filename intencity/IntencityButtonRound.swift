@@ -21,12 +21,12 @@ class IntencityButtonRound: UIButton
         self.layer.borderColor = Color.transparent.CGColor
         self.layer.borderWidth = Dimention.BORDER_WIDTH
         self.layer.masksToBounds = false
-        self.layer.shadowColor = Color.shadow.CGColor
+        self.layer.shadowColor = Color.shadow_dark.CGColor
         self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW, Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
         self.layer.shadowRadius = Dimention.SHADOW
         self.layer.cornerRadius = Dimention.RADIUS_ROUNDED_BUTTON
-        self.layer.backgroundColor = Color.secondary_dark.CGColor
+        self.layer.backgroundColor = Color.secondary_light.CGColor
         
         // The callbacks for the button states.
         self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
@@ -39,7 +39,7 @@ class IntencityButtonRound: UIButton
     */
     func buttonUp()
     {
-        self.layer.backgroundColor = Color.secondary_dark.CGColor
+        self.layer.backgroundColor = Color.secondary_light.CGColor
     }
     
     /*
@@ -47,6 +47,6 @@ class IntencityButtonRound: UIButton
     */
     func buttonDown()
     {
-        self.layer.backgroundColor = Color.secondary_light.CGColor
+        self.layer.backgroundColor = Color.secondary_dark.CGColor
     }
 }

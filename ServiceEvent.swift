@@ -19,4 +19,6 @@ struct ServiceEvent
     static let REMOVE_ACCOUNT = 7
     static let SEARCH_FOR_EXERCISE = 8
     static let SEARCH_FOR_USER = 9
+    static let GET_FOLLOWING = 10
+    static let UNFOLLOW = 11
 }

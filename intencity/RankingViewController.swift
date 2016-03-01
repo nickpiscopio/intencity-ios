@@ -16,6 +16,9 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     
     var currentUsers = [User]()
     
+    var indexPath: NSIndexPath!
+    var indexToRemove: Int!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -59,22 +62,52 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     {
         let email = Util.getEmailFromDefaults()
         
-        ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
+        ServiceTask(event: ServiceEvent.GET_FOLLOWING, delegate: self,
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_FOLLOWING, variables: [ email ]))
     }
     
     func onRetrievalSuccessful(event: Int, result: String)
     {
-        // This gets saved as NSDictionary, so there is no order
-        currentUsers = UserDao().parseJson(result.parseJSONString)
-        
-        tableView.reloadData()
+        switch(event)
+        {
+            case ServiceEvent.GET_FOLLOWING:
+                
+                // This gets saved as NSDictionary, so there is no order
+                currentUsers = UserDao().parseJson(result.parseJSONString)
+                
+                tableView.reloadData()
+                
+                break
+            case ServiceEvent.UNFOLLOW:
+                
+                currentUsers.removeAtIndex(indexPath.row)
+                
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                
+                break
+            default:
+                break
+        }
     }
     
     func onRetrievalFailed(event: Int)
     {
-        // for when it fails.
+        switch(event)
+        {
+        case ServiceEvent.GET_FOLLOWING:
+            
+            // update ui for when it can't get users.
+            
+            break
+        case ServiceEvent.UNFOLLOW:
+            
+            Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
+            
+            break
+        default:
+            break
+        }
     }
     
     func onUserAdded()
@@ -90,7 +123,6 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        
         // Return the number of rows in the section.
         return currentUsers.count
     }
@@ -121,62 +153,44 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         
         return cell
     }
+    
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String!
+    {
+        return NSLocalizedString("unfollow", comment: "")//or customize for each indexPath
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if (editingStyle == UITableViewCellEditingStyle.Delete)
+        {
+            self.indexPath = indexPath
+            indexToRemove = indexPath.row
+            
+            let user = currentUsers[indexToRemove]
+            
+            ServiceTask(event: ServiceEvent.UNFOLLOW, delegate: self,
+                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_FROM_FOLLOWING, variables: [ String(user.followingId) ]))
+        }
+    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
+    {
+        let index = indexPath.row
+        let user = currentUsers[index]
+        
+        // Only add the unfollow button if it is not the user.
+        // A user cannot unfollow him or herself.
+        if (user.followingId > 0)
+        {
+            return UITableViewCellEditingStyle.Delete
+        }
 
-//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?
-//    {
-//        isSwipeOpen = true
-//        
-//        let remove = UITableViewRowAction(style: .Normal, title: NSLocalizedString("hide", comment: "")) { action, index in
-//            
-//            let exerciseName = self.exerciseData.exerciseList[indexPath.row].exerciseName
-//            let actions = [ UIAlertAction(title: NSLocalizedString("hide_for_now", comment: ""), style: .Default, handler: self.hideExercise(indexPath)),
-//                UIAlertAction(title: NSLocalizedString("hide_forever", comment: ""), style: .Destructive, handler: self.hideExercise(indexPath)),
-//                UIAlertAction(title: NSLocalizedString("do_not_hide", comment: ""), style: .Cancel, handler: self.cancelRemoval(indexPath)) ]
-//            Util.displayAlert(self, title: String(format: NSLocalizedString("hide_exercise", comment: ""), exerciseName), message: "", actions: actions)
-//        }
-//        
-//        remove.backgroundColor = Color.card_button_delete_select
-//        
-//        return [remove]
-//    }
-//    
-//    func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//        self.isSwipeOpen = false
-//    }
-//    
-//    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
-//    {
-//        // Only edit the cells if the user is exercising.
-//        return state == Constant.EXERCISE_CELL
-//    }
-//    
-//    /**
-//     * Hides an exercise in the exercise list.
-//     *
-//     * @param indexPath The index path for the exercise to hide.
-//     */
-//    func hideExercise(indexPath: NSIndexPath)(alertAction: UIAlertAction!) -> Void
-//    {
-//        tableView.beginUpdates()
-//        
-//        let index = indexPath.row
-//        
-//        currentExercises.removeAtIndex(index)
-//        exerciseData.exerciseList.removeAtIndex(index)
-//        
-//        exerciseData.exerciseIndex--
-//        
-//        updateExerciseTotal()
-//        
-//        // Note that indexPath is wrapped in an array: [indexPath]
-//        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-//        
-//        addExercise()
-//        
-//        tableView.endUpdates()
-//    }
-//    
-//    func cancelRemoval(indexPath: NSIndexPath)(alertAction: UIAlertAction!) { }
-
+        return UITableViewCellEditingStyle.None
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
+        return true
+    }
 }

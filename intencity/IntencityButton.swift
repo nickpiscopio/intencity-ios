@@ -18,14 +18,14 @@ class IntencityButton: UIButton
         super.init(coder: aDecoder)
         
         // The default parameters for the button.
-        self.layer.backgroundColor = Color.secondary_dark.CGColor
+        self.layer.backgroundColor = Color.secondary_light.CGColor
         self.layer.borderColor = Color.transparent.CGColor
         self.setTitleColor(Color.page_background, forState: .Normal)
         self.setTitleColor(Color.page_background, forState: .Highlighted)
         self.layer.borderWidth = Dimention.BORDER_WIDTH
         self.layer.cornerRadius = Dimention.RADIUS
         self.layer.masksToBounds = false
-        self.layer.shadowColor = Color.shadow.CGColor
+        self.layer.shadowColor = Color.shadow_dark.CGColor
         self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW, Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
         self.layer.shadowRadius = Dimention.SHADOW
@@ -41,7 +41,7 @@ class IntencityButton: UIButton
     */
     func buttonUp()
     {
-        self.layer.backgroundColor = Color.secondary_dark.CGColor
+        self.layer.backgroundColor = Color.secondary_light.CGColor
     }
     
     /*
@@ -49,6 +49,6 @@ class IntencityButton: UIButton
     */
     func buttonDown()
     {
-        self.layer.backgroundColor = Color.secondary_light.CGColor
+        self.layer.backgroundColor = Color.secondary_dark.CGColor
     }
 }
