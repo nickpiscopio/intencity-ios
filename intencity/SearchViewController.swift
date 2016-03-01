@@ -272,6 +272,18 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             cell.rankingLabel.hidden = true
             cell.name.text = user.getName()
             
+            let totalBadges = user.totalBadges
+            
+            if (totalBadges > 0)
+            {
+                cell.badgeView.hidden = false
+                cell.badgeTotalLabel.text = String(totalBadges)
+            }
+            else
+            {
+                cell.badgeView.hidden = true
+            }
+            
             return cell
         }
     }

@@ -18,6 +18,7 @@ class RankingCellController: UITableViewCell
     @IBOutlet weak var xLabel: UILabel!
     @IBOutlet weak var badgeTotalLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var badgeView: UIStackView!
     
     var user: User!
 

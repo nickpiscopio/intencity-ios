@@ -105,6 +105,18 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         cell.name.text = user.getName()
         cell.rankingLabel.text = String(index + 1)
         
+        let totalBadges = user.totalBadges
+        
+        if (totalBadges > 0)
+        {
+            cell.badgeView.hidden = false
+            cell.badgeTotalLabel.text = String(totalBadges)
+        }
+        else
+        {
+            cell.badgeView.hidden = true
+        }
+        
         return cell
     }
 
