@@ -34,28 +34,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         // Hides the tab bar.
         self.tabBarController?.tabBar.hidden = true
         
-        let image: UIImage = UIImage(named: "magnifying_glass")!
-        searchBar.setImage(image, forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
-        searchBar.delegate = self
-        searchBar.becomeFirstResponder()
-        
-//        searchBar.setImage(nil, forSearchBarIcon: UISearchBarIcon.Clear, state: UIControlState.Normal)
-        
-        let searchPlaceholder = state == ServiceEvent.SEARCH_FOR_EXERCISE ? NSLocalizedString("search_exercise", comment: "") : NSLocalizedString("search_user", comment: "")
-        
-        let textField = searchBar.valueForKey("searchField") as! UITextField
-        textField.backgroundColor = Color.primary
-        textField.textColor = Color.white
-        textField.attributedPlaceholder = NSAttributedString(string: searchPlaceholder, attributes:[NSForegroundColorAttributeName: Color.white])
-        textField.keyboardType = UIKeyboardType.ASCIICapable
-
-        self.navigationItem.titleView = searchBar
-        
         // Initialize the tableview.
         Util.initTableView(tableView, removeSeparators: true, addFooter: false)
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.SEARCH_CELL, cellName: Constant.SEARCH_CELL)
+        
+        initSearchBar()
     }
     
     override func viewWillDisappear(animated : Bool)
@@ -68,6 +53,28 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    /**
+     * Initializes teh search bar.
+     */
+    func initSearchBar()
+    {
+        let image: UIImage = UIImage(named: "magnifying_glass")!
+        searchBar.setImage(image, forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
+        searchBar.delegate = self
+        searchBar.becomeFirstResponder()
+        
+        let searchPlaceholder = state == ServiceEvent.SEARCH_FOR_EXERCISE ? NSLocalizedString("search_exercise", comment: "") : NSLocalizedString("search_user", comment: "")
+        
+        let textField = searchBar.valueForKey("searchField") as! UITextField
+        textField.backgroundColor = Color.primary
+        textField.textColor = Color.white
+        textField.attributedPlaceholder = NSAttributedString(string: searchPlaceholder, attributes:[NSForegroundColorAttributeName: Color.white])
+        textField.keyboardType = UIKeyboardType.ASCIICapable
+        textField.clearButtonMode = UITextFieldViewMode.Never
+        
+        self.navigationItem.titleView = searchBar
     }
     
     /**
