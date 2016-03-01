@@ -23,17 +23,17 @@
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FP-Cs-wZC">
                         <rect key="frame" x="8" y="14" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="2FP-Cs-wZC" secondAttribute="trailing" constant="16" id="5Ia-ex-I17"/>
-                    <constraint firstItem="2FP-Cs-wZC" firstAttribute="leading" secondItem="o4Z-1i-Sg3" secondAttribute="leading" constant="24" id="D42-0e-teJ"/>
-                    <constraint firstItem="2FP-Cs-wZC" firstAttribute="top" secondItem="o4Z-1i-Sg3" secondAttribute="top" constant="16" id="Ihd-aM-eqE"/>
+                    <constraint firstItem="2FP-Cs-wZC" firstAttribute="leading" secondItem="o4Z-1i-Sg3" secondAttribute="leading" constant="16" id="D42-0e-teJ"/>
+                    <constraint firstItem="2FP-Cs-wZC" firstAttribute="top" secondItem="o4Z-1i-Sg3" secondAttribute="top" constant="8" id="Ihd-aM-eqE"/>
                     <constraint firstAttribute="bottom" secondItem="QxU-RC-HcL" secondAttribute="bottom" id="RWp-u9-7LA"/>
-                    <constraint firstItem="QxU-RC-HcL" firstAttribute="top" secondItem="2FP-Cs-wZC" secondAttribute="bottom" constant="16" id="YAd-su-Pib"/>
+                    <constraint firstItem="QxU-RC-HcL" firstAttribute="top" secondItem="2FP-Cs-wZC" secondAttribute="bottom" constant="8" id="YAd-su-Pib"/>
                     <constraint firstItem="QxU-RC-HcL" firstAttribute="leading" secondItem="o4Z-1i-Sg3" secondAttribute="leading" id="whW-O9-Pg8"/>
                     <constraint firstAttribute="trailing" secondItem="QxU-RC-HcL" secondAttribute="trailing" id="xza-3r-AAq"/>
                 </constraints>

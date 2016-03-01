@@ -21,32 +21,38 @@ class IntencityButtonRound: UIButton
         self.layer.borderColor = Color.transparent.CGColor
         self.layer.borderWidth = Dimention.BORDER_WIDTH
         self.layer.masksToBounds = false
-        self.layer.shadowColor = Color.shadow_dark.CGColor
         self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW, Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
         self.layer.shadowRadius = Dimention.SHADOW
         self.layer.cornerRadius = Dimention.RADIUS_ROUNDED_BUTTON
-        self.layer.backgroundColor = Color.secondary_light.CGColor
+        self.layer.shadowColor = Color.shadow_dark.CGColor
+        self.layer.backgroundColor = Color.secondary_dark.CGColor
+        
+        buttonUp()
         
         // The callbacks for the button states.
         self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
         self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpOutside)
         self.addTarget(self, action: "buttonDown", forControlEvents: .TouchDown)
+        
+        self.setTitleColor(Color.white, forState: UIControlState.Highlighted)
+        self.setTitleColor(Color.white, forState: UIControlState.Selected)
+        self.setTitleColor(Color.white, forState: UIControlState.Normal)
     }
     
-    /*
-        The function for when the button has been released.
-    */
+    /**
+     * The function for when the button has been released.
+     */
     func buttonUp()
     {
-        self.layer.backgroundColor = Color.secondary_light.CGColor
+        self.layer.shadowRadius = Dimention.SHADOW
     }
     
-    /*
-        The function for when the button is being pressed.
-    */
+    /**
+     * The function for when the button is being pressed.
+     */
     func buttonDown()
     {
-        self.layer.backgroundColor = Color.secondary_dark.CGColor
+        self.layer.shadowRadius = Dimention.SHADOW * 2
     }
 }

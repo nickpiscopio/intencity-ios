@@ -16,7 +16,7 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-xb-y4l">
                         <rect key="frame" x="8" y="16" width="312" height="21"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -29,10 +29,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="32s-xb-y4l" firstAttribute="leading" secondItem="o4Z-1i-Sg3" secondAttribute="leading" constant="16" id="W5t-zM-5kX"/>
+                    <constraint firstItem="32s-xb-y4l" firstAttribute="leading" secondItem="o4Z-1i-Sg3" secondAttribute="leading" constant="8" id="W5t-zM-5kX"/>
                     <constraint firstAttribute="trailing" secondItem="7Ti-ji-FN1" secondAttribute="trailing" id="Yeq-Ye-0JC"/>
                     <constraint firstAttribute="bottom" secondItem="32s-xb-y4l" secondAttribute="bottom" constant="8" id="fMc-NM-sYk"/>
-                    <constraint firstAttribute="trailing" secondItem="32s-xb-y4l" secondAttribute="trailing" constant="16" id="vDV-XX-ZD2"/>
+                    <constraint firstAttribute="trailing" secondItem="32s-xb-y4l" secondAttribute="trailing" constant="8" id="vDV-XX-ZD2"/>
                     <constraint firstItem="7Ti-ji-FN1" firstAttribute="leading" secondItem="o4Z-1i-Sg3" secondAttribute="leading" id="yQr-Xp-3lP"/>
                     <constraint firstAttribute="bottom" secondItem="7Ti-ji-FN1" secondAttribute="bottom" id="yeh-3d-TUc"/>
                 </constraints>

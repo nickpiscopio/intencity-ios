@@ -98,7 +98,7 @@ class MenuViewController: UIViewController
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return menu[section].title != "" ? 43 : 0
+        return menu[section].title != "" ? 35 : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell

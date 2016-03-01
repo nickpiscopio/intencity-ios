@@ -18,37 +18,42 @@ class IntencityButton: UIButton
         super.init(coder: aDecoder)
         
         // The default parameters for the button.
-        self.layer.backgroundColor = Color.secondary_light.CGColor
         self.layer.borderColor = Color.transparent.CGColor
         self.setTitleColor(Color.page_background, forState: .Normal)
         self.setTitleColor(Color.page_background, forState: .Highlighted)
         self.layer.borderWidth = Dimention.BORDER_WIDTH
         self.layer.cornerRadius = Dimention.RADIUS
         self.layer.masksToBounds = false
-        self.layer.shadowColor = Color.shadow_dark.CGColor
         self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW, Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
-        self.layer.shadowRadius = Dimention.SHADOW
+        self.layer.shadowColor = Color.shadow_dark.CGColor
+        self.layer.backgroundColor = Color.secondary_dark.CGColor
+        
+        buttonUp()
         
         // The callbacks for the button states.
         self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
         self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpOutside)
         self.addTarget(self, action: "buttonDown", forControlEvents: .TouchDown)
+        
+        self.setTitleColor(Color.white, forState: UIControlState.Highlighted)
+        self.setTitleColor(Color.white, forState: UIControlState.Selected)
+        self.setTitleColor(Color.white, forState: UIControlState.Normal)
     }
     
-    /*
-        The function for when the button has been released.
-    */
+    /**
+     * The function for when the button has been released.
+     */
     func buttonUp()
     {
-        self.layer.backgroundColor = Color.secondary_light.CGColor
+        self.layer.shadowRadius = Dimention.SHADOW
     }
     
-    /*
-        The function for when the button is being pressed.
-    */
+    /**
+     * The function for when the button is being pressed.
+     */
     func buttonDown()
     {
-        self.layer.backgroundColor = Color.secondary_dark.CGColor
+        self.layer.shadowRadius = Dimention.SHADOW * 2
     }
 }
