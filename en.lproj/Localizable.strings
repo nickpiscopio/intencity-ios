@@ -156,7 +156,7 @@
 "fill_in_fields" = "Please fill in all fields.";
 
 /*  */
-"accept_terms" = "Please accept the Terms of Use.";
+"accept_terms" = "Please accept the Terms of Use and Privacy Policy.";
 
 /*  */
 "email_validation_error" = "Please enter a valid email.";

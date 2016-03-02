@@ -33,11 +33,18 @@ class MenuViewController: UIViewController
 
         menu.append(MenuSection(title: "", rows: notificationRow))
         
+        let isMobileTrial = Util.isAccountTypeTrial()
+        
         // The settings section.
-        let settingsRows = [ MenuRow(title: NSLocalizedString("edit_exclusion", comment: ""), viewController: "EditExclusionViewController"),
-                             MenuRow(title: NSLocalizedString("edit_equipment", comment: ""), viewController: "EditEquipmentViewController"),
-                             MenuRow(title: NSLocalizedString("change_password", comment: ""), viewController: "ChangePasswordViewController"),
-                             MenuRow(title: NSLocalizedString("title_log_out", comment: ""), viewController: Constant.LOG_OUT) ]
+        var settingsRows = [ MenuRow(title: NSLocalizedString("edit_exclusion", comment: ""), viewController: "EditExclusionViewController"),
+                             MenuRow(title: NSLocalizedString("edit_equipment", comment: ""), viewController: "EditEquipmentViewController")]
+        
+        if (!isMobileTrial)
+        {
+           settingsRows.append(MenuRow(title: NSLocalizedString("change_password", comment: ""), viewController: "ChangePasswordViewController"))
+        }
+        
+        settingsRows.append(MenuRow(title: NSLocalizedString("title_log_out", comment: ""), viewController: Constant.LOG_OUT))
 
         menu.append(MenuSection(title: NSLocalizedString("title_settings", comment: ""), rows: settingsRows))
         
@@ -48,10 +55,13 @@ class MenuViewController: UIViewController
         
         menu.append(MenuSection(title: NSLocalizedString("title_info", comment: ""), rows: infoRows))
         
-        // The account settings section.
-        let accountSettingsRow = [ MenuRow(title: NSLocalizedString("title_delete_account", comment: ""), viewController: "DeleteAccountViewController") ]
-        
-        menu.append(MenuSection(title: NSLocalizedString("title_account_settings", comment: ""), rows: accountSettingsRow))
+        if (!isMobileTrial)
+        {
+            // The account settings section.
+            let accountSettingsRow = [ MenuRow(title: NSLocalizedString("title_delete_account", comment: ""), viewController: "DeleteAccountViewController") ]
+            
+            menu.append(MenuSection(title: NSLocalizedString("title_account_settings", comment: ""), rows: accountSettingsRow))
+        }
         
         // Initialize the tableview.
         Util.initTableView(tableView, removeSeparators: true, addFooter: false)
@@ -148,7 +158,6 @@ class MenuViewController: UIViewController
             }
             
             pushViewController(storyboardName, identifier: viewControllerName)
-
         }
     }
     

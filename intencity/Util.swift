@@ -82,6 +82,9 @@ class Util
         let viewController = storyboard.instantiateViewControllerWithIdentifier(Constant.LOGIN_NAV_CONTROLLER)
         
         controller.presentViewController(viewController, animated: true, completion: nil)
+        
+        let dbHelper = DBHelper()
+        dbHelper.resetDb(dbHelper.openDb())
     }
 
     /**
@@ -127,6 +130,16 @@ class Util
         {
             return ""
         }
+    }
+    
+    /**
+     * Gets the account type from the defaults.
+     *
+     * @return Boolean if the account type is a mobile trial.
+     */
+    static func isAccountTypeTrial() -> Bool
+    {
+        return NSUserDefaults.standardUserDefaults().stringForKey(Constant.USER_ACCOUNT_TYPE) == Constant.ACCOUNT_TYPE_MOBILE_TRIAL
     }
     
     /**
