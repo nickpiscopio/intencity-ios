@@ -29,6 +29,7 @@ class IntencityButtonNoBackground: UIButton
         // The callbacks for the button states.
         self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
         self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpOutside)
+        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchCancel)
         self.addTarget(self, action: "buttonDown", forControlEvents: .TouchDown)
     }
     

@@ -21,8 +21,8 @@ class ExerciseCellController: UITableViewCell
     @IBOutlet weak var slashLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var repsLabel: UILabel!
-    
     @IBOutlet weak var backgroundEditView: UIView!
+    
     let EDIT_STRING = NSLocalizedString("edit", comment: "")
     
     weak var delegate: ExerciseDelegate?

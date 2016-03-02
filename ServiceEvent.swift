@@ -21,4 +21,5 @@ struct ServiceEvent
     static let SEARCH_FOR_USER = 9
     static let GET_FOLLOWING = 10
     static let UNFOLLOW = 11
+    static let HIDE_EXERCISE_FOREVER = 12
 }

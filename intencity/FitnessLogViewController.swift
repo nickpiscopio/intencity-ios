@@ -15,6 +15,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     @IBOutlet weak var nextExerciseButton: UIButton!
     
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
+    let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
+    let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
     
     // THIS WILL CHANGE TO 7 LATER WHEN ADDING WARM UP AND STRETCH.
     var totalExercises = 7
@@ -128,11 +130,19 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             }
         }
         
-        exercises.insert(exercise, atIndex: currentExercises.count)
+        let currentExerciseCount = currentExercises.count
+        var removeStretch = false
+        
+        if (currentExercises[currentExerciseCount - 1].exerciseName == STRETCH_NAME)
+        {
+            removeStretch = true
+        }
+        
+        exercises.insert(exercise, atIndex: removeStretch ? currentExerciseCount - 1 : currentExerciseCount)
         
         exerciseData.exerciseList = exercises
-        
-        addExercise()
+
+        addExercise(true)
     }
     
     /**
@@ -140,18 +150,21 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     @IBAction func nextExerciseClicked(sender: AnyObject)
     {
-        addExercise()
+        if (currentExercises.count != exerciseData.exerciseList.count)
+        {
+            addExercise(false)
+        }
     }
     
     /**
      * Adds an exercise to the currentExercises.
      */
-    func addExercise()
+    func addExercise(fromSearch: Bool)
     {
         let currentExerciseCount = currentExercises.count
         // If there is 1 exercise left, we want to display the stretch.
         // We remove all the unnecessary exercises.
-        if (totalExercises - currentExerciseCount <= 1)
+        if (!fromSearch && totalExercises - currentExerciseCount <= 1)
         {
             let stretch = exerciseData.exerciseList[exerciseData.exerciseList.count - 1]
             
@@ -160,7 +173,15 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             exerciseData.exerciseList.append(stretch)
         }
         
-        if (currentExerciseCount < totalExercises)
+        let position = currentExerciseCount - 1
+        
+        if (fromSearch && currentExercises[position].exerciseName == STRETCH_NAME)
+        {
+            let indexPath = NSIndexPath(forRow: position, inSection: 0)
+
+            hideExercise(indexPath, fromSearch: true, forever: false)
+        }
+        else
         {
             // Get the next exercise.
             currentExercises.append(exerciseData.exerciseList[exerciseData.exerciseIndex++])
@@ -172,6 +193,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         // Set the current exercises in the exercise list header so we can exclude adding exercises that we already have when searching.
         exerciseListHeader.currentExercises = currentExercises
+        
+        // Scrolls to the bottom of the tableview.
+        tableView.scrollRectToVisible(tableView.tableFooterView!.frame, animated: true)
     }
     
     /**
@@ -338,7 +362,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         {
             for (var i = 0; i < indexToLoad; i++)
             {
-                addExercise()
+                addExercise(false)
             }
         }
     }
@@ -350,8 +374,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     {
         let indexPath = NSIndexPath(forRow: currentExercises.count - 1, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Bottom)
-        
-        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
     }
     
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
@@ -436,8 +458,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         let remove = UITableViewRowAction(style: .Normal, title: NSLocalizedString("hide", comment: "")) { action, index in
             
             let exerciseName = self.exerciseData.exerciseList[indexPath.row].exerciseName
-            let actions = [ UIAlertAction(title: NSLocalizedString("hide_for_now", comment: ""), style: .Default, handler: self.hideExercise(indexPath)),
-                            UIAlertAction(title: NSLocalizedString("hide_forever", comment: ""), style: .Destructive, handler: self.hideExercise(indexPath)),
+            let actions = [ UIAlertAction(title: NSLocalizedString("hide_for_now", comment: ""), style: .Default, handler: self.hideExerciseFromAlert(indexPath, forever: false)),
+                            UIAlertAction(title: NSLocalizedString("hide_forever", comment: ""), style: .Destructive, handler: self.hideExerciseFromAlert(indexPath, forever: true)),
                             UIAlertAction(title: NSLocalizedString("do_not_hide", comment: ""), style: .Cancel, handler: self.cancelRemoval(indexPath)) ]
             Util.displayAlert(self, title: String(format: NSLocalizedString("hide_exercise", comment: ""), exerciseName), message: "", actions: actions)
         }
@@ -454,23 +476,41 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
-        // Only edit the cells if the user is exercising.
-        return state == Constant.EXERCISE_CELL
+        // Only edit the cells if the user is exercising and if it isn't the warm-up.
+        return indexPath.row > 0 && state == Constant.EXERCISE_CELL
+    }
+    
+    /**
+     * Hides an exercise in the exercise list.
+     *
+     * @param indexPath     The index path for the exercise to hide.
+     * @param forever       Whether to call the stored proceedure to hide the exercise forever.
+     */
+    func hideExerciseFromAlert(indexPath: NSIndexPath, forever: Bool)(alertAction: UIAlertAction!) -> Void
+    {
+        self.hideExercise(indexPath, fromSearch: false, forever: forever)
     }
     
     /**
      * Hides an exercise in the exercise list.
      *
      * @param indexPath The index path for the exercise to hide.
+     * @param forever       Whether to call the stored proceedure to hide the exercise forever.
      */
-    func hideExercise(indexPath: NSIndexPath)(alertAction: UIAlertAction!) -> Void
+    func hideExercise(indexPath: NSIndexPath, fromSearch: Bool, forever: Bool)
     {
         tableView.beginUpdates()
-            
+
         let index = indexPath.row
+        
+        let exerciseName = currentExercises[index].exerciseName
             
         currentExercises.removeAtIndex(index)
-        exerciseData.exerciseList.removeAtIndex(index)
+        
+        if (exerciseName != STRETCH_NAME)
+        {
+            exerciseData.exerciseList.removeAtIndex(index)
+        }
         
         exerciseData.exerciseIndex--
         
@@ -479,8 +519,23 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         // Note that indexPath is wrapped in an array: [indexPath]
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
-        addExercise()
-            
+        if (exerciseName != STRETCH_NAME || fromSearch)
+        {
+            addExercise(fromSearch)
+        }
+        
+        if (forever && exerciseName != WARM_UP_NAME && exerciseName != STRETCH_NAME)
+        {
+            // Hide the exercise on the web server.
+            // The ServiceListener is null because we don't care if it reached the server.
+            // The worst that will happen is a user will have to hide the exercise again.
+            ServiceTask(event: ServiceEvent.HIDE_EXERCISE_FOREVER,
+                        delegate: self,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_EXCLUDE_EXERCISE,
+                                    variables: [ email, exerciseName ]))
+        }
+        
         tableView.endUpdates()
     }
     
