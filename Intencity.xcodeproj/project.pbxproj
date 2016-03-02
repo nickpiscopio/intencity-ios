@@ -82,6 +82,7 @@
 		BDB45A1E1C849F52009E509B /* ExerciseDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB45A1D1C849F52009E509B /* ExerciseDao.swift */; };
 		BDB45A201C84A122009E509B /* ExerciseSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB45A1F1C84A122009E509B /* ExerciseSearchDelegate.swift */; };
 		BDBA605D1C85D61D002D5F4A /* UserDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA605C1C85D61D002D5F4A /* UserDao.swift */; };
+		BDBDB56B1C87504E00A2EE2C /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = BDBDB56A1C87504E00A2EE2C /* privacy.html */; };
 		BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */; };
 		BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */; };
 		BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F01C7A0445005817D0 /* ExerciseData.swift */; };
@@ -181,6 +182,7 @@
 		BDB45A1D1C849F52009E509B /* ExerciseDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDao.swift; sourceTree = "<group>"; };
 		BDB45A1F1C84A122009E509B /* ExerciseSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseSearchDelegate.swift; sourceTree = "<group>"; };
 		BDBA605C1C85D61D002D5F4A /* UserDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDao.swift; sourceTree = "<group>"; };
+		BDBDB56A1C87504E00A2EE2C /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineDelegate.swift; sourceTree = "<group>"; };
 		BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButton.swift; sourceTree = "<group>"; };
 		BDE493F01C7A0445005817D0 /* ExerciseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				BD5460F91C68D34400F60ADC /* Info.plist */,
 				BD9EF2531C691C7100E520CB /* Localizable.strings */,
 				BD9EF2B71C6A941F00E520CB /* terms.html */,
+				BDBDB56A1C87504E00A2EE2C /* privacy.html */,
 			);
 			name = Resources;
 			path = intencity;
@@ -520,6 +523,7 @@
 				TargetAttributes = {
 					BD5460E91C68D34400F60ADC = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = N2GZ9B2SHK;
 					};
 				};
 			};
@@ -558,6 +562,7 @@
 				BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */,
 				BD36EC331C720C6B00F993CE /* Direction.xib in Resources */,
 				BDB45A1A1C849AAF009E509B /* SearchExerciseCell.xib in Resources */,
+				BDBDB56B1C87504E00A2EE2C /* privacy.html in Resources */,
 				BD9EF2B81C6A941F00E520CB /* terms.html in Resources */,
 				BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */,
 				BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */,
@@ -809,6 +814,8 @@
 			baseConfigurationReference = FC489527A4C448980D231596 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -817,6 +824,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.intencity;
 				PRODUCT_NAME = Intencity;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -825,6 +833,8 @@
 			baseConfigurationReference = 149BA7352CB3DC04F109302E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -833,6 +843,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.intencity;
 				PRODUCT_NAME = Intencity;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

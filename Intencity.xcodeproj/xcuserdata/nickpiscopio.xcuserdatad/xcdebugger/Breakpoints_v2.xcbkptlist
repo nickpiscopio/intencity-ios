@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "intencity/LoginViewController.swift"
-            timestampString = "478362652.175016"
+            timestampString = "478632137.828619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "tryIntencityClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "intencity/FitnessLogViewController.swift"
-            timestampString = "478102911.313128"
+            timestampString = "478618023.637237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "onRetrievalSuccessful(_:result:)"
             landmarkType = "5">
          </BreakpointContent>

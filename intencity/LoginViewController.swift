@@ -67,27 +67,22 @@ class LoginViewController: PageViewController, ServiceDelegate
     {
         let termsStrings = termsString.componentsSeparatedByString("@")
         
-        let attributredTerms0 = termsStrings[0]
-        let attributredTerms1 = termsStrings[1]
-        let attributredTerms2 = termsStrings[2]
+        let termsCount = termsStrings.count
         
-        var termsMutableString0 = NSMutableAttributedString()
-        var termsMutableString1 = NSMutableAttributedString()
-        var termsMutableString2 = NSMutableAttributedString()
+        var termsMutableString = NSMutableAttributedString()
         
-        termsMutableString0 = NSMutableAttributedString(string: attributredTerms0, attributes: nil)
-        termsMutableString1 = NSMutableAttributedString(string: attributredTerms1, attributes: nil)
-        termsMutableString2 = NSMutableAttributedString(string: attributredTerms2, attributes: nil)
-        
-        termsMutableString0.addAttribute(NSForegroundColorAttributeName, value: Color.secondary_dark, range: NSRange(location: 0, length:attributredTerms0.characters.count))
-        termsMutableString1.addAttribute(NSForegroundColorAttributeName, value: Color.primary, range: NSRange(location: 0, length: attributredTerms1.characters.count))
-        termsMutableString2.addAttribute(NSForegroundColorAttributeName, value: Color.secondary_dark, range: NSRange(location: 0, length:attributredTerms2.characters.count))
-        
-        termsMutableString0.appendAttributedString(termsMutableString1)
-        termsMutableString0.appendAttributedString(termsMutableString2)
-        
-        termsLabel.setTitleColor(Color.secondary_dark, forState: .Normal)
-        termsLabel.setAttributedTitle(termsMutableString0, forState: .Normal)
+        for (var i = 0; i < termsCount; i++)
+        {
+            let attributredTerms = termsStrings[i]
+            
+            var tempMutableString = NSMutableAttributedString()
+            tempMutableString = NSMutableAttributedString(string: attributredTerms, attributes: nil)
+            tempMutableString.addAttribute(NSForegroundColorAttributeName, value: (i % 2 == 0) ? Color.secondary_dark : Color.primary, range: NSRange(location: 0, length: attributredTerms.characters.count))
+
+            termsMutableString.appendAttributedString(tempMutableString)
+        }
+
+        termsLabel.setAttributedTitle(termsMutableString, forState: .Normal)
     }
     
     /**

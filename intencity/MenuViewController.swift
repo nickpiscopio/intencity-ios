@@ -43,7 +43,8 @@ class MenuViewController: UIViewController
         
         // The info section.
         let infoRows = [ MenuRow(title: NSLocalizedString("title_about", comment: ""), viewController: "AboutViewController"),
-                         MenuRow(title: NSLocalizedString("title_terms", comment: ""), viewController: Constant.TERMS_VIEW_CONTROLLER) ]
+                         MenuRow(title: NSLocalizedString("title_terms", comment: ""), viewController: Constant.TERMS_VIEW_CONTROLLER),
+                         MenuRow(title: NSLocalizedString("title_privacy_policy", comment: ""), viewController: Constant.PRIVACY_POLICY_VIEW_CONTROLLER)]
         
         menu.append(MenuSection(title: NSLocalizedString("title_info", comment: ""), rows: infoRows))
         
@@ -131,13 +132,13 @@ class MenuViewController: UIViewController
             var storyboardName = ""
             var viewControllerName = ""
             
-            if (viewController == Constant.TERMS_VIEW_CONTROLLER)
+            if (viewController == Constant.TERMS_VIEW_CONTROLLER || viewController == Constant.PRIVACY_POLICY_VIEW_CONTROLLER)
             {
                 // Push to the terms view.
                 
                 storyboardName = Constant.LOGIN_STORYBOARD
                 
-                viewControllerName = Constant.TERMS_VIEW_CONTROLLER
+                viewControllerName = viewController
             }
             else
             {
@@ -160,8 +161,23 @@ class MenuViewController: UIViewController
     {
         let storyboard = storyboardName == "" ? self.storyboard : UIStoryboard(name: storyboardName, bundle: nil)
         
-        let viewController = storyboard!.instantiateViewControllerWithIdentifier(identifier)
+        if (identifier == Constant.TERMS_VIEW_CONTROLLER || identifier == Constant.PRIVACY_POLICY_VIEW_CONTROLLER)
+        {
+            let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
+            viewController.includeNavButton = false
             
-        self.navigationController!.pushViewController(viewController, animated: true)
+            if (identifier == Constant.PRIVACY_POLICY_VIEW_CONTROLLER)
+            {
+                viewController.isTerms = false
+            }
+            
+            self.navigationController!.pushViewController(viewController, animated: true)
+        }
+        else
+        {
+            let viewController = storyboard!.instantiateViewControllerWithIdentifier(identifier)
+            
+            self.navigationController!.pushViewController(viewController, animated: true)
+        }
     }
 }

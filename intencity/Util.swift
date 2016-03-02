@@ -205,4 +205,23 @@ class Util
         
         return duration
     }
+    
+    static func showActivityIndicatory(view: UIView) -> UIActivityIndicatorView
+    {
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        
+        view.addSubview(activityIndicator)
+        
+        return activityIndicator
+    }
+    
+    static func stopActivityIndicator(activityIndicator: UIActivityIndicatorView)
+    {
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
+    }
 }

@@ -182,30 +182,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FkI-X0-17w">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sRi-WP-gam">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="gnf-ri-d6B" id="41e-MZ-VoC"/>
-                                    <outlet property="delegate" destination="gnf-ri-d6B" id="hpY-II-C07"/>
-                                </connections>
-                            </tableView>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sE7-cy-D3I">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="36"/>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rc1-eR-S0V">
+                                                <rect key="frame" x="16" y="-10" width="568" height="20"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="rc1-eR-S0V" secondAttribute="bottom" constant="8" id="I8J-0v-1On"/>
+                                            <constraint firstItem="rc1-eR-S0V" firstAttribute="top" secondItem="sE7-cy-D3I" secondAttribute="top" constant="8" id="Tms-9W-051"/>
+                                            <constraint firstAttribute="trailing" secondItem="rc1-eR-S0V" secondAttribute="trailing" constant="8" id="XrI-49-EAO"/>
+                                            <constraint firstItem="rc1-eR-S0V" firstAttribute="leading" secondItem="sE7-cy-D3I" secondAttribute="leading" constant="8" id="qzm-zb-6Ej"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="boA-Av-fD0">
+                                        <rect key="frame" x="0.0" y="36" width="600" height="34"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="checkbox_checked" translatesAutoresizingMaskIntoConstraints="NO" id="Wpr-vB-Vpq">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="0.0"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Wpr-vB-Vpq" firstAttribute="top" secondItem="boA-Av-fD0" secondAttribute="top" constant="8" id="8Fd-lQ-yMf"/>
+                                            <constraint firstAttribute="trailing" secondItem="Wpr-vB-Vpq" secondAttribute="trailing" constant="8" id="cXq-bb-Ao7"/>
+                                            <constraint firstItem="Wpr-vB-Vpq" firstAttribute="leading" secondItem="boA-Av-fD0" secondAttribute="leading" constant="8" id="nJD-QW-r6L"/>
+                                            <constraint firstAttribute="bottom" secondItem="Wpr-vB-Vpq" secondAttribute="bottom" constant="8" id="pJG-0B-zGn"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FkI-X0-17w">
+                                        <rect key="frame" x="0.0" y="70" width="600" height="530"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="gnf-ri-d6B" id="41e-MZ-VoC"/>
+                                            <outlet property="delegate" destination="gnf-ri-d6B" id="hpY-II-C07"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wzi-AW-ltS" firstAttribute="top" secondItem="FkI-X0-17w" secondAttribute="bottom" id="UoL-ny-b9o"/>
-                            <constraint firstItem="wzi-AW-ltS" firstAttribute="top" secondItem="FkI-X0-17w" secondAttribute="bottom" id="csR-Fw-JOa"/>
-                            <constraint firstItem="FkI-X0-17w" firstAttribute="top" secondItem="3Bf-Zo-ZkN" secondAttribute="top" id="e7m-mv-TrT"/>
-                            <constraint firstAttribute="trailing" secondItem="FkI-X0-17w" secondAttribute="trailing" id="fDy-Jb-anN"/>
-                            <constraint firstItem="FkI-X0-17w" firstAttribute="leading" secondItem="3Bf-Zo-ZkN" secondAttribute="leading" id="whl-P4-TMa"/>
+                            <constraint firstItem="sRi-WP-gam" firstAttribute="top" secondItem="3Bf-Zo-ZkN" secondAttribute="top" id="7XO-as-aQ3"/>
+                            <constraint firstItem="wzi-AW-ltS" firstAttribute="top" secondItem="sRi-WP-gam" secondAttribute="bottom" id="Zkv-ke-fFw"/>
+                            <constraint firstAttribute="trailing" secondItem="sRi-WP-gam" secondAttribute="trailing" id="cLD-ze-eDF"/>
+                            <constraint firstItem="sRi-WP-gam" firstAttribute="leading" secondItem="3Bf-Zo-ZkN" secondAttribute="leading" id="oHl-ys-J3T"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="UoL-ny-b9o"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="rc1-eR-S0V" id="hou-Df-jkN"/>
+                        <outlet property="connectionIssue" destination="Wpr-vB-Vpq" id="j5M-D0-jEH"/>
+                        <outlet property="connectionView" destination="boA-Av-fD0" id="BOC-Zy-qCs"/>
+                        <outlet property="loadingView" destination="sE7-cy-D3I" id="i30-tU-Ngx"/>
                         <outlet property="tableView" destination="FkI-X0-17w" id="6MU-vY-0mx"/>
                     </connections>
                 </viewController>
@@ -765,6 +798,7 @@
     <resources>
         <image name="add_button" width="50" height="50"/>
         <image name="add_user" width="50" height="50"/>
+        <image name="checkbox_checked" width="18" height="18"/>
         <image name="dropdown" width="18" height="9"/>
         <image name="intencity_logo" width="449" height="354"/>
         <image name="tab_icon_fitness_log" width="11" height="18"/>

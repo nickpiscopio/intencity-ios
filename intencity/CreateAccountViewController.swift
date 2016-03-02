@@ -25,6 +25,8 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
     let unchecked = UIImage(named: Constant.CHECKBOX_UNCHECKED)
     let checked = UIImage(named: Constant.CHECKBOX_CHECKED)
     
+    var termsString = NSLocalizedString("terms_checkbox", comment: "")
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -35,14 +37,14 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("title_create_account", comment: "")
         
+        initTermsText()
+        
         firstNameTextField?.placeholder = NSLocalizedString("first_name", comment: "")
         lastNameTextField?.placeholder = NSLocalizedString("last_name", comment: "")
         emailTextField?.placeholder = NSLocalizedString("email", comment: "")
         confirmEmailTextField?.placeholder = NSLocalizedString("confirm_email", comment: "")
         passwordTextField?.placeholder = NSLocalizedString("password", comment: "")
         confirmPasswordTextField?.placeholder = NSLocalizedString("confirm_password", comment: "")
-        termsLabel?.setTitle(NSLocalizedString("terms_checkbox", comment: ""), forState: .Normal)
-        termsLabel.setTitleColor(Color.secondary_dark, forState: .Normal)
         createAccountButton?.setTitle(NSLocalizedString("create_account_button", comment: ""), forState: .Normal)
         
         activityIndicator.hidesWhenStopped = true
@@ -51,6 +53,31 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    /**
+     * Initialize the terms of use text attributes.
+     */
+    func initTermsText()
+    {
+        let termsStrings = termsString.componentsSeparatedByString("@")
+        
+        let termsCount = termsStrings.count
+        
+        var termsMutableString = NSMutableAttributedString()
+        
+        for (var i = 0; i < termsCount; i++)
+        {
+            let attributredTerms = termsStrings[i]
+            
+            var tempMutableString = NSMutableAttributedString()
+            tempMutableString = NSMutableAttributedString(string: attributredTerms, attributes: nil)
+            tempMutableString.addAttribute(NSForegroundColorAttributeName, value: (i % 2 == 0) ? Color.secondary_dark : Color.primary, range: NSRange(location: 0, length: attributredTerms.characters.count))
+            
+            termsMutableString.appendAttributedString(tempMutableString)
+        }
+        
+        termsLabel.setAttributedTitle(termsMutableString, forState: .Normal)
     }
     
     /*

@@ -11,6 +11,11 @@ import UIKit
 
 class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelegate, ExerciseSearchDelegate, UserSearchDelegate
 {
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var connectionView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var connectionIssue: UIImageView!
+    
     @IBOutlet weak var tableView: UITableView!
     
     weak var exerciseSearchDelegate: ExerciseSearchDelegate!
@@ -40,6 +45,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         // Hides the tab bar.
         self.tabBarController?.tabBar.hidden = true
         
+        initConnectionViews()
+        
         // Initialize the tableview.
         Util.initTableView(tableView, removeSeparators: true, addFooter: false)
 
@@ -50,6 +57,43 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         initSearchBar()
         
         email = Util.getEmailFromDefaults()
+    }
+    
+    func initConnectionViews()
+    {
+        loadingView.backgroundColor = Color.page_background
+        connectionView.backgroundColor = Color.page_background
+    
+        loadingView.hidden = true
+        connectionView.hidden = true
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.hidden = true
+    }
+    
+    func showLoading()
+    {
+        activityIndicator.startAnimating()
+        activityIndicator.hidden = false
+        
+        loadingView.hidden = false
+    }
+    
+    func hideLoading()
+    {
+        loadingView.hidden = true
+        
+        activityIndicator.stopAnimating()
+    }
+    
+    func showConnectionIssue()
+    {
+        connectionView.hidden = false
+    }
+    
+    func hideConnectionIssue()
+    {
+        connectionView.hidden = true
     }
     
     override func viewWillDisappear(animated : Bool)
@@ -96,9 +140,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
      */
     func searchBarSearchButtonClicked(searchBar: UISearchBar)
     {
-//        progressBar.setVisibility(View.VISIBLE);
-//        
-//        connectionIssue.setVisibility(View.GONE);
+        showLoading()
+        
+        hideConnectionIssue()
         
         let email = Util.getEmailFromDefaults()
         
@@ -171,6 +215,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         }
         
         tableView.reloadData()
+        
+        hideLoading()
     }
     
     func onRetrievalFailed(event: Int)
@@ -178,6 +224,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         exercises.removeAll()
         
         tableView.reloadData()
+        
+        hideLoading()
+        
+        showConnectionIssue()
     }
     
     /**

@@ -38,6 +38,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     var savedExercises: SavedExercise!
     
+    var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -49,6 +51,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("app_name", comment: "")
         
         email = Util.getEmailFromDefaults()
+        
+        activityIndicator = Util.showActivityIndicatory(self.view)
+        activityIndicator.startAnimating()
 
         ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
@@ -97,13 +102,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 break
             default:
                 break
-            
         }
     }
     
     func onRetrievalFailed(event: Int)
     {
         // Add code for when we can't get the muscle groups.
+        
+        activityIndicator.stopAnimating()
     }
     
     /**
@@ -242,6 +248,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
         
         animateTable(indexToLoad)
+        
+        activityIndicator.stopAnimating()
     }
     
     /**
@@ -262,6 +270,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         else
         {
             exerciseData.routineName = routineName
+            
+            activityIndicator.startAnimating()
             
             ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
                 serviceURL: Constant.SERVICE_STORED_PROCEDURE,
