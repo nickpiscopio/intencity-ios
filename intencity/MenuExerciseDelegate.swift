@@ -11,5 +11,5 @@ import Foundation
 
 @objc protocol MenuExerciseDelegate
 {    
-    func onExerciseCheckboxChecked(exerciseName: String)
+    func onCheckboxChecked(name: String)
 }

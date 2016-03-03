@@ -44,7 +44,7 @@ class EditExclusionViewController: UIViewController, ServiceDelegate, MenuExerci
         
         email = Util.getEmailFromDefaults()
         
-        ServiceTask(event: ServiceEvent.GET_EXCLUSION_LIST,
+        ServiceTask(event: ServiceEvent.GET_LIST,
                     delegate: self,
                     serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                     params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXCLUSION,
@@ -99,7 +99,7 @@ class EditExclusionViewController: UIViewController, ServiceDelegate, MenuExerci
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_EXERCISE_CELL) as! MenuExerciseCellController
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.setName(exclusionList[index])
+        cell.setListItem(exclusionList[index], checked: true)
         cell.delegate = self
         return cell
     }
@@ -108,7 +108,7 @@ class EditExclusionViewController: UIViewController, ServiceDelegate, MenuExerci
     {
         switch(event)
         {
-            case ServiceEvent.GET_EXCLUSION_LIST:
+            case ServiceEvent.GET_LIST:
                
                 if (result != Constant.RETURN_NULL)
                 {
@@ -130,7 +130,7 @@ class EditExclusionViewController: UIViewController, ServiceDelegate, MenuExerci
                 }
 
                 break
-            case ServiceEvent.SAVE_EXCLUSION_LIST:
+            case ServiceEvent.UPDATE_LIST:
                 
                 goBack()
                 
@@ -156,7 +156,7 @@ class EditExclusionViewController: UIViewController, ServiceDelegate, MenuExerci
      */
     func savePressed(sender:UIBarButtonItem)
     {
-        ServiceTask(event: ServiceEvent.SAVE_EXCLUSION_LIST,
+        ServiceTask(event: ServiceEvent.UPDATE_LIST,
             delegate: self,
             serviceURL: Constant.SERVICE_UPDATE_EXCLUSION,
             params: Constant.generateListVariables(email, variables: newExclusionList))
@@ -178,17 +178,17 @@ class EditExclusionViewController: UIViewController, ServiceDelegate, MenuExerci
         goBack()
     }
     
-    func onExerciseCheckboxChecked(exerciseName: String)
+    func onCheckboxChecked(name: String)
     {
         // Add or remove equipment from the user's list of equipment
         // if he or she clicks on a list item.
-        if (newExclusionList.contains(exerciseName))
+        if (newExclusionList.contains(name))
         {
-            newExclusionList.removeAtIndex(newExclusionList.indexOf(exerciseName)!)
+            newExclusionList.removeAtIndex(newExclusionList.indexOf(name)!)
         }
         else
         {
-            newExclusionList.append(exerciseName);
+            newExclusionList.append(name);
         }
     }
     
@@ -225,6 +225,4 @@ class EditExclusionViewController: UIViewController, ServiceDelegate, MenuExerci
         
         activityIndicator.stopAnimating()
     }
-    
-    
 }

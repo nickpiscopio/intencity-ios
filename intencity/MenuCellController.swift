@@ -17,7 +17,7 @@ class MenuExerciseCellController: UITableViewCell
     let UNCHECKED = UIImage(named: Constant.CHECKBOX_UNCHECKED)
     let CHECKED = UIImage(named: Constant.CHECKBOX_CHECKED)
     
-    var exerciseName: String!
+    var listItemName: String!
     
     weak var delegate: MenuExerciseDelegate?
     
@@ -32,27 +32,30 @@ class MenuExerciseCellController: UITableViewCell
      * The click function for the terms of use checkbox and label.
      */
     @IBAction func checkBoxPressed(sender: UIButton)
-    {
-        if (!isExerciseHidden())
-        {
-            checkBox.setImage(CHECKED, forState: .Normal)
-        }
-        else
-        {
-            checkBox.setImage(UNCHECKED, forState: .Normal)
-        }
+    {        
+        setChecked(!isExerciseHidden())
         
-        delegate?.onExerciseCheckboxChecked(exerciseName)
+        delegate?.onCheckboxChecked(listItemName)
     }
     
     /**
      * Sets the exercise name in the cell.
      */
-    func setName(exerciseName: String)
+    func setListItem(name: String, checked: Bool)
     {
-        self.exerciseName = exerciseName
+        listItemName = name
         
-        exerciseNameLabel.text = exerciseName
+        exerciseNameLabel.text = listItemName
+        
+        setChecked(checked)
+    }
+    
+    /**
+     * Sets the checkbox check value.
+     */
+    func setChecked(checked: Bool)
+    {
+        checkBox.setImage(checked ? CHECKED : UNCHECKED, forState: .Normal)
     }
     
     /**
