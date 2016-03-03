@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  DemoViewController.swift
 //  Intencity
 //
 //  This is the controller for the demo screens.
