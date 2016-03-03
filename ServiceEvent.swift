@@ -22,4 +22,6 @@ struct ServiceEvent
     static let GET_FOLLOWING = 10
     static let UNFOLLOW = 11
     static let HIDE_EXERCISE_FOREVER = 12
+    static let INSERT_EXERCISES_TO_WEB_DB = 13
+    static let UPDATE_EXERCISES_TO_WEB_DB = 14
 }

@@ -281,7 +281,7 @@ class StatViewController: UIViewController, SetDelegate
         ExerciseData.getInstance().exerciseList[index].sets = sets
         
         // Tell the previous screen that the set was updated.
-        delegate?.onSetUpdated()
+        delegate?.onSetUpdated(index)
     }
     
     /**

@@ -11,5 +11,5 @@ import Foundation
 {
     func onExerciseClicked(name: String)
     func onEditClicked(index: Int)
-    func onSetUpdated()
+    func onSetUpdated(index: Int)
 }
