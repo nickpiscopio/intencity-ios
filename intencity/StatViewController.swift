@@ -58,7 +58,10 @@ class StatViewController: UIViewController, SetDelegate
         IntensityTitleLabel.textColor = Color.secondary_light
         durationTitleLabel.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
         
-        notesTextField?.placeholder = NSLocalizedString("note_hint", comment: "")
+        let notes = sets[0].notes
+        
+        notesTextField?.placeholder = NSLocalizedString("note_hint", comment: "")        
+        notesTextField.text = notes.isEmpty || notes == Constant.RETURN_NULL ? "" : notes
         
         // Initialize the tableview.
         Util.initTableView(tableView, removeSeparators: false, addFooter: true)
@@ -322,6 +325,15 @@ class StatViewController: UIViewController, SetDelegate
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
     }
     
+    @IBAction func onNotesUpdated(sender: AnyObject)
+    {
+        let totalSets = sets.count
+        
+        for (var i = 0; i < totalSets; i++)
+        {
+            sets[i].notes = notesTextField.text!
+        }
+    }
     /**
      * The callback for when the weight is updated.
      */
