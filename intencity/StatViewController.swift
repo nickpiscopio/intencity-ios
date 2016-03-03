@@ -60,7 +60,7 @@ class StatViewController: UIViewController, SetDelegate
         
         let notes = sets[0].notes
         
-        notesTextField?.placeholder = NSLocalizedString("note_hint", comment: "")        
+        notesTextField?.placeholder = NSLocalizedString("note_hint", comment: "")
         notesTextField.text = notes.isEmpty || notes == Constant.RETURN_NULL ? "" : notes
         
         // Initialize the tableview.
@@ -237,6 +237,10 @@ class StatViewController: UIViewController, SetDelegate
      */
     func savePressed(sender:UIBarButtonItem)
     {
+        // Removed the first responder when the save is clicked
+        // We do this so we can save values if the cursor is still in the textfield.
+        UIResponder.getCurrentFirstResponder()?.resignFirstResponder()
+        
         let set = sets[sets.count - 1]
         let duration = set.duration
         let durationValue = Util.convertToInt(duration)
