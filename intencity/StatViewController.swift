@@ -174,8 +174,13 @@ class StatViewController: UIViewController, SetDelegate
      */
     @IBAction func addSet(sender: AnyObject)
     {
+        // Removed the first responder when the save is clicked
+        // We do this so we can save values if the cursor is still in the textfield.
+        UIResponder.getCurrentFirstResponder()?.resignFirstResponder()
+        
         let set = sets[sets.count - 1]
-        if (set.duration != String(Constant.CODE_FAILED) || set.reps != Int (Constant.CODE_FAILED))
+        
+        if (Util.convertToInt(set.duration) > 0 || set.reps > 0)
         {
             addSet()
         }
