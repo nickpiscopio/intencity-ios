@@ -29,6 +29,7 @@ struct Constant
     static let ABOUT_FOOTER_CELL = "AboutFooterCell"
     static let SEARCH_EXERCISE_CELL = "SearchExerciseCell"
     static let RANKING_CELL = "RankingCell"
+    static let MENU_EXERCISE_CELL = "MenuExerciseCell"
     
     static let SEARCH_VIEW_CONTROLLER = "SearchViewController"
     static let TERMS_VIEW_CONTROLLER = "TermsViewController"

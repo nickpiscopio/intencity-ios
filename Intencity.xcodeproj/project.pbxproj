@@ -33,6 +33,9 @@
 		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
 		BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F41C68D34400F60ADC /* Assets.xcassets */; };
 		BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460FF1C68D53200F60ADC /* PageViewController.swift */; };
+		BD5C6AF71C88B97700A9ED0A /* MenuExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5C6AF61C88B97700A9ED0A /* MenuExerciseCell.xib */; };
+		BD5C6AF91C88BB6500A9ED0A /* MenuExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C6AF81C88BB6500A9ED0A /* MenuExerciseCellController.swift */; };
+		BD5C6AFB1C88D36500A9ED0A /* MenuExerciseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C6AFA1C88D36500A9ED0A /* MenuExerciseDelegate.swift */; };
 		BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */; };
 		BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */; };
 		BD640A4F1C85D1D7008895A2 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD640A4E1C85D1D7008895A2 /* RankingCell.xib */; };
@@ -133,6 +136,9 @@
 		BD5460F41C68D34400F60ADC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5460F91C68D34400F60ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD5460FF1C68D53200F60ADC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		BD5C6AF61C88B97700A9ED0A /* MenuExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuExerciseCell.xib; sourceTree = "<group>"; };
+		BD5C6AF81C88BB6500A9ED0A /* MenuExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuExerciseCellController.swift; sourceTree = "<group>"; };
+		BD5C6AFA1C88D36500A9ED0A /* MenuExerciseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuExerciseDelegate.swift; sourceTree = "<group>"; };
 		BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
 		BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCellController.swift; sourceTree = "<group>"; };
 		BD640A4E1C85D1D7008895A2 /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
@@ -257,6 +263,7 @@
 				BD947A371C6F6F50003F3767 /* RoutineCellController.swift */,
 				BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */,
 				BDE493FA1C7B9A58005817D0 /* MenuCellController.swift */,
+				BD5C6AF81C88BB6500A9ED0A /* MenuExerciseCellController.swift */,
 				BDE493FE1C7B9B5B005817D0 /* MenuHeaderCellController.swift */,
 			);
 			name = Cells;
@@ -399,6 +406,7 @@
 				BD36EC281C71048600F993CE /* ExerciseCard.xib */,
 				BDB45A191C849AAF009E509B /* SearchExerciseCell.xib */,
 				BD640A4E1C85D1D7008895A2 /* RankingCell.xib */,
+				BD5C6AF61C88B97700A9ED0A /* MenuExerciseCell.xib */,
 				BD36EC321C720C6B00F993CE /* Direction.xib */,
 				BDE493F81C7B9A26005817D0 /* Menu.xib */,
 				BDE493FC1C7B9B45005817D0 /* MenuHeader.xib */,
@@ -458,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				BD9EF2BE1C6B829500E520CB /* ServiceDelegate.swift */,
+				BD5C6AFA1C88D36500A9ED0A /* MenuExerciseDelegate.swift */,
 				BD03C7BA1C761B6000D8911A /* SetDelegate.swift */,
 				BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */,
 				BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */,
@@ -568,6 +577,7 @@
 				BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */,
 				BDE493F91C7B9A26005817D0 /* Menu.xib in Resources */,
 				BD4B8EBB1C7CEB1D00AD579B /* AboutFooterCell.xib in Resources */,
+				BD5C6AF71C88B97700A9ED0A /* MenuExerciseCell.xib in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,6 +697,7 @@
 				BD7C7E811C7CA0A6005AFFDD /* NotificationViewController.swift in Sources */,
 				BDAF87A71C80B6B3001114A4 /* IntencityButtonView.swift in Sources */,
 				BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */,
+				BD5C6AF91C88BB6500A9ED0A /* MenuExerciseCellController.swift in Sources */,
 				BDBA605D1C85D61D002D5F4A /* UserDao.swift in Sources */,
 				BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */,
 				BD4B8EB91C7CEACD00AD579B /* AboutFooterCellController.swift in Sources */,
@@ -694,6 +705,7 @@
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
 				BD4B8EBF1C7E039F00AD579B /* IntencityPaddedLabel.swift in Sources */,
 				BDB45A1C1C849B42009E509B /* SearchExerciseCellController.swift in Sources */,
+				BD5C6AFB1C88D36500A9ED0A /* MenuExerciseDelegate.swift in Sources */,
 				BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */,
 				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,
 				BD03C7BB1C761B6000D8911A /* SetDelegate.swift in Sources */,

@@ -58,7 +58,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         
         email = Util.getEmailFromDefaults()
     }
-    
+
+     /**
+     * Initializes the connection views.
+     */
     func initConnectionViews()
     {
         loadingView.backgroundColor = Color.page_background
@@ -71,6 +74,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         activityIndicator.hidden = true
     }
     
+    /**
+     * Shows the task is in progress.
+     */
     func showLoading()
     {
         activityIndicator.startAnimating()
@@ -79,18 +85,26 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         loadingView.hidden = false
     }
     
+    /**
+     * Shows the task is in finished.
+     */
     func hideLoading()
     {
         loadingView.hidden = true
         
         activityIndicator.stopAnimating()
     }
-    
+    /**
+     * Shows there was a connection issue.
+     */
     func showConnectionIssue()
     {
         connectionView.hidden = false
     }
     
+    /**
+     * Hides the connection issue.
+     */
     func hideConnectionIssue()
     {
         connectionView.hidden = true
