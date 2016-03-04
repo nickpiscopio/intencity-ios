@@ -53,6 +53,34 @@ class SetCellController: UITableViewCell
         dropDown.width = 35
     }
     
+    @IBAction func onClickInTextField(sender: AnyObject)
+    {
+        weightTextField.text = ""
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
+    {
+        let splitString = textField.text!.componentsSeparatedByString(".")
+        let decimals = splitString.count - 1
+        
+        // If the string doesn't have a decimal.
+        // The characters are greater than 2.
+        // The character was not a decimal.
+        let validCharactersBeforeDecimal = decimals == 0 && splitString[0].characters.count > 2 && string != "."
+        
+        // If the character is a decimal.
+        // If the character after the deimcal is greater than 0.
+        let validCharactersOnOrAfterDecimal = decimals > 0 && (string == "." || splitString[splitString.count - 1].characters.count > 0)
+
+        // If the user didn't hit backspace.
+        if(string != "" && validCharactersBeforeDecimal || validCharactersOnOrAfterDecimal)
+        {
+            return false
+        }
+
+        return true
+    }
+    
     /**
      * The drop down click.
      */

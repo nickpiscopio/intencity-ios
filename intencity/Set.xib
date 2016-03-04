@@ -31,7 +31,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
                                         <connections>
+                                            <action selector="onClickInTextField:" destination="d89-Nv-ATs" eventType="editingDidBegin" id="5wN-uJ-9Zr"/>
                                             <action selector="weightFinishedEditing:" destination="d89-Nv-ATs" eventType="editingDidEnd" id="AZV-Eu-X7d"/>
+                                            <outlet property="delegate" destination="d89-Nv-ATs" id="6Io-5N-wst"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LBS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVC-b4-yJi">
@@ -50,19 +52,19 @@
                                     <action selector="durationFinishedEditing:" destination="d89-Nv-ATs" eventType="editingDidEnd" id="1sX-Qe-lNB"/>
                                 </connections>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TdJ-09-TAm">
-                                <rect key="frame" x="423" y="10" width="111" height="27"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TdJ-09-TAm">
+                                <rect key="frame" x="423" y="0.0" width="111" height="46"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNQ-00-GKN">
-                                        <rect key="frame" x="0.0" y="0.0" width="55" height="27"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNQ-00-GKN">
+                                        <rect key="frame" x="0.0" y="10" width="55" height="27"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <state key="normal" title="10"/>
                                         <connections>
                                             <action selector="showOrDismiss:" destination="d89-Nv-ATs" eventType="touchUpInside" id="FpS-b6-VJj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-Tu-FZe">
-                                        <rect key="frame" x="55" y="3" width="56" height="22"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-Tu-FZe">
+                                        <rect key="frame" x="55" y="0.0" width="56" height="46"/>
                                         <state key="normal" image="dropdown"/>
                                         <connections>
                                             <action selector="showOrDismiss:" destination="d89-Nv-ATs" eventType="touchUpInside" id="LqI-7s-Ufk"/>
