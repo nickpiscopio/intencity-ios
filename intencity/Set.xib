@@ -31,9 +31,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
                                         <connections>
-                                            <action selector="onClickInTextField:" destination="d89-Nv-ATs" eventType="editingDidBegin" id="5wN-uJ-9Zr"/>
+                                            <action selector="weightChanged:" destination="d89-Nv-ATs" eventType="editingChanged" id="NL6-oF-OcZ"/>
                                             <action selector="weightFinishedEditing:" destination="d89-Nv-ATs" eventType="editingDidEnd" id="AZV-Eu-X7d"/>
-                                            <outlet property="delegate" destination="d89-Nv-ATs" id="6Io-5N-wst"/>
+                                            <outlet property="delegate" destination="d89-Nv-ATs" id="QYM-XL-OUu"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LBS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVC-b4-yJi">
@@ -49,7 +49,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                                 <connections>
+                                    <action selector="durationChanged:" destination="d89-Nv-ATs" eventType="editingChanged" id="1C5-V8-KKG"/>
                                     <action selector="durationFinishedEditing:" destination="d89-Nv-ATs" eventType="editingDidEnd" id="1sX-Qe-lNB"/>
+                                    <outlet property="delegate" destination="d89-Nv-ATs" id="H4s-6z-RZn"/>
                                 </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TdJ-09-TAm">

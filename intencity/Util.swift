@@ -223,6 +223,25 @@ class Util
         return duration
     }
     
+    /**
+     * Converts the value to a decimaled value for the weight textfield.
+     *
+     * @param weight    The weight to convert.
+     *
+     * @return  The converted value.
+     */
+    static func convertToWeight(weight: String) -> String
+    {
+        let decimal = "."
+        let weightInt = Int(weight.stringByReplacingOccurrencesOfString(decimal, withString: ""))!
+        var padded = String(format: "%02d", weightInt)
+
+        let index = padded.endIndex.predecessor()
+        padded.insert(Character(decimal), atIndex: index)
+        
+        return padded
+    }
+    
     static func showActivityIndicatory(view: UIView) -> UIActivityIndicatorView
     {
         let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()

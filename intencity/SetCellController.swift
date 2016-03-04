@@ -23,6 +23,8 @@ class SetCellController: UITableViewCell
     
     var index: Int!
     
+    var isReps = true
+    
     weak var delegate: SetDelegate?
     
     override func awakeFromNib()
@@ -53,32 +55,27 @@ class SetCellController: UITableViewCell
         dropDown.width = 35
     }
     
-    @IBAction func onClickInTextField(sender: AnyObject)
-    {
-        weightTextField.text = ""
-    }
-    
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
     {
-        let splitString = textField.text!.componentsSeparatedByString(".")
-        let decimals = splitString.count - 1
+        let text = textField.text!
         
-        // If the string doesn't have a decimal.
-        // The characters are greater than 2.
-        // The character was not a decimal.
-        let validCharactersBeforeDecimal = decimals == 0 && splitString[0].characters.count > 2 && string != "."
-        
-        // If the character is a decimal.
-        // If the character after the deimcal is greater than 0.
-        let validCharactersOnOrAfterDecimal = decimals > 0 && (string == "." || splitString[splitString.count - 1].characters.count > 0)
-
-        // If the user didn't hit backspace.
-        if(string != "" && validCharactersBeforeDecimal || validCharactersOnOrAfterDecimal)
-        {
-            return false
+        if (textField == weightTextField)
+        {            
+            // Allow up to 5 characters.
+            // Allow a backspace.
+            return text.characters.count < 5 || string == ""
         }
-
-        return true
+        else
+        {
+            let value = isReps ? Int(text) : Util.convertToInt(text)
+            let maxValue = 999999
+            
+            // Allow up to max value.
+            // This works, even though it seems like it shouldn't, because (it seems) the value comes in after the number is pressed.
+            // This makes the value 1 digit higher, but at that point we will return false.
+            // Allow a backspace.
+            return value < maxValue || string == ""
+        }
     }
     
     /**
@@ -93,6 +90,29 @@ class SetCellController: UITableViewCell
         else
         {
             dropDown.hide()
+        }
+    }
+    
+    /**
+     * The weight change function to format the weight.
+     */
+    @IBAction func weightChanged(sender: AnyObject)
+    {
+        let weight = weightTextField.text!
+        
+        weightTextField.text = Util.convertToWeight(weight)
+    }
+    
+    /**
+     * The duration change function to format the duration.
+     */
+    @IBAction func durationChanged(sender: AnyObject)
+    {
+        if (!isReps)
+        {
+            let duration = durationTextField.text!
+            
+            durationTextField.text = Util.convertToTime(Util.convertToInt(duration))
         }
     }
     

@@ -166,6 +166,7 @@ class StatViewController: UIViewController, SetDelegate
         cell.dropDown.selectRowAtIndex(difficulty - 1)
         cell.intensityButton.setTitle(String(difficulty), forState: .Normal)
         cell.setNumberLabel.text = "\(index + 1)"
+        cell.isReps = dropDown.selectedItem! == repsString
         return cell
     }
     
