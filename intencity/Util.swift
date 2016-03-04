@@ -84,7 +84,7 @@ class Util
         controller.presentViewController(viewController, animated: true, completion: nil)
         
         // Remove all the exercises from the exercise list.
-        ExerciseData.getInstance().exerciseList.removeAll()
+        ExerciseData.reset()
         
         // Reset the database.
         let dbHelper = DBHelper()

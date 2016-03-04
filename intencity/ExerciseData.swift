@@ -27,6 +27,17 @@ class ExerciseData
         return instance
     }
     
+    /**
+     * Resets the instance so we can reinitialize it later.
+     */
+    static func reset()
+    {
+        instance = nil
+    }
+    
+    /**
+     * Initializes the ExerciseData.
+     */
     init()
     {
         routineName = ""
