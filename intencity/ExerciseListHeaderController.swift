@@ -21,6 +21,8 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
     
     var currentExercises = [Exercise]()
     
+    var storyboard: UIStoryboard!
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()
@@ -29,12 +31,12 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
         
         exerciseTotalLabel.textColor = Color.white
         routineNameLabel.textColor = Color.white
+        
+        storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
     }
     
     @IBAction func searchClicked(sender: AnyObject)
     {
-        let storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
-        
         let viewController = storyboard.instantiateViewControllerWithIdentifier(Constant.SEARCH_VIEW_CONTROLLER) as! SearchViewController
         viewController.state = ServiceEvent.SEARCH_FOR_EXERCISE
         viewController.exerciseSearchDelegate = self
@@ -44,9 +46,7 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
     }
     
     @IBAction func infoClicked(sender: AnyObject)
-    {
-        let storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
-        
+    {        
         let viewController = storyboard.instantiateViewControllerWithIdentifier(Constant.FITNESS_RECOMMENDATION_VIEW_CONTROLLER) as! FitnessRecommendationViewController
         
         self.navigationController!.pushViewController(viewController, animated: true)
@@ -58,11 +58,5 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
     func onExerciseAdded(exercise: Exercise)
     {
         exerciseSearchDelegate.onExerciseAdded(exercise)
-    }
-    
-    func pushViewController()
-    {
-        
-
     }
 }

@@ -88,6 +88,13 @@
 		BDBDB56B1C87504E00A2EE2C /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = BDBDB56A1C87504E00A2EE2C /* privacy.html */; };
 		BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BEC1C8A1881001235AE /* FitnessRecommendationViewController.swift */; };
 		BDD53BF01C8A1CEB001235AE /* IntencityTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BEF1C8A1CEB001235AE /* IntencityTabButton.swift */; };
+		BDD53BF21C8A2B05001235AE /* FitnessRecommendationCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BF11C8A2B05001235AE /* FitnessRecommendationCellViewController.swift */; };
+		BDD53BF41C8A2B13001235AE /* FitnessRecommendationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDD53BF31C8A2B13001235AE /* FitnessRecommendationCell.xib */; };
+		BDD53BF61C8A2D3F001235AE /* FitnessRecommendationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BF51C8A2D3F001235AE /* FitnessRecommendationRow.swift */; };
+		BDD53BF81C8A32A7001235AE /* FitnessRecHeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BF71C8A32A7001235AE /* FitnessRecHeaderCellController.swift */; };
+		BDD53BFA1C8A333D001235AE /* FitnessRecFooterCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BF91C8A333D001235AE /* FitnessRecFooterCellController.swift */; };
+		BDD53BFC1C8A336D001235AE /* FitnessRecFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDD53BFB1C8A336D001235AE /* FitnessRecFooterCell.xib */; };
+		BDD53BFE1C8A3439001235AE /* FitnessRecHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDD53BFD1C8A3439001235AE /* FitnessRecHeaderCell.xib */; };
 		BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */; };
 		BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */; };
 		BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F01C7A0445005817D0 /* ExerciseData.swift */; };
@@ -193,6 +200,13 @@
 		BDBDB56A1C87504E00A2EE2C /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		BDD53BEC1C8A1881001235AE /* FitnessRecommendationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessRecommendationViewController.swift; sourceTree = "<group>"; };
 		BDD53BEF1C8A1CEB001235AE /* IntencityTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityTabButton.swift; sourceTree = "<group>"; };
+		BDD53BF11C8A2B05001235AE /* FitnessRecommendationCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessRecommendationCellViewController.swift; sourceTree = "<group>"; };
+		BDD53BF31C8A2B13001235AE /* FitnessRecommendationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitnessRecommendationCell.xib; sourceTree = "<group>"; };
+		BDD53BF51C8A2D3F001235AE /* FitnessRecommendationRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessRecommendationRow.swift; sourceTree = SOURCE_ROOT; };
+		BDD53BF71C8A32A7001235AE /* FitnessRecHeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessRecHeaderCellController.swift; sourceTree = "<group>"; };
+		BDD53BF91C8A333D001235AE /* FitnessRecFooterCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessRecFooterCellController.swift; sourceTree = "<group>"; };
+		BDD53BFB1C8A336D001235AE /* FitnessRecFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitnessRecFooterCell.xib; sourceTree = "<group>"; };
+		BDD53BFD1C8A3439001235AE /* FitnessRecHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitnessRecHeaderCell.xib; sourceTree = "<group>"; };
 		BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineDelegate.swift; sourceTree = "<group>"; };
 		BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButton.swift; sourceTree = "<group>"; };
 		BDE493F01C7A0445005817D0 /* ExerciseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
@@ -258,10 +272,13 @@
 			isa = PBXGroup;
 			children = (
 				BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */,
+				BDD53BF11C8A2B05001235AE /* FitnessRecommendationCellViewController.swift */,
 				BDB45A1B1C849B42009E509B /* SearchExerciseCellController.swift */,
 				BD640A501C85D1EE008895A2 /* RankingCellController.swift */,
 				BD4B8EB81C7CEACD00AD579B /* AboutFooterCellController.swift */,
 				BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */,
+				BDD53BF71C8A32A7001235AE /* FitnessRecHeaderCellController.swift */,
+				BDD53BF91C8A333D001235AE /* FitnessRecFooterCellController.swift */,
 				BD03C7B41C760A4E00D8911A /* SetCellController.swift */,
 				BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */,
 				BD947A371C6F6F50003F3767 /* RoutineCellController.swift */,
@@ -313,6 +330,7 @@
 			children = (
 				BD947A091C6D4B90003F3767 /* ServiceEvent.swift */,
 				BDE493F61C7B961D005817D0 /* MenuSection.swift */,
+				BDD53BF51C8A2D3F001235AE /* FitnessRecommendationRow.swift */,
 				BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */,
 				BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */,
 				BD9EF2561C692A6900E520CB /* DemoView.swift */,
@@ -477,6 +495,9 @@
 				BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */,
 				BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */,
 				BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */,
+				BDD53BF31C8A2B13001235AE /* FitnessRecommendationCell.xib */,
+				BDD53BFB1C8A336D001235AE /* FitnessRecFooterCell.xib */,
+				BDD53BFD1C8A3439001235AE /* FitnessRecHeaderCell.xib */,
 				BD947A351C6F6E5F003F3767 /* RoutineCard.xib */,
 				BD36EC281C71048600F993CE /* ExerciseCard.xib */,
 				BDB45A191C849AAF009E509B /* SearchExerciseCell.xib */,
@@ -580,6 +601,7 @@
 				BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */,
 				BDE493FD1C7B9B45005817D0 /* MenuHeader.xib in Resources */,
 				BD640A4F1C85D1D7008895A2 /* RankingCell.xib in Resources */,
+				BDD53BFE1C8A3439001235AE /* FitnessRecHeaderCell.xib in Resources */,
 				BD03C7B31C76082B00D8911A /* Set.xib in Resources */,
 				BD9EF2661C6A278800E520CB /* Login.storyboard in Resources */,
 				BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */,
@@ -589,8 +611,10 @@
 				BD9EF2B81C6A941F00E520CB /* terms.html in Resources */,
 				BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */,
 				BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */,
+				BDD53BFC1C8A336D001235AE /* FitnessRecFooterCell.xib in Resources */,
 				BDE493F91C7B9A26005817D0 /* Menu.xib in Resources */,
 				BD4B8EBB1C7CEB1D00AD579B /* AboutFooterCell.xib in Resources */,
+				BDD53BF41C8A2B13001235AE /* FitnessRecommendationCell.xib in Resources */,
 				BD5C6AF71C88B97700A9ED0A /* MenuExerciseCell.xib in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
 			);
@@ -652,6 +676,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD03C7B71C760DE200D8911A /* Set.swift in Sources */,
+				BDD53BF21C8A2B05001235AE /* FitnessRecommendationCellViewController.swift in Sources */,
 				BD9EF2BC1C6B701D00E520CB /* ServiceTask.swift in Sources */,
 				BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */,
 				BDE493FB1C7B9A58005817D0 /* MenuCellController.swift in Sources */,
@@ -660,6 +685,7 @@
 				BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */,
 				BD43E11A1C8355E9002F14C6 /* UIView+RoundedCorners.swift in Sources */,
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
+				BDD53BF81C8A32A7001235AE /* FitnessRecHeaderCellController.swift in Sources */,
 				BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */,
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,
 				BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */,
@@ -687,6 +713,7 @@
 				BD9EF2A81C6A310200E520CB /* ForgotPasswordViewController.swift in Sources */,
 				BD37E3AC1C7E3906004A30F7 /* IntencityButtonRound.swift in Sources */,
 				BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */,
+				BDD53BF61C8A2D3F001235AE /* FitnessRecommendationRow.swift in Sources */,
 				BD9EF2C21C6B869E00E520CB /* Constant.swift in Sources */,
 				BDD53BF01C8A1CEB001235AE /* IntencityTabButton.swift in Sources */,
 				BD9EF2C41C6B8A6700E520CB /* Util.swift in Sources */,
@@ -719,6 +746,7 @@
 				BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */,
 				BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */,
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
+				BDD53BFA1C8A333D001235AE /* FitnessRecFooterCellController.swift in Sources */,
 				BD4B8EBF1C7E039F00AD579B /* IntencityPaddedLabel.swift in Sources */,
 				BDB45A1C1C849B42009E509B /* SearchExerciseCellController.swift in Sources */,
 				BD5C6AFB1C88D36500A9ED0A /* MenuExerciseDelegate.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  FitnessRecommendationViewController.swift
+//  FitnessRecViewController.swift
 //  Intencity
 //
 //  The view controller for the fitness recommendations.
@@ -15,59 +15,41 @@ class FitnessRecommendationViewController: UIViewController
     @IBOutlet weak var sustainButton: UIButton!
     @IBOutlet weak var loseButton: UIButton!
     @IBOutlet weak var toneButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var weightTitleLabel: UILabel!
-    @IBOutlet weak var weightTitleAstricks: UILabel!
-    @IBOutlet weak var weightDescriptionLabel: UILabel!
-    @IBOutlet weak var durationTitleLabel: UILabel!
-    @IBOutlet weak var durationDescriptionLabel: UILabel!
-    @IBOutlet weak var restTitleLabel: UILabel!
-    @IBOutlet weak var restDescriptionLabel: UILabel!
-    @IBOutlet weak var cardioTitleLabel: UILabel!
-    @IBOutlet weak var cardioDescriptionLabel: UILabel!
-    @IBOutlet weak var infoAstricks: UILabel!
-    @IBOutlet weak var infoLabel: UILabel!
+    var fitnessRecommendationRows = [FitnessRecommendationRow]()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        // Sets the background color of this view.
-        self.view.backgroundColor = Color.page_background
-        
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("how_to_workout_title", comment: "")
+        
+        // Hides the tab bar.
+        self.tabBarController?.tabBar.hidden = true
         
         gainButton.setTitle(NSLocalizedString("gain", comment: ""), forState: .Normal)
         sustainButton.setTitle(NSLocalizedString("sustain", comment: ""), forState: .Normal)
         loseButton.setTitle(NSLocalizedString("lose", comment: ""), forState: .Normal)
         toneButton.setTitle(NSLocalizedString("tone", comment: ""), forState: .Normal)
+
+        // Initialize the tableview.
+        Util.initTableView(tableView, removeSeparators: true, addFooter: false)
         
-        titleLabel.textColor = Color.secondary_light
-        weightTitleLabel.textColor = Color.secondary_dark
-        weightTitleAstricks.textColor = Color.card_button_delete_select
-        weightDescriptionLabel.textColor = Color.secondary_dark
-        durationTitleLabel.textColor = Color.secondary_dark
-        durationDescriptionLabel.textColor = Color.secondary_dark
-        restTitleLabel.textColor = Color.secondary_dark
-        restDescriptionLabel.textColor = Color.secondary_dark
-        cardioTitleLabel.textColor = Color.secondary_dark
-        cardioDescriptionLabel.textColor = Color.secondary_dark
-        infoAstricks.textColor = Color.card_button_delete_select
-        infoLabel.textColor = Color.secondary_light
-        
-        titleLabel.text = NSLocalizedString("recommendations", comment: "")
-        weightTitleAstricks.text = NSLocalizedString("asterisk", comment: "")
-        infoAstricks.text = NSLocalizedString("asterisk", comment: "")
-        infoLabel.text = NSLocalizedString("weight_description", comment: "")
-        
-        weightTitleLabel.text = NSLocalizedString("title_weight", comment: "")
-        durationTitleLabel.text = NSLocalizedString("title_duration", comment: "")
-        restTitleLabel.text = NSLocalizedString("rest_title", comment: "")
-        cardioTitleLabel.text = NSLocalizedString("cardio_day_title", comment: "")
+        // Load the cells we are going to use in the tableview.
+        Util.addUITableViewCell(tableView, nibNamed: Constant.FITNESS_RECOMMENDATION_CELL, cellName: Constant.FITNESS_RECOMMENDATION_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.FITNESS_RECOMMENDATION_HEADER_CELL, cellName: Constant.FITNESS_RECOMMENDATION_HEADER_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.FITNESS_RECOMMENDATION_FOOTER_CELL, cellName: Constant.FITNESS_RECOMMENDATION_FOOTER_CELL)
         
         setSelectionSustain()
+    }
+    
+    override func viewWillDisappear(animated : Bool)
+    {
+        super.viewWillDisappear(animated)
+        
+        self.tabBarController?.tabBar.hidden = false
     }
     
     override func didReceiveMemoryWarning()
@@ -107,9 +89,58 @@ class FitnessRecommendationViewController: UIViewController
         loseButton.backgroundColor = button == loseButton ? Color.shadow : Color.transparent
         toneButton.backgroundColor = button == toneButton ? Color.shadow : Color.transparent
         
-        weightDescriptionLabel.text = NSLocalizedString(weight, comment: "")
-        durationDescriptionLabel.text = NSLocalizedString(duration, comment: "")
-        restDescriptionLabel.text = NSLocalizedString(rest, comment: "")
-        cardioDescriptionLabel.text = NSLocalizedString(cardio, comment: "")
+        fitnessRecommendationRows.removeAll()
+        fitnessRecommendationRows.append(FitnessRecommendationRow(title: NSLocalizedString("title_weight", comment: ""), includeDecoration: true, description: NSLocalizedString(weight, comment: "")))
+        fitnessRecommendationRows.append(FitnessRecommendationRow(title: NSLocalizedString("title_duration", comment: ""), includeDecoration: false, description: NSLocalizedString(duration, comment: "")))
+        fitnessRecommendationRows.append(FitnessRecommendationRow(title: NSLocalizedString("rest_title", comment: ""), includeDecoration: false, description: NSLocalizedString(rest, comment: "")))
+        fitnessRecommendationRows.append(FitnessRecommendationRow(title: NSLocalizedString("cardio_day_title", comment: ""), includeDecoration: false, description: NSLocalizedString(cardio, comment: "")))
+        
+        tableView.reloadData()
     }
+    
+    // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return fitnessRecommendationRows.count
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        return tableView.dequeueReusableCellWithIdentifier(Constant.FITNESS_RECOMMENDATION_HEADER_CELL) as! FitnessRecHeaderCellController
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+        return 30
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+    {
+        return tableView.dequeueReusableCellWithIdentifier(Constant.FITNESS_RECOMMENDATION_FOOTER_CELL) as! FitnessRecFooterCellController
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
+        return 61
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let index = indexPath.row
+        let fitnessRecommendationRow = fitnessRecommendationRows[index]
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.FITNESS_RECOMMENDATION_CELL) as! FitnessRecommendationCellViewController
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.cellHeader.text = fitnessRecommendationRow.title
+        cell.cellHeaderAstricks.hidden = !fitnessRecommendationRow.includeDecoration
+        cell.cellDescription.text = fitnessRecommendationRow.description
+        
+        return cell
+    }
+
 }
