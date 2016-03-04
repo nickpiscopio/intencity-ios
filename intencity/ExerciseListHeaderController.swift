@@ -45,7 +45,11 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
     
     @IBAction func infoClicked(sender: AnyObject)
     {
+        let storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
         
+        let viewController = storyboard.instantiateViewControllerWithIdentifier(Constant.FITNESS_RECOMMENDATION_VIEW_CONTROLLER) as! FitnessRecommendationViewController
+        
+        self.navigationController!.pushViewController(viewController, animated: true)
     }
     
     /**
@@ -54,5 +58,11 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
     func onExerciseAdded(exercise: Exercise)
     {
         exerciseSearchDelegate.onExerciseAdded(exercise)
+    }
+    
+    func pushViewController()
+    {
+        
+
     }
 }

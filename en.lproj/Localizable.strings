@@ -243,7 +243,7 @@
 "asterisk" = "*";
 
 /*  */
-"weight_description" = "The difficulty of weight is relative to each person. Someone lifting low weight might be heavy for someone else. Choose your weight carefully.";
+"weight_description" = "The difficulty of weight is relative to each person. Low weight for one person might be heavy weight for another person. Choose your weight carefully.";
 
 /*  */
 "rest_title" = "REST BETWEEN EXERCISES";

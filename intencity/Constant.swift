@@ -32,6 +32,7 @@ struct Constant
     static let MENU_EXERCISE_CELL = "MenuExerciseCell"
     
     static let SEARCH_VIEW_CONTROLLER = "SearchViewController"
+    static let FITNESS_RECOMMENDATION_VIEW_CONTROLLER = "FitnessRecommendationViewController"
     static let TERMS_VIEW_CONTROLLER = "TermsViewController"
     static let PRIVACY_POLICY_VIEW_CONTROLLER = "PrivacyPolicyViewController"
     static let LOG_OUT = "LogOut"
