@@ -60,7 +60,7 @@ class SetCellController: UITableViewCell
         let text = textField.text!
         
         if (textField == weightTextField)
-        {            
+        {
             // Allow up to 5 characters.
             // Allow a backspace.
             return text.characters.count < 5 || string == ""

@@ -290,6 +290,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                                         <connections>
                                             <action selector="onNotesUpdated:" destination="9cA-AX-d3G" eventType="editingDidEnd" id="j5F-vb-tSF"/>
+                                            <outlet property="delegate" destination="9cA-AX-d3G" id="nqo-V8-vbV"/>
                                         </connections>
                                     </textField>
                                 </subviews>
