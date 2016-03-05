@@ -19,6 +19,8 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     var indexPath: NSIndexPath!
     var indexToRemove: Int!
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -36,6 +38,11 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         Util.addUITableViewCell(tableView, nibNamed: Constant.RANKING_CELL, cellName: Constant.RANKING_CELL)
         
         getFollowing()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("pull_to_refresh", comment: ""))
+        self.refreshControl.addTarget(self, action: "getFollowing", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.refreshControl) // not required when using UITableViewController
     }
     
     override func didReceiveMemoryWarning()
@@ -77,6 +84,8 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
                 currentUsers = UserDao().parseJson(result.parseJSONString)
                 
                 tableView.reloadData()
+                
+                self.refreshControl.endRefreshing()
                 
                 break
             case ServiceEvent.UNFOLLOW:
