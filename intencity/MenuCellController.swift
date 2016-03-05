@@ -19,23 +19,11 @@ class MenuExerciseCellController: UITableViewCell
     
     var listItemName: String!
     
-    weak var delegate: MenuExerciseDelegate?
-    
     override func awakeFromNib()
     {
         super.awakeFromNib()
         
         exerciseNameLabel.textColor = Color.secondary_dark
-    }
-    
-    /**
-     * The click function for the terms of use checkbox and label.
-     */
-    @IBAction func checkBoxPressed(sender: UIButton)
-    {        
-        setChecked(!isExerciseHidden())
-        
-        delegate?.onCheckboxChecked(listItemName)
     }
     
     /**

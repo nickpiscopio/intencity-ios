@@ -7,48 +7,45 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuExerciseCell" rowHeight="42" id="dCW-Eb-Zvq" customClass="MenuExerciseCellController" customModule="Intencity" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="523" height="42"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuExerciseCell" rowHeight="58" id="dCW-Eb-Zvq" customClass="MenuExerciseCellController" customModule="Intencity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="523" height="58"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="dCW-Eb-Zvq" id="opS-LJ-Z2N">
-                <rect key="frame" x="0.0" y="0.0" width="523" height="41.5"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCW-Eb-Zvq" id="opS-LJ-Z2N">
+                <rect key="frame" x="0.0" y="0.0" width="523" height="57.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Zzk-yc-HLh">
-                        <rect key="frame" x="0.0" y="0.0" width="523" height="42"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Zzk-yc-HLh">
+                        <rect key="frame" x="0.0" y="0.0" width="523" height="58"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GiI-yL-0WH">
-                                <rect key="frame" x="0.0" y="0.0" width="523" height="41"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GiI-yL-0WH">
+                                <rect key="frame" x="0.0" y="0.0" width="523" height="57"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="SdO-KN-dvL">
-                                        <rect key="frame" x="8" y="8" width="507" height="22"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="SdO-KN-dvL">
+                                        <rect key="frame" x="16" y="16" width="491" height="22"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-d1-nLe">
-                                                <rect key="frame" x="0.0" y="0.0" width="490" height="22"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-d1-nLe">
+                                                <rect key="frame" x="0.0" y="0.0" width="474" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncK-pw-HLd">
-                                                <rect key="frame" x="490" y="0.0" width="18" height="22"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncK-pw-HLd">
+                                                <rect key="frame" x="474" y="0.0" width="18" height="22"/>
                                                 <state key="normal" image="checkbox_checked"/>
-                                                <connections>
-                                                    <action selector="checkBoxPressed:" destination="dCW-Eb-Zvq" eventType="touchUpInside" id="mpl-WX-ahD"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="SdO-KN-dvL" firstAttribute="leading" secondItem="GiI-yL-0WH" secondAttribute="leading" constant="8" id="Z76-5l-HEY"/>
-                                    <constraint firstAttribute="bottom" secondItem="SdO-KN-dvL" secondAttribute="bottom" constant="8" id="h5O-wP-4Pr"/>
-                                    <constraint firstAttribute="trailing" secondItem="SdO-KN-dvL" secondAttribute="trailing" constant="8" id="m0g-mh-yfB"/>
-                                    <constraint firstItem="SdO-KN-dvL" firstAttribute="top" secondItem="GiI-yL-0WH" secondAttribute="top" constant="8" id="wbi-g1-yUX"/>
+                                    <constraint firstItem="SdO-KN-dvL" firstAttribute="leading" secondItem="GiI-yL-0WH" secondAttribute="leading" constant="16" id="Z76-5l-HEY"/>
+                                    <constraint firstAttribute="bottom" secondItem="SdO-KN-dvL" secondAttribute="bottom" constant="16" id="h5O-wP-4Pr"/>
+                                    <constraint firstAttribute="trailing" secondItem="SdO-KN-dvL" secondAttribute="trailing" constant="16" id="m0g-mh-yfB"/>
+                                    <constraint firstItem="SdO-KN-dvL" firstAttribute="top" secondItem="GiI-yL-0WH" secondAttribute="top" constant="16" id="wbi-g1-yUX"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7fV-ef-MlK">
-                                <rect key="frame" x="0.0" y="41" width="523" height="1"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fV-ef-MlK">
+                                <rect key="frame" x="0.0" y="57" width="523" height="1"/>
                                 <color key="backgroundColor" red="0.80784313725490198" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="fbr-u4-MUM"/>
@@ -68,7 +65,7 @@
                 <outlet property="checkBox" destination="ncK-pw-HLd" id="isB-1B-0UN"/>
                 <outlet property="exerciseNameLabel" destination="lhd-d1-nLe" id="LYF-zM-7UN"/>
             </connections>
-            <point key="canvasLocation" x="463.5" y="481"/>
+            <point key="canvasLocation" x="463.5" y="489"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -29,10 +29,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="32s-xb-y4l" firstAttribute="leading" secondItem="o4Z-1i-Sg3" secondAttribute="leading" constant="8" id="W5t-zM-5kX"/>
+                    <constraint firstItem="32s-xb-y4l" firstAttribute="leading" secondItem="o4Z-1i-Sg3" secondAttribute="leading" constant="16" id="W5t-zM-5kX"/>
                     <constraint firstAttribute="trailing" secondItem="7Ti-ji-FN1" secondAttribute="trailing" id="Yeq-Ye-0JC"/>
                     <constraint firstAttribute="bottom" secondItem="32s-xb-y4l" secondAttribute="bottom" constant="8" id="fMc-NM-sYk"/>
-                    <constraint firstAttribute="trailing" secondItem="32s-xb-y4l" secondAttribute="trailing" constant="8" id="vDV-XX-ZD2"/>
+                    <constraint firstAttribute="trailing" secondItem="32s-xb-y4l" secondAttribute="trailing" constant="16" id="vDV-XX-ZD2"/>
                     <constraint firstItem="7Ti-ji-FN1" firstAttribute="leading" secondItem="o4Z-1i-Sg3" secondAttribute="leading" id="yQr-Xp-3lP"/>
                     <constraint firstAttribute="bottom" secondItem="7Ti-ji-FN1" secondAttribute="bottom" id="yeh-3d-TUc"/>
                 </constraints>

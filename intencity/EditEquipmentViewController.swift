@@ -9,7 +9,7 @@
 
 import UIKit
 
-class EditEquipmentViewController: UIViewController, ServiceDelegate, MenuExerciseDelegate
+class EditEquipmentViewController: UIViewController, ServiceDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -77,10 +77,23 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate, MenuExerci
         let equipmentName = equipmentList[index]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_EXERCISE_CELL) as! MenuExerciseCellController
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.setListItem(equipmentName, checked: userEquipmentList.contains(equipmentName))
-        cell.delegate = self
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        let index = indexPath.row
+        
+        let equipmentName = equipmentList[index]
+        
+        onCheckboxChecked(equipmentName)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MenuExerciseCellController
+        cell.setChecked(!cell.isExerciseHidden())
+        
+        // Deselects the row.
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     func onRetrievalSuccessful(event: Int, result: String)

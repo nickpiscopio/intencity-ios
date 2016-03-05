@@ -21,8 +21,9 @@ struct Dimention
     static let EXERCISE_DESCRIPTION_PADDING: CGFloat = 30.0
     static let TAB_BAR_HEIGHT: CGFloat = 40.0
     static let LAYOUT_MARGIN: CGFloat = 16.0
-    static let TEXTFIELD_MARGIN: CGFloat = 10.0
+    static let TEXTFIELD_MARGIN: CGFloat = 12.0
     static let TEXTFIELD_PADDING: CGFloat = 1.0
+    static let BUTTON_PADDING: CGFloat = 12.0
     static let TABLE_FOOTER_HEIGHT: CGFloat = 77.0
-    static let FONT_SIZE_SMALL: CGFloat = 13.0
+    static let FONT_SIZE_SMALL: CGFloat = 15.0
 }

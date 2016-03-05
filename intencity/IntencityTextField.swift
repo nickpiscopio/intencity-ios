@@ -26,10 +26,6 @@ class IntencityTextField: UITextField
         self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW, Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
         self.layer.shadowRadius = Dimention.SHADOW
-
-//        let paddingView = UIView(frame:CGRectMake(0, 0, Dimention.TEXTFIELD_MARGIN, Dimention.TEXTFIELD_MARGIN))
-//        self.leftView = paddingView
-//        self.leftViewMode = UITextFieldViewMode.Always
     }
     
     override func textRectForBounds(bounds: CGRect) -> CGRect
