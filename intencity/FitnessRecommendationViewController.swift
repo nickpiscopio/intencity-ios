@@ -97,8 +97,7 @@ class FitnessRecommendationViewController: UIViewController
         
         tableView.reloadData()
     }
-    
-    // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 1
@@ -116,7 +115,7 @@ class FitnessRecommendationViewController: UIViewController
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return 30
+        return 40
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
@@ -126,7 +125,7 @@ class FitnessRecommendationViewController: UIViewController
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
     {
-        return 61
+        return 90
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
