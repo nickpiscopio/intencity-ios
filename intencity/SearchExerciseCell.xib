@@ -15,16 +15,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cNh-Ut-TSv">
-                        <rect key="frame" x="16" y="8" width="451" height="52"/>
+                        <rect key="frame" x="16" y="8" width="459" height="52"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqy-EC-40n">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqy-EC-40n">
                                 <rect key="frame" x="0.0" y="0.0" width="42" height="52"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GU-YX-uft" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="437" y="0.0" width="14" height="52"/>
+                                <rect key="frame" x="443" y="0.0" width="16" height="52"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" image="add_button_dark"/>
                                 <connections>
                                     <action selector="addClicked:" destination="khE-xj-Tco" eventType="touchUpInside" id="NxY-Sv-AVW"/>
@@ -44,7 +45,7 @@
                     <constraint firstItem="cNh-Ut-TSv" firstAttribute="leading" secondItem="m8C-DC-35L" secondAttribute="leading" constant="16" id="5po-Wx-Yoy"/>
                     <constraint firstAttribute="trailing" secondItem="Idf-qy-d4v" secondAttribute="trailing" id="6JM-Xo-dOs"/>
                     <constraint firstItem="cNh-Ut-TSv" firstAttribute="top" secondItem="m8C-DC-35L" secondAttribute="top" constant="8" id="A7y-qq-bQ4"/>
-                    <constraint firstAttribute="trailing" secondItem="cNh-Ut-TSv" secondAttribute="trailing" constant="16" id="MCK-3u-NEd"/>
+                    <constraint firstAttribute="trailing" secondItem="cNh-Ut-TSv" secondAttribute="trailing" constant="8" id="MCK-3u-NEd"/>
                     <constraint firstAttribute="bottom" secondItem="Idf-qy-d4v" secondAttribute="bottom" id="gEf-7F-lw6"/>
                     <constraint firstItem="Idf-qy-d4v" firstAttribute="leading" secondItem="m8C-DC-35L" secondAttribute="leading" id="lox-5B-cwB"/>
                     <constraint firstItem="Idf-qy-d4v" firstAttribute="top" secondItem="cNh-Ut-TSv" secondAttribute="bottom" constant="8" id="ool-eA-uD5"/>
@@ -59,6 +60,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="add_button_dark" width="14" height="14"/>
+        <image name="add_button_dark" width="16" height="16"/>
     </resources>
 </document>

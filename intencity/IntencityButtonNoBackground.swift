@@ -24,7 +24,7 @@ class IntencityButtonNoBackground: UIButton
         
         self.layer.borderWidth = Dimention.BORDER_WIDTH
         self.layer.cornerRadius = Dimention.RADIUS
-        self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING)
+        self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.LAYOUT_MARGIN, Dimention.LAYOUT_MARGIN, Dimention.LAYOUT_MARGIN, Dimention.LAYOUT_MARGIN)
         
         // The callbacks for the button states.
         self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
