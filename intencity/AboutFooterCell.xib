@@ -16,7 +16,7 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvq-a1-v4o">
                         <rect key="frame" x="139" y="11" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -28,7 +28,6 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="title" destination="gvq-a1-v4o" id="QGC-LN-xKt"/>
-                <outlet property="view" destination="Jtr-fz-3Na" id="mG4-Yv-dtd"/>
             </connections>
             <point key="canvasLocation" x="783" y="491"/>
         </tableViewCell>

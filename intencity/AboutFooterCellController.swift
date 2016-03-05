@@ -10,16 +10,14 @@
 import UIKit
 
 class AboutFooterCellController: UITableViewCell
-{
-    @IBOutlet weak var view: UIView!
-    
+{    
     @IBOutlet weak var title: UILabel!
     
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        
-        view.backgroundColor = Color.page_background
+
+        self.backgroundColor = Color.page_background
         
         title.textColor = Color.secondary_light
         title.text = NSLocalizedString("copyright", comment: "")

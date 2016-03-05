@@ -30,14 +30,15 @@ class AboutViewController: UIViewController
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("title_about", comment: "")
         
-        versionTitle.textColor = Color.secondary_dark
-        versionDescription.textColor = Color.secondary_dark
+        versionTitle.textColor = Color.secondary_light
+        versionDescription.textColor = Color.secondary_light
         
         versionTitle.text = NSLocalizedString("title_version", comment: "")
         versionDescription.text = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
         
         // Initialize the tableview.
         Util.initTableView(tableView, removeSeparators: true, addFooter: false)
+        tableView.backgroundColor = Color.transparent
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.ABOUT_CELL, cellName: Constant.ABOUT_CELL)
@@ -68,8 +69,7 @@ class AboutViewController: UIViewController
     {
         if (section == sections.count - 1)
         {
-            let footerCell = tableView.dequeueReusableCellWithIdentifier(Constant.ABOUT_FOOTER_CELL) as! AboutFooterCellController
-            return footerCell
+            return tableView.dequeueReusableCellWithIdentifier(Constant.ABOUT_FOOTER_CELL) as! AboutFooterCellController
         }
         
         return nil
@@ -87,6 +87,7 @@ class AboutViewController: UIViewController
         let section = sections[indexPath.section]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ABOUT_CELL) as! AboutCellController
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.cellHeader.text = section.header
         cell.cellDescription.text = section.description
         
