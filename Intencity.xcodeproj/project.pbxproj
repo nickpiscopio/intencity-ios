@@ -20,6 +20,7 @@
 		BD36EC2F1C72068900F993CE /* ExerciseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */; };
 		BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC301C72080F00F993CE /* DirectionViewController.swift */; };
 		BD36EC331C720C6B00F993CE /* Direction.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD36EC321C720C6B00F993CE /* Direction.xib */; };
+		BD37B4A91C8B964E008F3076 /* IntencityButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37B4A81C8B964E008F3076 /* IntencityButtonNoBackground.swift */; };
 		BD37E3AC1C7E3906004A30F7 /* IntencityButtonRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */; };
 		BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37E3AD1C7F4273004A30F7 /* SavedExercise.swift */; };
 		BD43E11A1C8355E9002F14C6 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */; };
@@ -67,7 +68,6 @@
 		BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2AB1C6A496800E520CB /* IntencityTextField.swift */; };
 		BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2AD1C6A49C500E520CB /* Dimention.swift */; };
 		BD9EF2B01C6A52FA00E520CB /* IntencityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */; };
-		BD9EF2B21C6A56CE00E520CB /* IntencityButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2B11C6A56CE00E520CB /* IntencityButtonNoBackground.swift */; };
 		BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2B31C6A894E00E520CB /* CreateAccountViewController.swift */; };
 		BD9EF2B61C6A8AF500E520CB /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2B51C6A8AF500E520CB /* TermsViewController.swift */; };
 		BD9EF2B81C6A941F00E520CB /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = BD9EF2B71C6A941F00E520CB /* terms.html */; };
@@ -129,6 +129,7 @@
 		BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDelegate.swift; sourceTree = "<group>"; };
 		BD36EC301C72080F00F993CE /* DirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewController.swift; sourceTree = "<group>"; };
 		BD36EC321C720C6B00F993CE /* Direction.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Direction.xib; sourceTree = "<group>"; };
+		BD37B4A81C8B964E008F3076 /* IntencityButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackground.swift; sourceTree = "<group>"; };
 		BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonRound.swift; sourceTree = "<group>"; };
 		BD37E3AD1C7F4273004A30F7 /* SavedExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedExercise.swift; sourceTree = "<group>"; };
 		BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
@@ -178,7 +179,6 @@
 		BD9EF2AB1C6A496800E520CB /* IntencityTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityTextField.swift; sourceTree = "<group>"; };
 		BD9EF2AD1C6A49C500E520CB /* Dimention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimention.swift; sourceTree = "<group>"; };
 		BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButton.swift; sourceTree = "<group>"; };
-		BD9EF2B11C6A56CE00E520CB /* IntencityButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackground.swift; sourceTree = "<group>"; };
 		BD9EF2B31C6A894E00E520CB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		BD9EF2B51C6A8AF500E520CB /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		BD9EF2B71C6A941F00E520CB /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
@@ -455,7 +455,7 @@
 				BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */,
 				BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */,
 				BDAF87A61C80B6B3001114A4 /* IntencityButtonView.swift */,
-				BD9EF2B11C6A56CE00E520CB /* IntencityButtonNoBackground.swift */,
+				BD37B4A81C8B964E008F3076 /* IntencityButtonNoBackground.swift */,
 				BDD53BEF1C8A1CEB001235AE /* IntencityTabButton.swift */,
 				BD4B8EBE1C7E039F00AD579B /* IntencityPaddedLabel.swift */,
 				BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */,
@@ -717,7 +717,6 @@
 				BD947A061C6D3F30003F3767 /* Integer.swift in Sources */,
 				BD947A381C6F6F50003F3767 /* RoutineCellController.swift in Sources */,
 				BD9EF2B01C6A52FA00E520CB /* IntencityButton.swift in Sources */,
-				BD9EF2B21C6A56CE00E520CB /* IntencityButtonNoBackground.swift in Sources */,
 				BDB45A1E1C849F52009E509B /* ExerciseDao.swift in Sources */,
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
 				BD640A511C85D1EE008895A2 /* RankingCellController.swift in Sources */,
@@ -725,6 +724,7 @@
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
 				BD7C7E831C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift in Sources */,
 				BDE493FF1C7B9B5B005817D0 /* MenuHeaderCellController.swift in Sources */,
+				BD37B4A91C8B964E008F3076 /* IntencityButtonNoBackground.swift in Sources */,
 				BD7C7E871C7CA0DA005AFFDD /* ChangePasswordViewController.swift in Sources */,
 				BD6E4B041C84A89900C4E6FB /* User.swift in Sources */,
 				BDE8BED61C77700900DBFB31 /* ExerciseListHeaderController.swift in Sources */,
