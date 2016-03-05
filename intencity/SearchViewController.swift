@@ -270,7 +270,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             let emptyTableLabel = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height))
             emptyTableLabel.text = NSLocalizedString("no_results", comment: "")
             emptyTableLabel.textColor = Color.secondary_light
-            emptyTableLabel.font = emptyTableLabel.font.fontWithSize(Dimention.FONT_SIZE_NORMAL)
+            emptyTableLabel.font = emptyTableLabel.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
             emptyTableLabel.textAlignment = .Center
             emptyTableLabel.sizeToFit()
 

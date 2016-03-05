@@ -29,6 +29,8 @@ class IntencityButton: UIButton
         self.layer.shadowColor = Color.shadow_dark.CGColor
         self.layer.backgroundColor = Color.secondary_dark.CGColor
         
+        self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING)
+        
         buttonUp()
         
         // The callbacks for the button states.
