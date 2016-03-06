@@ -699,28 +699,17 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     /**
      * Hides an exercise in the exercise list.
      *
-     * @param indexPath     The index path for the exercise to hide.
-     * @param forever       Whether to call the stored proceedure to hide the exercise forever.
-     */
-    func hideExerciseFromAlert(indexPath: NSIndexPath, forever: Bool)(alertAction: UIAlertAction!) -> Void
-    {
-        self.hideExercise(indexPath, fromSearch: false, forever: forever)
-    }
-    
-    /**
-     * Hides an exercise in the exercise list.
-     *
      * @param indexPath The index path for the exercise to hide.
      * @param forever       Whether to call the stored proceedure to hide the exercise forever.
      */
     func hideExercise(indexPath: NSIndexPath, fromSearch: Bool, forever: Bool)
     {
         tableView.beginUpdates()
-
+        
         let index = indexPath.row
         
         let exerciseName = currentExercises[index].exerciseName
-            
+        
         currentExercises.removeAtIndex(index)
         
         if (exerciseName != STRETCH_NAME)
@@ -746,13 +735,24 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // The ServiceListener is null because we don't care if it reached the server.
             // The worst that will happen is a user will have to hide the exercise again.
             ServiceTask(event: ServiceEvent.HIDE_EXERCISE_FOREVER,
-                        delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_EXCLUDE_EXERCISE,
-                                    variables: [ email, exerciseName ]))
+                delegate: self,
+                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_EXCLUDE_EXERCISE,
+                    variables: [ email, exerciseName ]))
         }
         
         tableView.endUpdates()
+    }
+    
+    /**
+     * Hides an exercise in the exercise list.
+     *
+     * @param indexPath     The index path for the exercise to hide.
+     * @param forever       Whether to call the stored proceedure to hide the exercise forever.
+     */
+    func hideExerciseFromAlert(indexPath: NSIndexPath, forever: Bool)(alertAction: UIAlertAction!) -> Void
+    {
+        self.hideExercise(indexPath, fromSearch: false, forever: forever)
     }
     
     func cancelRemoval(indexPath: NSIndexPath)(alertAction: UIAlertAction!) { }

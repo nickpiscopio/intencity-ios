@@ -94,10 +94,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func applicationDidBecomeActive(application: UIApplication)
     {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        handleUserAccount()
     }
 
     func applicationWillTerminate(application: UIApplication)
     {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    /**
+     * Handles the user's account accordingly depending upon what might need to be done.
+     */
+    func handleUserAccount()
+    {
+        let now = Float(NSDate().timeIntervalSince1970 * 1000)
+        
+        let trialAccountCreatedDate = NSUserDefaults.standardUserDefaults().floatForKey(Constant.USER_TRIAL_CREATED_DATE)
+        if (trialAccountCreatedDate > 0 && ((now - trialAccountCreatedDate) >= Float(Constant.TRIAL_ACCOUNT_THRESHOLD)))
+        {
+            Util.displayAlert(self.window!.rootViewController!,
+                title: NSLocalizedString("trial_account_done_title", comment: ""),
+                message: NSLocalizedString("trial_account_done_message", comment: ""),
+                actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: self.logOut) ])
+        }
+        else
+        {
+            // reward user for using intencity
+        }
+    }
+    
+    /**
+     * The log out action from the alert notifying the user that his or her trial account has expired.
+     */
+    func logOut(alertAction: UIAlertAction!)
+    {
+        Util.logOut(self.window!.rootViewController!)
     }
 }
