@@ -21,16 +21,23 @@ class ServiceTask
             guard error == nil && data != nil else
             {
                 print("error=\(error)")
-                delegate.onRetrievalFailed(event)
+                
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    delegate.onRetrievalFailed(event)
+                }
+                
                 return
             }
             
             // Check for HTTP errors.
             if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200
             {
-                print("statusCode: \(httpStatus.statusCode)")
-                print("response = \(response)")
-                delegate.onRetrievalFailed(event)
+                dispatch_async(dispatch_get_main_queue())
+                {
+                        delegate.onRetrievalFailed(event)
+                }
+                
                 return
             }
 
@@ -40,7 +47,6 @@ class ServiceTask
             {
                 dispatch_async(dispatch_get_main_queue())
                 {
-                    // Print the response
                     delegate.onRetrievalSuccessful(event, result: responseString as String)
                 }
             }
@@ -48,7 +54,7 @@ class ServiceTask
             {
                 dispatch_async(dispatch_get_main_queue())
                 {
-                    delegate.onRetrievalFailed(event)
+                        delegate.onRetrievalFailed(event)
                 }
             }
         }

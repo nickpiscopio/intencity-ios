@@ -79,10 +79,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
         let exerciseData = ExerciseData.getInstance()
-        let exercises = exerciseData.exerciseList
-        if (exercises.count > 0)
+        let routineName = exerciseData.routineName
+        if (routineName != "")
         {
-            DBHelper().insertIntDb(exercises, index: exerciseData.exerciseIndex, routineName: exerciseData.routineName)
+            DBHelper().insertIntoDb(exerciseData.exerciseList, index: exerciseData.exerciseIndex, routineName: routineName)
         }
     }
 

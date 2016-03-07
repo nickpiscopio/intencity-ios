@@ -11,6 +11,12 @@ import UIKit
 
 class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate, ExerciseSearchDelegate
 {
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var connectionView: UIView!
+    @IBOutlet weak var noConnectionLabel: UILabel!
+    @IBOutlet weak var tryAgainButton: UIButton!
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextExerciseButton: UIButton!
     
@@ -40,9 +46,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     var savedExercises: SavedExercise!
     
-    var activityIndicator: UIActivityIndicatorView!
-    
     var insertIntoWebSetsIndex: Int!
+
+    var routineCellController: RoutineCellController!
     
     override func viewDidLoad()
     {
@@ -56,12 +62,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         email = Util.getEmailFromDefaults()
         
-        activityIndicator = Util.showActivityIndicatory(self.view)
-        activityIndicator.startAnimating()
-
-        ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
-            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
+        initConnectionViews()
         
         state = Constant.ROUTINE_CELL
         
@@ -77,11 +78,85 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         exerciseData = ExerciseData.getInstance()
         
         showWelcome()
+        
+        initRoutineCard()
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    /**
+     * Calls the service to get the display muscle groups for the routine card.
+     */
+    func initRoutineCard()
+    {
+        showLoading()
+        
+        ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
+            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
+    }
+    
+    /**
+     * Initializes the connection views.
+     */
+    func initConnectionViews()
+    {
+        loadingView.backgroundColor = Color.page_background
+        connectionView.backgroundColor = Color.page_background
+        
+        loadingView.hidden = true
+        connectionView.hidden = true
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.hidden = true
+        
+        noConnectionLabel.textColor = Color.secondary_light
+        noConnectionLabel.text = NSLocalizedString("generic_error", comment: "")
+        tryAgainButton.setTitle(NSLocalizedString("try_again", comment: ""), forState: .Normal)
+    }
+    
+    /**
+     * Shows the task is in progress.
+     */
+    func showLoading()
+    {
+        activityIndicator.startAnimating()
+        activityIndicator.hidden = false
+        
+        loadingView.hidden = false
+    }
+    
+    /**
+     * Shows the task is in finished.
+     */
+    func hideLoading()
+    {
+        loadingView.hidden = true
+        
+        activityIndicator.stopAnimating()
+    }
+    /**
+     * Shows there was a connection issue.
+     */
+    func showConnectionIssue()
+    {
+        connectionView.hidden = false
+    }
+    
+    /**
+     * Hides the connection issue.
+     */
+    func hideConnectionIssue()
+    {
+        connectionView.hidden = true
+    }
+    
+    @IBAction func tryAgainClick(sender: AnyObject)
+    {
+        initRoutineCard()
     }
     
     func onRetrievalSuccessful(event: Int, result: String)
@@ -95,9 +170,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 break
             case ServiceEvent.SET_CURRENT_MUSCLE_GROUP:
                 
+                showLoading()
+                
                 ServiceTask(event: ServiceEvent.GET_EXERCISES_FOR_TODAY, delegate: self,
                     serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                     params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY, variables:  [ email ]))
+                
                 break
             
             case ServiceEvent.GET_EXERCISES_FOR_TODAY:
@@ -105,6 +183,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 state = Constant.EXERCISE_CELL
                     
                 loadTableViewItems(state, result: result)
+                
                 break
             case ServiceEvent.INSERT_EXERCISES_TO_WEB_DB:
                 
@@ -142,9 +221,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     func onRetrievalFailed(event: Int)
     {
-        // Add code for when we can't get the muscle groups.
+        showConnectionIssue()
         
-        activityIndicator.stopAnimating()
+        hideLoading()
+        
+        if (state == Constant.ROUTINE_CELL)
+        {
+           loadTableViewItems(state, result: "")
+        }
     }
     
     /**
@@ -277,14 +361,21 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         if (state == Constant.ROUTINE_CELL)
         {
+            displayMuscleGroups.removeAll()
+            
             var recommended: String?
             
-            for muscleGroups in json as! NSArray
+            if (json != nil)
             {
-                let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
-                recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as? String
+                for muscleGroups in json as! NSArray
+                {
+                    let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
+                    recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as? String
+                    
+                    displayMuscleGroups.append(muscleGroup)
+                }
                 
-                displayMuscleGroups.append(muscleGroup)
+                hideConnectionIssue()
             }
             
             // Get the saved exercises from the local database.
@@ -296,9 +387,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 
                 self.recommended = displayMuscleGroups.count - 1
             }
-            else
+            else if (json != nil)
             {
                 self.recommended = (recommended == nil || recommended! == "") ? 0 : displayMuscleGroups.indexOf(recommended!)!
+            }
+            
+            if (displayMuscleGroups.count > 0)
+            {
+               animateTable(indexToLoad)
             }
         }
         else
@@ -318,11 +414,13 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 
                 indexToLoad = savedExercises.index
             }
+            
+            hideConnectionIssue()
+            
+            animateTable(indexToLoad)
         }
         
-        animateTable(indexToLoad)
-        
-        activityIndicator.stopAnimating()
+        hideLoading()
     }
     
     /**
@@ -344,7 +442,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         {
             exerciseData.routineName = routineName
             
-            activityIndicator.startAnimating()
+            showLoading()
             
             ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
                 serviceURL: Constant.SERVICE_STORED_PROCEDURE,
@@ -598,10 +696,17 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     {
         numberOfCells = 1
         
-        let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = NSIndexSet(indexesInRange: range)
-        
-        self.tableView.reloadSections(sections, withRowAnimation: .Top)
+        if (state == Constant.ROUTINE_CELL && routineCellController != nil)
+        {
+            tableView.reloadData()
+        }
+        else
+        {
+            let range = NSMakeRange(0, self.tableView.numberOfSections)
+            let sections = NSIndexSet(indexesInRange: range)
+            
+            tableView.reloadSections(sections, withRowAnimation: .Top)
+        }
         
         if (state == Constant.EXERCISE_CELL)
         {
@@ -657,16 +762,16 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     {
         if (state == Constant.ROUTINE_CELL)
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.delegate = self
-            cell.dataSource = displayMuscleGroups
+            routineCellController = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
+            routineCellController.selectionStyle = UITableViewCellSelectionStyle.None
+            routineCellController.delegate = self
+            routineCellController.dataSource = displayMuscleGroups
             // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
             // CompletedMuscleGroup starts at 1.
-            cell.selectedRoutineNumber = recommended + 1
-            cell.setDropDownDataSource(recommended)
-            cell.setDropDownWidth(displayMuscleGroups.contains(CONTINUE_STRING))
-            return cell
+            routineCellController.selectedRoutineNumber = recommended + 1
+            routineCellController.setDropDownDataSource(recommended)
+            routineCellController.setDropDownWidth(displayMuscleGroups.contains(CONTINUE_STRING))
+            return routineCellController
         }
         else
         {

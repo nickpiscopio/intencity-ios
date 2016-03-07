@@ -247,15 +247,15 @@ class Util
         return padded
     }
     
-    static func showActivityIndicatory(view: UIView) -> UIActivityIndicatorView
+    static func showActivityIndicatory(tableView: UITableView) -> UIActivityIndicatorView
     {
         let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
         activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-        activityIndicator.center = view.center
+//        activityIndicator.center = tableView.frame.width / 2
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
         
-        view.addSubview(activityIndicator)
+        tableView.tableHeaderView = activityIndicator
         
         return activityIndicator
     }

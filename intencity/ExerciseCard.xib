@@ -83,7 +83,7 @@
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Il9-zx-PEv">
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Il9-zx-PEv">
                                                         <rect key="frame" x="97" y="15" width="46" height="30"/>
                                                         <connections>
                                                             <action selector="editClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="3A5-Uy-Mom"/>

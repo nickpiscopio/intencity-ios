@@ -87,7 +87,7 @@ class DBHelper
     /**
      *  Inserts records into the database.
      */
-    func insertIntDb(exercises: Array<Exercise>, index: Int, routineName: String)
+    func insertIntoDb(exercises: Array<Exercise>, index: Int, routineName: String)
     {
         let database = openDb()
         
