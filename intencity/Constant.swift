@@ -23,7 +23,7 @@ struct Constant
     static let EXERCISE_CELL = "ExerciseCell"
     static let DIRECTION_CELL = "DirectionCell"
     static let SET_CELL = "SetCell"
-    static let MENU_CELL = "MenuCell"
+    static let GENERIC_CELL = "GenericCell"
     static let MENU_HEADER_CELL = "MenuHeaderCell"
     static let ABOUT_CELL = "AboutCell"
     static let ABOUT_FOOTER_CELL = "AboutFooterCell"
@@ -35,6 +35,8 @@ struct Constant
     static let FITNESS_RECOMMENDATION_HEADER_CELL = "FitnessRecHeaderCell"
     static let FITNESS_RECOMMENDATION_FOOTER_CELL = "FitnessRecFooterCell"
     
+    static let EXERCISE_SEARCH_VIEW_CONTROLLER = "ExerciseSearchViewController"
+    static let DIRECTION_VIEW_CONTROLLER = "DirectionViewController"
     static let SEARCH_VIEW_CONTROLLER = "SearchViewController"
     static let FITNESS_RECOMMENDATION_VIEW_CONTROLLER = "FitnessRecommendationViewController"
     static let TERMS_VIEW_CONTROLLER = "TermsViewController"

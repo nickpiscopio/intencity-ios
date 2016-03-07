@@ -68,7 +68,7 @@ class MenuViewController: UIViewController
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "MenuHeader", cellName: Constant.MENU_HEADER_CELL)
-        Util.addUITableViewCell(tableView, nibNamed: "Menu", cellName: Constant.MENU_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_CELL, cellName: Constant.GENERIC_CELL)
     }
     
     override func viewWillDisappear(animated : Bool)
@@ -117,7 +117,7 @@ class MenuViewController: UIViewController
         // Gets the row in the section.
         let row = menu[indexPath.section].rows[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_CELL) as! MenuCellController
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_CELL) as! GenericCellController
         cell.title.text = row.title
         
         return cell

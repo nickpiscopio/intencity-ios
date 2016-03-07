@@ -343,10 +343,21 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     {
         if (!isSwipeOpen)
         {
-            let directionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DirectionViewController") as! DirectionViewController
-            directionViewController.exerciseName = name
-            
-            self.navigationController!.pushViewController(directionViewController, animated: true)
+            if (name == WARM_UP_NAME || name == STRETCH_NAME)
+            {
+                let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.EXERCISE_SEARCH_VIEW_CONTROLLER) as! ExerciseSearchViewController
+                viewController.searchType = name
+                viewController.routineName = exerciseListHeader.routineNameLabel.text
+                
+                self.navigationController!.pushViewController(viewController, animated: true)
+            }
+            else
+            {
+                let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
+                viewController.exerciseName = name
+                
+                self.navigationController!.pushViewController(viewController, animated: true)
+            }
         }
     }
     

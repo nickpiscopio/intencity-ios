@@ -337,10 +337,10 @@
 "stretch_description" = "To combat soreness and encourage muscle development, stretch the muscles that were exercised in this workout.";
 
 /*  */
-"stretches_title" = "Stretches";
+"stretches_title" = "Stretches for %1$@";
 
 /*  */
-"warm_ups_title" = "Warm-Ups";
+"warm_ups_title" = "Warm-Ups for %1$@";
 
 /*  */
 "hide_for_now" = "Hide for now";

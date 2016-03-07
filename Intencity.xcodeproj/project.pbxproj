@@ -21,6 +21,7 @@
 		BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC301C72080F00F993CE /* DirectionViewController.swift */; };
 		BD36EC331C720C6B00F993CE /* Direction.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD36EC321C720C6B00F993CE /* Direction.xib */; };
 		BD37B4A91C8B964E008F3076 /* IntencityButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37B4A81C8B964E008F3076 /* IntencityButtonNoBackground.swift */; };
+		BD37B4AB1C8DB677008F3076 /* ExerciseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37B4AA1C8DB677008F3076 /* ExerciseSearchViewController.swift */; };
 		BD37E3AC1C7E3906004A30F7 /* IntencityButtonRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */; };
 		BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37E3AD1C7F4273004A30F7 /* SavedExercise.swift */; };
 		BD43E11A1C8355E9002F14C6 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */; };
@@ -35,7 +36,7 @@
 		BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F41C68D34400F60ADC /* Assets.xcassets */; };
 		BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460FF1C68D53200F60ADC /* PageViewController.swift */; };
 		BD5C6AF71C88B97700A9ED0A /* MenuExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5C6AF61C88B97700A9ED0A /* MenuExerciseCell.xib */; };
-		BD5C6AF91C88BB6500A9ED0A /* MenuExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C6AF81C88BB6500A9ED0A /* MenuExerciseCellController.swift */; };
+		BD5C6AF91C88BB6500A9ED0A /* GenericCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */; };
 		BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */; };
 		BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */; };
 		BD640A4F1C85D1D7008895A2 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD640A4E1C85D1D7008895A2 /* RankingCell.xib */; };
@@ -99,8 +100,8 @@
 		BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F01C7A0445005817D0 /* ExerciseData.swift */; };
 		BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */; };
 		BDE493F71C7B961D005817D0 /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F61C7B961D005817D0 /* MenuSection.swift */; };
-		BDE493F91C7B9A26005817D0 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE493F81C7B9A26005817D0 /* Menu.xib */; };
-		BDE493FB1C7B9A58005817D0 /* MenuCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493FA1C7B9A58005817D0 /* MenuCellController.swift */; };
+		BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE493F81C7B9A26005817D0 /* GenericCell.xib */; };
+		BDE493FB1C7B9A58005817D0 /* MenuExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493FA1C7B9A58005817D0 /* MenuExerciseCellController.swift */; };
 		BDE493FD1C7B9B45005817D0 /* MenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE493FC1C7B9B45005817D0 /* MenuHeader.xib */; };
 		BDE493FF1C7B9B5B005817D0 /* MenuHeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493FE1C7B9B5B005817D0 /* MenuHeaderCellController.swift */; };
 		BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */; };
@@ -130,6 +131,7 @@
 		BD36EC301C72080F00F993CE /* DirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewController.swift; sourceTree = "<group>"; };
 		BD36EC321C720C6B00F993CE /* Direction.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Direction.xib; sourceTree = "<group>"; };
 		BD37B4A81C8B964E008F3076 /* IntencityButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackground.swift; sourceTree = "<group>"; };
+		BD37B4AA1C8DB677008F3076 /* ExerciseSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseSearchViewController.swift; sourceTree = "<group>"; };
 		BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonRound.swift; sourceTree = "<group>"; };
 		BD37E3AD1C7F4273004A30F7 /* SavedExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedExercise.swift; sourceTree = "<group>"; };
 		BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
@@ -146,7 +148,7 @@
 		BD5460F91C68D34400F60ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD5460FF1C68D53200F60ADC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		BD5C6AF61C88B97700A9ED0A /* MenuExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuExerciseCell.xib; sourceTree = "<group>"; };
-		BD5C6AF81C88BB6500A9ED0A /* MenuExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuExerciseCellController.swift; sourceTree = "<group>"; };
+		BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCellController.swift; sourceTree = "<group>"; };
 		BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
 		BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCellController.swift; sourceTree = "<group>"; };
 		BD640A4E1C85D1D7008895A2 /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
@@ -210,8 +212,8 @@
 		BDE493F01C7A0445005817D0 /* ExerciseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
 		BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+firstResponder.swift"; sourceTree = "<group>"; };
 		BDE493F61C7B961D005817D0 /* MenuSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = SOURCE_ROOT; };
-		BDE493F81C7B9A26005817D0 /* Menu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Menu.xib; sourceTree = "<group>"; };
-		BDE493FA1C7B9A58005817D0 /* MenuCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCellController.swift; sourceTree = "<group>"; };
+		BDE493F81C7B9A26005817D0 /* GenericCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericCell.xib; sourceTree = "<group>"; };
+		BDE493FA1C7B9A58005817D0 /* MenuExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuExerciseCellController.swift; sourceTree = "<group>"; };
 		BDE493FC1C7B9B45005817D0 /* MenuHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuHeader.xib; sourceTree = "<group>"; };
 		BDE493FE1C7B9B5B005817D0 /* MenuHeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeaderCellController.swift; sourceTree = "<group>"; };
 		BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseListHeader.xib; sourceTree = "<group>"; };
@@ -281,8 +283,8 @@
 				BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */,
 				BD947A371C6F6F50003F3767 /* RoutineCellController.swift */,
 				BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */,
-				BDE493FA1C7B9A58005817D0 /* MenuCellController.swift */,
-				BD5C6AF81C88BB6500A9ED0A /* MenuExerciseCellController.swift */,
+				BDE493FA1C7B9A58005817D0 /* MenuExerciseCellController.swift */,
+				BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */,
 				BDE493FE1C7B9B5B005817D0 /* MenuHeaderCellController.swift */,
 			);
 			name = Cells;
@@ -397,6 +399,7 @@
 				BDD53BEC1C8A1881001235AE /* FitnessRecommendationViewController.swift */,
 				BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */,
 				BD43E11B1C847D77002F14C6 /* SearchViewController.swift */,
+				BD37B4AA1C8DB677008F3076 /* ExerciseSearchViewController.swift */,
 				BD947A011C6CED31003F3767 /* LoginNavController.swift */,
 				BD36EC301C72080F00F993CE /* DirectionViewController.swift */,
 				BD74A2581C735EA700E6ABD2 /* StatViewController.swift */,
@@ -501,7 +504,7 @@
 				BD640A4E1C85D1D7008895A2 /* RankingCell.xib */,
 				BD5C6AF61C88B97700A9ED0A /* MenuExerciseCell.xib */,
 				BD36EC321C720C6B00F993CE /* Direction.xib */,
-				BDE493F81C7B9A26005817D0 /* Menu.xib */,
+				BDE493F81C7B9A26005817D0 /* GenericCell.xib */,
 				BDE493FC1C7B9B45005817D0 /* MenuHeader.xib */,
 				BD03C7B21C76082B00D8911A /* Set.xib */,
 			);
@@ -609,7 +612,7 @@
 				BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */,
 				BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */,
 				BDD53BFC1C8A336D001235AE /* FitnessRecFooterCell.xib in Resources */,
-				BDE493F91C7B9A26005817D0 /* Menu.xib in Resources */,
+				BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */,
 				BD4B8EBB1C7CEB1D00AD579B /* AboutFooterCell.xib in Resources */,
 				BDD53BF41C8A2B13001235AE /* FitnessRecommendationCell.xib in Resources */,
 				BD5C6AF71C88B97700A9ED0A /* MenuExerciseCell.xib in Resources */,
@@ -676,7 +679,7 @@
 				BDD53BF21C8A2B05001235AE /* FitnessRecommendationCellViewController.swift in Sources */,
 				BD9EF2BC1C6B701D00E520CB /* ServiceTask.swift in Sources */,
 				BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */,
-				BDE493FB1C7B9A58005817D0 /* MenuCellController.swift in Sources */,
+				BDE493FB1C7B9A58005817D0 /* MenuExerciseCellController.swift in Sources */,
 				BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */,
 				BD9EF2B61C6A8AF500E520CB /* TermsViewController.swift in Sources */,
 				BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */,
@@ -736,7 +739,7 @@
 				BD7C7E811C7CA0A6005AFFDD /* NotificationViewController.swift in Sources */,
 				BDAF87A71C80B6B3001114A4 /* IntencityButtonView.swift in Sources */,
 				BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */,
-				BD5C6AF91C88BB6500A9ED0A /* MenuExerciseCellController.swift in Sources */,
+				BD5C6AF91C88BB6500A9ED0A /* GenericCellController.swift in Sources */,
 				BDBA605D1C85D61D002D5F4A /* UserDao.swift in Sources */,
 				BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */,
 				BD4B8EB91C7CEACD00AD579B /* AboutFooterCellController.swift in Sources */,
@@ -752,6 +755,7 @@
 				BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */,
 				BD7C7E7E1C7C9E48005AFFDD /* AboutViewController.swift in Sources */,
 				BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */,
+				BD37B4AB1C8DB677008F3076 /* ExerciseSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,7 +878,7 @@
 				);
 				INFOPLIST_FILE = intencity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.intencity;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.Intencity;
 				PRODUCT_NAME = Intencity;
 				PROVISIONING_PROFILE = "";
 			};
@@ -893,7 +897,7 @@
 				);
 				INFOPLIST_FILE = intencity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.intencity;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.Intencity;
 				PRODUCT_NAME = Intencity;
 				PROVISIONING_PROFILE = "";
 			};
