@@ -173,8 +173,7 @@ class StatViewController: UIViewController, SetDelegate
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
     {
         return Util.isFieldValid(string, regEx: "[0-9a-zA-z\\.\\-_~\\s\\n]+") || string == ""
-     }
-
+    }
     
     /**
      * The button click for adding the next set.

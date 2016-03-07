@@ -49,6 +49,7 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
     {
         super.didReceiveMemoryWarning()
     }
+    
     @IBAction func deleteClicked(sender: AnyObject)
     {
         password = passwordTextField.text!
