@@ -64,7 +64,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         
         let termsCount = termsStrings.count
         
-        var termsMutableString = NSMutableAttributedString()
+        let termsMutableString = NSMutableAttributedString()
         
         for (var i = 0; i < termsCount; i++)
         {
@@ -80,11 +80,6 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         termsLabel.setAttributedTitle(termsMutableString, forState: .Normal)
     }
     
-    /*
-        The click function for the terms of use checkbox and label.
-    
-        sender  The Button being pressed.
-    */
     @IBAction func termsOfUseClicked(sender: UIButton)
     {
         if (!isTermsChecked())
@@ -114,17 +109,17 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         checkStringLength(sender as! UITextField, maxLength: Integer.PASSWORD_LENGTH)
     }
     
-    /*
-        Checks to see if the terms checkbox is checked.
-    */
+    /**
+     * Checks to see if the terms checkbox is checked.
+     */
     func isTermsChecked() -> Bool
     {
         return termsButton.currentImage!.isEqual(checked)
     }
     
-    /*
-        The click function for creating an account.
-    */
+    /**
+     * The click function for creating an account.
+     */
     @IBAction func createAccountClicked(sender: UIButton)
     {
         let firstName = firstNameTextField.text!
@@ -182,22 +177,22 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         }
     }
     
-    /*
-        Replaces the '+' character in a String of text.
-        This is so we can create an account on the server with an email that has a '+' in it.
-    
-        text  The text to search.
-    
-        return  The new String with its replaced character.
-    */
+    /**
+     *  Replaces the '+' character in a String of text.
+     *  This is so we can create an account on the server with an email that has a '+' in it.
+     *
+     *  @param text  The text to search.
+     *
+     *  return  The new String with its replaced character.
+     */
     func replacePlus(text: String) -> String
     {
         return text.stringByReplacingOccurrencesOfString("+", withString: "%2B")
     }
     
-    /*
-        Hides all the elements and starts the activity indicator.
-    */
+    /**
+     * Hides all the elements and starts the activity indicator.
+     */
     func startCreateAccount()
     {
         activityIndicator.startAnimating()
@@ -214,10 +209,10 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         createAccountButton.hidden = true
     }
     
-    /*
-        Shows the ui elements again because something went wrong.
-    */
-    func stopCreateAcount()
+    /**
+     * Shows the ui elements again because something went wrong.
+     */
+    func stopCreateAccount()
     {
         firstNameTextField.hidden = false
         lastNameTextField.hidden = false
@@ -237,7 +232,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "")
         if (parsedResponse == Constant.EMAIL_EXISTS)
         {
-            stopCreateAcount()
+            stopCreateAccount()
             
             Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("email_exists", comment: ""), actions: [])
         }
@@ -247,7 +242,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         }
         else
         {
-            stopCreateAcount()
+            stopCreateAccount()
             
             Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
         }
@@ -256,10 +251,12 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
     func onRetrievalFailed(event: Int)
     {
         Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
+        
+        stopCreateAccount()
     }
     
-    /*
-        Deletes extra characters in a textfield if it exceeds the allotted amount.
+    /**
+     * Deletes extra characters in a textfield if it exceeds the allotted amount.
      */
     func checkStringLength(textField: UITextField!, maxLength: Int)
     {
