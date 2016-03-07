@@ -124,16 +124,21 @@ class Util
         let defaults = NSUserDefaults.standardUserDefaults()
         let encryptedEmail = defaults.dataForKey(Constant.USER_ACCOUNT_EMAIL)
         
-        do
+        if (encryptedEmail != nil)
         {
-            let originalData = try RNCryptor.decryptData(encryptedEmail!, password: Key.key)
-            return String(data: originalData, encoding: NSUTF8StringEncoding)!
-            
+            do
+            {
+                let originalData = try RNCryptor.decryptData(encryptedEmail!, password: Key.key)
+                return String(data: originalData, encoding: NSUTF8StringEncoding)!
+                
+            }
+            catch
+            {
+                print("No email found in defaults.")
+            }
         }
-        catch
-        {
-            return ""
-        }
+        
+        return ""
     }
     
     /**

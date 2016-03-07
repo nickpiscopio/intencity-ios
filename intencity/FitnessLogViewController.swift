@@ -75,6 +75,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         // Creates the instance of the exercise data so we can store the exercises in the database later.
         exerciseData = ExerciseData.getInstance()
+        
+        showWelcome()
     }
 
     override func didReceiveMemoryWarning()
@@ -143,6 +145,22 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         // Add code for when we can't get the muscle groups.
         
         activityIndicator.stopAnimating()
+    }
+    
+    /**
+     * Shows the welcome alert to the user if needed.
+     */
+    func showWelcome()
+    {
+        let lastLogin = NSUserDefaults.standardUserDefaults().floatForKey(Constant.USER_LAST_LOGIN)
+        
+        if (Util.getEmailFromDefaults() != "" && lastLogin == 0)
+        {
+            Util.displayAlert(self,
+                title: NSLocalizedString("welcome_title", comment: ""),
+                message: NSLocalizedString("welcome_description", comment: ""),
+                actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil) ])
+        }
     }
     
     /**

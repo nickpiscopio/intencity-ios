@@ -110,17 +110,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         let now = Float(NSDate().timeIntervalSince1970 * 1000)
         
-        let trialAccountCreatedDate = NSUserDefaults.standardUserDefaults().floatForKey(Constant.USER_TRIAL_CREATED_DATE)
+        let viewController = self.window!.rootViewController!
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        let trialAccountCreatedDate = defaults.floatForKey(Constant.USER_TRIAL_CREATED_DATE)
         if (trialAccountCreatedDate > 0 && ((now - trialAccountCreatedDate) >= Float(Constant.TRIAL_ACCOUNT_THRESHOLD)))
         {
-            Util.displayAlert(self.window!.rootViewController!,
+            Util.displayAlert(viewController,
                 title: NSLocalizedString("trial_account_done_title", comment: ""),
                 message: NSLocalizedString("trial_account_done_message", comment: ""),
                 actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: self.logOut) ])
         }
         else
         {
-            // reward user for using intencity
+            let lastLogin = defaults.floatForKey(Constant.USER_LAST_LOGIN)
+            
+            if (Util.getEmailFromDefaults() != "" && lastLogin == 0)
+            {
+                // REWARD USER FOR USING INTENCITY
+                
+                defaults.setFloat(now, forKey: Constant.USER_LAST_LOGIN)
+            }
         }
     }
     
