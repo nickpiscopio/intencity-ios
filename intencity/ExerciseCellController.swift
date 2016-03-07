@@ -11,6 +11,7 @@ class ExerciseCellController: UITableViewCell
 {
     @IBOutlet weak var exerciseView: UIView!
     @IBOutlet weak var view: UIView!
+    @IBOutlet weak var editView: UIView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var exerciseButton: UIButton!
     @IBOutlet weak var exerciseDescription: UILabel!
@@ -94,12 +95,11 @@ class ExerciseCellController: UITableViewCell
     {
         exerciseDescription.hidden = true
         
-        editButton.hidden = false
-        editStackView.hidden = false
+        editView.hidden = false
         
         exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
         
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: stackView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: Dimention.LAYOUT_MARGIN)
+        let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: stackView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: Dimention.EXERCISE_CARD_PADDING)
         view.addConstraint(heightConstraint)
     }
     
@@ -115,8 +115,7 @@ class ExerciseCellController: UITableViewCell
         exerciseDescription.textColor = Color.secondary_light
         exerciseDescription.hidden = false
         
-        editButton.hidden = true
-        editStackView.hidden = true
+        editView.hidden = true
         
         exerciseButton.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
     }

@@ -18,13 +18,13 @@
                         <rect key="frame" x="8" y="7" width="522" height="78"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="gzx-d1-EUj">
-                                <rect key="frame" x="24" y="13" width="490" height="59"/>
+                                <rect key="frame" x="24" y="13" width="498" height="67"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="orh-wm-HrL">
-                                        <rect key="frame" x="0.0" y="0.0" width="490" height="59"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="498" height="67"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-yN-aVA" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="13" width="240" height="33"/>
+                                                <rect key="frame" x="0.0" y="17" width="248" height="33"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
@@ -32,7 +32,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4La-L1-kJc">
-                                                <rect key="frame" x="250" y="0.0" width="240" height="59"/>
+                                                <rect key="frame" x="258" y="4" width="240" height="59"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a9t-fH-Lzj" customClass="IntencityButtonView" customModule="Intencity" customModuleProvider="target">
                                                         <rect key="frame" x="5" y="0.0" width="230" height="59"/>
@@ -112,7 +112,7 @@
                                         </subviews>
                                     </stackView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFx-wR-uQe" customClass="IntencityPaddedLabel" customModule="Intencity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="59" width="490" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="67" width="498" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -122,10 +122,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gzx-d1-EUj" firstAttribute="top" secondItem="Zle-31-bG7" secondAttribute="top" constant="8" id="0Om-Sn-pEA"/>
-                            <constraint firstAttribute="trailing" secondItem="gzx-d1-EUj" secondAttribute="trailing" constant="8" id="3VA-Ic-WsP"/>
-                            <constraint firstItem="gzx-d1-EUj" firstAttribute="leading" secondItem="Zle-31-bG7" secondAttribute="leading" constant="8" id="cMt-wX-8kg"/>
-                            <constraint firstAttribute="bottom" secondItem="gzx-d1-EUj" secondAttribute="bottom" constant="8" id="zMF-Vw-bWr"/>
+                            <constraint firstItem="gzx-d1-EUj" firstAttribute="top" secondItem="Zle-31-bG7" secondAttribute="top" constant="4" id="0Om-Sn-pEA"/>
+                            <constraint firstAttribute="trailing" secondItem="gzx-d1-EUj" secondAttribute="trailing" constant="4" id="3VA-Ic-WsP"/>
+                            <constraint firstItem="gzx-d1-EUj" firstAttribute="leading" secondItem="Zle-31-bG7" secondAttribute="leading" constant="4" id="cMt-wX-8kg"/>
+                            <constraint firstAttribute="bottom" secondItem="gzx-d1-EUj" secondAttribute="bottom" constant="4" id="zMF-Vw-bWr"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -141,6 +141,7 @@
                 <outlet property="durationLabel" destination="2Ng-od-qJP" id="NLE-0H-K6a"/>
                 <outlet property="editButton" destination="Il9-zx-PEv" id="1Yo-tK-XN1"/>
                 <outlet property="editStackView" destination="Izd-Gx-VZ4" id="jBo-zK-Axx"/>
+                <outlet property="editView" destination="4La-L1-kJc" id="A1f-3h-gf8"/>
                 <outlet property="exerciseButton" destination="eoQ-yN-aVA" id="it5-IC-W1b"/>
                 <outlet property="exerciseDescription" destination="bFx-wR-uQe" id="HBf-Q4-eSq"/>
                 <outlet property="exerciseView" destination="UFj-wN-m2V" id="keH-UL-aDJ"/>
