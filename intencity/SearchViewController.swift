@@ -13,8 +13,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var connectionView: UIView!
+    @IBOutlet weak var connectionContainer: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var connectionIssue: UIImageView!
+    @IBOutlet weak var noConnectionLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -65,6 +67,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     func initConnectionViews()
     {
         loadingView.backgroundColor = Color.page_background
+        connectionContainer.backgroundColor = Color.page_background
         connectionView.backgroundColor = Color.page_background
     
         loadingView.hidden = true
@@ -72,6 +75,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         
         activityIndicator.hidesWhenStopped = true
         activityIndicator.hidden = true
+        
+        noConnectionLabel.text = NSLocalizedString("generic_error", comment: "")
+        noConnectionLabel.textColor = Color.secondary_light
     }
     
     /**
@@ -234,11 +240,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     }
     
     func onRetrievalFailed(event: Int)
-    {
-        exercises.removeAll()
-        
-        tableView.reloadData()
-        
+    {       
         hideLoading()
         
         showConnectionIssue()
