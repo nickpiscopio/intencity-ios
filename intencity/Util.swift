@@ -154,32 +154,57 @@ class Util
     /**
      * Initializes a specified tableview.
      *
-     * @param table                 The UITableView to add the cell.
-     * @param removeSeparators      Boolean on whether to remove the cell separators or not.
+     * @param tableView             The UITableView to add the cell.
      * @param addFooter             Adds a footer to the table.
+     * @param emptyTableStringRes   The resource of the string that will tell the user there isn't any data.
      */
-    static func initTableView(table: UITableView, removeSeparators: Bool, addFooter: Bool)
+    static func initTableView(tableView: UITableView, addFooter: Bool, emptyTableStringRes: String)
     {
-        table.backgroundColor = Color.transparent
-        
-        if (removeSeparators)
-        {
-            // Removes the cel separators.
-            table.separatorStyle = UITableViewCellSeparatorStyle.None
-        }
+        tableView.backgroundColor = Color.transparent
+
+        // Removes the cell separators.
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
         // Sets the height of the cell to be automatic.
-        table.rowHeight = UITableViewAutomaticDimension;
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         // Set to whatever your "average" cell
-        table.estimatedRowHeight = 10.0;
+        tableView.estimatedRowHeight = 10.0
+        
+        if (emptyTableStringRes != "")
+        {
+            // Adds a label to the background view if we can't find data.
+            tableView.backgroundView = getEmptyTableLabel(tableView, emptyTableStringRes: emptyTableStringRes)
+            tableView.backgroundView?.hidden = true
+        }        
         
         if (addFooter)
         {
             let footerView = UIView()
-            footerView.frame = CGRectMake(0, 0, table.frame.size.width, Dimention.TABLE_FOOTER_HEIGHT)
+            footerView.frame = CGRectMake(0, 0, tableView.frame.size.width, Dimention.TABLE_FOOTER_HEIGHT)
             footerView.backgroundColor = Color.transparent
-            table.tableFooterView = footerView
+            tableView.tableFooterView = footerView
         }
+    }
+    
+    /**
+     * Creates a table that we can use to tell the user there isn't any information to display.
+     *
+     * @param tableView             The UITableView to add the cell.
+     * @param emptyTableStringRes   The resource of the string that will tell the user there isn't any data.
+     * 
+     * @return  The label telling the user there isn't information to display.
+     */
+    static func getEmptyTableLabel(tableView: UITableView, emptyTableStringRes: String) -> UILabel
+    {
+        let label = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, 50))
+        label.text = NSLocalizedString(emptyTableStringRes, comment: "")
+        label.textColor = Color.secondary_light
+        label.font = label.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
+        label.textAlignment = .Center
+        label.sizeToFit()
+        
+        return label
     }
     
     /**

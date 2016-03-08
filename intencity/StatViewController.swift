@@ -64,7 +64,7 @@ class StatViewController: UIViewController, SetDelegate
         notesTextField.text = notes.isEmpty || notes == Constant.RETURN_NULL ? "" : notes
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: false, addFooter: true)
+        Util.initTableView(tableView, addFooter: true, emptyTableStringRes: "")
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "Set", cellName: Constant.SET_CELL)

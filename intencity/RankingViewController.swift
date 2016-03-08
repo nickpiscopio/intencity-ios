@@ -32,7 +32,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("app_name", comment: "")
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: true, addFooter: true)
+        Util.initTableView(tableView, addFooter: true, emptyTableStringRes: "no_friends")
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.RANKING_CELL, cellName: Constant.RANKING_CELL)
@@ -104,18 +104,18 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     {
         switch(event)
         {
-        case ServiceEvent.GET_FOLLOWING:
+            // Unused.
+            // We don't update the ui if we can't get followers.
+            // As long as a person has > 1 follower, we don't show any messages.
+            case ServiceEvent.GET_FOLLOWING:
+                break
+            case ServiceEvent.UNFOLLOW:
             
-            // update ui for when it can't get users.
+                Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
             
-            break
-        case ServiceEvent.UNFOLLOW:
-            
-            Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
-            
-            break
-        default:
-            break
+                break
+            default:
+                break
         }
     }
     
@@ -127,6 +127,8 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
+        tableView.backgroundView?.hidden = currentUsers.count > 1
+        
         return 1
     }
 
@@ -165,7 +167,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     
     func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String!
     {
-        return NSLocalizedString("unfollow", comment: "")//or customize for each indexPath
+        return NSLocalizedString("unfollow", comment: "")
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)

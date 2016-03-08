@@ -50,7 +50,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         initConnectionViews()
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: true, addFooter: false)
+        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "no_results")
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.SEARCH_EXERCISE_CELL, cellName: Constant.SEARCH_EXERCISE_CELL)
@@ -267,25 +267,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        if (exercises.count <= 0 && users.count <= 0)
-        {
-            let emptyTableLabel = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height))
-            emptyTableLabel.text = NSLocalizedString("no_results", comment: "")
-            emptyTableLabel.textColor = Color.secondary_light
-            emptyTableLabel.font = emptyTableLabel.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
-            emptyTableLabel.textAlignment = .Center
-            emptyTableLabel.sizeToFit()
-
-            tableView.backgroundView = emptyTableLabel
-            
-            return 0
-        }
-        else
-        {
-            tableView.backgroundView = nil
-            
-            return 1
-        }
+        tableView.backgroundView?.hidden = exercises.count > 0 || users.count > 0
+        
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int

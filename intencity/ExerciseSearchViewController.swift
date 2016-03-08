@@ -42,7 +42,7 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
         initConnectionViews()
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: true, addFooter: false)
+        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "no_results")
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_CELL, cellName: Constant.GENERIC_CELL)

@@ -1182,41 +1182,6 @@
             </objects>
             <point key="canvasLocation" x="3206" y="191"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="yHc-vP-hYz">
-            <objects>
-                <viewController id="cDA-ay-E75" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oj0-Ju-u4U"/>
-                        <viewControllerLayoutGuide type="bottom" id="WNS-bD-gDA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="puH-zF-kwc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oQI-fs-8yu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="QsC-zk-dUg">
-            <objects>
-                <viewController id="MIe-ZP-MUp" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1VL-lE-A80"/>
-                        <viewControllerLayoutGuide type="bottom" id="JMG-4g-cbx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Mg2-tu-Cg5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="glj-zL-CPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1624" y="-3324"/>
-        </scene>
     </scenes>
     <resources>
         <image name="add_button" width="50" height="50"/>
@@ -1228,6 +1193,6 @@
         <image name="tab_icon_ranking" width="23" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z41-nb-wwL"/>
+        <segue reference="Kz2-vl-MdR"/>
     </inferredMetricsTieBreakers>
 </document>

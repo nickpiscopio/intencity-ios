@@ -23,8 +23,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
     let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
     let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
-    
-    // THIS WILL CHANGE TO 7 LATER WHEN ADDING WARM UP AND STRETCH.
+
     var totalExercises = 7
     
     var numberOfCells = 0
@@ -67,7 +66,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         state = Constant.ROUTINE_CELL
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: true, addFooter: true)
+        Util.initTableView(tableView, addFooter: true, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "RoutineCard", cellName: Constant.ROUTINE_CELL)

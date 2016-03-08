@@ -34,10 +34,10 @@ class AboutViewController: UIViewController
         versionDescription.textColor = Color.secondary_light
         
         versionTitle.text = NSLocalizedString("title_version", comment: "")
-        versionDescription.text = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+        versionDescription.text = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as? String
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: true, addFooter: false)
+        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "")
         tableView.backgroundColor = Color.transparent
         
         // Load the cells we are going to use in the tableview.

@@ -34,7 +34,7 @@ class EditExclusionViewController: UIViewController, ServiceDelegate
         self.navigationItem.title = NSLocalizedString("edit_exclusion", comment: "")
         
         // Initialize the tableview.
-        Util.initTableView(tableView, removeSeparators: true, addFooter: false)
+        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "no_results")
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)
@@ -67,25 +67,10 @@ class EditExclusionViewController: UIViewController, ServiceDelegate
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        if (exclusionList.count <= 0)
-        {
-            let emptyTableLabel = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height))
-            emptyTableLabel.text = NSLocalizedString("no_items", comment: "")
-            emptyTableLabel.textColor = Color.secondary_light
-            emptyTableLabel.font = emptyTableLabel.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
-            emptyTableLabel.textAlignment = .Center
-            emptyTableLabel.sizeToFit()
-            
-            tableView.backgroundView = emptyTableLabel
-            
-            return 0
-        }
-        else
-        {
-            tableView.backgroundView = nil
-            
-            return 1
-        }
+
+        tableView.backgroundView?.hidden = exclusionList.count > 0
+        
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -137,9 +122,7 @@ class EditExclusionViewController: UIViewController, ServiceDelegate
                     
                     newExclusionList = exclusionList
                     
-                    tableView.backgroundView = nil
-                    
-                    tableView.reloadData();
+                    tableView.reloadData()
                 }
 
                 break

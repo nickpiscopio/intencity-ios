@@ -17,8 +17,6 @@ class FitnessRecHeaderCellController: UITableViewCell
     {
         super.awakeFromNib()
         
-//        self.backgroundView!.backgroundColor = Color.transparent
-        
         headerLabel.textColor = Color.secondary_light
         
         headerLabel.text = NSLocalizedString("recommendations", comment: "")
