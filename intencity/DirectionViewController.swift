@@ -33,7 +33,7 @@ class DirectionViewController: UIViewController, ServiceDelegate
         // Hides the tab bar.
         self.tabBarController?.tabBar.hidden = true
         
-        directionTitleLabel.text = ""
+        youTubePlayerView.backgroundColor = Color.transparent
         
         // Initialize the tableview.
         Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "")
@@ -51,8 +51,6 @@ class DirectionViewController: UIViewController, ServiceDelegate
     
     func onRetrievalSuccessful(event: Int, result: String)
     {
-        print("directions: \(result)")
-        
         // This gets saved as NSDictionary, so there is no order
         let json: AnyObject? = result.parseJSONString
         
@@ -73,6 +71,10 @@ class DirectionViewController: UIViewController, ServiceDelegate
     
     func onRetrievalFailed(event: Int)
     {
+        Util.displayAlert(self,
+                            title: NSLocalizedString("generic_error", comment: ""),
+                            message: NSLocalizedString("intencity_communication_error", comment: ""),
+                            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack) ])
     }
     
     /**
@@ -119,8 +121,7 @@ class DirectionViewController: UIViewController, ServiceDelegate
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.DIRECTION_CELL) as! DirectionCellController
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.stepNumber.text =  String(index + 1
-            ) + "."
+        cell.stepNumber.text =  String(index + 1) + "."
         cell.stepDescription.text = steps[index]
         
         return cell
@@ -131,5 +132,13 @@ class DirectionViewController: UIViewController, ServiceDelegate
         super.viewWillDisappear(animated)
         
         self.tabBarController?.tabBar.hidden = false
+    }
+    
+    /**
+     * Navigates the user back to the previous view.
+     */
+    func goBack(alertAction: UIAlertAction!) -> Void
+    {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }

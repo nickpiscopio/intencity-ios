@@ -57,7 +57,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         self.view.backgroundColor = Color.page_background
         
         // Sets the title for the screen.
-        self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("app_name", comment: "")
+        self.navigationItem.title = NSLocalizedString("app_name", comment: "")
         
         email = Util.getEmailFromDefaults()
         

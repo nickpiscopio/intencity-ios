@@ -29,7 +29,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         self.view.backgroundColor = Color.page_background
         
         // Sets the title for the screen.
-        self.navigationController?.navigationBar.topItem!.title = NSLocalizedString("app_name", comment: "")
+        self.navigationItem.title = NSLocalizedString("title_rankings", comment: "")
         
         // Initialize the tableview.
         Util.initTableView(tableView, addFooter: true, emptyTableStringRes: "no_friends")
