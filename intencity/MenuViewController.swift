@@ -28,8 +28,10 @@ class MenuViewController: UIViewController
         // Hides the tab bar.
         self.tabBarController?.tabBar.hidden = true
         
+        let notifications = NotificationHandler.getInstance(nil).getAwardCount()
+        
         // Notification section.
-        let notificationRow = [ MenuRow(title: String(format: NSLocalizedString("notifications", comment: ""), "(0)"), viewController: "NotificationViewController") ]
+        let notificationRow = [ MenuRow(title: String(format: NSLocalizedString("notifications", comment: ""), "(\(notifications))"), viewController: "NotificationViewController") ]
 
         menu.append(MenuSection(title: "", rows: notificationRow))
         

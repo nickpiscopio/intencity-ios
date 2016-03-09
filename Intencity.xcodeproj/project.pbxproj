@@ -97,6 +97,11 @@
 		BDD53BFE1C8A3439001235AE /* FitnessRecHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDD53BFD1C8A3439001235AE /* FitnessRecHeaderCell.xib */; };
 		BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */; };
 		BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */; };
+		BDD89BF31C90654800530D79 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD89BF21C90654800530D79 /* NotificationHandler.swift */; };
+		BDD89BF51C9065EB00530D79 /* Awards.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD89BF41C9065EB00530D79 /* Awards.swift */; };
+		BDD89BF71C9066F300530D79 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD89BF61C9066F300530D79 /* NotificationDelegate.swift */; };
+		BDD89BF91C906C4D00530D79 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDD89BF81C906C4D00530D79 /* NotificationCell.xib */; };
+		BDD89BFB1C906D9F00530D79 /* NotificationCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD89BFA1C906D9F00530D79 /* NotificationCellViewController.swift */; };
 		BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F01C7A0445005817D0 /* ExerciseData.swift */; };
 		BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */; };
 		BDE493F71C7B961D005817D0 /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F61C7B961D005817D0 /* MenuSection.swift */; };
@@ -209,6 +214,11 @@
 		BDD53BFD1C8A3439001235AE /* FitnessRecHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitnessRecHeaderCell.xib; sourceTree = "<group>"; };
 		BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineDelegate.swift; sourceTree = "<group>"; };
 		BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButton.swift; sourceTree = "<group>"; };
+		BDD89BF21C90654800530D79 /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		BDD89BF41C9065EB00530D79 /* Awards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Awards.swift; sourceTree = "<group>"; };
+		BDD89BF61C9066F300530D79 /* NotificationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
+		BDD89BF81C906C4D00530D79 /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
+		BDD89BFA1C906D9F00530D79 /* NotificationCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCellViewController.swift; sourceTree = "<group>"; };
 		BDE493F01C7A0445005817D0 /* ExerciseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
 		BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+firstResponder.swift"; sourceTree = "<group>"; };
 		BDE493F61C7B961D005817D0 /* MenuSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = SOURCE_ROOT; };
@@ -272,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */,
+				BDD89BFA1C906D9F00530D79 /* NotificationCellViewController.swift */,
 				BDD53BF11C8A2B05001235AE /* FitnessRecommendationCellViewController.swift */,
 				BDB45A1B1C849B42009E509B /* SearchExerciseCellController.swift */,
 				BD640A501C85D1EE008895A2 /* RankingCellController.swift */,
@@ -349,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				BD36EC221C70F0A400F993CE /* Exercise.swift */,
+				BDD89BF41C9065EB00530D79 /* Awards.swift */,
 				BD6E4B031C84A89900C4E6FB /* User.swift */,
 			);
 			name = Classes;
@@ -480,6 +492,7 @@
 			isa = PBXGroup;
 			children = (
 				BD9EF2BE1C6B829500E520CB /* ServiceDelegate.swift */,
+				BDD89BF61C9066F300530D79 /* NotificationDelegate.swift */,
 				BD03C7BA1C761B6000D8911A /* SetDelegate.swift */,
 				BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */,
 				BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */,
@@ -492,6 +505,7 @@
 		BDD53BEE1C8A1928001235AE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BDD89BF81C906C4D00530D79 /* NotificationCell.xib */,
 				BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */,
 				BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */,
 				BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */,
@@ -519,6 +533,7 @@
 				BDF44A321C79F46D00B47CD1 /* DBHelper.swift */,
 				BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */,
 				BDE493F01C7A0445005817D0 /* ExerciseData.swift */,
+				BDD89BF21C90654800530D79 /* NotificationHandler.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -614,6 +629,7 @@
 				BDD53BFC1C8A336D001235AE /* FitnessRecFooterCell.xib in Resources */,
 				BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */,
 				BD4B8EBB1C7CEB1D00AD579B /* AboutFooterCell.xib in Resources */,
+				BDD89BF91C906C4D00530D79 /* NotificationCell.xib in Resources */,
 				BDD53BF41C8A2B13001235AE /* FitnessRecommendationCell.xib in Resources */,
 				BD5C6AF71C88B97700A9ED0A /* MenuExerciseCell.xib in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
@@ -708,8 +724,10 @@
 				BDE493F71C7B961D005817D0 /* MenuSection.swift in Sources */,
 				BD7C7E891C7CA0E9005AFFDD /* DeleteAccountViewController.swift in Sources */,
 				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
+				BDD89BFB1C906D9F00530D79 /* NotificationCellViewController.swift in Sources */,
 				BD6E4B061C84B2AC00C4E6FB /* UserSearchDelegate.swift in Sources */,
 				BD36EC2F1C72068900F993CE /* ExerciseDelegate.swift in Sources */,
+				BDD89BF31C90654800530D79 /* NotificationHandler.swift in Sources */,
 				BD9EF2A81C6A310200E520CB /* ForgotPasswordViewController.swift in Sources */,
 				BD37E3AC1C7E3906004A30F7 /* IntencityButtonRound.swift in Sources */,
 				BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */,
@@ -741,6 +759,8 @@
 				BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */,
 				BD5C6AF91C88BB6500A9ED0A /* GenericCellController.swift in Sources */,
 				BDBA605D1C85D61D002D5F4A /* UserDao.swift in Sources */,
+				BDD89BF71C9066F300530D79 /* NotificationDelegate.swift in Sources */,
+				BDD89BF51C9065EB00530D79 /* Awards.swift in Sources */,
 				BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */,
 				BD4B8EB91C7CEACD00AD579B /* AboutFooterCellController.swift in Sources */,
 				BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */,
