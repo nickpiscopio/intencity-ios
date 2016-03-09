@@ -10,51 +10,55 @@
 import Foundation
 class ServiceTask
 {
-    init(event: Int, delegate: ServiceDelegate, serviceURL: String, params: NSString)
+    init(event: Int, delegate: ServiceDelegate?, serviceURL: String, params: NSString)
     {
         let failed = "FAILURE"
         let request = NSMutableURLRequest(URL: NSURL(string: serviceURL)!)
         request.HTTPMethod = "POST"
         request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
+  
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
-            // Check for fundamental networking errors.
-            guard error == nil && data != nil else
+            if (event != ServiceEvent.NO_RETURN)
             {
-                print("error=\(error)")
-                
-                dispatch_async(dispatch_get_main_queue())
+                // Check for fundamental networking errors.
+                guard error == nil && data != nil else
                 {
-                    delegate.onRetrievalFailed(event)
+                    print("error=\(error)")
+                    
+                    dispatch_async(dispatch_get_main_queue())
+                    {
+                        delegate!.onRetrievalFailed(event)
+                    }
+                    
+                    return
                 }
                 
-                return
-            }
-            
-            // Check for HTTP errors.
-            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200
-            {
-                dispatch_async(dispatch_get_main_queue())
+                // Check for HTTP errors.
+                if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200
                 {
-                        delegate.onRetrievalFailed(event)
+                    dispatch_async(dispatch_get_main_queue())
+                    {
+                        delegate!.onRetrievalFailed(event)
+                    }
+                    
+                    return
                 }
                 
-                return
-            }
-
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
-            let parsedResponse = responseString.stringByReplacingOccurrencesOfString("\"", withString: "")
-            if (parsedResponse != failed)
-            {
-                dispatch_async(dispatch_get_main_queue())
+                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
+                let parsedResponse = responseString.stringByReplacingOccurrencesOfString("\"", withString: "")
+                if (parsedResponse != failed)
                 {
-                    delegate.onRetrievalSuccessful(event, result: responseString as String)
+                    dispatch_async(dispatch_get_main_queue())
+                    {
+                        delegate!.onRetrievalSuccessful(event, result: responseString as String)
+                    }
                 }
-            }
-            else
-            {
-                dispatch_async(dispatch_get_main_queue())
+                else
                 {
-                        delegate.onRetrievalFailed(event)
+                    dispatch_async(dispatch_get_main_queue())
+                    {
+                        delegate!.onRetrievalFailed(event)
+                    }
                 }
             }
         }

@@ -126,10 +126,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         {
             let lastLogin = defaults.floatForKey(Constant.USER_LAST_LOGIN)
             
-            if (Util.getEmailFromDefaults() != "" && lastLogin == 0)
+            let email = Util.getEmailFromDefaults()
+            
+            // If the user has logged in.
+            // If the user's last login time is after 12 hours.
+            if (email != "" && ((now - lastLogin) >= Float(Constant.LOGIN_POINTS_THRESHOLD)))
             {
-                // REWARD USER FOR USING INTENCITY
-                
+                // Rewards the user for using the app after 12 hours.
+                Util.grantPointsToUser(email, points: Constant.POINTS_LOGIN, description: NSLocalizedString("award_login_description", comment: ""))
+
                 defaults.setFloat(now, forKey: Constant.USER_LAST_LOGIN)
             }
         }

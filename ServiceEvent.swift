@@ -9,6 +9,7 @@
 
 struct ServiceEvent
 {
+    static let NO_RETURN = -1
     static let GENERIC = 0
     static let TRIAL = 1
     static let LOGIN = 2

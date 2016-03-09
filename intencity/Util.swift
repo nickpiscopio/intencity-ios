@@ -272,22 +272,20 @@ class Util
         return padded
     }
     
-    static func showActivityIndicatory(tableView: UITableView) -> UIActivityIndicatorView
+    /**
+     * Calls the service to grant points to the user.
+     *
+     * @param email         The email of the user to grant points.
+     * @param points        The amount of points that will be granted.
+     * @param description   The description of why points are being granted.
+     */
+    static func grantPointsToUser(email: String, points: Int, description: String)
     {
-        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-        activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-//        activityIndicator.center = tableView.frame.width / 2
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        
-        tableView.tableHeaderView = activityIndicator
-        
-        return activityIndicator
-    }
+        ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
+                    serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                    params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_POINTS, variables: [ email, String(points) ]))
     
-    static func stopActivityIndicator(activityIndicator: UIActivityIndicatorView)
-    {
-        activityIndicator.stopAnimating()
-        activityIndicator.removeFromSuperview()
+        // Add an award to the notification handler.
+//        NotificationHandler.getInstance(null).addAward(new AwardDialogContent("+" + points, description));
     }
 }

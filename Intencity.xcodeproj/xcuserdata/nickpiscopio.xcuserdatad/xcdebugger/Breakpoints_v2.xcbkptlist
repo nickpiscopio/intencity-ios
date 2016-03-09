@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ServiceEvent.swift"
-            timestampString = "477150978.125674"
+            timestampString = "479223316.300445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "ServiceEvent"
             landmarkType = "3">
          </BreakpointContent>
