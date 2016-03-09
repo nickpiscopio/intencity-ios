@@ -23,6 +23,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
     let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
     let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
 
     var totalExercises = 7
     
@@ -235,7 +237,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func showWelcome()
     {
-        let lastLogin = NSUserDefaults.standardUserDefaults().floatForKey(Constant.USER_LAST_LOGIN)
+        let lastLogin = defaults.floatForKey(Constant.USER_LAST_LOGIN)
         
         if (Util.getEmailFromDefaults() != "" && lastLogin == 0)
         {
@@ -303,6 +305,18 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             exerciseData.exerciseList.removeAll()
             exerciseData.exerciseList = currentExercises
             exerciseData.exerciseList.append(stretch)
+        }
+        
+        let lastExerciseTime = defaults.floatForKey(Constant.USER_LAST_EXERCISE_TIME)
+        let now = Float(NSDate().timeIntervalSince1970 * 1000)
+        
+        if ((now - lastExerciseTime) >= Float(Constant.EXERCISE_POINTS_THRESHOLD))
+        {
+            defaults.setFloat(now, forKey: Constant.USER_LAST_EXERCISE_TIME)
+            
+            // Reward the user for exercising.
+            // We use a relaxed system for giving points, so we only try to make it so they can't game the system.
+            Util.grantPointsToUser(email, points: Constant.POINTS_EXERCISE, description: NSLocalizedString("award_exercise_description", comment: ""))
         }
         
         let position = currentExerciseCount - 1
