@@ -23,6 +23,7 @@ class ExerciseCellController: UITableViewCell
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var repsLabel: UILabel!
     @IBOutlet weak var backgroundEditView: UIView!
+    @IBOutlet weak var exerciseDescriptionView: UIView!
     
     let EDIT_STRING = NSLocalizedString("edit", comment: "")
     
@@ -93,14 +94,11 @@ class ExerciseCellController: UITableViewCell
      */
     func setAsExercise()
     {
-        exerciseDescription.hidden = true
+        exerciseDescriptionView.hidden = true
         
         editView.hidden = false
         
         exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
-        
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: stackView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: Dimention.EXERCISE_CARD_PADDING)
-        view.addConstraint(heightConstraint)
     }
     
     /**
@@ -108,13 +106,10 @@ class ExerciseCellController: UITableViewCell
      */
     func setDescription(description: String)
     {
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: stackView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: Dimention.EXERCISE_DESCRIPTION_PADDING)
-        view.addConstraint(heightConstraint)
-        
         exerciseDescription.text = description
         exerciseDescription.textColor = Color.secondary_light
-        exerciseDescription.hidden = false
-        
+        exerciseDescriptionView.hidden = false
+
         editView.hidden = true
         
         exerciseButton.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
