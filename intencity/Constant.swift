@@ -182,7 +182,7 @@ struct Constant
     static let COLUMN_HAS_EQUIPMENT = "HasEquipment";
     static let SPACE_REGEX = "\\s";
     static let REGEX_EMAIL = "[a-zA-Z0-9]+([\\-\\.\\{\\}\\^\\+*_~]*[a-zA-Z0-9]+)*@[a-zA-Z0-9]+([\\.\\-]*[a-zA-Z0-9]+)*[\\.][a-zA-Z]{2}[A-Za-z]*";
-    static let REGEX_FIELD = "[a-zA-Z0-9]+[\\-\\.\\{\\}\\^\\*\\(\\)\\[\\]\\$/;:,*_~!@#%]*";
+    static let REGEX_FIELD = "[a-zA-Z0-9\\s\\-\\.\\{\\}\\^\\*\\(\\)\\[\\]\\$/;:,*_~!@#%']+";
     
     static func getValidateUserCredentialsServiceParameters(email: String, password: String) -> String
     {
