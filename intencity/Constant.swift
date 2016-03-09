@@ -12,6 +12,9 @@ import Foundation
 struct Constant
 {
     // -- START iOS CONSTANTS --
+    static let SHARE_VIA_TWITTER = 0
+    static let SHARE_VIA_FACEBOOK = 1
+    
     static let DEMO_STORYBOARD = "Demo"
     static let LOGIN_STORYBOARD = "Login"    
     static let MAIN_STORYBOARD = "Main"

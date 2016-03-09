@@ -33,7 +33,9 @@
 "pull_to_refresh" = "Pull to refresh";
 "no_login_account_title" = "Accounts";
 "twitter_login_message" = "Please login to a Twitter account to share.";
+"facebook_login_message" = "Please login to a Facebook account to share.";
 "open_twitter_login" = "Go to settings";
+"facebook_button" = "Facebook";
 
 // Intencity Strings
 /*  */

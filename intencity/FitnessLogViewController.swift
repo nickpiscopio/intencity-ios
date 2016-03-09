@@ -292,7 +292,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         else
         {
             let actions = [ UIAlertAction(title: NSLocalizedString("finish_button", comment: ""), style: .Default, handler: nil),
-                            UIAlertAction(title: NSLocalizedString("tweet_button", comment: ""), style: .Default, handler: tweet)]
+                            UIAlertAction(title: NSLocalizedString("facebook_button", comment: ""), style: .Default, handler: share(Constant.SHARE_VIA_FACEBOOK)),
+                            UIAlertAction(title: NSLocalizedString("tweet_button", comment: ""), style: .Default, handler: share(Constant.SHARE_VIA_TWITTER)) ]
             
             Util.displayAlert(self,
                 title: NSLocalizedString("completed_workout_title", comment: ""),
@@ -859,7 +860,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      *
      * @return  The generated tweet.
      */
-    func generateShareMessage() -> String
+    func generateShareMessage(socialNetwork: Int) -> String
     {
         let routineName = exerciseListHeader.routineNameLabel.text!
         let routine = routineName.stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString(Constant.PARAMETER_AMPERSAND, withString: " & #")
@@ -871,8 +872,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                                 "#Finished my #Intencity #workout! #Retweet if you've #exercised today. #WOD #Fitness",
                                 "I #lifted with #Intencity today! #lift #lifting" ]
         
-        let intencityUrl = " www.Intencity.fit";
-        let via = " @IntencityApp";
+        let intencityUrl = " www.Intencity.fit"
+        let via = " @Intencity" + (socialNetwork == Constant.SHARE_VIA_TWITTER ? "App" : "")
     
         let message = Int(arc4random_uniform(UInt32(shareMessage.count)))
     
@@ -941,20 +942,40 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     func cancelRemoval(indexPath: NSIndexPath)(alertAction: UIAlertAction!) { }
     
     /**
-     * Tweets about finishing the intencity workout.
+     * Opens an alert for a user to share finishing Intencity's workout with social media.
+     *
+     * TUTORIAL: http://www.brianjcoleman.com/tutorial-share-facebook-twitter-swift/
      */
-    func tweet(alertAction: UIAlertAction!) -> Void
+    func share(socialNetwork: Int)(alertAction: UIAlertAction!) -> Void
     {
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)
+        let serviceType: String!
+        let loginMessageRes: String!
+        
+        if (socialNetwork == Constant.SHARE_VIA_TWITTER)
         {
-            let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            twitterSheet.setInitialText(generateShareMessage())
-            self.presentViewController(twitterSheet, animated: true, completion: nil)
+            serviceType = SLServiceTypeTwitter
+            
+            loginMessageRes = "twitter_login_message"
         }
         else
         {
-            let alert = UIAlertController(title: NSLocalizedString("no_login_account_title", comment: ""), message: NSLocalizedString("twitter_login_message", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("open_twitter_login", comment: ""), style: UIAlertActionStyle.Default, handler: openTwitterSettings))
+            serviceType = SLServiceTypeFacebook
+            
+            loginMessageRes = "facebook_login_message"
+        }
+        
+        if SLComposeViewController.isAvailableForServiceType(serviceType)
+        {
+            let sheet: SLComposeViewController = SLComposeViewController(forServiceType: serviceType)
+            sheet.setInitialText(generateShareMessage(socialNetwork))
+            
+            self.presentViewController(sheet, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert = UIAlertController(title: NSLocalizedString("no_login_account_title", comment: ""), message: NSLocalizedString(loginMessageRes, comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("open_twitter_login", comment: ""), style: UIAlertActionStyle.Default, handler: openShareSettings(socialNetwork)))
+            
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
@@ -962,9 +983,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     /**
      * Tweets about finishing the intencity workout.
      */
-    func openTwitterSettings(alertAction: UIAlertAction!) -> Void
+    func openShareSettings(socialNetwork: Int)(alertAction: UIAlertAction!) -> Void
     {
-        UIApplication.sharedApplication().openURL(NSURL(string:"prefs:root=TWITTER")!)
+        let shareUrl = NSURL(string:"prefs:root=" + (socialNetwork == Constant.SHARE_VIA_TWITTER ? "TWITTER" : "FACEBOOK"))
+        
+        UIApplication.sharedApplication().openURL(shareUrl!)
     }
-
 }
