@@ -8,6 +8,7 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
+import Social
 
 class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate, ExerciseSearchDelegate
 {
@@ -287,6 +288,16 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if (currentExercises.count != exerciseData.exerciseList.count)
         {
             addExercise(false)
+        }
+        else
+        {
+            let actions = [ UIAlertAction(title: NSLocalizedString("finish_button", comment: ""), style: .Default, handler: nil),
+                            UIAlertAction(title: NSLocalizedString("tweet_button", comment: ""), style: .Default, handler: tweet)]
+            
+            Util.displayAlert(self,
+                title: NSLocalizedString("completed_workout_title", comment: ""),
+                message: "",
+                actions: actions)
         }
     }
     
@@ -844,6 +855,31 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     }
     
     /**
+     * Randomly generates a message to share with social media.
+     *
+     * @return  The generated tweet.
+     */
+    func generateShareMessage() -> String
+    {
+        let routineName = exerciseListHeader.routineNameLabel.text!
+        let routine = routineName.stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString(Constant.PARAMETER_AMPERSAND, withString: " & #")
+        
+        let shareMessage = ["I #dominated my #workout with #Intencity! #WOD #Fitness",
+                                "I #finished my #workout of the day with #Intencity! #WOD #Fitness",
+                                "I made it through #Intencity's #routine! #Fitness",
+                                "I #completed #" + routine + " with #Intencity! #WOD #Fitness",
+                                "#Finished my #Intencity #workout! #Retweet if you've #exercised today. #WOD #Fitness",
+                                "I #lifted with #Intencity today! #lift #lifting" ]
+        
+        let intencityUrl = " www.Intencity.fit";
+        let via = " @IntencityApp";
+    
+        let message = Int(arc4random_uniform(UInt32(shareMessage.count)))
+    
+        return shareMessage[message] + via + intencityUrl
+    }
+    
+    /**
      * Hides an exercise in the exercise list.
      *
      * @param indexPath The index path for the exercise to hide.
@@ -903,4 +939,32 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     }
     
     func cancelRemoval(indexPath: NSIndexPath)(alertAction: UIAlertAction!) { }
+    
+    /**
+     * Tweets about finishing the intencity workout.
+     */
+    func tweet(alertAction: UIAlertAction!) -> Void
+    {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)
+        {
+            let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            twitterSheet.setInitialText(generateShareMessage())
+            self.presentViewController(twitterSheet, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert = UIAlertController(title: NSLocalizedString("no_login_account_title", comment: ""), message: NSLocalizedString("twitter_login_message", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("open_twitter_login", comment: ""), style: UIAlertActionStyle.Default, handler: openTwitterSettings))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    /**
+     * Tweets about finishing the intencity workout.
+     */
+    func openTwitterSettings(alertAction: UIAlertAction!) -> Void
+    {
+        UIApplication.sharedApplication().openURL(NSURL(string:"prefs:root=TWITTER")!)
+    }
+
 }
