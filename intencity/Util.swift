@@ -75,7 +75,7 @@ class Util
         defaults.removeObjectForKey(Constant.USER_ACCOUNT_EMAIL)
         defaults.removeObjectForKey(Constant.USER_ACCOUNT_TYPE)
         defaults.removeObjectForKey(Constant.USER_TRIAL_CREATED_DATE)
-        // NEED last exercise time
+        defaults.removeObjectForKey(Constant.USER_LAST_EXERCISE_TIME)
 
         let storyboard = UIStoryboard(name: Constant.LOGIN_STORYBOARD, bundle: nil)
         
