@@ -20,10 +20,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="icon_fitness_log" translatesAutoresizingMaskIntoConstraints="NO" id="3Ef-kw-zPq">
                                 <rect key="frame" x="8" y="8" width="11" height="18"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="JZG-Dr-gHl"/>
                                     <constraint firstAttribute="height" constant="30" id="k6t-sW-M49"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="JZG-Dr-gHl"/>
                                         <exclude reference="k6t-sW-M49"/>
                                     </mask>
                                 </variation>
@@ -37,7 +39,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qPf-IK-XpE">
                                 <rect key="frame" x="31" y="34" width="159" height="21"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9M-5L-cpZ">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9M-5L-cpZ">
                                         <rect key="frame" x="0.0" y="0.0" width="141" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Shoulders &amp; Traps"/>
@@ -45,7 +47,7 @@
                                             <action selector="showOrDismiss:" destination="ivz-ap-zhs" eventType="touchUpInside" id="jNv-jb-D3w"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-3m-r6l">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-3m-r6l">
                                         <rect key="frame" x="141" y="0.0" width="18" height="21"/>
                                         <state key="normal" image="dropdown"/>
                                         <connections>
@@ -67,11 +69,11 @@
                         <constraints>
                             <constraint firstItem="D9M-5L-cpZ" firstAttribute="top" secondItem="kid-2F-LAr" secondAttribute="bottom" constant="8" id="0Rs-hn-VkL"/>
                             <constraint firstItem="3Ef-kw-zPq" firstAttribute="leading" secondItem="FHw-2Z-Ykq" secondAttribute="leading" constant="20" id="2EK-Dj-tDm"/>
-                            <constraint firstItem="kid-2F-LAr" firstAttribute="leading" secondItem="3Ef-kw-zPq" secondAttribute="trailing" constant="16" id="Dd6-lY-Je2"/>
                             <constraint firstAttribute="bottom" secondItem="T15-9u-ndX" secondAttribute="bottom" constant="5" id="Dwe-gi-sSU"/>
                             <constraint firstItem="kid-2F-LAr" firstAttribute="top" secondItem="FHw-2Z-Ykq" secondAttribute="top" constant="20" id="F0q-vg-Ugm"/>
                             <constraint firstAttribute="trailing" secondItem="T15-9u-ndX" secondAttribute="trailing" constant="5" id="W2G-28-2jL"/>
                             <constraint firstItem="T15-9u-ndX" firstAttribute="top" secondItem="D9M-5L-cpZ" secondAttribute="bottom" constant="16" id="WnH-fv-d0h"/>
+                            <constraint firstItem="kid-2F-LAr" firstAttribute="leading" secondItem="3Ef-kw-zPq" secondAttribute="trailing" constant="12" id="e9v-Ag-fvM"/>
                             <constraint firstAttribute="trailing" secondItem="kid-2F-LAr" secondAttribute="trailing" constant="20" id="kcN-qa-v6o"/>
                             <constraint firstItem="3Ef-kw-zPq" firstAttribute="top" secondItem="FHw-2Z-Ykq" secondAttribute="top" constant="20" id="kif-v2-CVn"/>
                             <constraint firstItem="kid-2F-LAr" firstAttribute="leading" secondItem="qPf-IK-XpE" secondAttribute="leading" constant="-1" id="xsE-kX-90B"/>
