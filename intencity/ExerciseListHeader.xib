@@ -20,34 +20,34 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pri-UG-bKY">
                                 <rect key="frame" x="18" y="1" width="573" height="49"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zah-rX-B3a">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zah-rX-B3a">
                                         <rect key="frame" x="0.0" y="0.0" width="176" height="49"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzE-II-NN6">
-                                                <rect key="frame" x="0.0" y="14" width="25" height="21"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="49"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legs &amp; Lower Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syu-0o-c9o">
-                                                <rect key="frame" x="30" y="14" width="146" height="21"/>
+                                                <rect key="frame" x="30" y="0.0" width="146" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GDQ-kq-2dk">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDQ-kq-2dk">
                                         <rect key="frame" x="537" y="0.0" width="36" height="49"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMH-Iu-sFY" customClass="IntencityButtonNoBackgroundDark" customModule="Intencity" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMH-Iu-sFY" customClass="IntencityButtonNoBackgroundDark" customModule="Intencity" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="18" height="49"/>
                                                 <state key="normal" image="magnifying_glass"/>
                                                 <connections>
                                                     <action selector="searchClicked:" destination="awo-Qd-4AI" eventType="touchUpInside" id="pnc-hh-jTe"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dq6-Tp-her" customClass="IntencityButtonNoBackgroundDark" customModule="Intencity" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dq6-Tp-her" customClass="IntencityButtonNoBackgroundDark" customModule="Intencity" customModuleProvider="target">
                                                 <rect key="frame" x="18" y="0.0" width="18" height="49"/>
                                                 <state key="normal" image="info"/>
                                                 <connections>

@@ -23,7 +23,8 @@ class IntencityTabButton: UIButton
         self.setTitleColor(Color.secondary_dark, forState: .Highlighted)
         
         self.layer.borderWidth = Dimention.BORDER_WIDTH
-        self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING)
+        
+        self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.TAB_PADDING_TOP_BOTTOM, Dimention.TAB_PADDING_SIDES, Dimention.TAB_PADDING_TOP_BOTTOM, Dimention.TAB_PADDING_SIDES)
         
         // The callbacks for the button states.
         self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
