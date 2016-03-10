@@ -18,130 +18,148 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6k2-ph-j3M" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="111" y="260" width="179" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Forgot Password?"/>
-                                <connections>
-                                    <segue destination="Mqc-NP-a7F" kind="show" id="3fB-Yg-YIX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsH-Sf-J8e" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="311" y="260" width="179" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Create an account"/>
-                                <connections>
-                                    <segue destination="pKO-UR-RFM" kind="show" id="XOa-EP-Yrm"/>
-                                </connections>
-                            </button>
-                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="mUE-1g-EhU">
-                                <rect key="frame" x="215" y="28" width="171" height="153"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="TJB-PJ-wYx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4wn-Lg-xYv" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="I4p-wS-zEt">
+                                                <rect key="frame" x="16" y="115" width="568" height="371"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="odF-6C-fgF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="568" height="170"/>
+                                                        <subviews>
+                                                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="mUE-1g-EhU">
+                                                                <rect key="frame" x="60" y="0.0" width="449" height="150"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="HVd-LM-XbG">
+                                                                        <variation key="heightClass=compact-widthClass=compact" constant="50"/>
+                                                                    </constraint>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HSi-Bb-bGt">
+                                                                <rect key="frame" x="274" y="150" width="20" height="20"/>
+                                                            </activityIndicatorView>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZCV-ZA-0RX">
+                                                        <rect key="frame" x="0.0" y="170" width="568" height="80"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="&quot;email&quot;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ukk-qD-wJJ" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="568" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="b24-UK-hI8"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next"/>
+                                                            </textField>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zlc-Av-b4z" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="40" width="568" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="QmA-qG-Iz4"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="EQm-eV-uox">
+                                                        <rect key="frame" x="0.0" y="250" width="568" height="28"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6k2-ph-j3M" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="446" height="28"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <state key="normal" title="Forgot Password?"/>
+                                                                <connections>
+                                                                    <segue destination="Mqc-NP-a7F" kind="show" id="3fB-Yg-YIX"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="·" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uo0-dq-Wsp">
+                                                                <rect key="frame" x="449" y="4" width="5" height="21"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsH-Sf-J8e" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                                                <rect key="frame" x="457" y="0.0" width="111" height="28"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <state key="normal" title="Create an account"/>
+                                                                <connections>
+                                                                    <segue destination="pKO-UR-RFM" kind="show" id="XOa-EP-Yrm"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7Uk-dp-QHX">
+                                                        <rect key="frame" x="0.0" y="278" width="568" height="28"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9M-1z-dHi">
+                                                                <rect key="frame" x="0.0" y="0.0" width="403" height="28"/>
+                                                                <state key="normal" image="checkbox_unchecked"/>
+                                                                <connections>
+                                                                    <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="rOs-Wn-Hem"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaS-8x-1Lq">
+                                                                <rect key="frame" x="408" y="0.0" width="160" height="28"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <state key="normal" title="I agree to the terms of use"/>
+                                                                <connections>
+                                                                    <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="Tai-WZ-KIk"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="afJ-97-Ai3">
+                                                        <rect key="frame" x="0.0" y="306" width="568" height="65"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6F-8a-iVl" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="568" height="30"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <state key="normal" title="SIGN IN"/>
+                                                                <connections>
+                                                                    <action selector="loginClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="oI8-ID-Efg"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxd-FN-Bcn" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="35" width="568" height="30"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <state key="normal" title="TRY INTENCITY"/>
+                                                                <connections>
+                                                                    <action selector="tryIntencityClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="r6L-f0-0hy"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="I4p-wS-zEt" secondAttribute="bottom" constant="16" id="4DB-n3-Ca1"/>
+                                            <constraint firstItem="I4p-wS-zEt" firstAttribute="leading" secondItem="4wn-Lg-xYv" secondAttribute="leading" constant="16" id="ISy-xX-E9N"/>
+                                            <constraint firstAttribute="trailing" secondItem="I4p-wS-zEt" secondAttribute="trailing" constant="16" id="yCZ-P7-zEu"/>
+                                            <constraint firstItem="I4p-wS-zEt" firstAttribute="top" secondItem="4wn-Lg-xYv" secondAttribute="top" constant="16" id="z7u-kw-dv1"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="HVd-LM-XbG">
-                                        <variation key="heightClass=compact-widthClass=compact" constant="50"/>
-                                    </constraint>
+                                    <constraint firstItem="4wn-Lg-xYv" firstAttribute="top" secondItem="TJB-PJ-wYx" secondAttribute="top" id="113-8X-uec"/>
+                                    <constraint firstAttribute="bottom" secondItem="4wn-Lg-xYv" secondAttribute="bottom" id="b7O-Mr-4xo"/>
+                                    <constraint firstItem="4wn-Lg-xYv" firstAttribute="width" secondItem="TJB-PJ-wYx" secondAttribute="width" id="hW4-Ch-vzo"/>
+                                    <constraint firstAttribute="trailing" secondItem="4wn-Lg-xYv" secondAttribute="trailing" id="iei-UI-8tQ"/>
+                                    <constraint firstItem="4wn-Lg-xYv" firstAttribute="leading" secondItem="TJB-PJ-wYx" secondAttribute="leading" id="vIF-eA-ZPQ"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="·" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uo0-dq-Wsp">
-                                <rect key="frame" x="298" y="264" width="5" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9M-1z-dHi">
-                                <rect key="frame" x="57" y="303" width="18" height="22"/>
-                                <state key="normal" image="checkbox_unchecked"/>
-                                <connections>
-                                    <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="rOs-Wn-Hem"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6F-8a-iVl" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="20" y="332" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="SIGN IN"/>
-                                <connections>
-                                    <action selector="loginClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="oI8-ID-Efg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxd-FN-Bcn" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="219" y="378" width="163" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="TRY INTENCITY"/>
-                                <connections>
-                                    <action selector="tryIntencityClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="r6L-f0-0hy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaS-8x-1Lq">
-                                <rect key="frame" x="97" y="299" width="483" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="I agree to the terms of use"/>
-                                <connections>
-                                    <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="Tai-WZ-KIk"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDl-uu-taj">
-                                <rect key="frame" x="3" y="299" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="kM9-Q9-Ms0" kind="show" identifier="SegueToTerms" id="IGy-eo-F4g"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HSi-Bb-bGt">
-                                <rect key="frame" x="290" y="172" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="&quot;email&quot;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ukk-qD-wJJ" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="20" y="189" width="560" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="b24-UK-hI8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zlc-Av-b4z" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="20" y="227" width="560" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="QmA-qG-Iz4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
-                            </textField>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="o9M-1z-dHi" firstAttribute="top" secondItem="6k2-ph-j3M" secondAttribute="bottom" constant="3" id="1oz-Xd-3b7"/>
-                            <constraint firstItem="vaS-8x-1Lq" firstAttribute="centerY" secondItem="o9M-1z-dHi" secondAttribute="centerY" id="2kI-vl-Zmd"/>
-                            <constraint firstItem="Uo0-dq-Wsp" firstAttribute="leading" secondItem="6k2-ph-j3M" secondAttribute="trailing" id="4HS-q7-2Rw"/>
-                            <constraint firstItem="Ukk-qD-wJJ" firstAttribute="top" secondItem="mUE-1g-EhU" secondAttribute="bottom" constant="8" id="9Rn-gQ-r8o"/>
-                            <constraint firstItem="B6F-8a-iVl" firstAttribute="top" secondItem="o9M-1z-dHi" secondAttribute="bottom" constant="8" id="AcZ-VL-Q7n"/>
-                            <constraint firstItem="Ukk-qD-wJJ" firstAttribute="trailing" secondItem="38y-gE-STT" secondAttribute="trailingMargin" id="Ca0-sH-rGm"/>
-                            <constraint firstItem="6k2-ph-j3M" firstAttribute="top" secondItem="Zlc-Av-b4z" secondAttribute="bottom" constant="2" id="D7a-ck-ZhR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="vaS-8x-1Lq" secondAttribute="trailing" constant="16" id="DTW-tk-oMV"/>
-                            <constraint firstItem="vaS-8x-1Lq" firstAttribute="leading" secondItem="o9M-1z-dHi" secondAttribute="trailing" constant="5" id="GIE-JI-mEu"/>
-                            <constraint firstItem="lxd-FN-Bcn" firstAttribute="top" secondItem="B6F-8a-iVl" secondAttribute="bottom" constant="8" id="Gb9-tI-4PG"/>
-                            <constraint firstItem="B6F-8a-iVl" firstAttribute="centerX" secondItem="38y-gE-STT" secondAttribute="centerX" id="HMl-zE-Ji0"/>
-                            <constraint firstItem="Uo0-dq-Wsp" firstAttribute="centerX" secondItem="38y-gE-STT" secondAttribute="centerX" id="JtB-Qs-eo0"/>
-                            <constraint firstItem="B6F-8a-iVl" firstAttribute="trailing" secondItem="38y-gE-STT" secondAttribute="trailingMargin" id="Kww-1s-1zm"/>
-                            <constraint firstItem="RsH-Sf-J8e" firstAttribute="top" secondItem="Zlc-Av-b4z" secondAttribute="bottom" constant="2" id="Ruf-o5-8cv"/>
-                            <constraint firstItem="mUE-1g-EhU" firstAttribute="top" secondItem="hvO-MJ-Zno" secondAttribute="bottom" constant="16" id="S17-YB-CYn"/>
-                            <constraint firstItem="Zlc-Av-b4z" firstAttribute="leading" secondItem="38y-gE-STT" secondAttribute="leadingMargin" id="T93-md-faN"/>
-                            <constraint firstItem="HSi-Bb-bGt" firstAttribute="centerX" secondItem="38y-gE-STT" secondAttribute="centerX" id="bvN-1h-8Ha"/>
-                            <constraint firstItem="o9M-1z-dHi" firstAttribute="leading" secondItem="38y-gE-STT" secondAttribute="leadingMargin" id="e7r-10-4vU"/>
-                            <constraint firstItem="Ukk-qD-wJJ" firstAttribute="leading" secondItem="38y-gE-STT" secondAttribute="leadingMargin" id="f7t-xR-6Ne"/>
-                            <constraint firstItem="B6F-8a-iVl" firstAttribute="leading" secondItem="38y-gE-STT" secondAttribute="leadingMargin" id="h40-ts-5IT"/>
-                            <constraint firstItem="mUE-1g-EhU" firstAttribute="centerX" secondItem="38y-gE-STT" secondAttribute="centerX" id="kmP-7V-PjN"/>
-                            <constraint firstItem="Zlc-Av-b4z" firstAttribute="top" secondItem="Ukk-qD-wJJ" secondAttribute="bottom" constant="5" id="pcl-hg-hS8"/>
-                            <constraint firstItem="HSi-Bb-bGt" firstAttribute="top" secondItem="mUE-1g-EhU" secondAttribute="bottom" constant="2" id="q2b-4M-1mZ"/>
-                            <constraint firstItem="Zlc-Av-b4z" firstAttribute="trailing" secondItem="38y-gE-STT" secondAttribute="trailingMargin" id="quA-WP-mi2"/>
-                            <constraint firstItem="lxd-FN-Bcn" firstAttribute="centerX" secondItem="38y-gE-STT" secondAttribute="centerX" id="tMB-BX-ksf"/>
-                            <constraint firstItem="RsH-Sf-J8e" firstAttribute="leading" secondItem="Uo0-dq-Wsp" secondAttribute="trailing" id="vYx-s0-g5t"/>
-                            <constraint firstItem="Uo0-dq-Wsp" firstAttribute="centerY" secondItem="RsH-Sf-J8e" secondAttribute="centerY" id="vsN-x5-QfV"/>
-                            <constraint firstItem="vaS-8x-1Lq" firstAttribute="trailing" secondItem="38y-gE-STT" secondAttribute="trailingMargin" constant="16" id="zfZ-wQ-ZbI"/>
+                            <constraint firstItem="Ma0-9S-afZ" firstAttribute="top" secondItem="TJB-PJ-wYx" secondAttribute="bottom" id="8zc-qi-fyW"/>
+                            <constraint firstItem="TJB-PJ-wYx" firstAttribute="leading" secondItem="38y-gE-STT" secondAttribute="leading" id="E3l-P5-N4V"/>
+                            <constraint firstAttribute="trailing" secondItem="TJB-PJ-wYx" secondAttribute="trailing" id="jBg-vy-RuS"/>
+                            <constraint firstItem="TJB-PJ-wYx" firstAttribute="top" secondItem="38y-gE-STT" secondAttribute="top" id="w5P-jH-NkX"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="DTW-tk-oMV"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="fRt-VZ-PIT"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -179,7 +197,7 @@
                                 <rect key="frame" x="1" y="0.0" width="600" height="520"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="y44-1h-ZaS">
-                                        <rect key="frame" x="275" y="0.0" width="50" height="14"/>
+                                        <rect key="frame" x="76" y="0.0" width="449" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="ypc-xk-jFf">
                                                 <variation key="heightClass=compact-widthClass=compact" constant="50"/>
@@ -290,14 +308,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hrR-nu-JUX">
                                         <rect key="frame" x="0.0" y="245" width="584" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wx-pf-t3b">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wx-pf-t3b">
                                                 <rect key="frame" x="0.0" y="4" width="59" height="22"/>
                                                 <state key="normal" image="checkbox_unchecked"/>
                                                 <connections>
                                                     <action selector="termsOfUseClicked:" destination="pKO-UR-RFM" eventType="touchUpInside" id="914-5i-rUe"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOR-da-2JA">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOR-da-2JA">
                                                 <rect key="frame" x="59" y="1" width="525" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="I agree to the terms of use"/>
@@ -310,9 +328,6 @@
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QF-4Z-p9f">
                                         <rect key="frame" x="0.0" y="278" width="584" height="0.0"/>
                                         <state key="normal" title="Button"/>
-                                        <connections>
-                                            <segue destination="kM9-Q9-Ms0" kind="show" identifier="SegueToTerms" id="bp9-1s-v0D"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIB-we-biy" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="280" width="584" height="30"/>
@@ -363,13 +378,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aBl-ag-6Wh">
-                                <rect key="frame" x="20" y="16" width="560" height="195"/>
+                                <rect key="frame" x="20" y="16" width="560" height="295"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GeI-F1-HLl">
-                                        <rect key="frame" x="255" y="0.0" width="50" height="70"/>
+                                        <rect key="frame" x="56" y="0.0" width="449" height="170"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="p2P-2m-kAb">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="449" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="N0b-js-HgK">
                                                         <variation key="heightClass=compact-widthClass=compact" constant="50"/>
@@ -377,12 +392,12 @@
                                                 </constraints>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iV1-mM-G5A">
-                                                <rect key="frame" x="15" y="50" width="20" height="20"/>
+                                                <rect key="frame" x="215" y="150" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aIr-be-UoI">
-                                        <rect key="frame" x="0.0" y="86" width="560" height="63"/>
+                                        <rect key="frame" x="0.0" y="186" width="560" height="63"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter email below" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QW8-Ob-Vs5">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="18"/>
@@ -401,7 +416,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7n-Fx-jnc" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="165" width="560" height="30"/>
+                                        <rect key="frame" x="0.0" y="265" width="560" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="RESET PASSWORD"/>
                                         <connections>
@@ -465,7 +480,4 @@
         <image name="checkbox_unchecked" width="18" height="18"/>
         <image name="intencity_logo" width="449" height="354"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="IGy-eo-F4g"/>
-    </inferredMetricsTieBreakers>
 </document>

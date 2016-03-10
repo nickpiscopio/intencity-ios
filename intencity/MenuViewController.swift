@@ -146,8 +146,6 @@ class MenuViewController: UIViewController
             
             if (viewController == Constant.TERMS_VIEW_CONTROLLER || viewController == Constant.PRIVACY_POLICY_VIEW_CONTROLLER)
             {
-                // Push to the terms view.
-                
                 storyboardName = Constant.LOGIN_STORYBOARD
                 
                 viewControllerName = viewController

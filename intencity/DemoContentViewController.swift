@@ -26,12 +26,15 @@ class DemoContentViewController: PageViewController
     {
         super.viewDidLoad()
         
-        self.titleLabel.text = self.titleText
-        self.descriptionLabel.text = self.descriptionText
+        titleLabel.text = self.titleText
+        descriptionLabel.text = self.descriptionText
+        
+        titleLabel.textColor = Color.white
+        descriptionLabel.textColor = Color.white
         
         paddedView.backgroundColor = Color.transparent
-        self.imageView.image = UIImage(named: self.imageFile)
-        self.view.backgroundColor = backgroundColor
+        imageView.image = UIImage(named: self.imageFile)
+        view.backgroundColor = backgroundColor
     }
 
     override func didReceiveMemoryWarning()

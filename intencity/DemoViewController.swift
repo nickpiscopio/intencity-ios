@@ -102,7 +102,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         if (pageTitle == "")
         {
             pageControl.hidden = true
-            next.hidden = true
+//            next.hidden = true
             let storyboard : UIStoryboard = UIStoryboard(name: Constant.LOGIN_STORYBOARD, bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier(Constant.LOGIN_NAV_CONTROLLER) as! LoginNavController
             vc.backgroundColor = demoView.backgroundColor
@@ -112,7 +112,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         else
         {
             pageControl.hidden = false
-            next.hidden = false
+//            next.hidden = false
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("DemoContentViewController") as! DemoContentViewController
             vc.titleText = pageTitle
             vc.descriptionText = demoView.description

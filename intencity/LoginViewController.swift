@@ -237,8 +237,13 @@ class LoginViewController: PageViewController, ServiceDelegate
         if (!isTermsChecked())
         {
             termsButton.setImage(checked, forState: .Normal)
-            
-            self.performSegueWithIdentifier("SegueToTerms", sender: sender)
+
+            let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
+            viewController.includeNavButton = true
+            viewController.isTerms = true
+                
+            self.navigationController!.pushViewController(viewController, animated: true)
+
         }
         else
         {
