@@ -39,6 +39,8 @@ class LoginViewController: PageViewController, ServiceDelegate
         // Sets the background color of the view.
         self.view.backgroundColor = Color.page_background
         
+        separator.textColor = Color.secondary_dark
+        
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("sign_in_title", comment: "")
         

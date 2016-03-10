@@ -34,16 +34,16 @@ class IntencityButtonNoBackground: UIButton
     }
     
     /*
-     * The function for when the button has been released.
-     */
+    * The function for when the button has been released.
+    */
     func buttonUp()
     {
         self.layer.backgroundColor = Color.transparent.CGColor
     }
     
     /*
-     * The function for when the button is being pressed.
-     */
+    * The function for when the button is being pressed.
+    */
     func buttonDown()
     {
         self.layer.backgroundColor = Color.shadow.CGColor

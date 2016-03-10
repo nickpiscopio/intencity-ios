@@ -1053,7 +1053,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Rvg-co-s9g">
                                                         <rect key="frame" x="0.0" y="40" width="568" height="28"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52d-Uk-CvQ" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52d-Uk-CvQ" customClass="IntencityButtonNoBackgroundLarge" customModule="Intencity" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="41" height="28"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <state key="normal" title="Button"/>
