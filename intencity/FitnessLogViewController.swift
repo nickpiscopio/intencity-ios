@@ -52,6 +52,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
 
     var routineCellController: RoutineCellController!
     
+    var awards = [String: String]()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -291,6 +293,35 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
         else
         {
+            // We remove the exercises from the database here, so when we go back to
+            // the fitness log, it doesn't ask if we want to continue where we left off.
+            removeExercisesFromDatabase()
+            
+            // Grant the user the "Kept Swimming" badge if he or she didn't skip an exercise.
+            if (!defaults.boolForKey(Constant.BUNDLE_EXERCISE_SKIPPED))
+            {
+                let keptSwimmingAward = Awards(awardImageName: "add_button_dark", awardDescription: NSLocalizedString("award_kept_swimming_description", comment: ""))
+                Util.grantBadgeToUser(email, badgeName: Badge.KEPT_SWIMMING, content: keptSwimmingAward, onlyAllowOne: true)
+            }
+            else
+            {
+                // Set the user has skipped an exercise to false for next time.
+                setExerciseSkipped(false);
+            }
+            
+            let finisherDescription = NSLocalizedString("award_finisher_description", comment: "")
+            
+            let notificationHandler = NotificationHandler.getInstance(nil)
+            // Custom alert: https://github.com/danny-source/DYAlertPickerViewDemo
+//            let awards = notificationHandler.awards
+            
+            let finisherAward = Awards(awardImageName: "add_button_dark", awardDescription: finisherDescription)
+            if (!notificationHandler.hasAward(finisherAward))
+            {
+                Util.grantPointsToUser(email, points: Constant.POINTS_COMPLETING_WORKOUT, description: NSLocalizedString("award_finisher_description", comment: ""))
+                Util.grantBadgeToUser(email, badgeName: Badge.FINISHER, content: finisherAward, onlyAllowOne: true)
+            }
+            
             let actions = [ UIAlertAction(title: NSLocalizedString("finish_button", comment: ""), style: .Default, handler: nil),
                             UIAlertAction(title: NSLocalizedString("facebook_button", comment: ""), style: .Default, handler: share(Constant.SHARE_VIA_FACEBOOK)),
                             UIAlertAction(title: NSLocalizedString("tweet_button", comment: ""), style: .Default, handler: share(Constant.SHARE_VIA_TWITTER)) ]
@@ -300,6 +331,28 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 message: "",
                 actions: actions)
         }
+    }
+    
+    /**
+     * Remove the exercises from the database.
+     */
+    func removeExercisesFromDatabase()
+    {
+        // Remove all the exercises from the exercise list.
+        ExerciseData.reset()
+        
+        let dbHelper = DBHelper()
+        dbHelper.resetDb(dbHelper.openDb())
+    }
+    
+    /**
+     * Sets whether the user has skipped an exercise for today.
+     *
+     * @param skipped   Boolean of if the user ahs skipped an exercise.
+     */
+    func setExerciseSkipped(skipped: Bool)
+    {
+        defaults.setBool(skipped, forKey: Constant.BUNDLE_EXERCISE_SKIPPED)
     }
     
     /**
@@ -543,8 +596,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         var conductUpdate = false
         var conductInsert = false
         
-//        String badge = Badge.LEFT_IT_ON_THE_FIELD;
-//        int setsWithRepsGreaterThan10 = 0;
+        let badge = Badge.LEFT_IT_ON_THE_FIELD
+        var setsWithRepsGreaterThan10 = 0
         
         // we need our own indexes here or the services won't work properly.
         var updateIndex = 0
@@ -555,23 +608,32 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         {
             let set = sets[i]
             
+            var containsBadge = false
+            
+            for (badgeName, exerciseAwardName) in awards
+            {
+                if (badgeName == badge && exerciseAwardName == exerciseName)
+                {
+                    containsBadge = true
+                    
+                    break
+                }
+            }
+            
             // Checks to see if the user deserves the "Left it on the Field" badge.
-//            if (!awards.containsKey(badge) && set.getReps() >= 10)
-//            {
-//                setsWithRepsGreaterThan10++;
-//                
-//                if (setsWithRepsGreaterThan10 >= 2)
-//                {
-//                    SecurePreferences securePreferences = new SecurePreferences(context);
-//                    String email = securePreferences.getString(Constant.USER_ACCOUNT_EMAIL, "");
-//                    
-//                    Util.grantBadgeToUser(email, badge,
-//                        new AwardDialogContent(R.mipmap.left_it_on_the_field,
-//                            context.getString(R.string.award_left_it_on_the_field_description)), false);
-//                    
-//                    awards.put(badge, exerciseName);
-//                }
-//            }
+            if (!containsBadge && set.reps >= 10 || !containsBadge && Util.convertToInt(set.duration) >= 100)
+            {
+                setsWithRepsGreaterThan10++
+                    
+                if (setsWithRepsGreaterThan10 >= 2)
+                {
+                    let email = Util.getEmailFromDefaults()
+                        
+                    Util.grantBadgeToUser(email, badgeName: badge, content: Awards(awardImageName: "add_button_dark", awardDescription: NSLocalizedString("award_left_it_on_the_field_description", comment: "")), onlyAllowOne: false)
+                        
+                    awards[badge] = exerciseName
+                }
+            }
             
             if (set.webId > 0)
             {
@@ -912,6 +974,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         {
             addExercise(fromSearch)
         }
+        
+        // Add that the user has skipped an exercise.
+        // Can't get the Kept Swimming badge.
+        setExerciseSkipped(true)
         
         if (forever && exerciseName != WARM_UP_NAME && exerciseName != STRETCH_NAME)
         {

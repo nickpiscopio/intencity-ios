@@ -108,6 +108,8 @@ struct Constant
     static let BUNDLE_EXERCISE_NAME = "com.intencity.intencity.bundle.exercise.name";
     static let BUNDLE_ID = "com.intencity.intencity.bundle.id";
     static let BUNDLE_EXERCISE_TYPE = "com.intencity.intencity.exercise.type";
+    static let BUNDLE_EXERCISE_SKIPPED = "com.intencity.intencity.exercise.skipped";
+    
     static let ENDPOINT = "http://www.intencityapp.com/";
     static let SERVICE_FOLDER = ENDPOINT + "dev/services/";
     static let SERVICE_FOLDER_MOBILE = SERVICE_FOLDER + "mobile/";

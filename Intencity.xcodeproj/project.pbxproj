@@ -52,6 +52,7 @@
 		BD8810FA1C91CA270098FA64 /* IntencityButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */; };
 		BD8810FC1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */; };
 		BD8811001C9220E30098FA64 /* IntencityTextFieldBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810FF1C9220E30098FA64 /* IntencityTextFieldBottomBorder.swift */; };
+		BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8811011C92FF3A0098FA64 /* Badge.swift */; };
 		BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9479FA1C6CE43C003F3767 /* JSON.swift */; };
 		BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD9479FC1C6CE452003F3767 /* Loading.storyboard */; };
 		BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A011C6CED31003F3767 /* LoginNavController.swift */; };
@@ -171,6 +172,7 @@
 		BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackground.swift; sourceTree = "<group>"; };
 		BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundSmall.swift; sourceTree = "<group>"; };
 		BD8810FF1C9220E30098FA64 /* IntencityTextFieldBottomBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityTextFieldBottomBorder.swift; sourceTree = "<group>"; };
+		BD8811011C92FF3A0098FA64 /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		BD9479FA1C6CE43C003F3767 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		BD9479FC1C6CE452003F3767 /* Loading.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		BD947A001C6CE598003F3767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				BD1053971C6CC989004C10C7 /* Extensions */,
 				BD947A031C6CF252003F3767 /* IntencityError.swift */,
 				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
+				BD8811011C92FF3A0098FA64 /* Badge.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */,
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
 				BD7C7E831C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift in Sources */,
+				BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */,
 				BDE493FF1C7B9B5B005817D0 /* MenuHeaderCellController.swift in Sources */,
 				BD7C7E871C7CA0DA005AFFDD /* ChangePasswordViewController.swift in Sources */,
 				BD6E4B041C84A89900C4E6FB /* User.swift in Sources */,

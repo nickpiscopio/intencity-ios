@@ -288,4 +288,50 @@ class Util
         // Add an award to the notification handler.
         NotificationHandler.getInstance(nil).addAward(Awards(awardTitle: "+ \(points)", awardDescription: description));
     }
+    
+    /**
+     * Calls the service to grant a badge to the user.
+     *
+     * @param email         The email of the user to grant points.
+     * @param badgeName     The name of the badge that is being awarded.
+     * @param content       The content that will be displayed to the user.
+     */
+    static func grantBadgeToUser(email: String, badgeName: String, content: Awards)
+    {
+        // We won't display the date anywhere, so we probably don't need this in local time.
+        let now = Float(NSDate().timeIntervalSince1970 * 1000)
+        
+        ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
+                    serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                    params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_BADGE, variables: [ email, String(now), badgeName ]))
+        
+        // Add an award to the notification handler.
+        NotificationHandler.getInstance(nil).addAward(content);
+    }
+    
+    /**
+     * Calls the service to grant a badge to the user.
+     *
+     * @param email         The email of the user to grant points.
+     * @param badgeName     The name of the badge that is being awarded.
+     * @param content       The content that will be displayed to the user.
+     * @param onlyAllowOne  Boolean value to only allow one instance of a specifed badge.
+     */
+    static func grantBadgeToUser(email: String, badgeName: String, content: Awards, onlyAllowOne: Bool)
+    {
+        let notificationHandler = NotificationHandler.getInstance(nil);
+    
+        // Only grant the badge to the user if he or she doesn't have it
+        if (onlyAllowOne)
+        {
+            if (!notificationHandler.hasAward(content))
+            {
+                grantBadgeToUser(email, badgeName: badgeName, content: content)
+            }
+        }
+        else
+        {
+            grantBadgeToUser(email, badgeName: badgeName, content: content)
+        }
+    }
 }
