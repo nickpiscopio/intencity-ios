@@ -11,6 +11,8 @@ import UIKit
 
 class CreateAccountViewController: UIViewController, ServiceDelegate
 {    
+    @IBOutlet weak var createAccountDescription: UILabel!
+    @IBOutlet weak var createAccountPromise: UILabel!
     @IBOutlet weak var firstNameTextField: IntencityTextField!
     @IBOutlet weak var lastNameTextField: IntencityTextField!
     @IBOutlet weak var emailTextField: IntencityTextField!
@@ -38,6 +40,12 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         self.navigationItem.title = NSLocalizedString("title_create_account", comment: "")
         
         initTermsText()
+        
+        createAccountDescription.textColor = Color.secondary_light
+        createAccountPromise.textColor = Color.card_button_delete_deselect
+        
+        createAccountDescription.text = NSLocalizedString("create_account_description", comment: "")
+        createAccountPromise.text = NSLocalizedString("create_account_promise", comment: "")
         
         firstNameTextField?.placeholder = NSLocalizedString("first_name", comment: "")
         lastNameTextField?.placeholder = NSLocalizedString("last_name", comment: "")
@@ -202,6 +210,8 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         activityIndicator.startAnimating()
         activityIndicator.hidden = false
         
+        createAccountDescription.hidden = true
+        createAccountPromise.hidden = true
         firstNameTextField.hidden = true
         lastNameTextField.hidden = true
         emailTextField.hidden = true
@@ -218,6 +228,8 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
      */
     func stopCreateAccount()
     {
+        createAccountDescription.hidden = false
+        createAccountPromise.hidden = false
         firstNameTextField.hidden = false
         lastNameTextField.hidden = false
         emailTextField.hidden = false

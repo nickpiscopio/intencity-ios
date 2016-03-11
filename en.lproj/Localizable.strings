@@ -142,8 +142,9 @@
 
 /*  */
 "title_create_account" = "Create Account";
-
 "create_account_button" = "CREATE ACCOUNT";
+"create_account_description" = "Sign up below for the best possible experience with Intencity.";
+"create_account_promise" = "We promise we won\'t send you spam.";
 
 /*  */
 "title_terms" = "Terms of Use";
