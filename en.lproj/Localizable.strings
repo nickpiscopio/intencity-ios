@@ -489,7 +489,7 @@
 "award_sharing_description" = "Points for sharing your experience of Intencity!";
 
 /*  */
-"award_left_it_on_the_field_description" = "You earned the \"Left it on the Field\" badge for doing an exercise with at least two sets of 10 or more reps.";
+"award_left_it_on_the_field_description" = "You earned the \"Left it on the Field\" badge for doing an exercise with at least two sets of 10 or more reps or a duration of greater than 1 minute.";
 
 /*  */
 "award_kept_swimming_description" = "You earned the \"Kept Swimming\" badge for not skipping an exercise.";

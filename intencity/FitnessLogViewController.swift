@@ -300,7 +300,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // Grant the user the "Kept Swimming" badge if he or she didn't skip an exercise.
             if (!defaults.boolForKey(Constant.BUNDLE_EXERCISE_SKIPPED))
             {
-                let keptSwimmingAward = Awards(awardImageName: "add_button_dark", awardDescription: NSLocalizedString("award_kept_swimming_description", comment: ""))
+                let keptSwimmingAward = Awards(awardImageName: "badge_keep_swimming", awardDescription: NSLocalizedString("award_kept_swimming_description", comment: ""))
                 Util.grantBadgeToUser(email, badgeName: Badge.KEPT_SWIMMING, content: keptSwimmingAward, onlyAllowOne: true)
             }
             else
@@ -315,7 +315,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // Custom alert: https://github.com/danny-source/DYAlertPickerViewDemo
 //            let awards = notificationHandler.awards
             
-            let finisherAward = Awards(awardImageName: "add_button_dark", awardDescription: finisherDescription)
+            let finisherAward = Awards(awardImageName: "badge_finisher", awardDescription: finisherDescription)
             if (!notificationHandler.hasAward(finisherAward))
             {
                 Util.grantPointsToUser(email, points: Constant.POINTS_COMPLETING_WORKOUT, description: NSLocalizedString("award_finisher_description", comment: ""))
@@ -629,7 +629,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 {
                     let email = Util.getEmailFromDefaults()
                         
-                    Util.grantBadgeToUser(email, badgeName: badge, content: Awards(awardImageName: "add_button_dark", awardDescription: NSLocalizedString("award_left_it_on_the_field_description", comment: "")), onlyAllowOne: false)
+                    Util.grantBadgeToUser(email, badgeName: badge, content: Awards(awardImageName: "badge_field", awardDescription: NSLocalizedString("award_left_it_on_the_field_description", comment: "")), onlyAllowOne: false)
                         
                     awards[badge] = exerciseName
                 }
