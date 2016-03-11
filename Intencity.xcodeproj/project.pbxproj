@@ -51,7 +51,6 @@
 		BD7C7E891C7CA0E9005AFFDD /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E881C7CA0E9005AFFDD /* DeleteAccountViewController.swift */; };
 		BD8810FA1C91CA270098FA64 /* IntencityButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */; };
 		BD8810FC1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */; };
-		BD8811001C9220E30098FA64 /* IntencityTextFieldBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810FF1C9220E30098FA64 /* IntencityTextFieldBottomBorder.swift */; };
 		BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8811011C92FF3A0098FA64 /* Badge.swift */; };
 		BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9479FA1C6CE43C003F3767 /* JSON.swift */; };
 		BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD9479FC1C6CE452003F3767 /* Loading.storyboard */; };
@@ -171,7 +170,6 @@
 		BD7C7E881C7CA0E9005AFFDD /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackground.swift; sourceTree = "<group>"; };
 		BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundSmall.swift; sourceTree = "<group>"; };
-		BD8810FF1C9220E30098FA64 /* IntencityTextFieldBottomBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityTextFieldBottomBorder.swift; sourceTree = "<group>"; };
 		BD8811011C92FF3A0098FA64 /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		BD9479FA1C6CE43C003F3767 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		BD9479FC1C6CE452003F3767 /* Loading.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
@@ -481,7 +479,6 @@
 				BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */,
 				BDD53BEF1C8A1CEB001235AE /* IntencityTabButton.swift */,
 				BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */,
-				BD8810FF1C9220E30098FA64 /* IntencityTextFieldBottomBorder.swift */,
 				BD36EC2C1C7170EB00F993CE /* IntencityCardView.swift */,
 				BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */,
 				BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */,
@@ -717,7 +714,6 @@
 				BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */,
 				BD43E11C1C847D77002F14C6 /* SearchViewController.swift in Sources */,
 				BD7C7E7C1C7C9ABD005AFFDD /* MenuRow.swift in Sources */,
-				BD8811001C9220E30098FA64 /* IntencityTextFieldBottomBorder.swift in Sources */,
 				BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */,
 				BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */,
 				BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */,
