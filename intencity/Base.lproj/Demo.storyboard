@@ -100,9 +100,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxQ-mi-DHK">
-                                <rect key="frame" x="548" y="550" width="32" height="30"/>
-                                <state key="normal" title="Next"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxQ-mi-DHK">
+                                <rect key="frame" x="544" y="545" width="40" height="40"/>
+                                <state key="normal" image="button_next"/>
                                 <connections>
                                     <action selector="nextClicked:" destination="Wma-3H-cLi" eventType="touchUpInside" id="CUS-xz-CxQ"/>
                                 </connections>
@@ -139,4 +139,7 @@
             <point key="canvasLocation" x="1174" y="746"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="button_next" width="40" height="40"/>
+    </resources>
 </document>
