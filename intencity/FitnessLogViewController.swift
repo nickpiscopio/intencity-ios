@@ -1036,6 +1036,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             sheet.setInitialText(generateShareMessage(socialNetwork))
             
             self.presentViewController(sheet, animated: true, completion: nil)
+            
+            // There will be no way we can know if they actually tweeted or not, so we will
+            // Grant points to the user for at least opening up twitter and thinking about tweeting.
+            Util.grantPointsToUser(email, points: Constant.POINTS_SHARING, description: NSLocalizedString("award_sharing_description", comment: ""))
         }
         else
         {
