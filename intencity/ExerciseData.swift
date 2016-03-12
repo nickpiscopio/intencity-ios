@@ -14,8 +14,9 @@ class ExerciseData
     static var instance: ExerciseData!
     
     var routineName: String
-    var exerciseList = [Exercise]()
     var exerciseIndex: Int
+    
+    var exerciseList = [Exercise]()
     
     static func getInstance() -> ExerciseData
     {

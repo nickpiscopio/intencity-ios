@@ -27,16 +27,15 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     let defaults = NSUserDefaults.standardUserDefaults()
 
-    var totalExercises = 7
+    var totalExercises: Int!
     
     var numberOfCells = 0
     
     var displayMuscleGroups = [String]()
-    var recommended = 0;
+    var recommended = 0
     
-    var email = "";
-    
-    var state = "";
+    var email = ""
+    var state = ""
     
     var currentExercises = [Exercise]()
     
@@ -68,8 +67,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         initConnectionViews()
         
-        state = Constant.ROUTINE_CELL
-        
         // Initialize the tableview.
         Util.initTableView(tableView, addFooter: true, emptyTableStringRes: "")
 
@@ -77,9 +74,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         Util.addUITableViewCell(tableView, nibNamed: "RoutineCard", cellName: Constant.ROUTINE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: "ExerciseCard", cellName: Constant.EXERCISE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.EXERCISE_LIST_HEADER, cellName: Constant.EXERCISE_LIST_HEADER)
-        
-        // Creates the instance of the exercise data so we can store the exercises in the database later.
-        exerciseData = ExerciseData.getInstance()
         
         showWelcome()
         
@@ -97,6 +91,13 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     func initRoutineCard()
     {
         showLoading()
+        
+        totalExercises = 7
+        
+        // Creates the instance of the exercise data so we can store the exercises in the database later.
+        exerciseData = ExerciseData.getInstance()
+        
+        state = Constant.ROUTINE_CELL
         
         ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
@@ -293,10 +294,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
         else
         {
-            // We remove the exercises from the database here, so when we go back to
-            // the fitness log, it doesn't ask if we want to continue where we left off.
-            removeExercisesFromDatabase()
-            
             // Grant the user the "Kept Swimming" badge if he or she didn't skip an exercise.
             if (!defaults.boolForKey(Constant.BUNDLE_EXERCISE_SKIPPED))
             {
@@ -322,9 +319,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 Util.grantBadgeToUser(email, badgeName: Badge.FINISHER, content: finisherAward, onlyAllowOne: true)
             }
             
-            let actions = [ UIAlertAction(title: NSLocalizedString("finish_button", comment: ""), style: .Default, handler: nil),
-                            UIAlertAction(title: NSLocalizedString("facebook_button", comment: ""), style: .Default, handler: share(Constant.SHARE_VIA_FACEBOOK)),
-                            UIAlertAction(title: NSLocalizedString("tweet_button", comment: ""), style: .Default, handler: share(Constant.SHARE_VIA_TWITTER)) ]
+            let actions = [ UIAlertAction(title: NSLocalizedString("facebook_button", comment: ""), style: .Default, handler: share(Constant.SHARE_VIA_FACEBOOK)),
+                            UIAlertAction(title: NSLocalizedString("tweet_button", comment: ""), style: .Default, handler: share(Constant.SHARE_VIA_TWITTER)),
+                            UIAlertAction(title: NSLocalizedString("finish_button", comment: ""), style: .Destructive, handler: finishExercising),
+                            UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil) ]
             
             Util.displayAlert(self,
                 title: NSLocalizedString("completed_workout_title", comment: ""),
@@ -340,6 +338,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     {
         // Remove all the exercises from the exercise list.
         ExerciseData.reset()
+        
+        // Remove all the current exercises from the exercise list.
+        currentExercises.removeAll()
         
         let dbHelper = DBHelper()
         dbHelper.resetDb(dbHelper.openDb())
@@ -1008,6 +1009,26 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     func cancelRemoval(indexPath: NSIndexPath)(alertAction: UIAlertAction!) { }
     
     /**
+     * The finish exercise alert button click.
+     */
+    func finishExercising(alertAction: UIAlertAction!)
+    {
+        finishExercising()
+    }
+    
+    /**
+     * The function to reset to the routine card.
+     */
+    func finishExercising()
+    {
+        // We remove the exercises from the database here, so when we go back to
+        // the fitness log, it doesn't ask if we want to continue where we left off.
+        removeExercisesFromDatabase()
+        
+        initRoutineCard()
+    }
+    
+    /**
      * Opens an alert for a user to share finishing Intencity's workout with social media.
      *
      * TUTORIAL: http://www.brianjcoleman.com/tutorial-share-facebook-twitter-swift/
@@ -1040,6 +1061,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // There will be no way we can know if they actually tweeted or not, so we will
             // Grant points to the user for at least opening up twitter and thinking about tweeting.
             Util.grantPointsToUser(email, points: Constant.POINTS_SHARING, description: NSLocalizedString("award_sharing_description", comment: ""))
+            
+            finishExercising()
         }
         else
         {
