@@ -9,17 +9,14 @@
 
 import UIKit
 
-class DemoViewController: UIViewController, UIPageViewControllerDataSource
+class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate
 {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var next: UIButton!
     
     var pageViewController: UIPageViewController!
     var demoPages: [DemoView] = []
-    
-    var viewControllers: NSArray = []
-    
-    var index: Int = 0
+    var currentIndex: Int = 0
     
     override func viewDidLoad()
     {
@@ -33,16 +30,11 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         createNewDemoPage("demo_ranking_title", description: "demo_ranking_description", imageName: "demo_intencity", backgroundColor: Color.primary)
         createNewDemoPage("", description: "", imageName: "", backgroundColor: Color.page_background)
         
-        self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
-        self.pageViewController.dataSource = self
+        pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
+        pageViewController.dataSource = self
+        pageViewController.delegate = self
         
-        let startVC = self.displayViewControllerAtIndex(index)
-        viewControllers = NSArray(object: startVC)
-        
-        setViewController()
-        
-        // 37 is apparently the height of the page indicator.
-//        self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.size.height + 37)
+        setViewController(currentIndex)
         
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
@@ -53,7 +45,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         self.view.bringSubviewToFront(next)
         
         // Sets the number of dots in the page control.
-        self.pageControl.numberOfPages = demoPages.count;
+        self.pageControl.numberOfPages = demoPages.count
     }
 
     override func didReceiveMemoryWarning()
@@ -61,31 +53,29 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         super.didReceiveMemoryWarning()
     }
     
-    /*
-        Adds all the demo screens to the page controller.
-    
-        title               The title for the demo screen.
-        description         The description for the demo screen.
-        imageName           The name of the image that will be displayed on the screen.
-                            This can be found in the Assets.xcassets.
-        backgroundColor     The background color for the demo screen.
-    */
+    /**
+     * Adds all the demo screens to the page controller.
+     *
+     * @param title               The title for the demo screen.
+     * @param description         The description for the demo screen.
+     * @param imageName           The name of the image that will be displayed on the screen.
+     *                     This can be found in the Assets.xcassets.
+     * @param backgroundColor     The background color for the demo screen.
+     */
     func createNewDemoPage(title: String, description: String, imageName: String, backgroundColor: UIColor)
     {
         self.demoPages.append(DemoView(title: NSLocalizedString(title, comment: ""), description: NSLocalizedString(description, comment: ""), imageName: imageName, backgroundColor: backgroundColor))
     }
     
-    /*
-        Displays the view controller at a specified index.
-        
-        index   The index of the view to show.
-    
-        return  The view controller to show.
+    /**
+     *  Displays the view controller at a specified index.
+     *
+     * @param index   The index of the view to show.
+     *
+     * @return The view controller to show.
     */
     func displayViewControllerAtIndex(index: Int) -> UIViewController
     {
-        self.index = index
-        
         let pageCount = self.demoPages.count
         let demoView = self.demoPages[index]
         let pageTitle = demoView.title
@@ -101,8 +91,6 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         
         if (pageTitle == "")
         {
-            pageControl.hidden = true
-//            next.hidden = true
             let storyboard : UIStoryboard = UIStoryboard(name: Constant.LOGIN_STORYBOARD, bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier(Constant.LOGIN_NAV_CONTROLLER) as! LoginNavController
             vc.backgroundColor = demoView.backgroundColor
@@ -111,8 +99,6 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         }
         else
         {
-            pageControl.hidden = false
-//            next.hidden = false
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("DemoContentViewController") as! DemoContentViewController
             vc.titleText = pageTitle
             vc.descriptionText = demoView.description
@@ -124,14 +110,12 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         }
     }
     
-    /*
-        The function that is called to create a view before the current view.
-    */
+    /**
+     * The function that is called to create a view before the current view.
+     */
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
     {
-        let vc = viewController as! PageViewController
-        var index = vc.pageIndex as Int
-        self.pageControl.currentPage = index
+        var index = currentIndex
         
         if (index == 0 || index == NSNotFound)
         {
@@ -143,26 +127,13 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         return self.displayViewControllerAtIndex(index)
     }
     
-    /*
-        The function that is called to create a view after the current view.
-    */
+    /**
+     * The function that is called to create a view after the current view.
+     */
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
     {
-        var index: Int
-        do
-        {
-            index = try getCurrentIndex(viewController)
-            
-            self.pageControl.currentPage = index
-        }
-        catch
-        {
-            // If we can't determine the index, then we must be on the login screen.
-            // The index for the login screen will be the last item in the list.
-            index = demoPages.count - 1
-        }
-    
-        
+        var index = currentIndex
+
         if (index == NSNotFound)
         {
             return nil
@@ -178,24 +149,70 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         return self.displayViewControllerAtIndex(index)
     }
     
+    /**
+     * The function that is called after the transition is completed from a pageViewController control swipe.
+     */
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)
+    {
+        let viewControllers = pageViewController.viewControllers!
+        
+        do
+        {
+            currentIndex = try getCurrentIndex(viewControllers[viewControllers.count - 1])
+        }
+        catch
+        {
+            // If we can't determine the index, then we must be on the login screen.
+            // The index for the login screen will be the last item in the list.
+            currentIndex = demoPages.count - 1
+        }
+        
+        updatePageControl()
+    }
+    
     @IBAction func nextClicked(sender: AnyObject)
     {
-        setViewController()
+        setViewController(++currentIndex)
     }
     
-    func setViewController()
+    /**
+     * Sets the view controller for the demo pages.
+     *
+     *  @param index    The index of the demo pages to show.
+     */
+    func setViewController(index: Int)
     {
-        let startVC : NSArray = viewControllers
+        // Pushes a view onto the pageViewController and forward.
+        pageViewController.setViewControllers([displayViewControllerAtIndex(index)], direction: .Forward, animated: true, completion: nil)
         
-        self.pageViewController.setViewControllers(startVC as? [UIViewController], direction: .Forward, animated: true, completion: nil)
+        updatePageControl()
     }
     
-    /*
-        Tries to get the current index.
+    /**
+     * Updates the page control on the demo screen.
+     */
+    func updatePageControl()
+    {
+        if (currentIndex == demoPages.count - 1)
+        {
+            next.hidden = true
+            pageControl.hidden = true
+        }
+        else
+        {
+            next.hidden = false
+            pageControl.hidden = false
+        }
+        
+        pageControl.currentPage = currentIndex
+    }
     
-        returns     The view controller index.
-        throws      A cast error if it cannot get the index.
-    */
+    /**
+     * Tries to get the current index.
+     *
+     * @returns     The view controller index.
+     * @throws      A cast error if it cannot get the index.
+     */
     func getCurrentIndex(viewController: UIViewController) throws -> Int
     {
         if let vc = viewController as? PageViewController
@@ -205,16 +222,4 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource
         
         throw IntencityError.CastError
     }
-
-    
-//    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int
-//    {
-//        return self.demoPages.count
-//    }
-//    
-//    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
-//    {
-//        return 0
-//    }
 }
-
