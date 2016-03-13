@@ -286,7 +286,7 @@ class Util
                     params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_POINTS, variables: [ email, String(points) ]))
     
         // Add an award to the notification handler.
-        NotificationHandler.getInstance(nil).addAward(Awards(awardTitle: "+ \(points)", awardDescription: description));
+        NotificationHandler.getInstance(nil).addAward(Awards(awardTitle: "+\(points)", awardDescription: description));
     }
     
     /**

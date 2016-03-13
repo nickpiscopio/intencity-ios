@@ -20,25 +20,31 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzV-wo-l7V">
                                 <rect key="frame" x="0.0" y="0.0" width="470" height="83"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0k7-hH-6u3">
+                                    <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="0k7-hH-6u3">
                                         <rect key="frame" x="16" y="16" width="438" height="51"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sXc-lQ-HTc">
-                                                <rect key="frame" x="0.0" y="0.0" width="77" height="51"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpj-4Z-E59">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="51"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r8c-lh-IL4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="51"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xJP-my-zYi">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="UVO-R0-uTv"/>
+                                                        </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbW-2t-CmN">
-                                                        <rect key="frame" x="50" y="0.0" width="27" height="51"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qN-ig-4PB">
+                                                        <rect key="frame" x="40" y="0.0" width="40" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="Tq5-bb-9Wt"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29h-hK-zwn">
-                                                <rect key="frame" x="82" y="0.0" width="356" height="51"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-Aq-oqT">
+                                                <rect key="frame" x="96" y="0.0" width="342" height="51"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -76,9 +82,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="awardDescription" destination="29h-hK-zwn" id="Njb-zd-4DB"/>
-                <outlet property="awardImage" destination="r8c-lh-IL4" id="85K-lc-qWB"/>
-                <outlet property="awardTitle" destination="tbW-2t-CmN" id="Ub3-Ok-Ltt"/>
+                <outlet property="awardDescription" destination="g0C-Aq-oqT" id="RsK-Du-bES"/>
+                <outlet property="awardImage" destination="xJP-my-zYi" id="hen-1v-jF5"/>
+                <outlet property="awardTitle" destination="7qN-ig-4PB" id="P97-eF-6fl"/>
             </connections>
             <point key="canvasLocation" x="332" y="627"/>
         </tableViewCell>
