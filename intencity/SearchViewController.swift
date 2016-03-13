@@ -120,8 +120,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     {
         super.viewWillDisappear(animated)
         
-        self.tabBarController?.tabBar.hidden = false
-        
         if (addedUser)
         {
              userSearchDelegate.onUserAdded()

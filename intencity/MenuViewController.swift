@@ -28,7 +28,10 @@ class MenuViewController: UIViewController
         // Hides the tab bar.
         self.tabBarController?.tabBar.hidden = true
         
-        let notifications = NotificationHandler.getInstance(nil).getAwardCount()
+        let notificationHandler = NotificationHandler.getInstance(nil)
+        notificationHandler.setNotificationViewed()
+        
+        let notifications = notificationHandler.getAwardCount()
         
         // Notification section.
         let notificationRow = [ MenuRow(title: String(format: NSLocalizedString("notifications", comment: ""), "(\(notifications))"), viewController: "NotificationViewController") ]
@@ -71,13 +74,6 @@ class MenuViewController: UIViewController
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "MenuHeader", cellName: Constant.MENU_HEADER_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_CELL, cellName: Constant.GENERIC_CELL)
-    }
-    
-    override func viewWillDisappear(animated : Bool)
-    {
-        super.viewWillDisappear(animated)
-        
-        self.tabBarController?.tabBar.hidden = false
     }
     
     override func didReceiveMemoryWarning()

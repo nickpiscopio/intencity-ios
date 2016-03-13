@@ -21,6 +21,8 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     
     var refreshControl: UIRefreshControl!
     
+    var notificationHandler: NotificationHandler!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -42,7 +44,22 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("pull_to_refresh", comment: ""))
         self.refreshControl.addTarget(self, action: "getFollowing", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(self.refreshControl) // not required when using UITableViewController
+        self.tableView.addSubview(self.refreshControl)
+        
+        notificationHandler = NotificationHandler.getInstance(nil)
+        
+        getMenuIcon()
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        // Shows the tab bar again.
+        self.tabBarController?.tabBar.hidden = false
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        getMenuIcon()
     }
     
     override func didReceiveMemoryWarning()
@@ -72,6 +89,54 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         ServiceTask(event: ServiceEvent.GET_FOLLOWING, delegate: self,
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_FOLLOWING, variables: [ email ]))
+    }
+    
+    /**
+     * Sets the menu item depending upon whether there are new notifications or not.
+     */
+    func getMenuIcon()
+    {
+        setMenuButton(notificationHandler.hasNewNotifications ? Constant.MENU_NOTIFICATION_PRESENT : Constant.MENU_INITIALIZED)
+    }
+    
+    /**
+     * Sets the menu button.
+     *
+     * @param type  The button type to set.
+     */
+    func setMenuButton(type: Int)
+    {
+        var icon: UIImage!
+        
+        switch(type)
+        {
+            case Constant.MENU_INITIALIZED:
+                icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                break
+            case Constant.MENU_NOTIFICATION_PRESENT:
+                icon = UIImage(named: Constant.MENU_NOTIFICATION_PRESENT_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                break
+            default:
+                break
+        }
+
+        let iconSize = CGRect(origin: CGPointZero, size: CGSizeMake(Constant.MENU_IMAGE_WIDTH, Constant.MENU_IMAGE_HEIGHT))
+
+        let iconButton = UIButton(frame: iconSize)
+        iconButton.setImage(icon, forState: .Normal)
+        iconButton.addTarget(self, action: "menuClicked", forControlEvents: .TouchUpInside)
+        
+        self.navigationItem.rightBarButtonItem?.customView = iconButton
+    }
+    
+    /**
+     * Opens the menu.
+     */
+    func menuClicked()
+    {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.MENU_VIEW_CONTROLLER) as! MenuViewController
+        
+        self.navigationController!.pushViewController(vc, animated: true)
     }
     
     func onRetrievalSuccessful(event: Int, result: String)

@@ -127,13 +127,6 @@ class DirectionViewController: UIViewController, ServiceDelegate
         return cell
     }
     
-    override func viewWillDisappear(animated : Bool)
-    {
-        super.viewWillDisappear(animated)
-        
-        self.tabBarController?.tabBar.hidden = false
-    }
-    
     /**
      * Navigates the user back to the previous view.
      */

@@ -10,7 +10,7 @@
 import UIKit
 import Social
 
-class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate, ExerciseSearchDelegate
+class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate, ExerciseSearchDelegate, NotificationDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -24,8 +24,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
     let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
     let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
-    
+
     let defaults = NSUserDefaults.standardUserDefaults()
+    
+    var notificationHandler: NotificationHandler!
 
     var totalExercises: Int!
     
@@ -65,6 +67,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         email = Util.getEmailFromDefaults()
         
+        notificationHandler = NotificationHandler.getInstance(self)
+        
         initConnectionViews()
         
         // Initialize the tableview.
@@ -78,6 +82,71 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         showWelcome()
         
         initRoutineCard()
+        
+        setMenuButton(Constant.MENU_INITIALIZED)
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        // Shows the tab bar again.
+        self.tabBarController?.tabBar.hidden = false
+    }
+    
+    /**
+     * Sets the menu button animation.
+     */
+    func stopAnimation()
+    {
+        setMenuButton(Constant.MENU_NOTIFICATION_PRESENT)
+    }
+    
+    /**
+     * Sets the menu button.
+     *
+     * @param type  The button type to set.
+     */
+    func setMenuButton(type: Int)
+    {
+        var icon: UIImage!
+        
+        switch(type)
+        {
+            case Constant.MENU_INITIALIZED:
+                icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                break
+            case Constant.MENU_NOTIFICATION_FOUND:
+                
+                let duration = 0.5
+                
+                NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: Selector("stopAnimation"), userInfo: nil, repeats: false)
+                
+                icon = UIImage.animatedImageNamed(Constant.MENU_NOTIFICATION_FOUND_IMAGE, duration: duration)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                
+                break
+            case Constant.MENU_NOTIFICATION_PRESENT:
+                icon = UIImage(named: Constant.MENU_NOTIFICATION_PRESENT_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                break
+            default:
+                break
+        }
+
+        let iconSize = CGRect(origin: CGPointZero, size: CGSizeMake(Constant.MENU_IMAGE_WIDTH, Constant.MENU_IMAGE_HEIGHT))
+
+        let iconButton = UIButton(frame: iconSize)
+        iconButton.setImage(icon, forState: .Normal)
+        iconButton.addTarget(self, action: "menuClicked", forControlEvents: .TouchUpInside)
+        
+        self.navigationItem.rightBarButtonItem?.customView = iconButton
+    }
+    
+    /**
+     * Opens the menu.
+     */
+    func menuClicked()
+    {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.MENU_VIEW_CONTROLLER) as! MenuViewController
+        
+        self.navigationController!.pushViewController(vc, animated: true)
     }
 
     override func didReceiveMemoryWarning()
@@ -236,6 +305,16 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
     }
     
+    func onNotificationAdded()
+    {
+        setMenuButton(Constant.MENU_NOTIFICATION_FOUND)
+    }
+    
+    func onNotificationsViewed()
+    {
+        setMenuButton(Constant.MENU_INITIALIZED)
+    }
+    
     /**
      * Shows the welcome alert to the user if needed.
      */
@@ -303,12 +382,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             else
             {
                 // Set the user has skipped an exercise to false for next time.
-                setExerciseSkipped(false);
+                setExerciseSkipped(false)
             }
             
             let finisherDescription = NSLocalizedString("award_finisher_description", comment: "")
-            
-            let notificationHandler = NotificationHandler.getInstance(nil)
+    
             // Custom alert: https://github.com/danny-source/DYAlertPickerViewDemo
 //            let awards = notificationHandler.awards
             

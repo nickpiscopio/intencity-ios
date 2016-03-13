@@ -126,14 +126,6 @@ class StatViewController: UIViewController, SetDelegate
         super.didReceiveMemoryWarning()
     }
     
-    override func viewDidDisappear(animated: Bool)
-    {
-        super.viewDidDisappear(animated)
-        
-        // Shows the tab bar again.
-        self.tabBarController?.tabBar.hidden = false
-    }
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 1

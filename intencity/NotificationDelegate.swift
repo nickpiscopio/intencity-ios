@@ -12,4 +12,5 @@ import Foundation
 @objc protocol NotificationDelegate
 {
     func onNotificationAdded()
+    func onNotificationsViewed()
 }

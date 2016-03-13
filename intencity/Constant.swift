@@ -8,6 +8,7 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import Foundation
+import UIKit
 
 struct Constant
 {
@@ -39,6 +40,7 @@ struct Constant
     static let FITNESS_RECOMMENDATION_HEADER_CELL = "FitnessRecHeaderCell"
     static let FITNESS_RECOMMENDATION_FOOTER_CELL = "FitnessRecFooterCell"
     
+    static let MENU_VIEW_CONTROLLER = "MenuViewController"
     static let EXERCISE_SEARCH_VIEW_CONTROLLER = "ExerciseSearchViewController"
     static let DIRECTION_VIEW_CONTROLLER = "DirectionViewController"
     static let SEARCH_VIEW_CONTROLLER = "SearchViewController"
@@ -51,6 +53,17 @@ struct Constant
     static let DEMO_VIEW = "DemoViewController"
     static let CHECKBOX_UNCHECKED = "checkbox_unchecked"
     static let CHECKBOX_CHECKED = "checkbox_checked"
+    
+    static let MENU_INITIALIZED = 0
+    static let MENU_NOTIFICATION_FOUND = 1
+    static let MENU_NOTIFICATION_PRESENT = 2
+    
+    static let MENU_INITIALIZED_IMAGE = "menu"
+    static let MENU_NOTIFICATION_FOUND_IMAGE = "menu_notification_"
+    static let MENU_NOTIFICATION_PRESENT_IMAGE = "menu_notification_6"
+    
+    static let MENU_IMAGE_WIDTH: CGFloat = 27.0
+    static let MENU_IMAGE_HEIGHT: CGFloat = 23.0
     
     // It is really 75, but from the implementation we will need 76.
     static let MAX_TEXT_FIELD_LENGTH = 76;

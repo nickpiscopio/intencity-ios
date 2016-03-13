@@ -17,6 +17,8 @@ class NotificationHandler
     
     var awards = [Awards]()
     
+    var hasNewNotifications = false
+    
     static func getInstance(delegate: NotificationDelegate?) -> NotificationHandler
     {
         if instance == nil
@@ -50,10 +52,25 @@ class NotificationHandler
         // Adds the award to the first index so we can display them in reverse order.
         awards.insert(award, atIndex: 0)
         
+        hasNewNotifications = true
+        
         if (delegate != nil)
         {
             delegate!.onNotificationAdded()
-        }       
+        }
+    }
+    
+    /**
+     * Tells the notification handler that the notifications have been viewed.
+     */
+    func setNotificationViewed()
+    {
+        hasNewNotifications = false
+        
+        if (delegate != nil)
+        {
+            delegate!.onNotificationsViewed()
+        }
     }
     
     /**
@@ -80,11 +97,17 @@ class NotificationHandler
         return false
     }
     
+    /**
+     * Clears the awards.
+     */
     func clearAwards()
     {
         awards.removeAll()
     }
     
+    /**
+     * Gets the totoal number of awards.
+     */
     func getAwardCount() -> Int
     {
         return awards.count

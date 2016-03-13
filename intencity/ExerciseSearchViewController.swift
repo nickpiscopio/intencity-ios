@@ -103,13 +103,6 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
     {
         connectionView.hidden = true
     }
-    
-    override func viewWillDisappear(animated : Bool)
-    {
-        super.viewWillDisappear(animated)
-        
-        self.tabBarController?.tabBar.hidden = false
-    }
 
     override func didReceiveMemoryWarning()
     {
