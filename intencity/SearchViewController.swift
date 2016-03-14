@@ -50,7 +50,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         initConnectionViews()
         
         // Initialize the tableview.
-        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "no_results")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "no_results")
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.SEARCH_EXERCISE_CELL, cellName: Constant.SEARCH_EXERCISE_CELL)

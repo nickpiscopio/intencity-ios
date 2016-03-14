@@ -35,7 +35,7 @@ class FitnessRecommendationViewController: UIViewController
         toneButton.setTitle(NSLocalizedString("tone", comment: ""), forState: .Normal)
 
         // Initialize the tableview.
-        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.FITNESS_RECOMMENDATION_CELL, cellName: Constant.FITNESS_RECOMMENDATION_CELL)

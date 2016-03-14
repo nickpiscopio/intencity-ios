@@ -34,7 +34,7 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         self.navigationItem.title = NSLocalizedString("edit_equipment", comment: "")
         
         // Initialize the tableview.
-        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)

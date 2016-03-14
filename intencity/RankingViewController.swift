@@ -34,7 +34,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         self.navigationItem.title = NSLocalizedString("title_rankings", comment: "")
         
         // Initialize the tableview.
-        Util.initTableView(tableView, addFooter: true, emptyTableStringRes: "no_friends")
+        Util.initTableView(tableView, footerHeight: Dimention.TABLE_FOOTER_HEIGHT_NORMAL, emptyTableStringRes: "no_friends")
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.RANKING_CELL, cellName: Constant.RANKING_CELL)

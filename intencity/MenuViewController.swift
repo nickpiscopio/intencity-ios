@@ -69,7 +69,7 @@ class MenuViewController: UIViewController
         }
         
         // Initialize the tableview.
-        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "MenuHeader", cellName: Constant.MENU_HEADER_CELL)

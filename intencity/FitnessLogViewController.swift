@@ -72,7 +72,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         initConnectionViews()
         
         // Initialize the tableview.
-        Util.initTableView(tableView, addFooter: true, emptyTableStringRes: "")
+        Util.initTableView(tableView, footerHeight: Dimention.TABLE_FOOTER_HEIGHT_PADDED, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "RoutineCard", cellName: Constant.ROUTINE_CELL)

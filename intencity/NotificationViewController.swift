@@ -29,7 +29,7 @@ class NotificationViewController: UIViewController
         self.navigationItem.title = NSLocalizedString("title_notifications", comment: "")
         
         // Initialize the tableview.
-        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "no_notifications")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "no_notifications")
         Util.addUITableViewCell(tableView, nibNamed: Constant.NOTIFICATION_CELL, cellName: Constant.NOTIFICATION_CELL)
     }
     

@@ -37,7 +37,7 @@ class AboutViewController: UIViewController
         versionDescription.text = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as? String
         
         // Initialize the tableview.
-        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
         tableView.backgroundColor = Color.transparent
         
         // Load the cells we are going to use in the tableview.

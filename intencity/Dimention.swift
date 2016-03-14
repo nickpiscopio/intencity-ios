@@ -25,7 +25,8 @@ struct Dimention
     static let TEXTFIELD_MARGIN: CGFloat = 12.0
     static let TEXTFIELD_PADDING: CGFloat = 1.0
     static let BUTTON_PADDING: CGFloat = 12.0
-    static let TABLE_FOOTER_HEIGHT: CGFloat = 116.0
+    static let TABLE_FOOTER_HEIGHT_PADDED: CGFloat = 100.0 + LAYOUT_MARGIN
+    static let TABLE_FOOTER_HEIGHT_NORMAL: CGFloat = 65.0 + LAYOUT_MARGIN
     static let FONT_SIZE_SMALL: CGFloat = 15.0
     static let FONT_SIZE_X_SMALL: CGFloat = 13.0
     static let FONT_SIZE_XX_SMALL: CGFloat = 8.0

@@ -34,7 +34,7 @@ class EditExclusionViewController: UIViewController, ServiceDelegate
         self.navigationItem.title = NSLocalizedString("edit_exclusion", comment: "")
         
         // Initialize the tableview.
-        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "no_results")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "no_results")
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)

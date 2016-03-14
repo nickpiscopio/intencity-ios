@@ -36,7 +36,7 @@ class DirectionViewController: UIViewController, ServiceDelegate
         youTubePlayerView.backgroundColor = Color.transparent
         
         // Initialize the tableview.
-        Util.initTableView(tableView, addFooter: false, emptyTableStringRes: "")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
         Util.addUITableViewCell(tableView, nibNamed: "Direction", cellName: Constant.DIRECTION_CELL)
         
         ServiceTask(event: ServiceEvent.GENERIC, delegate: self,

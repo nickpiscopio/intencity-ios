@@ -158,7 +158,7 @@ class Util
      * @param addFooter             Adds a footer to the table.
      * @param emptyTableStringRes   The resource of the string that will tell the user there isn't any data.
      */
-    static func initTableView(tableView: UITableView, addFooter: Bool, emptyTableStringRes: String)
+    static func initTableView(tableView: UITableView, footerHeight: CGFloat, emptyTableStringRes: String)
     {
         tableView.backgroundColor = Color.transparent
 
@@ -178,10 +178,10 @@ class Util
             tableView.backgroundView?.hidden = true
         }        
         
-        if (addFooter)
+        if (footerHeight > 0)
         {
             let footerView = UIView()
-            footerView.frame = CGRectMake(0, 0, tableView.frame.size.width, Dimention.TABLE_FOOTER_HEIGHT)
+            footerView.frame = CGRectMake(0, 0, tableView.frame.size.width, footerHeight)
             footerView.backgroundColor = Color.transparent
             tableView.tableFooterView = footerView
         }
