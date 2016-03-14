@@ -45,7 +45,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pJU-af-MoM">
-                        <barButtonItem key="rightBarButtonItem" image="CAB62543-BAC6-42B2-BDAA-3D9BDD9000E5" id="6UB-wh-LYy">
+                        <barButtonItem key="rightBarButtonItem" image="FFC30183-A510-4B01-8435-AD0D0D1FC4CE" id="6UB-wh-LYy">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="Kz2-vl-MdR"/>
                             </connections>
@@ -807,7 +807,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KlJ-Jv-PRs">
-                        <barButtonItem key="rightBarButtonItem" image="CAB62543-BAC6-42B2-BDAA-3D9BDD9000E5" id="c3l-ac-jjQ">
+                        <barButtonItem key="rightBarButtonItem" image="FFC30183-A510-4B01-8435-AD0D0D1FC4CE" id="c3l-ac-jjQ">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="z41-nb-wwL"/>
                             </connections>
@@ -1247,7 +1247,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CAB62543-BAC6-42B2-BDAA-3D9BDD9000E5" width="82" height="69">
+        <image name="FFC30183-A510-4B01-8435-AD0D0D1FC4CE" width="82" height="69">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
