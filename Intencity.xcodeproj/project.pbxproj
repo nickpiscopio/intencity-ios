@@ -52,7 +52,6 @@
 		BD8810FC1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */; };
 		BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8811011C92FF3A0098FA64 /* Badge.swift */; };
 		BD8811041C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8811031C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift */; };
-		BD88110C1C96F5460098FA64 /* EditButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD88110B1C96F5460098FA64 /* EditButton.xib */; };
 		BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9479FA1C6CE43C003F3767 /* JSON.swift */; };
 		BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD9479FC1C6CE452003F3767 /* Loading.storyboard */; };
 		BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A011C6CED31003F3767 /* LoginNavController.swift */; };
@@ -172,7 +171,6 @@
 		BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundSmall.swift; sourceTree = "<group>"; };
 		BD8811011C92FF3A0098FA64 /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		BD8811031C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButtonNoBackground.swift; sourceTree = "<group>"; };
-		BD88110B1C96F5460098FA64 /* EditButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditButton.xib; sourceTree = "<group>"; };
 		BD9479FA1C6CE43C003F3767 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		BD9479FC1C6CE452003F3767 /* Loading.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		BD947A001C6CE598003F3767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -514,7 +512,6 @@
 			isa = PBXGroup;
 			children = (
 				BDD89BF81C906C4D00530D79 /* NotificationCell.xib */,
-				BD88110B1C96F5460098FA64 /* EditButton.xib */,
 				BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */,
 				BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */,
 				BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */,
@@ -634,7 +631,6 @@
 				BDBDB56B1C87504E00A2EE2C /* privacy.html in Resources */,
 				BD9EF2B81C6A941F00E520CB /* terms.html in Resources */,
 				BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */,
-				BD88110C1C96F5460098FA64 /* EditButton.xib in Resources */,
 				BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */,
 				BDD53BFC1C8A336D001235AE /* FitnessRecFooterCell.xib in Resources */,
 				BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */,
