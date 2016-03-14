@@ -34,7 +34,7 @@ class EditExclusionViewController: UIViewController, ServiceDelegate
         self.navigationItem.title = NSLocalizedString("edit_exclusion", comment: "")
         
         // Initialize the tableview.
-        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "no_results")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "no_items")
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)
@@ -50,14 +50,9 @@ class EditExclusionViewController: UIViewController, ServiceDelegate
                     params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXCLUSION,
                                 variables: [ email ]))
         
-        // The save button.
-        let saveButton: UIButton = UIButton(type: UIButtonType.Custom) as UIButton
-        saveButton.addTarget(self, action: "savePressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        saveButton.setTitle(NSLocalizedString("save", comment: ""), forState: UIControlState.Normal)
-        saveButton.setTitleColor(Color.white, forState: UIControlState.Normal)
-        saveButton.sizeToFit()
-        let saveButtonItem:UIBarButtonItem = UIBarButtonItem(customView: saveButton)
-        self.navigationItem.rightBarButtonItem  = saveButtonItem
+        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "savePressed:")
+        
+        self.navigationItem.rightBarButtonItem = saveButtonItem
     }
     
     override func didReceiveMemoryWarning()

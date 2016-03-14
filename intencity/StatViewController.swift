@@ -36,8 +36,10 @@ class StatViewController: UIViewController, SetDelegate
         
         let exercise = ExerciseData.getInstance().exerciseList[index]
         
+        exerciseName = exercise.exerciseName
+        
         // Sets the title for the screen.
-        self.navigationItem.title = exercise.exerciseName
+        self.navigationItem.title = exerciseName
         
         // Sets the sets from the exercise.
         sets = exercise.sets
@@ -93,15 +95,20 @@ class StatViewController: UIViewController, SetDelegate
             durationTitleLabel.setTitle(repsString, forState: .Normal)
             dropDown.selectRowAtIndex(0)
         }
-
-        // The save button.
-        let saveButton: UIButton = UIButton(type: UIButtonType.Custom) as UIButton
-        saveButton.addTarget(self, action: "savePressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        saveButton.setTitle(NSLocalizedString("save", comment: ""), forState: UIControlState.Normal)
-        saveButton.setTitleColor(Color.white, forState: UIControlState.Normal)
-        saveButton.sizeToFit()
-        let saveButtonItem:UIBarButtonItem = UIBarButtonItem(customView: saveButton)
-        self.navigationItem.rightBarButtonItem  = saveButtonItem
+        
+        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "savePressed:")
+        
+        let infoIcon = UIImage(named: "info")
+        
+        let iconSize = CGRect(origin: CGPointZero, size: infoIcon!.size)
+    
+        let infoButton = UIButton(frame: iconSize)
+        infoButton.setImage(infoIcon, forState: .Normal)
+        infoButton.addTarget(self, action: "infoPressed:", forControlEvents: .TouchUpInside)
+        
+        let infoButtonItem: UIBarButtonItem = UIBarButtonItem(customView: infoButton)
+    
+        self.navigationItem.setRightBarButtonItems([saveButtonItem, infoButtonItem], animated: true)
     }
     
     /**
@@ -236,9 +243,20 @@ class StatViewController: UIViewController, SetDelegate
     }
     
     /**
+     * The function for when the info button is pressed.
+     */
+    func infoPressed(sender: UIBarButtonItem)
+    {
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
+        viewController.exerciseName = exerciseName
+        
+        self.navigationController!.pushViewController(viewController, animated: true)
+    }
+    
+    /**
      * The function for when the save button is pressed.
      */
-    func savePressed(sender:UIBarButtonItem)
+    func savePressed(sender: UIBarButtonItem)
     {
         // Removed the first responder when the save is clicked
         // We do this so we can save values if the cursor is still in the textfield.

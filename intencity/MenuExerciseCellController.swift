@@ -11,8 +11,8 @@ import UIKit
 
 class MenuExerciseCellController: UITableViewCell
 {
-    @IBOutlet weak var exerciseNameLabel: UILabel!
-    @IBOutlet weak var checkBox: UIButton!
+    @IBOutlet weak var exerciseNameLabel: UILabel!    
+    @IBOutlet weak var checkBox: UIImageView!
     
     let UNCHECKED = UIImage(named: Constant.CHECKBOX_UNCHECKED)
     let CHECKED = UIImage(named: Constant.CHECKBOX_CHECKED)
@@ -43,7 +43,7 @@ class MenuExerciseCellController: UITableViewCell
      */
     func setChecked(checked: Bool)
     {
-        checkBox.setImage(checked ? CHECKED : UNCHECKED, forState: .Normal)
+        checkBox.image = checked ? CHECKED : UNCHECKED
     }
     
     /**
@@ -51,6 +51,6 @@ class MenuExerciseCellController: UITableViewCell
      */
     func isExerciseHidden() -> Bool
     {
-        return checkBox.currentImage!.isEqual(CHECKED)
+        return checkBox.image!.isEqual(CHECKED)
     }
 }
