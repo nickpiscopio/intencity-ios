@@ -89,9 +89,9 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
             activityIndicator.startAnimating()
             activityIndicator.hidden = false
             
-            ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
-                serviceURL: Constant.SERVICE_CHANGE_PASSWORD,
-                params: Constant.generateChangePasswordVariables(email, currentPassword: oldPassword, newPassword: newPassword))
+            _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
+                            serviceURL: Constant.SERVICE_CHANGE_PASSWORD,
+                            params: Constant.generateChangePasswordVariables(email, currentPassword: oldPassword, newPassword: newPassword))
         }
     }
     

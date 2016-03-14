@@ -190,7 +190,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             event = ServiceEvent.SEARCH_FOR_USER
         }
         
-        ServiceTask(event: event, delegate: self, serviceURL: Constant.SERVICE_STORED_PROCEDURE, params: urlParameters)
+        _ = ServiceTask(event: event, delegate: self, serviceURL: Constant.SERVICE_STORED_PROCEDURE, params: urlParameters)
         
         searchBar.endEditing(true)
     }

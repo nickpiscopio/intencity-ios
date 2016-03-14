@@ -107,7 +107,7 @@ class LoginViewController: PageViewController, ServiceDelegate
         {
             startLogin()
             
-            ServiceTask(event: ServiceEvent.LOGIN, delegate: self, serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS, params: Constant.getValidateUserCredentialsServiceParameters(email, password: password))
+            _ = ServiceTask(event: ServiceEvent.LOGIN, delegate: self, serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS, params: Constant.getValidateUserCredentialsServiceParameters(email, password: password))
         }
     }
     
@@ -143,9 +143,9 @@ class LoginViewController: PageViewController, ServiceDelegate
         
         startLogin()
         
-        ServiceTask(event: ServiceEvent.TRIAL, delegate: self,
-            serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
-            params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType))
+        _ = ServiceTask(event: ServiceEvent.TRIAL, delegate: self,
+                        serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
+                        params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType))
     }
     
     /**

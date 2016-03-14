@@ -281,9 +281,9 @@ class Util
      */
     static func grantPointsToUser(email: String, points: Int, description: String)
     {
-        ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
-                    serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                    params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_POINTS, variables: [ email, String(points) ]))
+        _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_POINTS, variables: [ email, String(points) ]))
     
         // Add an award to the notification handler.
         NotificationHandler.getInstance(nil).addAward(Awards(awardTitle: "+\(points)", awardDescription: description));
@@ -301,9 +301,9 @@ class Util
         // We won't display the date anywhere, so we probably don't need this in local time.
         let now = Float(NSDate().timeIntervalSince1970 * 1000)
         
-        ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
-                    serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                    params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_BADGE, variables: [ email, String(now), badgeName ]))
+        _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_BADGE, variables: [ email, String(now), badgeName ]))
         
         // Add an award to the notification handler.
         NotificationHandler.getInstance(nil).addAward(content);

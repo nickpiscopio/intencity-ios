@@ -44,11 +44,10 @@ class EditExclusionViewController: UIViewController, ServiceDelegate
         
         email = Util.getEmailFromDefaults()
         
-        ServiceTask(event: ServiceEvent.GET_LIST,
-                    delegate: self,
-                    serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                    params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXCLUSION,
-                                variables: [ email ]))
+        _ = ServiceTask(event: ServiceEvent.GET_LIST,
+                        delegate: self,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXCLUSION, variables: [ email ]))
         
         let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "savePressed:")
         
@@ -147,10 +146,10 @@ class EditExclusionViewController: UIViewController, ServiceDelegate
      */
     func savePressed(sender:UIBarButtonItem)
     {
-        ServiceTask(event: ServiceEvent.UPDATE_LIST,
-            delegate: self,
-            serviceURL: Constant.SERVICE_UPDATE_EXCLUSION,
-            params: Constant.generateListVariables(email, variables: newExclusionList))
+        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST,
+                        delegate: self,
+                        serviceURL: Constant.SERVICE_UPDATE_EXCLUSION,
+                        params: Constant.generateListVariables(email, variables: newExclusionList))
     }
     
     /**

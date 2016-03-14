@@ -75,9 +75,9 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
         activityIndicator.startAnimating()
         activityIndicator.hidden = false
         
-        ServiceTask(event: ServiceEvent.VALIDATE_USER_CREDENTIALS, delegate: self,
-                    serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS,
-                    params: Constant.getValidateUserCredentialsServiceParameters(email, password: password))
+        _ = ServiceTask(event: ServiceEvent.VALIDATE_USER_CREDENTIALS, delegate: self,
+                        serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS,
+                        params: Constant.getValidateUserCredentialsServiceParameters(email, password: password))
     }
     
     func onRetrievalSuccessful(event: Int, result: String)
@@ -99,9 +99,9 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
                 }
                 else
                 {
-                    ServiceTask(event: ServiceEvent.REMOVE_ACCOUNT, delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_ACCOUNT, variables: [ email ]))
+                    _ = ServiceTask(event: ServiceEvent.REMOVE_ACCOUNT, delegate: self,
+                                    serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                                    params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_ACCOUNT, variables: [ email ]))
                 }
 
                 break

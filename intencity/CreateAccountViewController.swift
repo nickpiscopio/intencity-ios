@@ -183,9 +183,9 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         {
             startCreateAccount()
             
-            ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
-                serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
-                params: Constant.getAccountParameters(firstName, lastName: lastName, email: replacePlus(email), password: password, accountType: Constant.ACCOUNT_TYPE_NORMAL))
+            _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
+                            serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
+                            params: Constant.getAccountParameters(firstName, lastName: lastName, email: replacePlus(email), password: password, accountType: Constant.ACCOUNT_TYPE_NORMAL))
         }
     }
     

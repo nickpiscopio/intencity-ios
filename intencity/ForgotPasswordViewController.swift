@@ -45,12 +45,13 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
         }
         else
         {
-            startresetPassword()
-            ServiceTask(event: ServiceEvent.GENERIC, delegate: self, serviceURL: Constant.SERVICE_FORGOT_PASSWORD, params: Constant.getForgotPasswordParameter(email))
+            startResetPassword()
+            
+            _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self, serviceURL: Constant.SERVICE_FORGOT_PASSWORD, params: Constant.getForgotPasswordParameter(email))
         }
     }
     
-    func startresetPassword()
+    func startResetPassword()
     {
         activityIndicator.startAnimating()
         activityIndicator.hidden = false

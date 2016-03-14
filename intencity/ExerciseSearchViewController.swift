@@ -120,9 +120,9 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
         
         routineName = routineName == Constant.ROUTINE_CARDIO ? Constant.ROUTINE_LEGS_AND_LOWER_BACK : routineName
         
-        ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
-                    serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                    params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_INJURY_PREVENTION_WORKOUTS, variables: [ searchType, routineName.stringByReplacingOccurrencesOfString("&", withString: "%26") ]))
+        _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_INJURY_PREVENTION_WORKOUTS, variables: [ searchType, routineName.stringByReplacingOccurrencesOfString("&", withString: "%26") ]))
     }
     
     func onRetrievalSuccessful(event: Int, result: String)

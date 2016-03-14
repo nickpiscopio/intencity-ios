@@ -582,9 +582,8 @@ extension DropDown {
 	and `cellConfiguration` implicitly calls `reloadAllComponents()`.
 	*/
 	public func reloadAllComponents() {
-		if #available(iOS 9, *) {
-			setupTableViewUI()
-		}
+
+        setupTableViewUI()
 		
 		tableView.reloadData()
 		setNeedsUpdateConstraints()

@@ -39,9 +39,9 @@ class DirectionViewController: UIViewController, ServiceDelegate
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
         Util.addUITableViewCell(tableView, nibNamed: "Direction", cellName: Constant.DIRECTION_CELL)
         
-        ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
-            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISE_DIRECTION, variables: [ exerciseName ]))
+        _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISE_DIRECTION, variables: [ exerciseName ]))
     }
     
     override func didReceiveMemoryWarning()

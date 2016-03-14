@@ -47,9 +47,9 @@ class RankingCellController: UITableViewCell, ServiceDelegate
     
     @IBAction func addClicked(sender: AnyObject)
     {
-        ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
-            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_FOLLOW_USER, variables: [ email, userId ]))
+        _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_FOLLOW_USER, variables: [ email, userId ]))
     }
     
     /**

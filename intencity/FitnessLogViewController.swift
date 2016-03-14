@@ -168,9 +168,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         state = Constant.ROUTINE_CELL
         
-        ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
-            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
+        _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
     }
     
     /**
@@ -246,9 +246,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 
                 showLoading()
                 
-                ServiceTask(event: ServiceEvent.GET_EXERCISES_FOR_TODAY, delegate: self,
-                    serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                    params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY, variables:  [ email ]))
+                _ = ServiceTask(event: ServiceEvent.GET_EXERCISES_FOR_TODAY, delegate: self,
+                                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY, variables:  [ email ]))
                 
                 break
             
@@ -601,9 +601,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             
             showLoading()
             
-            ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
-                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(routine) ]))
+            _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
+                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(routine) ]))
         }
     }
     
@@ -733,22 +733,23 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if (conductUpdate)
         {
             // Update the exercise on the web.
-            ServiceTask(event: ServiceEvent.UPDATE_EXERCISES_TO_WEB_DB,
-                        delegate: self,
-                        serviceURL: Constant.SERVICE_COMPLEX_UPDATE,
-                        params: updateString)
+            _ = ServiceTask(event: ServiceEvent.UPDATE_EXERCISES_TO_WEB_DB,
+                            delegate: self,
+                            serviceURL: Constant.SERVICE_COMPLEX_UPDATE,
+                            params: updateString)
         }
         
         if (conductInsert)
         {
             insertIntoWebSetsIndex = index
+            
             // Save the exercise to the web.
             // The service listener was placed in here so we can update the sets of the exercise
             // with the auto incremented ids from the web.
-            ServiceTask(event: ServiceEvent.INSERT_EXERCISES_TO_WEB_DB,
-                        delegate: self,
-                        serviceURL: Constant.SERVICE_COMPLEX_INSERT,
-                        params: insertString)
+            _ = ServiceTask(event: ServiceEvent.INSERT_EXERCISES_TO_WEB_DB,
+                            delegate: self,
+                            serviceURL: Constant.SERVICE_COMPLEX_INSERT,
+                            params: insertString)
         }
     }
     
@@ -1063,11 +1064,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // Hide the exercise on the web server.
             // The ServiceListener is null because we don't care if it reached the server.
             // The worst that will happen is a user will have to hide the exercise again.
-            ServiceTask(event: ServiceEvent.HIDE_EXERCISE_FOREVER,
-                delegate: self,
-                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_EXCLUDE_EXERCISE,
-                    variables: [ email, exerciseName ]))
+            _ = ServiceTask(event: ServiceEvent.HIDE_EXERCISE_FOREVER, delegate: self,
+                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_EXCLUDE_EXERCISE, variables: [ email, exerciseName ]))
         }
         
         tableView.endUpdates()

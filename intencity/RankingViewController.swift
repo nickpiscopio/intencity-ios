@@ -86,9 +86,9 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     {
         let email = Util.getEmailFromDefaults()
         
-        ServiceTask(event: ServiceEvent.GET_FOLLOWING, delegate: self,
-            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_FOLLOWING, variables: [ email ]))
+        _ = ServiceTask(event: ServiceEvent.GET_FOLLOWING, delegate: self,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_FOLLOWING, variables: [ email ]))
     }
     
     /**
@@ -244,9 +244,9 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
             
             let user = currentUsers[indexToRemove]
             
-            ServiceTask(event: ServiceEvent.UNFOLLOW, delegate: self,
-                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_FROM_FOLLOWING, variables: [ String(user.followingId) ]))
+            _ = ServiceTask(event: ServiceEvent.UNFOLLOW, delegate: self,
+                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_FROM_FOLLOWING, variables: [ String(user.followingId) ]))
         }
     }
     

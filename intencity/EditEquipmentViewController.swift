@@ -44,11 +44,10 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         
         email = Util.getEmailFromDefaults()
         
-        ServiceTask(event: ServiceEvent.GET_LIST,
-            delegate: self,
-            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EQUIPMENT,
-                        variables: [ email ]))
+        _ = ServiceTask(event: ServiceEvent.GET_LIST,
+                        delegate: self,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EQUIPMENT, variables: [ email ]))
         
         let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "savePressed:")
         
@@ -156,10 +155,9 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
      */
     func savePressed(sender:UIBarButtonItem)
     {
-        ServiceTask(event: ServiceEvent.UPDATE_LIST,
-            delegate: self,
-            serviceURL: Constant.SERVICE_UPDATE_EQUIPMENT,
-            params: Constant.generateListVariables(email, variables: userEquipmentList))
+        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
+                        serviceURL: Constant.SERVICE_UPDATE_EQUIPMENT,
+                        params: Constant.generateListVariables(email, variables: userEquipmentList))
     }
     
     /**
