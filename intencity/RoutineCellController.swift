@@ -42,7 +42,7 @@ class RoutineCellController: UITableViewCell
         }
 
         dropDown.anchorView = routineButton
-        dropDown.bottomOffset = CGPoint(x: 0, y: routineButton.bounds.height + routineButton.bounds.height / 2)
+        dropDown.bottomOffset = CGPoint(x: 0, y: 0)
     }
     
     /**
