@@ -11,21 +11,17 @@ class ExerciseCellController: UITableViewCell
 {
     @IBOutlet weak var exerciseView: UIView!
     @IBOutlet weak var view: UIView!
-    @IBOutlet weak var editView: UIView!
-    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var exerciseButton: UIButton!
     @IBOutlet weak var exerciseDescription: UILabel!
     @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var editStackView: UIStackView!
-    @IBOutlet weak var weightLabel: UILabel!
-    @IBOutlet weak var lbsLabel: UILabel!
-    @IBOutlet weak var slashLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var repsLabel: UILabel!
-    @IBOutlet weak var backgroundEditView: UIView!
     @IBOutlet weak var exerciseDescriptionView: UIView!
     
     let EDIT_STRING = NSLocalizedString("edit", comment: "")
+    
+    let LBS_STRING = NSLocalizedString("title_lbs", comment: "")
+    let REPS_STRING = NSLocalizedString("title_reps", comment: "")
+    let SPACE = " "
+    let SLASH = " / "
     
     weak var delegate: ExerciseDelegate?
     
@@ -38,17 +34,54 @@ class ExerciseCellController: UITableViewCell
         super.awakeFromNib()
         
         self.backgroundColor = Color.page_background
-
-        backgroundEditView.hidden = true
+    }
+    
+    /**
+     * Initialize the terms of use text attributes.
+     */
+    func setEditButtonTitle(weight: Float, duration: String, isReps: Bool)
+    {
+        let mutableString = NSMutableAttributedString()
         
-        weightLabel.textColor = Color.secondary_light
-        lbsLabel.textColor = Color.secondary_light
-        slashLabel.textColor = Color.secondary_light
-        durationLabel.textColor = Color.secondary_light
-        repsLabel.textColor = Color.secondary_light
+        let addWeight = weight > 0.0
+        let addDuration = duration != Constant.RETURN_NULL && Util.convertToInt(duration) > 0
         
-        lbsLabel.text = NSLocalizedString("title_lbs", comment: "")
-        repsLabel.text = NSLocalizedString("title_reps", comment: "")
+        if (addWeight || addDuration)
+        {
+            if (addWeight)
+            {
+                mutableString.appendAttributedString(getMutableString(String(weight), fontSize: Dimention.FONT_SIZE_SMALL, isBold: true))
+                mutableString.appendAttributedString(getMutableString(SPACE, fontSize: Dimention.FONT_SIZE_XX_SMALL, isBold: false))
+                mutableString.appendAttributedString(getMutableString(LBS_STRING, fontSize: Dimention.FONT_SIZE_X_SMALL, isBold: false))
+                
+                mutableString.appendAttributedString(getMutableString(SLASH, fontSize: Dimention.FONT_SIZE_SMALL, isBold: false))
+            }
+            
+            mutableString.appendAttributedString(getMutableString(duration, fontSize: Dimention.FONT_SIZE_SMALL, isBold: true))
+            
+            if (isReps)
+            {
+                mutableString.appendAttributedString(getMutableString(SPACE, fontSize: Dimention.FONT_SIZE_XX_SMALL, isBold: false))
+                mutableString.appendAttributedString(getMutableString(REPS_STRING, fontSize: Dimention.FONT_SIZE_X_SMALL, isBold: false))
+            }
+        }
+        else
+        {
+            mutableString.appendAttributedString(getMutableString(EDIT_STRING, fontSize: Dimention.FONT_SIZE_SMALL, isBold: true))
+        }
+        
+        editButton.setAttributedTitle(mutableString, forState: .Normal)
+    }
+    
+    func getMutableString(string: String, fontSize: CGFloat, isBold: Bool) -> NSMutableAttributedString
+    {
+        let attributes = isBold ? UIFont.boldSystemFontOfSize(fontSize) : UIFont.systemFontOfSize(fontSize)
+        
+        var mutableString = NSMutableAttributedString()
+        mutableString = NSMutableAttributedString(string: string, attributes: [ NSFontAttributeName:  attributes])
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: Color.secondary_light, range: NSRange(location: 0, length: string.characters.count))
+        
+        return mutableString
     }
     
     /**
@@ -96,7 +129,7 @@ class ExerciseCellController: UITableViewCell
     {
         exerciseDescriptionView.hidden = true
         
-        editView.hidden = false
+        editButton.hidden = false
         
         exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
     }
@@ -109,8 +142,8 @@ class ExerciseCellController: UITableViewCell
         exerciseDescription.text = description
         exerciseDescription.textColor = Color.secondary_light
         exerciseDescriptionView.hidden = false
-
-        editView.hidden = true
+        
+        editButton.hidden = true
         
         exerciseButton.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
     }
@@ -123,58 +156,10 @@ class ExerciseCellController: UITableViewCell
         let weight = set.weight
         let reps = set.reps
         let duration = set.duration
-        let durationInt = Util.convertToInt(set.duration)
         
-        if reps > 0 || durationInt > 0
-        {
-            if (weight > 0)
-            {
-                weightLabel.text = "\(weight)"
-                weightLabel.hidden = false
-                lbsLabel.hidden = false
-                slashLabel.hidden = false
-            }
-            else
-            {
-                weightLabel.hidden = true
-                lbsLabel.hidden = true
-                slashLabel.hidden = true
-            }
-            
-            if (reps > 0)
-            {
-                durationLabel.text = "\(reps)"
-                durationLabel.hidden = false
-                repsLabel.hidden = false
-            }
-            else
-            {
-                durationLabel.text = duration
-                durationLabel.hidden = false
-                repsLabel.hidden = true
-            }
-        }
-        else
-        {
-            weightLabel.text = EDIT_STRING
-            
-            weightLabel.hidden = false
-            lbsLabel.hidden = true
-            repsLabel.hidden = true
-            durationLabel.hidden = true
-            slashLabel.hidden = true
-        }
-
-    }
-    
-    @IBAction func editPressed(sender: AnyObject)
-    {
-        backgroundEditView.hidden = false
-    }
-    
-    @IBAction func editReleased(sender: AnyObject)
-    {
-        backgroundEditView.hidden = true
+        let isReps = reps > 0
+        
+        setEditButtonTitle(weight, duration: isReps ? String(reps) : duration, isReps: isReps)
     }
     
     @IBAction func editClicked(sender: AnyObject)
