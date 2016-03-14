@@ -79,7 +79,7 @@ class StatViewController: UIViewController, SetDelegate
             self.setDuration(item)
         }
         dropDown.anchorView = durationTitleLabel
-        dropDown.bottomOffset = CGPoint(x: 0, y: durationTitleLabel.frame.height)
+        dropDown.bottomOffset = CGPoint(x: 0, y: 0)
         // We set the width here to the largest item in the data source.
         // We do this so the drop down doesn't keep resizing every time an item is selcted.
         dropDown.width = 53

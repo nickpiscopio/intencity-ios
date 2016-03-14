@@ -49,7 +49,7 @@ class SetCellController: UITableViewCell
             self.delegate?.onIntensityUpdated(self.index, intensity: Int(item)!)
         }
         dropDown.anchorView = intensityButton
-        dropDown.bottomOffset = CGPoint(x: 0, y:intensityButton.bounds.height)
+        dropDown.bottomOffset = CGPoint(x: intensityButton.bounds.width / 2, y: 0)
         // We set the width here to the largest item in the data source.
         // We do this so the drop down doesn't keep resizing every time an item is selcted.
         dropDown.width = 35
