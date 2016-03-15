@@ -23,11 +23,11 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         super.viewDidLoad()
         
         // Adds all the demo screens to the page controller.
-        createNewDemoPage("app_name", description: "demo_description", imageName: "demo_intencity", backgroundColor: Color.primary)
-        createNewDemoPage("demo_fitness_guru_title", description: "demo_fitness_guru_description", imageName: "demo_fitness_guru", backgroundColor: Color.secondary_light)
-        createNewDemoPage("demo_fitness_direction_title", description: "demo_fitness_direction_description", imageName: "demo_intencity", backgroundColor: Color.secondary_dark)
-        createNewDemoPage("demo_fitness_log_title", description: "demo_fitness_log_description", imageName: "demo_intencity", backgroundColor: Color.secondary_light)
-        createNewDemoPage("demo_ranking_title", description: "demo_ranking_description", imageName: "demo_intencity", backgroundColor: Color.primary)
+        createNewDemoPage("app_name", description: "demo_description", imageName: "demo_screen_about", backgroundColor: Color.primary)
+        createNewDemoPage("demo_fitness_guru_title", description: "demo_fitness_guru_description", imageName: "demo_screen_fitness_guru", backgroundColor: Color.secondary_light)
+        createNewDemoPage("demo_fitness_direction_title", description: "demo_fitness_direction_description", imageName: "demo_screen_directions", backgroundColor: Color.secondary_dark)
+        createNewDemoPage("demo_fitness_log_title", description: "demo_fitness_log_description", imageName: "demo_screen_stat", backgroundColor: Color.secondary_light)
+        createNewDemoPage("demo_ranking_title", description: "demo_ranking_description", imageName: "demo_screen_ranking", backgroundColor: Color.primary)
         createNewDemoPage("", description: "", imageName: "", backgroundColor: Color.page_background)
         
         pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
@@ -154,20 +154,23 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
      */
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)
     {
-        let viewControllers = pageViewController.viewControllers!
-        
-        do
+        if (completed)
         {
-            currentIndex = try getCurrentIndex(viewControllers[viewControllers.count - 1])
+            let viewControllers = pageViewController.viewControllers!
+            
+            do
+            {
+                currentIndex = try getCurrentIndex(viewControllers[viewControllers.count - 1])
+            }
+            catch
+            {
+                // If we can't determine the index, then we must be on the login screen.
+                // The index for the login screen will be the last item in the list.
+                currentIndex = demoPages.count - 1
+            }
+            
+            updatePageControl()
         }
-        catch
-        {
-            // If we can't determine the index, then we must be on the login screen.
-            // The index for the login screen will be the last item in the list.
-            currentIndex = demoPages.count - 1
-        }
-        
-        updatePageControl()
     }
     
     @IBAction func nextClicked(sender: AnyObject)
