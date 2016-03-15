@@ -14,6 +14,8 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addFollowerButton: IntencityButtonRound!
     
+    let RANKING_RESET_STRING = NSLocalizedString("rankings_updated", comment: "")
+    
     var currentUsers = [User]()
     
     var indexPath: NSIndexPath!
@@ -22,7 +24,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     var refreshControl: UIRefreshControl!
     
     var notificationHandler: NotificationHandler!
-    
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -43,7 +45,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("pull_to_refresh", comment: ""))
-        self.refreshControl.addTarget(self, action: "getFollowing", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: "refreshRankingList", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.refreshControl)
         
         notificationHandler = NotificationHandler.getInstance(nil)
@@ -77,6 +79,17 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         viewController.currentUsers = currentUsers
         
         self.navigationController!.pushViewController(viewController, animated: true)
+    }
+    
+    /**
+     * Refreshes the ranking list.
+     */
+    func refreshRankingList()
+    {
+        getFollowing()
+
+        // Documentation: https://github.com/scalessec/Toast-Swift
+        self.tabBarController?.view.makeToast(String(format: RANKING_RESET_STRING, arguments: [ DateUtil().getMondayAt12AM() ]))
     }
     
     /**

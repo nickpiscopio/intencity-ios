@@ -11,6 +11,8 @@
 		BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD03C7B41C760A4E00D8911A /* SetCellController.swift */; };
 		BD03C7B71C760DE200D8911A /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD03C7B61C760DE200D8911A /* Set.swift */; };
 		BD03C7BB1C761B6000D8911A /* SetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD03C7BA1C761B6000D8911A /* SetDelegate.swift */; };
+		BD0CD6FA1C984789004FF750 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0CD6F91C984789004FF750 /* Toast.swift */; };
+		BD0CD6FC1C985248004FF750 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0CD6FB1C985248004FF750 /* DateUtil.swift */; };
 		BD10539B1C6CD071004C10C7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10539A1C6CD071004C10C7 /* Key.swift */; };
 		BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */; };
 		BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC221C70F0A400F993CE /* Exercise.swift */; };
@@ -116,6 +118,7 @@
 		BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */; };
 		BDF44A331C79F46D00B47CD1 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A321C79F46D00B47CD1 /* DBHelper.swift */; };
 		BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */; };
+		BDF96ABC1C98393600DA9534 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF96ABB1C98393600DA9534 /* CustomAlert.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */; };
 		F386C2DCFFCB6795EEF5B587 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B639B36984DE79BC8DABA /* Pods.framework */; };
@@ -128,6 +131,8 @@
 		BD03C7B41C760A4E00D8911A /* SetCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCellController.swift; sourceTree = "<group>"; };
 		BD03C7B61C760DE200D8911A /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		BD03C7BA1C761B6000D8911A /* SetDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDelegate.swift; sourceTree = "<group>"; };
+		BD0CD6F91C984789004FF750 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		BD0CD6FB1C985248004FF750 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		BD10539A1C6CD071004C10C7 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellController.swift; sourceTree = "<group>"; };
 		BD36EC221C70F0A400F993CE /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -235,6 +240,7 @@
 		BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundDark.swift; sourceTree = "<group>"; };
 		BDF44A321C79F46D00B47CD1 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTable.swift; sourceTree = "<group>"; };
+		BDF96ABB1C98393600DA9534 /* CustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
 		C82B639B36984DE79BC8DABA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +275,8 @@
 				BD947A031C6CF252003F3767 /* IntencityError.swift */,
 				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
 				BD8811011C92FF3A0098FA64 /* Badge.swift */,
+				BDF96ABB1C98393600DA9534 /* CustomAlert.swift */,
+				BD0CD6FB1C985248004FF750 /* DateUtil.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -276,6 +284,7 @@
 		BD1053971C6CC989004C10C7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BD0CD6F91C984789004FF750 /* Toast.swift */,
 				BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */,
 				BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */,
 				BD9479FA1C6CE43C003F3767 /* JSON.swift */,
@@ -748,13 +757,16 @@
 				BD947A381C6F6F50003F3767 /* RoutineCellController.swift in Sources */,
 				BD9EF2B01C6A52FA00E520CB /* IntencityButton.swift in Sources */,
 				BD8811041C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift in Sources */,
+				BD0CD6FC1C985248004FF750 /* DateUtil.swift in Sources */,
 				BDB45A1E1C849F52009E509B /* ExerciseDao.swift in Sources */,
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
 				BD640A511C85D1EE008895A2 /* RankingCellController.swift in Sources */,
 				BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */,
+				BDF96ABC1C98393600DA9534 /* CustomAlert.swift in Sources */,
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
 				BD7C7E831C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift in Sources */,
 				BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */,
+				BD0CD6FA1C984789004FF750 /* Toast.swift in Sources */,
 				BDE493FF1C7B9B5B005817D0 /* MenuHeaderCellController.swift in Sources */,
 				BD7C7E871C7CA0DA005AFFDD /* ChangePasswordViewController.swift in Sources */,
 				BD6E4B041C84A89900C4E6FB /* User.swift in Sources */,
