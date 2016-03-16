@@ -13,7 +13,6 @@ class DemoContentViewController: PageViewController
 {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var paddedView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
     var titleText: String!
@@ -32,7 +31,6 @@ class DemoContentViewController: PageViewController
         titleLabel.textColor = Color.white
         descriptionLabel.textColor = Color.white
         
-        paddedView.backgroundColor = Color.transparent
         imageView.image = UIImage(named: self.imageFile)
         view.backgroundColor = backgroundColor
     }
