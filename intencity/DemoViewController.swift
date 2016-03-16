@@ -23,7 +23,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         super.viewDidLoad()
         
         // Adds all the demo screens to the page controller.
-        createNewDemoPage("app_name", description: "demo_description", imageName: "demo_screen_about", backgroundColor: Color.primary)
+        createNewDemoPage("app_name", description: "demo_description", imageName: "demo_screen_intencity", backgroundColor: Color.primary)
         createNewDemoPage("demo_fitness_guru_title", description: "demo_fitness_guru_description", imageName: "demo_screen_fitness_guru", backgroundColor: Color.secondary_light)
         createNewDemoPage("demo_fitness_direction_title", description: "demo_fitness_direction_description", imageName: "demo_screen_directions", backgroundColor: Color.secondary_dark)
         createNewDemoPage("demo_fitness_log_title", description: "demo_fitness_log_description", imageName: "demo_screen_stat", backgroundColor: Color.secondary_light)
