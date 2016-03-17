@@ -46,6 +46,8 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         
         // Sets the number of dots in the page control.
         self.pageControl.numberOfPages = demoPages.count
+        
+        next.userInteractionEnabled = true
     }
 
     override func didReceiveMemoryWarning()
@@ -181,14 +183,34 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     /**
      * Sets the view controller for the demo pages.
      *
-     *  @param index    The index of the demo pages to show.
+     * @param index    The index of the demo pages to show.
      */
     func setViewController(index: Int)
     {
+        next.userInteractionEnabled = false
+
         // Pushes a view onto the pageViewController and forward.
-        pageViewController.setViewControllers([displayViewControllerAtIndex(index)], direction: .Forward, animated: true, completion: nil)
+        pageViewController.setViewControllers([displayViewControllerAtIndex(index)], direction: .Forward, animated: true, completion: { (finished) in
+            
+            if (finished)
+            {
+                self.enableNextButton()
+            }
+            else
+            {
+                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("enableNextButton"), userInfo: nil, repeats: false)
+            }
+        })
         
         updatePageControl()
+    }
+    
+    /**
+     * Enables the next button.
+     */
+    func enableNextButton()
+    {
+        self.next.userInteractionEnabled = true
     }
     
     /**
