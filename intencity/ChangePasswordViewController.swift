@@ -62,6 +62,11 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
         self.navigationController!.pushViewController(viewController, animated: true)
     }
     
+    @IBAction func checkPasswordLength(sender: AnyObject)
+    {
+        checkStringLength(sender as! UITextField, maxLength: Integer.PASSWORD_LENGTH)
+    }
+    
     @IBAction func changePasswordClicked(sender: AnyObject)
     {
         let oldPassword = oldPasswordTextField.text!
@@ -75,7 +80,7 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
         }
         // Check to see if the password is greater than the password length needed.
         // Check to see if the password is valid.
-        else if (!Util.checkStringLength(newPassword, length: Constant.REQUIRED_PASSWORD_LENGTH) || !Util.isFieldValid(newPassword, regEx: Constant.REGEX_FIELD) || Util.checkStringLength(newPassword, length: Integer.PASSWORD_LENGTH + 1))
+        else if (!Util.checkStringLength(newPassword, length: Constant.REQUIRED_PASSWORD_LENGTH) || !Util.isFieldValid(newPassword, regEx: Constant.REGEX_FIELD))
         {
             Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("password_validation_error", comment: ""), actions: [])
         }
@@ -92,6 +97,17 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
             _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
                             serviceURL: Constant.SERVICE_CHANGE_PASSWORD,
                             params: Constant.generateChangePasswordVariables(email, currentPassword: Util.replaceApostrophe(oldPassword), newPassword: Util.replaceApostrophe(newPassword)))
+        }
+    }
+    
+    /**
+     * Deletes extra characters in a textfield if it exceeds the allotted amount.
+     */
+    func checkStringLength(textField: UITextField!, maxLength: Int)
+    {
+        if (Util.checkStringLength(textField.text!, length: maxLength))
+        {
+            textField.deleteBackward()
         }
     }
     
