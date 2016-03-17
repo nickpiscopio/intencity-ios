@@ -140,7 +140,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         let confirmEmail = confirmEmailTextField.text!
         let password = passwordTextField.text!
         let confirmPassword = confirmPasswordTextField.text!
-        
+
         // Check if all the fields are filled in.
         if (!Util.checkStringLength(firstName, length: 1) || !Util.checkStringLength(lastName, length: 1) ||
             !Util.checkStringLength(email, length: 1) || !Util.checkStringLength(confirmEmail, length: 1) ||
@@ -154,9 +154,9 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
             Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("email_validation_error", comment: ""), actions: [])
         }
         // Check if the first and last name have valid characters.
-        else if (!Util.isFieldValid(firstName, regEx: Constant.REGEX_FIELD) || !Util.isFieldValid(lastName, regEx: Constant.REGEX_FIELD))
+        else if (!Util.isFieldValid(firstName, regEx: Constant.REGEX_NAME_FIELD) || !Util.isFieldValid(lastName, regEx: Constant.REGEX_NAME_FIELD))
         {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("field_validation_error", comment: ""), actions: [])
+            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("name_validation_error", comment: ""), actions: [])
         }
             // Check to see if the emails match.
         else if (email != confirmEmail)
@@ -182,24 +182,11 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         else
         {
             startCreateAccount()
-            
+
             _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
                             serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
-                            params: Constant.getAccountParameters(firstName, lastName: lastName, email: replacePlus(email), password: password, accountType: Constant.ACCOUNT_TYPE_NORMAL))
+                            params: Constant.getAccountParameters(firstName, lastName: lastName, email: Util.replacePlus(email), password: Util.replaceApostrophe(password), accountType: Constant.ACCOUNT_TYPE_NORMAL))
         }
-    }
-    
-    /**
-     *  Replaces the '+' character in a String of text.
-     *  This is so we can create an account on the server with an email that has a '+' in it.
-     *
-     *  @param text  The text to search.
-     *
-     *  return  The new String with its replaced character.
-     */
-    func replacePlus(text: String) -> String
-    {
-        return text.stringByReplacingOccurrencesOfString("+", withString: "%2B")
     }
     
     /**
@@ -282,4 +269,3 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         }
     }
 }
-

@@ -185,6 +185,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
                 query = regex.stringByReplacingMatchesInString(query, options: .WithTransparentBounds, range: NSMakeRange(0, query.characters.count), withTemplate: "")
             }
             
+            query = Util.replaceApostrophe(query)
+            
             urlParameters = Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SEARCH_USERS, variables: [ email, query ])
             
             event = ServiceEvent.SEARCH_FOR_USER
@@ -207,7 +209,14 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
                 // This means we got results back from the web database.
                 if (result != "" && result != Constant.RETURN_NULL)
                 {
-                    exercises = ExerciseDao().parseJson(json)
+                    do
+                    {
+                        exercises = try ExerciseDao().parseJson(json)
+                    }
+                    catch
+                    {
+                        exercises.removeAll()
+                    }
                 }
                 else
                 {
@@ -220,7 +229,15 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
                 // This means we got results back from the web database.
                 if (result != "" && result != Constant.RETURN_NULL)
                 {
-                    users = UserDao().parseJson(json)
+                    do
+                    {
+                        users = try UserDao().parseJson(json)
+                    }
+                    catch
+                    {
+                       users.removeAll()
+                    }
+                    
                 }
                 else
                 {

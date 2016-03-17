@@ -46,7 +46,7 @@ class Util
     {
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        let emailAsData = email.dataUsingEncoding(NSUTF8StringEncoding)
+        let emailAsData = replacePlus(email).dataUsingEncoding(NSUTF8StringEncoding)
         
         // Documentation: https://github.com/RNCryptor/RNCryptor
         let encryptedEmail = RNCryptor.encryptData(emailAsData!, password: Key.key)
@@ -94,11 +94,9 @@ class Util
     /**
      * Validates a string of text against a regular expression.
      */
-    static func isFieldValid(str : String, regEx: String) -> Bool
+    static func isFieldValid(str: String, regEx: String) -> Bool
     {
-        let regex = try! NSRegularExpression(pattern: regEx, options: [])
-        
-        return regex.numberOfMatchesInString(str, options: [], range: NSMakeRange(0, str.characters.count)) > 0
+        return NSPredicate(format:"SELF MATCHES %@", regEx).evaluateWithObject(str)
     }
 
     /**
@@ -333,5 +331,31 @@ class Util
         {
             grantBadgeToUser(email, badgeName: badgeName, content: content)
         }
+    }
+    
+    /**
+     *  Replaces the '+' character in a String of text.
+     *  This is so we can create an account on the server with an email that has a '+' in it.
+     *
+     *  @param text  The text to search.
+     *
+     *  return  The new String with its replaced character.
+     */
+    static func replacePlus(text: String) -> String
+    {
+        return text.stringByReplacingOccurrencesOfString("+", withString: "%2B")
+    }
+    
+    /**
+     *  Replaces the '+' character in a String of text.
+     *  This is so we can create an account on the server with an email that has a '+' in it.
+     *
+     *  @param text  The text to search.
+     *
+     *  return  The new String with its replaced character.
+     */
+    static func replaceApostrophe(text: String) -> String
+    {
+        return text.stringByReplacingOccurrencesOfString("'", withString: "%27")
     }
 }

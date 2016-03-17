@@ -35,6 +35,7 @@
 "facebook_login_message" = "Please login to a Facebook account to share.";
 "open_twitter_login" = "Go to settings";
 "facebook_button" = "Post on Facebook";
+"name_validation_error" = "Names must be less than 30 characters and can only contain letters, spaces, and . ' -";
 
 // Intencity Strings
 /*  */
@@ -177,7 +178,7 @@
 "password_match_error" = "Passwords do not match.";
 
 /*  */
-"password_validation_error" = "Passwords must be between 8 and 75 characters and cannot contain < > \" = +";
+"password_validation_error" = "Passwords must be between 8 and 40 characters and cannot contain < > \" = +";
 
 /*  */
 "field_validation_error" = "Fields cannot contain < > \" = +";
@@ -414,7 +415,7 @@
 "no_notifications" = "No notifications found.";
 
 /*  */
-"invalid_password" = "The password you entered wasn't correct. Please try again.";
+"invalid_password" = "The password you entered as your current password isn't correct. Please try again.";
 
 /*  */
 "password_changed_title" = "Password changed";

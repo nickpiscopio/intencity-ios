@@ -75,7 +75,7 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
         }
         // Check to see if the password is greater than the password length needed.
         // Check to see if the password is valid.
-        else if (!Util.checkStringLength(newPassword, length: Constant.REQUIRED_PASSWORD_LENGTH) || !Util.isFieldValid(newPassword, regEx: Constant.REGEX_FIELD) || Util.checkStringLength(newPassword, length: Constant.MAX_TEXT_FIELD_LENGTH))
+        else if (!Util.checkStringLength(newPassword, length: Constant.REQUIRED_PASSWORD_LENGTH) || !Util.isFieldValid(newPassword, regEx: Constant.REGEX_FIELD) || Util.checkStringLength(newPassword, length: Integer.PASSWORD_LENGTH + 1))
         {
             Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("password_validation_error", comment: ""), actions: [])
         }
@@ -91,7 +91,7 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
             
             _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
                             serviceURL: Constant.SERVICE_CHANGE_PASSWORD,
-                            params: Constant.generateChangePasswordVariables(email, currentPassword: oldPassword, newPassword: newPassword))
+                            params: Constant.generateChangePasswordVariables(email, currentPassword: Util.replaceApostrophe(oldPassword), newPassword: Util.replaceApostrophe(newPassword)))
         }
     }
     

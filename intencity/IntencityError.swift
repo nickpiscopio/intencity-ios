@@ -12,4 +12,5 @@ import Foundation
 enum IntencityError : ErrorType
 {
     case CastError
+    case ParseError
 }

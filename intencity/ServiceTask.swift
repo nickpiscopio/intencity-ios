@@ -8,6 +8,7 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import Foundation
+
 class ServiceTask
 {
     init(event: Int, delegate: ServiceDelegate?, serviceURL: String, params: NSString)

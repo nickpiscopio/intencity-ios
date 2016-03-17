@@ -152,14 +152,30 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         self.navigationController!.pushViewController(vc, animated: true)
     }
     
+    /**
+     * Displays a communication error message to the user.
+     */
+    func showErrorMessage()
+    {
+        Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
+    }
+    
     func onRetrievalSuccessful(event: Int, result: String)
     {
         switch(event)
         {
             case ServiceEvent.GET_FOLLOWING:
                 
-                // This gets saved as NSDictionary, so there is no order
-                currentUsers = UserDao().parseJson(result.parseJSONString)
+                do
+                {
+                    // This gets saved as NSDictionary, so there is no order
+                    currentUsers = try UserDao().parseJson(result.parseJSONString)
+                }
+                catch
+                {
+                    showErrorMessage()
+                }
+                
                 
                 tableView.reloadData()
                 
@@ -189,7 +205,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
                 break
             case ServiceEvent.UNFOLLOW:
             
-                Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
+                showErrorMessage()
             
                 break
             default:

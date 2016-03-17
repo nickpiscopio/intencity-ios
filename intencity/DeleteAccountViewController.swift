@@ -77,7 +77,7 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
         
         _ = ServiceTask(event: ServiceEvent.VALIDATE_USER_CREDENTIALS, delegate: self,
                         serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS,
-                        params: Constant.getValidateUserCredentialsServiceParameters(email, password: password))
+                        params: Constant.getValidateUserCredentialsServiceParameters(email, password: Util.replaceApostrophe(password)))
     }
     
     func onRetrievalSuccessful(event: Int, result: String)

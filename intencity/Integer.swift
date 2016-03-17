@@ -15,7 +15,7 @@ struct Integer
     static let WEIGHT_TEST_FIELD = 100
     static let WEIGHT_INTENSITY = 60
     static let NAME_LENGTH = 30
-    static let EMAIL_LENGTH = 75
-    static let PASSWORD_LENGTH = 75
+    static let EMAIL_LENGTH = 40
+    static let PASSWORD_LENGTH = 40
     static let EXERCISE_NOTE_LENGTH = 255
 }

@@ -561,8 +561,16 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // This means we got results back from the web database.
             if (result != "" && result != Constant.RETURN_NULL)
             {
-                exerciseData.exerciseList.appendContentsOf(ExerciseDao().parseJson(json))
-                exerciseData.addStretch()
+                do
+                {
+                    exerciseData.exerciseList.appendContentsOf(try ExerciseDao().parseJson(json))
+                    exerciseData.addStretch()
+                }
+                catch
+                {
+                    showConnectionIssue()
+                }
+                
             }
             // This means we got the results from the iOS database.
             else
