@@ -13,6 +13,7 @@ class ExerciseCellController: UITableViewCell
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var exerciseButton: UIButton!
     @IBOutlet weak var exerciseDescription: UILabel!
+    @IBOutlet weak var priorityStackView: UIStackView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var exerciseDescriptionView: UIView!
     
@@ -131,6 +132,8 @@ class ExerciseCellController: UITableViewCell
         
         editButton.hidden = false
         
+        priorityStackView.hidden = false
+        
         exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
     }
     
@@ -144,6 +147,8 @@ class ExerciseCellController: UITableViewCell
         exerciseDescriptionView.hidden = false
         
         editButton.hidden = true
+        
+        priorityStackView.hidden = true
         
         exerciseButton.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
     }
@@ -170,5 +175,15 @@ class ExerciseCellController: UITableViewCell
     @IBAction func exerciseClicked(sender: AnyObject)
     {
         delegate?.onExerciseClicked((exerciseButton.titleLabel?.text)!)
+    }
+    
+    @IBAction func setExerciseWithMorePriority(sender: AnyObject)
+    {
+        delegate?.setExercisePriority(index, isMore: true)
+    }
+    
+    @IBAction func setExerciseWithLessPriority(sender: AnyObject)
+    {
+        delegate?.setExercisePriority(index, isMore: false)
     }
 }

@@ -12,4 +12,5 @@ import Foundation
     func onExerciseClicked(name: String)
     func onEditClicked(index: Int)
     func onSetUpdated(index: Int)
+    func setExercisePriority(index: Int, isMore: Bool)
 }

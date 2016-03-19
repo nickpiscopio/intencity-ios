@@ -147,6 +147,7 @@ struct Constant
     static let STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS = "getAllDisplayMuscleGroups";
     static let STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY = "getExercisesForToday";
     static let STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP = "setCurrentMuscleGroup";
+    static let STORED_PROCEDURE_SET_EXERCISE_PRIORITY = "setExercisePriority";
     static let STORED_PROCEDURE_GET_FOLLOWING = "getFollowing";
     static let STORED_PROCEDURE_REMOVE_FROM_FOLLOWING = "removeFromFollowing";
     static let STORED_PROCEDURE_SEARCH_EXERCISES = "searchExercises";

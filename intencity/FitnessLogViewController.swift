@@ -642,6 +642,22 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
     }
     
+    func setExercisePriority(index: Int, isMore: Bool)
+    {
+        let exerciseName = currentExercises[index].exerciseName
+        
+        _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_EXERCISE_PRIORITY, variables: [ email, exerciseName, String(isMore ? 1 : 0) ]))
+        
+        if (!isMore)
+        {
+            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+            
+            hideExercise(indexPath, fromSearch: false, forever: false)
+        }
+    }
+    
     /**
      * The callback for when the edit button is clicked.
      *
