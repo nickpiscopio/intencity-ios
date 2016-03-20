@@ -16,6 +16,9 @@ class ExerciseCellController: UITableViewCell
     @IBOutlet weak var priorityStackView: UIStackView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var exerciseDescriptionView: UIView!
+    @IBOutlet weak var hideButton: IntencityButtonNoBackground!
+    
+    let WARM_UP_STRING = NSLocalizedString("warm_up", comment: "")
     
     let EDIT_STRING = NSLocalizedString("edit", comment: "")
     
@@ -26,7 +29,7 @@ class ExerciseCellController: UITableViewCell
     
     weak var delegate: ExerciseDelegate?
     
-    var index: Int!
+    var tableView: UITableView!
     
     var deleteHeight: CGFloat = 0
     
@@ -149,6 +152,8 @@ class ExerciseCellController: UITableViewCell
         editButton.hidden = true
         
         priorityStackView.hidden = true
+
+        hideButton.hidden = (exerciseButton.titleLabel?.text)! == WARM_UP_STRING
         
         exerciseButton.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
     }
@@ -166,10 +171,14 @@ class ExerciseCellController: UITableViewCell
         
         setEditButtonTitle(weight, duration: isReps ? String(reps) : duration, isReps: isReps)
     }
+    @IBAction func hideClicked(sender: AnyObject)
+    {
+        delegate?.onHideClicked(getIndexPath(sender))
+    }
     
     @IBAction func editClicked(sender: AnyObject)
     {
-        delegate?.onEditClicked(index)
+        delegate?.onEditClicked(getIndexPath(sender).row)
     }
     
     @IBAction func exerciseClicked(sender: AnyObject)
@@ -179,11 +188,16 @@ class ExerciseCellController: UITableViewCell
     
     @IBAction func setExerciseWithMorePriority(sender: AnyObject)
     {
-        delegate?.setExercisePriority(index, isMore: true)
+        delegate?.setExercisePriority(getIndexPath(sender), increasing: true)
     }
     
     @IBAction func setExerciseWithLessPriority(sender: AnyObject)
     {
-        delegate?.setExercisePriority(index, isMore: false)
+        delegate?.setExercisePriority(getIndexPath(sender), increasing: false)
+    }
+    
+    func getIndexPath(sender: AnyObject) -> NSIndexPath
+    {
+        return tableView.indexPathForCell(self)!
     }
 }

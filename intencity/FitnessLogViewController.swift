@@ -468,8 +468,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if (fromSearch && currentExercises[position].exerciseName == STRETCH_NAME)
         {
             let indexPath = NSIndexPath(forRow: position, inSection: 0)
-
-            hideExercise(indexPath, fromSearch: true, forever: false)
+            
+            hideExercise(indexPath, fromSearch: fromSearch, forever: false)
         }
         else
         {
@@ -642,20 +642,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
     }
     
-    func setExercisePriority(index: Int, isMore: Bool)
+    /**
+     * The callback for when the hide button is clicked on an exercise card.
+     *
+     * @param indexPath     The indexPath of the exercise to hide.
+     */
+    func onHideClicked(indexPath: NSIndexPath)
     {
-        let exerciseName = currentExercises[index].exerciseName
-        
-        _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_EXERCISE_PRIORITY, variables: [ email, exerciseName, String(isMore ? 1 : 0) ]))
-        
-        if (!isMore)
-        {
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            
-            hideExercise(indexPath, fromSearch: false, forever: false)
-        }
+        hideExercise(indexPath, fromSearch: false, forever: false)
     }
     
     /**
@@ -774,6 +768,28 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                             delegate: self,
                             serviceURL: Constant.SERVICE_COMPLEX_INSERT,
                             params: insertString)
+        }
+    }
+    
+    /**
+     * The callback for when an exercise priority is set.
+     *
+     * @param index         The index of the exercise we are setting.
+     * @param increasing    Boolean value of whether or not we are incresing or decreasing the priority of the exercise.
+     */
+    func setExercisePriority(indexPath: NSIndexPath, increasing: Bool)
+    {
+        let index = indexPath.row
+        
+        let exerciseName = currentExercises[index].exerciseName
+        
+        _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
+            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_EXERCISE_PRIORITY, variables: [ email, exerciseName, String(increasing ? 1 : 0) ]))
+        
+        if (!increasing)
+        {
+            hideExercise(indexPath, fromSearch: false, forever: false)
         }
     }
     
@@ -975,7 +991,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.delegate = self
-            cell.index = index
+            cell.tableView = tableView
             cell.exerciseButton.setTitle(exercise.exerciseName, forState: .Normal)
             cell.setEditText(set)
             
@@ -1072,9 +1088,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         updateExerciseTotal()
         
         // Note that indexPath is wrapped in an array: [indexPath]
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
         
-        if (exerciseName != STRETCH_NAME || fromSearch)
+        if ((exerciseName != STRETCH_NAME || fromSearch) && currentExercises[currentExercises.count - 1].exerciseName != STRETCH_NAME)
         {
             addExercise(fromSearch)
         }
@@ -1086,9 +1102,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if (forever && exerciseName != WARM_UP_NAME && exerciseName != STRETCH_NAME)
         {
             // Hide the exercise on the web server.
-            // The ServiceListener is null because we don't care if it reached the server.
+            // The delegate is nil because we don't care if it reached the server.
             // The worst that will happen is a user will have to hide the exercise again.
-            _ = ServiceTask(event: ServiceEvent.HIDE_EXERCISE_FOREVER, delegate: self,
+            _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
                             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_EXCLUDE_EXERCISE, variables: [ email, exerciseName ]))
         }
