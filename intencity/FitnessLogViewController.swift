@@ -1058,7 +1058,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         // Note that indexPath is wrapped in an array: [indexPath]
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
-        if (exerciseName != STRETCH_NAME || fromSearch)
+        if ((exerciseName != STRETCH_NAME || fromSearch) && currentExercises[currentExercises.count - 1].exerciseName != STRETCH_NAME)
         {
             addExercise(fromSearch)
         }

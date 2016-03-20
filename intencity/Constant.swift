@@ -121,7 +121,7 @@ struct Constant
     static let BUNDLE_EXERCISE_SKIPPED = "com.intencity.intencity.exercise.skipped";
     
     static let ENDPOINT = "http://www.intencityapp.com/";
-    static let SERVICE_FOLDER = ENDPOINT + "dev/services/";
+    static let SERVICE_FOLDER = ENDPOINT + "services/";
     static let SERVICE_FOLDER_MOBILE = SERVICE_FOLDER + "mobile/";
     static let SERVICE_VALIDATE_USER_CREDENTIALS = SERVICE_FOLDER_MOBILE + "user_credentials.php";
     static let SERVICE_CREATE_ACCOUNT = SERVICE_FOLDER_MOBILE + "account.php";
