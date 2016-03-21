@@ -45,7 +45,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pJU-af-MoM">
-                        <barButtonItem key="rightBarButtonItem" image="A70B786C-4EF6-4DE3-A81E-88076E77088D" id="6UB-wh-LYy">
+                        <barButtonItem key="rightBarButtonItem" image="D3974FB0-7086-4624-AAB1-782E475C45AF" id="6UB-wh-LYy">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="Kz2-vl-MdR"/>
                             </connections>
@@ -487,7 +487,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="95q-Y4-L8P">
-                                <rect key="frame" x="0.0" y="128" width="600" height="472"/>
+                                <rect key="frame" x="0.0" y="126" width="600" height="474"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="9cA-AX-d3G" id="9mZ-za-oYf"/>
@@ -518,7 +518,7 @@
                             <constraint firstItem="ZXw-Kz-8Nt" firstAttribute="leading" secondItem="bXm-As-zlr" secondAttribute="leading" constant="8" id="v8n-Hc-uYZ"/>
                             <constraint firstItem="ZXw-Kz-8Nt" firstAttribute="top" secondItem="Cc9-5w-S9n" secondAttribute="bottom" constant="10" id="wjq-iO-k1f"/>
                             <constraint firstAttribute="trailing" secondItem="YQi-6G-chg" secondAttribute="trailing" id="xbm-kq-hsJ"/>
-                            <constraint firstItem="95q-Y4-L8P" firstAttribute="top" secondItem="YQi-6G-chg" secondAttribute="bottom" constant="2" id="zNJ-tC-agc"/>
+                            <constraint firstItem="95q-Y4-L8P" firstAttribute="top" secondItem="YQi-6G-chg" secondAttribute="bottom" id="zNJ-tC-agc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -821,7 +821,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KlJ-Jv-PRs">
-                        <barButtonItem key="rightBarButtonItem" image="A70B786C-4EF6-4DE3-A81E-88076E77088D" id="c3l-ac-jjQ">
+                        <barButtonItem key="rightBarButtonItem" image="D3974FB0-7086-4624-AAB1-782E475C45AF" id="c3l-ac-jjQ">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="z41-nb-wwL"/>
                             </connections>
@@ -936,10 +936,10 @@
             </objects>
             <point key="canvasLocation" x="3206" y="-3103"/>
         </scene>
-        <!--Edit Exclusion View Controller-->
+        <!--Edit Exercise Priorities View Controller-->
         <scene sceneID="gz8-FN-qDY">
             <objects>
-                <viewController storyboardIdentifier="EditExclusionViewController" id="vfw-Fr-n1e" customClass="EditExclusionViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditExercisePrioritiesViewController" id="vfw-Fr-n1e" customClass="EditExercisePrioritiesViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xuz-LS-rdK"/>
                         <viewControllerLayoutGuide type="bottom" id="OyF-EZ-J5J"/>
@@ -1210,29 +1210,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="SMm-nz-5rA">
-                                <rect key="frame" x="16" y="36" width="568" height="167"/>
+                                <rect key="frame" x="16" y="36" width="568" height="173"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4HI-WI-99T">
-                                        <rect key="frame" x="0.0" y="0.0" width="568" height="85"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4HI-WI-99T">
+                                        <rect key="frame" x="0.0" y="0.0" width="568" height="91"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXX-bJ-Sej">
-                                                <rect key="frame" x="0.0" y="0.0" width="568" height="40"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXX-bJ-Sej">
+                                                <rect key="frame" x="0.0" y="0.0" width="568" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZuG-g0-Zr2" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="45" width="568" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="Kbe-Tn-fky"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="L4c-rR-hhc">
+                                                <rect key="frame" x="0.0" y="23" width="568" height="68"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZuG-g0-Zr2" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="568" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="Kbe-Tn-fky"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="IGE-yV-d9A">
+                                                        <rect key="frame" x="0.0" y="40" width="568" height="28"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXy-Ml-uF6" customClass="IntencityButtonNoBackgroundLarge" customModule="Intencity" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="41" height="28"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <connections>
+                                                                    <action selector="forgotPasswordClicked:" destination="A75-vA-Zpj" eventType="touchUpInside" id="356-6P-Oqy"/>
+                                                                    <action selector="forgotPasswordClicked:" destination="mZD-uF-JbS" eventType="touchUpInside" id="zrH-Er-aiM"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HC-DS-cjx" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="101" width="568" height="30"/>
+                                        <rect key="frame" x="0.0" y="107" width="568" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
@@ -1240,7 +1259,7 @@
                                         </connections>
                                     </button>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4Wj-tX-cLc">
-                                        <rect key="frame" x="0.0" y="147" width="568" height="20"/>
+                                        <rect key="frame" x="0.0" y="153" width="568" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                             </stackView>
@@ -1256,6 +1275,7 @@
                         <outlet property="activityIndicator" destination="4Wj-tX-cLc" id="ySK-2I-y3g"/>
                         <outlet property="deleteButton" destination="7HC-DS-cjx" id="jmR-wp-2EL"/>
                         <outlet property="deleteDescription" destination="qXX-bJ-Sej" id="Eyn-sS-bW6"/>
+                        <outlet property="forgotPasswordButton" destination="IXy-Ml-uF6" id="yjx-fK-r7t"/>
                         <outlet property="passwordTextField" destination="ZuG-g0-Zr2" id="XjU-cI-nEQ"/>
                     </connections>
                 </viewController>
@@ -1265,7 +1285,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="A70B786C-4EF6-4DE3-A81E-88076E77088D" width="82" height="69">
+        <image name="D3974FB0-7086-4624-AAB1-782E475C45AF" width="82" height="69">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -15,6 +15,7 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var forgotPasswordButton: IntencityButtonNoBackground!
     
     var email = ""
     var password = ""
@@ -32,10 +33,11 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("title_delete_account", comment: "")
         
-        deleteDescription.textColor = Color.secondary_dark
+        deleteDescription.textColor = Color.secondary_light
         deleteDescription.text = NSLocalizedString("delete_account_message", comment: "")
         passwordTextField.placeholder = NSLocalizedString("password", comment: "")
         
+        forgotPasswordButton.setTitle(NSLocalizedString("forgot_password", comment: ""), forState: .Normal)
         deleteButton.setTitle(NSLocalizedString("delete_account_button", comment: ""), forState: .Normal)
         
         activityIndicator.hidesWhenStopped = true
@@ -48,6 +50,15 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func forgotPasswordClicked(sender: AnyObject)
+    {
+        let storyboard = UIStoryboard(name: Constant.LOGIN_STORYBOARD, bundle: nil)
+        
+        let viewController = storyboard.instantiateViewControllerWithIdentifier("ForgotPasswordViewController")
+        
+        self.navigationController!.pushViewController(viewController, animated: true)
     }
     
     @IBAction func deleteClicked(sender: AnyObject)

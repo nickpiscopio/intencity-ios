@@ -396,7 +396,7 @@
 "title_delete_account" = "Delete Account";
 
 /* Settings Strings */
-"edit_exclusion" = "Edit Hidden Exercises";
+"edit_priority" = "Edit Exercise Priorities";
 
 /*  */
 "edit_equipment" = "Edit Equipment";

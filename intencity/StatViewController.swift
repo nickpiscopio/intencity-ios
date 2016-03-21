@@ -67,6 +67,7 @@ class StatViewController: UIViewController, SetDelegate
         
         // Initialize the tableview.
         Util.initTableView(tableView, footerHeight: Dimention.TABLE_FOOTER_HEIGHT_NORMAL, emptyTableStringRes: "")
+        //tableView.backgroundColor = Color.white
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "Set", cellName: Constant.SET_CELL)

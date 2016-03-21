@@ -41,7 +41,7 @@ class MenuViewController: UIViewController
         let isMobileTrial = Util.isAccountTypeTrial()
         
         // The settings section.
-        var settingsRows = [ MenuRow(title: NSLocalizedString("edit_exclusion", comment: ""), viewController: "EditExclusionViewController"),
+        var settingsRows = [ MenuRow(title: NSLocalizedString("edit_priority", comment: ""), viewController: "EditExercisePrioritiesViewController"),
                              MenuRow(title: NSLocalizedString("edit_equipment", comment: ""), viewController: "EditEquipmentViewController")]
         
         if (!isMobileTrial)

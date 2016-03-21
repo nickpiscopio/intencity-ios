@@ -46,7 +46,7 @@
 		BD7C7E7C1C7C9ABD005AFFDD /* MenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */; };
 		BD7C7E7E1C7C9E48005AFFDD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E7D1C7C9E48005AFFDD /* AboutViewController.swift */; };
 		BD7C7E811C7CA0A6005AFFDD /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E801C7CA0A6005AFFDD /* NotificationViewController.swift */; };
-		BD7C7E831C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E821C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift */; };
+		BD7C7E831C7CA0C6005AFFDD /* EditExercisePrioritiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E821C7CA0C6005AFFDD /* EditExercisePrioritiesViewController.swift */; };
 		BD7C7E851C7CA0CF005AFFDD /* EditEquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E841C7CA0CF005AFFDD /* EditEquipmentViewController.swift */; };
 		BD7C7E871C7CA0DA005AFFDD /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E861C7CA0DA005AFFDD /* ChangePasswordViewController.swift */; };
 		BD7C7E891C7CA0E9005AFFDD /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E881C7CA0E9005AFFDD /* DeleteAccountViewController.swift */; };
@@ -167,7 +167,7 @@
 		BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuRow.swift; sourceTree = SOURCE_ROOT; };
 		BD7C7E7D1C7C9E48005AFFDD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		BD7C7E801C7CA0A6005AFFDD /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
-		BD7C7E821C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHiddenExercisesViewController.swift; sourceTree = "<group>"; };
+		BD7C7E821C7CA0C6005AFFDD /* EditExercisePrioritiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExercisePrioritiesViewController.swift; sourceTree = "<group>"; };
 		BD7C7E841C7CA0CF005AFFDD /* EditEquipmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEquipmentViewController.swift; sourceTree = "<group>"; };
 		BD7C7E861C7CA0DA005AFFDD /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		BD7C7E881C7CA0E9005AFFDD /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
@@ -381,7 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				BD7C7E801C7CA0A6005AFFDD /* NotificationViewController.swift */,
-				BD7C7E821C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift */,
+				BD7C7E821C7CA0C6005AFFDD /* EditExercisePrioritiesViewController.swift */,
 				BD7C7E841C7CA0CF005AFFDD /* EditEquipmentViewController.swift */,
 				BD7C7E861C7CA0DA005AFFDD /* ChangePasswordViewController.swift */,
 				BD7C7E7D1C7C9E48005AFFDD /* AboutViewController.swift */,
@@ -760,7 +760,7 @@
 				BD640A511C85D1EE008895A2 /* RankingCellController.swift in Sources */,
 				BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */,
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
-				BD7C7E831C7CA0C6005AFFDD /* EditHiddenExercisesViewController.swift in Sources */,
+				BD7C7E831C7CA0C6005AFFDD /* EditExercisePrioritiesViewController.swift in Sources */,
 				BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */,
 				BD0CD6FA1C984789004FF750 /* Toast.swift in Sources */,
 				BDE493FF1C7B9B5B005817D0 /* MenuHeaderCellController.swift in Sources */,

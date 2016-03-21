@@ -1,5 +1,5 @@
 //
-//  EditHiddenExercisesViewController.swift
+//  EditExercisePrioritiesViewController.swift
 //  Intencity
 //
 //  The view controller for the edit hidden exercises screen.
@@ -9,7 +9,7 @@
 
 import UIKit
 
-class EditExclusionViewController: UIViewController, ServiceDelegate
+class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -31,7 +31,7 @@ class EditExclusionViewController: UIViewController, ServiceDelegate
         self.tabBarController?.tabBar.hidden = true
         
         // Sets the title for the screen.
-        self.navigationItem.title = NSLocalizedString("edit_exclusion", comment: "")
+        self.navigationItem.title = NSLocalizedString("edit_priority", comment: "")
         
         // Initialize the tableview.
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "no_items")
