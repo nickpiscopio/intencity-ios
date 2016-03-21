@@ -68,6 +68,8 @@ class Util
     
     /**
      * Logs the user out.
+     *
+     * We don't clear the user's last login time because we only want to show the welcome once per app install.
      */
     static func logOut(controller: UIViewController)
     {
