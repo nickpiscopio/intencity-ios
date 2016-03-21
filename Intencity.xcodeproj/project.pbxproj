@@ -13,6 +13,8 @@
 		BD03C7BB1C761B6000D8911A /* SetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD03C7BA1C761B6000D8911A /* SetDelegate.swift */; };
 		BD0CD6FA1C984789004FF750 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0CD6F91C984789004FF750 /* Toast.swift */; };
 		BD0CD6FC1C985248004FF750 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0CD6FB1C985248004FF750 /* DateUtil.swift */; };
+		BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */; };
+		BD0CD7081CA08223004FF750 /* ExercisePriorityCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */; };
 		BD10539B1C6CD071004C10C7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10539A1C6CD071004C10C7 /* Key.swift */; };
 		BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */; };
 		BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC221C70F0A400F993CE /* Exercise.swift */; };
@@ -132,6 +134,8 @@
 		BD03C7BA1C761B6000D8911A /* SetDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDelegate.swift; sourceTree = "<group>"; };
 		BD0CD6F91C984789004FF750 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		BD0CD6FB1C985248004FF750 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExercisePriorityCell.xib; sourceTree = "<group>"; };
+		BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePriorityCellController.swift; sourceTree = "<group>"; };
 		BD10539A1C6CD071004C10C7 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellController.swift; sourceTree = "<group>"; };
 		BD36EC221C70F0A400F993CE /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				BD947A371C6F6F50003F3767 /* RoutineCellController.swift */,
 				BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */,
 				BDE493FA1C7B9A58005817D0 /* MenuExerciseCellController.swift */,
+				BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */,
 				BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */,
 				BDE493FE1C7B9B5B005817D0 /* MenuHeaderCellController.swift */,
 			);
@@ -529,6 +534,7 @@
 				BDB45A191C849AAF009E509B /* SearchExerciseCell.xib */,
 				BD640A4E1C85D1D7008895A2 /* RankingCell.xib */,
 				BD5C6AF61C88B97700A9ED0A /* MenuExerciseCell.xib */,
+				BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */,
 				BD36EC321C720C6B00F993CE /* Direction.xib */,
 				BDE493F81C7B9A26005817D0 /* GenericCell.xib */,
 				BDE493FC1C7B9B45005817D0 /* MenuHeader.xib */,
@@ -623,6 +629,7 @@
 			files = (
 				BD947A361C6F6E5F003F3767 /* RoutineCard.xib in Resources */,
 				BD36EC291C71048600F993CE /* ExerciseCard.xib in Resources */,
+				BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */,
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
 				BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */,
 				BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */,
@@ -744,6 +751,7 @@
 				BDD89BF31C90654800530D79 /* NotificationHandler.swift in Sources */,
 				BD9EF2A81C6A310200E520CB /* ForgotPasswordViewController.swift in Sources */,
 				BD8810FC1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift in Sources */,
+				BD0CD7081CA08223004FF750 /* ExercisePriorityCellController.swift in Sources */,
 				BD37E3AC1C7E3906004A30F7 /* IntencityButtonRound.swift in Sources */,
 				BDD721CF1C6F96E2003C242C /* RoutineDelegate.swift in Sources */,
 				BDD53BF61C8A2D3F001235AE /* FitnessRecommendationRow.swift in Sources */,

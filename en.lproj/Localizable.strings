@@ -405,7 +405,11 @@
 "change_password" = "Change Password";
 
 /*  */
-"no_items" = "No hidden exercises found.";
+"no_priorities" = "Priorities have not been set for any exercises.";
+"high_priority" = "HIGH PRIORITY";
+"medium_priority" = "MEDIUM PRIORITY";
+"normal_priority" = "NORMAL PRIORITY";
+"hidden_exercise" = "EXERCISE HIDDEN";
 
 /*  */
 "no_notifications" = "No notifications found.";

@@ -34,6 +34,7 @@ struct Constant
     static let SEARCH_EXERCISE_CELL = "SearchExerciseCell"
     static let RANKING_CELL = "RankingCell"
     static let MENU_EXERCISE_CELL = "MenuExerciseCell"
+    static let EXERCISE_PRIORITY_CELL = "ExercisePriorityCell"
     static let FITNESS_RECOMMENDATION_CELL = "FitnessRecommendationCell"
     static let NOTIFICATION_CELL = "NotificationCell"
     

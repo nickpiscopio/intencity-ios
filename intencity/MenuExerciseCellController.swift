@@ -2,7 +2,7 @@
 //  MenuExerciseCellController.swift
 //  Intencity
 //
-//  The cell controller for the exclusion and equipment lists.
+//  The cell controller for the equipment lists.
 //
 //  Created by Nick Piscopio on 3/3/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.

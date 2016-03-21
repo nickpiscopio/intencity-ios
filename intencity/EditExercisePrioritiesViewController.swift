@@ -34,10 +34,10 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
         self.navigationItem.title = NSLocalizedString("edit_priority", comment: "")
         
         // Initialize the tableview.
-        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "no_items")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "no_priorities")
         
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.EXERCISE_PRIORITY_CELL, cellName: Constant.EXERCISE_PRIORITY_CELL)
         
         initLoadingView()
         showLoading()
@@ -76,24 +76,9 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
     {
         let index = indexPath.row
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_EXERCISE_CELL) as! MenuExerciseCellController
-        cell.setListItem(exclusionList[index], checked: true)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_PRIORITY_CELL) as! ExercisePriorityCellController
+        cell.setListItem(exclusionList[index])
         return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
-        let index = indexPath.row
-        
-        let equipmentName = exclusionList[index]
-        
-        onCheckboxChecked(equipmentName)
-        
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MenuExerciseCellController
-        cell.setChecked(!cell.isExerciseHidden())
-        
-        // Deselects the row.
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     func onRetrievalSuccessful(event: Int, result: String)
@@ -166,20 +151,6 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
     func goBack(alertAction: UIAlertAction!) -> Void
     {
         goBack()
-    }
-    
-    func onCheckboxChecked(name: String)
-    {
-        // Add or remove equipment from the user's list of equipment
-        // if he or she clicks on a list item.
-        if (newExclusionList.contains(name))
-        {
-            newExclusionList.removeAtIndex(newExclusionList.indexOf(name)!)
-        }
-        else
-        {
-            newExclusionList.append(name);
-        }
     }
     
     /**
