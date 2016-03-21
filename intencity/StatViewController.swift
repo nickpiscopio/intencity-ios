@@ -100,7 +100,9 @@ class StatViewController: UIViewController, SetDelegate
         
         let infoIcon = UIImage(named: "info")
         
-        let iconSize = CGRect(origin: CGPointZero, size: infoIcon!.size)
+        let size = infoIcon!.size
+        
+        let iconSize = CGRect(origin: CGPointZero, size: CGSize(width: size.width + 20, height: size.height))
     
         let infoButton = UIButton(frame: iconSize)
         infoButton.setImage(infoIcon, forState: .Normal)
