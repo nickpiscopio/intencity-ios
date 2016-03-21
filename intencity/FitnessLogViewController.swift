@@ -79,8 +79,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         Util.addUITableViewCell(tableView, nibNamed: "ExerciseCard", cellName: Constant.EXERCISE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.EXERCISE_LIST_HEADER, cellName: Constant.EXERCISE_LIST_HEADER)
         
-//        tableView.setContentOffset(CGPointMake(0, tableView.contentSize.height), animated: true)
-        
         showWelcome()
         
         initRoutineCard()
@@ -486,17 +484,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         // Set the current exercises in the exercise list header so we can exclude adding exercises that we already have when searching.
         exerciseListHeader.currentExercises = currentExercises
         
-        
-        
-        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("scrollToBottomOfFitnessLog"), userInfo: nil, repeats: false)
-    }
-    
-    func scrollToBottomOfFitnessLog()
-    {
         // Scrolls to the bottom of the tableview.
-//        tableView.scrollRectToVisible(tableView.tableFooterView!.frame, animated: true)
-        
-        tableView.scrollRectToVisible(CGRectMake(0, tableView.contentSize.height - tableView.bounds.size.height, tableView.bounds.size.width, tableView.bounds.size.height), animated: true)
+        tableView.scrollRectToVisible(tableView.tableFooterView!.frame, animated: true)
     }
     
     /**
@@ -941,7 +930,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     func insertRow()
     {
         let indexPath = NSIndexPath(forRow: currentExercises.count - 1, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Bottom)
+        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Bottom)
     }
     
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift

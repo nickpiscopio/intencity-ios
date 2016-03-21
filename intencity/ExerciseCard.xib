@@ -21,10 +21,10 @@
                                 <rect key="frame" x="4" y="4" width="368" height="114"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="VO9-jE-4bP">
-                                        <rect key="frame" x="0.0" y="0.0" width="368" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="368" height="58"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tza-Sg-UaB" customClass="IntencityButtonNoBackgroundLarge" customModule="Intencity" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="215" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="319" height="58"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="16" maxX="16" maxY="16"/>
                                                 <state key="normal" title="Button"/>
@@ -32,11 +32,39 @@
                                                     <action selector="exerciseClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="yJH-Ef-Yrq"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNv-Ow-KFu" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                                <rect key="frame" x="322" y="0.0" width="46" height="58"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="46" id="lLO-yW-3D3"/>
+                                                </constraints>
+                                                <state key="normal" image="hide"/>
+                                                <connections>
+                                                    <action selector="hideClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="kwc-e2-31Y"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfq-E9-2YY">
+                                        <rect key="frame" x="0.0" y="58" width="368" height="22"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="47M-0n-KeS">
+                                                <rect key="frame" x="0.0" y="0.0" width="257" height="22"/>
+                                                <subviews>
+                                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ImQ-XT-opv" customClass="IntencityCardButton" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="22"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="Button" image="edit"/>
+                                                        <connections>
+                                                            <action selector="editClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="46u-V8-hpX"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="tSa-Jk-I0Q">
-                                                <rect key="frame" x="218" y="0.0" width="111" height="50"/>
+                                                <rect key="frame" x="257" y="0.0" width="111" height="22"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryq-FO-rQ4" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="54" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="54" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="54" id="Zt7-AT-7Jc"/>
                                                         </constraints>
@@ -46,7 +74,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7y-IN-Pcu" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
-                                                        <rect key="frame" x="57" y="0.0" width="54" height="50"/>
+                                                        <rect key="frame" x="57" y="0.0" width="54" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="54" id="AKX-jm-4VV"/>
                                                         </constraints>
@@ -57,26 +85,8 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNv-Ow-KFu" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
-                                                <rect key="frame" x="332" y="0.0" width="36" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="36" id="lLO-yW-3D3"/>
-                                                </constraints>
-                                                <state key="normal" image="dot_menu"/>
-                                                <connections>
-                                                    <action selector="hideClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="kwc-e2-31Y"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                     </stackView>
-                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ImQ-XT-opv" customClass="IntencityCardButton" customModule="Intencity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="368" height="30"/>
-                                        <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Button" image="edit"/>
-                                        <connections>
-                                            <action selector="editClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="46u-V8-hpX"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gr7-Dl-tBT">
                                         <rect key="frame" x="0.0" y="80" width="368" height="34"/>
                                         <subviews>
@@ -116,20 +126,20 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="editButton" destination="ImQ-XT-opv" id="jOx-ch-hKy"/>
+                <outlet property="editStackView" destination="hfq-E9-2YY" id="GNY-XW-PLJ"/>
                 <outlet property="exerciseButton" destination="tza-Sg-UaB" id="xBE-PF-qiB"/>
                 <outlet property="exerciseDescription" destination="bFx-wR-uQe" id="HBf-Q4-eSq"/>
                 <outlet property="exerciseDescriptionView" destination="Gr7-Dl-tBT" id="Xs6-E7-ard"/>
                 <outlet property="exerciseView" destination="UFj-wN-m2V" id="keH-UL-aDJ"/>
                 <outlet property="hideButton" destination="SNv-Ow-KFu" id="UHj-kg-Ey2"/>
-                <outlet property="priorityStackView" destination="tSa-Jk-I0Q" id="ndM-kl-V20"/>
                 <outlet property="view" destination="UFj-wN-m2V" id="a4g-jt-VcE"/>
             </connections>
             <point key="canvasLocation" x="-331" y="273"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="dot_menu" width="4" height="16"/>
-        <image name="edit" width="18" height="17"/>
+        <image name="edit" width="18" height="12"/>
+        <image name="hide" width="14" height="14"/>
         <image name="thumb_down" width="22" height="20"/>
         <image name="thumb_up" width="22" height="20"/>
     </resources>
