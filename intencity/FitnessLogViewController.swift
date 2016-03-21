@@ -24,6 +24,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
     let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
     let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
+    let MORE_PRIORITY_STRING = NSLocalizedString("more_priority_string", comment: "")
+    let LESS_PRIORITY_STRING = NSLocalizedString("less_priority_string", comment: "")
 
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -42,8 +44,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     var currentExercises = [Exercise]()
     
     var exerciseData: ExerciseData!
-    
-    var isSwipeOpen = false
     
     var exerciseListHeader: ExerciseListHeaderController!
     
@@ -622,23 +622,20 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func onExerciseClicked(name: String)
     {
-        if (!isSwipeOpen)
+        if (name == WARM_UP_NAME || name == STRETCH_NAME)
         {
-            if (name == WARM_UP_NAME || name == STRETCH_NAME)
-            {
-                let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.EXERCISE_SEARCH_VIEW_CONTROLLER) as! ExerciseSearchViewController
-                viewController.searchType = name
-                viewController.routineName = exerciseListHeader.routineNameLabel.text
+            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.EXERCISE_SEARCH_VIEW_CONTROLLER) as! ExerciseSearchViewController
+            viewController.searchType = name
+            viewController.routineName = exerciseListHeader.routineNameLabel.text
                 
-                self.navigationController!.pushViewController(viewController, animated: true)
-            }
-            else
-            {
-                let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
-                viewController.exerciseName = name
+            self.navigationController!.pushViewController(viewController, animated: true)
+        }
+        else
+        {
+            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
+            viewController.exerciseName = name
                 
-                self.navigationController!.pushViewController(viewController, animated: true)
-            }
+            self.navigationController!.pushViewController(viewController, animated: true)
         }
     }
     
@@ -659,14 +656,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func onEditClicked(index: Int)
     {
-        if (!isSwipeOpen)
-        {
-            let statViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StatViewController") as! StatViewController
-            statViewController.delegate = self
-            statViewController.index = index
+        let statViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StatViewController") as! StatViewController
+        statViewController.delegate = self
+        statViewController.index = index
         
-            self.navigationController!.pushViewController(statViewController, animated: true)
-        }
+        self.navigationController!.pushViewController(statViewController, animated: true)
     }
     
     /**
@@ -791,6 +785,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         {
             hideExercise(indexPath, fromSearch: false, forever: false)
         }
+        
+        // Displays a toast to the user telling them they will see an exercise more or less.
+        self.tabBarController?.view.makeToast(String(format: increasing ? MORE_PRIORITY_STRING : LESS_PRIORITY_STRING, arguments: [ exerciseName ]))
     }
     
     /**
@@ -1008,35 +1005,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?
-    {
-        isSwipeOpen = true
-        
-        let remove = UITableViewRowAction(style: .Normal, title: NSLocalizedString("hide", comment: "")) { action, index in
-            
-            let exerciseName = self.exerciseData.exerciseList[indexPath.row].exerciseName
-            let actions = [ UIAlertAction(title: NSLocalizedString("hide_for_now", comment: ""), style: .Default, handler: self.hideExerciseFromAlert(indexPath, forever: false)),
-                            UIAlertAction(title: NSLocalizedString("hide_forever", comment: ""), style: .Destructive, handler: self.hideExerciseFromAlert(indexPath, forever: true)),
-                            UIAlertAction(title: NSLocalizedString("do_not_hide", comment: ""), style: .Cancel, handler: self.cancelRemoval(indexPath)) ]
-            Util.displayAlert(self, title: String(format: NSLocalizedString("hide_exercise", comment: ""), exerciseName), message: "", actions: actions)
-        }
-        
-        remove.backgroundColor = Color.card_button_delete_select
-        
-        return [remove]
-    }
-    
-    func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath)
-    {
-        self.isSwipeOpen = false
-    }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
-    {
-        // Only edit the cells if the user is exercising and if it isn't the warm-up.
-        return indexPath.row > 0 && state == Constant.EXERCISE_CELL
-    }
-    
     /**
      * Randomly generates a message to share with social media.
      *
@@ -1111,19 +1079,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         tableView.endUpdates()
     }
-    
-    /**
-     * Hides an exercise in the exercise list.
-     *
-     * @param indexPath     The index path for the exercise to hide.
-     * @param forever       Whether to call the stored proceedure to hide the exercise forever.
-     */
-    func hideExerciseFromAlert(indexPath: NSIndexPath, forever: Bool)(alertAction: UIAlertAction!) -> Void
-    {
-        self.hideExercise(indexPath, fromSearch: false, forever: forever)
-    }
-    
-    func cancelRemoval(indexPath: NSIndexPath)(alertAction: UIAlertAction!) { }
     
     /**
      * The finish exercise alert button click.

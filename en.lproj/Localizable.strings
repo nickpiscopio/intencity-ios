@@ -228,6 +228,9 @@
 "routine_continue" = "Continue where I left off";
 
 /* Exercise List Strings */
+"more_priority_string" = "You will see %1$@ more.";
+"less_priority_string" = "You will see %1$@ less.";
+
 "how_to_workout_title" = "What is your fitness goal?";
 
 /*  */
@@ -349,15 +352,6 @@
 
 /*  */
 "warm_ups_title" = "Warm-Ups for %1$@";
-
-/*  */
-"hide_for_now" = "Hide for now";
-
-/*  */
-"hide_forever" = "Hide forever";
-
-/*  */
-"do_not_hide" = "Don't hide";
 
 /*  */
 "title_add_set_error" = "Missing duration";
