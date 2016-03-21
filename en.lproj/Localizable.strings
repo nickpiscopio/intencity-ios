@@ -196,7 +196,9 @@
 "menu_search" = "Search";
 
 /*  */
-"title_info" = "Info";
+"title_app" = "App";
+
+"title_rate_intencity" = "Rate Intencity";
 
 /*  */
 "direction" = "Don't know how to do this exercise?";

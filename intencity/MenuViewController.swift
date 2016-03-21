@@ -56,9 +56,10 @@ class MenuViewController: UIViewController
         // The info section.
         let infoRows = [ MenuRow(title: NSLocalizedString("title_about", comment: ""), viewController: "AboutViewController"),
                          MenuRow(title: NSLocalizedString("title_terms", comment: ""), viewController: Constant.TERMS_VIEW_CONTROLLER),
-                         MenuRow(title: NSLocalizedString("title_privacy_policy", comment: ""), viewController: Constant.PRIVACY_POLICY_VIEW_CONTROLLER)]
+                         MenuRow(title: NSLocalizedString("title_privacy_policy", comment: ""), viewController: Constant.PRIVACY_POLICY_VIEW_CONTROLLER),
+                         MenuRow(title: NSLocalizedString("title_rate_intencity", comment: ""), viewController: Constant.RATE_INTENCITY)]
         
-        menu.append(MenuSection(title: NSLocalizedString("title_info", comment: ""), rows: infoRows))
+        menu.append(MenuSection(title: NSLocalizedString("title_app", comment: ""), rows: infoRows))
         
         if (!isMobileTrial)
         {
@@ -134,6 +135,10 @@ class MenuViewController: UIViewController
         if (viewController == Constant.LOG_OUT)
         {
             Util.logOut(self)
+        }
+        else if (viewController == Constant.RATE_INTENCITY)
+        {
+            UIApplication.sharedApplication().openURL(NSURL(string: "https://itunes.apple.com/app/id786650617")!)
         }
         else
         {

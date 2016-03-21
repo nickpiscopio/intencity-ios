@@ -47,6 +47,7 @@ struct Constant
     static let FITNESS_RECOMMENDATION_VIEW_CONTROLLER = "FitnessRecommendationViewController"
     static let TERMS_VIEW_CONTROLLER = "TermsViewController"
     static let PRIVACY_POLICY_VIEW_CONTROLLER = "PrivacyPolicyViewController"
+    static let RATE_INTENCITY = "RateIntencity"
     static let LOG_OUT = "LogOut"
     
     static let MAIN_VIEW = "IntencityTabView"
