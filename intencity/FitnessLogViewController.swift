@@ -79,6 +79,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         Util.addUITableViewCell(tableView, nibNamed: "ExerciseCard", cellName: Constant.EXERCISE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.EXERCISE_LIST_HEADER, cellName: Constant.EXERCISE_LIST_HEADER)
         
+//        tableView.setContentOffset(CGPointMake(0, tableView.contentSize.height), animated: true)
+        
         showWelcome()
         
         initRoutineCard()
@@ -359,7 +361,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         exerciseData.exerciseList = exercises
 
-        addExercise(true)
+        addExercise(false, fromSearch: true)
     }
     
     /**
@@ -369,7 +371,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     {
         if (currentExercises.count != exerciseData.exerciseList.count)
         {
-            addExercise(false)
+            addExercise(false, fromSearch: false)
         }
         else
         {
@@ -437,12 +439,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     /**
      * Adds an exercise to the currentExercises.
      */
-    func addExercise(fromSearch: Bool)
+    func addExercise(initialLoad: Bool, fromSearch: Bool)
     {
         let currentExerciseCount = currentExercises.count
         // If there is 1 exercise left, we want to display the stretch.
         // We remove all the unnecessary exercises.
-        if (!fromSearch && totalExercises - currentExerciseCount <= 1)
+        if (!initialLoad && !fromSearch && totalExercises - currentExerciseCount <= 1)
         {
             let stretch = exerciseData.exerciseList[exerciseData.exerciseList.count - 1]
             
@@ -484,8 +486,17 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         // Set the current exercises in the exercise list header so we can exclude adding exercises that we already have when searching.
         exerciseListHeader.currentExercises = currentExercises
         
+        
+        
+        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("scrollToBottomOfFitnessLog"), userInfo: nil, repeats: false)
+    }
+    
+    func scrollToBottomOfFitnessLog()
+    {
         // Scrolls to the bottom of the tableview.
-        tableView.scrollRectToVisible(tableView.tableFooterView!.frame, animated: true)
+//        tableView.scrollRectToVisible(tableView.tableFooterView!.frame, animated: true)
+        
+        tableView.scrollRectToVisible(CGRectMake(0, tableView.contentSize.height - tableView.bounds.size.height, tableView.bounds.size.width, tableView.bounds.size.height), animated: true)
     }
     
     /**
@@ -919,7 +930,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         {
             for (var i = 0; i < indexToLoad; i++)
             {
-                addExercise(false)
+                addExercise(true, fromSearch: false)
             }
         }
     }
@@ -1092,7 +1103,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         if ((exerciseName != STRETCH_NAME || fromSearch) && currentExercises[currentExercises.count - 1].exerciseName != STRETCH_NAME)
         {
-            addExercise(fromSearch)
+            addExercise(false, fromSearch: fromSearch)
         }
         
         // Add that the user has skipped an exercise.
