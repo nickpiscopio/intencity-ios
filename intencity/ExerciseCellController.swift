@@ -186,12 +186,12 @@ class ExerciseCellController: UITableViewCell
     
     @IBAction func setExerciseWithMorePriority(sender: AnyObject)
     {
-        delegate?.setExercisePriority(getIndexPath(sender), increasing: true)
+        delegate?.onSetExercisePriority(getIndexPath(sender), increasing: true)
     }
     
     @IBAction func setExerciseWithLessPriority(sender: AnyObject)
     {
-        delegate?.setExercisePriority(getIndexPath(sender), increasing: false)
+        delegate?.onSetExercisePriority(getIndexPath(sender), increasing: false)
     }
     
     func getIndexPath(sender: AnyObject) -> NSIndexPath

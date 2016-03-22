@@ -477,11 +477,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             hideExercise(indexPath, fromSearch: fromSearch, forever: false)
         }
         else
-        {
-            // Get the next exercise.
+        {            
             currentExercises.append(exerciseData.exerciseList[exerciseData.exerciseIndex])
             
-            // Increment the index.
+            // Get the next exercise.
             exerciseData.exerciseIndex += 1
             
             insertRow()
@@ -779,7 +778,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      * @param index         The index of the exercise we are setting.
      * @param increasing    Boolean value of whether or not we are incresing or decreasing the priority of the exercise.
      */
-    func setExercisePriority(indexPath: NSIndexPath, increasing: Bool)
+    func onSetExercisePriority(indexPath: NSIndexPath, increasing: Bool)
     {
         let index = indexPath.row
         

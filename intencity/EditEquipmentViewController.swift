@@ -157,7 +157,7 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
     {
         _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
                         serviceURL: Constant.SERVICE_UPDATE_EQUIPMENT,
-                        params: Constant.generateListVariables(email, variables: userEquipmentList))
+                        params: Constant.generateEquipmentListVariables(email, variables: userEquipmentList))
     }
     
     /**

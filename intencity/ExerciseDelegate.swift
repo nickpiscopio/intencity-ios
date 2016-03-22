@@ -13,5 +13,5 @@ import Foundation
     func onHideClicked(indexPath: NSIndexPath)
     func onEditClicked(index: Int)
     func onSetUpdated(index: Int)
-    func setExercisePriority(indexPath: NSIndexPath, increasing: Bool)
+    func onSetExercisePriority(indexPath: NSIndexPath, increasing: Bool)
 }

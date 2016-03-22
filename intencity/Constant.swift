@@ -12,7 +12,7 @@ import UIKit
 
 struct Constant
 {
-    // -- START iOS CONSTANTS --    
+    // -- START iOS CONSTANTS --
     static let DEMO_STORYBOARD = "Demo"
     static let LOGIN_STORYBOARD = "Login"    
     static let MAIN_STORYBOARD = "Main"
@@ -128,7 +128,7 @@ struct Constant
     static let SERVICE_COMPLEX_INSERT = SERVICE_FOLDER_MOBILE + "complex_insert.php";
     static let SERVICE_COMPLEX_UPDATE = SERVICE_FOLDER_MOBILE + "complex_update.php";
     static let SERVICE_UPDATE_EQUIPMENT = SERVICE_FOLDER_MOBILE + "update_equipment.php";
-    static let SERVICE_UPDATE_EXCLUSION = SERVICE_FOLDER_MOBILE + "update_exclusion.php";
+    static let SERVICE_UPDATE_EXERCISE_PRIORITY = SERVICE_FOLDER_MOBILE + "update_exercise_priority.php";
     static let SERVICE_CHANGE_PASSWORD = SERVICE_FOLDER_MOBILE + "change_password.php";
     static let SERVICE_FORGOT_PASSWORD = SERVICE_FOLDER + "forgot_password.php";
     static let PARAMETER_AMPERSAND = "&";
@@ -143,6 +143,7 @@ struct Constant
     static let PARAMETER_LAST_NAME = "last_name=";
     static let PARAMETER_ACCOUNT_TYPE = "account_type=";
     static let PARAMETER_INSERTS = "inserts=";
+    
     static let STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS = "getAllDisplayMuscleGroups";
     static let STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY = "getExercisesForToday";
     static let STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP = "setCurrentMuscleGroup";
@@ -262,25 +263,62 @@ struct Constant
     }
 
     /**
-     * Generates the URL string to update the user's equipment list or the user's exclusion list.
+     * Generates the URL string to update the user's equipment list.
      *
      * @param email         The user's email.
      * @param variables     The list items to update.
      *
      * @return  The generated URL string.
      */
-    static func generateListVariables(email: String, variables: Array<String>) -> String
+    static func generateEquipmentListVariables(email: String, variables: Array<String>) -> String
     {
         var parameters = PARAMETER_EMAIL + email
+        parameters += generateListVariables(PARAMETER_AMPERSAND + PARAMETER_INSERTS, variables: variables)
+        
+        return parameters
+    }
     
+    /**
+     * Generates the URL string to update the user's priority list.
+     *
+     * @param email         The user's email.
+     * @param exercises     The list exercises to update.
+     * @param priorities    The list priorities for the exercises.
+     *
+     * @return  The generated URL string.
+     */
+    static func generateExercisePriorityListVariables(email: String, exercises: Array<String>, priorities: Array<String>) -> String
+    {
+        let PARAMETER_EXERCISES = "&exercises=";
+        let PARAMETER_PRIORITIES = "&priorities=";
+        
+        var parameters = PARAMETER_EMAIL + email
+        parameters += generateListVariables(PARAMETER_EXERCISES, variables: exercises)
+        parameters += generateListVariables(PARAMETER_PRIORITIES, variables: priorities)
+        
+        return parameters
+    }
+    
+    /**
+     * Generates the URL string for a list of variables.
+     *
+     * @param variableName  The name of the variable to add to teh URL string.
+     * @param variables     The variables to add to the URL string.
+     *
+     * @return  The generated URL string.
+     */
+    static func generateListVariables(variableName: String, variables: Array<String>) -> String
+    {
+        var parameters = ""
+        
         let length = variables.count
         for i in 0 ..< length
         {
             if (i == 0)
             {
-                parameters += PARAMETER_AMPERSAND + PARAMETER_INSERTS
+                parameters += variableName
             }
-    
+            
             parameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i]
         }
         

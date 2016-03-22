@@ -120,7 +120,7 @@
 		BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */; };
 		BDF44A331C79F46D00B47CD1 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A321C79F46D00B47CD1 /* DBHelper.swift */; };
 		BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */; };
-		BDFD87851CA175A700ECDDCE /* ExercisePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD87841CA175A700ECDDCE /* ExercisePriority.swift */; };
+		BDFD87871CA196D700ECDDCE /* ExercisePriorityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD87861CA196D700ECDDCE /* ExercisePriorityDelegate.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */; };
 		F386C2DCFFCB6795EEF5B587 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B639B36984DE79BC8DABA /* Pods.framework */; };
@@ -244,7 +244,7 @@
 		BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundDark.swift; sourceTree = "<group>"; };
 		BDF44A321C79F46D00B47CD1 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTable.swift; sourceTree = "<group>"; };
-		BDFD87841CA175A700ECDDCE /* ExercisePriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePriority.swift; sourceTree = SOURCE_ROOT; };
+		BDFD87861CA196D700ECDDCE /* ExercisePriorityDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePriorityDelegate.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
 		C82B639B36984DE79BC8DABA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -362,7 +362,6 @@
 				BDD53BF51C8A2D3F001235AE /* FitnessRecommendationRow.swift */,
 				BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */,
 				BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */,
-				BDFD87841CA175A700ECDDCE /* ExercisePriority.swift */,
 				BD9EF2561C692A6900E520CB /* DemoView.swift */,
 				BD03C7B61C760DE200D8911A /* Set.swift */,
 				BD37E3AD1C7F4273004A30F7 /* SavedExercise.swift */,
@@ -516,6 +515,7 @@
 				BD03C7BA1C761B6000D8911A /* SetDelegate.swift */,
 				BDD721CE1C6F96E2003C242C /* RoutineDelegate.swift */,
 				BD36EC2E1C72068900F993CE /* ExerciseDelegate.swift */,
+				BDFD87861CA196D700ECDDCE /* ExercisePriorityDelegate.swift */,
 				BDB45A1F1C84A122009E509B /* ExerciseSearchDelegate.swift */,
 				BD6E4B051C84B2AC00C4E6FB /* UserSearchDelegate.swift */,
 			);
@@ -738,7 +738,6 @@
 				BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */,
 				BD7C7E851C7CA0CF005AFFDD /* EditEquipmentViewController.swift in Sources */,
 				BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */,
-				BDFD87851CA175A700ECDDCE /* ExercisePriority.swift in Sources */,
 				BD74A2591C735EA700E6ABD2 /* StatViewController.swift in Sources */,
 				BD9EF2591C693A6400E520CB /* Color.swift in Sources */,
 				BDB45A201C84A122009E509B /* ExerciseSearchDelegate.swift in Sources */,
@@ -794,6 +793,7 @@
 				BD4B8EB91C7CEACD00AD579B /* AboutFooterCellController.swift in Sources */,
 				BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */,
 				BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */,
+				BDFD87871CA196D700ECDDCE /* ExercisePriorityDelegate.swift in Sources */,
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
 				BDD53BFA1C8A333D001235AE /* FitnessRecFooterCellController.swift in Sources */,
 				BDB45A1C1C849B42009E509B /* SearchExerciseCellController.swift in Sources */,

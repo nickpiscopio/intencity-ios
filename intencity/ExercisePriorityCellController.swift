@@ -23,7 +23,10 @@ class ExercisePriorityCellController: UITableViewCell
     let PRIORITY_LIMIT_UPPER = 50
     let PRIORITY_LIMIT_LOWER = 0
     let INCREMENTAL_VALUE = 25
-    
+
+    weak var delegate: ExercisePriorityDelegate?
+
+    var index: Int!
     var priority = 0
     
     override func awakeFromNib()
@@ -36,11 +39,11 @@ class ExercisePriorityCellController: UITableViewCell
     /**
      * Sets the exercise name in the cell.
      */
-    func setListItem(exercisePriority: ExercisePriority)
+    func setListItem(exercise: String, priority: Int)
     {
-        exerciseNameLabel.text = exercisePriority.exercise
+        exerciseNameLabel.text = exercise
         
-        priority = exercisePriority.priority
+        self.priority = priority
         
         setExercisePriority()
     }
@@ -48,11 +51,15 @@ class ExercisePriorityCellController: UITableViewCell
     @IBAction func morePriorityClicked(sender: AnyObject)
     {
         setExercisePriority(true)
+        
+        delegate?.onSetExercisePriority(index, priority: priority)
     }
     
     @IBAction func lessPriorityClicked(sender: AnyObject)
     {
         setExercisePriority(false)
+        
+        delegate?.onSetExercisePriority(index, priority: priority)
     }
     
     /**

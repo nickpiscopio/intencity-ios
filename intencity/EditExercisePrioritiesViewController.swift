@@ -9,14 +9,14 @@
 
 import UIKit
 
-class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
+class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, ExercisePriorityDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
-    var priorityList = [ExercisePriority]()
-    var newPriorityList = [ExercisePriority]()
+    var exerciseNameList = [String]()
+    var priorityList = [String]()
     
     var email = ""
     
@@ -78,7 +78,9 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_PRIORITY_CELL) as! ExercisePriorityCellController
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.setListItem(priorityList[index])
+        cell.index = index
+        cell.setListItem(exerciseNameList[index], priority: Int(priorityList[index])!)
+        cell.delegate = self
         return cell
     }
     
@@ -98,10 +100,9 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
                         let exerciseName = exercise[Constant.COLUMN_EXERCISE_NAME] as! String
                         let priority = exercise[Constant.COLUMN_PRIORITY] as! String
                         
-                        priorityList.append(ExercisePriority(exercise: exerciseName, priority: Int(priority)!))
+                        exerciseNameList.append(exerciseName)
+                        priorityList.append(priority)
                     }
-                    
-                    newPriorityList = priorityList
                     
                     tableView.reloadData()
                 }
@@ -128,15 +129,20 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
             actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack)])
     }
     
+    func onSetExercisePriority(index: Int, priority: Int)
+    {
+        priorityList[index] = String(priority)
+    }
+    
     /**
      * The function for when the save button is pressed.
      */
     func savePressed(sender:UIBarButtonItem)
     {
-//        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST,
-//                        delegate: self,
-//                        serviceURL: Constant.SERVICE_UPDATE_EXCLUSION,
-//                        params: Constant.generateListVariables(email, variables: newPriorityList))
+        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST,
+                        delegate: self,
+                        serviceURL: Constant.SERVICE_UPDATE_EXERCISE_PRIORITY,
+                        params: Constant.generateExercisePriorityListVariables(email, exercises: exerciseNameList, priorities: priorityList))
     }
     
     /**
