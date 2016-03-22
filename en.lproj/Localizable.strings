@@ -397,9 +397,11 @@
 
 /* Settings Strings */
 "edit_priority" = "Edit Exercise Priorities";
+"edit_priority_description" = "Priorities change the frequency at which an exercise occurs during a workout. This helps Intencity generate exercises to fit your needs.";
 
 /*  */
 "edit_equipment" = "Edit Equipment";
+"edit_equipment_description" = "Select the equipment you currently have. This helps Intencity generate exercises to fit your needs.";
 
 /*  */
 "change_password" = "Change Password";

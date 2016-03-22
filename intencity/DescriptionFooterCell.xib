@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DescriptionFooterCell" rowHeight="66" id="ecF-gB-c1p" customClass="DescriptionFooterCellController" customModule="Intencity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ecF-gB-c1p" id="Jtr-fz-3Na">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="65.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XKf-Yq-jKm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hyf-CV-1gm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.80784313725490198" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="u6g-sq-Kiz"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pVi-Gi-4x8">
+                                <rect key="frame" x="0.0" y="1" width="320" height="65"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvq-a1-v4o">
+                                        <rect key="frame" x="16" y="3" width="288" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="gvq-a1-v4o" firstAttribute="top" secondItem="pVi-Gi-4x8" secondAttribute="top" constant="3" id="P3r-fb-XI1"/>
+                                    <constraint firstItem="gvq-a1-v4o" firstAttribute="leading" secondItem="pVi-Gi-4x8" secondAttribute="leading" constant="16" id="fis-9D-8X0"/>
+                                    <constraint firstAttribute="trailing" secondItem="gvq-a1-v4o" secondAttribute="trailing" constant="16" id="iOR-Ab-RQO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="XKf-Yq-jKm" secondAttribute="bottom" id="8gk-92-doA"/>
+                    <constraint firstAttribute="trailing" secondItem="XKf-Yq-jKm" secondAttribute="trailing" id="JvB-9X-HPD"/>
+                    <constraint firstItem="XKf-Yq-jKm" firstAttribute="leading" secondItem="Jtr-fz-3Na" secondAttribute="leading" id="czp-ID-54q"/>
+                    <constraint firstItem="XKf-Yq-jKm" firstAttribute="top" secondItem="Jtr-fz-3Na" secondAttribute="top" id="d7S-bY-2lo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="separator" destination="Hyf-CV-1gm" id="8PK-eK-82U"/>
+                <outlet property="title" destination="gvq-a1-v4o" id="QGC-LN-xKt"/>
+            </connections>
+            <point key="canvasLocation" x="783" y="502"/>
+        </tableViewCell>
+    </objects>
+</document>

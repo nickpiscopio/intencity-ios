@@ -26,13 +26,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aoA-Dp-6Bd">
                                                 <rect key="frame" x="0.0" y="0.0" width="383" height="41"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-d1-nLe">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-d1-nLe">
                                                         <rect key="frame" x="0.0" y="0.0" width="383" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text=" " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdL-fb-AGo">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text=" " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdL-fb-AGo">
                                                         <rect key="frame" x="0.0" y="21" width="383" height="21"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,12 +61,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="0Vg-MA-gIe" firstAttribute="leading" secondItem="aoA-Dp-6Bd" secondAttribute="trailing" id="8hz-lp-deM"/>
-                                            <constraint firstAttribute="bottom" secondItem="aoA-Dp-6Bd" secondAttribute="bottom" id="FHO-KD-bzp"/>
-                                            <constraint firstItem="aoA-Dp-6Bd" firstAttribute="leading" secondItem="SdO-KN-dvL" secondAttribute="leading" id="Rc3-zo-Z2u"/>
-                                            <constraint firstItem="aoA-Dp-6Bd" firstAttribute="top" secondItem="SdO-KN-dvL" secondAttribute="top" id="otq-27-GXU"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -97,6 +91,7 @@
             <connections>
                 <outlet property="exerciseNameLabel" destination="lhd-d1-nLe" id="LYF-zM-7UN"/>
                 <outlet property="priorityLabel" destination="qdL-fb-AGo" id="YgJ-4X-gh4"/>
+                <outlet property="separator" destination="7fV-ef-MlK" id="2KR-Iu-jYA"/>
             </connections>
             <point key="canvasLocation" x="463.5" y="496.5"/>
         </tableViewCell>

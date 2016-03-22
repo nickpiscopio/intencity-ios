@@ -37,7 +37,8 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
         
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)        
+        Util.addUITableViewCell(tableView, nibNamed: Constant.DESCRIPTION_FOOTER_CELL, cellName: Constant.DESCRIPTION_FOOTER_CELL)
         
         initLoadingView()
         showLoading()
@@ -64,6 +65,19 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         return equipmentList.count
     }
     
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+    {
+        let footer = tableView.dequeueReusableCellWithIdentifier(Constant.DESCRIPTION_FOOTER_CELL) as! DescriptionFooterCellController
+        footer.title.text = NSLocalizedString("edit_equipment_description", comment: "")
+        
+        return footer
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
+        return Constant.FOOTER_DESCRIPTION_HEIGHT
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let index = indexPath.row
@@ -72,6 +86,8 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_EXERCISE_CELL) as! MenuExerciseCellController
         cell.setListItem(equipmentName, checked: userEquipmentList.contains(equipmentName))
+        cell.separator.hidden = index == equipmentList.count - 1
+        
         return cell
     }
     

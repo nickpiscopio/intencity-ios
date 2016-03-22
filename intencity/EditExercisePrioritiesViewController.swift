@@ -38,6 +38,7 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.EXERCISE_PRIORITY_CELL, cellName: Constant.EXERCISE_PRIORITY_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.DESCRIPTION_FOOTER_CELL, cellName: Constant.DESCRIPTION_FOOTER_CELL)
         
         initLoadingView()
         showLoading()
@@ -72,6 +73,24 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
         return priorityList.count
     }
     
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+    {
+        if (priorityList.count > 0)
+        {
+            let footer = tableView.dequeueReusableCellWithIdentifier(Constant.DESCRIPTION_FOOTER_CELL) as! DescriptionFooterCellController
+            footer.title.text = NSLocalizedString("edit_priority_description", comment: "")
+            
+            return footer
+        }
+        
+        return nil
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
+        return priorityList.count > 0 ? Constant.FOOTER_DESCRIPTION_HEIGHT : 0
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let index = indexPath.row
@@ -81,6 +100,8 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
         cell.index = index
         cell.setListItem(exerciseNameList[index], priority: Int(priorityList[index])!)
         cell.delegate = self
+        cell.separator.hidden = index == priorityList.count - 1
+        
         return cell
     }
     

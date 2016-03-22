@@ -42,7 +42,7 @@ class AboutViewController: UIViewController
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.ABOUT_CELL, cellName: Constant.ABOUT_CELL)
-        Util.addUITableViewCell(tableView, nibNamed: Constant.ABOUT_FOOTER_CELL, cellName: Constant.ABOUT_FOOTER_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.DESCRIPTION_FOOTER_CELL, cellName: Constant.DESCRIPTION_FOOTER_CELL)
         
         sections.append(AboutSection(header: NSLocalizedString("title_mission", comment: ""), description: NSLocalizedString("mission", comment: "")))
         sections.append(AboutSection(header: NSLocalizedString("title_founders", comment: ""), description: NSLocalizedString("founders", comment: "")))
@@ -69,7 +69,11 @@ class AboutViewController: UIViewController
     {
         if (section == sections.count - 1)
         {
-            return tableView.dequeueReusableCellWithIdentifier(Constant.ABOUT_FOOTER_CELL) as! AboutFooterCellController
+            let footer = tableView.dequeueReusableCellWithIdentifier(Constant.DESCRIPTION_FOOTER_CELL) as! DescriptionFooterCellController
+            footer.title.text = NSLocalizedString("copyright", comment: "")
+            footer.separator.hidden = true
+            
+            return footer
         }
         
         return nil

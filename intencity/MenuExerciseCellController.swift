@@ -13,6 +13,7 @@ class MenuExerciseCellController: UITableViewCell
 {
     @IBOutlet weak var exerciseNameLabel: UILabel!    
     @IBOutlet weak var checkBox: UIImageView!
+    @IBOutlet weak var separator: UIView!
     
     let UNCHECKED = UIImage(named: Constant.CHECKBOX_UNCHECKED)
     let CHECKED = UIImage(named: Constant.CHECKBOX_CHECKED)

@@ -29,8 +29,8 @@
 		BD43E11A1C8355E9002F14C6 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */; };
 		BD43E11C1C847D77002F14C6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD43E11B1C847D77002F14C6 /* SearchViewController.swift */; };
 		BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */; };
-		BD4B8EB91C7CEACD00AD579B /* AboutFooterCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB81C7CEACD00AD579B /* AboutFooterCellController.swift */; };
-		BD4B8EBB1C7CEB1D00AD579B /* AboutFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */; };
+		BD4B8EB91C7CEACD00AD579B /* DescriptionFooterCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB81C7CEACD00AD579B /* DescriptionFooterCellController.swift */; };
+		BD4B8EBB1C7CEB1D00AD579B /* DescriptionFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4B8EBA1C7CEB1D00AD579B /* DescriptionFooterCell.xib */; };
 		BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460ED1C68D34400F60ADC /* AppDelegate.swift */; };
 		BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460EF1C68D34400F60ADC /* DemoViewController.swift */; };
 		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
@@ -151,8 +151,8 @@
 		BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		BD43E11B1C847D77002F14C6 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSection.swift; sourceTree = SOURCE_ROOT; };
-		BD4B8EB81C7CEACD00AD579B /* AboutFooterCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutFooterCellController.swift; sourceTree = "<group>"; };
-		BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutFooterCell.xib; sourceTree = "<group>"; };
+		BD4B8EB81C7CEACD00AD579B /* DescriptionFooterCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionFooterCellController.swift; sourceTree = "<group>"; };
+		BD4B8EBA1C7CEB1D00AD579B /* DescriptionFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionFooterCell.xib; sourceTree = "<group>"; };
 		BD5460EA1C68D34400F60ADC /* Intencity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intencity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5460ED1C68D34400F60ADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5460EF1C68D34400F60ADC /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 				BDD53BF11C8A2B05001235AE /* FitnessRecommendationCellViewController.swift */,
 				BDB45A1B1C849B42009E509B /* SearchExerciseCellController.swift */,
 				BD640A501C85D1EE008895A2 /* RankingCellController.swift */,
-				BD4B8EB81C7CEACD00AD579B /* AboutFooterCellController.swift */,
+				BD4B8EB81C7CEACD00AD579B /* DescriptionFooterCellController.swift */,
 				BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */,
 				BDD53BF71C8A32A7001235AE /* FitnessRecHeaderCellController.swift */,
 				BDD53BF91C8A333D001235AE /* FitnessRecFooterCellController.swift */,
@@ -528,7 +528,7 @@
 				BDD89BF81C906C4D00530D79 /* NotificationCell.xib */,
 				BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */,
 				BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */,
-				BD4B8EBA1C7CEB1D00AD579B /* AboutFooterCell.xib */,
+				BD4B8EBA1C7CEB1D00AD579B /* DescriptionFooterCell.xib */,
 				BDD53BF31C8A2B13001235AE /* FitnessRecommendationCell.xib */,
 				BDD53BFB1C8A336D001235AE /* FitnessRecFooterCell.xib */,
 				BDD53BFD1C8A3439001235AE /* FitnessRecHeaderCell.xib */,
@@ -650,7 +650,7 @@
 				BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */,
 				BDD53BFC1C8A336D001235AE /* FitnessRecFooterCell.xib in Resources */,
 				BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */,
-				BD4B8EBB1C7CEB1D00AD579B /* AboutFooterCell.xib in Resources */,
+				BD4B8EBB1C7CEB1D00AD579B /* DescriptionFooterCell.xib in Resources */,
 				BDD89BF91C906C4D00530D79 /* NotificationCell.xib in Resources */,
 				BDD53BF41C8A2B13001235AE /* FitnessRecommendationCell.xib in Resources */,
 				BD5C6AF71C88B97700A9ED0A /* MenuExerciseCell.xib in Resources */,
@@ -790,7 +790,7 @@
 				BDD89BF71C9066F300530D79 /* NotificationDelegate.swift in Sources */,
 				BDD89BF51C9065EB00530D79 /* Awards.swift in Sources */,
 				BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */,
-				BD4B8EB91C7CEACD00AD579B /* AboutFooterCellController.swift in Sources */,
+				BD4B8EB91C7CEACD00AD579B /* DescriptionFooterCellController.swift in Sources */,
 				BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */,
 				BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */,
 				BDFD87871CA196D700ECDDCE /* ExercisePriorityDelegate.swift in Sources */,

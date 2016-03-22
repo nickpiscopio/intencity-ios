@@ -11,9 +11,9 @@ import UIKit
 
 class ExercisePriorityCellController: UITableViewCell
 {
-    @IBOutlet weak var exerciseNameLabel: UILabel!
-    
+    @IBOutlet weak var exerciseNameLabel: UILabel!    
     @IBOutlet weak var priorityLabel: UILabel!
+    @IBOutlet weak var separator: UIView!
     
     let HIGH_PRIORITY = NSLocalizedString("high_priority", comment: "")
     let MEDIUM_PRIORITY = NSLocalizedString("medium_priority", comment: "")
