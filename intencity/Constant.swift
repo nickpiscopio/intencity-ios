@@ -12,10 +12,7 @@ import UIKit
 
 struct Constant
 {
-    // -- START iOS CONSTANTS --
-    static let SHARE_VIA_TWITTER = 0
-    static let SHARE_VIA_FACEBOOK = 1
-    
+    // -- START iOS CONSTANTS --    
     static let DEMO_STORYBOARD = "Demo"
     static let LOGIN_STORYBOARD = "Login"    
     static let MAIN_STORYBOARD = "Main"
@@ -157,7 +154,7 @@ struct Constant
     static let STORED_PROCEDURE_FOLLOW_USER = "followUser";
     static let STORED_PROCEDURE_GET_EXERCISE_DIRECTION = "getDirection";
     static let STORED_PROCEDURE_GET_EQUIPMENT = "getEquipment";
-    static let STORED_PROCEDURE_GET_EXCLUSION = "getExclusionList";
+    static let STORED_PROCEDURE_GET_EXERCISE_PRIORITIES = "getExercisePriority";
     static let STORED_PROCEDURE_GRANT_POINTS = "grantPointsToUser";
     static let STORED_PROCEDURE_GRANT_BADGE = "grantBadgeToUser";
     static let STORED_PROCEDURE_GET_INJURY_PREVENTION_WORKOUTS = "getInjuryPreventionWorkouts";
@@ -197,8 +194,8 @@ struct Constant
     static let COLUMN_VIDEO_URL = "VideoURL";
     static let COLUMN_DIRECTION = "Direction";
     static let COLUMN_EQUIPMENT_NAME = "EquipmentName";
-    static let COLUMN_EXCLUSION_NAME = "ExclusionName";
     static let COLUMN_HAS_EQUIPMENT = "HasEquipment";
+    static let COLUMN_PRIORITY = "Priority";
     static let SPACE_REGEX = "\\s";
     static let REGEX_EMAIL = "[a-zA-Z0-9]+([\\-\\.\\{\\}\\^\\+*_~]*[a-zA-Z0-9]+)*@[a-zA-Z0-9]+([\\.\\-]*[a-zA-Z0-9]+)*[\\.][a-zA-Z]{2}[A-Za-z]*";
     static let REGEX_FIELD = "[a-zA-Z0-9\\s\\-\\.\\{\\}\\^\\*\\(\\)\\[\\]\\$/;:,_~!@#%']+";
@@ -256,7 +253,7 @@ struct Constant
     
         let length = variables.count
     
-        for (var i = 0; i < length; i++)
+        for i in 0 ..< length
         {
             storedProcedureParameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i]
         }
@@ -277,7 +274,7 @@ struct Constant
         var parameters = PARAMETER_EMAIL + email
     
         let length = variables.count
-        for (var i = 0; i < length; i++)
+        for i in 0 ..< length
         {
             if (i == 0)
             {

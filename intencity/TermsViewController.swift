@@ -31,7 +31,7 @@ class TermsViewController: UIViewController
         self.navigationItem.title = NSLocalizedString(isTerms ? "title_terms" : "title_privacy_policy", comment: "")
         if (isTerms && includeNavButton)
         {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("title_privacy_policy", comment: ""), style: .Plain, target: self, action: "privacyPolicyClicked")
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("title_privacy_policy", comment: ""), style: .Plain, target: self, action: #selector(TermsViewController.privacyPolicyClicked))
         }
         
         // Do any additional setup after loading the view, typically from a nib.

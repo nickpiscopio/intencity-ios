@@ -27,10 +27,10 @@ class IntencityButtonNoBackground: UIButton
         self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.LAYOUT_MARGIN, Dimention.LAYOUT_MARGIN, Dimention.LAYOUT_MARGIN, Dimention.LAYOUT_MARGIN)
         
         // The callbacks for the button states.
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpOutside)
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchCancel)
-        self.addTarget(self, action: "buttonDown", forControlEvents: .TouchDown)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonUp), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonUp), forControlEvents: .TouchUpOutside)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonUp), forControlEvents: .TouchCancel)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonDown), forControlEvents: .TouchDown)
     }
     
     /*

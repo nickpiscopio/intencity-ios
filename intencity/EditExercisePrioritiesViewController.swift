@@ -15,8 +15,8 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
-    var exclusionList = [String]()
-    var newExclusionList = [String]()
+    var priorityList = [ExercisePriority]()
+    var newPriorityList = [ExercisePriority]()
     
     var email = ""
     
@@ -47,9 +47,9 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
         _ = ServiceTask(event: ServiceEvent.GET_LIST,
                         delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXCLUSION, variables: [ email ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISE_PRIORITIES, variables: [ email ]))
         
-        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "savePressed:")
+        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(EditExercisePrioritiesViewController.savePressed(_:)))
         
         self.navigationItem.rightBarButtonItem = saveButtonItem
     }
@@ -62,14 +62,14 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
 
-        tableView.backgroundView?.hidden = exclusionList.count > 0
+        tableView.backgroundView?.hidden = priorityList.count > 0
         
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return exclusionList.count
+        return priorityList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -77,7 +77,8 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
         let index = indexPath.row
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_PRIORITY_CELL) as! ExercisePriorityCellController
-        cell.setListItem(exclusionList[index])
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.setListItem(priorityList[index])
         return cell
     }
     
@@ -94,12 +95,13 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
                     
                     for exercise in json as! NSArray
                     {
-                        let exerciseName = exercise[Constant.COLUMN_EXCLUSION_NAME] as! String
+                        let exerciseName = exercise[Constant.COLUMN_EXERCISE_NAME] as! String
+                        let priority = exercise[Constant.COLUMN_PRIORITY] as! String
                         
-                        exclusionList.append(exerciseName)
+                        priorityList.append(ExercisePriority(exercise: exerciseName, priority: Int(priority)!))
                     }
                     
-                    newExclusionList = exclusionList
+                    newPriorityList = priorityList
                     
                     tableView.reloadData()
                 }
@@ -131,10 +133,10 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate
      */
     func savePressed(sender:UIBarButtonItem)
     {
-        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST,
-                        delegate: self,
-                        serviceURL: Constant.SERVICE_UPDATE_EXCLUSION,
-                        params: Constant.generateListVariables(email, variables: newExclusionList))
+//        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST,
+//                        delegate: self,
+//                        serviceURL: Constant.SERVICE_UPDATE_EXCLUSION,
+//                        params: Constant.generateListVariables(email, variables: newPriorityList))
     }
     
     /**

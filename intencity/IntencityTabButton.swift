@@ -27,10 +27,10 @@ class IntencityTabButton: UIButton
         self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.TAB_PADDING_TOP_BOTTOM, Dimention.TAB_PADDING_SIDES, Dimention.TAB_PADDING_TOP_BOTTOM, Dimention.TAB_PADDING_SIDES)
         
         // The callbacks for the button states.
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpOutside)
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchCancel)
-        self.addTarget(self, action: "buttonDown", forControlEvents: .TouchDown)
+        self.addTarget(self, action: #selector(IntencityTabButton.buttonUp), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(IntencityTabButton.buttonUp), forControlEvents: .TouchUpOutside)
+        self.addTarget(self, action: #selector(IntencityTabButton.buttonUp), forControlEvents: .TouchCancel)
+        self.addTarget(self, action: #selector(IntencityTabButton.buttonDown), forControlEvents: .TouchDown)
     }
     
     /*

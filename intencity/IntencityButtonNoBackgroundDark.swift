@@ -27,10 +27,10 @@ class IntencityButtonNoBackgroundDark: UIButton
         self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING, Dimention.CARD_BUTTON_PADDING)
         
         // The callbacks for the button states.
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpOutside)
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchCancel)
-        self.addTarget(self, action: "buttonDown", forControlEvents: .TouchDown)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackgroundDark.buttonUp), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackgroundDark.buttonUp), forControlEvents: .TouchUpOutside)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackgroundDark.buttonUp), forControlEvents: .TouchCancel)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackgroundDark.buttonDown), forControlEvents: .TouchDown)
     }
     
     /*

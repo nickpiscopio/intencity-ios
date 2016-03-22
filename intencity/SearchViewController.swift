@@ -305,7 +305,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             
             var hasExerciseAlready = false
             
-            for (var i = 0; i < currentExerciseCount; i++)
+            for i in 0 ..< currentExerciseCount
             {
                 if (currentExercises[i].exerciseName == exercise.exerciseName)
                 {
@@ -331,7 +331,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             
             var isAreadyFollowing = false
             
-            for (var i = 0; i < currentUserCount; i++)
+            for i in 0 ..< currentUserCount
             {
                 if (currentUsers[i].getName() == user.getName())
                 {

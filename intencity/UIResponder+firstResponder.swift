@@ -31,7 +31,7 @@ extension UIResponder
     {
         currentFirstResponder = nil
         
-        UIApplication.sharedApplication().sendAction("findFirstResponder", to: nil, from: nil, forEvent: nil)
+        UIApplication.sharedApplication().sendAction(#selector(UIResponder.findFirstResponder), to: nil, from: nil, forEvent: nil)
         
         return currentFirstResponder
     }

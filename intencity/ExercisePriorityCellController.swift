@@ -36,9 +36,13 @@ class ExercisePriorityCellController: UITableViewCell
     /**
      * Sets the exercise name in the cell.
      */
-    func setListItem(name: String)
+    func setListItem(exercisePriority: ExercisePriority)
     {
-        exerciseNameLabel.text = name
+        exerciseNameLabel.text = exercisePriority.exercise
+        
+        priority = exercisePriority.priority
+        
+        setExercisePriority()
     }
     
     @IBAction func morePriorityClicked(sender: AnyObject)
@@ -51,17 +55,11 @@ class ExercisePriorityCellController: UITableViewCell
         setExercisePriority(false)
     }
     
-    func setExercisePriority(increment: Bool)
+    /**
+     * Sets the priority for the exercise.
+     */
+    func setExercisePriority()
     {
-        if (priority < PRIORITY_LIMIT_UPPER && increment)
-        {
-            priority += INCREMENTAL_VALUE
-        }
-        else if (priority >= PRIORITY_LIMIT_LOWER && !increment)
-        {
-            priority -= INCREMENTAL_VALUE
-        }
-
         switch(priority)
         {
             case PRIORITY_LIMIT_UPPER:
@@ -81,5 +79,24 @@ class ExercisePriorityCellController: UITableViewCell
                 priorityLabel.text = HIDDEN
                 break;
         }
+    }
+    
+    /**
+     * Sets the priority for the exercise.
+     *
+     * @param increment     Boolean value of whether or not the exercise should increment or decrement the current priority.
+     */
+    func setExercisePriority(increment: Bool)
+    {
+        if (priority < PRIORITY_LIMIT_UPPER && increment)
+        {
+            priority += INCREMENTAL_VALUE
+        }
+        else if (priority >= PRIORITY_LIMIT_LOWER && !increment)
+        {
+            priority -= INCREMENTAL_VALUE
+        }
+
+        setExercisePriority()
     }
 }

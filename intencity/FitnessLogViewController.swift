@@ -26,6 +26,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
     let MORE_PRIORITY_STRING = NSLocalizedString("more_priority_string", comment: "")
     let LESS_PRIORITY_STRING = NSLocalizedString("less_priority_string", comment: "")
+    let NO_LOGIN_ACCCOUNT_TITLE = NSLocalizedString("no_login_account_title", comment: "")
+    let FACEBOOK_BUTTON = NSLocalizedString("facebook_button", comment: "")
+    let TWEET_BUTTON = NSLocalizedString("tweet_button", comment: "")
 
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -118,7 +121,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 
                 let duration = 0.5
                 
-                NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: Selector("stopAnimation"), userInfo: nil, repeats: false)
+                NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(FitnessLogViewController.stopAnimation), userInfo: nil, repeats: false)
                 
                 icon = UIImage.animatedImageNamed(Constant.MENU_NOTIFICATION_FOUND_IMAGE, duration: duration)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                 
@@ -134,7 +137,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
 
         let iconButton = UIButton(frame: iconSize)
         iconButton.setImage(icon, forState: .Normal)
-        iconButton.addTarget(self, action: "menuClicked", forControlEvents: .TouchUpInside)
+        iconButton.addTarget(self, action: #selector(FitnessLogViewController.menuClicked), forControlEvents: .TouchUpInside)
         
         self.navigationItem.rightBarButtonItem?.customView = iconButton
     }
@@ -159,6 +162,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func initRoutineCard()
     {
+        nextExerciseButton.hidden = true
+        
         showLoading()
         
         totalExercises = 7
@@ -271,7 +276,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 var sets = exerciseData.exerciseList[insertIntoWebSetsIndex].sets
                 let setCount = sets.count
                 
-                for (var i = 0; i < setCount; i++)
+                for i in 0 ..< setCount
                 {
                     if (sets[i].webId > 0)
                     {
@@ -339,7 +344,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         var exercises = exerciseData.exerciseList
         let exerciseCount = exercises.count
         
-        for (var i = 0; i < exerciseCount - 1; i++)
+        for i in 0 ..< exerciseCount - 1
         {
             if (exercise.exerciseName == exercises[i].exerciseName)
             {
@@ -397,8 +402,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 Util.grantBadgeToUser(email, badgeName: Badge.FINISHER, content: finisherAward, onlyAllowOne: true)
             }
             
-            let actions = [ UIAlertAction(title: NSLocalizedString("facebook_button", comment: ""), style: .Default, handler: share(Constant.SHARE_VIA_FACEBOOK)),
-                            UIAlertAction(title: NSLocalizedString("tweet_button", comment: ""), style: .Default, handler: share(Constant.SHARE_VIA_TWITTER)),
+            let actions = [ UIAlertAction(title: FACEBOOK_BUTTON, style: .Default, handler: share),
+                            UIAlertAction(title: TWEET_BUTTON, style: .Default, handler: share),
                             UIAlertAction(title: NSLocalizedString("finish_button", comment: ""), style: .Destructive, handler: finishExercising),
                             UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil) ]
             
@@ -474,7 +479,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         else
         {
             // Get the next exercise.
-            currentExercises.append(exerciseData.exerciseList[exerciseData.exerciseIndex++])
+            currentExercises.append(exerciseData.exerciseList[exerciseData.exerciseIndex])
+            
+            // Increment the index.
+            exerciseData.exerciseIndex += 1
             
             insertRow()
             
@@ -695,7 +703,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         var insertIndex = 0
         
         // Sort through the sets to determine if we are updating or inserting.
-        for (var i = 0; i < setSize; i++)
+        for i in 0 ..< setSize
         {
             let set = sets[i]
             
@@ -714,7 +722,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             // Checks to see if the user deserves the "Left it on the Field" badge.
             if (!containsBadge && set.reps >= 10 || !containsBadge && Util.convertToInt(set.duration) >= 100)
             {
-                setsWithRepsGreaterThan10++
+                setsWithRepsGreaterThan10 += 1
                     
                 if (setsWithRepsGreaterThan10 >= 2)
                 {
@@ -730,15 +738,15 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             {
                 // Call update
                 updateString += generateComplexUpdateParameters(updateIndex, set: set);
-                conductUpdate = true;
-                updateIndex++;
+                conductUpdate = true
+                updateIndex += 1
             }
             else
             {
                 // Concatenate the insert parameter String.
                 insertString += generateComplexInsertParameters(insertIndex, name: exerciseName, set: set);
-                conductInsert = true;
-                insertIndex++;
+                conductInsert = true
+                insertIndex += 1
             }
         }
         
@@ -914,7 +922,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         if (state == Constant.EXERCISE_CELL)
         {
-            for (var i = 0; i < indexToLoad; i++)
+            for _ in 0 ..< indexToLoad
             {
                 addExercise(true, fromSearch: false)
             }
@@ -1008,9 +1016,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     /**
      * Randomly generates a message to share with social media.
      *
+     * @param socialNetworkButton   The button that was pressed in the alert.
+     *
      * @return  The generated tweet.
      */
-    func generateShareMessage(socialNetwork: Int) -> String
+    func generateShareMessage(socialNetworkButton: String) -> String
     {
         let routineName = exerciseListHeader.routineNameLabel.text!
         let routine = routineName.stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString(Constant.PARAMETER_AMPERSAND, withString: " & #")
@@ -1023,7 +1033,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                                 "I #lifted with #Intencity today! #lift #lifting" ]
         
         let intencityUrl = " www.Intencity.fit"
-        let via = " @Intencity" + (socialNetwork == Constant.SHARE_VIA_TWITTER ? "App" : "")
+        let via = " @Intencity" + (socialNetworkButton == TWEET_BUTTON ? "App" : "")
     
         let message = Int(arc4random_uniform(UInt32(shareMessage.count)))
     
@@ -1051,7 +1061,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             exerciseData.exerciseList.removeAtIndex(index)
         }
         
-        exerciseData.exerciseIndex--
+        exerciseData.exerciseIndex -= 1
         
         updateExerciseTotal()
         
@@ -1105,12 +1115,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      *
      * TUTORIAL: http://www.brianjcoleman.com/tutorial-share-facebook-twitter-swift/
      */
-    func share(socialNetwork: Int)(alertAction: UIAlertAction!) -> Void
+    func share(alertAction: UIAlertAction!) -> Void
     {
         let serviceType: String!
         let loginMessageRes: String!
         
-        if (socialNetwork == Constant.SHARE_VIA_TWITTER)
+        let alertTitle = alertAction.title
+        
+        if (alertTitle == TWEET_BUTTON)
         {
             serviceType = SLServiceTypeTwitter
             
@@ -1126,7 +1138,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         if SLComposeViewController.isAvailableForServiceType(serviceType)
         {
             let sheet: SLComposeViewController = SLComposeViewController(forServiceType: serviceType)
-            sheet.setInitialText(generateShareMessage(socialNetwork))
+            sheet.setInitialText(generateShareMessage(alertTitle!))
             
             self.presentViewController(sheet, animated: true, completion: nil)
             
@@ -1138,20 +1150,17 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
         else
         {
-            let alert = UIAlertController(title: NSLocalizedString("no_login_account_title", comment: ""), message: NSLocalizedString(loginMessageRes, comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("open_twitter_login", comment: ""), style: UIAlertActionStyle.Default, handler: openShareSettings(socialNetwork)))
+            let alert = UIAlertController(title: NO_LOGIN_ACCCOUNT_TITLE, message: NSLocalizedString(loginMessageRes, comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("open_settings", comment: ""), style: UIAlertActionStyle.Default, handler:
+            {
+                (alert: UIAlertAction!) in
+                
+                let shareUrl = NSURL(string:"prefs:root=" + (alertTitle == self.TWEET_BUTTON ? "TWITTER" : "FACEBOOK"))
+                
+                UIApplication.sharedApplication().openURL(shareUrl!)
+            }))
             
             self.presentViewController(alert, animated: true, completion: nil)
         }
-    }
-    
-    /**
-     * Tweets about finishing the intencity workout.
-     */
-    func openShareSettings(socialNetwork: Int)(alertAction: UIAlertAction!) -> Void
-    {
-        let shareUrl = NSURL(string:"prefs:root=" + (socialNetwork == Constant.SHARE_VIA_TWITTER ? "TWITTER" : "FACEBOOK"))
-        
-        UIApplication.sharedApplication().openURL(shareUrl!)
     }
 }

@@ -124,7 +124,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
             return nil
         }
         
-        index--
+        index -= 1
         
         return self.displayViewControllerAtIndex(index)
     }
@@ -141,7 +141,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
             return nil
         }
         
-        index++
+        index += 1
         
         if (index == self.demoPages.count)
         {
@@ -177,7 +177,8 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     
     @IBAction func nextClicked(sender: AnyObject)
     {
-        setViewController(++currentIndex)
+        currentIndex += 1
+        setViewController(currentIndex)
     }
     
     /**
@@ -198,7 +199,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
             }
             else
             {
-                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("enableNextButton"), userInfo: nil, repeats: false)
+                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(DemoViewController.enableNextButton), userInfo: nil, repeats: false)
             }
         })
         

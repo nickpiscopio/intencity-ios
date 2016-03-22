@@ -49,7 +49,7 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EQUIPMENT, variables: [ email ]))
         
-        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "savePressed:")
+        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(EditEquipmentViewController.savePressed(_:)))
         
         self.navigationItem.rightBarButtonItem = saveButtonItem
     }

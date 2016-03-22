@@ -101,7 +101,7 @@ class ExerciseCellController: UITableViewCell
         // Gets the new height of the delete button.
         deleteHeight = exerciseView.frame.height - Dimention.LAYOUT_MARGIN / 2
         
-        for (var i = 0; i < subviewsCount; i++)
+        for _ in 0 ..< subviewsCount
         {
             let view = subViews[0]
             

@@ -33,7 +33,7 @@
 "no_login_account_title" = "Accounts";
 "twitter_login_message" = "Please login to a Twitter account to share.";
 "facebook_login_message" = "Please login to a Facebook account to share.";
-"open_twitter_login" = "Go to settings";
+"open_settings" = "Go to settings";
 "facebook_button" = "Post on Facebook";
 "name_validation_error" = "Names must be less than 30 characters and can only contain letters, spaces, and . ' -";
 

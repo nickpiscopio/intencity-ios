@@ -34,10 +34,10 @@ class IntencityButton: UIButton
         buttonUp()
         
         // The callbacks for the button states.
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpInside)
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchUpOutside)
-        self.addTarget(self, action: "buttonUp", forControlEvents: .TouchCancel)
-        self.addTarget(self, action: "buttonDown", forControlEvents: .TouchDown)
+        self.addTarget(self, action: #selector(IntencityButton.buttonUp), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(IntencityButton.buttonUp), forControlEvents: .TouchUpOutside)
+        self.addTarget(self, action: #selector(IntencityButton.buttonUp), forControlEvents: .TouchCancel)
+        self.addTarget(self, action: #selector(IntencityButton.buttonDown), forControlEvents: .TouchDown)
         
         self.setTitleColor(Color.white, forState: UIControlState.Highlighted)
         self.setTitleColor(Color.white, forState: UIControlState.Selected)

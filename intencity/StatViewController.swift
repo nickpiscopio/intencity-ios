@@ -97,7 +97,7 @@ class StatViewController: UIViewController, SetDelegate
             dropDown.selectRowAtIndex(0)
         }
         
-        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "savePressed:")
+        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(StatViewController.savePressed(_:)))
         
         let infoIcon = UIImage(named: "info")
         
@@ -107,7 +107,7 @@ class StatViewController: UIViewController, SetDelegate
     
         let infoButton = UIButton(frame: iconSize)
         infoButton.setImage(infoIcon, forState: .Normal)
-        infoButton.addTarget(self, action: "infoPressed:", forControlEvents: .TouchUpInside)
+        infoButton.addTarget(self, action: #selector(StatViewController.infoPressed(_:)), forControlEvents: .TouchUpInside)
         
         let infoButtonItem: UIBarButtonItem = UIBarButtonItem(customView: infoButton)
     
@@ -204,7 +204,7 @@ class StatViewController: UIViewController, SetDelegate
     func setDuration(type: String)
     {
         let length = sets.count
-        for var i = 0; i < length; i++
+        for i in 0 ..< length
         {
             var duration = ""
             var reps = 0
@@ -357,7 +357,7 @@ class StatViewController: UIViewController, SetDelegate
     {
         let totalSets = sets.count
         
-        for (var i = 0; i < totalSets; i++)
+        for i in 0 ..< totalSets
         {
             sets[i].notes = notesTextField.text!
         }

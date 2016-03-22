@@ -73,7 +73,7 @@ class LoginViewController: PageViewController, ServiceDelegate
         
         let termsMutableString = NSMutableAttributedString()
         
-        for (var i = 0; i < termsCount; i++)
+        for i in 0 ..< termsCount
         {
             let attributredTerms = termsStrings[i]
             

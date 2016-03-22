@@ -45,7 +45,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("pull_to_refresh", comment: ""))
-        self.refreshControl.addTarget(self, action: "refreshRankingList", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(RankingViewController.refreshRankingList), forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.refreshControl)
         
         notificationHandler = NotificationHandler.getInstance(nil)
@@ -137,7 +137,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
 
         let iconButton = UIButton(frame: iconSize)
         iconButton.setImage(icon, forState: .Normal)
-        iconButton.addTarget(self, action: "menuClicked", forControlEvents: .TouchUpInside)
+        iconButton.addTarget(self, action: #selector(RankingViewController.menuClicked), forControlEvents: .TouchUpInside)
         
         self.navigationItem.rightBarButtonItem?.customView = iconButton
     }
