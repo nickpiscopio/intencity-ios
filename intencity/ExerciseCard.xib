@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -23,7 +23,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="VO9-jE-4bP">
                                         <rect key="frame" x="0.0" y="0.0" width="368" height="58"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tza-Sg-UaB" customClass="IntencityButtonNoBackgroundLarge" customModule="Intencity" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tza-Sg-UaB" customClass="IntencityCardButton" customModule="Intencity" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="319" height="58"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="16" maxX="16" maxY="16"/>
@@ -32,7 +32,7 @@
                                                     <action selector="exerciseClicked:" destination="uYB-jd-plL" eventType="touchUpInside" id="yJH-Ef-Yrq"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNv-Ow-KFu" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNv-Ow-KFu" customClass="IntencityCardButton" customModule="Intencity" customModuleProvider="target">
                                                 <rect key="frame" x="322" y="0.0" width="46" height="58"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="46" id="lLO-yW-3D3"/>
@@ -44,14 +44,14 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfq-E9-2YY">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hfq-E9-2YY">
                                         <rect key="frame" x="0.0" y="58" width="368" height="22"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="47M-0n-KeS">
-                                                <rect key="frame" x="0.0" y="0.0" width="257" height="22"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="47M-0n-KeS">
+                                                <rect key="frame" x="0.0" y="0.0" width="249" height="22"/>
                                                 <subviews>
                                                     <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ImQ-XT-opv" customClass="IntencityCardButton" customModule="Intencity" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="249" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <state key="normal" title="Button" image="edit"/>
                                                         <connections>
@@ -63,7 +63,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="tSa-Jk-I0Q">
                                                 <rect key="frame" x="257" y="0.0" width="111" height="22"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryq-FO-rQ4" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryq-FO-rQ4" customClass="IntencityCardButton" customModule="Intencity" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="54" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="54" id="Zt7-AT-7Jc"/>
@@ -73,7 +73,7 @@
                                                             <action selector="setExerciseWithMorePriority:" destination="uYB-jd-plL" eventType="touchUpInside" id="NIf-iw-MN5"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7y-IN-Pcu" customClass="IntencityButtonNoBackground" customModule="Intencity" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7y-IN-Pcu" customClass="IntencityCardButton" customModule="Intencity" customModuleProvider="target">
                                                         <rect key="frame" x="57" y="0.0" width="54" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="54" id="AKX-jm-4VV"/>

@@ -13,6 +13,8 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var editEquipmentTitle: UILabel!
+    @IBOutlet weak var editEquipmentDescription: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var equipmentList = [String]()
@@ -32,6 +34,12 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("edit_equipment", comment: "")
+        
+        editEquipmentTitle.text = NSLocalizedString("edit_equipment_title", comment: "")
+        editEquipmentTitle.textColor = Color.secondary_light
+        
+        editEquipmentDescription.text = NSLocalizedString("edit_equipment_description", comment: "")
+        editEquipmentDescription.textColor = Color.secondary_light
         
         // Initialize the tableview.
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
@@ -65,19 +73,6 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         return equipmentList.count
     }
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
-    {
-        let footer = tableView.dequeueReusableCellWithIdentifier(Constant.DESCRIPTION_FOOTER_CELL) as! DescriptionFooterCellController
-        footer.title.text = NSLocalizedString("edit_equipment_description", comment: "")
-        
-        return footer
-    }
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
-    {
-        return Constant.FOOTER_DESCRIPTION_HEIGHT
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let index = indexPath.row
@@ -86,7 +81,6 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_EXERCISE_CELL) as! MenuExerciseCellController
         cell.setListItem(equipmentName, checked: userEquipmentList.contains(equipmentName))
-        cell.separator.hidden = index == equipmentList.count - 1
         
         return cell
     }

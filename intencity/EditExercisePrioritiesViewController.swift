@@ -13,6 +13,10 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var priorityTitleView: UIView!
+    @IBOutlet weak var priorityTitle: UILabel!
+    @IBOutlet weak var priorityDescription: UILabel!
+    @IBOutlet weak var stackSeparator: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     var exerciseNameList = [String]()
@@ -32,6 +36,12 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
         
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("edit_priority", comment: "")
+        
+        priorityTitle.text = NSLocalizedString("edit_priority_title", comment: "")
+        priorityTitle.textColor = Color.secondary_light
+        
+        priorityDescription.text = NSLocalizedString("edit_priority_description", comment: "")
+        priorityDescription.textColor = Color.secondary_light
         
         // Initialize the tableview.
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "no_priorities")
@@ -62,8 +72,11 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
+        let showTable = priorityList.count > 0
 
-        tableView.backgroundView?.hidden = priorityList.count > 0
+        tableView.backgroundView?.hidden = showTable
+        priorityTitleView.hidden = !showTable
+        stackSeparator.hidden = !showTable
         
         return 1
     }
@@ -71,24 +84,6 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return priorityList.count
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
-    {
-        if (priorityList.count > 0)
-        {
-            let footer = tableView.dequeueReusableCellWithIdentifier(Constant.DESCRIPTION_FOOTER_CELL) as! DescriptionFooterCellController
-            footer.title.text = NSLocalizedString("edit_priority_description", comment: "")
-            
-            return footer
-        }
-        
-        return nil
-    }
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
-    {
-        return priorityList.count > 0 ? Constant.FOOTER_DESCRIPTION_HEIGHT : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -100,7 +95,6 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
         cell.index = index
         cell.setListItem(exerciseNameList[index], priority: Int(priorityList[index])!)
         cell.delegate = self
-        cell.separator.hidden = index == priorityList.count - 1
         
         return cell
     }
