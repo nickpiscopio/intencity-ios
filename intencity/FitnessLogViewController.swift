@@ -168,10 +168,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         totalExercises = 7
         
+        numberOfCells = 0
+        
         // Creates the instance of the exercise data so we can store the exercises in the database later.
         exerciseData = ExerciseData.getInstance()
         
         state = Constant.ROUTINE_CELL
+        
+        tableView.reloadData()
         
         _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
