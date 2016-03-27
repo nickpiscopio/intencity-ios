@@ -171,6 +171,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         numberOfCells = 0
         
         // Creates the instance of the exercise data so we can store the exercises in the database later.
+        ExerciseData.reset()
         exerciseData = ExerciseData.getInstance()
         
         state = Constant.ROUTINE_CELL
@@ -560,6 +561,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             if (displayMuscleGroups.count > 0)
             {
                animateTable(indexToLoad)
+            }
+            else
+            {
+                initRoutineCard()
             }
         }
         else
