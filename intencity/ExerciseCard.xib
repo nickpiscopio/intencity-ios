@@ -11,11 +11,11 @@
             <rect key="frame" x="0.0" y="0.0" width="408" height="130"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uYB-jd-plL" id="UFj-wN-m2V">
-                <rect key="frame" x="0.0" y="0.0" width="408" height="129.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="408" height="130"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zle-31-bG7" customClass="IntencityCardView" customModule="Intencity" customModuleProvider="target">
-                        <rect key="frame" x="16" y="0.0" width="376" height="121.5"/>
+                        <rect key="frame" x="16" y="0.0" width="376" height="122"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gzx-d1-EUj">
                                 <rect key="frame" x="4" y="4" width="368" height="114"/>

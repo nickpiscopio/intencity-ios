@@ -490,9 +490,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         // Set the current exercises in the exercise list header so we can exclude adding exercises that we already have when searching.
         exerciseListHeader.currentExercises = currentExercises
-        
-        // Scrolls to the bottom of the tableview.
-        tableView.scrollRectToVisible(tableView.tableFooterView!.frame, animated: true)
     }
     
     /**
@@ -929,12 +926,38 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     }
     
     /**
+     * Scrolls to the bottom of the table view.
+     *
+     * This does hide the white space behind the tab view.
+     */
+    func tableViewScrollToBottom(animated: Bool)
+    {
+        let delay = 0.1 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        
+        dispatch_after(time, dispatch_get_main_queue(), {
+            
+            let numberOfSections = self.tableView.numberOfSections
+            let numberOfRows = self.tableView.numberOfRowsInSection(numberOfSections - 1)
+            
+            if numberOfRows > 0
+            {
+                let indexPath = NSIndexPath(forRow: numberOfRows - 1, inSection: (numberOfSections - 1))
+                self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
+            }
+            
+        })
+    }
+    
+    /**
      * Animates a row being added to the screen.
      */
     func insertRow()
     {
         let indexPath = NSIndexPath(forRow: currentExercises.count - 1, inSection: 0)
-        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Bottom)
+        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        
+        tableViewScrollToBottom(true)
     }
     
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift

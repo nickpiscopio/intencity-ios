@@ -169,7 +169,7 @@ class Util
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // Set to whatever your "average" cell
-        tableView.estimatedRowHeight = 10.0
+        tableView.estimatedRowHeight = tableView.frame.height
         
         if (emptyTableStringRes != "")
         {
