@@ -45,7 +45,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="54" id="YjZ-WA-50l"/>
                                                 </constraints>
-                                                <state key="normal" image="thumb_up"/>
+                                                <state key="normal" image="thumb_up_normal"/>
                                                 <connections>
                                                     <action selector="morePriorityClicked:" destination="dCW-Eb-Zvq" eventType="touchUpInside" id="Iiv-oR-Lao"/>
                                                 </connections>
@@ -55,7 +55,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="54" id="QSQ-EA-nyp"/>
                                                 </constraints>
-                                                <state key="normal" image="thumb_down"/>
+                                                <state key="normal" image="thumb_down_normal"/>
                                                 <connections>
                                                     <action selector="lessPriorityClicked:" destination="dCW-Eb-Zvq" eventType="touchUpInside" id="d8O-xf-W1h"/>
                                                 </connections>
@@ -97,7 +97,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="thumb_down" width="22" height="20"/>
-        <image name="thumb_up" width="22" height="20"/>
+        <image name="thumb_down_normal" width="22" height="20"/>
+        <image name="thumb_up_normal" width="22" height="20"/>
     </resources>
 </document>
