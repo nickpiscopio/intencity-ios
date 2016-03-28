@@ -25,7 +25,7 @@ struct Constant
     static let DIRECTION_CELL = "DirectionCell"
     static let SET_CELL = "SetCell"
     static let GENERIC_CELL = "GenericCell"
-    static let MENU_HEADER_CELL = "MenuHeaderCell"
+    static let GENERIC_HEADER_CELL = "GenericHeaderCell"
     static let ABOUT_CELL = "AboutCell"
     static let DESCRIPTION_FOOTER_CELL = "DescriptionFooterCell"
     static let SEARCH_EXERCISE_CELL = "SearchExerciseCell"
@@ -38,6 +38,7 @@ struct Constant
     static let FITNESS_RECOMMENDATION_HEADER_CELL = "FitnessRecHeaderCell"
     static let FITNESS_RECOMMENDATION_FOOTER_CELL = "FitnessRecFooterCell"
     
+    static let PROFILE_VIEW_CONTROLLER = "ProfileViewController"
     static let MENU_VIEW_CONTROLLER = "MenuViewController"
     static let EXERCISE_SEARCH_VIEW_CONTROLLER = "ExerciseSearchViewController"
     static let DIRECTION_VIEW_CONTROLLER = "DirectionViewController"
@@ -63,6 +64,8 @@ struct Constant
     
     static let MENU_IMAGE_WIDTH: CGFloat = 27.0
     static let MENU_IMAGE_HEIGHT: CGFloat = 23.0
+    
+    static let GENERIC_HEADER_HEIGHT: CGFloat = 45.0
     // -- END iOS CONSTANTS --
     
     // -- START GENERIC CONSTANTS --

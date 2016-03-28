@@ -73,7 +73,7 @@ class MenuViewController: UIViewController
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
         
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: "MenuHeader", cellName: Constant.MENU_HEADER_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_HEADER_CELL, cellName: Constant.GENERIC_HEADER_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_CELL, cellName: Constant.GENERIC_CELL)
     }
     
@@ -98,7 +98,7 @@ class MenuViewController: UIViewController
         let title = menu[section].title
         if (title != "")
         {
-            let  headerCell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_HEADER_CELL) as! MenuHeaderCellController
+            let  headerCell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_HEADER_CELL) as! GenericHeaderCellController
             headerCell.title.text = title
             return headerCell
         }
@@ -108,7 +108,7 @@ class MenuViewController: UIViewController
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return menu[section].title != "" ? 45 : 0
+        return menu[section].title != "" ? Constant.GENERIC_HEADER_HEIGHT : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell

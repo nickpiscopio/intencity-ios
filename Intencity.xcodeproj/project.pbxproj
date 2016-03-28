@@ -16,6 +16,8 @@
 		BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */; };
 		BD0CD7081CA08223004FF750 /* ExercisePriorityCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */; };
 		BD10539B1C6CD071004C10C7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10539A1C6CD071004C10C7 /* Key.swift */; };
+		BD1F30E11CA9BA9500002D06 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1F30E01CA9BA9500002D06 /* ProfileSection.swift */; };
+		BD1F30E31CA9BBAA00002D06 /* ProfileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1F30E21CA9BBAA00002D06 /* ProfileRow.swift */; };
 		BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */; };
 		BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC221C70F0A400F993CE /* Exercise.swift */; };
 		BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */; };
@@ -42,6 +44,7 @@
 		BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */; };
 		BD640A4F1C85D1D7008895A2 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD640A4E1C85D1D7008895A2 /* RankingCell.xib */; };
 		BD640A511C85D1EE008895A2 /* RankingCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD640A501C85D1EE008895A2 /* RankingCellController.swift */; };
+		BD6591591CA9B20800D892C3 /* ProfileLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6591581CA9B20800D892C3 /* ProfileLabel.swift */; };
 		BD6E4B041C84A89900C4E6FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E4B031C84A89900C4E6FB /* User.swift */; };
 		BD6E4B061C84B2AC00C4E6FB /* UserSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E4B051C84B2AC00C4E6FB /* UserSearchDelegate.swift */; };
 		BD74A2591C735EA700E6ABD2 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74A2581C735EA700E6ABD2 /* StatViewController.swift */; };
@@ -113,8 +116,8 @@
 		BDE493F71C7B961D005817D0 /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F61C7B961D005817D0 /* MenuSection.swift */; };
 		BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE493F81C7B9A26005817D0 /* GenericCell.xib */; };
 		BDE493FB1C7B9A58005817D0 /* MenuExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493FA1C7B9A58005817D0 /* MenuExerciseCellController.swift */; };
-		BDE493FD1C7B9B45005817D0 /* MenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE493FC1C7B9B45005817D0 /* MenuHeader.xib */; };
-		BDE493FF1C7B9B5B005817D0 /* MenuHeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493FE1C7B9B5B005817D0 /* MenuHeaderCellController.swift */; };
+		BDE493FD1C7B9B45005817D0 /* GenericHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE493FC1C7B9B45005817D0 /* GenericHeaderCell.xib */; };
+		BDE493FF1C7B9B5B005817D0 /* GenericHeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */; };
 		BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */; };
 		BDE8BED61C77700900DBFB31 /* ExerciseListHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */; };
 		BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */; };
@@ -122,6 +125,7 @@
 		BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */; };
 		BDFD87871CA196D700ECDDCE /* ExercisePriorityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD87861CA196D700ECDDCE /* ExercisePriorityDelegate.swift */; };
 		BDFD87891CA9641100ECDDCE /* IntencityExerciseCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD87881CA9641100ECDDCE /* IntencityExerciseCardButton.swift */; };
+		BDFD878B1CA9AB5200ECDDCE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD878A1CA9AB5200ECDDCE /* ProfileViewController.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */; };
 		F386C2DCFFCB6795EEF5B587 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B639B36984DE79BC8DABA /* Pods.framework */; };
@@ -139,6 +143,8 @@
 		BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExercisePriorityCell.xib; sourceTree = "<group>"; };
 		BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePriorityCellController.swift; sourceTree = "<group>"; };
 		BD10539A1C6CD071004C10C7 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		BD1F30E01CA9BA9500002D06 /* ProfileSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = SOURCE_ROOT; };
+		BD1F30E21CA9BBAA00002D06 /* ProfileRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRow.swift; sourceTree = "<group>"; };
 		BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellController.swift; sourceTree = "<group>"; };
 		BD36EC221C70F0A400F993CE /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionCellController.swift; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 		BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCellController.swift; sourceTree = "<group>"; };
 		BD640A4E1C85D1D7008895A2 /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
 		BD640A501C85D1EE008895A2 /* RankingCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingCellController.swift; sourceTree = "<group>"; };
+		BD6591581CA9B20800D892C3 /* ProfileLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileLabel.swift; sourceTree = "<group>"; };
 		BD6E4B031C84A89900C4E6FB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BD6E4B051C84B2AC00C4E6FB /* UserSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchDelegate.swift; sourceTree = "<group>"; };
 		BD74A2581C735EA700E6ABD2 /* StatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
@@ -238,8 +245,8 @@
 		BDE493F61C7B961D005817D0 /* MenuSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = SOURCE_ROOT; };
 		BDE493F81C7B9A26005817D0 /* GenericCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericCell.xib; sourceTree = "<group>"; };
 		BDE493FA1C7B9A58005817D0 /* MenuExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuExerciseCellController.swift; sourceTree = "<group>"; };
-		BDE493FC1C7B9B45005817D0 /* MenuHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuHeader.xib; sourceTree = "<group>"; };
-		BDE493FE1C7B9B5B005817D0 /* MenuHeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeaderCellController.swift; sourceTree = "<group>"; };
+		BDE493FC1C7B9B45005817D0 /* GenericHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericHeaderCell.xib; sourceTree = "<group>"; };
+		BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericHeaderCellController.swift; sourceTree = "<group>"; };
 		BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseListHeader.xib; sourceTree = "<group>"; };
 		BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseListHeaderController.swift; sourceTree = "<group>"; };
 		BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundDark.swift; sourceTree = "<group>"; };
@@ -247,6 +254,7 @@
 		BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTable.swift; sourceTree = "<group>"; };
 		BDFD87861CA196D700ECDDCE /* ExercisePriorityDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePriorityDelegate.swift; sourceTree = "<group>"; };
 		BDFD87881CA9641100ECDDCE /* IntencityExerciseCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityExerciseCardButton.swift; sourceTree = "<group>"; };
+		BDFD878A1CA9AB5200ECDDCE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
 		C82B639B36984DE79BC8DABA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,7 +324,7 @@
 				BDE493FA1C7B9A58005817D0 /* MenuExerciseCellController.swift */,
 				BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */,
 				BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */,
-				BDE493FE1C7B9B5B005817D0 /* MenuHeaderCellController.swift */,
+				BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -361,9 +369,11 @@
 			children = (
 				BD947A091C6D4B90003F3767 /* ServiceEvent.swift */,
 				BDE493F61C7B961D005817D0 /* MenuSection.swift */,
+				BD1F30E01CA9BA9500002D06 /* ProfileSection.swift */,
 				BDD53BF51C8A2D3F001235AE /* FitnessRecommendationRow.swift */,
 				BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */,
 				BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */,
+				BD1F30E21CA9BBAA00002D06 /* ProfileRow.swift */,
 				BD9EF2561C692A6900E520CB /* DemoView.swift */,
 				BD03C7B61C760DE200D8911A /* Set.swift */,
 				BD37E3AD1C7F4273004A30F7 /* SavedExercise.swift */,
@@ -428,6 +438,7 @@
 				BD9EF2C51C6BEFB800E520CB /* IntencityTabBarController.swift */,
 				BD9EF2C71C6BF4CC00E520CB /* MenuViewController.swift */,
 				BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */,
+				BDFD878A1CA9AB5200ECDDCE /* ProfileViewController.swift */,
 				BDD53BEC1C8A1881001235AE /* FitnessRecommendationViewController.swift */,
 				BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */,
 				BD43E11B1C847D77002F14C6 /* SearchViewController.swift */,
@@ -486,6 +497,7 @@
 		BD9EF2AA1C6A495000E520CB /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
+				BD6591581CA9B20800D892C3 /* ProfileLabel.swift */,
 				BD9EF2AB1C6A496800E520CB /* IntencityTextField.swift */,
 				BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */,
 				BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */,
@@ -543,7 +555,7 @@
 				BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */,
 				BD36EC321C720C6B00F993CE /* Direction.xib */,
 				BDE493F81C7B9A26005817D0 /* GenericCell.xib */,
-				BDE493FC1C7B9B45005817D0 /* MenuHeader.xib */,
+				BDE493FC1C7B9B45005817D0 /* GenericHeaderCell.xib */,
 				BD03C7B21C76082B00D8911A /* Set.xib */,
 			);
 			name = Cells;
@@ -639,7 +651,7 @@
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
 				BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */,
 				BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */,
-				BDE493FD1C7B9B45005817D0 /* MenuHeader.xib in Resources */,
+				BDE493FD1C7B9B45005817D0 /* GenericHeaderCell.xib in Resources */,
 				BD640A4F1C85D1D7008895A2 /* RankingCell.xib in Resources */,
 				BDD53BFE1C8A3439001235AE /* FitnessRecHeaderCell.xib in Resources */,
 				BD03C7B31C76082B00D8911A /* Set.xib in Resources */,
@@ -728,12 +740,15 @@
 				BD43E11A1C8355E9002F14C6 /* UIView+RoundedCorners.swift in Sources */,
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
 				BDD53BF81C8A32A7001235AE /* FitnessRecHeaderCellController.swift in Sources */,
+				BDFD878B1CA9AB5200ECDDCE /* ProfileViewController.swift in Sources */,
 				BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */,
+				BD6591591CA9B20800D892C3 /* ProfileLabel.swift in Sources */,
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,
 				BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */,
 				BD43E11C1C847D77002F14C6 /* SearchViewController.swift in Sources */,
 				BD7C7E7C1C7C9ABD005AFFDD /* MenuRow.swift in Sources */,
 				BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */,
+				BD1F30E31CA9BBAA00002D06 /* ProfileRow.swift in Sources */,
 				BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */,
 				BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */,
 				BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */,
@@ -778,12 +793,13 @@
 				BD7C7E831C7CA0C6005AFFDD /* EditExercisePrioritiesViewController.swift in Sources */,
 				BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */,
 				BD0CD6FA1C984789004FF750 /* Toast.swift in Sources */,
-				BDE493FF1C7B9B5B005817D0 /* MenuHeaderCellController.swift in Sources */,
+				BDE493FF1C7B9B5B005817D0 /* GenericHeaderCellController.swift in Sources */,
 				BD7C7E871C7CA0DA005AFFDD /* ChangePasswordViewController.swift in Sources */,
 				BD6E4B041C84A89900C4E6FB /* User.swift in Sources */,
 				BDE8BED61C77700900DBFB31 /* ExerciseListHeaderController.swift in Sources */,
 				BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */,
 				BDF44A331C79F46D00B47CD1 /* DBHelper.swift in Sources */,
+				BD1F30E11CA9BA9500002D06 /* ProfileSection.swift in Sources */,
 				BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */,
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,

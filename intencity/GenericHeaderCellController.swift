@@ -9,7 +9,7 @@
 
 import UIKit
 
-class MenuHeaderCellController: UITableViewCell
+class GenericHeaderCellController: UITableViewCell
 {
     @IBOutlet weak var title: UILabel!
     

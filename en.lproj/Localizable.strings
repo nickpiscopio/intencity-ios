@@ -215,6 +215,9 @@
 /* Ranking Strings */
 "points" = "POINTS";
 
+"awards_title" = "Awards";
+"profile_routines_title" = "Last 7 day routines";
+
 /*  */
 "no_friends" = "We couldn't find the users you follow.";
 

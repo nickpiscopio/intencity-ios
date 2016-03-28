@@ -1,14 +1,14 @@
 //
-//  ProfileSection.swift
+//  ProfileRow.swift
 //  Intencity
 //
-//  The struct for each section in the profile screen.
+//  The struct a row in a profile section
 //
 //  Created by Nick Piscopio on 2/28/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
-struct ProfileSection
+struct ProfileRow
 {
     var title: String
-    var rows: [ProfileRow]
+    var amount: Int
 }

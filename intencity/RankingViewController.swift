@@ -258,44 +258,18 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         
         return cell
     }
-    
-    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String!
-    {
-        return NSLocalizedString("unfollow", comment: "")
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
-    {
-        if (editingStyle == UITableViewCellEditingStyle.Delete)
-        {
-            self.indexPath = indexPath
-            indexToRemove = indexPath.row
-            
-            let user = currentUsers[indexToRemove]
-            
-            _ = ServiceTask(event: ServiceEvent.UNFOLLOW, delegate: self,
-                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_FROM_FOLLOWING, variables: [ String(user.followingId) ]))
-        }
-    }
-    
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
-    {
-        let index = indexPath.row
-        let user = currentUsers[index]
-        
-        // Only add the unfollow button if it is not the user.
-        // A user cannot unfollow him or herself.
-        if (user.followingId > 0)
-        {
-            return UITableViewCellEditingStyle.Delete
-        }
 
-        return UITableViewCellEditingStyle.None
-    }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        return true
+        // Deselects the row.
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        // Gets the row in the section.
+        let user = currentUsers[indexPath.row]
+        
+        let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
+        viewController.user = user
+        
+        self.navigationController!.pushViewController(viewController, animated: true)
     }
 }
