@@ -121,6 +121,7 @@
 		BDF44A331C79F46D00B47CD1 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A321C79F46D00B47CD1 /* DBHelper.swift */; };
 		BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */; };
 		BDFD87871CA196D700ECDDCE /* ExercisePriorityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD87861CA196D700ECDDCE /* ExercisePriorityDelegate.swift */; };
+		BDFD87891CA9641100ECDDCE /* IntencityExerciseCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD87881CA9641100ECDDCE /* IntencityExerciseCardButton.swift */; };
 		BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFE97131C68E62C00C2AEA3 /* Main.storyboard */; };
 		BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */; };
 		F386C2DCFFCB6795EEF5B587 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B639B36984DE79BC8DABA /* Pods.framework */; };
@@ -245,6 +246,7 @@
 		BDF44A321C79F46D00B47CD1 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTable.swift; sourceTree = "<group>"; };
 		BDFD87861CA196D700ECDDCE /* ExercisePriorityDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePriorityDelegate.swift; sourceTree = "<group>"; };
+		BDFD87881CA9641100ECDDCE /* IntencityExerciseCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityExerciseCardButton.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
 		C82B639B36984DE79BC8DABA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -492,6 +494,7 @@
 				BDD53BEF1C8A1CEB001235AE /* IntencityTabButton.swift */,
 				BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */,
 				BDD721D21C6FAFDA003C242C /* IntencityCardButton.swift */,
+				BDFD87881CA9641100ECDDCE /* IntencityExerciseCardButton.swift */,
 				BDAEA25A1C971DFB005663F3 /* IntencityCardView.swift */,
 				BD8811031C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift */,
 				BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */,
@@ -768,6 +771,7 @@
 				BD0CD6FC1C985248004FF750 /* DateUtil.swift in Sources */,
 				BDB45A1E1C849F52009E509B /* ExerciseDao.swift in Sources */,
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
+				BDFD87891CA9641100ECDDCE /* IntencityExerciseCardButton.swift in Sources */,
 				BD640A511C85D1EE008895A2 /* RankingCellController.swift in Sources */,
 				BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */,
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,

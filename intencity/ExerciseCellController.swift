@@ -89,44 +89,6 @@ class ExerciseCellController: UITableViewCell
     }
     
     /**
-     * Edits the UI of the delete button.
-     */
-    override func layoutSubviews()
-    {
-        super.layoutSubviews()
-        
-        var subViews = self.subviews
-        let subviewsCount = subviews.count
-        
-        // Gets the new height of the delete button.
-        deleteHeight = exerciseView.frame.height - Dimention.LAYOUT_MARGIN / 2
-        
-        for _ in 0 ..< subviewsCount
-        {
-            let view = subViews[0]
-            
-            let classView = String(view.classForCoder)
-
-            // The subview of the delete button.
-            if (classView == "UITableViewCellDeleteConfirmationView")
-            {
-                let delete = view
-                
-                var deleteFrame = delete.frame
-                deleteFrame.size.height = deleteHeight
-                
-                // Rounds the corners of the delete button
-                let path = UIBezierPath(roundedRect:delete.bounds, byRoundingCorners:[.TopLeft, .BottomLeft], cornerRadii: CGSizeMake(Dimention.RADIUS, Dimention.RADIUS))
-                let maskLayer = CAShapeLayer()
-                maskLayer.path = path.CGPath
-                
-                delete.layer.mask = maskLayer
-                delete.frame = deleteFrame
-            }
-        }
-    }
-    
-    /**
      * Sets the card as an exercise.
      */
     func setAsExercise()
