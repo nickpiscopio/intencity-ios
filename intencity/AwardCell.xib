@@ -14,25 +14,37 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="aX4-xd-4pd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="j2W-Pl-cQE">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <connections>
-                            <outlet property="dataSource" destination="auh-CJ-5Yh" id="Tdp-7g-R3a"/>
-                            <outlet property="delegate" destination="auh-CJ-5Yh" id="doL-et-ENG"/>
-                        </connections>
-                    </collectionView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gdg-Uw-aJR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="aX4-xd-4pd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="j2W-Pl-cQE">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <connections>
+                                    <outlet property="dataSource" destination="auh-CJ-5Yh" id="Tdp-7g-R3a"/>
+                                    <outlet property="delegate" destination="auh-CJ-5Yh" id="doL-et-ENG"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qIc-ut-bKP">
+                                <rect key="frame" x="0.0" y="43" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.80784313725490198" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="GaI-M0-f4y"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="aX4-xd-4pd" firstAttribute="leading" secondItem="1No-kv-xjl" secondAttribute="leading" id="CeW-UN-tGj"/>
-                    <constraint firstAttribute="trailing" secondItem="aX4-xd-4pd" secondAttribute="trailing" id="LOh-pm-9RG"/>
-                    <constraint firstItem="aX4-xd-4pd" firstAttribute="top" secondItem="1No-kv-xjl" secondAttribute="top" id="TLV-QS-81x"/>
-                    <constraint firstAttribute="bottom" secondItem="aX4-xd-4pd" secondAttribute="bottom" id="gez-wX-YRn"/>
+                    <constraint firstItem="gdg-Uw-aJR" firstAttribute="leading" secondItem="1No-kv-xjl" secondAttribute="leading" id="2aX-PG-xzK"/>
+                    <constraint firstAttribute="trailing" secondItem="gdg-Uw-aJR" secondAttribute="trailing" id="Imv-E5-eGH"/>
+                    <constraint firstAttribute="bottom" secondItem="gdg-Uw-aJR" secondAttribute="bottom" id="Zed-eW-CJm"/>
+                    <constraint firstItem="gdg-Uw-aJR" firstAttribute="top" secondItem="1No-kv-xjl" secondAttribute="top" id="sTk-cG-qix"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

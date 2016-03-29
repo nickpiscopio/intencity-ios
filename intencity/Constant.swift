@@ -164,6 +164,7 @@ struct Constant
     static let STORED_PROCEDURE_GRANT_POINTS = "grantPointsToUser";
     static let STORED_PROCEDURE_GRANT_BADGE = "grantBadgeToUser";
     static let STORED_PROCEDURE_GET_BADGES = "getBadges";
+    static let STORED_PROCEDURE_GET_LAST_WEEK_ROUTINES = "getLastWeekRoutines";
     static let STORED_PROCEDURE_GET_INJURY_PREVENTION_WORKOUTS = "getInjuryPreventionWorkouts";
     static let STORED_PROCEDURE_EXCLUDE_EXERCISE = "excludeExercise";
     static let STORED_PROCEDURE_REMOVE_ACCOUNT = "removeAccount";

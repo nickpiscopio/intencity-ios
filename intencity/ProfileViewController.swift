@@ -41,12 +41,16 @@ class ProfileViewController: UIViewController, ServiceDelegate
         Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_HEADER_CELL, cellName: Constant.GENERIC_HEADER_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.AWARD_CELL, cellName: Constant.AWARD_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_CELL, cellName: Constant.GENERIC_CELL)
-        
-        let email = Util.getEmailFromDefaults()
+
+        let id = String(user.id)
         
         _ = ServiceTask(event: ServiceEvent.GET_BADGES, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_BADGES, variables: [ email ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_BADGES, variables: [ id ]))
+        
+        _ = ServiceTask(event: ServiceEvent.GET_LAST_WEEK_ROUTINES, delegate: self,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_LAST_WEEK_ROUTINES, variables: [ id ]))
     }
     
     override func viewWillAppear(animated: Bool)
@@ -120,30 +124,52 @@ class ProfileViewController: UIViewController, ServiceDelegate
     
     func onRetrievalSuccessful(event: Int, result: String)
     {
-        var awardRows = [ProfileRow]()
+        var sectionTitle = ""
+        var rows = [ProfileRow]()
         var awards = [AwardRow]()
         
         // This gets saved as NSDictionary, so there is no order
         let json: AnyObject? = result.parseJSONString
         
-        for badge in json as! NSArray
+        if (json != nil)
         {
-            let title = badge[Constant.COLUMN_BADGE_NAME] as! String
-            let amount = badge[Constant.COLUMN_TOTAL_BADGES] as! String
+            switch(event)
+            {
+            case ServiceEvent.GET_BADGES:
+                
+                for badge in json as! NSArray
+                {
+                    let title = badge[Constant.COLUMN_BADGE_NAME] as! String
+                    let amount = badge[Constant.COLUMN_TOTAL_BADGES] as! String
+                    
+                    awards.append(AwardRow(title: title, amount: amount))
+                }
+                
+                rows.append(ProfileRow(title: "", awards: awards))
+                
+                sectionTitle = NSLocalizedString("awards_title", comment: "")
+                
+                break
+            case ServiceEvent.GET_LAST_WEEK_ROUTINES:
+                
+                for routine in json as! NSArray
+                {
+                    let title = routine[Constant.COLUMN_DISPLAY_NAME] as! String
+                    
+                    rows.append(ProfileRow(title: title, awards: []))
+                }
+                
+                sectionTitle = NSLocalizedString("profile_routines_title", comment: "")
+                
+                break
+            default:
+                break;
+            }
             
-            awards.append(AwardRow(title: title, amount: amount))
+            sections.append(ProfileSection(title: sectionTitle, rows: rows))
+            
+            tableView.reloadData()
         }
-        
-        awardRows.append(ProfileRow(title: "", awards: awards))
-        
-        var routineRows = [ ProfileRow(title: "Legs", awards: []),
-                            ProfileRow(title: "Chest", awards: []),
-                            ProfileRow(title: "Biceps", awards: []) ]
-        
-        sections.append(ProfileSection(title: NSLocalizedString("awards_title", comment: ""), rows: awardRows))
-        sections.append(ProfileSection(title: NSLocalizedString("profile_routines_title", comment: ""), rows: routineRows))
-        
-        tableView.reloadData()
     }
     
     func onRetrievalFailed(event: Int)
