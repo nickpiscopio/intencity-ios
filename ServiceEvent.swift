@@ -27,4 +27,5 @@ struct ServiceEvent
     static let UPDATE_EXERCISES_TO_WEB_DB = 14
     static let GET_LIST = 15
     static let UPDATE_LIST = 16
+    static let GET_BADGES = 17
 }

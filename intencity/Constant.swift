@@ -34,6 +34,8 @@ struct Constant
     static let EXERCISE_PRIORITY_CELL = "ExercisePriorityCell"
     static let FITNESS_RECOMMENDATION_CELL = "FitnessRecommendationCell"
     static let NOTIFICATION_CELL = "NotificationCell"
+    static let AWARD_CELL = "AwardCell"
+    static let AWARD_COLLECTION_VIEW_CELL = "AwardCollectionViewCell"
     
     static let FITNESS_RECOMMENDATION_HEADER_CELL = "FitnessRecHeaderCell"
     static let FITNESS_RECOMMENDATION_FOOTER_CELL = "FitnessRecFooterCell"
@@ -161,6 +163,7 @@ struct Constant
     static let STORED_PROCEDURE_GET_EXERCISE_PRIORITIES = "getExercisePriority";
     static let STORED_PROCEDURE_GRANT_POINTS = "grantPointsToUser";
     static let STORED_PROCEDURE_GRANT_BADGE = "grantBadgeToUser";
+    static let STORED_PROCEDURE_GET_BADGES = "getBadges";
     static let STORED_PROCEDURE_GET_INJURY_PREVENTION_WORKOUTS = "getInjuryPreventionWorkouts";
     static let STORED_PROCEDURE_EXCLUDE_EXERCISE = "excludeExercise";
     static let STORED_PROCEDURE_REMOVE_ACCOUNT = "removeAccount";
@@ -191,6 +194,7 @@ struct Constant
     static let COLUMN_FIRST_NAME = "FirstName";
     static let COLUMN_LAST_NAME = "LastName";
     static let COLUMN_EARNED_POINTS = "EarnedPoints";
+    static let COLUMN_BADGE_NAME = "BadgeName";
     static let COLUMN_TOTAL_BADGES = "TotalBadges";
     static let COLUMN_PROFILE_PICTURE_URL = "Url";
     static let COLUMN_FOLLOWING_ID = "FollowingId";

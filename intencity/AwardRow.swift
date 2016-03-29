@@ -1,14 +1,14 @@
 //
-//  ProfileRow.swift
+//  AwardRow.swift
 //  Intencity
 //
-//  The struct a row in a profile section
+//  The struct a row in the award table row
 //
 //  Created by Nick Piscopio on 2/28/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
-struct ProfileRow
+struct AwardRow
 {
     var title: String
-    var awards: [AwardRow]
+    var amount: String
 }
