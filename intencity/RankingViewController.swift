@@ -238,7 +238,6 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         let user = currentUsers[index]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.RANKING_CELL) as! RankingCellController
-        cell.addButton.hidden = true
         cell.name.text = user.getName()
         cell.rankingLabel.text = String(index + 1)
         cell.pointsLabel.text = String(user.earnedPoints)
@@ -266,9 +265,13 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         // Gets the row in the section.
         let user = currentUsers[indexPath.row]
         
-        let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
-        viewController.user = user
+        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
+        vc.user = user
+        // Only add the addRemoveButton if it is not the user.
+        // A user cannot follow/unfollow him or herself.
+        vc.profileIsCurrentUser = user.followingId < 0
+        vc.delegate = self
         
-        self.navigationController!.pushViewController(viewController, animated: true)
+        self.navigationController!.pushViewController(vc, animated: true)
     }
 }

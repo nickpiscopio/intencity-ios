@@ -338,27 +338,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         {
             let user = users[index]
             
-            let currentUserCount = currentUsers.count
-            
-            var isAreadyFollowing = false
-            
-            for i in 0 ..< currentUserCount
-            {
-                if (currentUsers[i].getName() == user.getName())
-                {
-                    isAreadyFollowing = true
-                    
-                    break
-                }
-            }
-            
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.RANKING_CELL) as! RankingCellController
-            cell.userSearchDelegate = self
-            cell.addButton.hidden = isAreadyFollowing
             cell.rankingLabel.hidden = true
             cell.name.text = user.getName()
-            cell.email = email
-            cell.userId = String(user.id)
             cell.pointsLabel.text = String(user.earnedPoints)
             
             let totalBadges = user.totalBadges
@@ -384,7 +366,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             // Deselects the row.
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             
-            let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER)
+            let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
+            vc.user = users[indexPath.row]
+            vc.delegate = self
             
             self.navigationController!.pushViewController(vc, animated: true)
         }

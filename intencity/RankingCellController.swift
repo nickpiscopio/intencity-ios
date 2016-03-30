@@ -9,7 +9,7 @@
 
 import UIKit
 
-class RankingCellController: UITableViewCell, ServiceDelegate
+class RankingCellController: UITableViewCell
 {
     @IBOutlet weak var cellBackgroundView: UIView!
     
@@ -18,7 +18,6 @@ class RankingCellController: UITableViewCell, ServiceDelegate
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var xLabel: UILabel!
     @IBOutlet weak var badgeTotalLabel: UILabel!
-    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var badgeView: UIStackView!
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var pointsSuffix: UILabel!
@@ -26,9 +25,6 @@ class RankingCellController: UITableViewCell, ServiceDelegate
     var user: User!
     
     var email: String!
-    var userId: String!
-
-    weak var userSearchDelegate: UserSearchDelegate!
     
     override func awakeFromNib()
     {
@@ -48,9 +44,7 @@ class RankingCellController: UITableViewCell, ServiceDelegate
     
     @IBAction func addClicked(sender: AnyObject)
     {
-        _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_FOLLOW_USER, variables: [ email, userId ]))
+        
     }
     
     /**
@@ -64,19 +58,4 @@ class RankingCellController: UITableViewCell, ServiceDelegate
         
         name.text = user.getName()
     }
-    
-    /**
-     * The callback for if the user is followed successfully.
-     */
-    func onRetrievalSuccessful(event: Int, result: String)
-    {
-        addButton.hidden = true
-        
-        userSearchDelegate.onUserAdded()
-    }
-    
-    /**
-     * The callback for if the user doesn't get added.
-     */
-    func onRetrievalFailed(event: Int) { }
 }

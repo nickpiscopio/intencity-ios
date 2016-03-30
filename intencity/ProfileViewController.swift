@@ -16,9 +16,19 @@ class ProfileViewController: UIViewController, ServiceDelegate
     @IBOutlet weak var pointsSuffix: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var addRemoveButton: IntencityButtonRound!
+    
     var user: User!
     
     var sections = [ProfileSection]()
+    
+    var profileIsCurrentUser = false
+    
+    var originalFollowingId = Int(Constant.CODE_FAILED)
+    
+    var userId: String!
+    
+    weak var delegate: UserSearchDelegate?
     
     override func viewDidLoad()
     {
@@ -41,16 +51,36 @@ class ProfileViewController: UIViewController, ServiceDelegate
         Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_HEADER_CELL, cellName: Constant.GENERIC_HEADER_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.AWARD_CELL, cellName: Constant.AWARD_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_CELL, cellName: Constant.GENERIC_CELL)
+        
+        originalFollowingId = user.followingId
+        
+        if (!profileIsCurrentUser)
+        {
+            if (originalFollowingId > 0)
+            {
+                setAddRemoveButtonImage(Constant.REMOVE_USER_BUTTON)
+            }
+            else
+            {
+                setAddRemoveButtonImage(Constant.ADD_USER_BUTTON)
+            }
+        }
+        else
+        {
+            
+            addRemoveButton.hidden = true
+        }
+        
 
-        let id = String(user.id)
+        userId = String(user.id)
         
         _ = ServiceTask(event: ServiceEvent.GET_BADGES, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_BADGES, variables: [ id ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_BADGES, variables: [ userId ]))
         
         _ = ServiceTask(event: ServiceEvent.GET_LAST_WEEK_ROUTINES, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_LAST_WEEK_ROUTINES, variables: [ id ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_LAST_WEEK_ROUTINES, variables: [ userId ]))
     }
     
     override func viewWillAppear(animated: Bool)
@@ -66,11 +96,49 @@ class ProfileViewController: UIViewController, ServiceDelegate
     override func viewWillDisappear(animated: Bool)
     {
         self.navigationController?.navigationBar.translucent = false
+        
+        let followingId = user.followingId
+        
+        if (!profileIsCurrentUser && originalFollowingId != followingId)
+        {
+            if (followingId < 0)
+            {
+                // Unfollow the user.
+                _ = ServiceTask(event: ServiceEvent.UNFOLLOW, delegate: self,
+                                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_FROM_FOLLOWING, variables: [ String(originalFollowingId) ]))
+            }
+            else
+            {
+                // Follow the user
+                _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
+                                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_FOLLOW_USER, variables: [ Util.getEmailFromDefaults(), userId ]))
+            }
+            
+            delegate?.onUserAdded()
+        }
     }
     
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func addRemoveClicked(sender: AnyObject)
+    {
+        if (isUserAdded())
+        {
+            setAddRemoveButtonImage(Constant.REMOVE_USER_BUTTON)
+            
+            user.followingId = originalFollowingId > Int(Constant.CODE_FAILED) ? originalFollowingId : 1
+        }
+        else
+        {
+            setAddRemoveButtonImage(Constant.ADD_USER_BUTTON)
+            
+            user.followingId = Int(Constant.CODE_FAILED)
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -144,35 +212,35 @@ class ProfileViewController: UIViewController, ServiceDelegate
         {
             switch(event)
             {
-            case ServiceEvent.GET_BADGES:
+                case ServiceEvent.GET_BADGES:
                 
-                for badge in json as! NSArray
-                {
-                    let title = badge[Constant.COLUMN_BADGE_NAME] as! String
-                    let amount = badge[Constant.COLUMN_TOTAL_BADGES] as! String
+                    for badge in json as! NSArray
+                    {
+                        let title = badge[Constant.COLUMN_BADGE_NAME] as! String
+                        let amount = badge[Constant.COLUMN_TOTAL_BADGES] as! String
                     
-                    awards.append(AwardRow(title: title, amount: amount))
-                }
+                        awards.append(AwardRow(title: title, amount: amount))
+                    }
                 
-                rows.append(ProfileRow(title: "", awards: awards))
+                    rows.append(ProfileRow(title: "", awards: awards))
                 
-                sectionTitle = NSLocalizedString("awards_title", comment: "")
+                    sectionTitle = NSLocalizedString("awards_title", comment: "")
                 
-                break
-            case ServiceEvent.GET_LAST_WEEK_ROUTINES:
+                    break
+                case ServiceEvent.GET_LAST_WEEK_ROUTINES:
                 
-                for routine in json as! NSArray
-                {
-                    let title = routine[Constant.COLUMN_DISPLAY_NAME] as! String
+                    for routine in json as! NSArray
+                    {
+                        let title = routine[Constant.COLUMN_DISPLAY_NAME] as! String
                     
-                    rows.append(ProfileRow(title: title, awards: []))
-                }
+                        rows.append(ProfileRow(title: title, awards: []))
+                    }
                 
-                sectionTitle = NSLocalizedString("profile_routines_title", comment: "")
+                    sectionTitle = NSLocalizedString("profile_routines_title", comment: "")
                 
-                break
-            default:
-                break;
+                    break
+                default:
+                    break
             }
             
             sections.append(ProfileSection(title: sectionTitle, rows: rows))
@@ -184,5 +252,23 @@ class ProfileViewController: UIViewController, ServiceDelegate
     func onRetrievalFailed(event: Int)
     {
         
+    }
+    
+    /**
+     * Sets the image for the addRemoveButton
+     *
+     * @param imageNamed    The name of the image to set.
+     */
+    func setAddRemoveButtonImage(imageNamed: String)
+    {
+        addRemoveButton.setImage(UIImage(named: imageNamed), forState: .Normal)
+    }
+    
+    /**
+     * Checks to see if the user is already added.
+     */
+    func isUserAdded() -> Bool
+    {
+        return addRemoveButton.currentImage!.isEqual(UIImage(named: Constant.ADD_USER_BUTTON))
     }
 }
