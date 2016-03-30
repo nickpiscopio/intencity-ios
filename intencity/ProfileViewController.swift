@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController, ServiceDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+
         // Sets the background color of this view.
         self.view.backgroundColor = Color.page_background
         
@@ -57,6 +57,15 @@ class ProfileViewController: UIViewController, ServiceDelegate
     {
         // Shows the tab bar again.
         self.tabBarController?.tabBar.hidden = true
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+    }
+    
+    override func viewWillDisappear(animated: Bool)
+    {
+        self.navigationController?.navigationBar.translucent = false
     }
     
     override func didReceiveMemoryWarning()

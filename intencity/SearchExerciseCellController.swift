@@ -12,8 +12,8 @@ import UIKit
 class SearchExerciseCellController: UITableViewCell
 {
     @IBOutlet weak var cellBackgroundView: UIView!
-    
-    @IBOutlet weak var resultName: UILabel!
+
+    @IBOutlet weak var resultName: UIButton!
     
     @IBOutlet weak var addButton: UIButton!
     
@@ -27,12 +27,18 @@ class SearchExerciseCellController: UITableViewCell
         
         cellBackgroundView.backgroundColor = Color.white
         
-        resultName.textColor = Color.secondary_dark
+        resultName.setTitleColor(Color.secondary_dark, forState: .Normal)
+        resultName.setTitleColor(Color.secondary_dark, forState: .Highlighted)
     }
     
     @IBAction func addClicked(sender: AnyObject)
     {
         exerciseSearchDelegate.onExerciseAdded(exercise)
+    }
+    
+    @IBAction func resultClicked(sender: AnyObject)
+    {
+        exerciseSearchDelegate?.onExerciseClicked((resultName.titleLabel?.text)!)
     }
     
     /**
@@ -44,6 +50,6 @@ class SearchExerciseCellController: UITableViewCell
     {
         self.exercise = exercise
             
-        resultName.text = exercise.exerciseName
+        resultName.setTitle(exercise.exerciseName, forState: .Normal)
     }
 }

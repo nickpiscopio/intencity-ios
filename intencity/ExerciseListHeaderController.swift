@@ -59,4 +59,6 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
     {
         exerciseSearchDelegate.onExerciseAdded(exercise)
     }
+    
+    func onExerciseClicked(exerciseName: String) { }
 }

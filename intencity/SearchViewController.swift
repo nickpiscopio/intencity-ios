@@ -273,6 +273,17 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     }
     
     /**
+     * The callback for when an exercise is clicked from searching.
+     */
+    func onExerciseClicked(exerciseName: String)
+    {
+        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController        
+        vc.exerciseName = exerciseName
+        
+        self.navigationController!.pushViewController(vc, animated: true)
+    }
+    
+    /**
      * The callback for when a user is added from searching.
      */
     func onUserAdded()
@@ -342,7 +353,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             }
             
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.RANKING_CELL) as! RankingCellController
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.userSearchDelegate = self
             cell.addButton.hidden = isAreadyFollowing
             cell.rankingLabel.hidden = true
@@ -364,6 +374,19 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             }
             
             return cell
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if (state == ServiceEvent.SEARCH_FOR_USER)
+        {
+            // Deselects the row.
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            
+            let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER)
+            
+            self.navigationController!.pushViewController(vc, animated: true)
         }
     }
 }

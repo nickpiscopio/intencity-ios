@@ -238,7 +238,6 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         let user = currentUsers[index]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.RANKING_CELL) as! RankingCellController
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.addButton.hidden = true
         cell.name.text = user.getName()
         cell.rankingLabel.text = String(index + 1)

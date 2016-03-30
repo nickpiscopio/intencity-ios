@@ -22,5 +22,6 @@ class ProfileLabel: UILabel
         self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW, Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
         self.layer.shadowColor = Color.shadow_dark.CGColor
+        self.layer.shadowRadius = Dimention.SHADOW
     }
 }

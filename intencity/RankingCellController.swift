@@ -14,6 +14,7 @@ class RankingCellController: UITableViewCell, ServiceDelegate
     @IBOutlet weak var cellBackgroundView: UIView!
     
     @IBOutlet weak var rankingLabel: UILabel!
+    @IBOutlet weak var profilePictureView: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var xLabel: UILabel!
     @IBOutlet weak var badgeTotalLabel: UILabel!
