@@ -39,15 +39,28 @@
                                                             <constraint firstAttribute="width" constant="35" id="tQN-ii-r7l"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="P0s-xL-c11">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="P0s-xL-c11">
                                                         <rect key="frame" x="43" y="0.0" width="285" height="35"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqy-EC-40n">
-                                                                <rect key="frame" x="0.0" y="0.0" width="42" height="14"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cUt-Rx-wve">
+                                                                <rect key="frame" x="0.0" y="0.0" width="57" height="17"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqy-EC-40n">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="17"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nDU-5b-XVH" customClass="IntencityCircleView" customModule="Intencity" customModuleProvider="target">
+                                                                        <rect key="frame" x="47" y="4" width="10" height="10"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="10" id="EML-Ee-DCI"/>
+                                                                            <constraint firstAttribute="width" constant="10" id="Qll-5r-lbG"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
+                                                            </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YoE-Eh-CXc">
                                                                 <rect key="frame" x="0.0" y="17" width="75" height="18"/>
                                                                 <subviews>
@@ -70,7 +83,6 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="EOl-Z7-Ren" firstAttribute="top" secondItem="MFh-FJ-gCx" secondAttribute="top" constant="8" id="L5a-P2-147"/>
                                             <constraint firstAttribute="trailing" secondItem="EOl-Z7-Ren" secondAttribute="trailing" constant="8" id="hSk-vJ-zHe"/>
@@ -137,6 +149,7 @@
                 <outlet property="pointsSuffix" destination="oLc-tv-G1b" id="4qd-UV-yMZ"/>
                 <outlet property="profilePictureView" destination="cZd-oF-xHp" id="a0e-UF-jdZ"/>
                 <outlet property="rankingLabel" destination="lH0-Tt-hib" id="eTr-OA-cKc"/>
+                <outlet property="userNotification" destination="nDU-5b-XVH" id="8Zn-Z5-SVf"/>
                 <outlet property="xLabel" destination="oxv-rm-agk" id="320-AH-r0m"/>
             </connections>
             <point key="canvasLocation" x="545.5" y="447"/>

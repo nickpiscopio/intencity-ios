@@ -20,7 +20,8 @@ class RankingCellController: UITableViewCell
     @IBOutlet weak var badgeTotalLabel: UILabel!
     @IBOutlet weak var badgeView: UIStackView!
     @IBOutlet weak var pointsLabel: UILabel!
-    @IBOutlet weak var pointsSuffix: UILabel!
+    @IBOutlet weak var pointsSuffix: UILabel!    
+    @IBOutlet weak var userNotification: IntencityCircleView!
     
     var user: User!
     

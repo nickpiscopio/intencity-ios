@@ -239,6 +239,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.RANKING_CELL) as! RankingCellController
         cell.name.text = user.getName()
+        cell.userNotification.hidden = user.followingId > Int(Constant.CODE_FAILED)
         cell.rankingLabel.text = String(index + 1)
         cell.pointsLabel.text = String(user.earnedPoints)
         

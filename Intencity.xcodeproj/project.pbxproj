@@ -38,6 +38,7 @@
 		BD4B8EB91C7CEACD00AD579B /* DescriptionFooterCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB81C7CEACD00AD579B /* DescriptionFooterCellController.swift */; };
 		BD4B8EBB1C7CEB1D00AD579B /* DescriptionFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4B8EBA1C7CEB1D00AD579B /* DescriptionFooterCell.xib */; };
 		BD53AED61CAAD02B00077B0D /* AwardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD53AED51CAAD02B00077B0D /* AwardRow.swift */; };
+		BD53AED81CAD517600077B0D /* IntencityCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD53AED71CAD517600077B0D /* IntencityCircleView.swift */; };
 		BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460ED1C68D34400F60ADC /* AppDelegate.swift */; };
 		BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460EF1C68D34400F60ADC /* DemoViewController.swift */; };
 		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
@@ -170,6 +171,7 @@
 		BD4B8EB81C7CEACD00AD579B /* DescriptionFooterCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionFooterCellController.swift; sourceTree = "<group>"; };
 		BD4B8EBA1C7CEB1D00AD579B /* DescriptionFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionFooterCell.xib; sourceTree = "<group>"; };
 		BD53AED51CAAD02B00077B0D /* AwardRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardRow.swift; sourceTree = "<group>"; };
+		BD53AED71CAD517600077B0D /* IntencityCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCircleView.swift; sourceTree = "<group>"; };
 		BD5460EA1C68D34400F60ADC /* Intencity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intencity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5460ED1C68D34400F60ADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5460EF1C68D34400F60ADC /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				BD9EF2AB1C6A496800E520CB /* IntencityTextField.swift */,
 				BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */,
 				BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */,
+				BD53AED71CAD517600077B0D /* IntencityCircleView.swift */,
 				BDD89BFE1C91C55300530D79 /* IntencityButtonNoBackgroundLarge.swift */,
 				BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */,
 				BDD53BEF1C8A1CEB001235AE /* IntencityTabButton.swift */,
@@ -809,6 +812,7 @@
 				BD640A511C85D1EE008895A2 /* RankingCellController.swift in Sources */,
 				BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */,
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
+				BD53AED81CAD517600077B0D /* IntencityCircleView.swift in Sources */,
 				BD7C7E831C7CA0C6005AFFDD /* EditExercisePrioritiesViewController.swift in Sources */,
 				BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */,
 				BD1F30E71CAACA0300002D06 /* AwardCellController.swift in Sources */,
