@@ -299,11 +299,11 @@ class Util
     static func grantBadgeToUser(email: String, badgeName: String, content: Awards)
     {
         // We won't display the date anywhere, so we probably don't need this in local time.
-        let now = Float(NSDate().timeIntervalSince1970 * 1000)
+        let now = String(format:"%.0f", NSDate().timeIntervalSince1970 * 1000)
         
         _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_BADGE, variables: [ email, String(now), badgeName ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_BADGE, variables: [ email, now, badgeName ]))
         
         // Add an award to the notification handler.
         NotificationHandler.getInstance(nil).addAward(content);
