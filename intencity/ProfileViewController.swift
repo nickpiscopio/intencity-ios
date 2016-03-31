@@ -72,10 +72,15 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         }
         else
         {
-            cameraButton.hidden = false
+            // Only show the camera button if the photo library is available.
+            // We check for the camera if the user clicks on the camera.
+            if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum))
+            {
+                cameraButton.hidden = false
+            }
+            
             addRemoveButton.hidden = true
         }
-        
 
         userId = String(user.id)
         
@@ -131,20 +136,19 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     }
     
     @IBAction func cameraClicked(sender: AnyObject)
-    {        
+    {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         {
-            let imagePicker = UIImagePickerController()
-            
-            imagePicker.delegate = self
-            imagePicker.sourceType =
-                UIImagePickerControllerSourceType.Camera
-            imagePicker.mediaTypes = [kUTTypeImage as NSString as String]
-            imagePicker.allowsEditing = false
-            
-            self.presentViewController(imagePicker, animated: true,
-                                       completion: nil)
-            newMedia = true
+            Util.displayAlert(self,
+                              title: NSLocalizedString("profile_pic_dialog_title", comment: ""),
+                              message: NSLocalizedString("profile_pic_dialog_message", comment: ""),
+                              actions: [ UIAlertAction(title: NSLocalizedString("profile_pic_dialog_camera_button", comment: ""), style: .Default, handler: self.openCamera),
+                                UIAlertAction(title: NSLocalizedString("profile_pic_dialog_pictures_button", comment: ""), style: .Default, handler: self.openPhotos),
+                                UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil)])
+        }
+        else
+        {
+            openPhotos()
         }
     }
     
@@ -274,9 +278,12 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     
     func onRetrievalFailed(event: Int)
     {
-        
+        print("failed: \(event)")
     }
     
+    /**
+     * DOCUMENTATION: http://www.techotopia.com/index.php/An_Example_Swift_iOS_8_iPhone_Camera_Application
+     */
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
         let mediaType = info[UIImagePickerControllerMediaType] as! String
@@ -285,32 +292,19 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         
         if mediaType == (kUTTypeImage as String)
         {
-            let image = info[UIImagePickerControllerOriginalImage]
-                as! UIImage
+            let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
             profilePic.image = image
             
+            _ = UploadImageTask(event: ServiceEvent.UPLOAD_IMAGE,
+                                delegate: self,
+                                image: image,
+                                id: userId)
+            
             if (newMedia == true)
             {
-                UIImageWriteToSavedPhotosAlbum(image, self,
-                                               #selector(ProfileViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
-            }            
-        }
-    }
-    
-    func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>)
-    {
-        if error != nil
-        {
-            let alert = UIAlertController(title: "Save Failed",
-                                          message: "Failed to save image",
-                                          preferredStyle: UIAlertControllerStyle.Alert)
-            
-            let cancelAction = UIAlertAction(title: "OK",
-                                             style: .Cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            self.presentViewController(alert, animated: true, completion: nil)
+                UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+            }
         }
     }
     
@@ -335,5 +329,47 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     func isUserAdded() -> Bool
     {
         return addRemoveButton.currentImage!.isEqual(UIImage(named: Constant.ADD_USER_BUTTON))
+    }
+    
+    /**
+     * Open the photos.
+     */
+    func openPhotos()
+    {
+        let imagePicker = UIImagePickerController()
+            
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imagePicker.mediaTypes = [kUTTypeImage as NSString as String]
+        imagePicker.allowsEditing = false
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+            
+        newMedia = false
+    }
+    
+    /**
+     * The action to open the photos from an alert.
+     */
+    func openPhotos(alertAction: UIAlertAction!)
+    {
+        openPhotos()
+    }
+    
+    /**
+     * The action to open the camera from an alert.
+     */
+    func openCamera(alertAction: UIAlertAction!)
+    {
+        let imagePicker = UIImagePickerController()
+        
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+        imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+        imagePicker.mediaTypes = [kUTTypeImage as NSString as String]
+        imagePicker.allowsEditing = false
+        
+        self.presentViewController(imagePicker, animated: true,
+                                   completion: nil)
+        newMedia = true
     }
 }

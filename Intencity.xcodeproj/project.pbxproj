@@ -65,6 +65,8 @@
 		BD8810FC1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */; };
 		BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8811011C92FF3A0098FA64 /* Badge.swift */; };
 		BD8811041C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8811031C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift */; };
+		BD91FC0D1CAD710800965782 /* UploadImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD91FC0C1CAD710800965782 /* UploadImageTask.swift */; };
+		BD91FC0F1CAD733600965782 /* NSMutableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD91FC0E1CAD733600965782 /* NSMutableData.swift */; };
 		BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9479FA1C6CE43C003F3767 /* JSON.swift */; };
 		BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD9479FC1C6CE452003F3767 /* Loading.storyboard */; };
 		BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A011C6CED31003F3767 /* LoginNavController.swift */; };
@@ -200,6 +202,8 @@
 		BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundSmall.swift; sourceTree = "<group>"; };
 		BD8811011C92FF3A0098FA64 /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		BD8811031C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButtonNoBackground.swift; sourceTree = "<group>"; };
+		BD91FC0C1CAD710800965782 /* UploadImageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadImageTask.swift; sourceTree = "<group>"; };
+		BD91FC0E1CAD733600965782 /* NSMutableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableData.swift; sourceTree = "<group>"; };
 		BD9479FA1C6CE43C003F3767 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		BD9479FC1C6CE452003F3767 /* Loading.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		BD947A001C6CE598003F3767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				BD0CD6F91C984789004FF750 /* Toast.swift */,
+				BD91FC0E1CAD733600965782 /* NSMutableData.swift */,
 				BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */,
 				BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */,
 				BD9479FA1C6CE43C003F3767 /* JSON.swift */,
@@ -534,6 +539,7 @@
 			isa = PBXGroup;
 			children = (
 				BD9EF2BB1C6B701D00E520CB /* ServiceTask.swift */,
+				BD91FC0C1CAD710800965782 /* UploadImageTask.swift */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
@@ -803,6 +809,7 @@
 				BD9EF2C41C6B8A6700E520CB /* Util.swift in Sources */,
 				BD947A061C6D3F30003F3767 /* Integer.swift in Sources */,
 				BD947A381C6F6F50003F3767 /* RoutineCellController.swift in Sources */,
+				BD91FC0F1CAD733600965782 /* NSMutableData.swift in Sources */,
 				BD9EF2B01C6A52FA00E520CB /* IntencityButton.swift in Sources */,
 				BD8811041C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift in Sources */,
 				BD0CD6FC1C985248004FF750 /* DateUtil.swift in Sources */,
@@ -846,6 +853,7 @@
 				BD03C7BB1C761B6000D8911A /* SetDelegate.swift in Sources */,
 				BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */,
 				BD7C7E7E1C7C9E48005AFFDD /* AboutViewController.swift in Sources */,
+				BD91FC0D1CAD710800965782 /* UploadImageTask.swift in Sources */,
 				BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */,
 				BD37B4AB1C8DB677008F3076 /* ExerciseSearchViewController.swift in Sources */,
 			);

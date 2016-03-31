@@ -13,7 +13,7 @@ class ServiceTask
 {
     init(event: Int, delegate: ServiceDelegate?, serviceURL: String, params: NSString)
     {
-        let failed = "FAILURE"
+        let FAILED = "FAILURE"
         let request = NSMutableURLRequest(URL: NSURL(string: serviceURL)!)
         request.HTTPMethod = "POST"
         request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
@@ -47,7 +47,7 @@ class ServiceTask
                 
                 let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
                 let parsedResponse = responseString.stringByReplacingOccurrencesOfString("\"", withString: "")
-                if (parsedResponse != failed)
+                if (parsedResponse != FAILED)
                 {
                     dispatch_async(dispatch_get_main_queue())
                     {

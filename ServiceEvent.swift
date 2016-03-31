@@ -29,4 +29,5 @@ struct ServiceEvent
     static let UPDATE_LIST = 16
     static let GET_BADGES = 17
     static let GET_LAST_WEEK_ROUTINES = 18
+    static let UPLOAD_IMAGE = 19
 }
