@@ -130,12 +130,19 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
         // This gets saved as NSDictionary, so there is no order
         let json: AnyObject? = result.parseJSONString
         
-        for exercise in json as! NSArray
+        if (json != nil)
         {
-            exercises.append(exercise[Constant.COLUMN_EXERCISE_NAME] as! String)
+            for exercise in json as! NSArray
+            {
+                exercises.append(exercise[Constant.COLUMN_EXERCISE_NAME] as! String)
+            }
+            
+            tableView.reloadData()
         }
-        
-        tableView.reloadData()
+        else
+        {
+            showConnectionIssue()
+        }
         
         hideLoading()
     }

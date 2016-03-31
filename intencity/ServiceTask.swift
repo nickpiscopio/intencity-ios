@@ -48,7 +48,7 @@ class ServiceTask
                 
                 let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
                 let parsedResponse = responseString.stringByReplacingOccurrencesOfString("\"", withString: "")
-                if (parsedResponse != FAILED)
+                if (parsedResponse != ServiceTask.FAILED)
                 {
                     dispatch_async(dispatch_get_main_queue())
                     {

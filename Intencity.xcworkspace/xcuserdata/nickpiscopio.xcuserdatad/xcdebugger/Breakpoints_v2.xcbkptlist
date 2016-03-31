@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "intencity/SearchViewController.swift"
-            timestampString = "481046500.316173"
+            filePath = "intencity/ExerciseSearchViewController.swift"
+            timestampString = "481140826.317604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "viewWillDisappear(_:)"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "onRetrievalSuccessful(_:result:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "intencity/ExerciseSearchViewController.swift"
+            timestampString = "481141214.20237"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "onRetrievalFailed(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
