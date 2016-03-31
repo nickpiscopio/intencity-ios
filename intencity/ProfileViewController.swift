@@ -8,14 +8,17 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
+import MobileCoreServices
 
-class ProfileViewController: UIViewController, ServiceDelegate
+class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
+    @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var points: UILabel!
     @IBOutlet weak var pointsSuffix: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var cameraButton: IntencityButtonRound!
     @IBOutlet weak var addRemoveButton: IntencityButtonRound!
     
     var user: User!
@@ -29,6 +32,8 @@ class ProfileViewController: UIViewController, ServiceDelegate
     var userId: String!
     
     weak var delegate: UserSearchDelegate?
+    
+    var newMedia: Bool?
     
     override func viewDidLoad()
     {
@@ -67,7 +72,7 @@ class ProfileViewController: UIViewController, ServiceDelegate
         }
         else
         {
-            
+            cameraButton.hidden = false
             addRemoveButton.hidden = true
         }
         
@@ -123,6 +128,24 @@ class ProfileViewController: UIViewController, ServiceDelegate
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func cameraClicked(sender: AnyObject)
+    {        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        {
+            let imagePicker = UIImagePickerController()
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType =
+                UIImagePickerControllerSourceType.Camera
+            imagePicker.mediaTypes = [kUTTypeImage as NSString as String]
+            imagePicker.allowsEditing = false
+            
+            self.presentViewController(imagePicker, animated: true,
+                                       completion: nil)
+            newMedia = true
+        }
     }
     
     @IBAction func addRemoveClicked(sender: AnyObject)
@@ -252,6 +275,48 @@ class ProfileViewController: UIViewController, ServiceDelegate
     func onRetrievalFailed(event: Int)
     {
         
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        if mediaType == (kUTTypeImage as String)
+        {
+            let image = info[UIImagePickerControllerOriginalImage]
+                as! UIImage
+            
+            profilePic.image = image
+            
+            if (newMedia == true)
+            {
+                UIImageWriteToSavedPhotosAlbum(image, self,
+                                               #selector(ProfileViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+            }            
+        }
+    }
+    
+    func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>)
+    {
+        if error != nil
+        {
+            let alert = UIAlertController(title: "Save Failed",
+                                          message: "Failed to save image",
+                                          preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let cancelAction = UIAlertAction(title: "OK",
+                                             style: .Cancel, handler: nil)
+            
+            alert.addAction(cancelAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController)
+    {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     /**

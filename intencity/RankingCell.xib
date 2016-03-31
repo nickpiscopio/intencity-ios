@@ -51,7 +51,7 @@
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nDU-5b-XVH" customClass="IntencityCircleView" customModule="Intencity" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDU-5b-XVH" customClass="IntencityCircleView" customModule="Intencity" customModuleProvider="target">
                                                                         <rect key="frame" x="47" y="4" width="10" height="10"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <constraints>
