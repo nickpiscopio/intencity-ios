@@ -2,9 +2,9 @@
 //  ServiceTask.swift
 //  Intencity
 //
-//  The task that calls webservices.
+//  The task that uploads an iamge to the server.
 //
-//  Created by Nick Piscopio on 2/10/16.
+//  Created by Nick Piscopio on 3/31/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
@@ -14,8 +14,6 @@ class UploadImageTask
 {
     init(event: Int, delegate: ServiceDelegate?, image: UIImage, id: String)
     {
-        let FAILED = "FAILURE"
-        
         let myUrl = NSURL(string: Constant.SERVICE_UPLOAD_PROFILE_PIC);
         
         let param = [ "id" : id ]
@@ -45,7 +43,7 @@ class UploadImageTask
             // Print out reponse body
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
             let parsedResponse = responseString.stringByReplacingOccurrencesOfString("\"", withString: "")
-            if (parsedResponse != FAILED)
+            if (parsedResponse != ServiceTask.FAILED)
             {
                 dispatch_async(dispatch_get_main_queue())
                 {

@@ -11,9 +11,10 @@ import Foundation
 
 class ServiceTask
 {
+    static let FAILED = "FAILURE"
+
     init(event: Int, delegate: ServiceDelegate?, serviceURL: String, params: NSString)
     {
-        let FAILED = "FAILURE"
         let request = NSMutableURLRequest(URL: NSURL(string: serviceURL)!)
         request.HTTPMethod = "POST"
         request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
