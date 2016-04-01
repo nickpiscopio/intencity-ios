@@ -106,14 +106,17 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         // Shows the tab bar again.
         self.tabBarController?.tabBar.hidden = true
         
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBarHidden = true
+        
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.translucent = true
     }
     
     override func viewWillDisappear(animated: Bool)
     {
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBarHidden = false
+//        self.navigationController?.navigationBar.translucent = false
         
         let followingId = user.followingId
         
@@ -174,6 +177,15 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
             
             user.followingId = Int(Constant.CODE_FAILED)
         }
+    }
+    
+    /**
+     * Navigates the user back to the previous screen.
+     */
+    @IBAction func goBack()
+    {
+        // Navigates the user back to the previous screen.
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
