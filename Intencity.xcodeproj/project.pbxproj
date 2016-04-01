@@ -22,6 +22,8 @@
 		BD1F30E71CAACA0300002D06 /* AwardCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1F30E61CAACA0300002D06 /* AwardCellController.swift */; };
 		BD1F30E91CAACACA00002D06 /* AwardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1F30E81CAACACA00002D06 /* AwardCollectionViewCell.xib */; };
 		BD1F30EB1CAACB6800002D06 /* AwardViewCollectionCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1F30EA1CAACB6800002D06 /* AwardViewCollectionCellController.swift */; };
+		BD294AC51CAEAE09005718BA /* ImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD294AC41CAEAE09005718BA /* ImageDelegate.swift */; };
+		BD294AC71CAEB579005718BA /* RetrieveImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD294AC61CAEB579005718BA /* RetrieveImageTask.swift */; };
 		BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */; };
 		BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC221C70F0A400F993CE /* Exercise.swift */; };
 		BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */; };
@@ -157,6 +159,8 @@
 		BD1F30E61CAACA0300002D06 /* AwardCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardCellController.swift; sourceTree = "<group>"; };
 		BD1F30E81CAACACA00002D06 /* AwardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardCollectionViewCell.xib; sourceTree = "<group>"; };
 		BD1F30EA1CAACB6800002D06 /* AwardViewCollectionCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardViewCollectionCellController.swift; sourceTree = "<group>"; };
+		BD294AC41CAEAE09005718BA /* ImageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDelegate.swift; sourceTree = "<group>"; };
+		BD294AC61CAEB579005718BA /* RetrieveImageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveImageTask.swift; sourceTree = "<group>"; };
 		BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellController.swift; sourceTree = "<group>"; };
 		BD36EC221C70F0A400F993CE /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionCellController.swift; sourceTree = "<group>"; };
@@ -540,6 +544,7 @@
 			children = (
 				BD9EF2BB1C6B701D00E520CB /* ServiceTask.swift */,
 				BD91FC0C1CAD710800965782 /* UploadImageTask.swift */,
+				BD294AC61CAEB579005718BA /* RetrieveImageTask.swift */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
@@ -555,6 +560,7 @@
 				BDFD87861CA196D700ECDDCE /* ExercisePriorityDelegate.swift */,
 				BDB45A1F1C84A122009E509B /* ExerciseSearchDelegate.swift */,
 				BD6E4B051C84B2AC00C4E6FB /* UserSearchDelegate.swift */,
+				BD294AC41CAEAE09005718BA /* ImageDelegate.swift */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -768,6 +774,7 @@
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
 				BDD53BF81C8A32A7001235AE /* FitnessRecHeaderCellController.swift in Sources */,
 				BDFD878B1CA9AB5200ECDDCE /* ProfileViewController.swift in Sources */,
+				BD294AC71CAEB579005718BA /* RetrieveImageTask.swift in Sources */,
 				BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */,
 				BD6591591CA9B20800D892C3 /* ProfileLabel.swift in Sources */,
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,
@@ -797,6 +804,7 @@
 				BD6E4B061C84B2AC00C4E6FB /* UserSearchDelegate.swift in Sources */,
 				BD36EC2F1C72068900F993CE /* ExerciseDelegate.swift in Sources */,
 				BDD89BF31C90654800530D79 /* NotificationHandler.swift in Sources */,
+				BD294AC51CAEAE09005718BA /* ImageDelegate.swift in Sources */,
 				BD9EF2A81C6A310200E520CB /* ForgotPasswordViewController.swift in Sources */,
 				BD8810FC1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift in Sources */,
 				BD1F30EB1CAACB6800002D06 /* AwardViewCollectionCellController.swift in Sources */,

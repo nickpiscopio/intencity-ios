@@ -1,5 +1,5 @@
 //
-//  ExerciseDelegate.swift
+//  UserSearchDelegate.swift
 //  Intencity
 //
 //  Created by Nick Piscopio on 2/29/16.

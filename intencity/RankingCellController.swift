@@ -9,7 +9,7 @@
 
 import UIKit
 
-class RankingCellController: UITableViewCell
+class RankingCellController: UITableViewCell, ImageDelegate
 {
     @IBOutlet weak var cellBackgroundView: UIView!
     
@@ -23,9 +23,15 @@ class RankingCellController: UITableViewCell
     @IBOutlet weak var pointsSuffix: UILabel!    
     @IBOutlet weak var userNotification: IntencityCircleView!
     
+    let USER_PROFILE_PIC_NAME = "/user-profile.jpg"
+    
+    var index: Int!
+    
     var user: User!
     
     var email: String!
+    
+    weak var delegate: ImageDelegate?
     
     override func awakeFromNib()
     {
@@ -43,20 +49,23 @@ class RankingCellController: UITableViewCell
         pointsSuffix.text = NSLocalizedString("points", comment: "")
     }
     
-    @IBAction func addClicked(sender: AnyObject)
+    /**
+     * Retrieves the profile picture from the server.
+     */
+    func retrieveProfilePic(index: Int)
     {
-        
+        if (user.profilePic == nil)
+        {
+            self.index = index
+            
+            _ = RetrieveImageTask(delegate: self, link: Constant.UPLOAD_FOLDER + String(user.id) + USER_PROFILE_PIC_NAME)
+        }
     }
     
-    /**
-     * Sets the user result.
-     *
-     * @param result    Either the exercise or user result to set the cell view.
-     */
-    func setUserResult(user: User)
+    func onImageRetrieved(index: Int, image: UIImage)
     {
-        self.user = user
+        delegate?.onImageRetrieved(self.index, image: image)
         
-        name.text = user.getName()
+        profilePictureView.image = image
     }
 }

@@ -9,7 +9,7 @@
 
 import UIKit
 
-class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelegate
+class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelegate, ImageDelegate
 {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addFollowerButton: IntencityButtonRound!
@@ -24,6 +24,8 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     var refreshControl: UIRefreshControl!
     
     var notificationHandler: NotificationHandler!
+    
+    var profileViewController: ProfileViewController!
 
     override func viewDidLoad()
     {
@@ -219,6 +221,16 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         getFollowing()
     }
     
+    func onImageRetrieved(index: Int, image: UIImage)
+    {
+        currentUsers[index].profilePic = image
+        
+        if (profileViewController != nil && profileViewController.index == index)
+        {
+            profileViewController.profilePic.image = image
+        }
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         tableView.backgroundView?.hidden = currentUsers.count > 1
@@ -238,10 +250,13 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         let user = currentUsers[index]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.RANKING_CELL) as! RankingCellController
+        cell.user = user
         cell.name.text = user.getName()
         cell.userNotification.hidden = user.followingId > Int(Constant.CODE_FAILED)
         cell.rankingLabel.text = String(index + 1)
         cell.pointsLabel.text = String(user.earnedPoints)
+        cell.delegate = self
+        cell.retrieveProfilePic(index)
         
         let totalBadges = user.totalBadges
         
@@ -263,16 +278,19 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         // Deselects the row.
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        // Gets the row in the section.
-        let user = currentUsers[indexPath.row]
+        let index = indexPath.row
         
-        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
-        vc.user = user
+        // Gets the row in the section.
+        let user = currentUsers[index]
+        
+        profileViewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
+        profileViewController.index = index
+        profileViewController.user = user
         // Only add the addRemoveButton if it is not the user.
         // A user cannot follow/unfollow him or herself.
-        vc.profileIsCurrentUser = user.followingId < 0
-        vc.delegate = self
+        profileViewController.profileIsCurrentUser = user.followingId < 0
+        profileViewController.delegate = self
         
-        self.navigationController!.pushViewController(vc, animated: true)
+        self.navigationController!.pushViewController(profileViewController, animated: true)
     }
 }

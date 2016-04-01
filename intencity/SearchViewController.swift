@@ -9,7 +9,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelegate, ExerciseSearchDelegate, UserSearchDelegate
+class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelegate, ExerciseSearchDelegate, UserSearchDelegate, ImageDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var connectionView: UIView!
@@ -36,6 +36,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     var email = ""
     
     var addedUser = false
+    
+    var profileViewController: ProfileViewController!
     
     override func viewDidLoad()
     {
@@ -291,6 +293,16 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         addedUser = true
     }
     
+    func onImageRetrieved(index: Int, image: UIImage)
+    {
+        users[index].profilePic = image
+        
+        if (profileViewController != nil && profileViewController.index == index)
+        {
+            profileViewController.profilePic.image = image
+        }
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         tableView.backgroundView?.hidden = exercises.count > 0 || users.count > 0
@@ -339,9 +351,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             let user = users[index]
             
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.RANKING_CELL) as! RankingCellController
+            cell.user = user
             cell.rankingLabel.hidden = true
+            cell.userNotification.hidden = true
             cell.name.text = user.getName()
             cell.pointsLabel.text = String(user.earnedPoints)
+            cell.delegate = self
+            cell.retrieveProfilePic(index)
             
             let totalBadges = user.totalBadges
             
@@ -366,11 +382,14 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             // Deselects the row.
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             
-            let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
-            vc.user = users[indexPath.row]
-            vc.delegate = self
+            let index = indexPath.row
             
-            self.navigationController!.pushViewController(vc, animated: true)
+            profileViewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
+            profileViewController.index = index
+            profileViewController.user = users[index]
+            profileViewController.delegate = self
+            
+            self.navigationController!.pushViewController(profileViewController, animated: true)
         }
     }
 }

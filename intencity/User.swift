@@ -8,6 +8,7 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import Foundation
+import UIKit
 
 class User: NSObject
 {
@@ -18,6 +19,8 @@ class User: NSObject
     
     var firstName = ""
     var lastName = ""
+    
+    var profilePic: UIImage!
     
     /**
      * Concatinates the user's first and last name.

@@ -21,6 +21,8 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     @IBOutlet weak var cameraButton: IntencityButtonRound!
     @IBOutlet weak var addRemoveButton: IntencityButtonRound!
     
+    var index: Int!
+    
     var user: User!
     
     var sections = [ProfileSection]()
@@ -45,6 +47,12 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         userName.text = user.getName()
         points.text = String(user.earnedPoints)
         pointsSuffix.text = NSLocalizedString("points", comment: "")
+        
+        let image = user.profilePic
+        if (image != nil)
+        {
+            profilePic.image = image
+        }        
         
         // Sets the title for the screen.
         //self.navigationItem.title = NSLocalizedString("title_rankings", comment: "")
