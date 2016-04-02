@@ -54,11 +54,16 @@ class RankingCellController: UITableViewCell, ImageDelegate
      */
     func retrieveProfilePic(index: Int)
     {
-        if (user.profilePic == nil)
+        let profilePic = user.profilePic
+        if (profilePic == nil)
         {
             self.index = index
             
             _ = RetrieveImageTask(delegate: self, link: Constant.UPLOAD_FOLDER + String(user.id) + USER_PROFILE_PIC_NAME)
+        }
+        else
+        {
+            profilePictureView.image = profilePic
         }
     }
     
@@ -67,5 +72,10 @@ class RankingCellController: UITableViewCell, ImageDelegate
         delegate?.onImageRetrieved(self.index, image: image)
         
         profilePictureView.image = image
+    }
+    
+    func onImageRetrievalFailed()
+    {
+        profilePictureView.image = UIImage(named:"default_profile_pic")!
     }
 }

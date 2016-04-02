@@ -231,6 +231,8 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         }
     }
     
+    func onImageRetrievalFailed() { }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         tableView.backgroundView?.hidden = currentUsers.count > 1

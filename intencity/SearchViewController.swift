@@ -303,6 +303,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         }
     }
     
+    func onImageRetrievalFailed() { }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         tableView.backgroundView?.hidden = exercises.count > 0 || users.count > 0

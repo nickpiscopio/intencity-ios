@@ -11,4 +11,5 @@ import Foundation
 @objc protocol ImageDelegate
 {
     func onImageRetrieved(index: Int, image: UIImage)
+    func onImageRetrievalFailed()
 }
