@@ -569,10 +569,15 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         }
         else
         {
-            nextExerciseButton.hidden = false
-
+            // This means we got the results from the iOS database.
+            if (result == CONTINUE_STRING)
+            {
+                exerciseData.exerciseList = savedExercises.exercises
+                
+                indexToLoad = savedExercises.index
+            }
             // This means we got results back from the web database.
-            if (result != "" && result != Constant.RETURN_NULL)
+            else if (result != "" && result != Constant.RETURN_NULL)
             {
                 do
                 {
@@ -585,25 +590,20 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 }
                 
             }
-            // This means we got the results from the iOS database.
-            else
-            {
-                exerciseData.exerciseList = savedExercises.exercises
-                
-                indexToLoad = savedExercises.index
-            }
             
             hideConnectionIssue()
             
             if (exerciseData.exerciseList.count >= EXERCISE_MINIMUM_THRESHOLD)
             {
+                nextExerciseButton.hidden = false
+                
                 animateTable(indexToLoad)
             }
             else
             {
                 Util.displayAlert(self,
-                                  title: NSLocalizedString("generic_error", comment: ""),
-                                  message: NSLocalizedString("exercise_generation_error", comment: ""),
+                                  title: NSLocalizedString("exercise_generation_error_title", comment: ""),
+                                  message: NSLocalizedString("exercise_generation_error_description", comment: ""),
                                   actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil),
                                              UIAlertAction(title: NSLocalizedString("open_menu", comment: ""), style: .Default, handler: openMenu)])
             }
@@ -625,7 +625,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             
             state = Constant.EXERCISE_CELL
             
-            loadTableViewItems(state, result: "")
+            loadTableViewItems(state, result: CONTINUE_STRING)
         }
         else
         {
