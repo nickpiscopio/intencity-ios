@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         // Sets the tab bar colors.
         UITabBar.appearance().tintColor = Color.primary
         UITabBar.appearance().barTintColor = Color.page_background
+        UITabBar.appearance().backgroundColor = Color.page_background
 
         var storyboardName: String
         var viewName: String
