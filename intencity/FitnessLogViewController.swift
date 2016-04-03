@@ -30,16 +30,22 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     let FACEBOOK_BUTTON = NSLocalizedString("facebook_button", comment: "")
     let TWEET_BUTTON = NSLocalizedString("tweet_button", comment: "")
 
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let DEFAULTS = NSUserDefaults.standardUserDefaults()
+    
+    let EXERCISE_MINIMUM_THRESHOLD = 3
     
     var notificationHandler: NotificationHandler!
-
-    var totalExercises: Int!
     
-    var numberOfCells = 0
+    var exerciseListHeader: ExerciseListHeaderController!
+    
+    var routineCellController: RoutineCellController!
+
+    var insertIntoWebSetsIndex: Int!
+    var totalExercises: Int!
     
     var displayMuscleGroups = [String]()
     var recommended = 0
+    var numberOfCells = 0
     
     var email = ""
     var state = ""
@@ -48,13 +54,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     var exerciseData: ExerciseData!
     
-    var exerciseListHeader: ExerciseListHeaderController!
-    
     var savedExercises: SavedExercise!
-    
-    var insertIntoWebSetsIndex: Int!
-
-    var routineCellController: RoutineCellController!
     
     var awards = [String: String]()
     
@@ -330,7 +330,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func showWelcome()
     {
-        let lastLogin = defaults.floatForKey(Constant.USER_LAST_LOGIN)
+        let lastLogin = DEFAULTS.floatForKey(Constant.USER_LAST_LOGIN)
         
         if (Util.getEmailFromDefaults() != "" && lastLogin == 0)
         {
@@ -384,7 +384,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         else
         {
             // Grant the user the "Kept Swimming" badge if he or she didn't skip an exercise.
-            if (!defaults.boolForKey(Constant.BUNDLE_EXERCISE_SKIPPED))
+            if (!DEFAULTS.boolForKey(Constant.BUNDLE_EXERCISE_SKIPPED))
             {
                 let keptSwimmingAward = Awards(awardImageName: Badge.KEPT_SWIMMING_IMAGE_NAME, awardDescription: NSLocalizedString("award_kept_swimming_description", comment: ""))
                 Util.grantBadgeToUser(email, badgeName: Badge.KEPT_SWIMMING, content: keptSwimmingAward, onlyAllowOne: true)
@@ -441,7 +441,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func setExerciseSkipped(skipped: Bool)
     {
-        defaults.setBool(skipped, forKey: Constant.BUNDLE_EXERCISE_SKIPPED)
+        DEFAULTS.setBool(skipped, forKey: Constant.BUNDLE_EXERCISE_SKIPPED)
     }
     
     /**
@@ -461,12 +461,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             exerciseData.exerciseList.append(stretch)
         }
         
-        let lastExerciseTime = defaults.floatForKey(Constant.USER_LAST_EXERCISE_TIME)
+        let lastExerciseTime = DEFAULTS.floatForKey(Constant.USER_LAST_EXERCISE_TIME)
         let now = Float(NSDate().timeIntervalSince1970 * 1000)
         
         if ((now - lastExerciseTime) >= Float(Constant.EXERCISE_POINTS_THRESHOLD))
         {
-            defaults.setFloat(now, forKey: Constant.USER_LAST_EXERCISE_TIME)
+            DEFAULTS.setFloat(now, forKey: Constant.USER_LAST_EXERCISE_TIME)
             
             // Reward the user for exercising.
             // We use a relaxed system for giving points, so we only try to make it so they can't game the system.
@@ -595,7 +595,18 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             
             hideConnectionIssue()
             
-            animateTable(indexToLoad)
+            if (exerciseData.exerciseList.count >= EXERCISE_MINIMUM_THRESHOLD)
+            {
+                animateTable(indexToLoad)
+            }
+            else
+            {
+                Util.displayAlert(self,
+                                  title: NSLocalizedString("generic_error", comment: ""),
+                                  message: NSLocalizedString("exercise_generation_error", comment: ""),
+                                  actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil),
+                                             UIAlertAction(title: NSLocalizedString("open_menu", comment: ""), style: .Default, handler: openMenu)])
+            }
         }
         
         hideLoading()
@@ -1193,5 +1204,13 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             
             self.presentViewController(alert, animated: true, completion: nil)
         }
+    }
+    
+    /**
+     * The alert method to open the menu.
+     */
+    func openMenu(alertAction: UIAlertAction!) -> Void
+    {
+        menuClicked()
     }
 }

@@ -402,6 +402,9 @@
 /*  */
 "title_delete_account" = "Delete Account";
 
+"exercise_generation_error" = "We couldn't generate exercises for you. You may have too many exercises hidden or not enough equipment. Please check your exercise priorities and equipment in the menu.";
+"open_menu" = "Open the menu";
+
 /* Settings Strings */
 "edit_priority" = "Edit Exercise Priorities";
 "edit_priority_title" = "Change the priority for each exercise to fit your needs.";
