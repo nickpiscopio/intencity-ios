@@ -293,7 +293,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         addedUser = true
     }
     
-    func onImageRetrieved(index: Int, image: UIImage)
+    func onImageRetrieved(index: Int, image: UIImage, newUpload: Bool)
     {
         users[index].profilePic = image
         

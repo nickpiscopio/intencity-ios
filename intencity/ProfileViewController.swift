@@ -36,6 +36,7 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     var userId: String!
     
     weak var delegate: UserSearchDelegate?
+    weak var imageDelegate: ImageDelegate?
     
     var newMedia: Bool?
     
@@ -294,6 +295,9 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
                     sectionTitle = NSLocalizedString("profile_routines_title", comment: "")
                 
                     break
+                case ServiceEvent.UPLOAD_IMAGE:
+                    imageDelegate?.onImageRetrieved(index, image: profilePic.image!, newUpload: true)
+                    break;
                 default:
                     break
             }
@@ -328,7 +332,7 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         if mediaType == (kUTTypeImage as String)
         {
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-            
+
             profilePic.image = image
             
             _ = UploadImageTask(event: ServiceEvent.UPLOAD_IMAGE,

@@ -44,7 +44,7 @@ class RetrieveImageTask
             
             dispatch_async(dispatch_get_main_queue())
             {
-                delegate?.onImageRetrieved(Int(Constant.CODE_FAILED), image: image)
+                delegate?.onImageRetrieved(Int(Constant.CODE_FAILED), image: image, newUpload: false)
             }
         }).resume()
     }

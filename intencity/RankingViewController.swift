@@ -221,13 +221,19 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         getFollowing()
     }
     
-    func onImageRetrieved(index: Int, image: UIImage)
+    func onImageRetrieved(index: Int, image: UIImage, newUpload: Bool)
     {
         currentUsers[index].profilePic = image
         
         if (profileViewController != nil && profileViewController.index == index)
         {
             profileViewController.profilePic.image = image
+        }
+        
+        if (newUpload)
+        {
+            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
         }
     }
     
@@ -292,6 +298,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         // A user cannot follow/unfollow him or herself.
         profileViewController.profileIsCurrentUser = user.followingId < 0
         profileViewController.delegate = self
+        profileViewController.imageDelegate = self
         
         self.navigationController!.pushViewController(profileViewController, animated: true)
     }

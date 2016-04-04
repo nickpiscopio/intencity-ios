@@ -67,9 +67,9 @@ class RankingCellController: UITableViewCell, ImageDelegate
         }
     }
     
-    func onImageRetrieved(index: Int, image: UIImage)
+    func onImageRetrieved(index: Int, image: UIImage, newUpload: Bool)
     {
-        delegate?.onImageRetrieved(self.index, image: image)
+        delegate?.onImageRetrieved(self.index, image: image, newUpload: false)
         
         profilePictureView.image = image
     }
