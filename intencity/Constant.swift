@@ -127,7 +127,7 @@ struct Constant
     static let BUNDLE_EXERCISE_SKIPPED = "com.intencity.intencity.exercise.skipped";
     
     static let ENDPOINT = "http://www.intencityapp.com/";
-    static let BUILD_TYPE = "";//"dev/";
+    static let BUILD_TYPE = "dev/";
     static let UPLOAD_FOLDER = ENDPOINT + BUILD_TYPE + "uploads/";
     static let SERVICE_FOLDER = ENDPOINT + BUILD_TYPE + "services/";
     static let SERVICE_FOLDER_MOBILE = SERVICE_FOLDER + "mobile/";
