@@ -19,8 +19,8 @@ class AwardViewCollectionCellController: UICollectionViewCell
     {
         super.awakeFromNib()
         
-        xLabel.textColor = Color.secondary_light
-        amount.textColor = Color.secondary_light
+        xLabel.textColor = Color.secondary_dark
+        amount.textColor = Color.secondary_dark
         
         self.contentView.setNeedsLayout()
     }

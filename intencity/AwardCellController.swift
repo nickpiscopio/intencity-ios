@@ -9,7 +9,10 @@ import UIKit
 
 class AwardCellController: UITableViewCell
 {
+    @IBOutlet weak var collectionContainer: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    static let AWARD_CELL_BOUNDS: CGFloat = 75
     
     var awards = [AwardRow]()
     
@@ -17,11 +20,10 @@ class AwardCellController: UITableViewCell
     {
         super.awakeFromNib()
         
-        collectionView.backgroundColor = Color.white
-        
         let nib = UINib(nibName: Constant.AWARD_COLLECTION_VIEW_CELL, bundle: nil)
         
         collectionView.registerNib(nib, forCellWithReuseIdentifier: Constant.AWARD_COLLECTION_VIEW_CELL)
+        collectionView.backgroundColor = Color.white
     }
     
     // MARK: UICollectionViewDataSource
@@ -50,6 +52,6 @@ class AwardCellController: UITableViewCell
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
-        return CGSizeMake(75, 75)
+        return CGSizeMake(AwardCellController.AWARD_CELL_BOUNDS, AwardCellController.AWARD_CELL_BOUNDS)
     }
 }

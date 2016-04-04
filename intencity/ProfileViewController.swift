@@ -21,7 +21,8 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     @IBOutlet weak var cameraButton: IntencityButtonRound!
     @IBOutlet weak var addRemoveButton: IntencityButtonRound!
     
-    var index: Int!
+    let AWARDS_TITLE = NSLocalizedString("awards_title", comment: "")
+    let ROUTINES_TITLE =  NSLocalizedString("profile_routines_title", comment: "")
     
     var user: User!
     
@@ -29,6 +30,7 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     
     var profileIsCurrentUser = false
     
+    var index: Int!
     var originalFollowingId = Int(Constant.CODE_FAILED)
     
     var userId: String!
@@ -36,6 +38,8 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     weak var delegate: UserSearchDelegate?
     
     var newMedia: Bool?
+    
+    var awardCollectionHeight: CGFloat!
     
     override func viewDidLoad()
     {
@@ -58,7 +62,7 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         //self.navigationItem.title = NSLocalizedString("title_rankings", comment: "")
         
         // Initialize the tableview.
-        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "empty_profile_awards")
         
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_HEADER_CELL, cellName: Constant.GENERIC_HEADER_CELL)
@@ -107,16 +111,11 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         self.tabBarController?.tabBar.hidden = true
         
         self.navigationController?.navigationBarHidden = true
-        
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.translucent = true
     }
     
     override func viewWillDisappear(animated: Bool)
     {
         self.navigationController?.navigationBarHidden = false
-//        self.navigationController?.navigationBar.translucent = false
         
         let followingId = user.followingId
         
@@ -190,7 +189,11 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return sections.count
+        let sectionsTotal = sections.count
+        
+        tableView.backgroundView?.hidden = sectionsTotal > 0
+        
+        return sectionsTotal
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -219,7 +222,10 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 75.0
+        let row = sections[indexPath.section].rows[indexPath.row]
+        let awards = row.awards
+
+        return (awards.count > 0) ? awardCollectionHeight : UITableViewAutomaticDimension
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -233,6 +239,8 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.AWARD_CELL) as! AwardCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.awards = awards
+            // DOCUMENTATION: http://stackoverflow.com/questions/13788522/how-to-determine-height-of-uicollectionview-with-flowlayout
+            awardCollectionHeight = cell.collectionView.collectionViewLayout.collectionViewContentSize().height
             
             return cell
         }
@@ -268,7 +276,7 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
                     
                         awards.append(AwardRow(title: title, amount: amount))
                     }
-                
+                    
                     rows.append(ProfileRow(title: "", awards: awards))
                 
                     sectionTitle = NSLocalizedString("awards_title", comment: "")
@@ -290,7 +298,14 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
                     break
             }
             
-            sections.append(ProfileSection(title: sectionTitle, rows: rows))
+            if (sectionTitle == AWARDS_TITLE)
+            {
+                sections.insert(ProfileSection(title: sectionTitle, rows: rows), atIndex: 0)
+            }
+            else
+            {
+                sections.append(ProfileSection(title: sectionTitle, rows: rows))
+            }
             
             tableView.reloadData()
         }

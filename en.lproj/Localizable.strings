@@ -221,6 +221,7 @@
 "profile_pic_dialog_message" = "How would you like to set your profile picture?";
 "profile_pic_dialog_camera_button" = "Take a picture";
 "profile_pic_dialog_pictures_button" = "Open my photos";
+"empty_profile_awards" = "No activity found.";
 
 /*  */
 "no_friends" = "We couldn't find the users you follow.";
