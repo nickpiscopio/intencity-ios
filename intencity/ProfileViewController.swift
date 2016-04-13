@@ -57,10 +57,7 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         if (image != nil)
         {
             profilePic.image = image
-        }        
-        
-        // Sets the title for the screen.
-        //self.navigationItem.title = NSLocalizedString("title_rankings", comment: "")
+        }
         
         // Initialize the tableview.
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "empty_profile_awards")

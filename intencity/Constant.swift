@@ -103,27 +103,7 @@ struct Constant
     static let USER_TRIAL_CREATED_DATE = "com.intencity.intencity.user.trial.created.date";
     static let USER_LAST_LOGIN = "com.intencity.intencity.user.last.login";
     static let USER_LAST_EXERCISE_TIME = "com.intencity.intencity.user.last.exercise.time";
-    
-    static let TUTORIAL_SWIPE_TO_DISMISS = "com.intencity.intencity.tutorial.swipe.to.dismiss";
-    static let REQUEST_CODE_STAT = 10;
-    static let REQUEST_CODE_SEARCH = 20;
-    static let REQUEST_CODE_TWEET = 30;
-    static let REQUEST_CODE_LOG_OUT = 40;
-    static let ID_FRAGMENT_EXERCISE_LIST = 1;
-    static let EXTRA_DEMO_PAGE = "com.intencity.intencity.extra.demo.page";
-    static let BUNDLE_SEARCH_EXERCISES = "com.intencity.intencity.bundle.search.exercises";
-    static let BUNDLE_SET_NUMBER = "com.intencity.intencity.bundle.set.number";
-    static let BUNDLE_DISPLAY_MUSCLE_GROUPS = "com.intencity.intencity.bundle.display.muscle.groups";
-    static let BUNDLE_ROUTINE_NAME = "com.intencity.intencity.bundle.routine.name";
-    static let BUNDLE_EXERCISE_LIST = "com.intencity.intencity.bundle.exercise.list";
-    static let BUNDLE_EXERCISE = "com.intencity.intencity.bundle.exercise";
-    static let BUNDLE_EXERCISE_POSITION = "com.intencity.intencity.bundle.exercise.position";
-    static let BUNDLE_EXERCISE_SETS = "com.intencity.intencity.bundle.exercise.sets";
-    static let BUNDLE_EXERCISE_LIST_INDEX = "com.intencity.intencity.bundle.exercise.list.index";
-    static let BUNDLE_RECOMMENDED_ROUTINE = "com.intencity.intencity.bundle.recommended.routine";
-    static let BUNDLE_EXERCISE_NAME = "com.intencity.intencity.bundle.exercise.name";
-    static let BUNDLE_ID = "com.intencity.intencity.bundle.id";
-    static let BUNDLE_EXERCISE_TYPE = "com.intencity.intencity.exercise.type";
+
     static let BUNDLE_EXERCISE_SKIPPED = "com.intencity.intencity.exercise.skipped";
     
     static let ENDPOINT = "http://www.intencityapp.com/";

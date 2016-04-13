@@ -873,7 +873,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         let weight = set.weight
         let duration = set.duration
         let hasWeight = weight > 0
-        let isDuration = !duration.isEmpty && duration.rangeOfString(":") != nil
+        let isDuration = !duration.isEmpty && duration.rangeOfString(":") != nil && Util.convertToInt(duration) > 0
     
         let weightParam = hasWeight ? Constant.COLUMN_EXERCISE_WEIGHT + Constant.PARAMETER_DELIMITER : ""
         let weightValue = hasWeight ? String(weight) + Constant.PARAMETER_DELIMITER : ""
