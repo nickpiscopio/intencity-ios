@@ -117,7 +117,7 @@ struct Constant
     static let SERVICE_COMPLEX_INSERT = SERVICE_FOLDER_MOBILE + "complex_insert.php";
     static let SERVICE_COMPLEX_UPDATE = SERVICE_FOLDER_MOBILE + "complex_update.php";
     static let SERVICE_UPDATE_EQUIPMENT = SERVICE_FOLDER_MOBILE + "update_equipment.php";
-    static let SERVICE_UPDATE_EXERCISE_PRIORITY = SERVICE_FOLDER_MOBILE + "update_exercise_priority.php";
+    static let SERVICE_UPDATE_EXERCISE_PRIORITY = SERVICE_FOLDER_MOBILE + "update_priority.php";
     static let SERVICE_UPLOAD_PROFILE_PIC = SERVICE_FOLDER_MOBILE + "upload_file.php";
     static let SERVICE_CHANGE_PASSWORD = SERVICE_FOLDER_MOBILE + "change_password.php";
     static let SERVICE_FORGOT_PASSWORD = SERVICE_FOLDER + "forgot_password.php";
@@ -137,7 +137,7 @@ struct Constant
     static let STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS = "getAllDisplayMuscleGroups";
     static let STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY = "getExercisesForToday";
     static let STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP = "setCurrentMuscleGroup";
-    static let STORED_PROCEDURE_SET_EXERCISE_PRIORITY = "setExercisePriority";
+    static let STORED_PROCEDURE_SET_EXERCISE_PRIORITY = "setPriority";
     static let STORED_PROCEDURE_GET_FOLLOWING = "getFollowing";
     static let STORED_PROCEDURE_REMOVE_FROM_FOLLOWING = "removeFromFollowing";
     static let STORED_PROCEDURE_SEARCH_EXERCISES = "searchExercises";
@@ -145,7 +145,7 @@ struct Constant
     static let STORED_PROCEDURE_FOLLOW_USER = "followUser";
     static let STORED_PROCEDURE_GET_EXERCISE_DIRECTION = "getDirection";
     static let STORED_PROCEDURE_GET_EQUIPMENT = "getEquipment";
-    static let STORED_PROCEDURE_GET_EXERCISE_PRIORITIES = "getExercisePriority";
+    static let STORED_PROCEDURE_GET_EXERCISE_PRIORITIES = "getPriority";
     static let STORED_PROCEDURE_GRANT_POINTS = "grantPointsToUser";
     static let STORED_PROCEDURE_GRANT_BADGE = "grantBadgeToUser";
     static let STORED_PROCEDURE_GET_BADGES = "getBadges";

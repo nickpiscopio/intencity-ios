@@ -15,25 +15,20 @@ class ExercisePriorityCellController: UITableViewCell
     @IBOutlet weak var priorityLabel: UILabel!
     @IBOutlet weak var separator: UIView!
     
-    let HIGH_PRIORITY = NSLocalizedString("high_priority", comment: "")
-    let MEDIUM_PRIORITY = NSLocalizedString("medium_priority", comment: "")
-    let NORMAL_PRIORITY = NSLocalizedString("normal_priority", comment: "")
-    let HIDDEN = NSLocalizedString("hidden_exercise", comment: "")
-    
-    let PRIORITY_LIMIT_UPPER = 50
-    let PRIORITY_LIMIT_LOWER = 0
-    let INCREMENTAL_VALUE = 25
-
     weak var delegate: ExercisePriorityDelegate?
 
     var index: Int!
     var priority = 0
+    
+    var exercisePriority: ExercisePriorityUtil!
     
     override func awakeFromNib()
     {
         super.awakeFromNib()
         
         exerciseNameLabel.textColor = Color.secondary_dark
+        
+        exercisePriority = ExercisePriorityUtil();
     }
     
     /**
@@ -50,14 +45,18 @@ class ExercisePriorityCellController: UITableViewCell
     
     @IBAction func morePriorityClicked(sender: AnyObject)
     {
-        setExercisePriority(true)
+        priority = exercisePriority.getExercisePriority(priority, increment: true)
+        
+        setExercisePriority()
         
         delegate?.onSetExercisePriority(index, priority: priority)
     }
     
     @IBAction func lessPriorityClicked(sender: AnyObject)
     {
-        setExercisePriority(false)
+        priority = exercisePriority.getExercisePriority(priority, increment: false)
+        
+        setExercisePriority()
         
         delegate?.onSetExercisePriority(index, priority: priority)
     }
@@ -69,41 +68,30 @@ class ExercisePriorityCellController: UITableViewCell
     {
         switch(priority)
         {
-            case PRIORITY_LIMIT_UPPER:
+            // 40
+            case exercisePriority.PRIORITY_LIMIT_UPPER:
                 priorityLabel.textColor = Color.primary
-                priorityLabel.text = HIGH_PRIORITY
+                priorityLabel.text = exercisePriority.HIGH_PRIORITY
                 break;
-            case INCREMENTAL_VALUE:
+            // 30
+            case exercisePriority.INCREMENTAL_VALUE * 3:
+                priorityLabel.textColor = Color.primary_dark
+                priorityLabel.text = exercisePriority.MEDIUM_PRIORITY
+                break;
+            // 20
+            case exercisePriority.INCREMENTAL_VALUE * 2:
                 priorityLabel.textColor = Color.secondary_dark
-                priorityLabel.text = MEDIUM_PRIORITY
+                priorityLabel.text = exercisePriority.NORMAL_PRIORITY
                 break;
-            case PRIORITY_LIMIT_LOWER:
+            // 10
+            case exercisePriority.INCREMENTAL_VALUE:
                 priorityLabel.textColor = Color.secondary_light
-                priorityLabel.text = NORMAL_PRIORITY
+                priorityLabel.text = exercisePriority.LOW_PRIORITY
                 break;
             default:
                 priorityLabel.textColor = Color.card_button_delete_select
-                priorityLabel.text = HIDDEN
+                priorityLabel.text = exercisePriority.HIDDEN
                 break;
         }
-    }
-    
-    /**
-     * Sets the priority for the exercise.
-     *
-     * @param increment     Boolean value of whether or not the exercise should increment or decrement the current priority.
-     */
-    func setExercisePriority(increment: Bool)
-    {
-        if (priority < PRIORITY_LIMIT_UPPER && increment)
-        {
-            priority += INCREMENTAL_VALUE
-        }
-        else if (priority >= PRIORITY_LIMIT_LOWER && !increment)
-        {
-            priority -= INCREMENTAL_VALUE
-        }
-
-        setExercisePriority()
     }
 }

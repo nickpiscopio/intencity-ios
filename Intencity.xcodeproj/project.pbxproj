@@ -24,6 +24,7 @@
 		BD1F30EB1CAACB6800002D06 /* AwardViewCollectionCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1F30EA1CAACB6800002D06 /* AwardViewCollectionCellController.swift */; };
 		BD294AC51CAEAE09005718BA /* ImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD294AC41CAEAE09005718BA /* ImageDelegate.swift */; };
 		BD294AC71CAEB579005718BA /* RetrieveImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD294AC61CAEB579005718BA /* RetrieveImageTask.swift */; };
+		BD294ACB1CBE7C3B005718BA /* ExercisePriorityUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD294ACA1CBE7C3B005718BA /* ExercisePriorityUtil.swift */; };
 		BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */; };
 		BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC221C70F0A400F993CE /* Exercise.swift */; };
 		BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */; };
@@ -161,6 +162,7 @@
 		BD1F30EA1CAACB6800002D06 /* AwardViewCollectionCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardViewCollectionCellController.swift; sourceTree = "<group>"; };
 		BD294AC41CAEAE09005718BA /* ImageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDelegate.swift; sourceTree = "<group>"; };
 		BD294AC61CAEB579005718BA /* RetrieveImageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveImageTask.swift; sourceTree = "<group>"; };
+		BD294ACA1CBE7C3B005718BA /* ExercisePriorityUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePriorityUtil.swift; sourceTree = "<group>"; };
 		BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellController.swift; sourceTree = "<group>"; };
 		BD36EC221C70F0A400F993CE /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionCellController.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			children = (
 				BD1053971C6CC989004C10C7 /* Extensions */,
 				BD947A031C6CF252003F3767 /* IntencityError.swift */,
+				BD294ACA1CBE7C3B005718BA /* ExercisePriorityUtil.swift */,
 				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
 				BD8811011C92FF3A0098FA64 /* Badge.swift */,
 				BD0CD6FB1C985248004FF750 /* DateUtil.swift */,
@@ -857,6 +860,7 @@
 				BDD53BFA1C8A333D001235AE /* FitnessRecFooterCellController.swift in Sources */,
 				BDB45A1C1C849B42009E509B /* SearchExerciseCellController.swift in Sources */,
 				BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */,
+				BD294ACB1CBE7C3B005718BA /* ExercisePriorityUtil.swift in Sources */,
 				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,
 				BD03C7BB1C761B6000D8911A /* SetDelegate.swift in Sources */,
 				BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */,
