@@ -233,6 +233,8 @@
 
 /*  */
 "routine_continue" = "Continue where I left off";
+"create_routine_title" = "Want a custom routine?";
+"create_routine_button" = "CREATE ROUTINE";
 
 /* Exercise List Strings */
 "more_priority_string" = "You will see %1$@ more.";
@@ -415,6 +417,8 @@
 "edit_equipment" = "Edit Equipment";
 "edit_equipment_title" = "Select your current equipment.";
 "edit_equipment_description" = "This helps Intencity generate exercises to fit your needs.";
+
+"edit_routines_title" = "Edit Routines";
 
 /*  */
 "change_password" = "Change Password";

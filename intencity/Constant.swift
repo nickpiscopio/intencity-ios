@@ -21,6 +21,7 @@ struct Constant
     
     static let EXERCISE_LIST_HEADER = "ExerciseListHeader"
     static let ROUTINE_CELL = "RoutineCell"
+    static let ROUTINE_CELL_FOOTER = "RoutineCellFooter"
     static let EXERCISE_CELL = "ExerciseCell"
     static let DIRECTION_CELL = "DirectionCell"
     static let SET_CELL = "SetCell"
@@ -48,6 +49,7 @@ struct Constant
     static let FITNESS_RECOMMENDATION_VIEW_CONTROLLER = "FitnessRecommendationViewController"
     static let TERMS_VIEW_CONTROLLER = "TermsViewController"
     static let PRIVACY_POLICY_VIEW_CONTROLLER = "PrivacyPolicyViewController"
+    static let CUSTOM_ROUTINE_VIEW_CONTROLLER = "CustomRoutineViewController"
     static let RATE_INTENCITY = "RateIntencity"
     static let LOG_OUT = "LogOut"
     
@@ -107,7 +109,7 @@ struct Constant
     static let BUNDLE_EXERCISE_SKIPPED = "com.intencity.intencity.exercise.skipped";
     
     static let ENDPOINT = "http://www.intencityapp.com/";
-    static let BUILD_TYPE = "";//"dev/";
+    static let BUILD_TYPE = "dev/";
     static let UPLOAD_FOLDER = ENDPOINT + BUILD_TYPE + "uploads/";
     static let SERVICE_FOLDER = ENDPOINT + BUILD_TYPE + "services/";
     static let SERVICE_FOLDER_MOBILE = SERVICE_FOLDER + "mobile/";

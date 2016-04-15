@@ -37,6 +37,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     var notificationHandler: NotificationHandler!
     
     var exerciseListHeader: ExerciseListHeaderController!
+    var routineFooter: RoutineCellFooterController!
     
     var routineCellController: RoutineCellController!
 
@@ -79,6 +80,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: "RoutineCard", cellName: Constant.ROUTINE_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CELL_FOOTER, cellName: Constant.ROUTINE_CELL_FOOTER)        
         Util.addUITableViewCell(tableView, nibNamed: "ExerciseCard", cellName: Constant.EXERCISE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.EXERCISE_LIST_HEADER, cellName: Constant.EXERCISE_LIST_HEADER)
         
@@ -1007,9 +1009,25 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         return nil       
     }
     
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+    {
+        if (state == Constant.ROUTINE_CELL)
+        {
+            routineFooter = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL_FOOTER) as! RoutineCellFooterController
+            routineFooter.navigationController = self.navigationController
+        }
+        
+        return routineFooter != nil ? routineFooter.contentView : nil
+    }
+    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
         return state == Constant.EXERCISE_CELL ? 65 : 0
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
+        return state == Constant.ROUTINE_CELL ? 65 : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
