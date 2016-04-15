@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wn-Lg-xYv" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="463"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="645.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="I4p-wS-zEt">
-                                                <rect key="frame" x="16" y="16" width="568" height="431"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="I4p-wS-zEt">
+                                                <rect key="frame" x="16" y="16" width="568" height="626"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLX-JO-pOO">
                                                         <rect key="frame" x="0.0" y="0.0" width="568" height="202"/>
@@ -91,27 +91,27 @@
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHa-mm-q0a">
-                                                        <rect key="frame" x="0.0" y="297" width="568" height="31"/>
+                                                        <rect key="frame" x="0.0" y="297" width="568" height="204"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EQm-eV-uox">
-                                                                <rect key="frame" x="172" y="0.0" width="225" height="28"/>
+                                                                <rect key="frame" x="172" y="0.0" width="225" height="201"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6k2-ph-j3M" customClass="IntencityButtonNoBackgroundSmall" customModule="Intencity" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="109" height="28"/>
+                                                                        <rect key="frame" x="0.0" y="87" width="109" height="28"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <state key="normal" title="Forgot Password?"/>
                                                                         <connections>
                                                                             <segue destination="Mqc-NP-a7F" kind="show" id="3fB-Yg-YIX"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="·" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uo0-dq-Wsp">
-                                                                        <rect key="frame" x="109" y="4" width="5" height="20.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="·" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uo0-dq-Wsp">
+                                                                        <rect key="frame" x="109" y="91" width="5" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="RsH-Sf-J8e" customClass="IntencityButtonNoBackgroundSmall" customModule="Intencity" customModuleProvider="target">
-                                                                        <rect key="frame" x="114" y="0.0" width="111" height="28"/>
+                                                                        <rect key="frame" x="114" y="87" width="111" height="28"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <state key="normal" title="Create an account"/>
                                                                         <connections>
@@ -127,28 +127,32 @@
                                                             <constraint firstItem="EQm-eV-uox" firstAttribute="top" secondItem="eHa-mm-q0a" secondAttribute="top" id="oDm-LY-0xf"/>
                                                         </constraints>
                                                     </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7Uk-dp-QHX">
-                                                        <rect key="frame" x="0.0" y="333" width="183" height="28"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7Uk-dp-QHX">
+                                                        <rect key="frame" x="0.0" y="506" width="160" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9M-1z-dHi">
-                                                                <rect key="frame" x="0.0" y="0.0" width="18" height="28"/>
-                                                                <state key="normal" image="checkbox_unchecked"/>
-                                                                <connections>
-                                                                    <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="rOs-Wn-Hem"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vaS-8x-1Lq">
-                                                                <rect key="frame" x="23" y="0.0" width="160" height="28"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                <state key="normal" title="I agree to the terms of use"/>
-                                                                <connections>
-                                                                    <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="Tai-WZ-KIk"/>
-                                                                </connections>
-                                                            </button>
+                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDf-nr-FII">
+                                                                <rect key="frame" x="0.0" y="0.0" width="160" height="50"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vaS-8x-1Lq">
+                                                                        <rect key="frame" x="0.0" y="5" width="160" height="28"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <state key="normal" title="I agree to the terms of use"/>
+                                                                        <connections>
+                                                                            <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="Tai-WZ-KIk"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="vaS-8x-1Lq" secondAttribute="trailing" id="LJt-8J-UeL"/>
+                                                                    <constraint firstItem="vaS-8x-1Lq" firstAttribute="top" secondItem="wDf-nr-FII" secondAttribute="top" constant="5" id="bya-H0-XHg"/>
+                                                                    <constraint firstItem="vaS-8x-1Lq" firstAttribute="leading" secondItem="wDf-nr-FII" secondAttribute="leading" id="hSz-yL-aZm"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="vaS-8x-1Lq" secondAttribute="bottom" constant="5" id="tMa-kX-JgS"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="afJ-97-Ai3">
-                                                        <rect key="frame" x="0.0" y="366" width="568" height="65"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="afJ-97-Ai3">
+                                                        <rect key="frame" x="0.0" y="561" width="568" height="65"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6F-8a-iVl" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="568" height="30"/>
@@ -216,8 +220,6 @@
                         <outlet property="passwordTextField" destination="Zlc-Av-b4z" id="kBy-Pt-KSr"/>
                         <outlet property="separator" destination="Uo0-dq-Wsp" id="d3e-LZ-OWq"/>
                         <outlet property="signInButton" destination="B6F-8a-iVl" id="Ze7-nn-jmb"/>
-                        <outlet property="termsButton" destination="o9M-1z-dHi" id="9KF-tM-jFf"/>
-                        <outlet property="termsCheckBox" destination="o9M-1z-dHi" id="Ky3-F9-vBC"/>
                         <outlet property="termsLabel" destination="vaS-8x-1Lq" id="zhR-K3-jn9"/>
                         <outlet property="tryIntencityButton" destination="lxd-FN-Bcn" id="SX0-v1-1mI"/>
                     </connections>
@@ -241,16 +243,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YqC-f8-E7l">
                                 <rect key="frame" x="0.0" y="16" width="600" height="520"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="y44-1h-ZaS">
-                                        <rect key="frame" x="76" y="0.0" width="449" height="50"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="y44-1h-ZaS">
+                                        <rect key="frame" x="75.5" y="0.0" width="449" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="ypc-xk-jFf">
                                                 <variation key="heightClass=compact-widthClass=compact" constant="50"/>
                                             </constraint>
                                         </constraints>
                                     </imageView>
-                                    <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XIP-VO-jkI">
-                                        <rect key="frame" x="0.0" y="66" width="600" height="454"/>
+                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIP-VO-jkI">
+                                        <rect key="frame" x="0.0" y="166" width="600" height="354"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                                     </webView>
                                 </subviews>
@@ -300,28 +302,28 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSU-UC-b0f" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="448.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="633.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7AI-83-cIV">
-                                                <rect key="frame" x="16" y="16" width="568" height="416.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7AI-83-cIV">
+                                                <rect key="frame" x="16" y="16" width="568" height="429"/>
                                                 <subviews>
                                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="C1c-4o-EC7">
                                                         <rect key="frame" x="0.0" y="0.0" width="568" height="20"/>
                                                     </activityIndicatorView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdB-Mf-FXs">
-                                                        <rect key="frame" x="0.0" y="25" width="42" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdB-Mf-FXs">
+                                                        <rect key="frame" x="0.0" y="25" width="42" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nim-rh-MyS">
-                                                        <rect key="frame" x="0.0" y="50.5" width="37.5" height="18"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nim-rh-MyS">
+                                                        <rect key="frame" x="0.0" y="51" width="38" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ay2-jc-lai" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="73.5" width="568" height="40"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ay2-jc-lai" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="74" width="568" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="UCW-RL-zo6"/>
                                                         </constraints>
@@ -331,8 +333,8 @@
                                                             <action selector="checkNameLength:" destination="pKO-UR-RFM" eventType="editingChanged" id="LEO-uE-AEB"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4V2-OO-dLx" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="118.5" width="568" height="40"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4V2-OO-dLx" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="119" width="568" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="6LY-My-Uof"/>
                                                         </constraints>
@@ -342,8 +344,8 @@
                                                             <action selector="checkNameLength:" destination="pKO-UR-RFM" eventType="editingChanged" id="LF5-iU-QQW"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="11p-9U-bZN" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="163.5" width="568" height="40"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="11p-9U-bZN" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="164" width="568" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="IMb-eb-J3C"/>
                                                         </constraints>
@@ -353,8 +355,8 @@
                                                             <action selector="checkEmailLength:" destination="pKO-UR-RFM" eventType="editingChanged" id="ARn-zl-nyI"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cAc-06-sqs" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="208.5" width="568" height="40"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cAc-06-sqs" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="209" width="568" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="8bT-4O-XCc"/>
                                                         </constraints>
@@ -364,8 +366,8 @@
                                                             <action selector="checkEmailLength:" destination="pKO-UR-RFM" eventType="editingChanged" id="WgF-1j-q3j"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHr-h9-QeB" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="253.5" width="568" height="40"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHr-h9-QeB" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="254" width="568" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="WfK-In-dJ8"/>
                                                         </constraints>
@@ -375,8 +377,8 @@
                                                             <action selector="checkPasswordLength:" destination="pKO-UR-RFM" eventType="editingChanged" id="bUG-Gt-XIG"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iDA-5o-KRz" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="298.5" width="568" height="40"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iDA-5o-KRz" customClass="IntencityTextField" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="299" width="568" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="rCx-yS-k73"/>
                                                         </constraints>
@@ -386,40 +388,33 @@
                                                             <action selector="checkPasswordLength:" destination="pKO-UR-RFM" eventType="editingChanged" id="gz6-xU-ybd"/>
                                                         </connections>
                                                     </textField>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lgx-vT-1fu">
-                                                        <rect key="frame" x="0.0" y="343.5" width="183" height="28"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lgx-vT-1fu">
+                                                        <rect key="frame" x="0.0" y="344" width="160" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7B-GQ-o54">
-                                                                <rect key="frame" x="0.0" y="0.0" width="18" height="28"/>
-                                                                <state key="normal" image="checkbox_unchecked"/>
-                                                                <connections>
-                                                                    <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="Cj0-kr-L8m"/>
-                                                                    <action selector="termsOfUseClicked:" destination="pKO-UR-RFM" eventType="touchUpInside" id="t4X-sA-cFr"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-tY-Wmd">
-                                                                <rect key="frame" x="23" y="0.0" width="160" height="28"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                <state key="normal" title="I agree to the terms of use"/>
-                                                                <connections>
-                                                                    <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="lnM-Q4-n8N"/>
-                                                                    <action selector="termsOfUseClicked:" destination="pKO-UR-RFM" eventType="touchUpInside" id="xIB-SW-RiH"/>
-                                                                </connections>
-                                                            </button>
+                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mdl-Wz-fBC">
+                                                                <rect key="frame" x="0.0" y="0.0" width="160" height="50"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-tY-Wmd">
+                                                                        <rect key="frame" x="0.0" y="10" width="160" height="28"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <state key="normal" title="I agree to the terms of use"/>
+                                                                        <connections>
+                                                                            <action selector="termsOfUseClicked:" destination="5lO-DF-tff" eventType="touchUpInside" id="lnM-Q4-n8N"/>
+                                                                            <action selector="termsOfUseClicked:" destination="pKO-UR-RFM" eventType="touchUpInside" id="xIB-SW-RiH"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="tsn-tY-Wmd" firstAttribute="leading" secondItem="Mdl-Wz-fBC" secondAttribute="leading" id="TBC-Ku-ebK"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="tsn-tY-Wmd" secondAttribute="bottom" constant="5" id="hDC-j9-Bf6"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="tsn-tY-Wmd" secondAttribute="trailing" id="l2i-B0-cY7"/>
+                                                                    <constraint firstItem="tsn-tY-Wmd" firstAttribute="top" secondItem="Mdl-Wz-fBC" secondAttribute="top" constant="10" id="rrL-XT-xHb"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                     </stackView>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QF-4Z-p9f">
-                                                        <rect key="frame" x="0.0" y="374" width="46" height="0.0"/>
-                                                        <state key="normal" title="Button"/>
-                                                    </button>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIQ-V6-qvS">
-                                                        <rect key="frame" x="0.0" y="376.5" width="568" height="5"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="5" id="XDn-dH-Hvp"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIB-we-biy" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="386.5" width="568" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIB-we-biy" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="399" width="568" height="30"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <state key="normal" title="CREATE ACCOUNT"/>
                                                         <connections>
@@ -434,9 +429,7 @@
                                                     <constraint firstItem="11p-9U-bZN" firstAttribute="leading" secondItem="7AI-83-cIV" secondAttribute="leading" id="DKK-Yz-S1K"/>
                                                     <constraint firstAttribute="trailing" secondItem="cAc-06-sqs" secondAttribute="trailing" id="GE1-0U-c32"/>
                                                     <constraint firstAttribute="trailing" secondItem="11p-9U-bZN" secondAttribute="trailing" id="I2j-fP-0zD"/>
-                                                    <constraint firstItem="xIQ-V6-qvS" firstAttribute="leading" secondItem="7AI-83-cIV" secondAttribute="leading" id="Iig-IL-eP3"/>
                                                     <constraint firstItem="cAc-06-sqs" firstAttribute="leading" secondItem="7AI-83-cIV" secondAttribute="leading" id="Q9T-0r-rqz"/>
-                                                    <constraint firstAttribute="trailing" secondItem="xIQ-V6-qvS" secondAttribute="trailing" id="St7-1T-2Nf"/>
                                                     <constraint firstItem="tIB-we-biy" firstAttribute="leading" secondItem="7AI-83-cIV" secondAttribute="leading" id="WvJ-Gn-jN6"/>
                                                     <constraint firstAttribute="trailing" secondItem="4V2-OO-dLx" secondAttribute="trailing" id="YMk-Ha-Wq1"/>
                                                     <constraint firstItem="iDA-5o-KRz" firstAttribute="leading" secondItem="7AI-83-cIV" secondAttribute="leading" id="l8V-pf-4KR"/>
@@ -499,7 +492,6 @@
                         <outlet property="firstNameTextField" destination="ay2-jc-lai" id="LsZ-7r-DKg"/>
                         <outlet property="lastNameTextField" destination="4V2-OO-dLx" id="DBh-NA-paw"/>
                         <outlet property="passwordTextField" destination="ZHr-h9-QeB" id="62y-VW-c3l"/>
-                        <outlet property="termsButton" destination="f7B-GQ-o54" id="YS4-BA-UVa"/>
                         <outlet property="termsLabel" destination="tsn-tY-Wmd" id="K4U-wK-vN3"/>
                     </connections>
                 </viewController>
@@ -525,13 +517,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWL-ok-MxE" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="327"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aBl-ag-6Wh">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aBl-ag-6Wh">
                                                 <rect key="frame" x="16" y="16" width="568" height="295"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GeI-F1-HLl">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GeI-F1-HLl">
                                                         <rect key="frame" x="60" y="0.0" width="449" height="170"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="p2P-2m-kAb">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="p2P-2m-kAb">
                                                                 <rect key="frame" x="0.0" y="0.0" width="449" height="150"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="N0b-js-HgK">
@@ -539,12 +531,12 @@
                                                                     </constraint>
                                                                 </constraints>
                                                             </imageView>
-                                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iV1-mM-G5A">
+                                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iV1-mM-G5A">
                                                                 <rect key="frame" x="215" y="150" width="20" height="20"/>
                                                             </activityIndicatorView>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aIr-be-UoI">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aIr-be-UoI">
                                                         <rect key="frame" x="0.0" y="186" width="568" height="63"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter email below" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QW8-Ob-Vs5">
@@ -563,7 +555,7 @@
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7n-Fx-jnc" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7n-Fx-jnc" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="265" width="568" height="30"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <state key="normal" title="RESET PASSWORD"/>
@@ -651,7 +643,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkbox_unchecked" width="18" height="18"/>
         <image name="intencity_logo" width="449" height="354"/>
     </resources>
 </document>

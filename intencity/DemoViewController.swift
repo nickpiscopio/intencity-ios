@@ -22,6 +22,8 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     {
         super.viewDidLoad()
         
+        self.view.backgroundColor = Color.page_background
+        
         // Adds all the demo screens to the page controller.
         createNewDemoPage("app_name", description: "demo_description", imageName: "demo_screen_intencity", backgroundColor: Color.primary)
         createNewDemoPage("demo_fitness_guru_title", description: "demo_fitness_guru_description", imageName: "demo_screen_fitness_guru", backgroundColor: Color.secondary_light)

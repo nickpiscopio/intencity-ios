@@ -20,14 +20,10 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
     @IBOutlet weak var passwordTextField: IntencityTextField!
     @IBOutlet weak var confirmPasswordTextField: IntencityTextField!
     @IBOutlet weak var termsLabel: UIButton!
-    @IBOutlet weak var termsButton: UIButton!
     @IBOutlet weak var createAccountButton: IntencityButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let unchecked = UIImage(named: Constant.CHECKBOX_UNCHECKED)
-    let checked = UIImage(named: Constant.CHECKBOX_CHECKED)
-    
-    var termsString = NSLocalizedString("terms_checkbox", comment: "")
+    var termsString = NSLocalizedString("terms_create_account", comment: "")
     
     override func viewDidLoad()
     {
@@ -90,20 +86,11 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
     
     @IBAction func termsOfUseClicked(sender: UIButton)
     {
-        if (!isTermsChecked())
-        {
-            termsButton.setImage(checked, forState: .Normal)
+        let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
+        viewController.includeNavButton = true
+        viewController.isTerms = true
             
-            let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
-            viewController.includeNavButton = true
-            viewController.isTerms = true
-            
-            self.navigationController!.pushViewController(viewController, animated: true)
-        }
-        else
-        {
-            termsButton.setImage(unchecked, forState: .Normal)
-        }
+        self.navigationController!.pushViewController(viewController, animated: true)
     }
     
     @IBAction func checkNameLength(sender: AnyObject)
@@ -119,14 +106,6 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
     @IBAction func checkPasswordLength(sender: AnyObject)
     {
         checkStringLength(sender as! UITextField, maxLength: Integer.PASSWORD_LENGTH)
-    }
-    
-    /**
-     * Checks to see if the terms checkbox is checked.
-     */
-    func isTermsChecked() -> Bool
-    {
-        return termsButton.currentImage!.isEqual(checked)
     }
     
     /**
@@ -174,11 +153,6 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         {
              Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("password_match_error", comment: ""), actions: [])
         }
-        // Check to see if the user has accepted the terms.
-        else if (!isTermsChecked())
-        {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("accept_terms", comment: ""), actions: [])
-        }
         else
         {
             startCreateAccount()
@@ -206,7 +180,6 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         passwordTextField.hidden = true
         confirmPasswordTextField.hidden = true
         termsLabel.hidden = true
-        termsButton.hidden = true
         createAccountButton.hidden = true
     }
     
@@ -224,7 +197,6 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         passwordTextField.hidden = false
         confirmPasswordTextField.hidden = false
         termsLabel.hidden = false
-        termsButton.hidden = false
         createAccountButton.hidden = false
         
         activityIndicator.stopAnimating()

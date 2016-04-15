@@ -15,8 +15,6 @@ class LoginViewController: PageViewController, ServiceDelegate
     @IBOutlet weak var passwordTextField: IntencityTextField!
     @IBOutlet weak var forgotPasswordButton: IntencityButtonNoBackground!
     @IBOutlet weak var createAccountButton: IntencityButtonNoBackground!
-    @IBOutlet weak var termsButton: UIButton!
-    @IBOutlet weak var termsCheckBox: UIButton!
     @IBOutlet weak var termsLabel: UIButton!
     @IBOutlet weak var signInButton: IntencityButton!
     @IBOutlet weak var tryIntencityButton: IntencityButtonNoBackground!
@@ -24,13 +22,10 @@ class LoginViewController: PageViewController, ServiceDelegate
     @IBOutlet weak var separator: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let unchecked = UIImage(named: Constant.CHECKBOX_UNCHECKED)
-    let checked = UIImage(named: Constant.CHECKBOX_CHECKED)
-    
     var trialEmail: String = ""
     var trialAccountType: String = ""
     var trialDateCreated: Double = 0
-    var termsString = NSLocalizedString("terms_checkbox", comment: "")
+    var termsString = NSLocalizedString("terms_log_in", comment: "")
     
     override func viewDidLoad()
     {
@@ -99,10 +94,6 @@ class LoginViewController: PageViewController, ServiceDelegate
         {
             Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("fill_in_fields", comment: ""), actions: [])
         }
-        else if (!isTermsChecked())
-        {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("accept_terms", comment: ""), actions: [])
-        }
         else
         {
             startLogin()
@@ -116,16 +107,19 @@ class LoginViewController: PageViewController, ServiceDelegate
      */
     @IBAction func tryIntencityClicked(sender: AnyObject)
     {
-        if (isTermsChecked())
-        {
-            let actions = [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: self.createTrial) ]
-
-            Util.displayAlert(self, title:  NSLocalizedString("trial_account_title", comment: ""), message: NSLocalizedString("trial_account_message", comment: ""), actions: actions)
-        }
-        else
-        {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("accept_terms", comment: ""), actions: [])
-        }
+        let actions = [ UIAlertAction(title: NSLocalizedString("terms_button", comment: ""), style: .Default, handler: self.openTerms),
+                        UIAlertAction(title: NSLocalizedString("create_trial", comment: ""), style: .Default, handler: self.createTrial),
+                        UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Cancel, handler: nil)]
+        
+        Util.displayAlert(self, title:  NSLocalizedString("trial_account_title", comment: ""), message: NSLocalizedString("trial_account_message", comment: ""), actions: actions)
+    }
+    
+    /**
+     * The alert function for opening the terms.
+     */
+    func openTerms(alertAction: UIAlertAction!)
+    {
+        openTerms()
     }
     
     /**
@@ -190,14 +184,6 @@ class LoginViewController: PageViewController, ServiceDelegate
         stopLogin()
     }
     
-    /**
-     * Checks to see if the terms checkbox is checked.
-     */
-    func isTermsChecked() -> Bool
-    {
-        return termsButton.currentImage!.isEqual(checked)
-    }
-    
     func startLogin()
     {
         activityIndicator.startAnimating()
@@ -207,8 +193,6 @@ class LoginViewController: PageViewController, ServiceDelegate
         passwordTextField.hidden = true
         forgotPasswordButton.hidden = true
         createAccountButton.hidden = true
-        termsCheckBox.hidden = true
-        termsButton.hidden = true
         termsLabel.hidden = true
         signInButton.hidden = true
         tryIntencityButton.hidden = true
@@ -221,8 +205,6 @@ class LoginViewController: PageViewController, ServiceDelegate
         passwordTextField.hidden = false
         forgotPasswordButton.hidden = false
         createAccountButton.hidden = false
-        termsCheckBox.hidden = false
-        termsButton.hidden = false
         termsLabel.hidden = false
         signInButton.hidden = false
         tryIntencityButton.hidden = false
@@ -232,24 +214,22 @@ class LoginViewController: PageViewController, ServiceDelegate
     }
     
     /**
+     * Opens the terms of use.
+     */
+    func openTerms()
+    {
+        let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
+        viewController.includeNavButton = true
+        viewController.isTerms = true
+        
+        self.navigationController!.pushViewController(viewController, animated: true)
+    }
+    
+    /**
      * The click function for the terms of use checkbox and label.
      */
     @IBAction func termsOfUseClicked(sender: UIButton)
     {
-        if (!isTermsChecked())
-        {
-            termsButton.setImage(checked, forState: .Normal)
-
-            let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
-            viewController.includeNavButton = true
-            viewController.isTerms = true
-                
-            self.navigationController!.pushViewController(viewController, animated: true)
-
-        }
-        else
-        {
-            termsButton.setImage(unchecked, forState: .Normal)
-        }
+        openTerms()
     }
 }
