@@ -17,14 +17,14 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bx7-WM-K6x">
                         <rect key="frame" x="16" y="0.0" width="288" height="62"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Don't see a routine?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfB-7p-JLj">
-                                <rect key="frame" x="76" y="0.0" width="137" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Don't see a routine?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfB-7p-JLj">
+                                <rect key="frame" x="76" y="0.0" width="137" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aB-n7-OHI" customClass="IntencityExerciseCardButton" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="73" y="18" width="142" height="44"/>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aB-n7-OHI" customClass="IntencityExerciseCardButton" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="56" y="12" width="176" height="50"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Create a new one" image="add_button_dark">
                                     <color key="titleColor" red="0.17415583053691275" green="0.15113779362416108" blue="1" alpha="1" colorSpace="calibratedRGB"/>

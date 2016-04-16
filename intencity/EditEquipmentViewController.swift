@@ -165,6 +165,8 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
      */
     func savePressed(sender:UIBarButtonItem)
     {
+        showLoading()
+        
         _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
                         serviceURL: Constant.SERVICE_UPDATE_EQUIPMENT,
                         params: Constant.generateEquipmentListVariables(email, variables: userEquipmentList))

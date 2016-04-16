@@ -154,6 +154,8 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
      */
     func savePressed(sender:UIBarButtonItem)
     {
+        showLoading()
+        
         _ = ServiceTask(event: ServiceEvent.UPDATE_LIST,
                         delegate: self,
                         serviceURL: Constant.SERVICE_UPDATE_EXERCISE_PRIORITY,

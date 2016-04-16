@@ -1,21 +1,25 @@
 //
-//  CustomRoutineViewController.swift
+//  AddRoutineViewController.swift
 //  Intencity
 //
-//  The view controller for editing custom routines.
+//  The view controller for adding a custom routine.
 //
-//  Created by Nick Piscopio on 4/15/16.
+//  Created by Nick Piscopio on 4/16/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
 
-class CustomRoutineViewController: UIViewController//, ServiceDelegate
+class AddRoutineViewController: UIViewController//, ServiceDelegate
 {
     @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var connectionIssueView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var connectionIssueLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var addRoutineDescription: UILabel!
+    
+    let muscleGroups = [ "Upper Back", "Lower Back", "Biceps", "Cardio", "Triceps", "Chest", "Legs", "Abs", "Shoulders"]
+    
+    var routine = [String]()
     
     var email = ""
     
@@ -26,11 +30,11 @@ class CustomRoutineViewController: UIViewController//, ServiceDelegate
         // Sets the background color of this view.
         self.view.backgroundColor = Color.page_background
         
-        // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        addRoutineDescription.text = NSLocalizedString("add_routines_description", comment: "")
+        addRoutineDescription.textColor = Color.secondary_dark
         
         // Sets the title for the screen.
-        self.navigationItem.title = NSLocalizedString("edit_routines_title", comment: "")
+        self.navigationItem.title = NSLocalizedString("add_routines_title", comment: "")
         
         // Initialize the tableview.
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
@@ -38,8 +42,7 @@ class CustomRoutineViewController: UIViewController//, ServiceDelegate
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)
         
-//        initLoadingView()
-//        showLoading()
+        initLoadingView()
         
         email = Util.getEmailFromDefaults()
         
@@ -53,38 +56,36 @@ class CustomRoutineViewController: UIViewController//, ServiceDelegate
         super.didReceiveMemoryWarning()
     }
     
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-//        return equipmentList.count
-        return 0
+        return muscleGroups.count
     }
     
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-//    {
-////        let index = indexPath.row
-////        
-////        let equipmentName = equipmentList[index]
-////        
-////        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_EXERCISE_CELL) as! MenuExerciseCellController
-////        cell.setListItem(equipmentName, checked: userEquipmentList.contains(equipmentName))
-////        
-////        return cell
-////        return nil
-//    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let index = indexPath.row
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_EXERCISE_CELL) as! MenuExerciseCellController
+        cell.exerciseNameLabel.text = muscleGroups[index]
+        cell.setChecked(false)
+        
+        return cell
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-//        let index = indexPath.row
-//        
-//        let equipmentName = equipmentList[index]
-//        
-//        onCheckboxChecked(equipmentName)
-//        
-//        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MenuExerciseCellController
-//        cell.setChecked(!cell.isExerciseHidden())
-//        
-//        // Deselects the row.
-//        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let index = indexPath.row
+        
+        let muscleGroup = muscleGroups[index]
+        
+        onCheckboxChecked(muscleGroup)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MenuExerciseCellController
+        cell.setChecked(!cell.isExerciseHidden())
+        
+        // Deselects the row.
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
 //
 //    func onRetrievalSuccessful(event: Int, result: String)
@@ -152,9 +153,30 @@ class CustomRoutineViewController: UIViewController//, ServiceDelegate
      */
     func savePressed(sender:UIBarButtonItem)
     {
-//        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
-//                        serviceURL: Constant.SERVICE_UPDATE_EQUIPMENT,
-//                        params: Constant.generateEquipmentListVariables(email, variables: userEquipmentList))
+        let count = routine.count
+        if (count > 2)
+        {
+            Util.displayAlert(self,
+                              title: NSLocalizedString("muscle_group_limit_title", comment: ""),
+                              message: NSLocalizedString("muscle_group_limit_description", comment: ""),
+                              actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil) ])
+
+        }
+        else if (count < 1)
+        {
+            Util.displayAlert(self,
+                              title: NSLocalizedString("muscle_group_limit_title", comment: ""),
+                              message: NSLocalizedString("add_routines_description", comment: ""),
+                              actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil) ])
+        }
+        else
+        {
+            showLoading()
+            //Save the routine
+            //        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
+            //                        serviceURL: Constant.SERVICE_UPDATE_EQUIPMENT,
+            //                        params: Constant.generateEquipmentListVariables(email, variables: userEquipmentList))
+        }
     }
     
     /**
@@ -173,20 +195,20 @@ class CustomRoutineViewController: UIViewController//, ServiceDelegate
         goBack()
     }
     
-//    func onCheckboxChecked(name: String)
-//    {
-//        // Add or remove equipment from the user's list of equipment
-//        // if he or she clicks on a list item.
-//        if (userEquipmentList.contains(name))
-//        {
-//            userEquipmentList.removeAtIndex(userEquipmentList.indexOf(name)!)
-//        }
-//        else
-//        {
-//            userEquipmentList.append(name);
-//        }
-//    }
-//    
+    func onCheckboxChecked(name: String)
+    {
+        // Add or remove equipment from the user's list of equipment
+        // if he or she clicks on a list item.
+        if (routine.contains(name))
+        {
+            routine.removeAtIndex(routine.indexOf(name)!)
+        }
+        else
+        {
+            routine.append(name)
+        }
+    }
+    
     /**
      * Initializes the loading view.
      */

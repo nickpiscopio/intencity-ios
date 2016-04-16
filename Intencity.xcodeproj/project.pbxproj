@@ -125,6 +125,7 @@
 		BDD89BF91C906C4D00530D79 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDD89BF81C906C4D00530D79 /* NotificationCell.xib */; };
 		BDD89BFB1C906D9F00530D79 /* NotificationCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD89BFA1C906D9F00530D79 /* NotificationCellViewController.swift */; };
 		BDD89BFF1C91C55300530D79 /* IntencityButtonNoBackgroundLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD89BFE1C91C55300530D79 /* IntencityButtonNoBackgroundLarge.swift */; };
+		BDDAD8F31CC29E4D00C07DB2 /* AddRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDAD8F21CC29E4D00C07DB2 /* AddRoutineViewController.swift */; };
 		BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F01C7A0445005817D0 /* ExerciseData.swift */; };
 		BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */; };
 		BDE493F71C7B961D005817D0 /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F61C7B961D005817D0 /* MenuSection.swift */; };
@@ -268,6 +269,7 @@
 		BDD89BF81C906C4D00530D79 /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		BDD89BFA1C906D9F00530D79 /* NotificationCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCellViewController.swift; sourceTree = "<group>"; };
 		BDD89BFE1C91C55300530D79 /* IntencityButtonNoBackgroundLarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundLarge.swift; sourceTree = "<group>"; };
+		BDDAD8F21CC29E4D00C07DB2 /* AddRoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoutineViewController.swift; sourceTree = "<group>"; };
 		BDE493F01C7A0445005817D0 /* ExerciseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
 		BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+firstResponder.swift"; sourceTree = "<group>"; };
 		BDE493F61C7B961D005817D0 /* MenuSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = SOURCE_ROOT; };
@@ -437,6 +439,7 @@
 				BD7C7E821C7CA0C6005AFFDD /* EditExercisePrioritiesViewController.swift */,
 				BD7C7E841C7CA0CF005AFFDD /* EditEquipmentViewController.swift */,
 				BD5BDCAA1CC142090001DF37 /* CustomRoutineViewController.swift */,
+				BDDAD8F21CC29E4D00C07DB2 /* AddRoutineViewController.swift */,
 				BD7C7E861C7CA0DA005AFFDD /* ChangePasswordViewController.swift */,
 				BD7C7E7D1C7C9E48005AFFDD /* AboutViewController.swift */,
 				BD7C7E881C7CA0E9005AFFDD /* DeleteAccountViewController.swift */,
@@ -864,6 +867,7 @@
 				BDD89BF71C9066F300530D79 /* NotificationDelegate.swift in Sources */,
 				BDD89BF51C9065EB00530D79 /* Awards.swift in Sources */,
 				BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */,
+				BDDAD8F31CC29E4D00C07DB2 /* AddRoutineViewController.swift in Sources */,
 				BD4B8EB91C7CEACD00AD579B /* DescriptionFooterCellController.swift in Sources */,
 				BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */,
 				BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */,
