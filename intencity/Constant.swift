@@ -119,6 +119,7 @@ struct Constant
     static let SERVICE_COMPLEX_INSERT = SERVICE_FOLDER_MOBILE + "complex_insert.php";
     static let SERVICE_COMPLEX_UPDATE = SERVICE_FOLDER_MOBILE + "complex_update.php";
     static let SERVICE_UPDATE_EQUIPMENT = SERVICE_FOLDER_MOBILE + "update_equipment.php";
+    static let SERVICE_SET_USER_MUSCLE_GROUP_ROUTINE = SERVICE_FOLDER_MOBILE + "set_user_muscle_group_routine.php";
     static let SERVICE_UPDATE_EXERCISE_PRIORITY = SERVICE_FOLDER_MOBILE + "update_priority.php";
     static let SERVICE_UPLOAD_PROFILE_PIC = SERVICE_FOLDER_MOBILE + "upload_file.php";
     static let SERVICE_CHANGE_PASSWORD = SERVICE_FOLDER_MOBILE + "change_password.php";
@@ -148,6 +149,7 @@ struct Constant
     static let STORED_PROCEDURE_GET_EXERCISE_DIRECTION = "getDirection";
     static let STORED_PROCEDURE_GET_EQUIPMENT = "getEquipment";
     static let STORED_PROCEDURE_GET_EXERCISE_PRIORITIES = "getPriority";
+    static let STORED_PROCEDURE_GET_CUSTOM_ROUTINE_MUSCLE_GROUP = "getCustomRoutineMuscleGroup";
     static let STORED_PROCEDURE_GRANT_POINTS = "grantPointsToUser";
     static let STORED_PROCEDURE_GRANT_BADGE = "grantBadgeToUser";
     static let STORED_PROCEDURE_GET_BADGES = "getBadges";
@@ -155,6 +157,7 @@ struct Constant
     static let STORED_PROCEDURE_GET_INJURY_PREVENTION_WORKOUTS = "getInjuryPreventionWorkouts";
     static let STORED_PROCEDURE_EXCLUDE_EXERCISE = "excludeExercise";
     static let STORED_PROCEDURE_REMOVE_ACCOUNT = "removeAccount";
+    
     static let ACCOUNT_TYPE_ADMIN = "A";
     static let ACCOUNT_TYPE_BETA = "B";
     static let ACCOUNT_TYPE_NORMAL = "N";
@@ -245,9 +248,9 @@ struct Constant
      */
     static func generateStoredProcedureParameters(name: String, variables: Array<String>) -> String
     {
-        var storedProcedureParameters = PARAMETER_DATA + name + PARAMETER_AMPERSAND + PARAMETER_VARIABLE
-    
         let length = variables.count
+        
+        var storedProcedureParameters = PARAMETER_DATA + name + PARAMETER_AMPERSAND + (length > 0 ? PARAMETER_VARIABLE : "")
     
         for i in 0 ..< length
         {
@@ -258,14 +261,14 @@ struct Constant
     }
 
     /**
-     * Generates the URL string to update the user's equipment list.
+     * Generates the URL string to insert a list of items into a web service.
      *
      * @param email         The user's email.
      * @param variables     The list items to update.
      *
      * @return  The generated URL string.
      */
-    static func generateEquipmentListVariables(email: String, variables: Array<String>) -> String
+    static func generateServiceListVariables(email: String, variables: Array<String>) -> String
     {
         var parameters = PARAMETER_EMAIL + email
         parameters += generateListVariables(PARAMETER_AMPERSAND + PARAMETER_INSERTS, variables: variables)

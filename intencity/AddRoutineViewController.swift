@@ -9,7 +9,7 @@
 
 import UIKit
 
-class AddRoutineViewController: UIViewController//, ServiceDelegate
+class AddRoutineViewController: UIViewController, ServiceDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -17,7 +17,7 @@ class AddRoutineViewController: UIViewController//, ServiceDelegate
     
     @IBOutlet weak var addRoutineDescription: UILabel!
     
-    let muscleGroups = [ "Upper Back", "Lower Back", "Biceps", "Cardio", "Triceps", "Chest", "Legs", "Abs", "Shoulders"]
+    var muscleGroups = [String]()
     
     var routine = [String]()
     
@@ -43,8 +43,13 @@ class AddRoutineViewController: UIViewController//, ServiceDelegate
         Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)
         
         initLoadingView()
+        showLoading()
         
         email = Util.getEmailFromDefaults()
+        
+        _ = ServiceTask(event: ServiceEvent.GET_LIST, delegate: self,
+                                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_CUSTOM_ROUTINE_MUSCLE_GROUP, variables: [] ))
         
         let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
         
@@ -87,66 +92,48 @@ class AddRoutineViewController: UIViewController//, ServiceDelegate
         // Deselects the row.
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
-//
-//    func onRetrievalSuccessful(event: Int, result: String)
-//    {
-//        switch(event)
-//        {
-//        case ServiceEvent.GET_LIST:
-//            
-//            if (result != Constant.RETURN_NULL)
-//            {
-//                // This gets saved as NSDictionary, so there is no order
-//                let json: AnyObject? = result.parseJSONString
-//                
-//                for equipment in json as! NSArray
-//                {
-//                    var userHasEquipment = false
-//                    
-//                    let equipmentName = equipment[Constant.COLUMN_EQUIPMENT_NAME] as! String
-//                    
-//                    // Might not have a FollowingId
-//                    if let _ = equipment[Constant.COLUMN_HAS_EQUIPMENT] as? String
-//                    {
-//                        userHasEquipment = true
-//                    }
-//                    else
-//                    {
-//                        userHasEquipment = false
-//                    }
-//                    
-//                    equipmentList.append(equipmentName)
-//                    
-//                    if (userHasEquipment)
-//                    {
-//                        userEquipmentList.append(equipmentName)
-//                    }
-//                }
-//                
-//                tableView.reloadData();
-//            }
-//            
-//            break
-//        case ServiceEvent.UPDATE_LIST:
-//            
-//            goBack()
-//            
-//            break
-//        default:
-//            break
-//        }
-//        
-//        hideLoading()
-//    }
-//    
-//    func onRetrievalFailed(event: Int)
-//    {
-//        hideLoading()
-//        
-//        Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""),
-//            message: NSLocalizedString("intencity_communication_error", comment: ""),
-//            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack)])
-//    }
+
+    func onRetrievalSuccessful(event: Int, result: String)
+    {
+        switch(event)
+        {
+        case ServiceEvent.GET_LIST:
+            
+            if (result != Constant.RETURN_NULL)
+            {
+                // This gets saved as NSDictionary, so there is no order
+                let json: AnyObject? = result.parseJSONString
+                
+                for retrievedMuscleGroups in json as! NSArray
+                {
+                    let muscleGroup = retrievedMuscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
+                    muscleGroups.append(muscleGroup)
+                }
+                
+                tableView.reloadData();
+            }
+            
+            break
+        case ServiceEvent.UPDATE_LIST:
+            
+            goBack()
+            
+            break
+        default:
+            break
+        }
+        
+        hideLoading()
+    }
+    
+    func onRetrievalFailed(event: Int)
+    {
+        hideLoading()
+        
+        Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""),
+            message: NSLocalizedString("intencity_communication_error", comment: ""),
+            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack)])
+    }
     
     /**
      * The function for when the save button is pressed.
@@ -173,9 +160,9 @@ class AddRoutineViewController: UIViewController//, ServiceDelegate
         {
             showLoading()
             //Save the routine
-            //        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
-            //                        serviceURL: Constant.SERVICE_UPDATE_EQUIPMENT,
-            //                        params: Constant.generateEquipmentListVariables(email, variables: userEquipmentList))
+            _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
+                            serviceURL: Constant.SERVICE_SET_USER_MUSCLE_GROUP_ROUTINE,
+                            params: Constant.generateServiceListVariables(email, variables: routine))
         }
     }
     
