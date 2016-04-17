@@ -31,7 +31,7 @@ struct Constant
     static let DESCRIPTION_FOOTER_CELL = "DescriptionFooterCell"
     static let SEARCH_EXERCISE_CELL = "SearchExerciseCell"
     static let RANKING_CELL = "RankingCell"
-    static let MENU_EXERCISE_CELL = "MenuExerciseCell"
+    static let CHECKBOX_CELL = "CheckboxCell"
     static let EXERCISE_PRIORITY_CELL = "ExercisePriorityCell"
     static let FITNESS_RECOMMENDATION_CELL = "FitnessRecommendationCell"
     static let NOTIFICATION_CELL = "NotificationCell"
@@ -150,6 +150,7 @@ struct Constant
     static let STORED_PROCEDURE_GET_EQUIPMENT = "getEquipment";
     static let STORED_PROCEDURE_GET_EXERCISE_PRIORITIES = "getPriority";
     static let STORED_PROCEDURE_GET_CUSTOM_ROUTINE_MUSCLE_GROUP = "getCustomRoutineMuscleGroup";
+    static let STORED_PROCEDURE_GET_USER_MUSCLE_GROUP_ROUTINE = "getUserMuscleGroupRoutine";
     static let STORED_PROCEDURE_GRANT_POINTS = "grantPointsToUser";
     static let STORED_PROCEDURE_GRANT_BADGE = "grantBadgeToUser";
     static let STORED_PROCEDURE_GET_BADGES = "getBadges";

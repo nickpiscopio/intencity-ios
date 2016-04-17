@@ -31,7 +31,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         self.view.backgroundColor = Color.page_background
         
         addRoutineDescription.text = NSLocalizedString("add_routines_description", comment: "")
-        addRoutineDescription.textColor = Color.secondary_dark
+        addRoutineDescription.textColor = Color.secondary_light
         
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("add_routines_title", comment: "")
@@ -40,7 +40,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.CHECKBOX_CELL, cellName: Constant.CHECKBOX_CELL)
         
         initLoadingView()
         showLoading()
@@ -71,8 +71,8 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
     {
         let index = indexPath.row
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_EXERCISE_CELL) as! MenuExerciseCellController
-        cell.exerciseNameLabel.text = muscleGroups[index]
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
+        cell.titleLabel.text = muscleGroups[index]
         cell.setChecked(false)
         
         return cell
@@ -86,8 +86,8 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         
         onCheckboxChecked(muscleGroup)
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MenuExerciseCellController
-        cell.setChecked(!cell.isExerciseHidden())
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+        cell.setChecked(!cell.isChecked())
         
         // Deselects the row.
         tableView.deselectRowAtIndexPath(indexPath, animated: false)

@@ -45,7 +45,7 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
         
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)        
+        Util.addUITableViewCell(tableView, nibNamed: Constant.CHECKBOX_CELL, cellName: Constant.CHECKBOX_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.DESCRIPTION_FOOTER_CELL, cellName: Constant.DESCRIPTION_FOOTER_CELL)
         
         initLoadingView()
@@ -79,7 +79,7 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         
         let equipmentName = equipmentList[index]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_EXERCISE_CELL) as! MenuExerciseCellController
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
         cell.setListItem(equipmentName, checked: userEquipmentList.contains(equipmentName))
         
         return cell
@@ -93,8 +93,8 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         
         onCheckboxChecked(equipmentName)
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MenuExerciseCellController
-        cell.setChecked(!cell.isExerciseHidden())
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+        cell.setChecked(!cell.isChecked())
         
         // Deselects the row.
         tableView.deselectRowAtIndexPath(indexPath, animated: false)

@@ -50,7 +50,7 @@
 		BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F41C68D34400F60ADC /* Assets.xcassets */; };
 		BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460FF1C68D53200F60ADC /* PageViewController.swift */; };
 		BD5BDCAB1CC142090001DF37 /* CustomRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDCAA1CC142090001DF37 /* CustomRoutineViewController.swift */; };
-		BD5C6AF71C88B97700A9ED0A /* MenuExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5C6AF61C88B97700A9ED0A /* MenuExerciseCell.xib */; };
+		BD5C6AF71C88B97700A9ED0A /* CheckboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5C6AF61C88B97700A9ED0A /* CheckboxCell.xib */; };
 		BD5C6AF91C88BB6500A9ED0A /* GenericCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */; };
 		BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */; };
 		BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */; };
@@ -130,7 +130,7 @@
 		BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */; };
 		BDE493F71C7B961D005817D0 /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F61C7B961D005817D0 /* MenuSection.swift */; };
 		BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE493F81C7B9A26005817D0 /* GenericCell.xib */; };
-		BDE493FB1C7B9A58005817D0 /* MenuExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493FA1C7B9A58005817D0 /* MenuExerciseCellController.swift */; };
+		BDE493FB1C7B9A58005817D0 /* CheckboxCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493FA1C7B9A58005817D0 /* CheckboxCellController.swift */; };
 		BDE493FD1C7B9B45005817D0 /* GenericHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE493FC1C7B9B45005817D0 /* GenericHeaderCell.xib */; };
 		BDE493FF1C7B9B5B005817D0 /* GenericHeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */; };
 		BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */; };
@@ -194,7 +194,7 @@
 		BD5460F91C68D34400F60ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD5460FF1C68D53200F60ADC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		BD5BDCAA1CC142090001DF37 /* CustomRoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRoutineViewController.swift; sourceTree = "<group>"; };
-		BD5C6AF61C88B97700A9ED0A /* MenuExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuExerciseCell.xib; sourceTree = "<group>"; };
+		BD5C6AF61C88B97700A9ED0A /* CheckboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckboxCell.xib; sourceTree = "<group>"; };
 		BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCellController.swift; sourceTree = "<group>"; };
 		BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
 		BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCellController.swift; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 		BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+firstResponder.swift"; sourceTree = "<group>"; };
 		BDE493F61C7B961D005817D0 /* MenuSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = SOURCE_ROOT; };
 		BDE493F81C7B9A26005817D0 /* GenericCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericCell.xib; sourceTree = "<group>"; };
-		BDE493FA1C7B9A58005817D0 /* MenuExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuExerciseCellController.swift; sourceTree = "<group>"; };
+		BDE493FA1C7B9A58005817D0 /* CheckboxCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxCellController.swift; sourceTree = "<group>"; };
 		BDE493FC1C7B9B45005817D0 /* GenericHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericHeaderCell.xib; sourceTree = "<group>"; };
 		BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericHeaderCellController.swift; sourceTree = "<group>"; };
 		BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseListHeader.xib; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 				BD1F30E61CAACA0300002D06 /* AwardCellController.swift */,
 				BD947A371C6F6F50003F3767 /* RoutineCellController.swift */,
 				BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */,
-				BDE493FA1C7B9A58005817D0 /* MenuExerciseCellController.swift */,
+				BDE493FA1C7B9A58005817D0 /* CheckboxCellController.swift */,
 				BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */,
 				BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */,
 				BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */,
@@ -596,7 +596,7 @@
 				BD1F30E81CAACACA00002D06 /* AwardCollectionViewCell.xib */,
 				BDB45A191C849AAF009E509B /* SearchExerciseCell.xib */,
 				BD640A4E1C85D1D7008895A2 /* RankingCell.xib */,
-				BD5C6AF61C88B97700A9ED0A /* MenuExerciseCell.xib */,
+				BD5C6AF61C88B97700A9ED0A /* CheckboxCell.xib */,
 				BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */,
 				BD36EC321C720C6B00F993CE /* Direction.xib */,
 				BDE493F81C7B9A26005817D0 /* GenericCell.xib */,
@@ -716,7 +716,7 @@
 				BD4B8EBB1C7CEB1D00AD579B /* DescriptionFooterCell.xib in Resources */,
 				BDD89BF91C906C4D00530D79 /* NotificationCell.xib in Resources */,
 				BDD53BF41C8A2B13001235AE /* FitnessRecommendationCell.xib in Resources */,
-				BD5C6AF71C88B97700A9ED0A /* MenuExerciseCell.xib in Resources */,
+				BD5C6AF71C88B97700A9ED0A /* CheckboxCell.xib in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -781,7 +781,7 @@
 				BDD53BF21C8A2B05001235AE /* FitnessRecommendationCellViewController.swift in Sources */,
 				BD9EF2BC1C6B701D00E520CB /* ServiceTask.swift in Sources */,
 				BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */,
-				BDE493FB1C7B9A58005817D0 /* MenuExerciseCellController.swift in Sources */,
+				BDE493FB1C7B9A58005817D0 /* CheckboxCellController.swift in Sources */,
 				BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */,
 				BD9EF2B61C6A8AF500E520CB /* TermsViewController.swift in Sources */,
 				BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */,

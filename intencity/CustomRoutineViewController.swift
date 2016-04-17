@@ -9,15 +9,19 @@
 
 import UIKit
 
-class CustomRoutineViewController: UIViewController//, ServiceDelegate
+class CustomRoutineViewController: UIViewController, ServiceDelegate
 {
     @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var connectionIssueView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var connectionIssueLabel: UILabel!
+    @IBOutlet weak var descriptionView: UIView!
+    @IBOutlet weak var descriptionLabel1: UILabel!
+    @IBOutlet weak var descriptionLabel2: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var email = ""
+    
+    var routines = [String]()
+    var newRoutines = [String]()
     
     override func viewDidLoad()
     {
@@ -32,20 +36,34 @@ class CustomRoutineViewController: UIViewController//, ServiceDelegate
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("edit_routines_title", comment: "")
         
+        descriptionLabel1.text = NSLocalizedString("edit_routines_description1", comment: "")
+        descriptionLabel2.text = NSLocalizedString("edit_routines_description2", comment: "")
+        
+        descriptionLabel1.textColor = Color.secondary_light
+        descriptionLabel2.textColor = Color.secondary_light
+        
         // Initialize the tableview.
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.MENU_EXERCISE_CELL, cellName: Constant.MENU_EXERCISE_CELL)
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "no_custom_routines")
+        Util.addUITableViewCell(tableView, nibNamed: Constant.CHECKBOX_CELL, cellName: Constant.CHECKBOX_CELL)
         
-//        initLoadingView()
-//        showLoading()
+        initLoadingView()
         
         email = Util.getEmailFromDefaults()
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        routines.removeAll()
+        newRoutines.removeAll()
         
-        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
+        showLoading()
         
-        self.navigationItem.rightBarButtonItem = saveButtonItem
+        _ = ServiceTask(event: ServiceEvent.GET_LIST, delegate: self,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_MUSCLE_GROUP_ROUTINE, variables: [ email ]))
     }
     
     override func didReceiveMemoryWarning()
@@ -53,105 +71,107 @@ class CustomRoutineViewController: UIViewController//, ServiceDelegate
         super.didReceiveMemoryWarning()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-//        return equipmentList.count
-        return 0
+        if (routines.count > 0)
+        {
+            descriptionView.hidden = false
+            tableView.backgroundView?.hidden = true
+            
+            let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
+            
+            self.navigationItem.rightBarButtonItem = saveButtonItem
+        }
+        else
+        {
+            descriptionView.hidden = true
+            tableView.backgroundView?.hidden = false
+        }
+        
+        return 1
     }
     
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-//    {
-////        let index = indexPath.row
-////        
-////        let equipmentName = equipmentList[index]
-////        
-////        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.MENU_EXERCISE_CELL) as! MenuExerciseCellController
-////        cell.setListItem(equipmentName, checked: userEquipmentList.contains(equipmentName))
-////        
-////        return cell
-////        return nil
-//    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return routines.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let index = indexPath.row
+        
+        let routineName = routines[index]
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
+        cell.setListItem(routineName, checked: true)
+        
+        return cell
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-//        let index = indexPath.row
-//        
-//        let equipmentName = equipmentList[index]
-//        
-//        onCheckboxChecked(equipmentName)
-//        
-//        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MenuExerciseCellController
-//        cell.setChecked(!cell.isExerciseHidden())
-//        
-//        // Deselects the row.
-//        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let index = indexPath.row
+        
+        let routineName = routines[index]
+        
+        onCheckboxChecked(routineName)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+        cell.setChecked(!cell.isChecked())
+        
+        // Deselects the row.
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
-//
-//    func onRetrievalSuccessful(event: Int, result: String)
-//    {
-//        switch(event)
-//        {
-//        case ServiceEvent.GET_LIST:
-//            
-//            if (result != Constant.RETURN_NULL)
-//            {
-//                // This gets saved as NSDictionary, so there is no order
-//                let json: AnyObject? = result.parseJSONString
-//                
-//                for equipment in json as! NSArray
-//                {
-//                    var userHasEquipment = false
-//                    
-//                    let equipmentName = equipment[Constant.COLUMN_EQUIPMENT_NAME] as! String
-//                    
-//                    // Might not have a FollowingId
-//                    if let _ = equipment[Constant.COLUMN_HAS_EQUIPMENT] as? String
-//                    {
-//                        userHasEquipment = true
-//                    }
-//                    else
-//                    {
-//                        userHasEquipment = false
-//                    }
-//                    
-//                    equipmentList.append(equipmentName)
-//                    
-//                    if (userHasEquipment)
-//                    {
-//                        userEquipmentList.append(equipmentName)
-//                    }
-//                }
-//                
-//                tableView.reloadData();
-//            }
-//            
-//            break
-//        case ServiceEvent.UPDATE_LIST:
-//            
-//            goBack()
-//            
-//            break
-//        default:
-//            break
-//        }
-//        
-//        hideLoading()
-//    }
-//    
-//    func onRetrievalFailed(event: Int)
-//    {
-//        hideLoading()
-//        
-//        Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""),
-//            message: NSLocalizedString("intencity_communication_error", comment: ""),
-//            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack)])
-//    }
+
+    func onRetrievalSuccessful(event: Int, result: String)
+    {
+        switch(event)
+        {
+        case ServiceEvent.GET_LIST:
+            
+            if (result != Constant.RETURN_NULL)
+            {
+                // This gets saved as NSDictionary, so there is no order
+                let json: AnyObject? = result.parseJSONString
+                
+                for routines in json as! NSArray
+                {
+                    let routine = routines[Constant.COLUMN_DISPLAY_NAME] as! String
+                
+                    self.routines.append(routine)
+                }
+                
+                tableView.reloadData();
+            }
+            
+            break
+        case ServiceEvent.UPDATE_LIST:
+            
+            goBack()
+            
+            break
+        default:
+            break
+        }
+        
+        hideLoading()
+    }
+
+    func onRetrievalFailed(event: Int)
+    {
+        hideLoading()
+        
+        Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""),
+            message: NSLocalizedString("intencity_communication_error", comment: ""),
+            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack)])
+    }
     
     /**
      * The function for when the save button is pressed.
      */
     func savePressed(sender:UIBarButtonItem)
     {
+        showLoading()
 //        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
 //                        serviceURL: Constant.SERVICE_UPDATE_EQUIPMENT,
 //                        params: Constant.generateEquipmentListVariables(email, variables: userEquipmentList))
@@ -173,20 +193,23 @@ class CustomRoutineViewController: UIViewController//, ServiceDelegate
         goBack()
     }
     
-//    func onCheckboxChecked(name: String)
-//    {
-//        // Add or remove equipment from the user's list of equipment
-//        // if he or she clicks on a list item.
-//        if (userEquipmentList.contains(name))
-//        {
-//            userEquipmentList.removeAtIndex(userEquipmentList.indexOf(name)!)
-//        }
-//        else
-//        {
-//            userEquipmentList.append(name);
-//        }
-//    }
-//    
+    /**
+     * Edits a list of items that is going to be sent to the server.
+     */
+    func onCheckboxChecked(name: String)
+    {
+        // Add or remove equipment from the user's routine list
+        // if he or she clicks on a list item.
+        if (newRoutines.contains(name))
+        {
+            newRoutines.removeAtIndex(newRoutines.indexOf(name)!)
+        }
+        else
+        {
+            newRoutines.append(name);
+        }
+    }
+    
     /**
      * Initializes the loading view.
      */

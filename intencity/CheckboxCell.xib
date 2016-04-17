@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuExerciseCell" rowHeight="65" id="dCW-Eb-Zvq" customClass="MenuExerciseCellController" customModule="Intencity" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckboxCell" rowHeight="65" id="dCW-Eb-Zvq" customClass="CheckboxCellController" customModule="Intencity" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="523" height="65"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="dCW-Eb-Zvq" id="opS-LJ-Z2N">
@@ -73,8 +73,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="checkBox" destination="P9R-OS-IOb" id="6Mu-eF-HIB"/>
-                <outlet property="exerciseNameLabel" destination="lhd-d1-nLe" id="LYF-zM-7UN"/>
                 <outlet property="separator" destination="7fV-ef-MlK" id="AMQ-QO-6u9"/>
+                <outlet property="titleLabel" destination="lhd-d1-nLe" id="1yE-sx-9Gk"/>
             </connections>
             <point key="canvasLocation" x="463.5" y="492.5"/>
         </tableViewCell>

@@ -1,17 +1,17 @@
 //
-//  MenuExerciseCellController.swift
+//  CheckboxCellController.swift
 //  Intencity
 //
-//  The cell controller for the equipment lists.
+//  The cell controller for the a checkbox cell.
 //
 //  Created by Nick Piscopio on 3/3/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
 
-class MenuExerciseCellController: UITableViewCell
+class CheckboxCellController: UITableViewCell
 {
-    @IBOutlet weak var exerciseNameLabel: UILabel!    
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var checkBox: UIImageView!
     @IBOutlet weak var separator: UIView!
     
@@ -24,7 +24,7 @@ class MenuExerciseCellController: UITableViewCell
     {
         super.awakeFromNib()
         
-        exerciseNameLabel.textColor = Color.secondary_dark
+        titleLabel.textColor = Color.secondary_dark
     }
     
     /**
@@ -34,7 +34,7 @@ class MenuExerciseCellController: UITableViewCell
     {
         listItemName = name
         
-        exerciseNameLabel.text = listItemName
+        titleLabel.text = listItemName
         
         setChecked(checked)
     }
@@ -48,9 +48,9 @@ class MenuExerciseCellController: UITableViewCell
     }
     
     /**
-     * Checks to see if the terms checkbox is checked.
+     * Checks to see if the checkbox is checked.
      */
-    func isExerciseHidden() -> Bool
+    func isChecked() -> Bool
     {
         return checkBox.image!.isEqual(CHECKED)
     }
