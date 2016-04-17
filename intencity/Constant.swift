@@ -120,6 +120,7 @@ struct Constant
     static let SERVICE_COMPLEX_UPDATE = SERVICE_FOLDER_MOBILE + "complex_update.php";
     static let SERVICE_UPDATE_EQUIPMENT = SERVICE_FOLDER_MOBILE + "update_equipment.php";
     static let SERVICE_SET_USER_MUSCLE_GROUP_ROUTINE = SERVICE_FOLDER_MOBILE + "set_user_muscle_group_routine.php";
+    static let SERVICE_UPDATE_USER_MUSCLE_GROUP_ROUTINE = SERVICE_FOLDER_MOBILE + "update_user_muscle_group_routine.php";
     static let SERVICE_UPDATE_EXERCISE_PRIORITY = SERVICE_FOLDER_MOBILE + "update_priority.php";
     static let SERVICE_UPLOAD_PROFILE_PIC = SERVICE_FOLDER_MOBILE + "upload_file.php";
     static let SERVICE_CHANGE_PASSWORD = SERVICE_FOLDER_MOBILE + "change_password.php";
@@ -136,6 +137,7 @@ struct Constant
     static let PARAMETER_LAST_NAME = "last_name=";
     static let PARAMETER_ACCOUNT_TYPE = "account_type=";
     static let PARAMETER_INSERTS = "inserts=";
+    static let PARAMETER_REMOVE = "remove=";
     
     static let STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS = "getAllDisplayMuscleGroups";
     static let STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY = "getExercisesForToday";
@@ -269,10 +271,10 @@ struct Constant
      *
      * @return  The generated URL string.
      */
-    static func generateServiceListVariables(email: String, variables: Array<String>) -> String
+    static func generateServiceListVariables(email: String, variables: Array<String>, isInserting: Bool) -> String
     {
         var parameters = PARAMETER_EMAIL + email
-        parameters += generateListVariables(PARAMETER_AMPERSAND + PARAMETER_INSERTS, variables: variables)
+        parameters += generateListVariables(PARAMETER_AMPERSAND + (isInserting ? PARAMETER_INSERTS : PARAMETER_REMOVE), variables: variables)
         
         return parameters
     }
@@ -318,7 +320,7 @@ struct Constant
                 parameters += variableName
             }
             
-            parameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i]
+            parameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i].stringByReplacingOccurrencesOfString("&", withString: "%26")
         }
         
         return parameters

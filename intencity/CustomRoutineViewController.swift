@@ -21,7 +21,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     var email = ""
     
     var routines = [String]()
-    var newRoutines = [String]()
+    var routinesToRemove = [String]()
     
     override func viewDidLoad()
     {
@@ -57,7 +57,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     override func viewWillAppear(animated: Bool)
     {
         routines.removeAll()
-        newRoutines.removeAll()
+        routinesToRemove.removeAll()
         
         showLoading()
         
@@ -171,10 +171,19 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
      */
     func savePressed(sender:UIBarButtonItem)
     {
-        showLoading()
-//        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
-//                        serviceURL: Constant.SERVICE_UPDATE_EQUIPMENT,
-//                        params: Constant.generateEquipmentListVariables(email, variables: userEquipmentList))
+        if (routinesToRemove.count > 0)
+        {
+            showLoading()
+            
+            _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
+                            serviceURL: Constant.SERVICE_UPDATE_USER_MUSCLE_GROUP_ROUTINE,
+                            params: Constant.generateServiceListVariables(email, variables: routinesToRemove, isInserting: false))
+
+        }
+        else
+        {
+            goBack()
+        }
     }
     
     /**
@@ -200,13 +209,13 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     {
         // Add or remove equipment from the user's routine list
         // if he or she clicks on a list item.
-        if (newRoutines.contains(name))
+        if (routinesToRemove.contains(name))
         {
-            newRoutines.removeAtIndex(newRoutines.indexOf(name)!)
+            routinesToRemove.removeAtIndex(routinesToRemove.indexOf(name)!)
         }
         else
         {
-            newRoutines.append(name);
+            routinesToRemove.append(name);
         }
     }
     

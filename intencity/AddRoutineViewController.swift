@@ -162,7 +162,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
             //Save the routine
             _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
                             serviceURL: Constant.SERVICE_SET_USER_MUSCLE_GROUP_ROUTINE,
-                            params: Constant.generateServiceListVariables(email, variables: routine))
+                            params: Constant.generateServiceListVariables(email, variables: routine, isInserting: true))
         }
     }
     
