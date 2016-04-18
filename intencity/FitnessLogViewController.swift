@@ -12,6 +12,12 @@ import Social
 
 class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate, ExerciseSearchDelegate, NotificationDelegate
 {
+    enum ACTIVE_BUTTON_STATE
+    {
+        case SEARCH
+        case INTENCITY
+    }
+    
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var connectionView: UIView!
@@ -19,7 +25,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     @IBOutlet weak var tryAgainButton: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var nextExerciseButton: UIButton!
+    @IBOutlet weak var inactiveButton: IntencityButtonRoundLight!
+    @IBOutlet weak var activeButton: UIButton!
     
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
     let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
@@ -58,6 +65,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     var savedExercises: SavedExercise!
     
     var awards = [String: String]()
+    
+    var activeButtonState = ACTIVE_BUTTON_STATE.INTENCITY
     
     override func viewDidLoad()
     {
@@ -164,7 +173,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func initRoutineCard()
     {
-        nextExerciseButton.hidden = true
+        activeButton.hidden = true
+        inactiveButton.hidden = true
         
         showLoading()
         
@@ -374,10 +384,66 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         addExercise(false, fromSearch: true)
     }
     
+    func setButtons()
+    {
+        var imageName: String!
+        
+        switch activeButtonState
+        {
+            case .INTENCITY:
+                imageName = "add_button"
+                break
+            case .SEARCH:
+                imageName = "search_button_large"
+                break
+        }
+
+        activeButton.setImage(UIImage(named:imageName), forState: .Normal)
+    }
+    
+    @IBAction func inactiveButtonClicked(sender: AnyObject)
+    {
+        switch activeButtonState
+        {
+            case .INTENCITY:
+                activeButtonState = .SEARCH
+                break
+            case .SEARCH:
+                activeButtonState = .INTENCITY
+                break
+        }
+        
+        setButtons()
+    }
+    
+    @IBAction func activeButtonClicked(sender: AnyObject)
+    {
+        switch activeButtonState
+        {
+            case .INTENCITY:
+                nextExerciseClicked()
+                break
+            case .SEARCH:
+                searchClicked()
+                break
+        }
+
+    }
+    
+    func searchClicked()
+    {
+        let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.SEARCH_VIEW_CONTROLLER) as! SearchViewController
+        viewController.state = ServiceEvent.SEARCH_FOR_EXERCISE
+        viewController.exerciseSearchDelegate = self
+        viewController.currentExercises = currentExercises
+        
+        self.navigationController!.pushViewController(viewController, animated: true)
+    }
+    
     /**
      * The button click to get the next exercise.
      */
-    @IBAction func nextExerciseClicked(sender: AnyObject)
+    func nextExerciseClicked()
     {
         if (currentExercises.count != exerciseData.exerciseList.count)
         {
@@ -597,7 +663,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             
             if (exerciseData.exerciseList.count >= EXERCISE_MINIMUM_THRESHOLD)
             {
-                nextExerciseButton.hidden = false
+                activeButton.hidden = false
+                inactiveButton.hidden = false
                 
                 animateTable(indexToLoad)
             }

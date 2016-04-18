@@ -73,6 +73,8 @@
 		BD8811041C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8811031C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift */; };
 		BD91FC0D1CAD710800965782 /* UploadImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD91FC0C1CAD710800965782 /* UploadImageTask.swift */; };
 		BD91FC0F1CAD733600965782 /* NSMutableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD91FC0E1CAD733600965782 /* NSMutableData.swift */; };
+		BD9325291CC55BC700D9581E /* IntencityButtonRoundDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9325281CC55BC700D9581E /* IntencityButtonRoundDark.swift */; };
+		BD93252B1CC55BD100D9581E /* IntencityButtonRoundLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD93252A1CC55BD100D9581E /* IntencityButtonRoundLight.swift */; };
 		BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9479FA1C6CE43C003F3767 /* JSON.swift */; };
 		BD9479FD1C6CE452003F3767 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD9479FC1C6CE452003F3767 /* Loading.storyboard */; };
 		BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A011C6CED31003F3767 /* LoginNavController.swift */; };
@@ -217,6 +219,8 @@
 		BD8811031C948E9B0098FA64 /* IntencityCardButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardButtonNoBackground.swift; sourceTree = "<group>"; };
 		BD91FC0C1CAD710800965782 /* UploadImageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadImageTask.swift; sourceTree = "<group>"; };
 		BD91FC0E1CAD733600965782 /* NSMutableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableData.swift; sourceTree = "<group>"; };
+		BD9325281CC55BC700D9581E /* IntencityButtonRoundDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonRoundDark.swift; sourceTree = "<group>"; };
+		BD93252A1CC55BD100D9581E /* IntencityButtonRoundLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonRoundLight.swift; sourceTree = "<group>"; };
 		BD9479FA1C6CE43C003F3767 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		BD9479FC1C6CE452003F3767 /* Loading.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		BD947A001C6CE598003F3767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -539,6 +543,8 @@
 				BD9EF2AB1C6A496800E520CB /* IntencityTextField.swift */,
 				BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */,
 				BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */,
+				BD9325281CC55BC700D9581E /* IntencityButtonRoundDark.swift */,
+				BD93252A1CC55BD100D9581E /* IntencityButtonRoundLight.swift */,
 				BD53AED71CAD517600077B0D /* IntencityCircleView.swift */,
 				BDD89BFE1C91C55300530D79 /* IntencityButtonNoBackgroundLarge.swift */,
 				BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */,
@@ -793,7 +799,9 @@
 				BD294AC71CAEB579005718BA /* RetrieveImageTask.swift in Sources */,
 				BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */,
 				BD6591591CA9B20800D892C3 /* ProfileLabel.swift in Sources */,
+				BD9325291CC55BC700D9581E /* IntencityButtonRoundDark.swift in Sources */,
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,
+				BD93252B1CC55BD100D9581E /* IntencityButtonRoundLight.swift in Sources */,
 				BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */,
 				BD43E11C1C847D77002F14C6 /* SearchViewController.swift in Sources */,
 				BD7C7E7C1C7C9ABD005AFFDD /* MenuRow.swift in Sources */,
