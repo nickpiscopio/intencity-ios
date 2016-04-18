@@ -425,7 +425,6 @@
 "add_routines_title" = "Add Routine";
 "add_routines_description" = "Select up to two muscle groups you would like in this routine.";
 "muscle_group_limit_title" = "Limit error";
-"muscle_group_limit_description" = "Please only select up to two muscle groups for this routine.";
 
 /*  */
 "change_password" = "Change Password";

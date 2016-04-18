@@ -141,15 +141,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
     func savePressed(sender:UIBarButtonItem)
     {
         let count = routine.count
-        if (count > 2)
-        {
-            Util.displayAlert(self,
-                              title: NSLocalizedString("muscle_group_limit_title", comment: ""),
-                              message: NSLocalizedString("muscle_group_limit_description", comment: ""),
-                              actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil) ])
-
-        }
-        else if (count < 1)
+        if (count < 1)
         {
             Util.displayAlert(self,
                               title: NSLocalizedString("muscle_group_limit_title", comment: ""),
@@ -159,7 +151,8 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         else
         {
             showLoading()
-            //Save the routine
+
+            // Save the routine
             _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
                             serviceURL: Constant.SERVICE_SET_USER_MUSCLE_GROUP_ROUTINE,
                             params: Constant.generateServiceListVariables(email, variables: routine, isInserting: true))

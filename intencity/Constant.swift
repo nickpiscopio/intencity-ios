@@ -127,6 +127,7 @@ struct Constant
     static let SERVICE_FORGOT_PASSWORD = SERVICE_FOLDER + "forgot_password.php";
     static let PARAMETER_AMPERSAND = "&";
     static let PARAMETER_DELIMITER = ",";
+    static let PARAMETER_DELIMITER_REMOVE = "|";
     static let PARAMETER_TABLE = "table";
     static let PARAMETER_EMAIL = "email=";
     static let PARAMETER_PASSWORD = "password=";
@@ -274,7 +275,7 @@ struct Constant
     static func generateServiceListVariables(email: String, variables: Array<String>, isInserting: Bool) -> String
     {
         var parameters = PARAMETER_EMAIL + email
-        parameters += generateListVariables(PARAMETER_AMPERSAND + (isInserting ? PARAMETER_INSERTS : PARAMETER_REMOVE), variables: variables)
+        parameters += isInserting ? generateListVariables(PARAMETER_AMPERSAND + PARAMETER_INSERTS, variables: variables) : generateRemoveListVariables(PARAMETER_AMPERSAND + PARAMETER_REMOVE, variables: variables)
         
         return parameters
     }
@@ -321,6 +322,32 @@ struct Constant
             }
             
             parameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i].stringByReplacingOccurrencesOfString("&", withString: "%26")
+        }
+        
+        return parameters
+    }
+    
+    /**
+     * Generates the URL string for a list of variables.
+     *
+     * @param variableName  The name of the variable to add to teh URL string.
+     * @param variables     The variables to add to the URL string.
+     *
+     * @return  The generated URL string.
+     */
+    static func generateRemoveListVariables(variableName: String, variables: Array<String>) -> String
+    {
+        var parameters = ""
+        
+        let length = variables.count
+        for i in 0 ..< length
+        {
+            if (i == 0)
+            {
+                parameters += variableName
+            }
+            
+            parameters += ((i > 0) ? PARAMETER_DELIMITER_REMOVE : "") + variables[i].stringByReplacingOccurrencesOfString("&", withString: "%26")
         }
         
         return parameters
