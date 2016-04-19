@@ -11,8 +11,10 @@ import Foundation
 
 struct ExerciseDao
 {
-    func parseJson(json: AnyObject?) throws -> [Exercise]
+    func parseJson(json: AnyObject?, searchString: String) throws -> [Exercise]
     {
+        var foundSearchResult = false
+        
         var exercises = [Exercise]()
         
         if let jsonArray = json as? NSArray
@@ -27,15 +29,27 @@ struct ExerciseDao
                 let notes = exercise[Constant.COLUMN_NOTES]
                 
                 let sets = [ Set(webId: Int(Constant.CODE_FAILED),
-                    weight: !(weight is NSNull) ? Float(weight as! String)! : Float(Constant.CODE_FAILED),
-                    reps: !(reps is NSNull) ? Int(reps as! String)! : Int(Constant.CODE_FAILED),
-                    duration: !(duration is NSNull) ? duration as! String : Constant.RETURN_NULL,
-                    difficulty: !(difficulty is NSNull) ? Int(difficulty as! String)! : 10,
-                    notes: !(notes is NSNull) ? notes as! String : "") ]
+                                 weight: !(weight is NSNull) ? Float(weight as! String)! : Float(Constant.CODE_FAILED),
+                                 reps: !(reps is NSNull) ? Int(reps as! String)! : Int(Constant.CODE_FAILED),
+                                 duration: !(duration is NSNull) ? duration as! String : Constant.RETURN_NULL,
+                                 difficulty: !(difficulty is NSNull) ? Int(difficulty as! String)! : 10,
+                                 notes: !(notes is NSNull) ? notes as! String : "") ]
                 
-                let exercise = Exercise(exerciseName: exerciseName, exerciseDescription: "", sets: sets)
+                let exercise = Exercise(exerciseName: exerciseName, exerciseDescription: "", sets: sets, fromIntencity: true)
+                
+                // This determines if what we searched for has been returned from the database.
+                // This is not case sensitive.
+                if (searchString != "" && !foundSearchResult && exerciseName.caseInsensitiveCompare(searchString) == NSComparisonResult.OrderedSame)
+                {
+                    foundSearchResult = true
+                }
                 
                 exercises.append(exercise)
+            }
+            
+            if (!foundSearchResult)
+            {
+                exercises.append(getExercise(searchString))
             }
         }
         else
@@ -44,5 +58,24 @@ struct ExerciseDao
         }
         
         return exercises
+    }
+    
+    /**
+     * Gets an exercise with default values.
+     *
+     * @param exerciseName  The name of teh exercise.
+     *
+     * @return The exercise.
+     */
+    func getExercise(exerciseName: String) -> Exercise
+    {
+        let set = Set(webId: Int(Constant.CODE_FAILED),
+                      weight: Float(Constant.CODE_FAILED),
+                      reps: Int(Constant.CODE_FAILED),
+                      duration: Constant.RETURN_NULL,
+                      difficulty: 10,
+                      notes: "")
+        
+        return Exercise(exerciseName: exerciseName, exerciseDescription: "", sets: [ set ], fromIntencity: false)
     }
 }

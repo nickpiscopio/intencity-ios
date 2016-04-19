@@ -91,7 +91,7 @@ class ExerciseCellController: UITableViewCell
     /**
      * Sets the card as an exercise.
      */
-    func setAsExercise()
+    func setAsExercise(fromIntencity: Bool)
     {
         exerciseDescriptionView.hidden = true
         
@@ -99,7 +99,16 @@ class ExerciseCellController: UITableViewCell
         
         editStackView.hidden = false
         
-        exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
+        if (fromIntencity)
+        {
+            exerciseButton.enabled = true
+            exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
+        }
+        else
+        {
+            exerciseButton.enabled = false
+            exerciseButton.setTitleColor(Color.secondary_dark, forState: UIControlState.Normal)
+        }
     }
     
     /**

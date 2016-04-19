@@ -628,7 +628,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             
             if (displayMuscleGroups.count > 0)
             {
-               animateTable(indexToLoad)
+                animateTable(indexToLoad)
             }
             else
             {
@@ -649,7 +649,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             {
                 do
                 {
-                    exerciseData.exerciseList.appendContentsOf(try ExerciseDao().parseJson(json))
+                    exerciseData.exerciseList.appendContentsOf(try ExerciseDao().parseJson(json, searchString: ""))
                     exerciseData.addStretch()
                 }
                 catch
@@ -1119,6 +1119,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             let description = exercise.exerciseDescription
             let sets = exercise.sets
             let set = sets[sets.count - 1]
+            let exerciseFromIntencity = exercise.fromIntencity
 
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
             cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -1133,7 +1134,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             }
             else
             {
-                cell.setAsExercise()
+                cell.setAsExercise(exerciseFromIntencity)
             }
             
             return cell

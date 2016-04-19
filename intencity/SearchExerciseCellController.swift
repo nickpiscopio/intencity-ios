@@ -15,6 +15,9 @@ class SearchExerciseCellController: UITableViewCell
 
     @IBOutlet weak var resultName: UIButton!
     
+    @IBOutlet weak var descriptionView: UIView!
+    @IBOutlet weak var resultDescription: UILabel!
+    
     @IBOutlet weak var addButton: UIButton!
     
     weak var exerciseSearchDelegate: ExerciseSearchDelegate!
@@ -25,10 +28,11 @@ class SearchExerciseCellController: UITableViewCell
     {
         super.awakeFromNib()
         
-        cellBackgroundView.backgroundColor = Color.white
-        
         resultName.setTitleColor(Color.secondary_dark, forState: .Normal)
         resultName.setTitleColor(Color.secondary_dark, forState: .Highlighted)
+        
+        resultDescription.textColor = Color.card_button_delete_deselect
+        resultDescription.text = NSLocalizedString("search_exercise_not_found", comment: "")
     }
     
     @IBAction func addClicked(sender: AnyObject)
@@ -51,5 +55,20 @@ class SearchExerciseCellController: UITableViewCell
         self.exercise = exercise
             
         resultName.setTitle(exercise.exerciseName, forState: .Normal)
+        
+        if (exercise.fromIntencity)
+        {
+            cellBackgroundView.backgroundColor = Color.white
+            
+            resultName.enabled = true
+            descriptionView.hidden = true
+        }
+        else
+        {
+            cellBackgroundView.backgroundColor = Color.page_background
+            
+            resultName.enabled = false
+            descriptionView.hidden = false
+        }
     }
 }

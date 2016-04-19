@@ -17,14 +17,36 @@
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cNh-Ut-TSv">
                         <rect key="frame" x="8" y="8" width="467" height="52"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Xic-cB-53N" customClass="IntencityButtonNoBackgroundLarge" customModule="Intencity" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rkf-MF-73S">
                                 <rect key="frame" x="0.0" y="0.0" width="411" height="52"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="resultClicked:" destination="khE-xj-Tco" eventType="touchUpInside" id="INB-uf-PX2"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Xic-cB-53N" customClass="IntencityButtonNoBackgroundLarge" customModule="Intencity" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="411" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="resultClicked:" destination="khE-xj-Tco" eventType="touchUpInside" id="INB-uf-PX2"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdJ-gi-yxz">
+                                        <rect key="frame" x="0.0" y="28" width="411" height="24"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0I-wM-cfa">
+                                                <rect key="frame" x="16" y="-8" width="395" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="z0I-wM-cfa" secondAttribute="trailing" id="4ZN-fd-K0j"/>
+                                            <constraint firstAttribute="bottom" secondItem="z0I-wM-cfa" secondAttribute="bottom" constant="16" id="ecj-kk-91H"/>
+                                            <constraint firstItem="z0I-wM-cfa" firstAttribute="top" secondItem="CdJ-gi-yxz" secondAttribute="top" constant="-8" id="feZ-JP-OS7"/>
+                                            <constraint firstItem="z0I-wM-cfa" firstAttribute="leading" secondItem="CdJ-gi-yxz" secondAttribute="leading" constant="16" id="zG7-ud-XgH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GU-YX-uft" customClass="IntencityButtonNoBackgroundLarge" customModule="Intencity" customModuleProvider="target">
                                 <rect key="frame" x="419" y="0.0" width="48" height="52"/>
                                 <constraints>
@@ -59,6 +81,8 @@
             <connections>
                 <outlet property="addButton" destination="4GU-YX-uft" id="glP-yv-AKD"/>
                 <outlet property="cellBackgroundView" destination="m8C-DC-35L" id="9Vl-iW-49M"/>
+                <outlet property="descriptionView" destination="CdJ-gi-yxz" id="bRe-Ck-RBg"/>
+                <outlet property="resultDescription" destination="z0I-wM-cfa" id="z33-fl-3md"/>
                 <outlet property="resultName" destination="Xic-cB-53N" id="tHV-Wc-50C"/>
             </connections>
             <point key="canvasLocation" x="545.5" y="447.5"/>

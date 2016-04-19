@@ -30,4 +30,5 @@ struct ExerciseTable
     static let COLUMN_DURATION = "ExerciseDuration";
     static let COLUMN_DIFFICULTY = "ExerciseDifficulty";
     static let COLUMN_NOTES = "Notes";
+    static let COLUMN_FROM_INTENCITY = "FromIntencity";
 }

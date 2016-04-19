@@ -208,21 +208,29 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         {
             case ServiceEvent.SEARCH_FOR_EXERCISE:
                 
+                let searchString = searchBar.text!
+                
+                let exerciseDao = ExerciseDao()
+                
                 // This means we got results back from the web database.
                 if (result != "" && result != Constant.RETURN_NULL)
                 {
                     do
                     {
-                        exercises = try ExerciseDao().parseJson(json)
+                        exercises = try exerciseDao.parseJson(json, searchString: searchString)
                     }
                     catch
                     {
                         exercises.removeAll()
+                        
+                        exercises.append(exerciseDao.getExercise(searchString))
                     }
                 }
                 else
                 {
                     exercises.removeAll()
+                    
+                    exercises.append(exerciseDao.getExercise(searchString))
                 }
 
                 break
