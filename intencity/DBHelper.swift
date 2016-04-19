@@ -16,6 +16,8 @@ class DBHelper
 {
     let DATABASE_NAME = "intencity.sqlite"
     
+    let DATABASE_VERSION: UInt32 = 1;
+    
     let DB_COMMA_SEP = ","
     
     func openDb() -> FMDatabase
@@ -57,6 +59,35 @@ class DBHelper
         " );"
         
         let database = openDb()
+
+        let version = database.userVersion()
+        if (version < DATABASE_VERSION)
+        {
+            database.setUserVersion(DATABASE_VERSION)
+                
+            updateDB(database)
+        }
+        else
+        {
+            do
+            {
+                try database.executeUpdate(SQL_CREATE_ENTRIES, values: nil)
+            }
+            catch let error as NSError
+            {
+                print("FAILED to created database: \(error.localizedDescription)")
+            }
+            
+            database.close()
+        }
+    }
+    
+    /**
+     * Drops the table so we can recreate it.
+     */
+    func deleteDB(database: FMDatabase)
+    {
+        let SQL_CREATE_ENTRIES = "DROP TABLE IF EXISTS " + ExerciseTable.TABLE_NAME + ";"
         
         do
         {
@@ -64,10 +95,19 @@ class DBHelper
         }
         catch let error as NSError
         {
-            print("FAILED to created database: \(error.localizedDescription)")
-        } 
+            print("FAILED to delete table: \(error.localizedDescription)")
+        }
         
         database.close()
+    }
+    
+    /**
+     * Updates the database with new columns,
+     */
+    func updateDB(database: FMDatabase)
+    {
+        deleteDB(database)
+        createDB()
     }
     
     /**
