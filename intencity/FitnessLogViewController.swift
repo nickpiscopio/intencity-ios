@@ -10,7 +10,7 @@
 import UIKit
 import Social
 
-class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate, ExerciseSearchDelegate, NotificationDelegate
+class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate, ExerciseSearchDelegate, NotificationDelegate, SaveDelegate
 {
     enum ACTIVE_BUTTON_STATE
     {
@@ -68,6 +68,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     var activeButtonState = ACTIVE_BUTTON_STATE.INTENCITY
     
+    var textField: UITextField!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -98,6 +100,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         initRoutineCard()
         
         setMenuButton(Constant.MENU_INITIALIZED)
+        
+        textField = UITextField(frame: CGRectMake(0, 0, 10, 10))
     }
     
     override func viewWillAppear(animated: Bool)
@@ -310,6 +314,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
                 exerciseData.exerciseList[insertIntoWebSetsIndex].sets = sets
 
                 break;
+            case ServiceEvent.SAVE_ROUTINE:
+                
+                hideLoading()
+                
+                // Displays a toast to the user telling them they will see an exercise more or less.
+                self.tabBarController?.view.makeToast(String(format: NSLocalizedString("routine_saved", comment: ""), arguments: [ textField.text! ]))
+                
+                break;
             default:
                 break
         }
@@ -317,14 +329,25 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     func onRetrievalFailed(event: Int)
     {
-        showConnectionIssue()
+        switch (event)
+        {
+            case ServiceEvent.SAVE_ROUTINE:
+                
+                displaySaveAlert(true)
+            
+                break;
+            default:
+                showConnectionIssue()
+                
+                if (state == Constant.ROUTINE_CELL)
+                {
+                    loadTableViewItems(state, result: "")
+                }
+                
+                break
+        }
         
         hideLoading()
-        
-        if (state == Constant.ROUTINE_CELL)
-        {
-           loadTableViewItems(state, result: "")
-        }
     }
     
     func onNotificationAdded()
@@ -576,6 +599,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         {
             totalExercises = totalExerciseCount
         }
+        
+        // The first exercise is the warm-up.
+        // We only want to show the save button if a user has an exercise showing.
+        exerciseListHeader.saveButton.hidden = currentExercises.count < 2
         
         exerciseListHeader.exerciseTotalLabel.text = "\(currentExercises.count) / \(totalExercises)"
     }
@@ -884,6 +911,39 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     }
     
     /**
+     * The callback for when the save button is pressed.
+     */
+    func onSaveRoutine()
+    {
+        displaySaveAlert(false)
+    }
+    
+    func configurationTextField(textField: UITextField!)
+    {
+        self.textField = textField!
+    }
+    
+    func displaySaveAlert(errorOccurred: Bool)
+    {
+        let alert = UIAlertController(title: NSLocalizedString(errorOccurred ? "routine_saved_title_error" : "routine_saved_title", comment: ""), message: NSLocalizedString(errorOccurred ? "routine_saved_description_error" : "routine_saved_description", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addTextFieldWithConfigurationHandler(configurationTextField)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("save", comment: ""), style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+            
+            self.showLoading()
+            
+            _ = ServiceTask(event: ServiceEvent.SAVE_ROUTINE,
+                delegate: self,
+                serviceURL: Constant.SERVICE_SET_ROUTINE,
+                params: Constant.generateRoutineListVariables(self.email, routineName: self.textField.text!, exercises: self.currentExercises))
+        }))
+        
+        self.navigationController!.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    /**
      * Constructs a snippet of the parameter query sent to the service for updating.
      *
      * @param index     The index of the sets we are updating.
@@ -1069,7 +1129,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             exerciseListHeader = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
             exerciseListHeader.routineNameLabel.text = exerciseData.routineName
             exerciseListHeader.navigationController = self.navigationController
-            exerciseListHeader.exerciseSearchDelegate = self
+            exerciseListHeader.saveDelegate = self
             return exerciseListHeader.contentView
         }
     

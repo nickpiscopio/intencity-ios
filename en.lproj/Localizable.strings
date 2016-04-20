@@ -237,6 +237,13 @@
 "create_routine_title" = "Want a custom routine?";
 "create_routine_button" = "CREATE ROUTINE";
 
+"routine_saved_title" = "Save current routine";
+"routine_saved_description" = "Give this routine a name so you can do it again at a later date.";
+"routine_saved_title_error" = "Couldn't save routine";
+"routine_saved_description_error" = "You either entered a routine name you've aready used or there was a problem communicating with Intencity's server. Please try again.";
+"save" = "Save";
+"routine_saved" = "%1$@ was saved.";
+
 /* Exercise List Strings */
 "more_priority_string" = "You will see %1$@ more.";
 "less_priority_string" = "You will see %1$@ less.";

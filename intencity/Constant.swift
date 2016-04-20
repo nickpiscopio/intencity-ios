@@ -119,12 +119,14 @@ struct Constant
     static let SERVICE_COMPLEX_INSERT = SERVICE_FOLDER_MOBILE + "complex_insert.php";
     static let SERVICE_COMPLEX_UPDATE = SERVICE_FOLDER_MOBILE + "complex_update.php";
     static let SERVICE_UPDATE_EQUIPMENT = SERVICE_FOLDER_MOBILE + "update_equipment.php";
+    static let SERVICE_SET_ROUTINE = SERVICE_FOLDER_MOBILE + "set_routine.php";
     static let SERVICE_SET_USER_MUSCLE_GROUP_ROUTINE = SERVICE_FOLDER_MOBILE + "set_user_muscle_group_routine.php";
     static let SERVICE_UPDATE_USER_MUSCLE_GROUP_ROUTINE = SERVICE_FOLDER_MOBILE + "update_user_muscle_group_routine.php";
     static let SERVICE_UPDATE_EXERCISE_PRIORITY = SERVICE_FOLDER_MOBILE + "update_priority.php";
     static let SERVICE_UPLOAD_PROFILE_PIC = SERVICE_FOLDER_MOBILE + "upload_file.php";
     static let SERVICE_CHANGE_PASSWORD = SERVICE_FOLDER_MOBILE + "change_password.php";
     static let SERVICE_FORGOT_PASSWORD = SERVICE_FOLDER + "forgot_password.php";
+    
     static let PARAMETER_AMPERSAND = "&";
     static let PARAMETER_DELIMITER = ",";
     static let PARAMETER_DELIMITER_REMOVE = "|";
@@ -281,6 +283,25 @@ struct Constant
     }
     
     /**
+     * Generates the URL string to add a routine.
+     *
+     * @param email         The user's email.
+     * @param routineName   The name of the routine.
+     * @param exercises     The list exercises to insert.
+     *
+     * @return  The generated URL string.
+     */
+    static func generateRoutineListVariables(email: String, routineName: String, exercises: Array<Exercise>) -> String
+    {
+        let PARAMETER_ROUTINE_NAME = "&routine=";
+        
+        var parameters = PARAMETER_EMAIL + email + PARAMETER_ROUTINE_NAME + routineName
+        parameters += generateExerciseListVariables("&" + PARAMETER_INSERTS, exercises: exercises)
+        
+        return parameters
+    }
+    
+    /**
      * Generates the URL string to update the user's priority list.
      *
      * @param email         The user's email.
@@ -297,6 +318,42 @@ struct Constant
         var parameters = PARAMETER_EMAIL + email
         parameters += generateListVariables(PARAMETER_EXERCISES, variables: exercises)
         parameters += generateListVariables(PARAMETER_PRIORITIES, variables: priorities)
+        
+        return parameters
+    }
+    
+    /**
+     * Generates the URL string for a list of exercises.
+     *
+     * @param variableName  The name of the variable to add to teh URL string.
+     * @param variables     The variables to add to the URL string.
+     *
+     * @return  The generated URL string.
+     */
+    static func generateExerciseListVariables(variableName: String, exercises: Array<Exercise>) -> String
+    {
+        // We want to skip the warm-up, so we are starting at 1.
+        let START_INDEX = 1
+        var parameters = ""
+        
+        let length = exercises.count
+        for i in START_INDEX ..< length
+        {
+            let exercise = exercises[i]
+            
+            if (i == START_INDEX)
+            {
+                parameters += variableName
+            }
+            
+            // This is so we don't add the warm-up and stretch to the database.
+            if(exercise.exerciseDescription != "")
+            {
+                continue
+            }
+            
+            parameters += ((i > START_INDEX) ? PARAMETER_DELIMITER : "") + exercises[i].exerciseName
+        }
         
         return parameters
     }

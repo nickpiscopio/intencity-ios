@@ -9,13 +9,14 @@
 
 import UIKit
 
-class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
+class ExerciseListHeaderController: UITableViewCell
 {
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var exerciseTotalLabel: UILabel!
     @IBOutlet weak var routineNameLabel: UILabel!
+    @IBOutlet weak var saveButton: IntencityButtonNoBackgroundDark!
     
-    weak var exerciseSearchDelegate: ExerciseSearchDelegate!
+    weak var saveDelegate: SaveDelegate!
     
     var navigationController: UINavigationController!
     
@@ -35,14 +36,9 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
         storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
     }
     
-    @IBAction func searchClicked(sender: AnyObject)
+    @IBAction func saveClicked(sender: AnyObject)
     {
-        let viewController = storyboard.instantiateViewControllerWithIdentifier(Constant.SEARCH_VIEW_CONTROLLER) as! SearchViewController
-        viewController.state = ServiceEvent.SEARCH_FOR_EXERCISE
-        viewController.exerciseSearchDelegate = self
-        viewController.currentExercises = currentExercises
-        
-        self.navigationController!.pushViewController(viewController, animated: true)
+        saveDelegate.onSaveRoutine()
     }
     
     @IBAction func infoClicked(sender: AnyObject)
@@ -51,14 +47,4 @@ class ExerciseListHeaderController: UITableViewCell, ExerciseSearchDelegate
         
         self.navigationController!.pushViewController(viewController, animated: true)
     }
-    
-    /**
-     * The callback for when an exercise is added from searching.
-     */
-    func onExerciseAdded(exercise: Exercise)
-    {
-        exerciseSearchDelegate.onExerciseAdded(exercise)
-    }
-    
-    func onExerciseClicked(exerciseName: String) { }
 }
