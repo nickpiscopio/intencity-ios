@@ -10,7 +10,7 @@
 import UIKit
 import Social
 
-class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelegate, ExerciseDelegate, ExerciseSearchDelegate, NotificationDelegate, SaveDelegate
+class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDelegate, ExerciseSearchDelegate, SaveDelegate
 {
     enum ACTIVE_BUTTON_STATE
     {
@@ -20,9 +20,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var connectionView: UIView!
-    @IBOutlet weak var noConnectionLabel: UILabel!
-    @IBOutlet weak var tryAgainButton: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inactiveButton: IntencityButtonRoundLight!
@@ -41,6 +38,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     let EXERCISE_MINIMUM_THRESHOLD = 3
     
+    weak var viewDelegate: ViewDelegate!
+    
     var notificationHandler: NotificationHandler!
     
     var exerciseListHeader: ExerciseListHeaderController!
@@ -49,14 +48,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     var routineCellController: RoutineCellController!
 
     var insertIntoWebSetsIndex: Int!
-    var totalExercises: Int!
+    var totalExercises = 7
     
     var displayMuscleGroups = [String]()
     var recommended = 0
-    var numberOfCells = 0
     
     var email = ""
-    var state = ""
     
     var currentExercises = [Exercise]()
     
@@ -70,6 +67,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     var textField: UITextField!
     
+    var result: String!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -77,12 +76,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         // Sets the background color of this view.
         self.view.backgroundColor = Color.page_background
         
-        // Sets the title for the screen.
-        self.navigationItem.title = NSLocalizedString("app_name", comment: "")
-        
         email = Util.getEmailFromDefaults()
         
-        notificationHandler = NotificationHandler.getInstance(self)
+        notificationHandler = NotificationHandler.getInstance(nil)
         
         initConnectionViews()
         
@@ -90,81 +86,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         Util.initTableView(tableView, footerHeight: Dimention.TABLE_FOOTER_HEIGHT_NORMAL, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: "RoutineCard", cellName: Constant.ROUTINE_CELL)
-        Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CELL_FOOTER, cellName: Constant.ROUTINE_CELL_FOOTER)        
         Util.addUITableViewCell(tableView, nibNamed: "ExerciseCard", cellName: Constant.EXERCISE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.EXERCISE_LIST_HEADER, cellName: Constant.EXERCISE_LIST_HEADER)
         
-        showWelcome()
-        
-        initRoutineCard()
-        
-        setMenuButton(Constant.MENU_INITIALIZED)
-        
         textField = UITextField(frame: CGRectMake(0, 0, 10, 10))
-    }
-    
-    override func viewWillAppear(animated: Bool)
-    {
-        // Shows the tab bar again.
-        self.tabBarController?.tabBar.hidden = false
-    }
-    
-    /**
-     * Sets the menu button animation.
-     */
-    func stopAnimation()
-    {
-        setMenuButton(Constant.MENU_NOTIFICATION_PRESENT)
-    }
-    
-    /**
-     * Sets the menu button.
-     *
-     * @param type  The button type to set.
-     */
-    func setMenuButton(type: Int)
-    {
-        var icon: UIImage!
         
-        switch(type)
-        {
-            case Constant.MENU_INITIALIZED:
-                icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-                break
-            case Constant.MENU_NOTIFICATION_FOUND:
-                
-                let duration = 0.5
-                
-                NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(FitnessLogViewController.stopAnimation), userInfo: nil, repeats: false)
-                
-                icon = UIImage.animatedImageNamed(Constant.MENU_NOTIFICATION_FOUND_IMAGE, duration: duration)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-                
-                break
-            case Constant.MENU_NOTIFICATION_PRESENT:
-                icon = UIImage(named: Constant.MENU_NOTIFICATION_PRESENT_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-                break
-            default:
-                break
-        }
-
-        let iconSize = CGRect(origin: CGPointZero, size: CGSizeMake(Constant.MENU_IMAGE_WIDTH, Constant.MENU_IMAGE_HEIGHT))
-
-        let iconButton = UIButton(frame: iconSize)
-        iconButton.setImage(icon, forState: .Normal)
-        iconButton.addTarget(self, action: #selector(FitnessLogViewController.menuClicked), forControlEvents: .TouchUpInside)
+        exerciseData = ExerciseData.getInstance()
         
-        self.navigationItem.rightBarButtonItem?.customView = iconButton
-    }
-    
-    /**
-     * Opens the menu.
-     */
-    func menuClicked()
-    {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.MENU_VIEW_CONTROLLER) as! MenuViewController
-        
-        self.navigationController!.pushViewController(vc, animated: true)
+        loadTableViewItems(result)
     }
 
     override func didReceiveMemoryWarning()
@@ -177,26 +106,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func initRoutineCard()
     {
-        activeButton.hidden = true
-        inactiveButton.hidden = true
-        
-        showLoading()
-        
-        totalExercises = 7
-        
-        numberOfCells = 0
-        
-        // Creates the instance of the exercise data so we can store the exercises in the database later.
-        ExerciseData.reset()
-        exerciseData = ExerciseData.getInstance()
-        
-        state = Constant.ROUTINE_CELL
-        
-        tableView.reloadData()
-        
-        _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
+        viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "")
     }
     
     /**
@@ -205,17 +115,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     func initConnectionViews()
     {
         loadingView.backgroundColor = Color.page_background
-        connectionView.backgroundColor = Color.page_background
         
         loadingView.hidden = true
-        connectionView.hidden = true
         
         activityIndicator.hidesWhenStopped = true
         activityIndicator.hidden = true
-        
-        noConnectionLabel.textColor = Color.secondary_light
-        noConnectionLabel.text = NSLocalizedString("generic_error", comment: "")
-        tryAgainButton.setTitle(NSLocalizedString("try_again", comment: ""), forState: .Normal)
     }
     
     /**
@@ -238,53 +142,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
         
         activityIndicator.stopAnimating()
     }
-    /**
-     * Shows there was a connection issue.
-     */
-    func showConnectionIssue()
-    {
-        connectionView.hidden = false
-    }
-    
-    /**
-     * Hides the connection issue.
-     */
-    func hideConnectionIssue()
-    {
-        connectionView.hidden = true
-    }
-    
-    @IBAction func tryAgainClick(sender: AnyObject)
-    {
-        initRoutineCard()
-    }
     
     func onRetrievalSuccessful(event: Int, result: String)
     {
         switch (event)
         {
-            case ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS:
-                
-                loadTableViewItems(state, result: result)
-                
-                break
-            case ServiceEvent.SET_CURRENT_MUSCLE_GROUP:
-                
-                showLoading()
-                
-                _ = ServiceTask(event: ServiceEvent.GET_EXERCISES_FOR_TODAY, delegate: self,
-                                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY, variables:  [ email ]))
-                
-                break
-            
-            case ServiceEvent.GET_EXERCISES_FOR_TODAY:
-                    
-                state = Constant.EXERCISE_CELL
-                    
-                loadTableViewItems(state, result: result)
-                
-                break
             case ServiceEvent.INSERT_EXERCISES_TO_WEB_DB:
                 
                 // Remove the first and last character because they are "[" and "]";
@@ -337,43 +199,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             
                 break;
             default:
-                showConnectionIssue()
                 
-                if (state == Constant.ROUTINE_CELL)
-                {
-                    loadTableViewItems(state, result: "")
-                }
+                //SHOW CONNECTION ISSUE
+                viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "")
                 
                 break
         }
         
         hideLoading()
-    }
-    
-    func onNotificationAdded()
-    {
-        setMenuButton(Constant.MENU_NOTIFICATION_FOUND)
-    }
-    
-    func onNotificationsViewed()
-    {
-        setMenuButton(Constant.MENU_INITIALIZED)
-    }
-    
-    /**
-     * Shows the welcome alert to the user if needed.
-     */
-    func showWelcome()
-    {
-        let lastLogin = DEFAULTS.floatForKey(Constant.USER_LAST_LOGIN)
-        
-        if (Util.getEmailFromDefaults() != "" && lastLogin == 0)
-        {
-            Util.displayAlert(self,
-                title: NSLocalizedString("welcome_title", comment: ""),
-                message: NSLocalizedString("welcome_description", comment: ""),
-                actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil) ])
-        }
     }
     
     /**
@@ -609,132 +442,58 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     /**
      * Loads the table views.
-     * 
-     * @param state     The state of the fitness log.
+     *
      * @param result    The results to parse from the webservice.
      */
-    func loadTableViewItems(state: String, result: String)
+    func loadTableViewItems(result: String)
     {
         // This gets saved as NSDictionary, so there is no order
         let json: AnyObject? = result.parseJSONString
         
         var indexToLoad = 1
         
-        if (state == Constant.ROUTINE_CELL)
+        // This means we got the results from the iOS database.
+        if (result == CONTINUE_STRING)
         {
-            displayMuscleGroups.removeAll()
-            
-            var recommended: String?
-            
-            if (json != nil)
-            {
-                for muscleGroups in json as! NSArray
-                {
-                    let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
-                    recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as? String
-                    
-                    displayMuscleGroups.append(muscleGroup)
-                }
+            exerciseData.exerciseList = savedExercises.exercises
                 
-                hideConnectionIssue()
-            }
-            
-            // Get the saved exercises from the local database.
-            savedExercises = DBHelper().getRecords()
-            
-            if (savedExercises.routineName != "")
+            indexToLoad = savedExercises.index
+        }
+        // This means we got results back from the web database.
+        else if (result != "" && result != Constant.RETURN_NULL)
+        {
+            do
             {
-                displayMuscleGroups.append(CONTINUE_STRING)
+                exerciseData.exerciseList.appendContentsOf(try ExerciseDao().parseJson(json, searchString: ""))
+                exerciseData.addStretch()
+            }
+            catch
+            {
+            // SHOW CONNECTION ISSUE
+                viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "")
+            }
+        }
+            
+        if (exerciseData.exerciseList.count >= EXERCISE_MINIMUM_THRESHOLD)
+        {
+            activeButton.hidden = false
+            inactiveButton.hidden = false
                 
-                self.recommended = displayMuscleGroups.count - 1
-            }
-            else if (json != nil)
-            {
-                self.recommended = (recommended == nil || recommended! == "") ? 0 : displayMuscleGroups.indexOf(recommended!)!
-            }
-            
-            if (displayMuscleGroups.count > 0)
-            {
-                animateTable(indexToLoad)
-            }
-            else
-            {
-                initRoutineCard()
-            }
+            animateTable(indexToLoad)
         }
         else
         {
-            // This means we got the results from the iOS database.
-            if (result == CONTINUE_STRING)
-            {
-                exerciseData.exerciseList = savedExercises.exercises
-                
-                indexToLoad = savedExercises.index
-            }
-            // This means we got results back from the web database.
-            else if (result != "" && result != Constant.RETURN_NULL)
-            {
-                do
-                {
-                    exerciseData.exerciseList.appendContentsOf(try ExerciseDao().parseJson(json, searchString: ""))
-                    exerciseData.addStretch()
-                }
-                catch
-                {
-                    showConnectionIssue()
-                }
-                
-            }
-            
-            hideConnectionIssue()
-            
-            if (exerciseData.exerciseList.count >= EXERCISE_MINIMUM_THRESHOLD)
-            {
-                activeButton.hidden = false
-                inactiveButton.hidden = false
-                
-                animateTable(indexToLoad)
-            }
-            else
-            {
-                Util.displayAlert(self,
-                                  title: NSLocalizedString("exercise_generation_error_title", comment: ""),
-                                  message: NSLocalizedString("exercise_generation_error_description", comment: ""),
-                                  actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil),
-                                             UIAlertAction(title: NSLocalizedString("open_menu", comment: ""), style: .Default, handler: openMenu)])
-            }
+                // NO EXERCISES FOUND IN THE DATABASE
+//                Util.displayAlert(self,
+//                                  title: NSLocalizedString("exercise_generation_error_title", comment: ""),
+//                                  message: NSLocalizedString("exercise_generation_error_description", comment: ""),
+//                                  actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil),
+//                                             UIAlertAction(title: NSLocalizedString("open_menu", comment: ""), style: .Default, handler: openMenu)])
         }
         
         hideLoading()
     }
-    
-    /**
-     * The callback for when the user selects to start exercising.
-     */
-    func onStartExercising(routine: Int)
-    {
-        let routineName = displayMuscleGroups[routine - 1]
-        
-        if (routineName == CONTINUE_STRING)
-        {
-            exerciseData.routineName = savedExercises.routineName
-            
-            state = Constant.EXERCISE_CELL
-            
-            loadTableViewItems(state, result: CONTINUE_STRING)
-        }
-        else
-        {
-            exerciseData.routineName = routineName
-            
-            showLoading()
-            
-            _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
-                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(routine) ]))
-        }
-    }
-    
+
     /**
      * The callback for when an exercise is clicked in the exercise list.
      *
@@ -1051,26 +810,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
      */
     func animateTable(indexToLoad: Int)
     {
-        numberOfCells = 1
-        
-        if (state == Constant.ROUTINE_CELL && routineCellController != nil)
-        {
-            tableView.reloadData()
-        }
-        else
-        {
-            let range = NSMakeRange(0, self.tableView.numberOfSections)
-            let sections = NSIndexSet(indexesInRange: range)
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesInRange: range)
             
-            tableView.reloadSections(sections, withRowAnimation: .Top)
-        }
-        
-        if (state == Constant.EXERCISE_CELL)
+        tableView.reloadSections(sections, withRowAnimation: .Top)
+
+        for _ in 0 ..< indexToLoad
         {
-            for _ in 0 ..< indexToLoad
-            {
-                addExercise(true, fromSearch: false)
-            }
+            addExercise(true, fromSearch: false)
         }
     }
     
@@ -1117,88 +864,53 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        
-        // Return the number of rows in the section.
-        return state == Constant.ROUTINE_CELL ? numberOfCells : currentExercises.count
+        return currentExercises.count
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
-        if (state == Constant.EXERCISE_CELL)
+        if (exerciseListHeader == nil)
         {
             exerciseListHeader = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
             exerciseListHeader.routineNameLabel.text = exerciseData.routineName
             exerciseListHeader.navigationController = self.navigationController
             exerciseListHeader.saveDelegate = self
-            return exerciseListHeader.contentView
-        }
-    
-        return nil       
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
-    {
-        if (state == Constant.ROUTINE_CELL)
-        {
-            routineFooter = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL_FOOTER) as! RoutineCellFooterController
-            routineFooter.navigationController = self.navigationController
         }
         
-        return routineFooter != nil ? routineFooter.contentView : nil
+        return exerciseListHeader.contentView
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return state == Constant.EXERCISE_CELL ? 65 : 0
-    }
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
-    {
-        return state == Constant.ROUTINE_CELL ? 65 : 0
+        return 65
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        if (state == Constant.ROUTINE_CELL)
+        let index = indexPath.item
+        let exercise = exerciseData.exerciseList[index]
+        let description = exercise.exerciseDescription
+        let sets = exercise.sets
+        let set = sets[sets.count - 1]
+        let exerciseFromIntencity = exercise.fromIntencity
+
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.delegate = self
+        cell.tableView = tableView
+        cell.exerciseButton.setTitle(exercise.exerciseName, forState: .Normal)
+        cell.setEditText(set)
+            
+        if (!description.isEmpty)
         {
-            routineCellController = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
-            routineCellController.selectionStyle = UITableViewCellSelectionStyle.None
-            routineCellController.delegate = self
-            routineCellController.dataSource = displayMuscleGroups
-            // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
-            // CompletedMuscleGroup starts at 1.
-            routineCellController.selectedRoutineNumber = recommended + 1
-            routineCellController.setDropDownDataSource(recommended)
-            routineCellController.setDropDownWidth(displayMuscleGroups.contains(CONTINUE_STRING))
-            return routineCellController
+            cell.setDescription(description)
         }
         else
         {
-            let index = indexPath.item
-            let exercise = exerciseData.exerciseList[index]
-            let description = exercise.exerciseDescription
-            let sets = exercise.sets
-            let set = sets[sets.count - 1]
-            let exerciseFromIntencity = exercise.fromIntencity
-
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.delegate = self
-            cell.tableView = tableView
-            cell.exerciseButton.setTitle(exercise.exerciseName, forState: .Normal)
-            cell.setEditText(set)
-            
-            if (!description.isEmpty)
-            {
-                cell.setDescription(description)
-            }
-            else
-            {
-                cell.setAsExercise(exerciseFromIntencity)
-            }
-            
-            return cell
+            cell.setAsExercise(exerciseFromIntencity)
         }
+            
+        return cell
     }
     
     /**
@@ -1350,13 +1062,5 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, RoutineDelega
             
             self.presentViewController(alert, animated: true, completion: nil)
         }
-    }
-    
-    /**
-     * The alert method to open the menu.
-     */
-    func openMenu(alertAction: UIAlertAction!) -> Void
-    {
-        menuClicked()
     }
 }

@@ -41,6 +41,8 @@ struct Constant
     static let FITNESS_RECOMMENDATION_HEADER_CELL = "FitnessRecHeaderCell"
     static let FITNESS_RECOMMENDATION_FOOTER_CELL = "FitnessRecFooterCell"
     
+    static let ROUTINE_VIEW_CONTROLLER = "RoutineViewController"
+    static let FITNESS_LOG_VIEW_CONTROLLER = "FitnessLogViewController"
     static let PROFILE_VIEW_CONTROLLER = "ProfileViewController"
     static let MENU_VIEW_CONTROLLER = "MenuViewController"
     static let EXERCISE_SEARCH_VIEW_CONTROLLER = "ExerciseSearchViewController"
