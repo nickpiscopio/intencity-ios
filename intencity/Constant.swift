@@ -20,7 +20,6 @@ struct Constant
     static let LOGIN_NAV_CONTROLLER = "LoginNavController"
     
     static let EXERCISE_LIST_HEADER = "ExerciseListHeader"
-    static let ROUTINE_CELL = "RoutineCell"
     static let ROUTINE_CELL_FOOTER = "RoutineCellFooter"
     static let EXERCISE_CELL = "ExerciseCell"
     static let DIRECTION_CELL = "DirectionCell"

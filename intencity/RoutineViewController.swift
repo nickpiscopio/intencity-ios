@@ -18,6 +18,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
     @IBOutlet weak var noConnectionLabel: UILabel!
     @IBOutlet weak var tryAgainButton: UIButton!
     
+    @IBOutlet weak var routineTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
@@ -64,6 +65,9 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
         showWelcome()
         
         email = Util.getEmailFromDefaults()
+        
+        routineTitle.text = NSLocalizedString("title_routine", comment: "")
+        routineTitle.textColor = Color.secondary_light
         
         initRoutineCard()
     }

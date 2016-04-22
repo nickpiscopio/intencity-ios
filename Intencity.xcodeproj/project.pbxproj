@@ -88,7 +88,6 @@
 		BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A031C6CF252003F3767 /* IntencityError.swift */; };
 		BD947A061C6D3F30003F3767 /* Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A051C6D3F30003F3767 /* Integer.swift */; };
 		BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A091C6D4B90003F3767 /* ServiceEvent.swift */; };
-		BD947A361C6F6E5F003F3767 /* RoutineCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD947A351C6F6E5F003F3767 /* RoutineCard.xib */; };
 		BD947A381C6F6F50003F3767 /* RoutineCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A371C6F6F50003F3767 /* RoutineCellController.swift */; };
 		BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2491C68F48E00E520CB /* LoginViewController.swift */; };
 		BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */; };
@@ -245,7 +244,6 @@
 		BD947A031C6CF252003F3767 /* IntencityError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityError.swift; sourceTree = "<group>"; };
 		BD947A051C6D3F30003F3767 /* Integer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integer.swift; sourceTree = "<group>"; };
 		BD947A091C6D4B90003F3767 /* ServiceEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceEvent.swift; path = ../ServiceEvent.swift; sourceTree = "<group>"; };
-		BD947A351C6F6E5F003F3767 /* RoutineCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutineCard.xib; sourceTree = "<group>"; };
 		BD947A371C6F6F50003F3767 /* RoutineCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCellController.swift; sourceTree = "<group>"; };
 		BD9EF2491C68F48E00E520CB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoContentViewController.swift; sourceTree = "<group>"; };
@@ -624,7 +622,6 @@
 				BDD53BF31C8A2B13001235AE /* FitnessRecommendationCell.xib */,
 				BDD53BFB1C8A336D001235AE /* FitnessRecFooterCell.xib */,
 				BDD53BFD1C8A3439001235AE /* FitnessRecHeaderCell.xib */,
-				BD947A351C6F6E5F003F3767 /* RoutineCard.xib */,
 				BD294ACC1CC13679005718BA /* RoutineCellFooter.xib */,
 				BD36EC281C71048600F993CE /* ExerciseCard.xib */,
 				BD1F30E41CAAC69600002D06 /* AwardCell.xib */,
@@ -726,7 +723,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD947A361C6F6E5F003F3767 /* RoutineCard.xib in Resources */,
 				BD36EC291C71048600F993CE /* ExerciseCard.xib in Resources */,
 				BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */,
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
