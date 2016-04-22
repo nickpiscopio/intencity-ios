@@ -231,6 +231,12 @@
 
 /* Routine Strings */
 "title_routine" = "What routine would you like to do?";
+"title_default_routines" = "Default Routines";
+"title_custom_routines" = "Custom Routines";
+"title_saved_routines" = "Saved Routines";
+"key_user_selected" = "Users can add their own inputed exercises.";
+"key_random" = "Intencity's algorithm selects exercises.";
+"key_consecutive" = "Consecutive list of exercises.";
 
 /*  */
 "routine_continue" = "Continue where I left off";

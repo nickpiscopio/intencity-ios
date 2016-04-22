@@ -46,7 +46,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="pJU-af-MoM">
-                        <barButtonItem key="rightBarButtonItem" image="C955B6FC-FFDB-448E-B94B-13238D65F8E4" id="6UB-wh-LYy">
+                        <barButtonItem key="rightBarButtonItem" image="619CB493-91D8-49DB-B22F-46693C4B83A3" id="6UB-wh-LYy">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="Kz2-vl-MdR"/>
                             </connections>
@@ -74,16 +74,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AL7-lW-nuE">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL7-lW-nuE">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AL7-lW-nuE" firstAttribute="leading" secondItem="RJ7-f0-HWZ" secondAttribute="leading" id="92G-n3-nCD"/>
-                            <constraint firstItem="OCU-Az-Ge9" firstAttribute="top" secondItem="AL7-lW-nuE" secondAttribute="bottom" id="LNz-Ls-FAt"/>
-                            <constraint firstAttribute="trailing" secondItem="AL7-lW-nuE" secondAttribute="trailing" id="Yj7-Ao-KAM"/>
-                            <constraint firstItem="AL7-lW-nuE" firstAttribute="top" secondItem="njN-Tr-UPY" secondAttribute="bottom" id="wQp-Eb-Y1I"/>
+                            <constraint firstItem="AL7-lW-nuE" firstAttribute="top" secondItem="RJ7-f0-HWZ" secondAttribute="top" id="EcV-np-9Dg"/>
+                            <constraint firstAttribute="trailing" secondItem="AL7-lW-nuE" secondAttribute="trailing" id="Xy8-R6-Tcp"/>
+                            <constraint firstItem="AL7-lW-nuE" firstAttribute="leading" secondItem="RJ7-f0-HWZ" secondAttribute="leading" id="Y6u-eI-wsv"/>
+                            <constraint firstAttribute="bottom" secondItem="AL7-lW-nuE" secondAttribute="bottom" id="wep-Ff-kJ3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="awX-F7-zjV">
@@ -1784,7 +1784,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="C955B6FC-FFDB-448E-B94B-13238D65F8E4" width="82" height="69">
+        <image name="619CB493-91D8-49DB-B22F-46693C4B83A3" width="82" height="69">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -2225,6 +2225,6 @@ Yn1ihWKIYo1ilWKYYqpirWKyAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAYrQ
         <image name="tab_icon_ranking" width="23" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kz2-vl-MdR"/>
+        <segue reference="QGZ-TS-MR4"/>
     </inferredMetricsTieBreakers>
 </document>

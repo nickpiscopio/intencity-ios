@@ -16,7 +16,7 @@
 		BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */; };
 		BD0CD7081CA08223004FF750 /* ExercisePriorityCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */; };
 		BD10539B1C6CD071004C10C7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10539A1C6CD071004C10C7 /* Key.swift */; };
-		BD1F30E11CA9BA9500002D06 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1F30E01CA9BA9500002D06 /* ProfileSection.swift */; };
+		BD1F30E11CA9BA9500002D06 /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1F30E01CA9BA9500002D06 /* MenuSection.swift */; };
 		BD1F30E31CA9BBAA00002D06 /* ProfileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1F30E21CA9BBAA00002D06 /* ProfileRow.swift */; };
 		BD1F30E51CAAC69600002D06 /* AwardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1F30E41CAAC69600002D06 /* AwardCell.xib */; };
 		BD1F30E71CAACA0300002D06 /* AwardCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1F30E61CAACA0300002D06 /* AwardCellController.swift */; };
@@ -49,6 +49,8 @@
 		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
 		BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F41C68D34400F60ADC /* Assets.xcassets */; };
 		BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460FF1C68D53200F60ADC /* PageViewController.swift */; };
+		BD57556D1CCA68A200F8B14B /* RoutineHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD57556C1CCA68A200F8B14B /* RoutineHeaderCell.xib */; };
+		BD57556F1CCA68CD00F8B14B /* RoutineHeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD57556E1CCA68CD00F8B14B /* RoutineHeaderCellController.swift */; };
 		BD58AB2B1CC8F4A5006D7EF4 /* ViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2A1CC8F4A5006D7EF4 /* ViewDelegate.swift */; };
 		BD58AB2D1CC8F70A006D7EF4 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2C1CC8F70A006D7EF4 /* View.swift */; };
 		BD58AB2F1CC8FE03006D7EF4 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2E1CC8FE03006D7EF4 /* RoutineViewController.swift */; };
@@ -109,6 +111,9 @@
 		BD9EF2C81C6BF4CC00E520CB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C71C6BF4CC00E520CB /* MainViewController.swift */; };
 		BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */; };
 		BDAEA25B1C971DFB005663F3 /* IntencityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAEA25A1C971DFB005663F3 /* IntencityCardView.swift */; };
+		BDB37F9D1CCA719700470479 /* RoutineHeaderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB37F9C1CCA719700470479 /* RoutineHeaderRow.swift */; };
+		BDB37F9F1CCA71D400470479 /* RoutineSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB37F9E1CCA71D400470479 /* RoutineSection.swift */; };
+		BDB37FA11CCA73C100470479 /* RoutineKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB37FA01CCA73C100470479 /* RoutineKeys.swift */; };
 		BDB45A1A1C849AAF009E509B /* SearchExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB45A191C849AAF009E509B /* SearchExerciseCell.xib */; };
 		BDB45A1C1C849B42009E509B /* SearchExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB45A1B1C849B42009E509B /* SearchExerciseCellController.swift */; };
 		BDB45A1E1C849F52009E509B /* ExerciseDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB45A1D1C849F52009E509B /* ExerciseDao.swift */; };
@@ -135,7 +140,7 @@
 		BDDAD8F31CC29E4D00C07DB2 /* AddRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDAD8F21CC29E4D00C07DB2 /* AddRoutineViewController.swift */; };
 		BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F01C7A0445005817D0 /* ExerciseData.swift */; };
 		BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */; };
-		BDE493F71C7B961D005817D0 /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F61C7B961D005817D0 /* MenuSection.swift */; };
+		BDE493F71C7B961D005817D0 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F61C7B961D005817D0 /* ProfileSection.swift */; };
 		BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE493F81C7B9A26005817D0 /* GenericCell.xib */; };
 		BDE493FB1C7B9A58005817D0 /* CheckboxCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493FA1C7B9A58005817D0 /* CheckboxCellController.swift */; };
 		BDE493FD1C7B9B45005817D0 /* GenericHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE493FC1C7B9B45005817D0 /* GenericHeaderCell.xib */; };
@@ -165,7 +170,7 @@
 		BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExercisePriorityCell.xib; sourceTree = "<group>"; };
 		BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePriorityCellController.swift; sourceTree = "<group>"; };
 		BD10539A1C6CD071004C10C7 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
-		BD1F30E01CA9BA9500002D06 /* ProfileSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = SOURCE_ROOT; };
+		BD1F30E01CA9BA9500002D06 /* MenuSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = SOURCE_ROOT; };
 		BD1F30E21CA9BBAA00002D06 /* ProfileRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRow.swift; sourceTree = "<group>"; };
 		BD1F30E41CAAC69600002D06 /* AwardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardCell.xib; sourceTree = "<group>"; };
 		BD1F30E61CAACA0300002D06 /* AwardCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardCellController.swift; sourceTree = "<group>"; };
@@ -200,6 +205,8 @@
 		BD5460F41C68D34400F60ADC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5460F91C68D34400F60ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD5460FF1C68D53200F60ADC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		BD57556C1CCA68A200F8B14B /* RoutineHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutineHeaderCell.xib; sourceTree = "<group>"; };
+		BD57556E1CCA68CD00F8B14B /* RoutineHeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineHeaderCellController.swift; sourceTree = "<group>"; };
 		BD58AB2A1CC8F4A5006D7EF4 /* ViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDelegate.swift; sourceTree = "<group>"; };
 		BD58AB2C1CC8F70A006D7EF4 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BD58AB2E1CC8FE03006D7EF4 /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +267,9 @@
 		BD9EF2C71C6BF4CC00E520CB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		BDAEA25A1C971DFB005663F3 /* IntencityCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardView.swift; sourceTree = "<group>"; };
+		BDB37F9C1CCA719700470479 /* RoutineHeaderRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineHeaderRow.swift; sourceTree = SOURCE_ROOT; };
+		BDB37F9E1CCA71D400470479 /* RoutineSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineSection.swift; sourceTree = SOURCE_ROOT; };
+		BDB37FA01CCA73C100470479 /* RoutineKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineKeys.swift; sourceTree = "<group>"; };
 		BDB45A191C849AAF009E509B /* SearchExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchExerciseCell.xib; sourceTree = "<group>"; };
 		BDB45A1B1C849B42009E509B /* SearchExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchExerciseCellController.swift; sourceTree = "<group>"; };
 		BDB45A1D1C849F52009E509B /* ExerciseDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDao.swift; sourceTree = "<group>"; };
@@ -286,7 +296,7 @@
 		BDDAD8F21CC29E4D00C07DB2 /* AddRoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoutineViewController.swift; sourceTree = "<group>"; };
 		BDE493F01C7A0445005817D0 /* ExerciseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
 		BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+firstResponder.swift"; sourceTree = "<group>"; };
-		BDE493F61C7B961D005817D0 /* MenuSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = SOURCE_ROOT; };
+		BDE493F61C7B961D005817D0 /* ProfileSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = SOURCE_ROOT; };
 		BDE493F81C7B9A26005817D0 /* GenericCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericCell.xib; sourceTree = "<group>"; };
 		BDE493FA1C7B9A58005817D0 /* CheckboxCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxCellController.swift; sourceTree = "<group>"; };
 		BDE493FC1C7B9B45005817D0 /* GenericHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericHeaderCell.xib; sourceTree = "<group>"; };
@@ -331,6 +341,7 @@
 			children = (
 				BD1053971C6CC989004C10C7 /* Extensions */,
 				BD947A031C6CF252003F3767 /* IntencityError.swift */,
+				BDB37FA01CCA73C100470479 /* RoutineKeys.swift */,
 				BD294ACA1CBE7C3B005718BA /* ExercisePriorityUtil.swift */,
 				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
 				BD8811011C92FF3A0098FA64 /* Badge.swift */,
@@ -374,6 +385,7 @@
 				BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */,
 				BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */,
 				BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */,
+				BD57556E1CCA68CD00F8B14B /* RoutineHeaderCellController.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -417,11 +429,13 @@
 			isa = PBXGroup;
 			children = (
 				BD947A091C6D4B90003F3767 /* ServiceEvent.swift */,
-				BDE493F61C7B961D005817D0 /* MenuSection.swift */,
-				BD1F30E01CA9BA9500002D06 /* ProfileSection.swift */,
+				BDE493F61C7B961D005817D0 /* ProfileSection.swift */,
+				BD1F30E01CA9BA9500002D06 /* MenuSection.swift */,
+				BDB37F9E1CCA71D400470479 /* RoutineSection.swift */,
 				BDD53BF51C8A2D3F001235AE /* FitnessRecommendationRow.swift */,
 				BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */,
 				BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */,
+				BDB37F9C1CCA719700470479 /* RoutineHeaderRow.swift */,
 				BD1F30E21CA9BBAA00002D06 /* ProfileRow.swift */,
 				BD53AED51CAAD02B00077B0D /* AwardRow.swift */,
 				BD9EF2561C692A6900E520CB /* DemoView.swift */,
@@ -622,6 +636,7 @@
 				BD36EC321C720C6B00F993CE /* Direction.xib */,
 				BDE493F81C7B9A26005817D0 /* GenericCell.xib */,
 				BDE493FC1C7B9B45005817D0 /* GenericHeaderCell.xib */,
+				BD57556C1CCA68A200F8B14B /* RoutineHeaderCell.xib */,
 				BD03C7B21C76082B00D8911A /* Set.xib */,
 			);
 			name = Cells;
@@ -737,6 +752,7 @@
 				BD4B8EBB1C7CEB1D00AD579B /* DescriptionFooterCell.xib in Resources */,
 				BDD89BF91C906C4D00530D79 /* NotificationCell.xib in Resources */,
 				BDD53BF41C8A2B13001235AE /* FitnessRecommendationCell.xib in Resources */,
+				BD57556D1CCA68A200F8B14B /* RoutineHeaderCell.xib in Resources */,
 				BD5C6AF71C88B97700A9ED0A /* CheckboxCell.xib in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
 			);
@@ -812,6 +828,7 @@
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
 				BDD53BF81C8A32A7001235AE /* FitnessRecHeaderCellController.swift in Sources */,
 				BDFD878B1CA9AB5200ECDDCE /* ProfileViewController.swift in Sources */,
+				BDB37F9D1CCA719700470479 /* RoutineHeaderRow.swift in Sources */,
 				BD294AC71CAEB579005718BA /* RetrieveImageTask.swift in Sources */,
 				BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */,
 				BD6591591CA9B20800D892C3 /* ProfileLabel.swift in Sources */,
@@ -839,11 +856,12 @@
 				BD58AB2F1CC8FE03006D7EF4 /* RoutineViewController.swift in Sources */,
 				BDAEA25B1C971DFB005663F3 /* IntencityCardView.swift in Sources */,
 				BD947A021C6CED31003F3767 /* LoginNavController.swift in Sources */,
-				BDE493F71C7B961D005817D0 /* MenuSection.swift in Sources */,
+				BDE493F71C7B961D005817D0 /* ProfileSection.swift in Sources */,
 				BD7C7E891C7CA0E9005AFFDD /* DeleteAccountViewController.swift in Sources */,
 				BD58AB2B1CC8F4A5006D7EF4 /* ViewDelegate.swift in Sources */,
 				BD58AB2D1CC8F70A006D7EF4 /* View.swift in Sources */,
 				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
+				BDB37FA11CCA73C100470479 /* RoutineKeys.swift in Sources */,
 				BDD89BFB1C906D9F00530D79 /* NotificationCellViewController.swift in Sources */,
 				BD6E4B061C84B2AC00C4E6FB /* UserSearchDelegate.swift in Sources */,
 				BD36EC2F1C72068900F993CE /* ExerciseDelegate.swift in Sources */,
@@ -883,7 +901,7 @@
 				BDE8BED61C77700900DBFB31 /* ExerciseListHeaderController.swift in Sources */,
 				BDFE97161C68E6FC00C2AEA3 /* FitnessLogViewController.swift in Sources */,
 				BDF44A331C79F46D00B47CD1 /* DBHelper.swift in Sources */,
-				BD1F30E11CA9BA9500002D06 /* ProfileSection.swift in Sources */,
+				BD1F30E11CA9BA9500002D06 /* MenuSection.swift in Sources */,
 				BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */,
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
@@ -892,6 +910,7 @@
 				BD5C6AF91C88BB6500A9ED0A /* GenericCellController.swift in Sources */,
 				BDBA605D1C85D61D002D5F4A /* UserDao.swift in Sources */,
 				BDD89BF71C9066F300530D79 /* NotificationDelegate.swift in Sources */,
+				BDB37F9F1CCA71D400470479 /* RoutineSection.swift in Sources */,
 				BDD89BF51C9065EB00530D79 /* Awards.swift in Sources */,
 				BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */,
 				BDDAD8F31CC29E4D00C07DB2 /* AddRoutineViewController.swift in Sources */,
@@ -902,6 +921,7 @@
 				BD93252F1CC7D18400D9581E /* SaveDelegate.swift in Sources */,
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
 				BDD53BFA1C8A333D001235AE /* FitnessRecFooterCellController.swift in Sources */,
+				BD57556F1CCA68CD00F8B14B /* RoutineHeaderCellController.swift in Sources */,
 				BDB45A1C1C849B42009E509B /* SearchExerciseCellController.swift in Sources */,
 				BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */,
 				BD294ACB1CBE7C3B005718BA /* ExercisePriorityUtil.swift in Sources */,

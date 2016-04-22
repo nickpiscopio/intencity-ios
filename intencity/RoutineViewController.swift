@@ -21,6 +21,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
     @IBOutlet weak var tableView: UITableView!
     
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
+    let DEFAULT_ROUTINE_TITLE = NSLocalizedString("title_default_routines", comment: "")
 
     let DEFAULTS = NSUserDefaults.standardUserDefaults()
     
@@ -31,14 +32,15 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
     var routineCellController: RoutineCellController!
     
     var email = ""
-    
-    var displayMuscleGroups = [String]()
+
     var recommended = 0
     var numberOfCells = 0
     
     var savedExercises: SavedExercise!
     
     var exerciseData: ExerciseData!
+    
+    var routines = [RoutineSection]()
     
     override func viewDidLoad()
     {
@@ -52,10 +54,11 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
         initConnectionViews()
         
         // Initialize the tableview.
-        Util.initTableView(tableView, footerHeight: Dimention.TABLE_FOOTER_HEIGHT_NORMAL, emptyTableStringRes: "")
+        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: "RoutineCard", cellName: Constant.ROUTINE_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_HEADER_CELL, cellName: Constant.ROUTINE_HEADER_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_CELL, cellName: Constant.GENERIC_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CELL_FOOTER, cellName: Constant.ROUTINE_CELL_FOOTER)
         
         showWelcome()
@@ -75,14 +78,17 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
      */
     func initRoutineCard()
     {        
-        showLoading()
+        routines.append(RoutineSection(title: RoutineHeaderRow(title: NSLocalizedString("title_custom_routines", comment: ""), titleKeys: [ RoutineKeys.RANDOM, RoutineKeys.USER_SELECTED ], includeAssociatedButton: true), rows: []))
+        routines.append(RoutineSection(title: RoutineHeaderRow(title: NSLocalizedString("title_saved_routines", comment: ""), titleKeys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], includeAssociatedButton: true), rows: []))
         
+        showLoading()
+//
         // Creates the instance of the exercise data so we can store the exercises in the database later.
         ExerciseData.reset()
         exerciseData = ExerciseData.getInstance()
-        
-        tableView.reloadData()
-        
+//        
+//        tableView.reloadData()
+//
         _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
@@ -168,8 +174,6 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
                 break
             
             case ServiceEvent.GET_EXERCISES_FOR_TODAY:
-                    
-//                loadTableViewItems(result)
                 
                 // LOAD FITNESS LOG                
                 viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: result)
@@ -216,9 +220,12 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
         let json: AnyObject? = result.parseJSONString
         
         let indexToLoad = 1
+        
+        var defaultRoutineRows = [String]()
+        defaultRoutineRows.removeAll()
 
-        displayMuscleGroups.removeAll()
-            
+//        displayMuscleGroups.removeAll()
+        
         var recommended: String?
             
         if (json != nil)
@@ -227,10 +234,12 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
             {
                 let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
                 recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as? String
-                    
-                displayMuscleGroups.append(muscleGroup)
-            }
                 
+                defaultRoutineRows.append(muscleGroup)
+//                    
+//                displayMuscleGroups.append(muscleGroup)
+            }
+            
             hideConnectionIssue()
         }
             
@@ -239,24 +248,29 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
             
         if (savedExercises.routineName != "")
         {
-            displayMuscleGroups.append(CONTINUE_STRING)
-                
-            self.recommended = displayMuscleGroups.count - 1
+            defaultRoutineRows.append(CONTINUE_STRING)
+//            displayMuscleGroups.append(CONTINUE_STRING)
+            
+            self.recommended = defaultRoutineRows.count - 1
         }
         else if (json != nil)
         {
-            self.recommended = (recommended == nil || recommended! == "") ? 0 : displayMuscleGroups.indexOf(recommended!)!
+//            self.recommended = (recommended == nil || recommended! == "") ? 0 : defaultRoutineRows[recommended]!
         }
             
-        if (displayMuscleGroups.count > 0)
+        if (defaultRoutineRows.count > 0)
         {
-            animateTable(indexToLoad)
+            routines.append(RoutineSection(title: RoutineHeaderRow(title: DEFAULT_ROUTINE_TITLE, titleKeys: [ RoutineKeys.RANDOM, RoutineKeys.USER_SELECTED ], includeAssociatedButton: false), rows: defaultRoutineRows))
+//            animateTable(indexToLoad)
+            tableView.reloadData()
         }
         else
         {
             initRoutineCard()
         }
-            
+        
+//        tableView.reloadData()
+        
         hideLoading()
     }
     
@@ -265,25 +279,25 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
      */
     func onStartExercising(routine: Int)
     {
-        let routineName = displayMuscleGroups[routine - 1]
-        
-        if (routineName == CONTINUE_STRING)
-        {
-            exerciseData.routineName = savedExercises.routineName
-            
-            // LOAD FITNESS LOG
-            viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result:CONTINUE_STRING)
-        }
-        else
-        {
-            exerciseData.routineName = routineName
-            
-            showLoading()
-            
-            _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
-                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(routine) ]))
-        }
+//        let routineName = displayMuscleGroups[routine - 1]
+//        
+//        if (routineName == CONTINUE_STRING)
+//        {
+//            exerciseData.routineName = savedExercises.routineName
+//            
+//            // LOAD FITNESS LOG
+//            viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result:CONTINUE_STRING)
+//        }
+//        else
+//        {
+//            exerciseData.routineName = routineName
+//            
+//            showLoading()
+//            
+//            _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
+//                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+//                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(routine) ]))
+//        }
     }
     
     
@@ -295,7 +309,6 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
     func animateTable(indexToLoad: Int)
     {
         numberOfCells = 1
-        
         let range = NSMakeRange(0, self.tableView.numberOfSections)
         let sections = NSIndexSet(indexesInRange: range)
             
@@ -305,55 +318,101 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 1
+        return routines.count
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return numberOfCells
+        return routines[section].rows.count
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
-//        let exerciseListHeader = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
-//        exerciseListHeader.routineNameLabel.text = exerciseData.routineName
-//        exerciseListHeader.navigationController = self.navigationController
-//        exerciseListHeader.saveDelegate = self
-//        return exerciseListHeader.contentView
-    
-        return nil       
+        let title = routines[section].title
+        let titleKeysCount = title.titleKeys.count
+
+        let headerCell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_HEADER_CELL) as! RoutineHeaderCellController
+        headerCell.title.text = title.title
+        headerCell.navigationController = self.navigationController
+        headerCell.setClickEnabled(title.includeAssociatedButton)
+        
+        for i in 0..<titleKeysCount
+        {
+            switch title.titleKeys[i]
+            {
+                case RoutineKeys.RANDOM:
+                    headerCell.randomInputIndicator.hidden = false
+                    break
+                case RoutineKeys.USER_SELECTED:
+                    headerCell.userInputIndicator.hidden = false
+                    break
+                case RoutineKeys.CONSECUTIVE:
+                    headerCell.constantInputIndicator.hidden = false
+                    break
+                default:
+                    break
+            }
+        }
+        
+        return headerCell
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
     {
-//        let routineFooter = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL_FOOTER) as! RoutineCellFooterController
-//        routineFooter.navigationController = self.navigationController
-//        
-//        return routineFooter != nil ? routineFooter.contentView : nil
+        if (section == routines.count - 1)
+        {
+            routineFooter = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL_FOOTER) as! RoutineCellFooterController
+            
+            return routineFooter != nil ? routineFooter.contentView : nil
+        }
+        
         return nil
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return 0
+        return Constant.GENERIC_HEADER_HEIGHT
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
     {
-        return 65
+        if (section == routines.count - 1)
+        {
+            return routineFooter != nil ? routineFooter.view.frame.height : 100
+        }
+        
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let routineCellController = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
-        routineCellController.selectionStyle = UITableViewCellSelectionStyle.None
-        routineCellController.delegate = self
-        routineCellController.dataSource = displayMuscleGroups
-        // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
-        // CompletedMuscleGroup starts at 1.
-        routineCellController.selectedRoutineNumber = recommended + 1
-        routineCellController.setDropDownDataSource(recommended)
-        routineCellController.setDropDownWidth(displayMuscleGroups.contains(CONTINUE_STRING))
-        return routineCellController
+        // Gets the row in the section.
+        let row = routines[indexPath.section].rows[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_CELL) as! GenericCellController
+        cell.title.text = row
+        
+        return cell
+        
+//        let routineCellController = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
+//        routineCellController.selectionStyle = UITableViewCellSelectionStyle.None
+//        routineCellController.delegate = self
+//        routineCellController.dataSource = displayMuscleGroups
+//        // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
+//        // CompletedMuscleGroup starts at 1.
+//        routineCellController.selectedRoutineNumber = recommended + 1
+//        routineCellController.setDropDownDataSource(recommended)
+//        routineCellController.setDropDownWidth(displayMuscleGroups.contains(CONTINUE_STRING))
+//        return routineCellController
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        // Deselects the row.
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        // Gets the row in the section.
+        let row = routines[indexPath.section].rows[indexPath.row]
     }
 }

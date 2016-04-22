@@ -1,14 +1,14 @@
 //
-//  MenuSection.swift
+//  ProfileSection.swift
 //  Intencity
 //
-//  The struct for each section in the menu.
+//  The struct for each section in the profile screen.
 //
-//  Created by Nick Piscopio on 2/22/16.
+//  Created by Nick Piscopio on 2/28/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
-struct MenuSection
+struct ProfileSection
 {
     var title: String
-    var rows: [MenuRow]
+    var rows: [ProfileRow]
 }

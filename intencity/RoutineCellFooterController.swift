@@ -2,7 +2,7 @@
 //  RoutineCellFooterController.swift
 //  Intencity
 //
-//  The controller for the exercise list header.
+//  The controller for the routine list footer.
 //
 //  Created by Nick Piscopio on 4/15/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
@@ -12,30 +12,32 @@ import UIKit
 class RoutineCellFooterController: UITableViewCell
 {
     @IBOutlet weak var view: UIView!
-    @IBOutlet weak var createRoutineTitle: UILabel!
-    @IBOutlet weak var createRoutineButton: UIButton!
+    @IBOutlet weak var userInputStackView: UIStackView!
+    @IBOutlet weak var randomInputStackView: UIStackView!
+    @IBOutlet weak var consecutiveInputStackView: UIStackView!
     
-    var navigationController: UINavigationController!
-    
-    var storyboard: UIStoryboard!
-    
+    @IBOutlet weak var userInputIndicator: IntencityCircleView!
+    @IBOutlet weak var userInputLabel: UILabel!
+    @IBOutlet weak var randomInputIndicator: IntencityCircleView!
+    @IBOutlet weak var randomInputLabel: UILabel!
+    @IBOutlet weak var consecutiveInputIndicator: IntencityCircleView!
+    @IBOutlet weak var consecutiveLabel: UILabel!
     override func awakeFromNib()
     {
         super.awakeFromNib()
         
         view.backgroundColor = Color.page_background
-        createRoutineTitle.textColor = Color.secondary_light
-        createRoutineTitle.text = NSLocalizedString("create_routine_title", comment: "")
         
-        createRoutineButton.setTitle(NSLocalizedString("create_routine_button", comment: ""), forState: .Normal)
+        userInputIndicator.backgroundColor = Color.accent
+        randomInputIndicator.backgroundColor = Color.primary_dark
+        consecutiveInputIndicator.backgroundColor = Color.card_button_delete_deselect
         
-        storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
-    }
-    
-    @IBAction func createRoutine(sender: AnyObject)
-    {
-        let vc = storyboard.instantiateViewControllerWithIdentifier(Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
+        userInputLabel.textColor = Color.secondary_light
+        randomInputLabel.textColor = Color.secondary_light
+        consecutiveLabel.textColor = Color.secondary_light
         
-        self.navigationController!.pushViewController(vc, animated: true)
+        userInputLabel.text = NSLocalizedString("key_user_selected", comment: "")
+        randomInputLabel.text = NSLocalizedString("key_random", comment: "")
+        consecutiveLabel.text = NSLocalizedString("key_consecutive", comment: "")
     }
 }

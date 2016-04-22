@@ -2,7 +2,7 @@
 //  MenuCellController.swift
 //  Intencity
 //
-//  The cell controller for the menu header.
+//  The cell controller for a generic header.
 //
 //  Created by Nick Piscopio on 2/22/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
