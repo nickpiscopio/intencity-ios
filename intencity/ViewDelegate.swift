@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc protocol ViewDelegate
+protocol ViewDelegate
 {    
-    func onLoadView(view: Int, result: String)
+    func onLoadView(view: Int, result: String, savedExercises: SavedExercise?)
 }

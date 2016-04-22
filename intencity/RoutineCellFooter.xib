@@ -21,15 +21,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="288" height="16"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7m-Lr-Rda" customClass="IntencityCircleView" customModule="Intencity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="3" width="10" height="10"/>
+                                        <rect key="frame" x="0.0" y="4" width="8" height="8"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="W9U-Ra-i4E"/>
-                                            <constraint firstAttribute="width" constant="10" id="bGo-NL-NsV"/>
+                                            <constraint firstAttribute="height" constant="8" id="W9U-Ra-i4E"/>
+                                            <constraint firstAttribute="width" constant="8" id="bGo-NL-NsV"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xng-dA-lkE">
-                                        <rect key="frame" x="15" y="0.0" width="273" height="16"/>
+                                        <rect key="frame" x="13" y="0.0" width="275" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -40,15 +40,15 @@
                                 <rect key="frame" x="0.0" y="21" width="288" height="16"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s10-VW-8fS" customClass="IntencityCircleView" customModule="Intencity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="3" width="10" height="10"/>
+                                        <rect key="frame" x="0.0" y="4" width="8" height="8"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="BS4-0l-lXw"/>
-                                            <constraint firstAttribute="width" constant="10" id="iKe-sD-bkc"/>
+                                            <constraint firstAttribute="height" constant="8" id="BS4-0l-lXw"/>
+                                            <constraint firstAttribute="width" constant="8" id="iKe-sD-bkc"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwt-pO-IbT">
-                                        <rect key="frame" x="15" y="0.0" width="273" height="16"/>
+                                        <rect key="frame" x="13" y="0.0" width="275" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -59,15 +59,15 @@
                                 <rect key="frame" x="0.0" y="42" width="288" height="16"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eM2-a6-Deb" customClass="IntencityCircleView" customModule="Intencity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="3" width="10" height="10"/>
+                                        <rect key="frame" x="0.0" y="4" width="8" height="8"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="jYx-ew-aP3"/>
-                                            <constraint firstAttribute="width" constant="10" id="lUF-73-zRA"/>
+                                            <constraint firstAttribute="height" constant="8" id="jYx-ew-aP3"/>
+                                            <constraint firstAttribute="width" constant="8" id="lUF-73-zRA"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6FK-P5-Zbn">
-                                        <rect key="frame" x="15" y="0.0" width="273" height="16"/>
+                                        <rect key="frame" x="13" y="0.0" width="275" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>

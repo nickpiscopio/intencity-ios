@@ -10,7 +10,7 @@
 import UIKit
 import Social
 
-class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
+class RoutineViewController: UIViewController, ServiceDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -21,27 +21,28 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
     @IBOutlet weak var routineTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var startButton: IntencityButtonRoundDark!
+    
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
     let DEFAULT_ROUTINE_TITLE = NSLocalizedString("title_default_routines", comment: "")
 
     let DEFAULTS = NSUserDefaults.standardUserDefaults()
     
-    weak var viewDelegate: ViewDelegate!
+    var viewDelegate: ViewDelegate!
     
     var routineFooter: RoutineCellFooterController!
-    
-    var routineCellController: RoutineCellController!
     
     var email = ""
 
     var recommended = 0
-    var numberOfCells = 0
     
     var savedExercises: SavedExercise!
     
     var exerciseData: ExerciseData!
     
     var routines = [RoutineSection]()
+    var selectedRoutineSection: Int!
+    var selectedRoutine: Int!
     
     override func viewDidLoad()
     {
@@ -59,7 +60,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_HEADER_CELL, cellName: Constant.ROUTINE_HEADER_CELL)
-        Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_CELL, cellName: Constant.GENERIC_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.CHECKBOX_CELL, cellName: Constant.CHECKBOX_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CELL_FOOTER, cellName: Constant.ROUTINE_CELL_FOOTER)
         
         showWelcome()
@@ -180,7 +181,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
             case ServiceEvent.GET_EXERCISES_FOR_TODAY:
                 
                 // LOAD FITNESS LOG                
-                viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: result)
+                viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: result, savedExercises: nil)
                 
                 break
             default:
@@ -223,15 +224,11 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
         // This gets saved as NSDictionary, so there is no order
         let json: AnyObject? = result.parseJSONString
         
-        let indexToLoad = 1
-        
         var defaultRoutineRows = [String]()
         defaultRoutineRows.removeAll()
-
-//        displayMuscleGroups.removeAll()
         
         var recommended: String?
-            
+        
         if (json != nil)
         {
             for muscleGroups in json as! NSArray
@@ -240,8 +237,6 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
                 recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as? String
                 
                 defaultRoutineRows.append(muscleGroup)
-//                    
-//                displayMuscleGroups.append(muscleGroup)
             }
             
             hideConnectionIssue()
@@ -253,19 +248,18 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
         if (savedExercises.routineName != "")
         {
             defaultRoutineRows.append(CONTINUE_STRING)
-//            displayMuscleGroups.append(CONTINUE_STRING)
             
             self.recommended = defaultRoutineRows.count - 1
         }
         else if (json != nil)
         {
-//            self.recommended = (recommended == nil || recommended! == "") ? 0 : defaultRoutineRows[recommended]!
+            self.recommended = (recommended == nil || recommended! == "") ? 0 : defaultRoutineRows.indexOf(recommended!)!
         }
             
         if (defaultRoutineRows.count > 0)
         {
             routines.append(RoutineSection(title: RoutineHeaderRow(title: DEFAULT_ROUTINE_TITLE, titleKeys: [ RoutineKeys.RANDOM, RoutineKeys.USER_SELECTED ], includeAssociatedButton: false), rows: defaultRoutineRows))
-//            animateTable(indexToLoad)
+//            animateTable()
             tableView.reloadData()
         }
         else
@@ -273,46 +267,36 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
             initRoutineCard()
         }
         
-//        tableView.reloadData()
-        
         hideLoading()
     }
     
-    /**
-     * The callback for when the user selects to start exercising.
-     */
-    func onStartExercising(routine: Int)
+    @IBAction func startExercisingClicked(sender: AnyObject)
     {
-//        let routineName = displayMuscleGroups[routine - 1]
-//        
-//        if (routineName == CONTINUE_STRING)
-//        {
-//            exerciseData.routineName = savedExercises.routineName
-//            
-//            // LOAD FITNESS LOG
-//            viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result:CONTINUE_STRING)
-//        }
-//        else
-//        {
-//            exerciseData.routineName = routineName
-//            
-//            showLoading()
-//            
-//            _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
-//                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-//                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(routine) ]))
-//        }
+        let routineName = routines[selectedRoutineSection].rows[selectedRoutine]
+        if (routineName == CONTINUE_STRING)
+        {
+            exerciseData.routineName = savedExercises.routineName
+            
+            // LOAD FITNESS LOG
+            viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: CONTINUE_STRING, savedExercises: savedExercises)
+        }
+        else
+        {
+            exerciseData.routineName = routineName
+            
+            showLoading()
+            
+            _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
+                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine) ]))
+        }
     }
-    
-    
-       /**
+
+    /**
      * Animates the table being added to the screen.
-     *
-     * @param loadNextExercise  A boolean value of whether to load the next exercise or not.
      */
-    func animateTable(indexToLoad: Int)
+    func animateTable()
     {
-        numberOfCells = 1
         let range = NSMakeRange(0, self.tableView.numberOfSections)
         let sections = NSIndexSet(indexesInRange: range)
             
@@ -323,7 +307,6 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return routines.count
-
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -394,8 +377,11 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
         // Gets the row in the section.
         let row = routines[indexPath.section].rows[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_CELL) as! GenericCellController
-        cell.title.text = row
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
+        cell.setCheckboxImage(Constant.RADIO_BUTTON_MARKED, uncheckedImage: Constant.RADIO_BUTTON_UNMARKED)
+        cell.selectionStyle = .None
+        cell.titleLabel.text = row
+        cell.setChecked(false)
         
         return cell
         
@@ -413,10 +399,31 @@ class RoutineViewController: UIViewController, ServiceDelegate, RoutineDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        // Deselects the row.
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        selectedRoutineSection = indexPath.section
+        selectedRoutine = indexPath.row
+//
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+        cell.setChecked(true)
         
-        // Gets the row in the section.
-        let row = routines[indexPath.section].rows[indexPath.row]
+//        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .Checkmark
+        
+        // Deselects the row.
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        startButton.hidden = false
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        // Deselects the row.
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        //        // Gets the row in the section.
+        //        let row = routines[indexPath.section].rows[indexPath.row]
+        //
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+                cell.setChecked(false)
+        
+//        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .None
     }
 }

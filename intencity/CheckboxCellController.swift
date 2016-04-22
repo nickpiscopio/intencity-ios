@@ -15,8 +15,8 @@ class CheckboxCellController: UITableViewCell
     @IBOutlet weak var checkBox: UIImageView!
     @IBOutlet weak var separator: UIView!
     
-    let UNCHECKED = UIImage(named: Constant.CHECKBOX_UNCHECKED)
-    let CHECKED = UIImage(named: Constant.CHECKBOX_CHECKED)
+    var uncheckedImage: UIImage!
+    var checkedImage: UIImage!
     
     var listItemName: String!
     
@@ -25,6 +25,15 @@ class CheckboxCellController: UITableViewCell
         super.awakeFromNib()
         
         titleLabel.textColor = Color.secondary_dark
+    }
+    
+    /**
+     * Sets the default checked and unchecked images.
+     */
+    func setCheckboxImage(checkedImage: String, uncheckedImage: String)
+    {
+        self.uncheckedImage = UIImage(named: uncheckedImage)
+        self.checkedImage = UIImage(named: checkedImage)
     }
     
     /**
@@ -44,7 +53,7 @@ class CheckboxCellController: UITableViewCell
      */
     func setChecked(checked: Bool)
     {
-        checkBox.image = checked ? CHECKED : UNCHECKED
+        checkBox.image = checked ? checkedImage : uncheckedImage
     }
     
     /**
@@ -52,6 +61,6 @@ class CheckboxCellController: UITableViewCell
      */
     func isChecked() -> Bool
     {
-        return checkBox.image!.isEqual(CHECKED)
+        return checkBox.image!.isEqual(checkedImage)
     }
 }

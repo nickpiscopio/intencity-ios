@@ -73,6 +73,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
         cell.titleLabel.text = muscleGroups[index]
+        cell.setCheckboxImage(Constant.CHECKBOX_CHECKED, uncheckedImage: Constant.CHECKBOX_UNCHECKED)
         cell.setChecked(false)
         
         return cell

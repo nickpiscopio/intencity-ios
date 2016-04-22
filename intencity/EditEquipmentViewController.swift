@@ -80,6 +80,7 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         let equipmentName = equipmentList[index]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
+        cell.setCheckboxImage(Constant.CHECKBOX_CHECKED, uncheckedImage: Constant.CHECKBOX_UNCHECKED)
         cell.setListItem(equipmentName, checked: userEquipmentList.contains(equipmentName))
         
         return cell

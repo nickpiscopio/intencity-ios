@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="523" height="64"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="SdO-KN-dvL">
-                                        <rect key="frame" x="16" y="16" width="491" height="21"/>
+                                        <rect key="frame" x="16" y="16" width="483" height="21"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-d1-nLe">
-                                                <rect key="frame" x="0.0" y="0.0" width="473" height="21"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="465" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="6eb-dq-e3b"/>
                                                 </constraints>
@@ -38,7 +38,7 @@
                                                 </variation>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="checkbox_checked" translatesAutoresizingMaskIntoConstraints="NO" id="P9R-OS-IOb">
-                                                <rect key="frame" x="473" y="0.0" width="18" height="21"/>
+                                                <rect key="frame" x="465" y="0.0" width="18" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="dls-U4-43u"/>
                                                 </constraints>
@@ -48,7 +48,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="SdO-KN-dvL" firstAttribute="leading" secondItem="GiI-yL-0WH" secondAttribute="leading" constant="16" id="Z76-5l-HEY"/>
+                                    <constraint firstItem="SdO-KN-dvL" firstAttribute="leading" secondItem="GiI-yL-0WH" secondAttribute="leading" constant="24" id="Z76-5l-HEY"/>
                                     <constraint firstAttribute="bottom" secondItem="SdO-KN-dvL" secondAttribute="bottom" constant="16" id="h5O-wP-4Pr"/>
                                     <constraint firstAttribute="trailing" secondItem="SdO-KN-dvL" secondAttribute="trailing" constant="16" id="m0g-mh-yfB"/>
                                     <constraint firstItem="SdO-KN-dvL" firstAttribute="top" secondItem="GiI-yL-0WH" secondAttribute="top" constant="16" id="wbi-g1-yUX"/>

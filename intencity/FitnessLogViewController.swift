@@ -38,14 +38,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     
     let EXERCISE_MINIMUM_THRESHOLD = 3
     
-    weak var viewDelegate: ViewDelegate!
+    var viewDelegate: ViewDelegate!
     
     var notificationHandler: NotificationHandler!
     
     var exerciseListHeader: ExerciseListHeaderController!
     var routineFooter: RoutineCellFooterController!
-    
-    var routineCellController: RoutineCellController!
 
     var insertIntoWebSetsIndex: Int!
     var totalExercises = 7
@@ -106,7 +104,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func initRoutineCard()
     {
-        viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "")
+        viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil)
     }
     
     /**
@@ -201,7 +199,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             default:
                 
                 //SHOW CONNECTION ISSUE
-                viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "")
+                viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil)
                 
                 break
         }
@@ -470,7 +468,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             catch
             {
             // SHOW CONNECTION ISSUE
-                viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "")
+                viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil)
             }
         }
             

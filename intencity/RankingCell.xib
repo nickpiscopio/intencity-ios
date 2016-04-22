@@ -57,7 +57,7 @@
                                                 <rect key="frame" x="45" y="0.0" width="299" height="40"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cUt-Rx-wve">
-                                                        <rect key="frame" x="0.0" y="0.0" width="57" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="55" height="21"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqy-EC-40n">
                                                                 <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
@@ -66,11 +66,11 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDU-5b-XVH" customClass="IntencityCircleView" customModule="Intencity" customModuleProvider="target">
-                                                                <rect key="frame" x="47" y="6" width="10" height="10"/>
+                                                                <rect key="frame" x="47" y="7" width="8" height="8"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="10" id="EML-Ee-DCI"/>
-                                                                    <constraint firstAttribute="width" constant="10" id="Qll-5r-lbG"/>
+                                                                    <constraint firstAttribute="height" constant="8" id="EML-Ee-DCI"/>
+                                                                    <constraint firstAttribute="width" constant="8" id="Qll-5r-lbG"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>

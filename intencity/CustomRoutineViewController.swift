@@ -103,6 +103,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
         let routineName = routines[index]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
+        cell.setCheckboxImage(Constant.CHECKBOX_CHECKED, uncheckedImage: Constant.CHECKBOX_UNCHECKED)
         cell.setListItem(routineName, checked: true)
         
         return cell

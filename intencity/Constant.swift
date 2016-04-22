@@ -59,6 +59,8 @@ struct Constant
     static let DEMO_VIEW = "DemoViewController"
     static let CHECKBOX_UNCHECKED = "checkbox_unchecked"
     static let CHECKBOX_CHECKED = "checkbox_checked"
+    static let RADIO_BUTTON_UNMARKED = "radio_button_unmarked"
+    static let RADIO_BUTTON_MARKED = "radio_button_marked"
     static let ADD_USER_BUTTON = "add_user"
     static let REMOVE_USER_BUTTON = "remove_user"
     

@@ -24,7 +24,7 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
         
         setMenuButton(Constant.MENU_INITIALIZED)
         
-        onLoadView(View.ROUTINE_VIEW, result: "")
+        onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil)
     }
     
     override func didReceiveMemoryWarning()
@@ -38,7 +38,7 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
         self.tabBarController?.tabBar.hidden = false
     }
     
-    func onLoadView(view: Int, result: String)
+    func onLoadView(view: Int, result: String, savedExercises: SavedExercise?)
     {
         switch view
         {
@@ -56,6 +56,7 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
                 let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.FITNESS_LOG_VIEW_CONTROLLER) as! FitnessLogViewController
                 vc.viewDelegate = self
                 vc.result = result
+                vc.savedExercises = savedExercises
                 
                 loadView(vc)
                 
