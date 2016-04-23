@@ -82,18 +82,19 @@ class RoutineViewController: UIViewController, ServiceDelegate
      * Calls the service to get the display muscle groups for the routine card.
      */
     func initRoutineCard()
-    {        
+    {
+        startButton.hidden = true
+        
+        routines.removeAll()
         routines.append(RoutineSection(title: RoutineHeaderRow(title: NSLocalizedString("title_custom_routines", comment: ""), titleKeys: [ RoutineKeys.RANDOM, RoutineKeys.USER_SELECTED ], includeAssociatedButton: true), rows: []))
         routines.append(RoutineSection(title: RoutineHeaderRow(title: NSLocalizedString("title_saved_routines", comment: ""), titleKeys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], includeAssociatedButton: true), rows: []))
         
         showLoading()
-//
+
         // Creates the instance of the exercise data so we can store the exercises in the database later.
         ExerciseData.reset()
         exerciseData = ExerciseData.getInstance()
-//        
-//        tableView.reloadData()
-//
+
         _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
@@ -180,8 +181,17 @@ class RoutineViewController: UIViewController, ServiceDelegate
             
             case ServiceEvent.GET_EXERCISES_FOR_TODAY:
                 
-                // LOAD FITNESS LOG                
-                viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: result, savedExercises: nil)
+                if (result != "" && result != Constant.RETURN_NULL)
+                {
+                    viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: result, savedExercises: nil)
+                }
+                else
+                {
+                    // We couldn't get data from the server, so we show the connection issue.
+                    showConnectionIssue()
+                    
+                    hideLoading()
+                }
                 
                 break
             default:
@@ -241,6 +251,12 @@ class RoutineViewController: UIViewController, ServiceDelegate
             
             hideConnectionIssue()
         }
+        else
+        {
+            routines.removeAll()
+            
+            startButton.hidden = true
+        }
             
         // Get the saved exercises from the local database.
         savedExercises = DBHelper().getRecords()
@@ -262,10 +278,6 @@ class RoutineViewController: UIViewController, ServiceDelegate
 //            animateTable()
             tableView.reloadData()
         }
-        else
-        {
-            initRoutineCard()
-        }
         
         hideLoading()
     }
@@ -286,9 +298,11 @@ class RoutineViewController: UIViewController, ServiceDelegate
             
             showLoading()
             
+            // We add 1 because the routines start at 1 on the server.
+            let selectedRoutine = String(self.selectedRoutine + 1)
             _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
                             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine) ]))
+                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email,  selectedRoutine]))
         }
     }
 

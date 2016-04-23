@@ -24,7 +24,6 @@ class IntencityButtonRound: UIButton
         self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW, Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
         self.layer.shadowRadius = Dimention.SHADOW
-        self.layer.cornerRadius = Dimention.RADIUS_ROUNDED_BUTTON
         self.layer.shadowColor = Color.shadow_dark.CGColor
         
         buttonUp()

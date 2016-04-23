@@ -47,7 +47,7 @@ struct ExerciseDao
                 exercises.append(exercise)
             }
             
-            if (!foundSearchResult)
+            if (searchString != "" && !foundSearchResult)
             {
                 exercises.append(getExercise(searchString))
             }

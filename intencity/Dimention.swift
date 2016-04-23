@@ -13,7 +13,8 @@ struct Dimention
 {
     static let RADIUS: CGFloat = 3.0
     // Needs to he half of one side of the smallest PNG.
-    static let RADIUS_ROUNDED_BUTTON: CGFloat = 25.0
+    static let RADIUS_ROUNDED_BUTTON_LIGHT: CGFloat = 12.5
+    static let RADIUS_ROUNDED_BUTTON_DARK: CGFloat = 25.0
     static let RADIUS_ROUNDED_BUTTON_RANKING_USER: CGFloat = 4.0
     static let BORDER_WIDTH: CGFloat = 2.0
     static let SHADOW: CGFloat = 1.0

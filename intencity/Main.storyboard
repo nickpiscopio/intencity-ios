@@ -46,7 +46,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="pJU-af-MoM">
-                        <barButtonItem key="rightBarButtonItem" image="A7B7EE03-7722-4570-A692-C7F1F1F58E4A" id="6UB-wh-LYy">
+                        <barButtonItem key="rightBarButtonItem" image="FA48C537-B241-4F46-9F86-E606EAF597F6" id="6UB-wh-LYy">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="Kz2-vl-MdR"/>
                             </connections>
@@ -333,6 +333,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <connections>
                                                             <action selector="tryAgainClick:" destination="rOj-ca-F3T" eventType="touchUpInside" id="Omj-Ns-4tp"/>
+                                                            <action selector="tryAgainClick:" destination="ZQj-lF-whB" eventType="touchUpInside" id="lLi-1k-B6m"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1085,8 +1086,8 @@
                                 </subviews>
                             </stackView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8U-8A-KCG" customClass="IntencityButtonRoundLight" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="510" y="478" width="50" height="50"/>
-                                <state key="normal" image="search_button_large"/>
+                                <rect key="frame" x="515" y="503" width="25" height="25"/>
+                                <state key="normal" image="search_button_small"/>
                                 <connections>
                                     <action selector="inactiveButtonClicked:" destination="rOj-ca-F3T" eventType="touchUpInside" id="wCX-ZV-btc"/>
                                 </connections>
@@ -1108,7 +1109,7 @@
                             <constraint firstItem="c11-yH-fVC" firstAttribute="top" secondItem="Y8U-8A-KCG" secondAttribute="bottom" constant="8" id="jif-u3-Cy4"/>
                             <constraint firstAttribute="trailing" secondItem="Fnj-8n-iFD" secondAttribute="trailing" id="sJn-OU-Sxl"/>
                             <constraint firstAttribute="trailing" secondItem="JB6-pG-d8R" secondAttribute="trailing" constant="16" id="w5D-M1-TB9"/>
-                            <constraint firstAttribute="trailing" secondItem="Y8U-8A-KCG" secondAttribute="trailing" constant="40" id="yYm-t5-8wv"/>
+                            <constraint firstAttribute="trailing" secondItem="Y8U-8A-KCG" secondAttribute="trailing" constant="60" id="yYm-t5-8wv"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
@@ -1821,7 +1822,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="A7B7EE03-7722-4570-A692-C7F1F1F58E4A" width="82" height="69">
+        <image name="FA48C537-B241-4F46-9F86-E606EAF597F6" width="82" height="69">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -2259,7 +2260,7 @@ Yn1ihWKIYo1ilWKYYqpirWKyAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAYrQ
         <image name="intencity_logo" width="449" height="354"/>
         <image name="next_button" width="50" height="50"/>
         <image name="no_connection" width="24" height="18"/>
-        <image name="search_button_large" width="50" height="50"/>
+        <image name="search_button_small" width="25" height="25"/>
         <image name="tab_icon_fitness_log" width="11" height="18"/>
         <image name="tab_icon_ranking" width="23" height="19"/>
     </resources>

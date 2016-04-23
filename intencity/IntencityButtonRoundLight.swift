@@ -18,5 +18,6 @@ class IntencityButtonRoundLight: IntencityButtonRound
         super.init(coder: aDecoder)
         
         self.layer.backgroundColor = Color.page_background.CGColor
+        self.layer.cornerRadius = Dimention.RADIUS_ROUNDED_BUTTON_LIGHT
     }
 }

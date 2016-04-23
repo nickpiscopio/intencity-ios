@@ -240,19 +240,24 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     
     func setButtons()
     {
-        var imageName: String!
+        var inactiveButtonImage: String!
+        var activeButtonImage: String!
         
         switch activeButtonState
         {
             case .INTENCITY:
-                imageName = "add_button"
+                inactiveButtonImage = "search_button_small"                
+                activeButtonImage = "next_button"
                 break
             case .SEARCH:
-                imageName = "search_button_large"
+                
+                activeButtonImage = "search_button_large"
+                inactiveButtonImage = "next_button_small"
                 break
         }
 
-        activeButton.setImage(UIImage(named:imageName), forState: .Normal)
+        inactiveButton.setImage(UIImage(named:inactiveButtonImage), forState: .Normal)
+        activeButton.setImage(UIImage(named:activeButtonImage), forState: .Normal)
     }
     
     @IBAction func inactiveButtonClicked(sender: AnyObject)
@@ -433,7 +438,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         
         // The first exercise is the warm-up.
         // We only want to show the save button if a user has an exercise showing.
-        exerciseListHeader.saveButton.hidden = currentExercises.count < 2
+        let currentExerciseCount = currentExercises.count
+        exerciseListHeader.saveButton.hidden = currentExerciseCount < 2 || (currentExerciseCount == 2 && currentExercises[currentExerciseCount - 1].exerciseName == STRETCH_NAME)
         
         exerciseListHeader.exerciseTotalLabel.text = "\(currentExercises.count) / \(totalExercises)"
     }
@@ -467,7 +473,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             }
             catch
             {
-            // SHOW CONNECTION ISSUE
+                // SHOW CONNECTION ISSUE
                 viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil)
             }
         }
@@ -478,15 +484,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             inactiveButton.hidden = false
                 
             animateTable(indexToLoad)
-        }
-        else
-        {
-                // NO EXERCISES FOUND IN THE DATABASE
-//                Util.displayAlert(self,
-//                                  title: NSLocalizedString("exercise_generation_error_title", comment: ""),
-//                                  message: NSLocalizedString("exercise_generation_error_description", comment: ""),
-//                                  actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil),
-//                                             UIAlertAction(title: NSLocalizedString("open_menu", comment: ""), style: .Default, handler: openMenu)])
         }
         
         hideLoading()

@@ -278,7 +278,7 @@
 "asterisk" = "*";
 
 /*  */
-"weight_description" = "The difficulty of weight is relative to each person. Low weight for one person might be heavy weight for another person. Choose your weight carefully.";
+"weight_description" = "The difficulty of weight is relative to each person. Low weight for one person might be heavy weight for another. Choose your weight carefully.";
 
 /*  */
 "rest_title" = "REST BETWEEN EXERCISES";
@@ -417,10 +417,6 @@
 
 /*  */
 "title_delete_account" = "Delete Account";
-
-"exercise_generation_error_title" = "Couldn't generate exercises";
-"exercise_generation_error_description" = "You may have too many exercises hidden or not enough equipment. Please check your exercise priorities and equipment in the menu.";
-"open_menu" = "Open the menu";
 
 /* Settings Strings */
 "edit_priority" = "Edit Exercise Priorities";
