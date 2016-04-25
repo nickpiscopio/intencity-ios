@@ -46,7 +46,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="pJU-af-MoM">
-                        <barButtonItem key="rightBarButtonItem" image="FA48C537-B241-4F46-9F86-E606EAF597F6" id="6UB-wh-LYy">
+                        <barButtonItem key="rightBarButtonItem" image="D97B458B-38DF-4A5F-8E47-3635BAF855DE" id="6UB-wh-LYy">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="Kz2-vl-MdR"/>
                             </connections>
@@ -348,16 +348,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTB-kr-5JH">
-                                        <rect key="frame" x="0.0" y="156" width="600" height="225"/>
+                                        <rect key="frame" x="0.0" y="156" width="600" height="224"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="npP-vS-ygt">
-                                                <rect key="frame" x="16" y="16" width="568" height="201"/>
+                                                <rect key="frame" x="16" y="16" width="568" height="200"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_fitness_log" translatesAutoresizingMaskIntoConstraints="NO" id="VMI-Bk-iVj">
-                                                        <rect key="frame" x="0.0" y="92" width="11" height="18"/>
-                                                    </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How would you like to exercise today?" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CY-Xe-yYi">
-                                                        <rect key="frame" x="19" y="90" width="550" height="21"/>
+                                                        <rect key="frame" x="0.0" y="90" width="568" height="21"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.3921568627" green="0.43921568630000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -373,7 +370,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rZ1-JH-yOj">
-                                        <rect key="frame" x="0.0" y="381" width="600" height="200"/>
+                                        <rect key="frame" x="0.0" y="380" width="600" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="dataSource" destination="ZQj-lF-whB" id="te9-Iz-gWr"/>
@@ -382,22 +379,12 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4lj-h1-Wzc" customClass="IntencityButtonRoundDark" customModule="Intencity" customModuleProvider="target">
-                                <rect key="frame" x="534" y="542" width="50" height="50"/>
-                                <state key="normal" image="next_button"/>
-                                <connections>
-                                    <action selector="activeButtonClicked:" destination="rOj-ca-F3T" eventType="touchUpInside" id="bxC-QW-mBG"/>
-                                    <action selector="startExercisingClicked:" destination="ZQj-lF-whB" eventType="touchUpInside" id="E7M-av-FIv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8DC-kb-FzC" firstAttribute="top" secondItem="4lj-h1-Wzc" secondAttribute="bottom" constant="8" id="Bgd-1b-4GA"/>
                             <constraint firstItem="5zO-Ee-bQr" firstAttribute="leading" secondItem="qsQ-8s-dnJ" secondAttribute="leading" id="NcX-Rh-MPf"/>
                             <constraint firstAttribute="bottom" secondItem="5zO-Ee-bQr" secondAttribute="bottom" id="UE7-P2-vM3"/>
                             <constraint firstItem="5zO-Ee-bQr" firstAttribute="top" secondItem="LMR-6F-u9s" secondAttribute="bottom" id="bth-aj-J5N"/>
-                            <constraint firstAttribute="trailing" secondItem="4lj-h1-Wzc" secondAttribute="trailing" constant="16" id="c5S-rG-ff7"/>
                             <constraint firstAttribute="trailing" secondItem="5zO-Ee-bQr" secondAttribute="trailing" id="i5m-9J-clJ"/>
                         </constraints>
                     </view>
@@ -407,7 +394,6 @@
                         <outlet property="loadingView" destination="VOk-A3-Dub" id="GYx-cJ-ovD"/>
                         <outlet property="noConnectionLabel" destination="El3-pW-bOP" id="glr-4Y-Ioh"/>
                         <outlet property="routineTitle" destination="4CY-Xe-yYi" id="vSR-GE-TZ5"/>
-                        <outlet property="startButton" destination="4lj-h1-Wzc" id="TyT-Kd-M9v"/>
                         <outlet property="tableView" destination="rZ1-JH-yOj" id="16J-ez-q6N"/>
                         <outlet property="tryAgainButton" destination="i5c-QX-LnP" id="swO-Ci-kiI"/>
                     </connections>
@@ -485,6 +471,137 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6VQ-Dz-GZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3206" y="-493"/>
+        </scene>
+        <!--Intencity Routine View Controller-->
+        <scene sceneID="shy-7P-xMc">
+            <objects>
+                <viewController storyboardIdentifier="IntencityRoutineViewController" id="TGe-LB-fz8" customClass="IntencityRoutineViewController" customModule="Intencity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0WS-Yb-a7G"/>
+                        <viewControllerLayoutGuide type="bottom" id="2O9-Iv-Bom"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jKh-Xu-kg1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zBr-hx-grv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4D-ss-BLi">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ePS-JK-6Ex">
+                                                <rect key="frame" x="16" y="16" width="568" height="20"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ePS-JK-6Ex" secondAttribute="bottom" constant="16" id="41B-qC-dcU"/>
+                                            <constraint firstItem="ePS-JK-6Ex" firstAttribute="top" secondItem="x4D-ss-BLi" secondAttribute="top" constant="16" id="esa-HY-yPQ"/>
+                                            <constraint firstItem="ePS-JK-6Ex" firstAttribute="leading" secondItem="x4D-ss-BLi" secondAttribute="leading" constant="16" id="ubQ-Qh-fdW"/>
+                                            <constraint firstAttribute="trailing" secondItem="ePS-JK-6Ex" secondAttribute="trailing" constant="16" id="zcN-ga-0lZ"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ipp-rl-Exf">
+                                        <rect key="frame" x="0.0" y="52" width="600" height="104"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="k6V-rh-6kl">
+                                                <rect key="frame" x="16" y="16" width="568" height="72"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_connection" translatesAutoresizingMaskIntoConstraints="NO" id="3Y1-fY-one">
+                                                        <rect key="frame" x="272" y="0.0" width="24" height="18"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJm-hX-QMc">
+                                                        <rect key="frame" x="266" y="21" width="38" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVo-Fm-Lj8" customClass="IntencityCardButton" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="259" y="42" width="50" height="30"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <connections>
+                                                            <action selector="tryAgainClick:" destination="TGe-LB-fz8" eventType="touchUpInside" id="PFF-g9-cfV"/>
+                                                            <action selector="tryAgainClick:" destination="ZQj-lF-whB" eventType="touchUpInside" id="lvp-Rg-YFB"/>
+                                                            <action selector="tryAgainClick:" destination="rOj-ca-F3T" eventType="touchUpInside" id="zWg-Pc-ksT"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="k6V-rh-6kl" firstAttribute="top" secondItem="Ipp-rl-Exf" secondAttribute="top" constant="16" id="mfx-bd-ZeB"/>
+                                            <constraint firstItem="k6V-rh-6kl" firstAttribute="leading" secondItem="Ipp-rl-Exf" secondAttribute="leading" constant="16" id="oLV-q3-ePj"/>
+                                            <constraint firstAttribute="bottom" secondItem="k6V-rh-6kl" secondAttribute="bottom" constant="16" id="sZp-TK-xFz"/>
+                                            <constraint firstAttribute="trailing" secondItem="k6V-rh-6kl" secondAttribute="trailing" constant="16" id="zw9-3U-b56"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0j-sY-OEG">
+                                        <rect key="frame" x="0.0" y="156" width="600" height="225"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-7l-n2s">
+                                                <rect key="frame" x="16" y="16" width="568" height="201"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How would you like to exercise today?" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mel-b1-ikZ">
+                                                        <rect key="frame" x="0.0" y="90" width="568" height="21"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.3921568627" green="0.43921568630000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="fEM-7l-n2s" secondAttribute="bottom" constant="8" id="3SZ-SX-LDW"/>
+                                            <constraint firstItem="fEM-7l-n2s" firstAttribute="top" secondItem="k0j-sY-OEG" secondAttribute="top" constant="16" id="Pvc-u8-jOk"/>
+                                            <constraint firstItem="fEM-7l-n2s" firstAttribute="leading" secondItem="k0j-sY-OEG" secondAttribute="leading" constant="16" id="sqB-B1-ZzU"/>
+                                            <constraint firstAttribute="trailing" secondItem="fEM-7l-n2s" secondAttribute="trailing" constant="16" id="tLY-oK-603"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="boZ-fH-lQu">
+                                        <rect key="frame" x="0.0" y="381" width="600" height="220"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="TGe-LB-fz8" id="wku-6Q-nv2"/>
+                                            <outlet property="delegate" destination="TGe-LB-fz8" id="Y9Y-7f-ZiU"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsB-Hp-OuE" customClass="IntencityButtonRoundDark" customModule="Intencity" customModuleProvider="target">
+                                <rect key="frame" x="534" y="534" width="50" height="50"/>
+                                <state key="normal" image="next_button"/>
+                                <connections>
+                                    <action selector="startExercisingClicked:" destination="TGe-LB-fz8" eventType="touchUpInside" id="llf-9l-3eY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2O9-Iv-Bom" firstAttribute="top" secondItem="zBr-hx-grv" secondAttribute="bottom" id="IGo-Ft-fSF"/>
+                            <constraint firstAttribute="trailing" secondItem="zBr-hx-grv" secondAttribute="trailing" id="MbS-MW-nGt"/>
+                            <constraint firstItem="2O9-Iv-Bom" firstAttribute="top" secondItem="RsB-Hp-OuE" secondAttribute="bottom" constant="16" id="aXw-he-0ed"/>
+                            <constraint firstItem="zBr-hx-grv" firstAttribute="top" secondItem="jKh-Xu-kg1" secondAttribute="top" id="bMz-h2-cX8"/>
+                            <constraint firstAttribute="trailing" secondItem="RsB-Hp-OuE" secondAttribute="trailing" constant="16" id="gP4-In-lM5"/>
+                            <constraint firstItem="zBr-hx-grv" firstAttribute="leading" secondItem="jKh-Xu-kg1" secondAttribute="leading" id="qT5-ob-KlR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="ePS-JK-6Ex" id="avo-al-rn7"/>
+                        <outlet property="connectionView" destination="Ipp-rl-Exf" id="FgO-Gd-7g2"/>
+                        <outlet property="loadingView" destination="x4D-ss-BLi" id="GKA-Vu-GEg"/>
+                        <outlet property="noConnectionLabel" destination="nJm-hX-QMc" id="ujw-nZ-VeG"/>
+                        <outlet property="routineTitle" destination="Mel-b1-ikZ" id="lL5-KZ-tP5"/>
+                        <outlet property="startButton" destination="RsB-Hp-OuE" id="dGJ-aq-Ngm"/>
+                        <outlet property="tableView" destination="boZ-fH-lQu" id="TUN-ak-YWi"/>
+                        <outlet property="tryAgainButton" destination="aVo-Fm-Lj8" id="nuQ-Mj-YJb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XjN-EI-NXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3206" y="186"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="oHp-f6-hhL">
@@ -1125,7 +1242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SvK-lS-eO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3206" y="186"/>
+            <point key="canvasLocation" x="3872" y="186"/>
         </scene>
         <!--Intencity-->
         <scene sceneID="sR0-3t-U7m">
@@ -1504,7 +1621,7 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFM-X4-K9X" customClass="IntencityButtonRound" customModule="Intencity" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFM-X4-K9X" customClass="IntencityButtonRoundDark" customModule="Intencity" customModuleProvider="target">
                                 <rect key="frame" x="534" y="534" width="50" height="50"/>
                                 <state key="normal" image="add_button"/>
                                 <connections>
@@ -1822,7 +1939,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FA48C537-B241-4F46-9F86-E606EAF597F6" width="82" height="69">
+        <image name="D97B458B-38DF-4A5F-8E47-3635BAF855DE" width="82" height="69">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -2256,7 +2373,6 @@ Yn1ihWKIYo1ilWKYYqpirWKyAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAYrQ
         <image name="camera" width="50" height="50"/>
         <image name="default_profile_pic" width="475" height="475"/>
         <image name="dropdown" width="18" height="9"/>
-        <image name="icon_fitness_log" width="11" height="18"/>
         <image name="intencity_logo" width="449" height="354"/>
         <image name="next_button" width="50" height="50"/>
         <image name="no_connection" width="24" height="18"/>

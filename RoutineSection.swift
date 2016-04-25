@@ -9,6 +9,9 @@
 
 struct RoutineSection
 {
-    var title: RoutineHeaderRow
-    var rows: [String]
+    var title: String
+    // This is the int equivalents to what dot is being shown for each menu item,
+    // which will correlate to the routine key.
+    var keys: [Int]
+    var rows: [RoutineRow]    
 }

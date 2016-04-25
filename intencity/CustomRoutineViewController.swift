@@ -49,9 +49,9 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "no_custom_routines")
         Util.addUITableViewCell(tableView, nibNamed: Constant.CHECKBOX_CELL, cellName: Constant.CHECKBOX_CELL)
         
-        initLoadingView()
-        
         email = Util.getEmailFromDefaults()
+        
+        initLoadingView()
     }
     
     override func viewWillAppear(animated: Bool)
@@ -170,7 +170,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     /**
      * The function for when the save button is pressed.
      */
-    func savePressed(sender:UIBarButtonItem)
+    func savePressed(sender: UIBarButtonItem)
     {
         if (routinesToRemove.count > 0)
         {

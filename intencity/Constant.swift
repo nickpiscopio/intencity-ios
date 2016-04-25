@@ -20,13 +20,13 @@ struct Constant
     static let LOGIN_NAV_CONTROLLER = "LoginNavController"
     
     static let EXERCISE_LIST_HEADER = "ExerciseListHeader"
+    static let ROUTINE_CELL = "RoutineCell"
     static let ROUTINE_CELL_FOOTER = "RoutineCellFooter"
     static let EXERCISE_CELL = "ExerciseCell"
     static let DIRECTION_CELL = "DirectionCell"
     static let SET_CELL = "SetCell"
     static let GENERIC_CELL = "GenericCell"
     static let GENERIC_HEADER_CELL = "GenericHeaderCell"
-    static let ROUTINE_HEADER_CELL = "RoutineHeaderCell"
     static let ABOUT_CELL = "AboutCell"
     static let DESCRIPTION_FOOTER_CELL = "DescriptionFooterCell"
     static let SEARCH_EXERCISE_CELL = "SearchExerciseCell"
@@ -42,6 +42,7 @@ struct Constant
     static let FITNESS_RECOMMENDATION_FOOTER_CELL = "FitnessRecFooterCell"
     
     static let ROUTINE_VIEW_CONTROLLER = "RoutineViewController"
+    static let INTENCITY_ROUTINE_VIEW_CONTROLLER = "IntencityRoutineViewController"
     static let FITNESS_LOG_VIEW_CONTROLLER = "FitnessLogViewController"
     static let PROFILE_VIEW_CONTROLLER = "ProfileViewController"
     static let MENU_VIEW_CONTROLLER = "MenuViewController"

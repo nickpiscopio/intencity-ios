@@ -25,6 +25,12 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
         setMenuButton(Constant.MENU_INITIALIZED)
         
         onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil)
+        
+//        let backButton = UIBarButtonItem(customView: "yourView")
+//        self.navigationItem.leftBarButtonItem = backButton
+        
+        let backButton = UIBarButtonItem(title: "My List", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MainViewController.goBack))
+        self.navigationItem.leftBarButtonItem = backButton
     }
     
     override func didReceiveMemoryWarning()
@@ -67,6 +73,11 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
         }
     }
     
+    func goBack()
+    {
+        
+    }
+    
     func loadView(vc: UIViewController)
     {
         self.addChildViewController(vc)
@@ -86,23 +97,23 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
         
         switch(type)
         {
-        case Constant.MENU_INITIALIZED:
-            icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-            break
-        case Constant.MENU_NOTIFICATION_FOUND:
+            case Constant.MENU_INITIALIZED:
+                icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                break
+            case Constant.MENU_NOTIFICATION_FOUND:
             
-            let duration = 0.5
+                let duration = 0.5
             
-            NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(MainViewController.stopAnimation), userInfo: nil, repeats: false)
+                NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(MainViewController.stopAnimation), userInfo: nil, repeats: false)
             
-            icon = UIImage.animatedImageNamed(Constant.MENU_NOTIFICATION_FOUND_IMAGE, duration: duration)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                icon = UIImage.animatedImageNamed(Constant.MENU_NOTIFICATION_FOUND_IMAGE, duration: duration)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
             
-            break
-        case Constant.MENU_NOTIFICATION_PRESENT:
-            icon = UIImage(named: Constant.MENU_NOTIFICATION_PRESENT_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-            break
-        default:
-            break
+                break
+            case Constant.MENU_NOTIFICATION_PRESENT:
+                icon = UIImage(named: Constant.MENU_NOTIFICATION_PRESENT_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                break
+            default:
+                break
         }
         
         let iconSize = CGRect(origin: CGPointZero, size: CGSizeMake(Constant.MENU_IMAGE_WIDTH, Constant.MENU_IMAGE_HEIGHT))
