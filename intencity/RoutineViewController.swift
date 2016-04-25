@@ -61,6 +61,7 @@ class RoutineViewController: UIViewController, ServiceDelegate
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
+        Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CONTINUE_CELL, cellName: Constant.ROUTINE_CONTINUE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CELL, cellName: Constant.ROUTINE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CELL_FOOTER, cellName: Constant.ROUTINE_CELL_FOOTER)
         
@@ -262,7 +263,7 @@ class RoutineViewController: UIViewController, ServiceDelegate
             
         if (savedExercises.routineName != "")
         {
-            self.routines.append(RoutineSection(title: CONTINUE_STRING, keys: [], rows: []))
+            self.routines.insert(RoutineSection(title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), keys: [], rows: []), atIndex: 0)
 //            defaultRoutineRows.append(CONTINUE_STRING)
 //            
 //            self.recommended = defaultRoutineRows.count - 1
@@ -354,14 +355,25 @@ class RoutineViewController: UIViewController, ServiceDelegate
     {
         // Gets the row in the section.
         let routine = routines[indexPath.section]
+        let title = routine.title
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
-        cell.selectionStyle = .None
-        cell.routineTitle.text = routine.title
-        cell.setDescription(routine.rows.count)
-        cell.setBackground()
-
-        return cell
+        if (savedExercises != nil && title == String(format: CONTINUE_STRING, arguments: [savedExercises.routineName.uppercaseString]))
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CONTINUE_CELL) as! RoutineContinueCellController
+            cell.selectionStyle = .None
+            cell.routineTitle.text = title
+            return cell
+        }
+        else
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
+            cell.selectionStyle = .None
+            cell.routineTitle.text = title
+                cell.setDescription(routine.rows.count)
+            cell.setBackground()
+            
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)

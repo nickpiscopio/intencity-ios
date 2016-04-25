@@ -16,7 +16,7 @@ class IntencityCardView: UIView
         
         self.layer.backgroundColor = Color.white.CGColor
         self.layer.borderColor = Color.white.CGColor
-        self.layer.borderWidth = Dimention.BORDER_WIDTH
+        self.layer.borderWidth = 0
         self.layer.cornerRadius = Dimention.RADIUS
         self.layer.masksToBounds = false
         self.layer.shadowColor = Color.shadow.CGColor
