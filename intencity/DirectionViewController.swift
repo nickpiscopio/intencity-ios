@@ -88,7 +88,9 @@ class DirectionViewController: UIViewController, ServiceDelegate
         directionTitleLabel.text = NSLocalizedString("title_direction", comment: "")
         directionTitleLabel.textColor = Color.secondary_dark
         
-        youTubePlayerView.loadWithVideoId(videoId)
+        // This is so we don't get suggested videos after the exercise video ends.
+        let vars = ["rel" : 0]
+        youTubePlayerView.loadWithVideoId(videoId, playerVars: vars)
         
         reloadTable()
     }
