@@ -23,6 +23,7 @@ class RoutineViewController: UIViewController, ServiceDelegate
     
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
     static let CUSTOM_ROUTINE_TITLE = NSLocalizedString("title_custom_routines", comment: "")
+    static let INTENCITY_ROUTINE_TITLE = NSLocalizedString("title_intencity_routines", comment: "")
     static let DEFAULT_ROUTINE_TITLE = NSLocalizedString("title_default_routines", comment: "")
     static let SAVED_ROUTINE_TITLE = NSLocalizedString("title_saved_routines", comment: "")
     static let CUSTOM_ROUTINE_DESCRIPTION = NSLocalizedString("description_custom_routines", comment: "")
@@ -86,7 +87,7 @@ class RoutineViewController: UIViewController, ServiceDelegate
     func initRoutineCard()
     {
         routines.removeAll()
-        routines.append(RoutineSection(title:RoutineViewController.CUSTOM_ROUTINE_TITLE, keys: [ RoutineKeys.RANDOM, RoutineKeys.USER_SELECTED ], rows: []))
+        routines.append(RoutineSection(title:RoutineViewController.CUSTOM_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED ], rows: []))
         routines.append(RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], rows: []))
         
         showLoading()
@@ -275,7 +276,7 @@ class RoutineViewController: UIViewController, ServiceDelegate
             
         if (defaultRoutineRows.count > 0)
         {
-            self.routines.append(RoutineSection(title: RoutineViewController.DEFAULT_ROUTINE_TITLE, keys: [ RoutineKeys.RANDOM, RoutineKeys.USER_SELECTED ], rows: defaultRoutineRows))
+            self.routines.append(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], rows: defaultRoutineRows))
 //            animateTable()
             tableView.reloadData()
         }
@@ -366,10 +367,19 @@ class RoutineViewController: UIViewController, ServiceDelegate
         }
         else
         {
+            let rows = routine.rows
+            let count = rows.count
+            var totalIntencityRoutines = 0
+            for i in 0..<count
+            {
+                totalIntencityRoutines += rows[i].rows.count
+            }
+            
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
             cell.selectionStyle = .None
             cell.routineTitle.text = title
-                cell.setDescription(routine.rows.count)
+            cell.setDescription(totalIntencityRoutines)
+            cell.setKeys(routine.keys)
             cell.setBackground()
             
             return cell
@@ -387,7 +397,7 @@ class RoutineViewController: UIViewController, ServiceDelegate
                 viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: "", savedExercises: nil)
                 
                 break
-            case RoutineViewController.DEFAULT_ROUTINE_TITLE:
+            case RoutineViewController.INTENCITY_ROUTINE_TITLE:
                 
                 let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.INTENCITY_ROUTINE_VIEW_CONTROLLER) as! IntencityRoutineViewController
                 vc.viewDelegate = viewDelegate

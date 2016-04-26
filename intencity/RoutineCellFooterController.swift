@@ -22,15 +22,16 @@ class RoutineCellFooterController: UITableViewCell
     @IBOutlet weak var randomInputLabel: UILabel!
     @IBOutlet weak var consecutiveInputIndicator: IntencityCircleView!
     @IBOutlet weak var consecutiveLabel: UILabel!
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()
         
         view.backgroundColor = Color.page_background
         
-        userInputIndicator.backgroundColor = Color.accent
-        randomInputIndicator.backgroundColor = Color.primary_dark
-        consecutiveInputIndicator.backgroundColor = Color.card_button_delete_deselect
+        userInputIndicator.backgroundColor = Color.card_button_delete_deselect
+        randomInputIndicator.backgroundColor = Color.accent
+        consecutiveInputIndicator.backgroundColor = Color.primary_dark
         
         userInputLabel.textColor = Color.secondary_light
         randomInputLabel.textColor = Color.secondary_light

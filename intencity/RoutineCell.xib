@@ -24,7 +24,7 @@
                                 <rect key="frame" x="16" y="100" width="441" height="59"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Gd8-QT-DD2">
-                                        <rect key="frame" x="0.0" y="0.0" width="71" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="36"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXj-ep-ske">
                                                 <rect key="frame" x="0.0" y="8" width="45" height="21"/>
@@ -32,22 +32,6 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pzB-BT-XjJ" customClass="IntencityCircleView" customModule="Intencity" customModuleProvider="target">
-                                                <rect key="frame" x="50" y="14" width="8" height="8"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="8" id="P9n-RM-niC"/>
-                                                    <constraint firstAttribute="width" constant="8" id="Uxq-p5-xY3"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XXd-Fd-gwU" customClass="IntencityCircleView" customModule="Intencity" customModuleProvider="target">
-                                                <rect key="frame" x="63" y="14" width="8" height="8"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="8" id="Rpm-GF-cxS"/>
-                                                    <constraint firstAttribute="height" constant="8" id="izZ-ro-uCN"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDw-Tq-dtr">
@@ -80,10 +64,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="indicator1" destination="pzB-BT-XjJ" id="7z1-Vm-Stp"/>
-                <outlet property="indicator2" destination="XXd-Fd-gwU" id="Xdc-XG-PUg"/>
                 <outlet property="routineDescription" destination="RDw-Tq-dtr" id="CGU-wW-JpI"/>
                 <outlet property="routineTitle" destination="BXj-ep-ske" id="gDA-BT-XX5"/>
+                <outlet property="titleStackView" destination="Gd8-QT-DD2" id="o45-UW-1ag"/>
                 <outlet property="view" destination="IBK-AS-9Oh" id="TBO-Sg-IxK"/>
             </connections>
             <point key="canvasLocation" x="624.5" y="501.5"/>

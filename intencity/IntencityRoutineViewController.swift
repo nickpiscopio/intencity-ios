@@ -56,7 +56,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate
         initConnectionViews()
         
         // Initialize the tableview.
-        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
+        Util.initTableView(tableView, footerHeight: Dimention.TABLE_FOOTER_HEIGHT_NORMAL, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_HEADER_CELL, cellName: Constant.GENERIC_HEADER_CELL)
