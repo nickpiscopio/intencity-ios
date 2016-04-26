@@ -354,7 +354,7 @@ class RoutineViewController: UIViewController, ServiceDelegate
     {
         if (section == routines.count - 1)
         {
-            return routineFooter != nil ? routineFooter.view.frame.height : 100
+            return routineFooter != nil ? routineFooter.view.frame.height : 80
         }
         
         return 0
