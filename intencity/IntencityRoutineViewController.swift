@@ -10,7 +10,7 @@
 import UIKit
 import Social
 
-class IntencityRoutineViewController: UIViewController, ServiceDelegate
+class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -59,7 +59,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate
         Util.initTableView(tableView, footerHeight: Dimention.TABLE_FOOTER_HEIGHT_NORMAL, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_HEADER_CELL, cellName: Constant.GENERIC_HEADER_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.INTENCITY_ROUTINE_HEADER_CELL, cellName: Constant.INTENCITY_ROUTINE_HEADER_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.CHECKBOX_CELL, cellName: Constant.CHECKBOX_CELL)
         
         showWelcome()
@@ -69,7 +69,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate
         routineTitle.text = NSLocalizedString("title_routine", comment: "")
         routineTitle.textColor = Color.secondary_light
         
-        initRoutineCard()
+        initRoutineCard(false)
     }
 
     override func didReceiveMemoryWarning()
@@ -77,15 +77,26 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillAppear(animated: Bool)
+    {
+        initRoutineCard(true)
+    }
+    
+    
     /**
      * Calls the service to get the display muscle groups for the routine card.
      */
-    func initRoutineCard()
+    func initRoutineCard(reset: Bool)
     {
         startButton.hidden = true
         
         // Creates the instance of the exercise data so we can store the exercises in the database later.
         exerciseData = ExerciseData.getInstance()
+        
+        if (reset)
+        {
+            routines.removeAll()
+        }        
         
         if (routines.count > 0)
         {
@@ -94,7 +105,6 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate
         else
         {
             self.routines.removeAll()
-            self.routines.append(RoutineRow(title: NSLocalizedString("title_custom_routines", comment: ""), rows: []))
             
             showLoading()
             
@@ -161,9 +171,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate
     
     @IBAction func tryAgainClick(sender: AnyObject)
     {
-        routines.removeAll()
-        
-        initRoutineCard()
+        initRoutineCard(true)
     }
     
     func onRetrievalSuccessful(event: Int, result: String)
@@ -305,13 +313,21 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate
         exerciseData.routineName = routines[selectedRoutineSection].rows[self.selectedRoutine]
             
         showLoading()
+        
+        let selectedRoutine = selectedRoutineSection > 0 ? routines[0].rows.count - 1 + selectedRoutineSection + self.selectedRoutine : self.selectedRoutine
             
         // We add 1 because the routines start at 1 on the server.
-        let selectedRoutine = String(self.selectedRoutine + 1)
         _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
                             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, selectedRoutine]))
+                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine + 1)]))
 //        }
+    }
+    
+    func onButtonClicked()
+    {
+        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
+        
+        self.navigationController!.pushViewController(vc, animated: true)
     }
 
     /**
@@ -338,8 +354,13 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_HEADER_CELL) as! GenericHeaderCellController
-        cell.title.text = routines[section].title
+        let routine = routines[section]
+        let showAssociatedImage = routine.showAssociatedImage
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.INTENCITY_ROUTINE_HEADER_CELL) as! IntencityRoutineHeaderCellController
+        cell.delegate = self
+        cell.title.text = routine.title
+        cell.editButton.enabled = showAssociatedImage
+        cell.editImage.hidden = !showAssociatedImage
         
         return cell
     }

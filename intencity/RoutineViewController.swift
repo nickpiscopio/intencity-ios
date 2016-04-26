@@ -236,9 +236,12 @@ class RoutineViewController: UIViewController, ServiceDelegate
         let json: AnyObject? = result.parseJSONString
         
         var defaultRoutineRows = [RoutineRow]()
-        var routines = [String]()
+        var defaultRoutines = [String]()
+        var customRoutines = [String]()
         
         var recommended: String?
+        
+        var i = 0
         
         if (json != nil)
         {
@@ -246,11 +249,21 @@ class RoutineViewController: UIViewController, ServiceDelegate
             {
                 let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
                 recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as? String
+
+                i += 1
                 
-                routines.append(muscleGroup)
+                if (i > 6)
+                {
+                    customRoutines.append(muscleGroup)
+                }
+                else
+                {
+                    defaultRoutines.append(muscleGroup)
+                }
             }
             
-            defaultRoutineRows.append(RoutineRow(title: RoutineViewController.DEFAULT_ROUTINE_TITLE, rows: routines))
+            defaultRoutineRows.append(RoutineRow(title: RoutineViewController.DEFAULT_ROUTINE_TITLE, rows: defaultRoutines, showAssociatedImage: false))
+            defaultRoutineRows.append(RoutineRow(title: RoutineViewController.DEFAULT_ROUTINE_TITLE, rows: customRoutines, showAssociatedImage: true))
             
             hideConnectionIssue()
         }
@@ -421,9 +434,9 @@ class RoutineViewController: UIViewController, ServiceDelegate
                 break
             case RoutineViewController.SAVED_ROUTINE_TITLE:
                 
-                let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
-                    
-                self.navigationController!.pushViewController(vc, animated: true)
+//                let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
+//                    
+//                self.navigationController!.pushViewController(vc, animated: true)
 
                 break
             default:

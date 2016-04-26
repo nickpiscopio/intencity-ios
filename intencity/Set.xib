@@ -103,7 +103,7 @@
                                                             <action selector="showOrDismiss:" destination="d89-Nv-ATs" eventType="touchUpInside" id="FpS-b6-VJj"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-Tu-FZe">
+                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-Tu-FZe">
                                                         <rect key="frame" x="35" y="0.0" width="35" height="34"/>
                                                         <state key="normal" image="dropdown"/>
                                                         <connections>

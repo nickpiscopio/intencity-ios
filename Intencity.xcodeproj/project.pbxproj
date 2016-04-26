@@ -49,6 +49,9 @@
 		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
 		BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F41C68D34400F60ADC /* Assets.xcassets */; };
 		BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460FF1C68D53200F60ADC /* PageViewController.swift */; };
+		BD56FB8B1CCFFCAA001404C5 /* IntencityRoutineHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD56FB8A1CCFFCAA001404C5 /* IntencityRoutineHeaderCell.xib */; };
+		BD56FB8D1CCFFD08001404C5 /* IntencityRoutineHeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB8C1CCFFD08001404C5 /* IntencityRoutineHeaderCellController.swift */; };
+		BD56FB8F1CD0004A001404C5 /* ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB8E1CD0004A001404C5 /* ButtonDelegate.swift */; };
 		BD58AB2B1CC8F4A5006D7EF4 /* ViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2A1CC8F4A5006D7EF4 /* ViewDelegate.swift */; };
 		BD58AB2D1CC8F70A006D7EF4 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2C1CC8F70A006D7EF4 /* View.swift */; };
 		BD58AB2F1CC8FE03006D7EF4 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2E1CC8FE03006D7EF4 /* RoutineViewController.swift */; };
@@ -205,6 +208,9 @@
 		BD5460F41C68D34400F60ADC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5460F91C68D34400F60ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD5460FF1C68D53200F60ADC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		BD56FB8A1CCFFCAA001404C5 /* IntencityRoutineHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntencityRoutineHeaderCell.xib; sourceTree = "<group>"; };
+		BD56FB8C1CCFFD08001404C5 /* IntencityRoutineHeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityRoutineHeaderCellController.swift; sourceTree = "<group>"; };
+		BD56FB8E1CD0004A001404C5 /* ButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDelegate.swift; sourceTree = "<group>"; };
 		BD58AB2A1CC8F4A5006D7EF4 /* ViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDelegate.swift; sourceTree = "<group>"; };
 		BD58AB2C1CC8F70A006D7EF4 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BD58AB2E1CC8FE03006D7EF4 /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
@@ -382,6 +388,7 @@
 				BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */,
 				BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */,
 				BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */,
+				BD56FB8C1CCFFD08001404C5 /* IntencityRoutineHeaderCellController.swift */,
 				BD7A87091CCE4542005BC2DF /* RoutineCellController.swift */,
 				BD7A87111CCEA137005BC2DF /* RoutineContinueCellController.swift */,
 				BD294ACE1CC13883005718BA /* RoutineCellFooterController.swift */,
@@ -601,6 +608,7 @@
 			isa = PBXGroup;
 			children = (
 				BD9EF2BE1C6B829500E520CB /* ServiceDelegate.swift */,
+				BD56FB8E1CD0004A001404C5 /* ButtonDelegate.swift */,
 				BD58AB2A1CC8F4A5006D7EF4 /* ViewDelegate.swift */,
 				BDD89BF61C9066F300530D79 /* NotificationDelegate.swift */,
 				BD03C7BA1C761B6000D8911A /* SetDelegate.swift */,
@@ -637,6 +645,7 @@
 				BD36EC321C720C6B00F993CE /* Direction.xib */,
 				BDE493F81C7B9A26005817D0 /* GenericCell.xib */,
 				BDE493FC1C7B9B45005817D0 /* GenericHeaderCell.xib */,
+				BD56FB8A1CCFFCAA001404C5 /* IntencityRoutineHeaderCell.xib */,
 				BD03C7B21C76082B00D8911A /* Set.xib */,
 			);
 			name = Cells;
@@ -755,6 +764,7 @@
 				BDD53BF41C8A2B13001235AE /* FitnessRecommendationCell.xib in Resources */,
 				BD5C6AF71C88B97700A9ED0A /* CheckboxCell.xib in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
+				BD56FB8B1CCFFCAA001404C5 /* IntencityRoutineHeaderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,6 +857,7 @@
 				BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */,
 				BD294ACF1CC13883005718BA /* RoutineCellFooterController.swift in Sources */,
 				BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */,
+				BD56FB8F1CD0004A001404C5 /* ButtonDelegate.swift in Sources */,
 				BD7C7E851C7CA0CF005AFFDD /* EditEquipmentViewController.swift in Sources */,
 				BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */,
 				BD7A870C1CCE46A9005BC2DF /* IntencityRoutineViewController.swift in Sources */,
@@ -892,6 +903,7 @@
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
 				BD53AED81CAD517600077B0D /* IntencityCircleView.swift in Sources */,
 				BD7C7E831C7CA0C6005AFFDD /* EditExercisePrioritiesViewController.swift in Sources */,
+				BD56FB8D1CCFFD08001404C5 /* IntencityRoutineHeaderCellController.swift in Sources */,
 				BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */,
 				BD1F30E71CAACA0300002D06 /* AwardCellController.swift in Sources */,
 				BD0CD6FA1C984789004FF750 /* Toast.swift in Sources */,
