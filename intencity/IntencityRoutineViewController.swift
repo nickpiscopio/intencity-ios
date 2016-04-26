@@ -85,7 +85,6 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate
         startButton.hidden = true
         
         // Creates the instance of the exercise data so we can store the exercises in the database later.
-        ExerciseData.reset()
         exerciseData = ExerciseData.getInstance()
         
         if (routines.count > 0)

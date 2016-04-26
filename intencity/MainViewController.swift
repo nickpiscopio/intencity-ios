@@ -29,8 +29,8 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
 //        let backButton = UIBarButtonItem(customView: "yourView")
 //        self.navigationItem.leftBarButtonItem = backButton
         
-        let backButton = UIBarButtonItem(title: "My List", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MainViewController.goBack))
-        self.navigationItem.leftBarButtonItem = backButton
+//        let backButton = UIBarButtonItem(title: "My List", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MainViewController.goBack))
+//        self.navigationItem.leftBarButtonItem = backButton
     }
     
     override func didReceiveMemoryWarning()

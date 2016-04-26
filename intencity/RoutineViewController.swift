@@ -307,6 +307,14 @@ class RoutineViewController: UIViewController, ServiceDelegate
 //                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email,  selectedRoutine]))
 //        }
     }
+    
+    /**
+     * Returns the continue string.
+     */
+    func getContinueString() -> String
+    {
+        return String(format: CONTINUE_STRING, arguments: [savedExercises.routineName.uppercaseString])
+    }
 
     /**
      * Animates the table being added to the screen.
@@ -358,7 +366,7 @@ class RoutineViewController: UIViewController, ServiceDelegate
         let routine = routines[indexPath.section]
         let title = routine.title
         
-        if (savedExercises != nil && title == String(format: CONTINUE_STRING, arguments: [savedExercises.routineName.uppercaseString]))
+        if (savedExercises != nil && title == getContinueString())
         {
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CONTINUE_CELL) as! RoutineContinueCellController
             cell.selectionStyle = .None
@@ -392,6 +400,11 @@ class RoutineViewController: UIViewController, ServiceDelegate
         let title = routine.title
         switch title
         {
+        case getContinueString():
+            
+                viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: CONTINUE_STRING, savedExercises: savedExercises)
+                
+                break
             case RoutineViewController.CUSTOM_ROUTINE_TITLE:
                 
                 viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: "", savedExercises: nil)

@@ -459,6 +459,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         // This means we got the results from the iOS database.
         if (result == CONTINUE_STRING)
         {
+            exerciseData.routineName = savedExercises.routineName
             exerciseData.exerciseList = savedExercises.exercises
                 
             indexToLoad = savedExercises.index
