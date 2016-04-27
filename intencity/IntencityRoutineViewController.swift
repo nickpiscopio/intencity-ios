@@ -358,6 +358,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.NO_ITEM_CELL) as! NoItemCellController
             cell.selectionStyle = .None
             cell.titleLabel.text = title
+            cell.userInteractionEnabled = false
             
             return cell
         }
@@ -375,16 +376,13 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        if (title != NO_CUSTOM_ROUTINE_STRING)
-        {
-            selectedRoutineSection = indexPath.section
-            selectedRoutine = indexPath.row
+        selectedRoutineSection = indexPath.section
+        selectedRoutine = indexPath.row
 
-            let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
-            cell.setChecked(true)
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+        cell.setChecked(true)
         
-            startButton.hidden = false
-        }
+        startButton.hidden = false
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
