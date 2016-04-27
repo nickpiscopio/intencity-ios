@@ -17,6 +17,8 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
     
     @IBOutlet weak var addRoutineDescription: UILabel!
     
+    var delegate: IntencityRoutineDelegate?
+    
     var muscleGroups = [String]()
     
     var routine = [String]()
@@ -165,6 +167,8 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
      */
     func goBack()
     {
+        delegate!.onRoutineSaved()
+        
         self.navigationController?.popViewControllerAnimated(true)
     }
     

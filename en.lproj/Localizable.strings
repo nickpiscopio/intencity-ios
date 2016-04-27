@@ -242,6 +242,8 @@
 "key_random" = "Intencity's algorithm selects exercises.";
 "key_consecutive" = "Consecutive list of exercises.";
 
+"intencity_routine_description" = "These routines allow the user input exercises or allow Intencity to use its algorithm to select exercises.";
+
 /*  */
 "routine_continue" = "CONTINUE %1$@";
 "create_routine_title" = "Want a custom routine?";

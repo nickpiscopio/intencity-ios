@@ -55,6 +55,7 @@ struct Constant
     static let TERMS_VIEW_CONTROLLER = "TermsViewController"
     static let PRIVACY_POLICY_VIEW_CONTROLLER = "PrivacyPolicyViewController"
     static let CUSTOM_ROUTINE_VIEW_CONTROLLER = "CustomRoutineViewController"
+    static let ADD_ROUTINE_VIEW_CONTROLLER = "AddRoutineViewController"
     static let RATE_INTENCITY = "RateIntencity"
     static let LOG_OUT = "LogOut"
     

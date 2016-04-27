@@ -10,7 +10,7 @@
 import UIKit
 import Social
 
-class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonDelegate
+class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonDelegate, IntencityRoutineDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -19,6 +19,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     @IBOutlet weak var tryAgainButton: UIButton!
     
     @IBOutlet weak var routineTitle: UILabel!
+    @IBOutlet weak var routineDescription: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var startButton: IntencityButtonRoundDark!
@@ -27,6 +28,8 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     let DEFAULT_ROUTINE_TITLE = NSLocalizedString("title_default_routines", comment: "")
 
     let DEFAULTS = NSUserDefaults.standardUserDefaults()
+    
+    var intencityRoutineDelegate: IntencityRoutineDelegate?
     
     var viewDelegate: ViewDelegate!
     
@@ -51,6 +54,9 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         // Sets the background color of this view.
         self.view.backgroundColor = Color.page_background
         
+        // Hides the tab bar.
+        self.tabBarController?.tabBar.hidden = true
+        
         email = Util.getEmailFromDefaults()
         
         initConnectionViews()
@@ -69,7 +75,10 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         routineTitle.text = NSLocalizedString("title_routine", comment: "")
         routineTitle.textColor = Color.secondary_light
         
-        initRoutineCard(false)
+        routineDescription.text = NSLocalizedString("intencity_routine_description", comment: "")
+        routineDescription.textColor = Color.secondary_light
+        
+        initRoutines(false)
     }
 
     override func didReceiveMemoryWarning()
@@ -77,16 +86,10 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(animated: Bool)
-    {
-        initRoutineCard(true)
-    }
-    
-    
     /**
      * Calls the service to get the display muscle groups for the routine card.
      */
-    func initRoutineCard(reset: Bool)
+    func initRoutines(reset: Bool)
     {
         startButton.hidden = true
         
@@ -104,8 +107,6 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         }
         else
         {
-            self.routines.removeAll()
-            
             showLoading()
             
             _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
@@ -171,7 +172,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     
     @IBAction func tryAgainClick(sender: AnyObject)
     {
-        initRoutineCard(true)
+        initRoutines(true)
     }
     
     func onRetrievalSuccessful(event: Int, result: String)
@@ -198,6 +199,8 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
                 if (result != "" && result != Constant.RETURN_NULL)
                 {
                     viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: result, savedExercises: nil, state: RoutineState.INTENCITY)
+                    
+                    goBack()
                 }
                 else
                 {
@@ -245,71 +248,37 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
      */
     func loadTableViewItems(result: String)
     {
-//        // This gets saved as NSDictionary, so there is no order
-//        let json: AnyObject? = result.parseJSONString
-//        
-//        var defaultRoutineRows = [RoutineRow]()
-//        var routineRows = [String]()
-//        
-//        var recommended: String?
-//        
-//        if (json != nil)
-//        {
-//            for muscleGroups in json as! NSArray
-//            {
-//                let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
-//                recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as? String
-//                
-//                routineRows.append(muscleGroup)
-//            }
-//            
-//            defaultRoutineRows.append(RoutineRow(title: DEFAULT_ROUTINE_TITLE, rows: routineRows))
-//            
-//            hideConnectionIssue()
-//        }
-//        else
-//        {
-//            routines.removeAll()
-//        
-//            startButton.hidden = true
-//        }
-//            
-//        // Get the saved exercises from the local database.
-//        savedExercises = DBHelper().getRecords()
-//            
-//        if (savedExercises.routineName != "")
-//        {
-//            routines.append(RoutineSection(title: CONTINUE_STRING, keys: [], rows: []))
-////            defaultRoutineRows.append(RoutineRow(title: , isHeader: false))
-//            
-////            self.recommended = defaultRoutineRows.count - 1
-//        }
-//        else if (json != nil)
-//        {
-////            self.recommended = (recommended == nil || recommended! == "") ? 0 : defaultRoutineRows.indexOf(recommended!)!
-//        }
-//            
-//        if (defaultRoutineRows.count > 0)
-//        {
-//            routines.append(RoutineSection(title: DEFAULT_ROUTINE_TITLE, keys: [ RoutineKeys.RANDOM, RoutineKeys.USER_SELECTED ], rows: defaultRoutineRows))
-////            animateTable()
-//            tableView.reloadData()
-//        }
+        let json = result.parseJSONString!
+        
+        // This means we got results back from the web database.
+        if (result != "" && result != Constant.RETURN_NULL)
+        {
+            do
+            {
+                routines.removeAll()
+                routines = try IntencityRoutineDao().parseJson(json)
+                
+                intencityRoutineDelegate!.onRoutineUpdated(routines)
+                
+                hideConnectionIssue()
+            }
+            catch
+            {
+                showConnectionIssue()
+            }
+        }
+        else
+        {
+            showConnectionIssue()
+        }
+        
+        tableView.reloadData()
         
         hideLoading()
     }
     
     @IBAction func startExercisingClicked(sender: AnyObject)
     {
-//        if (routineName == CONTINUE_STRING)
-//        {
-//            exerciseData.routineName = savedExercises.routineName
-//            
-//            // LOAD FITNESS LOG
-//            viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: CONTINUE_STRING, savedExercises: savedExercises)
-//        }
-//        else
-//        {
         exerciseData.routineName = routines[selectedRoutineSection].rows[self.selectedRoutine]
             
         showLoading()
@@ -320,15 +289,22 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
                             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine + 1)]))
-//        }
     }
     
     func onButtonClicked()
     {
         let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
+        vc.delegate = self
         
         self.navigationController!.pushViewController(vc, animated: true)
     }
+    
+    func onRoutineSaved()
+    {
+        initRoutines(true)
+    }
+    
+    func onRoutineUpdated(routineRows: [RoutineRow]) { }
 
     /**
      * Animates the table being added to the screen.
@@ -423,5 +399,13 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
                 cell.setChecked(false)
         
 //        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .None
+    }
+    
+    /**
+     * Navigates the user back to the previous screen.
+     */
+    func goBack()
+    {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }

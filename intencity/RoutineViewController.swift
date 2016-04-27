@@ -10,7 +10,7 @@
 import UIKit
 import Social
 
-class RoutineViewController: UIViewController, ServiceDelegate
+class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutineDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -45,7 +45,6 @@ class RoutineViewController: UIViewController, ServiceDelegate
     
     var routines = [RoutineSection]()
     var selectedRoutineSection: Int!
-    var selectedRoutine: Int!
     
     override func viewDidLoad()
     {
@@ -184,6 +183,17 @@ class RoutineViewController: UIViewController, ServiceDelegate
         hideLoading()
     }
     
+    func onRoutineSaved() { }
+    
+    func onRoutineUpdated(routineRows: [RoutineRow])
+    {
+        routines.removeAtIndex(selectedRoutineSection)
+        routines.insert(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], rows: routineRows), atIndex: selectedRoutineSection)
+        
+        let indexPath = NSIndexPath(forRow: 0, inSection: selectedRoutineSection)
+        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+    }
+    
     /**
      * Shows the welcome alert to the user if needed.
      */
@@ -207,44 +217,27 @@ class RoutineViewController: UIViewController, ServiceDelegate
      */
     func loadTableViewItems(result: String)
     {
-        // This gets saved as NSDictionary, so there is no order
-        let json: AnyObject? = result.parseJSONString
+        let json = result.parseJSONString!
         
         var defaultRoutineRows = [RoutineRow]()
-        var defaultRoutines = [String]()
-        var customRoutines = [String]()
         
-        var recommended: String?
-        
-        var i = 0
-        
-        if (json != nil)
+        // This means we got results back from the web database.
+        if (result != "" && result != Constant.RETURN_NULL)
         {
-            for muscleGroups in json as! NSArray
+            do
             {
-                let muscleGroup = muscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
-                recommended = muscleGroups[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as? String
-
-                i += 1
+                defaultRoutineRows = try IntencityRoutineDao().parseJson(json)
                 
-                if (i > 6)
-                {
-                    customRoutines.append(muscleGroup)
-                }
-                else
-                {
-                    defaultRoutines.append(muscleGroup)
-                }
+                hideConnectionIssue()
             }
-            
-            defaultRoutineRows.append(RoutineRow(title: RoutineViewController.DEFAULT_ROUTINE_TITLE, rows: defaultRoutines, showAssociatedImage: false))
-            defaultRoutineRows.append(RoutineRow(title: RoutineViewController.DEFAULT_ROUTINE_TITLE, rows: customRoutines, showAssociatedImage: true))
-            
-            hideConnectionIssue()
+            catch
+            {
+                showConnectionIssue()
+            }
         }
         else
         {
-            routines.removeAll()
+            showConnectionIssue()
         }
             
         // Get the saved exercises from the local database.
@@ -253,47 +246,22 @@ class RoutineViewController: UIViewController, ServiceDelegate
         if (savedExercises.routineName != "")
         {
             self.routines.insert(RoutineSection(title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), keys: [], rows: []), atIndex: 0)
-//            defaultRoutineRows.append(CONTINUE_STRING)
-//            
+
 //            self.recommended = defaultRoutineRows.count - 1
         }
-        else if (json != nil)
-        {
-//            self.recommended = (recommended == nil || recommended! == "") ? 0 : defaultRoutineRows.indexOf(recommended!)!
-        }
-            
+//        else if (json != nil)
+//        {
+////            self.recommended = (recommended == nil || recommended! == "") ? 0 : defaultRoutineRows.indexOf(recommended!)!
+//        }
+        
         if (defaultRoutineRows.count > 0)
         {
-            self.routines.append(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], rows: defaultRoutineRows))
+            routines.append(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], rows: defaultRoutineRows))
 //            animateTable()
             tableView.reloadData()
         }
         
         hideLoading()
-    }
-    
-    @IBAction func startExercisingClicked(sender: AnyObject)
-    {
-//        let routineName = routines[selectedRoutineSection].rows[selectedRoutine]
-//        if (routineName == CONTINUE_STRING)
-//        {
-//            exerciseData.routineName = savedExercises.routineName
-//            
-//            // LOAD FITNESS LOG
-//            viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: CONTINUE_STRING, savedExercises: savedExercises)
-//        }
-//        else
-//        {
-//            exerciseData.routineName = routineName
-//            
-//            showLoading()
-//            
-//            // We add 1 because the routines start at 1 on the server.
-//            let selectedRoutine = String(self.selectedRoutine + 1)
-//            _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
-//                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-//                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email,  selectedRoutine]))
-//        }
     }
     
     /**
@@ -384,7 +352,10 @@ class RoutineViewController: UIViewController, ServiceDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let routine = routines[indexPath.section]
+        // This is so we know which routine section to remove from the routines array when we update the RoutineRows
+        selectedRoutineSection = indexPath.section
+        
+        let routine = routines[selectedRoutineSection]
         let title = routine.title
         switch title
         {
@@ -402,6 +373,7 @@ class RoutineViewController: UIViewController, ServiceDelegate
                 
                 let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.INTENCITY_ROUTINE_VIEW_CONTROLLER) as! IntencityRoutineViewController
                 vc.viewDelegate = viewDelegate
+                vc.intencityRoutineDelegate = self
                 vc.routines = routine.rows
                 
                 self.navigationController!.pushViewController(vc, animated: true)
@@ -417,29 +389,5 @@ class RoutineViewController: UIViewController, ServiceDelegate
             default:
                 break
         }
-//        selectedRoutineSection = indexPath.section
-//        selectedRoutine = indexPath.row
-////
-//        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
-//        cell.setChecked(true)
-//        
-////        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .Checkmark
-//        
-//        // Deselects the row.
-////        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
-    {
-//        // Deselects the row.
-////        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        
-//        //        // Gets the row in the section.
-//        //        let row = routines[indexPath.section].rows[indexPath.row]
-//        //
-//                let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
-//                cell.setChecked(false)
-//        
-////        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .None
     }
 }

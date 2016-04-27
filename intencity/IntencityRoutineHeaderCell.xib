@@ -21,16 +21,19 @@
                         </connections>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pPY-aD-Esv">
-                        <rect key="frame" x="16" y="16" width="288" height="19"/>
+                        <rect key="frame" x="16" y="18.5" width="288" height="16"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-xb-y4l">
-                                <rect key="frame" x="0.0" y="2" width="270" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-xb-y4l">
+                                <rect key="frame" x="0.0" y="0.0" width="270" height="16"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="03x-P4-ohp">
-                                <rect key="frame" x="270" y="4" width="18" height="12"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="03x-P4-ohp">
+                                <rect key="frame" x="270" y="2" width="18" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="xei-3V-hx4"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                     </stackView>
@@ -49,7 +52,6 @@
                     <constraint firstAttribute="bottom" secondItem="pPY-aD-Esv" secondAttribute="bottom" constant="8" id="CTQ-w7-RJu"/>
                     <constraint firstAttribute="trailing" secondItem="pPY-aD-Esv" secondAttribute="trailing" constant="16" id="XgS-Rf-Qs8"/>
                     <constraint firstAttribute="trailing" secondItem="7Ti-ji-FN1" secondAttribute="trailing" id="Yeq-Ye-0JC"/>
-                    <constraint firstItem="pPY-aD-Esv" firstAttribute="top" secondItem="o4Z-1i-Sg3" secondAttribute="top" constant="16" id="bRa-tc-86q"/>
                     <constraint firstItem="ea6-Us-2mD" firstAttribute="top" secondItem="o4Z-1i-Sg3" secondAttribute="top" id="hsk-FN-mKZ"/>
                     <constraint firstItem="ea6-Us-2mD" firstAttribute="leading" secondItem="o4Z-1i-Sg3" secondAttribute="leading" id="j7M-wH-5um"/>
                     <constraint firstItem="7Ti-ji-FN1" firstAttribute="leading" secondItem="o4Z-1i-Sg3" secondAttribute="leading" id="yQr-Xp-3lP"/>

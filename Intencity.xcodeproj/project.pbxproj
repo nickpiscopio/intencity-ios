@@ -53,6 +53,8 @@
 		BD56FB8D1CCFFD08001404C5 /* IntencityRoutineHeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB8C1CCFFD08001404C5 /* IntencityRoutineHeaderCellController.swift */; };
 		BD56FB8F1CD0004A001404C5 /* ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB8E1CD0004A001404C5 /* ButtonDelegate.swift */; };
 		BD56FB911CD0E539001404C5 /* RoutineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB901CD0E539001404C5 /* RoutineState.swift */; };
+		BD56FB931CD101A0001404C5 /* IntencityRoutineDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB921CD101A0001404C5 /* IntencityRoutineDao.swift */; };
+		BD56FB951CD1051B001404C5 /* IntencityRoutineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB941CD1051B001404C5 /* IntencityRoutineDelegate.swift */; };
 		BD58AB2B1CC8F4A5006D7EF4 /* ViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2A1CC8F4A5006D7EF4 /* ViewDelegate.swift */; };
 		BD58AB2D1CC8F70A006D7EF4 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2C1CC8F70A006D7EF4 /* View.swift */; };
 		BD58AB2F1CC8FE03006D7EF4 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2E1CC8FE03006D7EF4 /* RoutineViewController.swift */; };
@@ -213,6 +215,8 @@
 		BD56FB8C1CCFFD08001404C5 /* IntencityRoutineHeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityRoutineHeaderCellController.swift; sourceTree = "<group>"; };
 		BD56FB8E1CD0004A001404C5 /* ButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDelegate.swift; sourceTree = "<group>"; };
 		BD56FB901CD0E539001404C5 /* RoutineState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineState.swift; sourceTree = "<group>"; };
+		BD56FB921CD101A0001404C5 /* IntencityRoutineDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityRoutineDao.swift; sourceTree = "<group>"; };
+		BD56FB941CD1051B001404C5 /* IntencityRoutineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityRoutineDelegate.swift; sourceTree = "<group>"; };
 		BD58AB2A1CC8F4A5006D7EF4 /* ViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDelegate.swift; sourceTree = "<group>"; };
 		BD58AB2C1CC8F70A006D7EF4 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BD58AB2E1CC8FE03006D7EF4 /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
@@ -621,6 +625,7 @@
 				BD6E4B051C84B2AC00C4E6FB /* UserSearchDelegate.swift */,
 				BD93252E1CC7D18400D9581E /* SaveDelegate.swift */,
 				BD294AC41CAEAE09005718BA /* ImageDelegate.swift */,
+				BD56FB941CD1051B001404C5 /* IntencityRoutineDelegate.swift */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -658,6 +663,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB45A1D1C849F52009E509B /* ExerciseDao.swift */,
+				BD56FB921CD101A0001404C5 /* IntencityRoutineDao.swift */,
 				BDBA605C1C85D61D002D5F4A /* UserDao.swift */,
 				BDF44A321C79F46D00B47CD1 /* DBHelper.swift */,
 				BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */,
@@ -859,6 +865,7 @@
 				BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */,
 				BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */,
 				BD294ACF1CC13883005718BA /* RoutineCellFooterController.swift in Sources */,
+				BD56FB931CD101A0001404C5 /* IntencityRoutineDao.swift in Sources */,
 				BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */,
 				BD56FB8F1CD0004A001404C5 /* ButtonDelegate.swift in Sources */,
 				BD7C7E851C7CA0CF005AFFDD /* EditEquipmentViewController.swift in Sources */,
@@ -946,6 +953,7 @@
 				BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */,
 				BD7C7E7E1C7C9E48005AFFDD /* AboutViewController.swift in Sources */,
 				BD91FC0D1CAD710800965782 /* UploadImageTask.swift in Sources */,
+				BD56FB951CD1051B001404C5 /* IntencityRoutineDelegate.swift in Sources */,
 				BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */,
 				BD37B4AB1C8DB677008F3076 /* ExerciseSearchViewController.swift in Sources */,
 			);

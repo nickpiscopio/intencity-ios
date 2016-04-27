@@ -18,6 +18,8 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     @IBOutlet weak var descriptionLabel2: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var delegate: IntencityRoutineDelegate?
+    
     var email = ""
     
     var routines = [String]()
@@ -29,9 +31,6 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
         
         // Sets the background color of this view.
         self.view.backgroundColor = Color.page_background
-        
-        // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
         
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("edit_routines_title", comment: "")
@@ -128,31 +127,31 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     {
         switch(event)
         {
-        case ServiceEvent.GET_LIST:
+            case ServiceEvent.GET_LIST:
             
-            if (result != Constant.RETURN_NULL)
-            {
-                // This gets saved as NSDictionary, so there is no order
-                let json: AnyObject? = result.parseJSONString
-                
-                for routines in json as! NSArray
+                if (result != Constant.RETURN_NULL)
                 {
-                    let routine = routines[Constant.COLUMN_DISPLAY_NAME] as! String
+                    // This gets saved as NSDictionary, so there is no order
+                    let json: AnyObject? = result.parseJSONString
                 
-                    self.routines.append(routine)
+                    for routines in json as! NSArray
+                    {
+                        let routine = routines[Constant.COLUMN_DISPLAY_NAME] as! String
+                
+                        self.routines.append(routine)
+                    }
+                
+                    tableView.reloadData();
                 }
-                
-                tableView.reloadData();
-            }
             
-            break
-        case ServiceEvent.UPDATE_LIST:
+                break
+            case ServiceEvent.UPDATE_LIST:
             
-            goBack()
+                goBack()
             
-            break
-        default:
-            break
+                break
+            default:
+                break
         }
         
         hideLoading()
@@ -179,7 +178,6 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
             _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
                             serviceURL: Constant.SERVICE_UPDATE_USER_MUSCLE_GROUP_ROUTINE,
                             params: Constant.generateServiceListVariables(email, variables: routinesToRemove, isInserting: false))
-
         }
         else
         {
@@ -192,6 +190,8 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
      */
     func goBack()
     {
+        delegate!.onRoutineSaved()
+        
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -252,5 +252,13 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
         loadingView.hidden = true
         
         activityIndicator.stopAnimating()
+    }
+    
+    @IBAction func addRoutine(sender: AnyObject)
+    {
+        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.ADD_ROUTINE_VIEW_CONTROLLER) as! AddRoutineViewController
+        vc.delegate = delegate
+        
+        self.navigationController!.pushViewController(vc, animated: true)
     }
 }
