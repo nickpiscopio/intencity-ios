@@ -26,6 +26,8 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
     let DEFAULT_ROUTINE_TITLE = NSLocalizedString("title_default_routines", comment: "")
+    
+    let NO_CUSTOM_ROUTINE_STRING = NSLocalizedString("no_custom_routines", comment: "")
 
     let DEFAULTS = NSUserDefaults.standardUserDefaults()
     
@@ -67,6 +69,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.INTENCITY_ROUTINE_HEADER_CELL, cellName: Constant.INTENCITY_ROUTINE_HEADER_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.CHECKBOX_CELL, cellName: Constant.CHECKBOX_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.NO_ITEM_CELL, cellName: Constant.NO_ITEM_CELL)
         
         showWelcome()
         
@@ -349,56 +352,45 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         // Gets the row in the section.
-        let row = routines[indexPath.section].rows[indexPath.row]
-
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
-        cell.setCheckboxImage(Constant.RADIO_BUTTON_MARKED, uncheckedImage: Constant.RADIO_BUTTON_UNMARKED)
-        cell.selectionStyle = .None
-        cell.titleLabel.text = row
-        cell.setChecked(false)
-        
-        return cell
-        
-//        let routineCellController = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
-//        routineCellController.selectionStyle = UITableViewCellSelectionStyle.None
-//        routineCellController.delegate = self
-//        routineCellController.dataSource = displayMuscleGroups
-//        // Need to add 1 to the routine so we get back the correct value when setting the muscle group for today.
-//        // CompletedMuscleGroup starts at 1.
-//        routineCellController.selectedRoutineNumber = recommended + 1
-//        routineCellController.setDropDownDataSource(recommended)
-//        routineCellController.setDropDownWidth(displayMuscleGroups.contains(CONTINUE_STRING))
-//        return routineCellController
+        let title = routines[indexPath.section].rows[indexPath.row]
+        if (title == NO_CUSTOM_ROUTINE_STRING)
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.NO_ITEM_CELL) as! NoItemCellController
+            cell.selectionStyle = .None
+            cell.titleLabel.text = title
+            
+            return cell
+        }
+        else
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
+            cell.setCheckboxImage(Constant.RADIO_BUTTON_MARKED, uncheckedImage: Constant.RADIO_BUTTON_UNMARKED)
+            cell.selectionStyle = .None
+            cell.titleLabel.text = title
+            cell.setChecked(false)
+            
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        selectedRoutineSection = indexPath.section
-        selectedRoutine = indexPath.row
-//
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
-        cell.setChecked(true)
+        if (title != NO_CUSTOM_ROUTINE_STRING)
+        {
+            selectedRoutineSection = indexPath.section
+            selectedRoutine = indexPath.row
+
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+            cell.setChecked(true)
         
-//        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .Checkmark
-        
-        // Deselects the row.
-//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        startButton.hidden = false
+            startButton.hidden = false
+        }
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
     {
-        // Deselects the row.
-//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        //        // Gets the row in the section.
-        //        let row = routines[indexPath.section].rows[indexPath.row]
-        //
-                let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
-                cell.setChecked(false)
-        
-//        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .None
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+        cell.setChecked(false)
     }
     
     /**

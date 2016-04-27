@@ -39,6 +39,8 @@
 		BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37E3AD1C7F4273004A30F7 /* SavedExercise.swift */; };
 		BD43E11A1C8355E9002F14C6 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */; };
 		BD43E11C1C847D77002F14C6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD43E11B1C847D77002F14C6 /* SearchViewController.swift */; };
+		BD4B7B841CD1275A00D83F91 /* NoItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4B7B831CD1275A00D83F91 /* NoItemCell.xib */; };
+		BD4B7B861CD127C400D83F91 /* NoItemCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B7B851CD127C400D83F91 /* NoItemCellController.swift */; };
 		BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */; };
 		BD4B8EB91C7CEACD00AD579B /* DescriptionFooterCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8EB81C7CEACD00AD579B /* DescriptionFooterCellController.swift */; };
 		BD4B8EBB1C7CEB1D00AD579B /* DescriptionFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4B8EBA1C7CEB1D00AD579B /* DescriptionFooterCell.xib */; };
@@ -199,6 +201,8 @@
 		BD37E3AD1C7F4273004A30F7 /* SavedExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedExercise.swift; sourceTree = "<group>"; };
 		BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		BD43E11B1C847D77002F14C6 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		BD4B7B831CD1275A00D83F91 /* NoItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoItemCell.xib; sourceTree = "<group>"; };
+		BD4B7B851CD127C400D83F91 /* NoItemCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoItemCellController.swift; sourceTree = "<group>"; };
 		BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSection.swift; sourceTree = SOURCE_ROOT; };
 		BD4B8EB81C7CEACD00AD579B /* DescriptionFooterCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionFooterCellController.swift; sourceTree = "<group>"; };
 		BD4B8EBA1C7CEB1D00AD579B /* DescriptionFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionFooterCell.xib; sourceTree = "<group>"; };
@@ -392,6 +396,7 @@
 				BD1F30E61CAACA0300002D06 /* AwardCellController.swift */,
 				BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */,
 				BDE493FA1C7B9A58005817D0 /* CheckboxCellController.swift */,
+				BD4B7B851CD127C400D83F91 /* NoItemCellController.swift */,
 				BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */,
 				BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */,
 				BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */,
@@ -649,6 +654,7 @@
 				BDB45A191C849AAF009E509B /* SearchExerciseCell.xib */,
 				BD640A4E1C85D1D7008895A2 /* RankingCell.xib */,
 				BD5C6AF61C88B97700A9ED0A /* CheckboxCell.xib */,
+				BD4B7B831CD1275A00D83F91 /* NoItemCell.xib */,
 				BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */,
 				BD36EC321C720C6B00F993CE /* Direction.xib */,
 				BDE493F81C7B9A26005817D0 /* GenericCell.xib */,
@@ -662,8 +668,8 @@
 		BDF44A341C79F61B00B47CD1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				BDB45A1D1C849F52009E509B /* ExerciseDao.swift */,
 				BD56FB921CD101A0001404C5 /* IntencityRoutineDao.swift */,
+				BDB45A1D1C849F52009E509B /* ExerciseDao.swift */,
 				BDBA605C1C85D61D002D5F4A /* UserDao.swift */,
 				BDF44A321C79F46D00B47CD1 /* DBHelper.swift */,
 				BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */,
@@ -770,6 +776,7 @@
 				BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */,
 				BD4B8EBB1C7CEB1D00AD579B /* DescriptionFooterCell.xib in Resources */,
 				BDD89BF91C906C4D00530D79 /* NotificationCell.xib in Resources */,
+				BD4B7B841CD1275A00D83F91 /* NoItemCell.xib in Resources */,
 				BDD53BF41C8A2B13001235AE /* FitnessRecommendationCell.xib in Resources */,
 				BD5C6AF71C88B97700A9ED0A /* CheckboxCell.xib in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
@@ -885,6 +892,7 @@
 				BD58AB2B1CC8F4A5006D7EF4 /* ViewDelegate.swift in Sources */,
 				BD58AB2D1CC8F70A006D7EF4 /* View.swift in Sources */,
 				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
+				BD4B7B861CD127C400D83F91 /* NoItemCellController.swift in Sources */,
 				BDB37FA11CCA73C100470479 /* RoutineKeys.swift in Sources */,
 				BDD89BFB1C906D9F00530D79 /* NotificationCellViewController.swift in Sources */,
 				BD6E4B061C84B2AC00C4E6FB /* UserSearchDelegate.swift in Sources */,

@@ -23,7 +23,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="SdO-KN-dvL">
                                         <rect key="frame" x="16" y="16" width="483" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-d1-nLe">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-d1-nLe">
                                                 <rect key="frame" x="0.0" y="0.0" width="465" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="6eb-dq-e3b"/>
@@ -37,7 +37,7 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="checkbox_checked" translatesAutoresizingMaskIntoConstraints="NO" id="P9R-OS-IOb">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="checkbox_checked" translatesAutoresizingMaskIntoConstraints="NO" id="P9R-OS-IOb">
                                                 <rect key="frame" x="465" y="0.0" width="18" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="dls-U4-43u"/>
