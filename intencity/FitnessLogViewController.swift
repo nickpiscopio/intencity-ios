@@ -11,8 +11,8 @@ import UIKit
 import Social
 
 class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDelegate, ExerciseSearchDelegate, SaveDelegate
-{
-    enum ACTIVE_BUTTON_STATE
+{    
+    enum ActiveButtonState
     {
         case SEARCH
         case INTENCITY
@@ -61,7 +61,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     
     var awards = [String: String]()
     
-    var activeButtonState = ACTIVE_BUTTON_STATE.INTENCITY
+    var routineState: Int!
+    var activeButtonState = ActiveButtonState.INTENCITY
     
     var textField: UITextField!
     
@@ -90,6 +91,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         textField = UITextField(frame: CGRectMake(0, 0, 10, 10))
         
         exerciseData = ExerciseData.getInstance()
+        exerciseData.routineState = routineState
         
         loadTableViewItems(result)
     }
@@ -104,7 +106,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func initRoutineCard()
     {
-        viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil)
+        viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil, state: RoutineState.NONE)
     }
     
     /**
@@ -199,7 +201,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             default:
                 
                 //SHOW CONNECTION ISSUE
-                viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil)
+                viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil, state: RoutineState.NONE)
                 
                 break
         }
@@ -238,6 +240,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         addExercise(false, fromSearch: true)
     }
     
+    /**
+     * Sets the next button images.
+     */
     func setButtons()
     {
         var inactiveButtonImage: String!
@@ -475,19 +480,41 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             catch
             {
                 // SHOW CONNECTION ISSUE
-                viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil)
+                viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil, state: RoutineState.NONE)
             }
         }
-            
-        if (exerciseData.exerciseList.count >= EXERCISE_MINIMUM_THRESHOLD)
+        // Custom state
+        else
         {
-            activeButton.hidden = false
-            inactiveButton.hidden = false
-                
-            animateTable(indexToLoad)
+            exerciseData.routineName = NSLocalizedString("title_custom_routine", comment: "")
         }
         
-        hideLoading()
+        switch routineState
+        {
+            case RoutineState.CUSTOM:
+            
+                activeButtonState = .SEARCH
+                inactiveButton.hidden = true
+                activeButton.hidden = false
+                
+                setButtons()
+            
+                animateTable(indexToLoad)
+            
+                break
+        
+            default:
+            
+                if (exerciseData.exerciseList.count >= EXERCISE_MINIMUM_THRESHOLD)
+                {
+                    activeButton.hidden = false
+                    inactiveButton.hidden = false
+                
+                    animateTable(indexToLoad)
+                }
+            
+                break
+        }
     }
 
     /**
@@ -918,15 +945,16 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func generateShareMessage(socialNetworkButton: String) -> String
     {
-        let routineName = exerciseListHeader.routineNameLabel.text!
-        let routine = routineName.stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString(Constant.PARAMETER_AMPERSAND, withString: " & #")
-        
         let shareMessage = ["I #dominated my #workout with #Intencity! #WOD #Fitness",
                                 "I #finished my #workout of the day with #Intencity! #WOD #Fitness",
                                 "I made it through #Intencity's #routine! #Fitness",
-                                "I #completed #" + routine + " with #Intencity! #WOD #Fitness",
+                                "Making #gains with #Intencity! #WOD #Fitness #Exercise #Gainz",
                                 "#Finished my #Intencity #workout! #Retweet if you've #exercised today. #WOD #Fitness",
-                                "I #lifted with #Intencity today! #lift #lifting" ]
+                                "I #lifted with #Intencity today! #lift #lifting",
+                                "#Intencity #trained me today!",
+                                "Getting #strong with #Intencity! #GetStrong #DoWork #Fitness",
+                                "Getting that #BeachBody with #Intencity! #Lift #Exercise #Fitness",
+                                "Nothing feels better than finishing a great #workout!"]
         
         let intencityUrl = " www.Intencity.fit"
         let via = " @Intencity" + (socialNetworkButton == TWEET_BUTTON ? "App" : "")
@@ -964,10 +992,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         // Note that indexPath is wrapped in an array: [indexPath]
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
         
-        if ((exerciseName != STRETCH_NAME || fromSearch) && currentExercises[currentExercises.count - 1].exerciseName != STRETCH_NAME)
-        {
-            addExercise(false, fromSearch: fromSearch)
-        }
+//        if ((exerciseName != STRETCH_NAME || fromSearch) && currentExercises[currentExercises.count - 1].exerciseName != STRETCH_NAME)
+//        {
+//            addExercise(false, fromSearch: fromSearch)
+//        }
         
         // Add that the user has skipped an exercise.
         // Can't get the Kept Swimming badge.

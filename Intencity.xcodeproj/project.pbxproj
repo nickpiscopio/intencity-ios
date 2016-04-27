@@ -52,6 +52,7 @@
 		BD56FB8B1CCFFCAA001404C5 /* IntencityRoutineHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD56FB8A1CCFFCAA001404C5 /* IntencityRoutineHeaderCell.xib */; };
 		BD56FB8D1CCFFD08001404C5 /* IntencityRoutineHeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB8C1CCFFD08001404C5 /* IntencityRoutineHeaderCellController.swift */; };
 		BD56FB8F1CD0004A001404C5 /* ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB8E1CD0004A001404C5 /* ButtonDelegate.swift */; };
+		BD56FB911CD0E539001404C5 /* RoutineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB901CD0E539001404C5 /* RoutineState.swift */; };
 		BD58AB2B1CC8F4A5006D7EF4 /* ViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2A1CC8F4A5006D7EF4 /* ViewDelegate.swift */; };
 		BD58AB2D1CC8F70A006D7EF4 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2C1CC8F70A006D7EF4 /* View.swift */; };
 		BD58AB2F1CC8FE03006D7EF4 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58AB2E1CC8FE03006D7EF4 /* RoutineViewController.swift */; };
@@ -211,6 +212,7 @@
 		BD56FB8A1CCFFCAA001404C5 /* IntencityRoutineHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntencityRoutineHeaderCell.xib; sourceTree = "<group>"; };
 		BD56FB8C1CCFFD08001404C5 /* IntencityRoutineHeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityRoutineHeaderCellController.swift; sourceTree = "<group>"; };
 		BD56FB8E1CD0004A001404C5 /* ButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDelegate.swift; sourceTree = "<group>"; };
+		BD56FB901CD0E539001404C5 /* RoutineState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineState.swift; sourceTree = "<group>"; };
 		BD58AB2A1CC8F4A5006D7EF4 /* ViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDelegate.swift; sourceTree = "<group>"; };
 		BD58AB2C1CC8F70A006D7EF4 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BD58AB2E1CC8FE03006D7EF4 /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 			children = (
 				BD1053971C6CC989004C10C7 /* Extensions */,
 				BD947A031C6CF252003F3767 /* IntencityError.swift */,
+				BD56FB901CD0E539001404C5 /* RoutineState.swift */,
 				BD294ACA1CBE7C3B005718BA /* ExercisePriorityUtil.swift */,
 				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
 				BD8811011C92FF3A0098FA64 /* Badge.swift */,
@@ -931,6 +934,7 @@
 				BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */,
 				BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */,
 				BDFD87871CA196D700ECDDCE /* ExercisePriorityDelegate.swift in Sources */,
+				BD56FB911CD0E539001404C5 /* RoutineState.swift in Sources */,
 				BD93252F1CC7D18400D9581E /* SaveDelegate.swift in Sources */,
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
 				BDD53BFA1C8A333D001235AE /* FitnessRecFooterCellController.swift in Sources */,

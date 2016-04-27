@@ -24,7 +24,7 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
         
         setMenuButton(Constant.MENU_INITIALIZED)
         
-        onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil)
+        onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil, state: RoutineState.NONE)
         
 //        let backButton = UIBarButtonItem(customView: "yourView")
 //        self.navigationItem.leftBarButtonItem = backButton
@@ -44,7 +44,7 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
         self.tabBarController?.tabBar.hidden = false
     }
     
-    func onLoadView(view: Int, result: String, savedExercises: SavedExercise?)
+    func onLoadView(view: Int, result: String, savedExercises: SavedExercise?, state: Int)
     {
         switch view
         {
@@ -63,6 +63,7 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
                 vc.viewDelegate = self
                 vc.result = result
                 vc.savedExercises = savedExercises
+                vc.routineState = state
                 
                 loadView(vc)
                 

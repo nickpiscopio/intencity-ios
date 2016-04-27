@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         let routineName = exerciseData.routineName
         if (routineName != "")
         {
-            DBHelper().insertIntoDb(exerciseData.exerciseList, index: exerciseData.exerciseIndex, routineName: routineName)
+            DBHelper().insertIntoDb(exerciseData.exerciseList, index: exerciseData.exerciseIndex, routineName: routineName, state: String(exerciseData.routineState))
         }
     }
 

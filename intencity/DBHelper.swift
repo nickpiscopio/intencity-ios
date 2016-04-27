@@ -46,6 +46,7 @@ class DBHelper
         
         let SQL_CREATE_ENTRIES = "CREATE TABLE IF NOT EXISTS " + ExerciseTable.TABLE_NAME + " (" +
             ExerciseTable.COLUMN_INDEX + integerType + DB_COMMA_SEP +
+            ExerciseTable.COLUMN_ROUTINE_STATE + integerType + DB_COMMA_SEP +
             ExerciseTable.COLUMN_ROUTINE_NAME + textType + DB_COMMA_SEP +
             ExerciseTable.COLUMN_WEB_ID + integerType + DB_COMMA_SEP +
             ExerciseTable.COLUMN_NAME + textType + notNull + DB_COMMA_SEP +
@@ -128,7 +129,7 @@ class DBHelper
     /**
      *  Inserts records into the database.
      */
-    func insertIntoDb(exercises: Array<Exercise>, index: Int, routineName: String)
+    func insertIntoDb(exercises: Array<Exercise>, index: Int, routineName: String, state: String)
     {
         let database = openDb()
         
@@ -161,7 +162,8 @@ class DBHelper
                 let difficultyValue = difficulty > 0 ? DB_COMMA_SEP + String(difficulty) : ""
                 let notesValue = notes != Constant.RETURN_NULL && notes != "" ? DB_COMMA_SEP + "'" + notes + "'" : ""
                 
-                let columns = "(" + ExerciseTable.COLUMN_ROUTINE_NAME + DB_COMMA_SEP +
+                let columns = "(" + ExerciseTable.COLUMN_ROUTINE_STATE + DB_COMMA_SEP +
+                                    ExerciseTable.COLUMN_ROUTINE_NAME + DB_COMMA_SEP +
                                     ExerciseTable.COLUMN_INDEX + DB_COMMA_SEP +
                                     ExerciseTable.COLUMN_NAME + DB_COMMA_SEP +
                                     ExerciseTable.COLUMN_DESCRIPTION + DB_COMMA_SEP +
@@ -173,7 +175,8 @@ class DBHelper
                                     difficultyInsert +
                                     notesInsert + ")"
                 
-                let values = "'" + routineName + "'" + DB_COMMA_SEP +
+                let values = state + DB_COMMA_SEP +
+                                "'" + routineName + "'" + DB_COMMA_SEP +
                                 String(index) + DB_COMMA_SEP +
                                 "'" + exercise.exerciseName + "'" + DB_COMMA_SEP +
                                 "'" + exercise.exerciseDescription + "'" + DB_COMMA_SEP +
@@ -203,6 +206,7 @@ class DBHelper
      */
     func getRecords() -> SavedExercise
     {
+        var state = 0
         var routineName = ""
         var exercises = [Exercise]()
         var index = 0
@@ -230,6 +234,7 @@ class DBHelper
                     index = Int(result.stringForColumn(ExerciseTable.COLUMN_INDEX))!
                 }
                 
+                state = Int(result.stringForColumn(ExerciseTable.COLUMN_ROUTINE_STATE))!
                 routineName = result.stringForColumn(ExerciseTable.COLUMN_ROUTINE_NAME)
                 
                 // Exercise
@@ -279,6 +284,6 @@ class DBHelper
         
         database.close()
         
-        return SavedExercise(routineName: routineName, exercises: exercises, index: index)
+        return SavedExercise(routineName: routineName, exercises: exercises, index: index, routineState: state)
     }
 }

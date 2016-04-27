@@ -231,6 +231,7 @@
 
 /* Routine Strings */
 "title_routine" = "What routine would you like to do?";
+"title_custom_routine" = "Custom Routine";
 "title_custom_routines" = "Custom Routines";
 "title_intencity_routines" = "Intencity Routines";
 "title_default_routines" = "Default Routines";

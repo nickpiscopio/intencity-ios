@@ -170,31 +170,6 @@ class RoutineViewController: UIViewController, ServiceDelegate
                 loadTableViewItems(result)
                 
                 break
-            case ServiceEvent.SET_CURRENT_MUSCLE_GROUP:
-                
-                showLoading()
-                
-                _ = ServiceTask(event: ServiceEvent.GET_EXERCISES_FOR_TODAY, delegate: self,
-                                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY, variables: [ email ]))
-                
-                break
-            
-            case ServiceEvent.GET_EXERCISES_FOR_TODAY:
-                
-                if (result != "" && result != Constant.RETURN_NULL)
-                {
-                    viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: result, savedExercises: nil)
-                }
-                else
-                {
-                    // We couldn't get data from the server, so we show the connection issue.
-                    showConnectionIssue()
-                    
-                    hideLoading()
-                }
-                
-                break
             default:
                 break
         }
@@ -413,14 +388,14 @@ class RoutineViewController: UIViewController, ServiceDelegate
         let title = routine.title
         switch title
         {
-        case getContinueString():
+            case getContinueString():
             
-                viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: CONTINUE_STRING, savedExercises: savedExercises)
+                viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: CONTINUE_STRING, savedExercises: savedExercises, state: savedExercises.routineState)
                 
                 break
             case RoutineViewController.CUSTOM_ROUTINE_TITLE:
                 
-                viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: "", savedExercises: nil)
+                viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: "", savedExercises: nil, state: RoutineState.CUSTOM)
                 
                 break
             case RoutineViewController.INTENCITY_ROUTINE_TITLE:

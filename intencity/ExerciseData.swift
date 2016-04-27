@@ -15,6 +15,7 @@ class ExerciseData
     
     var routineName: String
     var exerciseIndex: Int
+    var routineState: Int
     
     var exerciseList = [Exercise]()
     
@@ -43,6 +44,7 @@ class ExerciseData
     {
         routineName = ""
         exerciseIndex = 0
+        routineState = RoutineState.NONE
         
         addWarmUp()
     }

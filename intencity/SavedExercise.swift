@@ -12,4 +12,5 @@ struct SavedExercise
     var routineName: String
     var exercises: [Exercise]
     var index: Int
+    var routineState: Int
 }

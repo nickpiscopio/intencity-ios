@@ -19,8 +19,9 @@ struct ExerciseTable
 {
     static let TABLE_NAME = "Exercise";
     
-    // The last exercise we left off at.
+    static let COLUMN_ROUTINE_STATE = "RoutineState";
     static let COLUMN_ROUTINE_NAME = "RoutineName";
+    // The last exercise we left off at.
     static let COLUMN_INDEX = "LastExerciseIndex";
     static let COLUMN_NAME = "ExerciseName";
     static let COLUMN_DESCRIPTION = "ExerciseDescription";
@@ -30,5 +31,6 @@ struct ExerciseTable
     static let COLUMN_DURATION = "ExerciseDuration";
     static let COLUMN_DIFFICULTY = "ExerciseDifficulty";
     static let COLUMN_NOTES = "Notes";
+    // Whether a search result is from Intencity or the user typed it in.
     static let COLUMN_FROM_INTENCITY = "FromIntencity";
 }

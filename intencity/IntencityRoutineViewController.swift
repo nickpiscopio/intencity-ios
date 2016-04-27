@@ -197,7 +197,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
                 
                 if (result != "" && result != Constant.RETURN_NULL)
                 {
-                    viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: result, savedExercises: nil)
+                    viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: result, savedExercises: nil, state: RoutineState.INTENCITY)
                 }
                 else
                 {
