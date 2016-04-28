@@ -11,5 +11,4 @@ struct RoutineRow
 {
     var title: String
     var rows: [String]
-    var showAssociatedImage: Bool
 }

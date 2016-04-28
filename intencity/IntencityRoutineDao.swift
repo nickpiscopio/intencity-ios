@@ -41,13 +41,8 @@ struct IntencityRoutineDao
                 }
             }
             
-            if (customRoutines.count < 1)
-            {
-                customRoutines.append(NSLocalizedString("no_custom_routines", comment: ""))
-            }
-            
-            routineRows.append(RoutineRow(title: RoutineViewController.DEFAULT_ROUTINE_TITLE, rows: defaultRoutines, showAssociatedImage: false))
-            routineRows.append(RoutineRow(title: RoutineViewController.CUSTOM_ROUTINE_TITLE, rows: customRoutines, showAssociatedImage: true))
+            routineRows.append(RoutineRow(title: RoutineViewController.DEFAULT_ROUTINE_TITLE, rows: defaultRoutines))
+            routineRows.append(RoutineRow(title: RoutineViewController.CUSTOM_ROUTINE_TITLE, rows: customRoutines))
 
         }
         else

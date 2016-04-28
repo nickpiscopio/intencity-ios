@@ -64,7 +64,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         Util.initTableView(tableView, footerHeight: Dimention.TABLE_FOOTER_HEIGHT_NORMAL, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.INTENCITY_ROUTINE_HEADER_CELL, cellName: Constant.INTENCITY_ROUTINE_HEADER_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.GENERIC_HEADER_CELL, cellName: Constant.GENERIC_HEADER_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.CHECKBOX_CELL, cellName: Constant.CHECKBOX_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.NO_ITEM_CELL, cellName: Constant.NO_ITEM_CELL)
         
@@ -317,19 +317,21 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
         let routine = routines[section]
-        let showAssociatedImage = routine.showAssociatedImage
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.INTENCITY_ROUTINE_HEADER_CELL) as! IntencityRoutineHeaderCellController
-        cell.delegate = self
-        cell.title.text = routine.title
-        cell.editButton.enabled = showAssociatedImage
-        cell.editImage.hidden = !showAssociatedImage
         
-        return cell
+        if (routine.rows.count > 0)
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_HEADER_CELL) as! GenericHeaderCellController
+            cell.title.text = routine.title
+            
+            return cell
+        }
+        
+        return nil
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return Constant.GENERIC_HEADER_HEIGHT
+        return routines[section].rows.count > 0 ? Constant.GENERIC_HEADER_HEIGHT : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell

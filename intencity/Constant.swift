@@ -28,7 +28,7 @@ struct Constant
     static let SET_CELL = "SetCell"
     static let GENERIC_CELL = "GenericCell"
     static let GENERIC_HEADER_CELL = "GenericHeaderCell"
-    static let INTENCITY_ROUTINE_HEADER_CELL = "IntencityRoutineHeaderCell"
+    static let INTENCITY_ROUTINE_FOOTER_CELL = "IntencityRoutineFooterCell"
     static let ABOUT_CELL = "AboutCell"
     static let DESCRIPTION_FOOTER_CELL = "DescriptionFooterCell"
     static let SEARCH_EXERCISE_CELL = "SearchExerciseCell"

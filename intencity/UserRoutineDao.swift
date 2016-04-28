@@ -26,7 +26,7 @@ struct UserRoutineDao
                 routineNames.append(routine)
             }
             
-            routineRows.append(RoutineRow(title: "", rows: routineNames, showAssociatedImage: false))
+            routineRows.append(RoutineRow(title: "", rows: routineNames))
         }
         else
         {
