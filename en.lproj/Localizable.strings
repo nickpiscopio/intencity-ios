@@ -239,10 +239,11 @@
 "description_custom_routines" = "BUILD A ROUTINE AS YOU EXERCISE";
 "description_default_routines" = "SELECT FROM %1$@ ROUTINES";
 "key_user_selected" = "Users can add their own inputed exercises.";
-"key_random" = "Intencity's algorithm selects exercises.";
+"key_random" = "Utilizes Intencity's algorithm to select exercises.";
 "key_consecutive" = "Consecutive list of exercises.";
 
-"intencity_routine_description" = "These routines allow the user input exercises or allow Intencity to use its algorithm to select exercises.";
+"intencity_routine_description" = "These routines utilize Intencity's algorithm to select exercises. They also allow users to input exercises.";
+"user_routine_description" = "These routines have a consecutive set of exercises. They also allow users to input exercises.";
 
 /*  */
 "routine_continue" = "CONTINUE %1$@";
@@ -363,6 +364,7 @@
 
 /*  */
 "edit" = "EDIT";
+"edit_camel_case" = "Edit";
 
 /*  */
 "warm_up" = "WARM-UP";

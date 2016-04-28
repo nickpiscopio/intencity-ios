@@ -67,8 +67,6 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         
         showWelcome()
         
-        email = Util.getEmailFromDefaults()
-        
         routineTitle.text = NSLocalizedString("title_routine", comment: "")
         routineTitle.textColor = Color.secondary_light
         
@@ -87,7 +85,6 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     {
         routines.removeAll()
         routines.append(RoutineSection(title:RoutineViewController.CUSTOM_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED ], rows: []))
-        routines.append(RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], rows: []))
         
         showLoading()
 
@@ -98,6 +95,10 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
+        
+        _ = ServiceTask(event: ServiceEvent.GET_LIST, delegate: self,
+                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_ROUTINE, variables: [ email ]))
     }
     
     /**
@@ -164,9 +165,14 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     {
         switch (event)
         {
+            case ServiceEvent.GET_LIST:
+            
+                loadTableViewItems(ServiceEvent.GET_LIST, result: result)
+            
+                break
             case ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS:
                 
-                loadTableViewItems(result)
+                loadTableViewItems(ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, result: result)
                 
                 break
             default:
@@ -178,7 +184,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     {
         showConnectionIssue()
         
-        loadTableViewItems("")
+        loadTableViewItems(ServiceEvent.NO_RETURN, result: "")
         
         hideLoading()
     }
@@ -187,8 +193,20 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     
     func onRoutineUpdated(routineRows: [RoutineRow])
     {
+        let routine = routines[selectedRoutineSection].title
         routines.removeAtIndex(selectedRoutineSection)
-        routines.insert(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], rows: routineRows), atIndex: selectedRoutineSection)
+        
+        switch routine
+        {
+            case RoutineViewController.INTENCITY_ROUTINE_TITLE:
+                routines.insert(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], rows: routineRows), atIndex: selectedRoutineSection)
+                break
+            case RoutineViewController.SAVED_ROUTINE_TITLE:
+                routines.insert(RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], rows: routineRows), atIndex: selectedRoutineSection)
+                break
+            default:
+                break
+        }        
         
         let indexPath = NSIndexPath(forRow: 0, inSection: selectedRoutineSection)
         self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
@@ -215,50 +233,81 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      *
      * @param result    The results to parse from the webservice.
      */
-    func loadTableViewItems(result: String)
+    func loadTableViewItems(event: Int, result: String)
     {
-        let json = result.parseJSONString!
-        
-        var defaultRoutineRows = [RoutineRow]()
-        
-        // This means we got results back from the web database.
-        if (result != "" && result != Constant.RETURN_NULL)
+        var section: RoutineSection!
+        var rows = [RoutineRow]()
+        if (result != Constant.RETURN_NULL)
         {
-            do
+            let json = result.parseJSONString!
+     
+            // This means we got results back from the web database.
+            if (result != "" && result != Constant.RETURN_NULL)
             {
-                defaultRoutineRows = try IntencityRoutineDao().parseJson(json)
-                
-                hideConnectionIssue()
+                do
+                {
+                    switch event
+                    {
+                    case ServiceEvent.GET_LIST:
+                        rows = try UserRoutineDao().parseJson(json)
+                        break
+                    case ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS:
+                        rows = try IntencityRoutineDao().parseJson(json)
+                        break
+                    default:
+                        break
+                    }
+                    
+                    hideConnectionIssue()
+                }
+                catch
+                {
+                    showConnectionIssue()
+                }
             }
-            catch
+            else
             {
                 showConnectionIssue()
             }
-        }
-        else
-        {
-            showConnectionIssue()
-        }
             
-        // Get the saved exercises from the local database.
-        savedExercises = DBHelper().getRecords()
+            switch event
+            {
+            case ServiceEvent.GET_LIST:
+                
+                section = RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], rows: rows)
+                
+                break
+            case ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS:
+                
+                // This doesn't really belong in here because it is not a muscle group, but we only want to get this one.
+                // Get the saved exercises from the local database.
+                savedExercises = DBHelper().getRecords()
+                
+                if (savedExercises.routineName != "")
+                {
+                    self.routines.insert(RoutineSection(title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), keys: [], rows: []), atIndex: 0)
+                    
+                    //            self.recommended = defaultRoutineRows.count - 1
+                }
+                //        else if (json != nil)
+                //        {
+                ////            self.recommended = (recommended == nil || recommended! == "") ? 0 : defaultRoutineRows.indexOf(recommended!)!
+                //        }
+                
+                
+                section = RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], rows: rows)
+                
+                break
+            default:
+                break
+            }
             
-        if (savedExercises.routineName != "")
-        {
-            self.routines.insert(RoutineSection(title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), keys: [], rows: []), atIndex: 0)
-
-//            self.recommended = defaultRoutineRows.count - 1
-        }
-//        else if (json != nil)
-//        {
-////            self.recommended = (recommended == nil || recommended! == "") ? 0 : defaultRoutineRows.indexOf(recommended!)!
-//        }
-        
-        if (defaultRoutineRows.count > 0)
-        {
-            routines.append(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], rows: defaultRoutineRows))
-//            animateTable()
-            tableView.reloadData()
+            if (rows.count > 0)
+            {
+                routines.append(section)
+                //            animateTable()
+                tableView.reloadData()
+            }
         }
         
         hideLoading()
@@ -381,9 +430,12 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 break
             case RoutineViewController.SAVED_ROUTINE_TITLE:
                 
-//                let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
-//                    
-//                self.navigationController!.pushViewController(vc, animated: true)
+                let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.SAVED_ROUTINE_VIEW_CONTROLLER) as! SavedRoutineViewController
+                vc.viewDelegate = viewDelegate
+                vc.intencityRoutineDelegate = self
+                vc.routines = routine.rows
+                    
+                self.navigationController!.pushViewController(vc, animated: true)
 
                 break
             default:

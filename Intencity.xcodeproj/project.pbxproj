@@ -16,6 +16,7 @@
 		BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */; };
 		BD0CD7081CA08223004FF750 /* ExercisePriorityCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */; };
 		BD10539B1C6CD071004C10C7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10539A1C6CD071004C10C7 /* Key.swift */; };
+		BD1AE7761CD23E28001FAAA8 /* UserRoutineDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AE7751CD23E28001FAAA8 /* UserRoutineDao.swift */; };
 		BD1F30E11CA9BA9500002D06 /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1F30E01CA9BA9500002D06 /* MenuSection.swift */; };
 		BD1F30E31CA9BBAA00002D06 /* ProfileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1F30E21CA9BBAA00002D06 /* ProfileRow.swift */; };
 		BD1F30E51CAAC69600002D06 /* AwardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1F30E41CAAC69600002D06 /* AwardCell.xib */; };
@@ -27,6 +28,7 @@
 		BD294ACB1CBE7C3B005718BA /* ExercisePriorityUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD294ACA1CBE7C3B005718BA /* ExercisePriorityUtil.swift */; };
 		BD294ACD1CC13679005718BA /* RoutineCellFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD294ACC1CC13679005718BA /* RoutineCellFooter.xib */; };
 		BD294ACF1CC13883005718BA /* RoutineCellFooterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD294ACE1CC13883005718BA /* RoutineCellFooterController.swift */; };
+		BD3480C51CD24158007A5402 /* SavedRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3480C41CD24158007A5402 /* SavedRoutineViewController.swift */; };
 		BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */; };
 		BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC221C70F0A400F993CE /* Exercise.swift */; };
 		BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */; };
@@ -129,6 +131,7 @@
 		BDB45A201C84A122009E509B /* ExerciseSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB45A1F1C84A122009E509B /* ExerciseSearchDelegate.swift */; };
 		BDBA605D1C85D61D002D5F4A /* UserDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA605C1C85D61D002D5F4A /* UserDao.swift */; };
 		BDBDB56B1C87504E00A2EE2C /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = BDBDB56A1C87504E00A2EE2C /* privacy.html */; };
+		BDC970801CD24B0D007BEE84 /* EditSavedRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC9707F1CD24B0D007BEE84 /* EditSavedRoutineViewController.swift */; };
 		BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BEC1C8A1881001235AE /* FitnessRecommendationViewController.swift */; };
 		BDD53BF01C8A1CEB001235AE /* IntencityTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BEF1C8A1CEB001235AE /* IntencityTabButton.swift */; };
 		BDD53BF21C8A2B05001235AE /* FitnessRecommendationCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BF11C8A2B05001235AE /* FitnessRecommendationCellViewController.swift */; };
@@ -178,6 +181,7 @@
 		BD0CD7051CA08185004FF750 /* ExercisePriorityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExercisePriorityCell.xib; sourceTree = "<group>"; };
 		BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePriorityCellController.swift; sourceTree = "<group>"; };
 		BD10539A1C6CD071004C10C7 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		BD1AE7751CD23E28001FAAA8 /* UserRoutineDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRoutineDao.swift; sourceTree = "<group>"; };
 		BD1F30E01CA9BA9500002D06 /* MenuSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = SOURCE_ROOT; };
 		BD1F30E21CA9BBAA00002D06 /* ProfileRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRow.swift; sourceTree = "<group>"; };
 		BD1F30E41CAAC69600002D06 /* AwardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardCell.xib; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 		BD294ACA1CBE7C3B005718BA /* ExercisePriorityUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePriorityUtil.swift; sourceTree = "<group>"; };
 		BD294ACC1CC13679005718BA /* RoutineCellFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutineCellFooter.xib; sourceTree = "<group>"; };
 		BD294ACE1CC13883005718BA /* RoutineCellFooterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCellFooterController.swift; sourceTree = "<group>"; };
+		BD3480C41CD24158007A5402 /* SavedRoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRoutineViewController.swift; sourceTree = "<group>"; };
 		BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellController.swift; sourceTree = "<group>"; };
 		BD36EC221C70F0A400F993CE /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		BD36EC261C70FD6D00F993CE /* DirectionCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionCellController.swift; sourceTree = "<group>"; };
@@ -293,6 +298,7 @@
 		BDB45A1F1C84A122009E509B /* ExerciseSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseSearchDelegate.swift; sourceTree = "<group>"; };
 		BDBA605C1C85D61D002D5F4A /* UserDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDao.swift; sourceTree = "<group>"; };
 		BDBDB56A1C87504E00A2EE2C /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
+		BDC9707F1CD24B0D007BEE84 /* EditSavedRoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSavedRoutineViewController.swift; sourceTree = "<group>"; };
 		BDD53BEC1C8A1881001235AE /* FitnessRecommendationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessRecommendationViewController.swift; sourceTree = "<group>"; };
 		BDD53BEF1C8A1CEB001235AE /* IntencityTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityTabButton.swift; sourceTree = "<group>"; };
 		BDD53BF11C8A2B05001235AE /* FitnessRecommendationCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessRecommendationCellViewController.swift; sourceTree = "<group>"; };
@@ -486,7 +492,6 @@
 				BD7C7E801C7CA0A6005AFFDD /* NotificationViewController.swift */,
 				BD7C7E821C7CA0C6005AFFDD /* EditExercisePrioritiesViewController.swift */,
 				BD7C7E841C7CA0CF005AFFDD /* EditEquipmentViewController.swift */,
-				BD5BDCAA1CC142090001DF37 /* CustomRoutineViewController.swift */,
 				BDDAD8F21CC29E4D00C07DB2 /* AddRoutineViewController.swift */,
 				BD7C7E861C7CA0DA005AFFDD /* ChangePasswordViewController.swift */,
 				BD7C7E7D1C7C9E48005AFFDD /* AboutViewController.swift */,
@@ -522,6 +527,8 @@
 				BD36EC201C70EB6600F993CE /* Cells */,
 				BD7C7E7F1C7CA08B005AFFDD /* Menu */,
 				BD9EF2C51C6BEFB800E520CB /* IntencityTabBarController.swift */,
+				BD5BDCAA1CC142090001DF37 /* CustomRoutineViewController.swift */,
+				BDC9707F1CD24B0D007BEE84 /* EditSavedRoutineViewController.swift */,
 				BD9EF2C71C6BF4CC00E520CB /* MainViewController.swift */,
 				BD9325301CC8F17900D9581E /* MenuViewController.swift */,
 				BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */,
@@ -529,6 +536,7 @@
 				BDD53BEC1C8A1881001235AE /* FitnessRecommendationViewController.swift */,
 				BD58AB2E1CC8FE03006D7EF4 /* RoutineViewController.swift */,
 				BD7A870B1CCE46A9005BC2DF /* IntencityRoutineViewController.swift */,
+				BD3480C41CD24158007A5402 /* SavedRoutineViewController.swift */,
 				BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */,
 				BD43E11B1C847D77002F14C6 /* SearchViewController.swift */,
 				BD37B4AA1C8DB677008F3076 /* ExerciseSearchViewController.swift */,
@@ -668,6 +676,7 @@
 		BDF44A341C79F61B00B47CD1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				BD1AE7751CD23E28001FAAA8 /* UserRoutineDao.swift */,
 				BD56FB921CD101A0001404C5 /* IntencityRoutineDao.swift */,
 				BDB45A1D1C849F52009E509B /* ExerciseDao.swift */,
 				BDBA605C1C85D61D002D5F4A /* UserDao.swift */,
@@ -844,8 +853,10 @@
 				BDD53BF21C8A2B05001235AE /* FitnessRecommendationCellViewController.swift in Sources */,
 				BD9EF2BC1C6B701D00E520CB /* ServiceTask.swift in Sources */,
 				BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */,
+				BD3480C51CD24158007A5402 /* SavedRoutineViewController.swift in Sources */,
 				BDE493FB1C7B9A58005817D0 /* CheckboxCellController.swift in Sources */,
 				BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */,
+				BDC970801CD24B0D007BEE84 /* EditSavedRoutineViewController.swift in Sources */,
 				BD9325311CC8F17900D9581E /* MenuViewController.swift in Sources */,
 				BD9EF2B61C6A8AF500E520CB /* TermsViewController.swift in Sources */,
 				BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */,
@@ -879,6 +890,7 @@
 				BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */,
 				BD7A870C1CCE46A9005BC2DF /* IntencityRoutineViewController.swift in Sources */,
 				BD7A87121CCEA137005BC2DF /* RoutineContinueCellController.swift in Sources */,
+				BD1AE7761CD23E28001FAAA8 /* UserRoutineDao.swift in Sources */,
 				BD74A2591C735EA700E6ABD2 /* StatViewController.swift in Sources */,
 				BD9EF2591C693A6400E520CB /* Color.swift in Sources */,
 				BDB45A201C84A122009E509B /* ExerciseSearchDelegate.swift in Sources */,

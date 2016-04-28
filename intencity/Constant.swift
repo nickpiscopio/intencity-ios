@@ -46,6 +46,8 @@ struct Constant
     
     static let ROUTINE_VIEW_CONTROLLER = "RoutineViewController"
     static let INTENCITY_ROUTINE_VIEW_CONTROLLER = "IntencityRoutineViewController"
+    static let SAVED_ROUTINE_VIEW_CONTROLLER = "SavedRoutineViewController"
+    static let EDIT_SAVED_ROUTINE_VIEW_CONTROLLER = "EditSavedRoutineViewController"
     static let FITNESS_LOG_VIEW_CONTROLLER = "FitnessLogViewController"
     static let PROFILE_VIEW_CONTROLLER = "ProfileViewController"
     static let MENU_VIEW_CONTROLLER = "MenuViewController"
@@ -131,6 +133,7 @@ struct Constant
     static let SERVICE_SET_ROUTINE = SERVICE_FOLDER_MOBILE + "set_routine.php";
     static let SERVICE_SET_USER_MUSCLE_GROUP_ROUTINE = SERVICE_FOLDER_MOBILE + "set_user_muscle_group_routine.php";
     static let SERVICE_UPDATE_USER_MUSCLE_GROUP_ROUTINE = SERVICE_FOLDER_MOBILE + "update_user_muscle_group_routine.php";
+    static let SERVICE_UPDATE_USER_ROUTINE = SERVICE_FOLDER_MOBILE + "update_user_routine.php";
     static let SERVICE_UPDATE_EXERCISE_PRIORITY = SERVICE_FOLDER_MOBILE + "update_priority.php";
     static let SERVICE_UPLOAD_PROFILE_PIC = SERVICE_FOLDER_MOBILE + "upload_file.php";
     static let SERVICE_CHANGE_PASSWORD = SERVICE_FOLDER_MOBILE + "change_password.php";
@@ -151,6 +154,7 @@ struct Constant
     static let PARAMETER_INSERTS = "inserts=";
     static let PARAMETER_REMOVE = "remove=";
     
+    static let STORED_PROCEDURE_GET_USER_ROUTINE = "getUserRoutine";
     static let STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS = "getAllDisplayMuscleGroups";
     static let STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY = "getExercisesForToday";
     static let STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP = "setCurrentMuscleGroup";
@@ -186,6 +190,7 @@ struct Constant
     static let TABLE_COMPLETED_EXERCISE = "CompletedExercise";
     static let COLUMN_CURRENT_MUSCLE_GROUP = "currentMuscleGroup";
     static let COLUMN_DISPLAY_NAME = "DisplayName";
+    static let COLUMN_ROUTINE_NAME = "RoutineName";
     static let COLUMN_DATE = "Date";
     static let COLUMN_TIME = "Time";
     static let COLUMN_EXERCISE_NAME = "ExerciseName";

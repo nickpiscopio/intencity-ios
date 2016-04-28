@@ -1,15 +1,15 @@
 //
-//  MainViewController.swift
+//  SavedRoutineViewController.swift
 //  Intencity
 //
-//  The view controller for the default and custom Intencity routines.
+//  The view controller for the User's saved routines.
 //
 //  Created by Nick Piscopio on 2/8/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
 
-class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonDelegate, IntencityRoutineDelegate
+class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRoutineDelegate
 {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -22,22 +22,14 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var startButton: IntencityButtonRoundDark!
-    
-    let DEFAULT_ROUTINE_TITLE = NSLocalizedString("title_default_routines", comment: "")
-    
-    let NO_CUSTOM_ROUTINE_STRING = NSLocalizedString("no_custom_routines", comment: "")
+
+    let DEFAULTS = NSUserDefaults.standardUserDefaults()
     
     var intencityRoutineDelegate: IntencityRoutineDelegate?
     
     var viewDelegate: ViewDelegate!
     
-    var routineFooter: RoutineCellFooterController!
-    
     var email = ""
-
-    var recommended = 0
-    
-    var savedExercises: SavedExercise!
     
     var exerciseData: ExerciseData!
     
@@ -61,19 +53,21 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         Util.initTableView(tableView, footerHeight: Dimention.TABLE_FOOTER_HEIGHT_NORMAL, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.INTENCITY_ROUTINE_HEADER_CELL, cellName: Constant.INTENCITY_ROUTINE_HEADER_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.CHECKBOX_CELL, cellName: Constant.CHECKBOX_CELL)
-        Util.addUITableViewCell(tableView, nibNamed: Constant.NO_ITEM_CELL, cellName: Constant.NO_ITEM_CELL)
         
         email = Util.getEmailFromDefaults()
         
         routineTitle.text = NSLocalizedString("title_routine", comment: "")
         routineTitle.textColor = Color.secondary_light
         
-        routineDescription.text = NSLocalizedString("intencity_routine_description", comment: "")
+        routineDescription.text = NSLocalizedString("user_routine_description", comment: "")
         routineDescription.textColor = Color.secondary_light
         
         initRoutines(false)
+        
+        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(SavedRoutineViewController.editPressed(_:)))
+        
+        self.navigationItem.rightBarButtonItem = saveButtonItem
     }
 
     override func didReceiveMemoryWarning()
@@ -106,7 +100,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
             
             _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
                             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
+                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_ROUTINE, variables: [ email ]))
         }
     }
     
@@ -235,7 +229,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
             do
             {
                 routines.removeAll()
-                routines = try IntencityRoutineDao().parseJson(json)
+                routines = try UserRoutineDao().parseJson(json)
                 
                 intencityRoutineDelegate!.onRoutineUpdated(routines)
                 
@@ -262,20 +256,12 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
             
         showLoading()
         
-        let selectedRoutine = selectedRoutineSection > 0 ? routines[0].rows.count - 1 + selectedRoutineSection + self.selectedRoutine : self.selectedRoutine
-            
-        // We add 1 because the routines start at 1 on the server.
-        _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
-                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine + 1)]))
-    }
-    
-    func onButtonClicked()
-    {
-        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
-        vc.delegate = self
-        
-        self.navigationController!.pushViewController(vc, animated: true)
+//        let selectedRoutine = selectedRoutineSection > 0 ? routines[0].rows.count - 1 + selectedRoutineSection + self.selectedRoutine : self.selectedRoutine
+//            
+//        // We add 1 because the routines start at 1 on the server.
+//        _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
+//                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+//                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine + 1)]))
     }
     
     func onRoutineSaved()
@@ -307,47 +293,18 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         return routines[section].rows.count
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-    {
-        let routine = routines[section]
-        let showAssociatedImage = routine.showAssociatedImage
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.INTENCITY_ROUTINE_HEADER_CELL) as! IntencityRoutineHeaderCellController
-        cell.delegate = self
-        cell.title.text = routine.title
-        cell.editButton.enabled = showAssociatedImage
-        cell.editImage.hidden = !showAssociatedImage
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-    {
-        return Constant.GENERIC_HEADER_HEIGHT
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         // Gets the row in the section.
         let title = routines[indexPath.section].rows[indexPath.row]
-        if (title == NO_CUSTOM_ROUTINE_STRING)
-        {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.NO_ITEM_CELL) as! NoItemCellController
-            cell.selectionStyle = .None
-            cell.titleLabel.text = title
-            cell.userInteractionEnabled = false
+
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
+        cell.setCheckboxImage(Constant.RADIO_BUTTON_MARKED, uncheckedImage: Constant.RADIO_BUTTON_UNMARKED)
+        cell.selectionStyle = .None
+        cell.titleLabel.text = title
+        cell.setChecked(false)
             
-            return cell
-        }
-        else
-        {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
-            cell.setCheckboxImage(Constant.RADIO_BUTTON_MARKED, uncheckedImage: Constant.RADIO_BUTTON_UNMARKED)
-            cell.selectionStyle = .None
-            cell.titleLabel.text = title
-            cell.setChecked(false)
-            
-            return cell
-        }
+        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
@@ -373,5 +330,17 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     func goBack()
     {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    /**
+     * The function for when the edit button is pressed.
+     */
+    func editPressed(sender:UIBarButtonItem)
+    {
+        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.EDIT_SAVED_ROUTINE_VIEW_CONTROLLER) as! EditSavedRoutineViewController
+        vc.delegate = self
+        vc.routines = self.routines[0].rows
+        
+        self.navigationController!.pushViewController(vc, animated: true)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  IntencityRoutineDaoo.swift
+//  IntencityRoutineDao.swift
 //  Intencity
 //
 //  The data access object for the Intencity Routines.
