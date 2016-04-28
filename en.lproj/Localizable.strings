@@ -436,9 +436,11 @@
 "edit_equipment_title" = "Select your current equipment.";
 "edit_equipment_description" = "This helps Intencity generate exercises to fit your needs.";
 
-"edit_routines_title" = "Edit Routines";
+"edit_custom_routines_title" = "Edit Custom Routines";
 "edit_routines_description1" = "Below are the custom routines you have created.";
 "edit_routines_description2" = "Only checked routines will be kept when hitting 'Save'.";
+"edit_saved_title" = "Edit Saved Routines";
+"edit_saved_description" = "Below are the routines you have saved.";
 "no_custom_routines" = "No custom routines found.";
 "add_routines_title" = "Add Routine";
 "add_routines_description" = "Select up to two muscle groups you would like in this routine.";

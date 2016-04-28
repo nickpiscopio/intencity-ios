@@ -33,7 +33,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
         self.view.backgroundColor = Color.page_background
         
         // Sets the title for the screen.
-        self.navigationItem.title = NSLocalizedString("edit_routines_title", comment: "")
+        self.navigationItem.title = NSLocalizedString("edit_custom_routines_title", comment: "")
         
         descriptionLabel1.text = NSLocalizedString("edit_routines_description1", comment: "")
         descriptionLabel2.text = NSLocalizedString("edit_routines_description2", comment: "")

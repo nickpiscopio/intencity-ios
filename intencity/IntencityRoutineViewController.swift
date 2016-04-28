@@ -52,6 +52,9 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         // Sets the background color of this view.
         self.view.backgroundColor = Color.page_background
         
+        // Sets the title for the screen.
+        self.navigationItem.title = NSLocalizedString("title_intencity_routines", comment: "")
+        
         // Hides the tab bar.
         self.tabBarController?.tabBar.hidden = true
         
@@ -74,6 +77,10 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         routineDescription.textColor = Color.secondary_light
         
         initRoutines(false)
+        
+        let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(SavedRoutineViewController.editPressed(_:)))
+        
+        self.navigationItem.rightBarButtonItem = editButton
     }
 
     override func didReceiveMemoryWarning()
@@ -373,5 +380,16 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     func goBack()
     {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    /**
+     * The function for when the edit button is pressed.
+     */
+    func editPressed(sender:UIBarButtonItem)
+    {
+        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
+        vc.delegate = self
+        
+        self.navigationController!.pushViewController(vc, animated: true)
     }
 }

@@ -32,9 +32,9 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
         self.view.backgroundColor = Color.page_background
         
         // Sets the title for the screen.
-        self.navigationItem.title = NSLocalizedString("edit_routines_title", comment: "")
+        self.navigationItem.title = NSLocalizedString("edit_saved_title", comment: "")
         
-        descriptionLabel1.text = NSLocalizedString("edit_routines_description1", comment: "")
+        descriptionLabel1.text = NSLocalizedString("edit_saved_description", comment: "")
         descriptionLabel2.text = NSLocalizedString("edit_routines_description2", comment: "")
         
         descriptionLabel1.textColor = Color.secondary_light

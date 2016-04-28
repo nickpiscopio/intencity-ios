@@ -44,6 +44,9 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
         // Sets the background color of this view.
         self.view.backgroundColor = Color.page_background
         
+        // Sets the title for the screen.
+        self.navigationItem.title = NSLocalizedString("title_saved_routines", comment: "")
+        
         // Hides the tab bar.
         self.tabBarController?.tabBar.hidden = true
         
@@ -65,9 +68,9 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
         
         initRoutines(false)
         
-        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(SavedRoutineViewController.editPressed(_:)))
+        let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(SavedRoutineViewController.editPressed(_:)))
         
-        self.navigationItem.rightBarButtonItem = saveButtonItem
+        self.navigationItem.rightBarButtonItem = editButton
     }
 
     override func didReceiveMemoryWarning()
