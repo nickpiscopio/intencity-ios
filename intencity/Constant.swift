@@ -158,6 +158,7 @@ struct Constant
     static let STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS = "getAllDisplayMuscleGroups";
     static let STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY = "getExercisesForToday";
     static let STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP = "setCurrentMuscleGroup";
+    static let STORED_PROCEDURE_GET_USER_ROUTINE_EXERCISES = "getUserRoutineExercises";
     static let STORED_PROCEDURE_SET_EXERCISE_PRIORITY = "setPriority";
     static let STORED_PROCEDURE_GET_FOLLOWING = "getFollowing";
     static let STORED_PROCEDURE_REMOVE_FROM_FOLLOWING = "removeFromFollowing";
@@ -191,8 +192,10 @@ struct Constant
     static let COLUMN_CURRENT_MUSCLE_GROUP = "currentMuscleGroup";
     static let COLUMN_DISPLAY_NAME = "DisplayName";
     static let COLUMN_ROUTINE_NAME = "RoutineName";
+    static let COLUMN_EXERCISE_DAY = "ExerciseDay";    
     static let COLUMN_DATE = "Date";
     static let COLUMN_TIME = "Time";
+    static let COLUMN_EXERCISE_TABLE_EXERCISE_NAME = "ExerciseTableExerciseName";
     static let COLUMN_EXERCISE_NAME = "ExerciseName";
     static let COLUMN_EXERCISE_WEIGHT = "ExerciseWeight";
     static let COLUMN_EXERCISE_REPS = "ExerciseReps";

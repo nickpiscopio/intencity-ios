@@ -41,9 +41,11 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     
     var exerciseData: ExerciseData!
     
-    var routines = [RoutineRow]()
+    var routines = [RoutineGroup]()
     var selectedRoutineSection: Int!
     var selectedRoutine: Int!
+    
+    var resetRoutines = false
     
     override func viewDidLoad()
     {
@@ -76,7 +78,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         routineDescription.text = NSLocalizedString("intencity_routine_description", comment: "")
         routineDescription.textColor = Color.secondary_light
         
-        initRoutines(false)
+        resetRoutines = false
         
         let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(SavedRoutineViewController.editPressed(_:)))
         
@@ -86,6 +88,11 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        initRoutines(resetRoutines)
     }
     
     /**
@@ -234,11 +241,11 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
      */
     func loadTableViewItems(result: String)
     {
-        let json = result.parseJSONString!
-        
         // This means we got results back from the web database.
         if (result != "" && result != Constant.RETURN_NULL)
         {
+            let json = result.parseJSONString!
+            
             do
             {
                 routines.removeAll()
@@ -265,16 +272,17 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     
     @IBAction func startExercisingClicked(sender: AnyObject)
     {
-        exerciseData.routineName = routines[selectedRoutineSection].rows[self.selectedRoutine]
-            
         showLoading()
         
-        let selectedRoutine = selectedRoutineSection > 0 ? routines[0].rows.count - 1 + selectedRoutineSection + self.selectedRoutine : self.selectedRoutine
-            
+        let routine = routines[selectedRoutineSection].rows[self.selectedRoutine]
+        let selectedRoutine = routine.rowNumber
+        
+        exerciseData.routineName = routine.title
+        
         // We add 1 because the routines start at 1 on the server.
         _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
                             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine + 1)]))
+                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine)]))
     }
     
     func onButtonClicked()
@@ -285,12 +293,12 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         self.navigationController!.pushViewController(vc, animated: true)
     }
     
-    func onRoutineSaved()
+    func onRoutineSaved(hasMoreRoutines: Bool)
     {
-        initRoutines(true)
+        resetRoutines = true
     }
     
-    func onRoutineUpdated(routineRows: [RoutineRow]) { }
+    func onRoutineUpdated(groups: [RoutineGroup]) { }
 
     /**
      * Animates the table being added to the screen.
@@ -337,7 +345,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         // Gets the row in the section.
-        let title = routines[indexPath.section].rows[indexPath.row]
+        let title = routines[indexPath.section].rows[indexPath.row].title
         if (title == NO_CUSTOM_ROUTINE_STRING)
         {
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.NO_ITEM_CELL) as! NoItemCellController

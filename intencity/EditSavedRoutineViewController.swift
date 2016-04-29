@@ -21,7 +21,7 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
     
     var email = ""
     
-    var routines = [String]()
+    var routines = [RoutineRow]()
     var routinesToRemove = [String]()
     
     override func viewDidLoad()
@@ -50,9 +50,15 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
         
         initLoadingView()
         
-        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
-        
-        self.navigationItem.rightBarButtonItem = saveButtonItem
+        setSaveButtonVisibility()
+    }
+    
+    override func viewWillDisappear(animated : Bool)
+    {
+        if (self.isMovingFromParentViewController())
+        {
+            delegate!.onRoutineSaved(routinesToRemove.count != routines.count)
+        }
     }
     
     override func didReceiveMemoryWarning()
@@ -60,6 +66,23 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
         super.didReceiveMemoryWarning()
     }
     
+    /**
+     * Sets the save button visibility.
+     */
+    func setSaveButtonVisibility()
+    {
+        if (routinesToRemove.count > 0)
+        {
+            let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
+            
+            self.navigationItem.rightBarButtonItem = saveButtonItem
+        }
+        else
+        {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+    }
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 1
@@ -74,7 +97,7 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
     {
         let index = indexPath.row
         
-        let routineName = routines[index]
+        let routineName = routines[index].title
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
         cell.setCheckboxImage(Constant.CHECKBOX_CHECKED, uncheckedImage: Constant.CHECKBOX_UNCHECKED)
@@ -87,12 +110,14 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
     {
         let index = indexPath.row
         
-        let routineName = routines[index]
+        let routineName = routines[index].title
         
         onCheckboxChecked(routineName)
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
         cell.setChecked(!cell.isChecked())
+        
+        setSaveButtonVisibility()
         
         // Deselects the row.
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
@@ -147,8 +172,6 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
      */
     func goBack()
     {
-        delegate!.onRoutineSaved()
-        
         self.navigationController?.popViewControllerAnimated(true)
     }
     

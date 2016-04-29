@@ -11,28 +11,29 @@ import Foundation
 
 struct UserRoutineDao
 {
-    func parseJson(json: AnyObject?) throws -> [RoutineRow]
+    func parseJson(json: AnyObject?) throws -> [RoutineGroup]
     {
-        var routineRows = [RoutineRow]()
+        var groups = [RoutineGroup]()
 
-        var routineNames = [String]()
+        var routineNames = [RoutineRow]()
         
         if let jsonArray = json as? NSArray
         {
             for routines in jsonArray
             {
                 let routine = routines[Constant.COLUMN_ROUTINE_NAME] as! String
+                let routineNumber = routines[Constant.COLUMN_EXERCISE_DAY] as! String
 
-                routineNames.append(routine)
+                routineNames.append(RoutineRow(title: routine, rowNumber: Int(routineNumber)!))
             }
             
-            routineRows.append(RoutineRow(title: "", rows: routineNames))
+            groups.append(RoutineGroup(title: "", rows: routineNames))
         }
         else
         {
             throw IntencityError.ParseError
         }
         
-        return routineRows
+        return groups
     }
 }

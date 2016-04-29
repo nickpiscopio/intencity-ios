@@ -443,7 +443,7 @@
 "edit_saved_description" = "Below are the routines you have saved.";
 "no_custom_routines" = "No custom routines found.";
 "add_routines_title" = "Add Routine";
-"add_routines_description" = "Select up to two muscle groups you would like in this routine.";
+"add_routines_description" = "Select the muscle groups you would like in this routine.";
 "muscle_group_limit_title" = "Limit error";
 
 /*  */

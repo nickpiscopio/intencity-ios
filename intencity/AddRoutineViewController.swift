@@ -49,13 +49,11 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         
         email = Util.getEmailFromDefaults()
         
+        setSaveButtonVisibility()
+        
         _ = ServiceTask(event: ServiceEvent.GET_LIST, delegate: self,
                                 serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                                 params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_CUSTOM_ROUTINE_MUSCLE_GROUP, variables: [] ))
-        
-        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
-        
-        self.navigationItem.rightBarButtonItem = saveButtonItem
     }
     
     override func didReceiveMemoryWarning()
@@ -63,6 +61,22 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         super.didReceiveMemoryWarning()
     }
     
+    /**
+     * Sets the save button visibility.
+     */
+    func setSaveButtonVisibility()
+    {
+        if (routine.count > 0)
+        {
+            let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
+            
+            self.navigationItem.rightBarButtonItem = saveButtonItem
+        }
+        else
+        {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -91,6 +105,8 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
         cell.setChecked(!cell.isChecked())
+        
+        setSaveButtonVisibility()
         
         // Deselects the row.
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
@@ -143,23 +159,12 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
      */
     func savePressed(sender:UIBarButtonItem)
     {
-        let count = routine.count
-        if (count < 1)
-        {
-            Util.displayAlert(self,
-                              title: NSLocalizedString("muscle_group_limit_title", comment: ""),
-                              message: NSLocalizedString("add_routines_description", comment: ""),
-                              actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil) ])
-        }
-        else
-        {
-            showLoading()
+        showLoading()
 
-            // Save the routine
-            _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
-                            serviceURL: Constant.SERVICE_SET_USER_MUSCLE_GROUP_ROUTINE,
-                            params: Constant.generateServiceListVariables(email, variables: routine, isInserting: true))
-        }
+        // Save the routine
+        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
+                        serviceURL: Constant.SERVICE_SET_USER_MUSCLE_GROUP_ROUTINE,
+                        params: Constant.generateServiceListVariables(email, variables: routine, isInserting: true))
     }
     
     /**
@@ -167,7 +172,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
      */
     func goBack()
     {
-        delegate!.onRoutineSaved()
+        delegate!.onRoutineSaved(true)
         
         self.navigationController?.popViewControllerAnimated(true)
     }

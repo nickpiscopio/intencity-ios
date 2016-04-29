@@ -9,6 +9,6 @@ import Foundation
 
 protocol IntencityRoutineDelegate
 {
-    func onRoutineSaved()
-    func onRoutineUpdated(routineRows: [RoutineRow])
+    func onRoutineSaved(hasMoreRoutines: Bool)
+    func onRoutineUpdated(groups: [RoutineGroup])
 }

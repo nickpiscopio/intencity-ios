@@ -294,6 +294,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
 
     }
     
+    /**
+     * Opens the search screen.
+     */
     func searchClicked()
     {
         let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.SEARCH_VIEW_CONTROLLER) as! SearchViewController

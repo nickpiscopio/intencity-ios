@@ -84,7 +84,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     func initRoutineCard()
     {
         routines.removeAll()
-        routines.append(RoutineSection(title:RoutineViewController.CUSTOM_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED ], rows: []))
+        routines.append(RoutineSection(title:RoutineViewController.CUSTOM_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED ], routineGroups: []))
         
         showLoading()
 
@@ -189,27 +189,40 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         hideLoading()
     }
     
-    func onRoutineSaved() { }
+    func onRoutineSaved(hasMoreRoutines: Bool) { }
     
-    func onRoutineUpdated(routineRows: [RoutineRow])
+    func onRoutineUpdated(groups: [RoutineGroup])
     {
+        let groupCount = groups.count
         let routine = routines[selectedRoutineSection].title
         routines.removeAtIndex(selectedRoutineSection)
         
         switch routine
         {
             case RoutineViewController.INTENCITY_ROUTINE_TITLE:
-                routines.insert(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], rows: routineRows), atIndex: selectedRoutineSection)
+                routines.insert(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], routineGroups: groups), atIndex: selectedRoutineSection)
                 break
             case RoutineViewController.SAVED_ROUTINE_TITLE:
-                routines.insert(RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], rows: routineRows), atIndex: selectedRoutineSection)
+                if (groupCount > 0)
+                {
+                    routines.insert(RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], routineGroups: groups), atIndex: selectedRoutineSection)
+                }                
                 break
             default:
                 break
         }        
         
         let indexPath = NSIndexPath(forRow: 0, inSection: selectedRoutineSection)
-        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        
+        if (groupCount > 0)
+        {
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+        else
+        {
+            tableView.reloadData()
+        }
+        
     }
     
     /**
@@ -236,18 +249,17 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     func loadTableViewItems(event: Int, result: String)
     {
         var section: RoutineSection!
-        var rows = [RoutineRow]()
-        if (result != Constant.RETURN_NULL)
+        var rows = [RoutineGroup]()
+
+        // This means we got results back from the web database.
+        if (result != "" && result != Constant.RETURN_NULL)
         {
             let json = result.parseJSONString!
-     
-            // This means we got results back from the web database.
-            if (result != "" && result != Constant.RETURN_NULL)
+                
+            do
             {
-                do
+                switch event
                 {
-                    switch event
-                    {
                     case ServiceEvent.GET_LIST:
                         rows = try UserRoutineDao().parseJson(json)
                         break
@@ -256,25 +268,25 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                         break
                     default:
                         break
-                    }
+                }
                     
-                    hideConnectionIssue()
-                }
-                catch
-                {
-                    showConnectionIssue()
-                }
+                hideConnectionIssue()
             }
-            else
+            catch
             {
                 showConnectionIssue()
             }
+        }
+        else
+        {
+            showConnectionIssue()
+        }
             
-            switch event
-            {
+        switch event
+        {
             case ServiceEvent.GET_LIST:
                 
-                section = RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], rows: rows)
+                section = RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], routineGroups: rows)
                 
                 break
             case ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS:
@@ -285,7 +297,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 
                 if (savedExercises.routineName != "")
                 {
-                    self.routines.insert(RoutineSection(title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), keys: [], rows: []), atIndex: 0)
+                    self.routines.insert(RoutineSection(title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), keys: [], routineGroups: []), atIndex: 0)
                     
                     //            self.recommended = defaultRoutineRows.count - 1
                 }
@@ -295,19 +307,18 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 //        }
                 
                 
-                section = RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], rows: rows)
+                section = RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], routineGroups: rows)
                 
                 break
             default:
                 break
-            }
+        }
             
-            if (rows.count > 0)
-            {
-                routines.append(section)
-                //            animateTable()
-                tableView.reloadData()
-            }
+        if (rows.count > 0)
+        {
+            routines.append(section)
+            //            animateTable()
+            tableView.reloadData()
         }
         
         hideLoading()
@@ -380,7 +391,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         }
         else
         {
-            let rows = routine.rows
+            let rows = routine.routineGroups
             let count = rows.count
             var totalIntencityRoutines = 0
             for i in 0..<count
@@ -401,7 +412,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        // This is so we know which routine section to remove from the routines array when we update the RoutineRows
+        // This is so we know which routine section to remove from the routines array when we update the RoutineGroups
         selectedRoutineSection = indexPath.section
         
         let routine = routines[selectedRoutineSection]
@@ -423,7 +434,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.INTENCITY_ROUTINE_VIEW_CONTROLLER) as! IntencityRoutineViewController
                 vc.viewDelegate = viewDelegate
                 vc.intencityRoutineDelegate = self
-                vc.routines = routine.rows
+                vc.routines = routine.routineGroups
                 
                 self.navigationController!.pushViewController(vc, animated: true)
                 
@@ -433,7 +444,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.SAVED_ROUTINE_VIEW_CONTROLLER) as! SavedRoutineViewController
                 vc.viewDelegate = viewDelegate
                 vc.intencityRoutineDelegate = self
-                vc.routines = routine.rows
+                vc.routines = routine.routineGroups
                     
                 self.navigationController!.pushViewController(vc, animated: true)
 

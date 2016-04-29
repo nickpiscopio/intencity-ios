@@ -25,6 +25,8 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     var routines = [String]()
     var routinesToRemove = [String]()
     
+    var editRoutinesSaved = false
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -65,9 +67,34 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_MUSCLE_GROUP_ROUTINE, variables: [ email ]))
     }
     
+    override func viewWillDisappear(animated : Bool)
+    {
+        if (self.isMovingFromParentViewController() && editRoutinesSaved)
+        {
+            delegate!.onRoutineSaved(true)
+        }
+    }
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    /**
+     * Shows or hides the save button based on whether there are routines to remove.
+     */
+    func setSaveButtonVisibility()
+    {
+        if (routinesToRemove.count > 0)
+        {
+            let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
+            
+            self.navigationItem.rightBarButtonItem = saveButtonItem
+        }
+        else
+        {
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -77,9 +104,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
             descriptionView.hidden = false
             tableView.backgroundView?.hidden = true
             
-            let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
-            
-            self.navigationItem.rightBarButtonItem = saveButtonItem
+            setSaveButtonVisibility()
         }
         else
         {
@@ -119,6 +144,8 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
         cell.setChecked(!cell.isChecked())
         
+        setSaveButtonVisibility()
+        
         // Deselects the row.
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
@@ -147,7 +174,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
                 break
             case ServiceEvent.UPDATE_LIST:
             
-                goBack()
+                navigateBack(true)
             
                 break
             default:
@@ -171,26 +198,19 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
      */
     func savePressed(sender: UIBarButtonItem)
     {
-        if (routinesToRemove.count > 0)
-        {
-            showLoading()
+        showLoading()
             
-            _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
-                            serviceURL: Constant.SERVICE_UPDATE_USER_MUSCLE_GROUP_ROUTINE,
-                            params: Constant.generateServiceListVariables(email, variables: routinesToRemove, isInserting: false))
-        }
-        else
-        {
-            goBack()
-        }
+        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
+                        serviceURL: Constant.SERVICE_UPDATE_USER_MUSCLE_GROUP_ROUTINE,
+                        params: Constant.generateServiceListVariables(email, variables: routinesToRemove, isInserting: false))
     }
     
     /**
      * Navigates the user back to the previous screen.
      */
-    func goBack()
+    func navigateBack(saved: Bool)
     {
-        delegate!.onRoutineSaved()
+        editRoutinesSaved = saved
         
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -200,7 +220,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
      */
     func goBack(alertAction: UIAlertAction!) -> Void
     {
-        goBack()
+        navigateBack(false)
     }
     
     /**

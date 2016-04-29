@@ -33,9 +33,12 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
     
     var exerciseData: ExerciseData!
     
-    var routines = [RoutineRow]()
+    var routines = [RoutineGroup]()
     var selectedRoutineSection: Int!
     var selectedRoutine: Int!
+    
+    var loadRoutines = false
+    var resetRoutines = false
     
     override func viewDidLoad()
     {
@@ -66,16 +69,32 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
         routineDescription.text = NSLocalizedString("user_routine_description", comment: "")
         routineDescription.textColor = Color.secondary_light
         
-        initRoutines(false)
-        
         let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(SavedRoutineViewController.editPressed(_:)))
         
         self.navigationItem.rightBarButtonItem = editButton
+        
+        loadRoutines = true
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        if (loadRoutines)
+        {
+            initRoutines(resetRoutines)
+        }
+        else
+        {
+            routines.removeAll()
+            
+            intencityRoutineDelegate!.onRoutineUpdated(routines)
+            
+            goBack()
+        }
     }
     
     /**
@@ -176,15 +195,6 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
                 loadTableViewItems(result)
                 
                 break
-            case ServiceEvent.SET_CURRENT_MUSCLE_GROUP:
-                
-                showLoading()
-                
-                _ = ServiceTask(event: ServiceEvent.GET_EXERCISES_FOR_TODAY, delegate: self,
-                                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY, variables: [ email ]))
-                
-                break
             
             case ServiceEvent.GET_EXERCISES_FOR_TODAY:
                 
@@ -224,11 +234,11 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
      */
     func loadTableViewItems(result: String)
     {
-        let json = result.parseJSONString!
-        
         // This means we got results back from the web database.
         if (result != "" && result != Constant.RETURN_NULL)
         {
+            let json = result.parseJSONString!
+            
             do
             {
                 routines.removeAll()
@@ -255,24 +265,27 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
     
     @IBAction func startExercisingClicked(sender: AnyObject)
     {
-        exerciseData.routineName = routines[selectedRoutineSection].rows[self.selectedRoutine]
-            
         showLoading()
         
-//        let selectedRoutine = selectedRoutineSection > 0 ? routines[0].rows.count - 1 + selectedRoutineSection + self.selectedRoutine : self.selectedRoutine
-//            
-//        // We add 1 because the routines start at 1 on the server.
-//        _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
-//                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-//                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine + 1)]))
+        let routine = routines[selectedRoutineSection].rows[self.selectedRoutine]
+        let selectedRoutine = routine.rowNumber
+        
+        exerciseData.routineName = routine.title
+
+        // We use GET_EXERCISES_FOR_TODAY because when setting a routine, we set the saved RoutineNumber to the CompletedRoutine,
+        // then we get the exercises from the same stored procedure.
+        _ = ServiceTask(event: ServiceEvent.GET_EXERCISES_FOR_TODAY, delegate: self,
+                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_ROUTINE_EXERCISES, variables: [ email, String(selectedRoutine)]))
     }
     
-    func onRoutineSaved()
+    func onRoutineSaved(hasMoreRoutines: Bool)
     {
-        initRoutines(true)
+        resetRoutines = true
+        loadRoutines = hasMoreRoutines
     }
     
-    func onRoutineUpdated(routineRows: [RoutineRow]) { }
+    func onRoutineUpdated(groups: [RoutineGroup]) { }
 
     /**
      * Animates the table being added to the screen.
@@ -299,12 +312,12 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         // Gets the row in the section.
-        let title = routines[indexPath.section].rows[indexPath.row]
+        let row = routines[indexPath.section].rows[indexPath.row]
 
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
         cell.setCheckboxImage(Constant.RADIO_BUTTON_MARKED, uncheckedImage: Constant.RADIO_BUTTON_UNMARKED)
         cell.selectionStyle = .None
-        cell.titleLabel.text = title
+        cell.titleLabel.text = row.title
         cell.setChecked(false)
             
         return cell

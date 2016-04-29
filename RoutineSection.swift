@@ -13,5 +13,5 @@ struct RoutineSection
     // This is the int equivalents to what dot is being shown for each menu item,
     // which will correlate to the routine key.
     var keys: [Int]
-    var rows: [RoutineRow]    
+    var routineGroups: [RoutineGroup]
 }

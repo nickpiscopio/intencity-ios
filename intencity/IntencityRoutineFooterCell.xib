@@ -21,7 +21,7 @@
                         </connections>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pPY-aD-Esv">
-                        <rect key="frame" x="16" y="19" width="291" height="32"/>
+                        <rect key="frame" x="16" y="19" width="291" height="66"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-xb-y4l">
                                 <rect key="frame" x="128" y="0.0" width="36" height="16"/>
@@ -30,16 +30,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVc-QP-cV7">
-                                <rect key="frame" x="119" y="16" width="54" height="16"/>
+                                <rect key="frame" x="119" y="16" width="54" height="50"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="03x-P4-ohp">
-                                        <rect key="frame" x="0.0" y="0.0" width="18" height="16"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="18" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="18" id="xei-3V-hx4"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsC-dk-YyJ">
-                                        <rect key="frame" x="18" y="0.0" width="36" height="16"/>
+                                        <rect key="frame" x="18" y="0.0" width="36" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>

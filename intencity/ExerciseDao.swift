@@ -21,6 +21,7 @@ struct ExerciseDao
         {
             for exercise in jsonArray
             {
+                let exerciseTableExerciseName = exercise[Constant.COLUMN_EXERCISE_TABLE_EXERCISE_NAME]
                 let exerciseName = exercise[Constant.COLUMN_EXERCISE_NAME] as! String
                 let weight = exercise[Constant.COLUMN_EXERCISE_WEIGHT]
                 let reps = exercise[Constant.COLUMN_EXERCISE_REPS]
@@ -35,7 +36,7 @@ struct ExerciseDao
                                  difficulty: !(difficulty is NSNull) ? Int(difficulty as! String)! : 10,
                                  notes: !(notes is NSNull) ? notes as! String : "") ]
                 
-                let exercise = Exercise(exerciseName: exerciseName, exerciseDescription: "", sets: sets, fromIntencity: true)
+                let exercise = Exercise(exerciseName: exerciseName, exerciseDescription: "", sets: sets, fromIntencity: exerciseTableExerciseName == nil || !(exerciseTableExerciseName is NSNull))
                 
                 // This determines if what we searched for has been returned from the database.
                 // This is not case sensitive.

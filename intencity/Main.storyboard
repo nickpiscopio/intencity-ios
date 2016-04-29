@@ -46,7 +46,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="pJU-af-MoM">
-                        <barButtonItem key="rightBarButtonItem" image="06DECF87-02B6-456A-836C-BD80D97F8578" id="6UB-wh-LYy">
+                        <barButtonItem key="rightBarButtonItem" image="9B819379-1E22-4134-8E22-2747BA96FAC9" id="6UB-wh-LYy">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="Kz2-vl-MdR"/>
                             </connections>
@@ -735,7 +735,7 @@
                                 <rect key="frame" x="534" y="534" width="50" height="50"/>
                                 <state key="normal" image="next_button"/>
                                 <connections>
-                                    <action selector="startExercisingClicked:" destination="TGe-LB-fz8" eventType="touchUpInside" id="7wI-ev-oVp"/>
+                                    <action selector="startExercisingClicked:" destination="adf-gy-nvm" eventType="touchUpInside" id="VJD-tR-f4r"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1852,7 +1852,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeb-EA-MDb">
                                                 <rect key="frame" x="16" y="16" width="568" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2199,7 +2199,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="06DECF87-02B6-456A-836C-BD80D97F8578" width="82" height="69">
+        <image name="9B819379-1E22-4134-8E22-2747BA96FAC9" width="82" height="69">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -11,14 +11,14 @@ import Foundation
 
 struct IntencityRoutineDao
 {
-    func parseJson(json: AnyObject?) throws -> [RoutineRow]
+    func parseJson(json: AnyObject?) throws -> [RoutineGroup]
     {
-        var routineRows = [RoutineRow]()
+        var group = [RoutineGroup]()
         
         var i = 0
         
-        var defaultRoutines = [String]()
-        var customRoutines = [String]()
+        var defaultRoutines = [RoutineRow]()
+        var customRoutines = [RoutineRow]()
         
 //        var recommended: String?
         
@@ -27,22 +27,23 @@ struct IntencityRoutineDao
             for routines in jsonArray
             {
                 let muscleGroup = routines[Constant.COLUMN_DISPLAY_NAME] as! String
+                let exerciseDay = routines[Constant.COLUMN_EXERCISE_DAY] as! String
 //                recommended = routines[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as? String
                 
                 i += 1
                 
                 if (i > 6)
                 {
-                    customRoutines.append(muscleGroup)
+                    customRoutines.append(RoutineRow(title: muscleGroup, rowNumber: Int(exerciseDay)!))
                 }
                 else
                 {
-                    defaultRoutines.append(muscleGroup)
+                    defaultRoutines.append(RoutineRow(title: muscleGroup, rowNumber: Int(exerciseDay)!))
                 }
             }
             
-            routineRows.append(RoutineRow(title: RoutineViewController.DEFAULT_ROUTINE_TITLE, rows: defaultRoutines))
-            routineRows.append(RoutineRow(title: RoutineViewController.CUSTOM_ROUTINE_TITLE, rows: customRoutines))
+            group.append(RoutineGroup(title: RoutineViewController.DEFAULT_ROUTINE_TITLE, rows: defaultRoutines))
+            group.append(RoutineGroup(title: RoutineViewController.CUSTOM_ROUTINE_TITLE, rows: customRoutines))
 
         }
         else
@@ -50,6 +51,6 @@ struct IntencityRoutineDao
             throw IntencityError.ParseError
         }
         
-        return routineRows
+        return group
     }
 }
