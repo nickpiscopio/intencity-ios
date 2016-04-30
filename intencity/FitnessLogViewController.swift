@@ -195,7 +195,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         {
             case ServiceEvent.SAVE_ROUTINE:
                 
-                displaySaveAlert(true)
+                displaySaveAlert(SaveState.SAME_NAME_ERROR)
             
                 break;
             default:
@@ -700,7 +700,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func onSaveRoutine()
     {
-        displaySaveAlert(false)
+        displaySaveAlert(SaveState.NORMAL)
     }
     
     func configurationTextField(textField: UITextField!)
@@ -708,21 +708,51 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         self.textField = textField!
     }
     
-    func displaySaveAlert(errorOccurred: Bool)
+    func displaySaveAlert(saveState: Int)
     {
-        let alert = UIAlertController(title: NSLocalizedString(errorOccurred ? "routine_saved_title_error" : "routine_saved_title", comment: ""), message: NSLocalizedString(errorOccurred ? "routine_saved_description_error" : "routine_saved_description", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+        var title: String!
+        var description: String!
         
+        switch saveState
+        {
+            case SaveState.SAME_NAME_ERROR:
+                title = "routine_saved_title_error"
+                description = "routine_saved_description_error"
+                break
+            case SaveState.REG_EX_ERROR:
+                title = "routine_saved_title_error"
+                description = "routine_saved_description_reg_ex_error"
+                break
+            default: // SaveState.NORMAL
+                title = "routine_saved_title"
+                description = "routine_saved_description"
+                break
+        }
+        
+        let alert = UIAlertController(title: NSLocalizedString(title, comment: ""), message: NSLocalizedString(description, comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler(configurationTextField)
-        
         alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: NSLocalizedString("save", comment: ""), style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
             
             self.showLoading()
             
-            _ = ServiceTask(event: ServiceEvent.SAVE_ROUTINE,
-                delegate: self,
-                serviceURL: Constant.SERVICE_SET_ROUTINE,
-                params: Constant.generateRoutineListVariables(self.email, routineName: self.textField.text!, exercises: self.currentExercises))
+            let text = self.textField.text!
+            let textWithoutSpace = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            
+            if (Util.isFieldValid(text, regEx: Constant.REGEX_SAVE_ROUTINE_NAME_FIELD) && Util.checkStringLength(textWithoutSpace, length: 1))
+            {
+                _ = ServiceTask(event: ServiceEvent.SAVE_ROUTINE,
+                    delegate: self,
+                    serviceURL: Constant.SERVICE_SET_ROUTINE,
+                    params: Constant.generateRoutineListVariables(self.email, routineName: self.textField.text!, exercises: self.currentExercises))
+            }
+            else
+            {
+                self.hideLoading()
+                
+                //Display save alert with new message.
+                self.displaySaveAlert(SaveState.REG_EX_ERROR)
+            }
         }))
         
         self.navigationController!.presentViewController(alert, animated: true, completion: nil)

@@ -222,6 +222,7 @@ struct Constant
     static let REGEX_EMAIL = "[a-zA-Z0-9]+([\\-\\.\\{\\}\\^\\+*_~]*[a-zA-Z0-9]+)*@[a-zA-Z0-9]+([\\.\\-]*[a-zA-Z0-9]+)*[\\.][a-zA-Z]{2}[A-Za-z]*";
     static let REGEX_FIELD = "[a-zA-Z0-9\\s\\-\\.\\{\\}\\^\\*\\(\\)\\[\\]\\$/;:,_~!@#%']+";
     static let REGEX_NAME_FIELD = "[a-zA-Z\\s\\-\\.']+";
+    static let REGEX_SAVE_ROUTINE_NAME_FIELD = "[a-zA-Z\\s\\-\\.'0-9]+";
     
     static func getValidateUserCredentialsServiceParameters(email: String, password: String) -> String
     {

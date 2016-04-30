@@ -133,6 +133,7 @@
 		BDBDB56B1C87504E00A2EE2C /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = BDBDB56A1C87504E00A2EE2C /* privacy.html */; };
 		BDC970801CD24B0D007BEE84 /* EditSavedRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC9707F1CD24B0D007BEE84 /* EditSavedRoutineViewController.swift */; };
 		BDC970821CD390E2007BEE84 /* RoutineRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC970811CD390E2007BEE84 /* RoutineRow.swift */; };
+		BDC970841CD525F1007BEE84 /* SaveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC970831CD525F1007BEE84 /* SaveState.swift */; };
 		BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BEC1C8A1881001235AE /* FitnessRecommendationViewController.swift */; };
 		BDD53BF01C8A1CEB001235AE /* IntencityTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BEF1C8A1CEB001235AE /* IntencityTabButton.swift */; };
 		BDD53BF21C8A2B05001235AE /* FitnessRecommendationCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD53BF11C8A2B05001235AE /* FitnessRecommendationCellViewController.swift */; };
@@ -301,6 +302,7 @@
 		BDBDB56A1C87504E00A2EE2C /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		BDC9707F1CD24B0D007BEE84 /* EditSavedRoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSavedRoutineViewController.swift; sourceTree = "<group>"; };
 		BDC970811CD390E2007BEE84 /* RoutineRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineRow.swift; sourceTree = "<group>"; };
+		BDC970831CD525F1007BEE84 /* SaveState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveState.swift; sourceTree = "<group>"; };
 		BDD53BEC1C8A1881001235AE /* FitnessRecommendationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessRecommendationViewController.swift; sourceTree = "<group>"; };
 		BDD53BEF1C8A1CEB001235AE /* IntencityTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityTabButton.swift; sourceTree = "<group>"; };
 		BDD53BF11C8A2B05001235AE /* FitnessRecommendationCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessRecommendationCellViewController.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				BD1053971C6CC989004C10C7 /* Extensions */,
 				BD947A031C6CF252003F3767 /* IntencityError.swift */,
 				BD56FB901CD0E539001404C5 /* RoutineState.swift */,
+				BDC970831CD525F1007BEE84 /* SaveState.swift */,
 				BD294ACA1CBE7C3B005718BA /* ExercisePriorityUtil.swift */,
 				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
 				BD8811011C92FF3A0098FA64 /* Badge.swift */,
@@ -967,6 +970,7 @@
 				BDFD87871CA196D700ECDDCE /* ExercisePriorityDelegate.swift in Sources */,
 				BD56FB911CD0E539001404C5 /* RoutineState.swift in Sources */,
 				BD93252F1CC7D18400D9581E /* SaveDelegate.swift in Sources */,
+				BDC970841CD525F1007BEE84 /* SaveState.swift in Sources */,
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
 				BDD53BFA1C8A333D001235AE /* FitnessRecFooterCellController.swift in Sources */,
 				BDB45A1C1C849B42009E509B /* SearchExerciseCellController.swift in Sources */,
