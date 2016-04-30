@@ -7,7 +7,8 @@
 
 import Foundation
 
-@objc protocol SaveDelegate
+@objc protocol RoutineDelegate
 {
     func onSaveRoutine()
+    func onFinishRoutine()
 }

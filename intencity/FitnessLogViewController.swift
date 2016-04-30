@@ -10,7 +10,7 @@
 import UIKit
 import Social
 
-class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDelegate, ExerciseSearchDelegate, SaveDelegate
+class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDelegate, ExerciseSearchDelegate, RoutineDelegate
 {    
     enum ActiveButtonState
     {
@@ -342,16 +342,24 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
                 Util.grantBadgeToUser(email, badgeName: Badge.FINISHER, content: finisherAward, onlyAllowOne: true)
             }
             
-            let actions = [ UIAlertAction(title: FACEBOOK_BUTTON, style: .Default, handler: share),
-                            UIAlertAction(title: TWEET_BUTTON, style: .Default, handler: share),
-                            UIAlertAction(title: NSLocalizedString("finish_button", comment: ""), style: .Destructive, handler: finishExercising),
-                            UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil) ]
-            
-            Util.displayAlert(self,
-                title: NSLocalizedString("completed_workout_title", comment: ""),
-                message: "",
-                actions: actions)
+            displayFinishAlert()
         }
+    }
+    
+    /**
+     * Displays the finish alert.
+     */
+    func displayFinishAlert()
+    {
+        let actions = [ UIAlertAction(title: FACEBOOK_BUTTON, style: .Default, handler: share),
+                        UIAlertAction(title: TWEET_BUTTON, style: .Default, handler: share),
+                        UIAlertAction(title: NSLocalizedString("finish_button", comment: ""), style: .Destructive, handler: finishExercising),
+                        UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil) ]
+        
+        Util.displayAlert(self,
+                          title: NSLocalizedString("completed_workout_title", comment: ""),
+                          message: "",
+                          actions: actions)
     }
     
     /**
@@ -449,7 +457,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         let currentExerciseCount = currentExercises.count
         exerciseListHeader.saveButton.hidden = currentExerciseCount < 2 || (currentExerciseCount == 2 && currentExercises[currentExerciseCount - 1].exerciseName == STRETCH_NAME)
         
-        exerciseListHeader.exerciseTotalLabel.text = "\(currentExercises.count) / \(totalExercises)"
+        exerciseListHeader.setExerciseTotalLabel(currentExercises.count, totalExercises: totalExercises)
     }
     
     /**
@@ -531,7 +539,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         {
             let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.EXERCISE_SEARCH_VIEW_CONTROLLER) as! ExerciseSearchViewController
             viewController.searchType = name
-            viewController.routineName = exerciseListHeader.routineNameLabel.text
+            viewController.routineName = exerciseListHeader.routineName
                 
             self.navigationController!.pushViewController(viewController, animated: true)
         }
@@ -701,6 +709,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     func onSaveRoutine()
     {
         displaySaveAlert(SaveState.NORMAL)
+    }
+    
+    /**
+     * The callback for when the finish button is pressed.
+     */
+    func onFinishRoutine()
+    {
+        displayFinishAlert()
     }
     
     func configurationTextField(textField: UITextField!)
@@ -928,9 +944,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         if (exerciseListHeader == nil)
         {
             exerciseListHeader = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
-            exerciseListHeader.routineNameLabel.text = exerciseData.routineName
+            exerciseListHeader.routineName = exerciseData.routineName
             exerciseListHeader.navigationController = self.navigationController
-            exerciseListHeader.saveDelegate = self
+            exerciseListHeader.routineDelegate = self
         }
         
         return exerciseListHeader.contentView

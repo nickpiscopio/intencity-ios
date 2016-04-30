@@ -54,38 +54,27 @@ class ExerciseCellController: UITableViewCell
         {
             if (addWeight)
             {
-                mutableString.appendAttributedString(getMutableString(String(weight), fontSize: Dimention.FONT_SIZE_SMALL, isBold: true))
-                mutableString.appendAttributedString(getMutableString(SPACE, fontSize: Dimention.FONT_SIZE_XX_SMALL, isBold: false))
-                mutableString.appendAttributedString(getMutableString(LBS_STRING, fontSize: Dimention.FONT_SIZE_X_SMALL, isBold: false))
+                mutableString.appendAttributedString(Util.getMutableString(String(weight), fontSize: Dimention.FONT_SIZE_SMALL, color: Color.secondary_light, isBold: true))
+                mutableString.appendAttributedString(Util.getMutableString(SPACE, fontSize: Dimention.FONT_SIZE_XX_SMALL, color: Color.secondary_light, isBold: false))
+                mutableString.appendAttributedString(Util.getMutableString(LBS_STRING, fontSize: Dimention.FONT_SIZE_X_SMALL, color: Color.secondary_light, isBold: false))
                 
-                mutableString.appendAttributedString(getMutableString(SLASH, fontSize: Dimention.FONT_SIZE_SMALL, isBold: false))
+                mutableString.appendAttributedString(Util.getMutableString(SLASH, fontSize: Dimention.FONT_SIZE_SMALL, color: Color.secondary_light, isBold: false))
             }
             
-            mutableString.appendAttributedString(getMutableString(duration, fontSize: Dimention.FONT_SIZE_SMALL, isBold: true))
+            mutableString.appendAttributedString(Util.getMutableString(duration, fontSize: Dimention.FONT_SIZE_SMALL, color: Color.secondary_light, isBold: true))
             
             if (isReps)
             {
-                mutableString.appendAttributedString(getMutableString(SPACE, fontSize: Dimention.FONT_SIZE_XX_SMALL, isBold: false))
-                mutableString.appendAttributedString(getMutableString(REPS_STRING, fontSize: Dimention.FONT_SIZE_X_SMALL, isBold: false))
+                mutableString.appendAttributedString(Util.getMutableString(SPACE, fontSize: Dimention.FONT_SIZE_XX_SMALL, color: Color.secondary_light, isBold: false))
+                mutableString.appendAttributedString(Util.getMutableString(REPS_STRING, fontSize: Dimention.FONT_SIZE_X_SMALL, color: Color.secondary_light, isBold: false))
             }
         }
         else
         {
-            mutableString.appendAttributedString(getMutableString(EDIT_STRING, fontSize: Dimention.FONT_SIZE_SMALL, isBold: true))
+            mutableString.appendAttributedString(Util.getMutableString(EDIT_STRING, fontSize: Dimention.FONT_SIZE_SMALL, color: Color.secondary_light, isBold: true))
         }
         
         editButton.setAttributedTitle(mutableString, forState: .Normal)
-    }
-    
-    func getMutableString(string: String, fontSize: CGFloat, isBold: Bool) -> NSMutableAttributedString
-    {
-        let attributes = isBold ? UIFont.boldSystemFontOfSize(fontSize) : UIFont.systemFontOfSize(fontSize)
-        
-        var mutableString = NSMutableAttributedString()
-        mutableString = NSMutableAttributedString(string: string, attributes: [ NSFontAttributeName:  attributes])
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: Color.secondary_light, range: NSRange(location: 0, length: string.characters.count))
-        
-        return mutableString
     }
     
     /**

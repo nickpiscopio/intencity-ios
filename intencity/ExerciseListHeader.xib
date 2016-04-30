@@ -15,45 +15,60 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HbL-PF-QHP">
-                        <rect key="frame" x="0.0" y="0.0" width="589" height="48.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="589" height="49"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pri-UG-bKY">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="pri-UG-bKY">
                                 <rect key="frame" x="16" y="0.0" width="573" height="49"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zah-rX-B3a">
-                                        <rect key="frame" x="0.0" y="0.0" width="176" height="49"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Uh0-3T-ZEy">
+                                        <rect key="frame" x="0.0" y="0.0" width="282" height="49"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzE-II-NN6">
-                                                <rect key="frame" x="0.0" y="0.0" width="25" height="49"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Legs &amp; Lower Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syu-0o-c9o">
-                                                <rect key="frame" x="30" y="0.0" width="146" height="49"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legs &amp; Lower Back" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syu-0o-c9o">
+                                                <rect key="frame" x="0.0" y="0.0" width="282" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GDQ-kq-2dk">
-                                        <rect key="frame" x="505" y="0.0" width="68" height="49"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="fq5-86-nvE">
+                                        <rect key="frame" x="282" y="0.0" width="291" height="49"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMH-Iu-sFY" customClass="IntencityButtonNoBackgroundDark" customModule="Intencity" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="49"/>
-                                                <state key="normal" image="save"/>
-                                                <connections>
-                                                    <action selector="saveClicked:" destination="awo-Qd-4AI" eventType="touchUpInside" id="4rj-ar-Chp"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dq6-Tp-her" customClass="IntencityButtonNoBackgroundDark" customModule="Intencity" customModuleProvider="target">
-                                                <rect key="frame" x="50" y="0.0" width="18" height="49"/>
-                                                <state key="normal" image="info"/>
-                                                <connections>
-                                                    <action selector="infoClicked:" destination="awo-Qd-4AI" eventType="touchUpInside" id="yR9-Wf-pKE"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izY-2e-gsV">
+                                                <rect key="frame" x="141" y="0.0" width="150" height="49"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXO-aC-5wz" customClass="IntencityButtonNoBackgroundDark" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="49"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="tlt-EL-EGu"/>
+                                                        </constraints>
+                                                        <state key="normal" image="icon_finish"/>
+                                                        <connections>
+                                                            <action selector="finishClicked:" destination="awo-Qd-4AI" eventType="touchUpInside" id="b6C-OZ-0xc"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMH-Iu-sFY" customClass="IntencityButtonNoBackgroundDark" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="50" y="0.0" width="50" height="49"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="p1G-n7-wqr"/>
+                                                        </constraints>
+                                                        <state key="normal" image="save"/>
+                                                        <connections>
+                                                            <action selector="saveClicked:" destination="awo-Qd-4AI" eventType="touchUpInside" id="4rj-ar-Chp"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dq6-Tp-her" customClass="IntencityButtonNoBackgroundDark" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="100" y="0.0" width="50" height="49"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="k5B-f3-bib"/>
+                                                        </constraints>
+                                                        <state key="normal" image="info"/>
+                                                        <connections>
+                                                            <action selector="infoClicked:" destination="awo-Qd-4AI" eventType="touchUpInside" id="yR9-Wf-pKE"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -76,7 +91,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="exerciseTotalLabel" destination="EzE-II-NN6" id="2JI-Je-YT4"/>
                 <outlet property="routineNameLabel" destination="Syu-0o-c9o" id="HT9-Fp-0aQ"/>
                 <outlet property="saveButton" destination="BMH-Iu-sFY" id="cJ9-gm-TQs"/>
                 <outlet property="view" destination="HbL-PF-QHP" id="inz-dA-bMo"/>
@@ -85,6 +99,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="icon_finish" width="18" height="18"/>
         <image name="info" width="18" height="18"/>
         <image name="save" width="18" height="18"/>
     </resources>

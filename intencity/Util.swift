@@ -360,4 +360,23 @@ class Util
     {
         return text.stringByReplacingOccurrencesOfString("'", withString: "%27")
     }
+    
+    /**
+     * Returns a mutable string for labels and buttons.
+     *
+     * @param string    The string we are mutating.
+     * @param fontSize  The font size of the string.
+     * @param color     The color the text should be.
+     * @param isBold    Whether or not the text should be bold.
+     */
+    static func getMutableString(string: String, fontSize: CGFloat, color: UIColor, isBold: Bool) -> NSMutableAttributedString
+    {
+        let attributes = isBold ? UIFont.boldSystemFontOfSize(fontSize) : UIFont.systemFontOfSize(fontSize)
+        
+        var mutableString = NSMutableAttributedString()
+        mutableString = NSMutableAttributedString(string: string, attributes: [ NSFontAttributeName:  attributes])
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: color, range: NSRange(location: 0, length: string.characters.count))
+        
+        return mutableString
+    }
 }
