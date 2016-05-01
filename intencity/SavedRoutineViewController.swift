@@ -15,7 +15,6 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var connectionView: UIView!
     @IBOutlet weak var noConnectionLabel: UILabel!
-    @IBOutlet weak var tryAgainButton: UIButton!
     
     @IBOutlet weak var routineTitle: UILabel!
     @IBOutlet weak var routineDescription: UILabel!
@@ -109,20 +108,15 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
         
         if (reset)
         {
-            routines.removeAll()
-        }        
-        
-        if (routines.count > 0)
-        {
-            tableView.reloadData()
-        }
-        else
-        {
             showLoading()
             
             _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
                             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_ROUTINE, variables: [ email ]))
+        }
+        else if (routines.count > 0)
+        {
+            tableView.reloadData()
         }
     }
     
@@ -142,7 +136,6 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
         
         noConnectionLabel.textColor = Color.secondary_light
         noConnectionLabel.text = NSLocalizedString("generic_error", comment: "")
-        tryAgainButton.setTitle(NSLocalizedString("try_again", comment: ""), forState: .Normal)
     }
     
     /**
@@ -181,11 +174,6 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
         connectionView.hidden = true
     }
     
-    @IBAction func tryAgainClick(sender: AnyObject)
-    {
-        initRoutines(true)
-    }
-    
     func onRetrievalSuccessful(event: Int, result: String)
     {
         switch (event)
@@ -220,6 +208,8 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
     
     func onRetrievalFailed(event: Int)
     {
+        startButton.hidden = true
+        
         showConnectionIssue()
         
         loadTableViewItems("")

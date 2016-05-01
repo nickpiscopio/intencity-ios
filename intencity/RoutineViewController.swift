@@ -284,6 +284,11 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
             
         switch event
         {
+            case ServiceEvent.NO_RETURN:
+                
+                getSavedRoutines()
+                
+                break
             case ServiceEvent.GET_LIST:
                 
                 section = RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], routineGroups: rows)
@@ -291,21 +296,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 break
             case ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS:
                 
-                // This doesn't really belong in here because it is not a muscle group, but we only want to get this one.
-                // Get the saved exercises from the local database.
-                savedExercises = DBHelper().getRecords()
-                
-                if (savedExercises.routineName != "")
-                {
-                    self.routines.insert(RoutineSection(title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), keys: [], routineGroups: []), atIndex: 0)
-                    
-                    //            self.recommended = defaultRoutineRows.count - 1
-                }
-                //        else if (json != nil)
-                //        {
-                ////            self.recommended = (recommended == nil || recommended! == "") ? 0 : defaultRoutineRows.indexOf(recommended!)!
-                //        }
-                
+                getSavedRoutines()
                 
                 section = RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], routineGroups: rows)
                 
@@ -317,9 +308,10 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         if (rows.count > 0)
         {
             routines.append(section)
-            //            animateTable()
-            tableView.reloadData()
         }
+        
+        //            animateTable()
+        tableView.reloadData()
         
         hideLoading()
     }
@@ -329,7 +321,24 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      */
     func getContinueString() -> String
     {
-        return String(format: CONTINUE_STRING, arguments: [savedExercises.routineName.uppercaseString])
+        return savedExercises != nil ? String(format: CONTINUE_STRING, arguments: [savedExercises.routineName.uppercaseString]) : Constant.RETURN_NULL
+    }
+    
+    /**
+     * Gets the saved routines if they exist and if they haven't already been added to the list.
+     */
+    func getSavedRoutines()
+    {
+        // We get routine[0] because the saved routines are always added to the first element of the list.
+        if (routines[0].title != getContinueString())
+        {
+            savedExercises = DBHelper().getRecords()
+            
+            if (savedExercises.routineName != "")
+            {
+                routines.insert(RoutineSection(title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), keys: [], routineGroups: []), atIndex: 0)
+            }
+        }
     }
 
     /**
