@@ -24,6 +24,8 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
     var routines = [RoutineRow]()
     var routinesToRemove = [String]()
     
+    var saveButtonPressed = false
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -55,7 +57,7 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
     
     override func viewWillDisappear(animated : Bool)
     {
-        if (self.isMovingFromParentViewController())
+        if (self.isMovingFromParentViewController() && saveButtonPressed)
         {
             delegate!.onRoutineSaved(routinesToRemove.count != routines.count)
         }
@@ -153,18 +155,13 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
      */
     func savePressed(sender: UIBarButtonItem)
     {
-        if (routinesToRemove.count > 0)
-        {
-            showLoading()
+        saveButtonPressed = true
+
+        showLoading()
             
-            _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
-                            serviceURL: Constant.SERVICE_UPDATE_USER_ROUTINE,
-                            params: Constant.generateServiceListVariables(email, variables: routinesToRemove, isInserting: false))
-        }
-        else
-        {
-            goBack()
-        }
+        _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
+                        serviceURL: Constant.SERVICE_UPDATE_USER_ROUTINE,
+                        params: Constant.generateServiceListVariables(email, variables: routinesToRemove, isInserting: false))
     }
     
     /**
