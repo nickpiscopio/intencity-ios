@@ -265,7 +265,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     }
     
     func onRetrievalFailed(event: Int)
-    {       
+    {
+        exercises.removeAll()        
+        exercises.append(ExerciseDao().getExercise(searchBar.text!))
+        
+        tableView.reloadData()
+
         hideLoading()
         
         showConnectionIssue()
