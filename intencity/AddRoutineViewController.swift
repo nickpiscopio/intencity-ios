@@ -21,7 +21,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
     
     var muscleGroups = [String]()
     
-    var routine = [String]()
+    var routines = [String]()
     
     var email = ""
     
@@ -66,7 +66,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
      */
     func setSaveButtonVisibility()
     {
-        if (routine.count > 0)
+        if (routines.count > 0)
         {
             let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
             
@@ -160,11 +160,13 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
     func savePressed(sender:UIBarButtonItem)
     {
         showLoading()
+        
+        routines = routines.sort()
 
         // Save the routine
         _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
                         serviceURL: Constant.SERVICE_SET_USER_MUSCLE_GROUP_ROUTINE,
-                        params: Constant.generateServiceListVariables(email, variables: routine, isInserting: true))
+                        params: Constant.generateServiceListVariables(email, variables: routines, isInserting: true))
     }
     
     /**
@@ -189,13 +191,13 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
     {
         // Add or remove equipment from the user's list of equipment
         // if he or she clicks on a list item.
-        if (routine.contains(name))
+        if (routines.contains(name))
         {
-            routine.removeAtIndex(routine.indexOf(name)!)
+            routines.removeAtIndex(routines.indexOf(name)!)
         }
         else
         {
-            routine.append(name)
+            routines.append(name)
         }
     }
     
