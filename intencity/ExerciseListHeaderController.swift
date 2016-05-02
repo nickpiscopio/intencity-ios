@@ -67,7 +67,9 @@ class ExerciseListHeaderController: UITableViewCell
     {
         let mutableString = NSMutableAttributedString()
 
-        mutableString.appendAttributedString(Util.getMutableString(String(completedExerciseTotal) + "/" + String(totalExercises) + "  ", fontSize: Dimention.FONT_SIZE_NORMAL, color: Color.white, isBold: true))
+        let exerciseTotal = routineName == NSLocalizedString("title_custom_routine", comment: "") ? "?" : String(totalExercises)
+        
+        mutableString.appendAttributedString(Util.getMutableString(String(completedExerciseTotal) + "/" + exerciseTotal + "  ", fontSize: Dimention.FONT_SIZE_NORMAL, color: Color.white, isBold: true))
         mutableString.appendAttributedString(Util.getMutableString(routineName, fontSize: Dimention.FONT_SIZE_NORMAL, color: Color.white, isBold: false))
         
         routineNameButton.setAttributedTitle(mutableString, forState: .Normal)

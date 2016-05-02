@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "intencity/RoutineViewController.swift"
-            timestampString = "483787251.135829"
+            timestampString = "483784541.487023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "431"
-            endingLineNumber = "431"
-            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "onRetrievalFailed(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "intencity/RoutineViewController.swift"
-            timestampString = "483784541.487023"
+            filePath = "intencity/ExerciseSearchViewController.swift"
+            timestampString = "483885820.126679"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "onRetrievalFailed(_:)"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "initSearch()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

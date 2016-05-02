@@ -537,18 +537,18 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     {
         if (name == WARM_UP_NAME || name == STRETCH_NAME)
         {
-            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.EXERCISE_SEARCH_VIEW_CONTROLLER) as! ExerciseSearchViewController
-            viewController.searchType = name
-            viewController.routineName = exerciseListHeader.routineName
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.EXERCISE_SEARCH_VIEW_CONTROLLER) as! ExerciseSearchViewController
+            vc.searchType = name
+            vc.routineName = exerciseListHeader.routineName
                 
-            self.navigationController!.pushViewController(viewController, animated: true)
+            self.navigationController!.pushViewController(vc, animated: true)
         }
         else
         {
-            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
-            viewController.exerciseName = name
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
+            vc.exerciseName = name
                 
-            self.navigationController!.pushViewController(viewController, animated: true)
+            self.navigationController!.pushViewController(vc, animated: true)
         }
     }
     
