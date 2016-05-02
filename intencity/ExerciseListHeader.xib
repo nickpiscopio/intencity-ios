@@ -20,22 +20,18 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="pri-UG-bKY">
                                 <rect key="frame" x="16" y="0.0" width="573" height="49"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Uh0-3T-ZEy">
-                                        <rect key="frame" x="0.0" y="0.0" width="282" height="49"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legs &amp; Lower Back" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syu-0o-c9o">
-                                                <rect key="frame" x="0.0" y="0.0" width="282" height="49"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORS-x7-vxA">
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="49"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="routineNameClicked:" destination="awo-Qd-4AI" eventType="touchUpInside" id="Al1-Rb-mM4"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="fq5-86-nvE">
-                                        <rect key="frame" x="282" y="0.0" width="291" height="49"/>
+                                        <rect key="frame" x="135" y="0.0" width="439" height="49"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izY-2e-gsV">
-                                                <rect key="frame" x="141" y="0.0" width="150" height="49"/>
+                                                <rect key="frame" x="289" y="0.0" width="150" height="49"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXO-aC-5wz" customClass="IntencityButtonNoBackgroundDark" customModule="Intencity" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="49"/>
@@ -91,7 +87,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="routineNameLabel" destination="Syu-0o-c9o" id="HT9-Fp-0aQ"/>
+                <outlet property="routineNameButton" destination="ORS-x7-vxA" id="BDO-eW-9ZM"/>
                 <outlet property="saveButton" destination="BMH-Iu-sFY" id="cJ9-gm-TQs"/>
                 <outlet property="view" destination="HbL-PF-QHP" id="inz-dA-bMo"/>
             </connections>

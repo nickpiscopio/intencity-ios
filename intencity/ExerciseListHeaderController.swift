@@ -12,7 +12,8 @@ import UIKit
 class ExerciseListHeaderController: UITableViewCell
 {
     @IBOutlet weak var view: UIView!
-    @IBOutlet weak var routineNameLabel: UILabel!
+
+    @IBOutlet weak var routineNameButton: UIButton!
     @IBOutlet weak var saveButton: IntencityButtonNoBackgroundDark!
     
     weak var routineDelegate: RoutineDelegate!
@@ -30,10 +31,13 @@ class ExerciseListHeaderController: UITableViewCell
         super.awakeFromNib()
         
         view.backgroundColor = Color.secondary_light
-
-        routineNameLabel.textColor = Color.white
         
         storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
+    }
+    
+    @IBAction func routineNameClicked(sender: AnyObject)
+    {
+        routineDelegate.onRoutineNameClicked()
     }
     
     @IBAction func finishClicked(sender: AnyObject)
@@ -48,9 +52,9 @@ class ExerciseListHeaderController: UITableViewCell
     
     @IBAction func infoClicked(sender: AnyObject)
     {        
-        let viewController = storyboard.instantiateViewControllerWithIdentifier(Constant.FITNESS_RECOMMENDATION_VIEW_CONTROLLER) as! FitnessRecommendationViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier(Constant.FITNESS_RECOMMENDATION_VIEW_CONTROLLER) as! FitnessRecommendationViewController
         
-        self.navigationController!.pushViewController(viewController, animated: true)
+        self.navigationController!.pushViewController(vc, animated: true)
     }
     
     /**
@@ -66,6 +70,6 @@ class ExerciseListHeaderController: UITableViewCell
         mutableString.appendAttributedString(Util.getMutableString(String(completedExerciseTotal) + "/" + String(totalExercises) + "  ", fontSize: Dimention.FONT_SIZE_NORMAL, color: Color.white, isBold: true))
         mutableString.appendAttributedString(Util.getMutableString(routineName, fontSize: Dimention.FONT_SIZE_NORMAL, color: Color.white, isBold: false))
         
-        routineNameLabel.attributedText = mutableString
+        routineNameButton.setAttributedTitle(mutableString, forState: .Normal)
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 @objc protocol RoutineDelegate
 {
+    func onRoutineNameClicked()
     func onSaveRoutine()
     func onFinishRoutine()
 }

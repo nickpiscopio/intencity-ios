@@ -704,6 +704,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     }
     
     /**
+     * The callback for clicking on the routine name.
+     */
+    func onRoutineNameClicked()
+    {
+        Util.displayAlert(self, title: exerciseData.routineName, message: "", actions: [])
+    }
+    
+    /**
      * The callback for when the save button is pressed.
      */
     func onSaveRoutine()
