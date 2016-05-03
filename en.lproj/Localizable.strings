@@ -259,6 +259,8 @@
 "save" = "Save";
 "routine_saved" = "%1$@ was saved.";
 
+"routine_total_description" = "Completed Exercises: %1$@\nTotal Exercises: %2$@";
+
 /* Exercise List Strings */
 "more_priority_string" = "You will see %1$@ more.";
 "less_priority_string" = "You will see %1$@ less.";

@@ -708,7 +708,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func onRoutineNameClicked()
     {
-        Util.displayAlert(self, title: exerciseData.routineName, message: "", actions: [])
+        let description = String(format: NSLocalizedString("routine_total_description", comment: ""), arguments: [String(currentExercises.count), String(totalExercises)])
+        Util.displayAlert(self, title: exerciseData.routineName, message: description, actions: [])
     }
     
     /**

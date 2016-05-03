@@ -22,6 +22,6 @@ class RoutineContinueCellController: UITableViewCell
         routineTitle.textColor = Color.secondary_light
         
         contentView.backgroundColor = Color.page_background
-        view.backgroundColor = Color.page_background
+        view.backgroundColor = Color.white
     }
 }
