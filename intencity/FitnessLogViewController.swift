@@ -1049,10 +1049,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         // Note that indexPath is wrapped in an array: [indexPath]
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
         
-//        if ((exerciseName != STRETCH_NAME || fromSearch) && currentExercises[currentExercises.count - 1].exerciseName != STRETCH_NAME)
-//        {
-//            addExercise(false, fromSearch: fromSearch)
-//        }
+        if (fromSearch)
+        {
+            addExercise(false, fromSearch: fromSearch)
+        }
         
         // Add that the user has skipped an exercise.
         // Can't get the Kept Swimming badge.
