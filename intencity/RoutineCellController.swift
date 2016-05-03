@@ -36,7 +36,9 @@ class RoutineCellController: UITableViewCell
      */
     func setDescription(totalRoutines: Int)
     {
-        routineDescription.text = routineTitle.text! == RoutineViewController.CUSTOM_ROUTINE_TITLE ? RoutineViewController.CUSTOM_ROUTINE_DESCRIPTION : String(format: RoutineViewController.DEFAULT_ROUTINE_DESCRIPTION, arguments: [ String(totalRoutines) ])
+        let description = totalRoutines > 1 ? RoutineViewController.DEFAULT_ROUTINES_DESCRIPTION : RoutineViewController.DEFAULT_ROUTINE_DESCRIPTION
+        
+        routineDescription.text = routineTitle.text! == RoutineViewController.CUSTOM_ROUTINE_TITLE ? RoutineViewController.CUSTOM_ROUTINE_DESCRIPTION : String(format: description, arguments: [ String(totalRoutines) ])
     }
     
     /**

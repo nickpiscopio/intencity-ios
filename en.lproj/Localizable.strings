@@ -237,6 +237,7 @@
 "title_default_routines" = "Default Routines";
 "title_saved_routines" = "Saved Routines";
 "description_custom_routines" = "BUILD A ROUTINE AS YOU EXERCISE";
+"description_default_routine" = "SELECT FROM %1$@ ROUTINE";
 "description_default_routines" = "SELECT FROM %1$@ ROUTINES";
 "key_user_selected" = "Users can add their own inputed exercises.";
 "key_random" = "Utilizes Intencity's algorithm to select exercises.";

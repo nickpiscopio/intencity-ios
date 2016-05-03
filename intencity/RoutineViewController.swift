@@ -27,7 +27,8 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     static let DEFAULT_ROUTINE_TITLE = NSLocalizedString("title_default_routines", comment: "")
     static let SAVED_ROUTINE_TITLE = NSLocalizedString("title_saved_routines", comment: "")
     static let CUSTOM_ROUTINE_DESCRIPTION = NSLocalizedString("description_custom_routines", comment: "")
-    static let DEFAULT_ROUTINE_DESCRIPTION = NSLocalizedString("description_default_routines", comment: "")
+    static let DEFAULT_ROUTINE_DESCRIPTION = NSLocalizedString("description_default_routine", comment: "")
+    static let DEFAULT_ROUTINES_DESCRIPTION = NSLocalizedString("description_default_routines", comment: "")
 
     let DEFAULTS = NSUserDefaults.standardUserDefaults()
     
