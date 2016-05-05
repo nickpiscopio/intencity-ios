@@ -239,7 +239,7 @@
 "description_custom_routines" = "BUILD A ROUTINE AS YOU EXERCISE";
 "description_default_routine" = "SELECT FROM %1$@ ROUTINE";
 "description_default_routines" = "SELECT FROM %1$@ ROUTINES";
-"key_user_selected" = "Users can add their own inputed exercises.";
+"key_user_selected" = "Users can input their own exercises.";
 "key_random" = "Utilizes Intencity's algorithm to select exercises.";
 "key_consecutive" = "Consecutive list of exercises.";
 
@@ -254,7 +254,7 @@
 "routine_saved_title" = "Save current routine";
 "routine_saved_description" = "Give this routine a name so you can do it again at a later date.";
 "routine_saved_title_error" = "Couldn't save routine";
-"routine_saved_description_error" = "You either entered a routine name you've aready used or there was a problem communicating with Intencity's server. Please try again.";
+"routine_saved_description_error" = "You either entered a routine name you've already used or there was a problem communicating with Intencity's server. Please try again.";
 "routine_saved_description_reg_ex_error" = "Routine names can only contain letters and numbers. Please try again.";
 "save" = "Save";
 "routine_saved" = "%1$@ was saved.";
@@ -560,7 +560,7 @@
 /*  */
 "delete_account_dialog_message" = "Are you sure you want to delete your account?";
 
-/* Trial acccount done */
+/* Trial account done */
 "trial_account_done_title" = "Trial ended";
 
 /*  */
