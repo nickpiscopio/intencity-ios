@@ -246,6 +246,15 @@
 "intencity_routine_description" = "These routines utilize Intencity's algorithm to select exercises. They also allow users to input exercises.";
 "user_routine_description" = "These routines have a consecutive set of exercises. They also allow users to input exercises.";
 
+"edit_custom_routines_title" = "Edit Custom Routines";
+"edit_routines_description1" = "Below are the custom routines you have created.";
+"edit_routines_description2" = "Only checked routines will be kept when hitting 'Save'.";
+"edit_saved_title" = "Edit Saved Routines";
+"edit_saved_description" = "Below are the routines you have saved.";
+"no_custom_routines" = "No custom routines found.";
+"add_routines_title" = "Add Routine";
+"add_routines_description" = "Select the muscle groups you would like in this routine.";
+
 /*  */
 "routine_continue" = "CONTINUE %1$@";
 "create_routine_title" = "Want a custom routine?";
@@ -439,16 +448,6 @@
 "edit_equipment" = "Edit Equipment";
 "edit_equipment_title" = "Select your current equipment.";
 "edit_equipment_description" = "This helps Intencity generate exercises to fit your needs.";
-
-"edit_custom_routines_title" = "Edit Custom Routines";
-"edit_routines_description1" = "Below are the custom routines you have created.";
-"edit_routines_description2" = "Only checked routines will be kept when hitting 'Save'.";
-"edit_saved_title" = "Edit Saved Routines";
-"edit_saved_description" = "Below are the routines you have saved.";
-"no_custom_routines" = "No custom routines found.";
-"add_routines_title" = "Add Routine";
-"add_routines_description" = "Select the muscle groups you would like in this routine.";
-"muscle_group_limit_title" = "Limit error";
 
 /*  */
 "change_password" = "Change Password";

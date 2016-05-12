@@ -188,7 +188,7 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
                 
                 if (result != "" && result != Constant.RETURN_NULL)
                 {
-                    viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: result, savedExercises: nil, state: RoutineState.INTENCITY)
+                    viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: result, savedExercises: nil, state: RoutineState.SAVED)
                     
                     goBack()
                 }

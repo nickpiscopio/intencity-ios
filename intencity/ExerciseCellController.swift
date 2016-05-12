@@ -15,6 +15,7 @@ class ExerciseCellController: UITableViewCell
     @IBOutlet weak var exerciseDescription: UILabel!
     @IBOutlet weak var editStackView: UIStackView!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var priorityStackView: UIStackView!
     @IBOutlet weak var exerciseDescriptionView: UIView!
     @IBOutlet weak var hideButton: IntencityButtonNoBackground!
     
@@ -92,11 +93,13 @@ class ExerciseCellController: UITableViewCell
         {
             exerciseButton.enabled = true
             exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
+            priorityStackView.hidden = false
         }
         else
         {
             exerciseButton.enabled = false
             exerciseButton.setTitleColor(Color.secondary_dark, forState: UIControlState.Normal)
+            priorityStackView.hidden = true
         }
     }
     

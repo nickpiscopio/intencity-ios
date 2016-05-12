@@ -25,12 +25,6 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
         setMenuButton(Constant.MENU_INITIALIZED)
         
         onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil, state: RoutineState.NONE)
-        
-//        let backButton = UIBarButtonItem(customView: "yourView")
-//        self.navigationItem.leftBarButtonItem = backButton
-        
-//        let backButton = UIBarButtonItem(title: "My List", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MainViewController.goBack))
-//        self.navigationItem.leftBarButtonItem = backButton
     }
     
     override func didReceiveMemoryWarning()
@@ -74,11 +68,9 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
         }
     }
     
-    func goBack()
-    {
-        
-    }
-    
+    /**
+     * Loads the child view.
+     */
     func loadView(vc: UIViewController)
     {
         self.addChildViewController(vc)

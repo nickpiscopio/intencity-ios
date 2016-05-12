@@ -515,6 +515,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
                 break
         
             default:
+                
+                if (routineState == RoutineState.SAVED)
+                {
+                    totalExercises = exerciseData.exerciseList.count
+                }
             
                 if (exerciseData.exerciseList.count >= EXERCISE_MINIMUM_THRESHOLD)
                 {
