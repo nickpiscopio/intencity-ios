@@ -88,6 +88,9 @@ class Util
         // Remove all the exercises from the exercise list.
         ExerciseData.reset()
         
+        // Resets the notifcations.
+        NotificationHandler.reset()
+        
         // Reset the database.
         let dbHelper = DBHelper()
         dbHelper.resetDb(dbHelper.openDb())
