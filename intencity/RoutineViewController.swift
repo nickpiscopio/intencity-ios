@@ -84,14 +84,14 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      */
     func initRoutineCard()
     {
-        routines.removeAll()
-        routines.append(RoutineSection(title:RoutineViewController.CUSTOM_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED ], routineGroups: []))
-        
         showLoading()
 
         // Creates the instance of the exercise data so we can store the exercises in the database later.
         ExerciseData.reset()
         exerciseData = ExerciseData.getInstance()
+        
+        routines.removeAll()
+        routines.append(RoutineSection(title:RoutineViewController.CUSTOM_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED ], routineGroups: []))
 
         _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,

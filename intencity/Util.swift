@@ -203,7 +203,7 @@ class Util
         let label = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, 50))
         label.text = NSLocalizedString(emptyTableStringRes, comment: "")
         label.textColor = Color.secondary_light
-        label.font = label.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
+        label.font = label.font.fontWithSize(Dimention.FONT_SIZE_MEDIUM)
         label.textAlignment = .Center
         label.sizeToFit()
         
