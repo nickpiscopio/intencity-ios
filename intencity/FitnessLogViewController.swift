@@ -769,7 +769,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             let text = self.textField.text!
             let textWithoutSpace = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             
-            if (Util.isFieldValid(text, regEx: Constant.REGEX_SAVE_ROUTINE_NAME_FIELD) && Util.checkStringLength(textWithoutSpace, length: 1))
+            // We add 1 to the name length because we don't want it to equal 31 characters.
+            if (Util.isFieldValid(text, regEx: Constant.REGEX_SAVE_ROUTINE_NAME_FIELD) && Util.checkStringLength(textWithoutSpace, length: 1) && !Util.checkStringLength(textWithoutSpace, length: Integer.NAME_LENGTH + 1))
             {
                 _ = ServiceTask(event: ServiceEvent.SAVE_ROUTINE,
                     delegate: self,

@@ -264,7 +264,7 @@
 "routine_saved_description" = "Give this routine a name so you can do it again at a later date.";
 "routine_saved_title_error" = "Couldn't save routine";
 "routine_saved_description_error" = "You either entered a routine name you've already used or there was a problem communicating with Intencity's server. Please try again.";
-"routine_saved_description_reg_ex_error" = "Routine names can only contain letters and numbers. Please try again.";
+"routine_saved_description_reg_ex_error" = "Routine names must be 1–30 characters and can only contain letters and numbers. Please try again.";
 "save" = "Save";
 "routine_saved" = "%1$@ was saved.";
 
