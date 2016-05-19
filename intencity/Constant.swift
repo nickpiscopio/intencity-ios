@@ -60,6 +60,7 @@ struct Constant
     static let CUSTOM_ROUTINE_VIEW_CONTROLLER = "CustomRoutineViewController"
     static let ADD_ROUTINE_VIEW_CONTROLLER = "AddRoutineViewController"
     static let RATE_INTENCITY = "RateIntencity"
+    static let CONTRIBUTE_INTENCITY = "ContributeIntencity"
     static let LOG_OUT = "LogOut"
     
     static let MAIN_VIEW = "IntencityTabView"
@@ -120,7 +121,7 @@ struct Constant
     static let BUNDLE_EXERCISE_SKIPPED = "com.intencity.intencity.exercise.skipped";
     
     static let ENDPOINT = "http://www.intencityapp.com/";
-    static let BUILD_TYPE = "dev/";
+    static let BUILD_TYPE = "";//"dev/";
     static let UPLOAD_FOLDER = ENDPOINT + BUILD_TYPE + "uploads/";
     static let SERVICE_FOLDER = ENDPOINT + BUILD_TYPE + "services/";
     static let SERVICE_FOLDER_MOBILE = SERVICE_FOLDER + "mobile/";

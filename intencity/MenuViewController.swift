@@ -57,7 +57,8 @@ class MenuViewController: UIViewController
         let infoRows = [ MenuRow(title: NSLocalizedString("title_about", comment: ""), viewController: "AboutViewController"),
                          MenuRow(title: NSLocalizedString("title_terms", comment: ""), viewController: Constant.TERMS_VIEW_CONTROLLER),
                          MenuRow(title: NSLocalizedString("title_privacy_policy", comment: ""), viewController: Constant.PRIVACY_POLICY_VIEW_CONTROLLER),
-                         MenuRow(title: NSLocalizedString("title_rate_intencity", comment: ""), viewController: Constant.RATE_INTENCITY)]
+                         MenuRow(title: NSLocalizedString("title_rate_intencity", comment: ""), viewController: Constant.RATE_INTENCITY),
+                         MenuRow(title: NSLocalizedString("title_contribute_intencity", comment: ""), viewController: Constant.CONTRIBUTE_INTENCITY)]
         
         menu.append(MenuSection(title: NSLocalizedString("title_app", comment: ""), rows: infoRows))
         
@@ -131,33 +132,36 @@ class MenuViewController: UIViewController
         
         let viewController = row.viewController
         
-        if (viewController == Constant.LOG_OUT)
+        switch(viewController)
         {
-            Util.logOut(self)
-        }
-        else if (viewController == Constant.RATE_INTENCITY)
-        {
-            UIApplication.sharedApplication().openURL(NSURL(string: "https://itunes.apple.com/app/id786650617")!)
-        }
-        else
-        {
-            var storyboardName = ""
-            var viewControllerName = ""
-            
-            if (viewController == Constant.TERMS_VIEW_CONTROLLER || viewController == Constant.PRIVACY_POLICY_VIEW_CONTROLLER)
-            {
-                storyboardName = Constant.LOGIN_STORYBOARD
+            case Constant.LOG_OUT:
+                Util.logOut(self)
+                break;
+            case Constant.RATE_INTENCITY:
+                UIApplication.sharedApplication().openURL(NSURL(string: "https://itunes.apple.com/app/id786650617")!)
+                break;
+            case Constant.CONTRIBUTE_INTENCITY:
+                UIApplication.sharedApplication().openURL(NSURL(string: "http://intencity.fit/contribute.html")!)
+                break;
+            default:
+                var storyboardName = ""
+                var viewControllerName = ""
                 
-                viewControllerName = viewController
-            }
-            else
-            {
-                // We do not set the storyboardName here.
-                // We do this so we can just use the main storyboard.
-                viewControllerName = row.viewController
-            }
-            
-            pushViewController(storyboardName, identifier: viewControllerName)
+                if (viewController == Constant.TERMS_VIEW_CONTROLLER || viewController == Constant.PRIVACY_POLICY_VIEW_CONTROLLER)
+                {
+                    storyboardName = Constant.LOGIN_STORYBOARD
+                    
+                    viewControllerName = viewController
+                }
+                else
+                {
+                    // We do not set the storyboardName here.
+                    // We do this so we can just use the main storyboard.
+                    viewControllerName = row.viewController
+                }
+                
+                pushViewController(storyboardName, identifier: viewControllerName)
+                break;
         }
     }
     
