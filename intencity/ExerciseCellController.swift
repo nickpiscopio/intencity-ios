@@ -81,7 +81,7 @@ class ExerciseCellController: UITableViewCell
     /**
      * Sets the card as an exercise.
      */
-    func setAsExercise(fromIntencity: Bool)
+    func setAsExercise(fromIntencity: Bool, routineState: Int)
     {
         exerciseDescriptionView.hidden = true
         
@@ -93,7 +93,10 @@ class ExerciseCellController: UITableViewCell
         {
             exerciseButton.enabled = true
             exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
-            priorityStackView.hidden = false
+            
+            // Hide the exercise priority buttons if we are not in the Intencity state of exercising.
+            // Saved / Custom routines should hide the priorityStackView.
+            priorityStackView.hidden = routineState != RoutineState.INTENCITY
         }
         else
         {

@@ -994,7 +994,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         }
         else
         {
-            cell.setAsExercise(exerciseFromIntencity)
+            cell.setAsExercise(exerciseFromIntencity, routineState: routineState)
         }
             
         return cell
