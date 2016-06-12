@@ -42,13 +42,17 @@ struct Constant
     static let AWARD_COLLECTION_VIEW_CELL = "AwardCollectionViewCell"
     
     static let FITNESS_RECOMMENDATION_HEADER_CELL = "FitnessRecHeaderCell"
-    static let FITNESS_RECOMMENDATION_FOOTER_CELL = "FitnessRecFooterCell"
+    static let FITNESS_RECOMMENDATION_FOOTER_CELL = "FitnessRecFooterCell"    
+    
+    static let OVERVIEW_HEADER_CELL = "OverviewHeaderCell"
+    static let OVERVIEW_FOOTER_CELL = "OverviewFooterCell"    
     
     static let ROUTINE_VIEW_CONTROLLER = "RoutineViewController"
     static let INTENCITY_ROUTINE_VIEW_CONTROLLER = "IntencityRoutineViewController"
     static let SAVED_ROUTINE_VIEW_CONTROLLER = "SavedRoutineViewController"
     static let EDIT_SAVED_ROUTINE_VIEW_CONTROLLER = "EditSavedRoutineViewController"
     static let FITNESS_LOG_VIEW_CONTROLLER = "FitnessLogViewController"
+    static let OVERVIEW_VIEW_CONTROLLER = "OverviewViewController"
     static let PROFILE_VIEW_CONTROLLER = "ProfileViewController"
     static let MENU_VIEW_CONTROLLER = "MenuViewController"
     static let EXERCISE_SEARCH_VIEW_CONTROLLER = "ExerciseSearchViewController"

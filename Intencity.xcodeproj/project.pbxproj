@@ -160,6 +160,11 @@
 		BDE493FF1C7B9B5B005817D0 /* GenericHeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */; };
 		BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */; };
 		BDE8BED61C77700900DBFB31 /* ExerciseListHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */; };
+		BDF1E49D1D0D8A46004CEAFC /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF1E49C1D0D8A46004CEAFC /* OverviewViewController.swift */; };
+		BDF1E49F1D0D9571004CEAFC /* OverviewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDF1E49E1D0D9571004CEAFC /* OverviewHeaderCell.xib */; };
+		BDF1E4A11D0D973B004CEAFC /* OverviewHeaderCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF1E4A01D0D973B004CEAFC /* OverviewHeaderCellController.swift */; };
+		BDF1E4A31D0DA066004CEAFC /* OverviewFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDF1E4A21D0DA066004CEAFC /* OverviewFooterCell.xib */; };
+		BDF1E4A51D0DA0DD004CEAFC /* OverviewFooterCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF1E4A41D0DA0DD004CEAFC /* OverviewFooterCellController.swift */; };
 		BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */; };
 		BDF44A331C79F46D00B47CD1 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A321C79F46D00B47CD1 /* DBHelper.swift */; };
 		BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */; };
@@ -329,6 +334,11 @@
 		BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericHeaderCellController.swift; sourceTree = "<group>"; };
 		BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseListHeader.xib; sourceTree = "<group>"; };
 		BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseListHeaderController.swift; sourceTree = "<group>"; };
+		BDF1E49C1D0D8A46004CEAFC /* OverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
+		BDF1E49E1D0D9571004CEAFC /* OverviewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewHeaderCell.xib; sourceTree = "<group>"; };
+		BDF1E4A01D0D973B004CEAFC /* OverviewHeaderCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewHeaderCellController.swift; sourceTree = "<group>"; };
+		BDF1E4A21D0DA066004CEAFC /* OverviewFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewFooterCell.xib; sourceTree = "<group>"; };
+		BDF1E4A41D0DA0DD004CEAFC /* OverviewFooterCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewFooterCellController.swift; sourceTree = "<group>"; };
 		BDF44A301C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundDark.swift; sourceTree = "<group>"; };
 		BDF44A321C79F46D00B47CD1 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		BDF44A351C79F63600B47CD1 /* ExerciseTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTable.swift; sourceTree = "<group>"; };
@@ -400,6 +410,8 @@
 				BD640A501C85D1EE008895A2 /* RankingCellController.swift */,
 				BD4B8EB81C7CEACD00AD579B /* DescriptionFooterCellController.swift */,
 				BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */,
+				BDF1E4A01D0D973B004CEAFC /* OverviewHeaderCellController.swift */,
+				BDF1E4A41D0DA0DD004CEAFC /* OverviewFooterCellController.swift */,
 				BDD53BF71C8A32A7001235AE /* FitnessRecHeaderCellController.swift */,
 				BDD53BF91C8A333D001235AE /* FitnessRecFooterCellController.swift */,
 				BD03C7B41C760A4E00D8911A /* SetCellController.swift */,
@@ -544,6 +556,7 @@
 				BD3480C41CD24158007A5402 /* SavedRoutineViewController.swift */,
 				BDC9707F1CD24B0D007BEE84 /* EditSavedRoutineViewController.swift */,
 				BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */,
+				BDF1E49C1D0D8A46004CEAFC /* OverviewViewController.swift */,
 				BD43E11B1C847D77002F14C6 /* SearchViewController.swift */,
 				BD37B4AA1C8DB677008F3076 /* ExerciseSearchViewController.swift */,
 				BD947A011C6CED31003F3767 /* LoginNavController.swift */,
@@ -654,6 +667,8 @@
 			children = (
 				BDD89BF81C906C4D00530D79 /* NotificationCell.xib */,
 				BDE8BED31C776E5600DBFB31 /* ExerciseListHeader.xib */,
+				BDF1E49E1D0D9571004CEAFC /* OverviewHeaderCell.xib */,
+				BDF1E4A21D0DA066004CEAFC /* OverviewFooterCell.xib */,
 				BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */,
 				BD4B8EBA1C7CEB1D00AD579B /* DescriptionFooterCell.xib */,
 				BDD53BF31C8A2B13001235AE /* FitnessRecommendationCell.xib */,
@@ -768,6 +783,7 @@
 				BD36EC291C71048600F993CE /* ExerciseCard.xib in Resources */,
 				BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */,
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
+				BDF1E49F1D0D9571004CEAFC /* OverviewHeaderCell.xib in Resources */,
 				BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */,
 				BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */,
 				BDE493FD1C7B9B45005817D0 /* GenericHeaderCell.xib in Resources */,
@@ -790,6 +806,7 @@
 				BD7A87101CCE9F72005BC2DF /* RoutineContinueCell.xib in Resources */,
 				BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */,
 				BD4B8EBB1C7CEB1D00AD579B /* DescriptionFooterCell.xib in Resources */,
+				BDF1E4A31D0DA066004CEAFC /* OverviewFooterCell.xib in Resources */,
 				BDD89BF91C906C4D00530D79 /* NotificationCell.xib in Resources */,
 				BD4B7B841CD1275A00D83F91 /* NoItemCell.xib in Resources */,
 				BDD53BF41C8A2B13001235AE /* FitnessRecommendationCell.xib in Resources */,
@@ -882,6 +899,7 @@
 				BD43E11C1C847D77002F14C6 /* SearchViewController.swift in Sources */,
 				BD7A870A1CCE4542005BC2DF /* RoutineCellController.swift in Sources */,
 				BD7C7E7C1C7C9ABD005AFFDD /* MenuRow.swift in Sources */,
+				BDF1E49D1D0D8A46004CEAFC /* OverviewViewController.swift in Sources */,
 				BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */,
 				BD1F30E31CA9BBAA00002D06 /* ProfileRow.swift in Sources */,
 				BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */,
@@ -934,6 +952,7 @@
 				BD0CD6FC1C985248004FF750 /* DateUtil.swift in Sources */,
 				BDB45A1E1C849F52009E509B /* ExerciseDao.swift in Sources */,
 				BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */,
+				BDF1E4A51D0DA0DD004CEAFC /* OverviewFooterCellController.swift in Sources */,
 				BDFD87891CA9641100ECDDCE /* IntencityExerciseCardButton.swift in Sources */,
 				BD640A511C85D1EE008895A2 /* RankingCellController.swift in Sources */,
 				BDF44A361C79F63600B47CD1 /* ExerciseTable.swift in Sources */,
@@ -974,6 +993,7 @@
 				BD10539B1C6CD071004C10C7 /* Key.swift in Sources */,
 				BDD53BFA1C8A333D001235AE /* FitnessRecFooterCellController.swift in Sources */,
 				BDB45A1C1C849B42009E509B /* SearchExerciseCellController.swift in Sources */,
+				BDF1E4A11D0D973B004CEAFC /* OverviewHeaderCellController.swift in Sources */,
 				BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */,
 				BD294ACB1CBE7C3B005718BA /* ExercisePriorityUtil.swift in Sources */,
 				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,

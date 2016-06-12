@@ -40,6 +40,9 @@
 // Intencity Strings
 /*  */
 "app_name" = "Intencity";
+"app_name_prefix" = "Inten";
+"app_name_suffix" = "city";
+"website_suffix" = ".fit";
 
 /*  */
 "copyright" = "© Intencity 2016. All Rights Reserved.";
@@ -521,13 +524,16 @@
 /*  */
 "tweet_button" = "Tweet";
 
+/* Overview Strings */
+"title_overview" = "Overview";
+"header_overview" = "%1$@ Overview";
+"title_finish_routine" = "Finish Routine";
+"description_finish_routine" = "Would you like to finish exercising? This will go back to the routine screen.";
+"title_finish" = "Finish";
+"title_share" = "Share";
+"title_exercises" = "EXERCISES";
+
 /* Award Strings */
-"completed_workout_title" = "You completed Intencity's workout!";
-
-/*  */
-"award_workout_completed_award_description" = "You've earned the following awards while exercising. Good job!";
-
-/*  */
 "award_login_description" = "Points for logging in.";
 
 /*  */
