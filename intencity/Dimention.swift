@@ -18,6 +18,7 @@ struct Dimention
     static let RADIUS_ROUNDED_BUTTON_RANKING_USER: CGFloat = 4.0
     static let BORDER_WIDTH: CGFloat = 2.0
     static let SHADOW: CGFloat = 1.0
+    static let SHADOW_SMALL: CGFloat = 0.5
     static let SHADOW_OPACITY: Float = 1.0
     static let CARD_BUTTON_PADDING: CGFloat = 16.0
     static let EXERCISE_CARD_PADDING: CGFloat = 12.0
@@ -30,6 +31,7 @@ struct Dimention
     static let BUTTON_PADDING: CGFloat = 12.0
     static let TABLE_FOOTER_HEIGHT_PADDED: CGFloat = 100.0 + LAYOUT_MARGIN
     static let TABLE_FOOTER_HEIGHT_NORMAL: CGFloat = 65.0 + LAYOUT_MARGIN
+    static let FONT_SIZE_LARGE: CGFloat = 22.0
     static let FONT_SIZE_NORMAL: CGFloat = 17.0
     static let FONT_SIZE_MEDIUM: CGFloat = 15.0
     static let FONT_SIZE_SMALL: CGFloat = 13.0

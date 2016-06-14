@@ -66,6 +66,7 @@
 		BD5C6AF71C88B97700A9ED0A /* CheckboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5C6AF61C88B97700A9ED0A /* CheckboxCell.xib */; };
 		BD5C6AF91C88BB6500A9ED0A /* GenericCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */; };
 		BD5F97841D0F8702001E5A26 /* AwardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F97831D0F8702001E5A26 /* AwardType.swift */; };
+		BD5F97861D10BEE4001E5A26 /* IntencityRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F97851D10BEE4001E5A26 /* IntencityRoundView.swift */; };
 		BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */; };
 		BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */; };
 		BD640A4F1C85D1D7008895A2 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD640A4E1C85D1D7008895A2 /* RankingCell.xib */; };
@@ -241,6 +242,7 @@
 		BD5C6AF61C88B97700A9ED0A /* CheckboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckboxCell.xib; sourceTree = "<group>"; };
 		BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCellController.swift; sourceTree = "<group>"; };
 		BD5F97831D0F8702001E5A26 /* AwardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardType.swift; sourceTree = "<group>"; };
+		BD5F97851D10BEE4001E5A26 /* IntencityRoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityRoundView.swift; sourceTree = "<group>"; };
 		BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
 		BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCellController.swift; sourceTree = "<group>"; };
 		BD640A4E1C85D1D7008895A2 /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
@@ -620,6 +622,7 @@
 				BD9EF2AB1C6A496800E520CB /* IntencityTextField.swift */,
 				BD9EF2AF1C6A52FA00E520CB /* IntencityButton.swift */,
 				BD37E3AB1C7E3906004A30F7 /* IntencityButtonRound.swift */,
+				BD5F97851D10BEE4001E5A26 /* IntencityRoundView.swift */,
 				BD9325281CC55BC700D9581E /* IntencityButtonRoundDark.swift */,
 				BD93252A1CC55BD100D9581E /* IntencityButtonRoundLight.swift */,
 				BD53AED71CAD517600077B0D /* IntencityCircleView.swift */,
@@ -880,6 +883,7 @@
 				BD9EF2BC1C6B701D00E520CB /* ServiceTask.swift in Sources */,
 				BD36EC311C72080F00F993CE /* DirectionViewController.swift in Sources */,
 				BD3480C51CD24158007A5402 /* SavedRoutineViewController.swift in Sources */,
+				BD5F97861D10BEE4001E5A26 /* IntencityRoundView.swift in Sources */,
 				BDE493FB1C7B9A58005817D0 /* CheckboxCellController.swift in Sources */,
 				BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */,
 				BDC970801CD24B0D007BEE84 /* EditSavedRoutineViewController.swift in Sources */,

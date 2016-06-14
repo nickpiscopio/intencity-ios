@@ -46,11 +46,11 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Son-t2-eBL">
-                                                        <rect key="frame" x="-20" y="31" width="20" height="20"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Son-t2-eBL" customClass="IntencityRoundView" customModule="Intencity" customModuleProvider="target">
+                                                        <rect key="frame" x="-15" y="36" width="20" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FV-hP-NJ4">
-                                                                <rect key="frame" x="2" y="2" width="16" height="16"/>
+                                                                <rect key="frame" x="-11" y="0.0" width="42" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -58,13 +58,23 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
+                                                            <constraint firstItem="5FV-hP-NJ4" firstAttribute="centerX" secondItem="Son-t2-eBL" secondAttribute="centerX" id="1nh-WQ-UUf"/>
                                                             <constraint firstAttribute="width" constant="20" id="CkZ-H8-C5y"/>
                                                             <constraint firstAttribute="height" constant="20" id="LTr-Xd-wV7"/>
                                                             <constraint firstAttribute="trailing" secondItem="5FV-hP-NJ4" secondAttribute="trailing" constant="2" id="Ygk-Lz-YSX"/>
+                                                            <constraint firstItem="5FV-hP-NJ4" firstAttribute="centerY" secondItem="Son-t2-eBL" secondAttribute="centerY" id="j8h-Gz-xaB"/>
                                                             <constraint firstAttribute="bottom" secondItem="5FV-hP-NJ4" secondAttribute="bottom" constant="2" id="kf0-KS-9Iz"/>
                                                             <constraint firstItem="5FV-hP-NJ4" firstAttribute="top" secondItem="Son-t2-eBL" secondAttribute="top" constant="2" id="oCd-ME-LkA"/>
                                                             <constraint firstItem="5FV-hP-NJ4" firstAttribute="leading" secondItem="Son-t2-eBL" secondAttribute="leading" constant="2" id="qam-YC-SDO"/>
                                                         </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="Ygk-Lz-YSX"/>
+                                                                <exclude reference="kf0-KS-9Iz"/>
+                                                                <exclude reference="oCd-ME-LkA"/>
+                                                                <exclude reference="qam-YC-SDO"/>
+                                                            </mask>
+                                                        </variation>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -73,8 +83,8 @@
                                                     <constraint firstAttribute="trailing" secondItem="lpj-4Z-E59" secondAttribute="trailing" id="B8o-9H-E4m"/>
                                                     <constraint firstAttribute="trailing" secondItem="Son-t2-eBL" secondAttribute="trailing" id="JM7-7e-GJi"/>
                                                     <constraint firstItem="lpj-4Z-E59" firstAttribute="top" secondItem="tmn-e3-LF5" secondAttribute="top" id="O7G-Kb-fXv"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Son-t2-eBL" secondAttribute="bottom" id="Vaj-bx-jxC"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Son-t2-eBL" secondAttribute="trailing" id="WVY-kj-n5a"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Son-t2-eBL" secondAttribute="bottom" constant="-5" id="Vaj-bx-jxC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Son-t2-eBL" secondAttribute="trailing" constant="-5" id="WVY-kj-n5a"/>
                                                     <constraint firstAttribute="bottom" secondItem="lpj-4Z-E59" secondAttribute="bottom" id="XDG-gh-RPK"/>
                                                     <constraint firstItem="lpj-4Z-E59" firstAttribute="leading" secondItem="tmn-e3-LF5" secondAttribute="leading" id="iew-a9-Ej8"/>
                                                 </constraints>
