@@ -14,6 +14,8 @@ class NotificationCellViewController: UITableViewCell
     @IBOutlet weak var awardImage: UIImageView!
     @IBOutlet weak var awardTitle: UILabel!
     @IBOutlet weak var awardDescription: UILabel!
+    @IBOutlet weak var amountView: UIView!
+    @IBOutlet weak var amount: UILabel!
     
     override func awakeFromNib()
     {
@@ -43,5 +45,23 @@ class NotificationCellViewController: UITableViewCell
         
         awardImage.hidden = true
         awardTitle.hidden = false
+    }
+    
+    /**
+     * Sets and displays the amount view.
+     * 
+     * @param amountTotal   The number of awards.
+     */
+    func setAwardAmounts(awardTotal: Int)
+    {
+        if (awardTotal > 1)
+        {
+            amount.text = String(awardTotal)
+            amountView.hidden = false
+        }
+        else
+        {
+            amountView.hidden = true
+        }
     }
 }

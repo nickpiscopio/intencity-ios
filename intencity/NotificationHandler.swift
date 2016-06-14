@@ -47,10 +47,29 @@ class NotificationHandler
         self.delegate = delegate
     }
     
+    /**
+     * Add award to the award list.
+     *
+     * @param award     The award to add.
+     */
     func addAward(award: Awards)
     {
-        // Adds the award to the first index so we can display them in reverse order.
-        awards.insert(award, atIndex: 0)
+        let index = getAwardIndex(award)
+        if (index != Int(Constant.CODE_FAILED))
+        {
+            let awardAmount = awards[index].amount + 1
+            
+            awards.removeAtIndex(index)
+            
+            award.setAmountValue(awardAmount)
+            
+            awards.insert(award, atIndex: index)
+        }
+        else
+        {
+            // Adds the award to the first index so we can display them in reverse order.
+            awards.insert(award, atIndex: 0)
+        }
         
         hasNewNotifications = true
         
@@ -74,27 +93,23 @@ class NotificationHandler
     }
     
     /**
-    * Checks to see if the award is already granted to the user.
+    * Gets an award from the award list if it has one.
     *
     * @param award     The award to check.
     *
-    * @return  Boolean value if the user has already received a certain award.
+    * @return   The award.
     */
-    func hasAward(award: Awards) -> Bool
+    func getAwardIndex(award: Awards) -> Int
     {
-        let awardDescription = award.description
-    
         for awd in awards
         {
-            let description = awd.description
-    
-            if (awardDescription == description)
+            if (awd.awardType == award.awardType)
             {
-                return true
+                return awards.indexOf(awd)!
             }
         }
     
-        return false
+        return Int(Constant.CODE_FAILED)
     }
     
     /**

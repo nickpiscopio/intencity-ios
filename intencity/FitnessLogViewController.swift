@@ -378,7 +378,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             
             // Reward the user for exercising.
             // We use a relaxed system for giving points, so we only try to make it so they can't game the system.
-            Util.grantPointsToUser(email, points: Constant.POINTS_EXERCISE, description: NSLocalizedString("award_exercise_description", comment: ""))
+            Util.grantPointsToUser(email, awardType: AwardType.NEXT_EXERCISE, points: Constant.POINTS_EXERCISE, description: NSLocalizedString("award_exercise_description", comment: ""))
         }
         
         let position = currentExerciseCount - 1
@@ -603,7 +603,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
                 {
                     let email = Util.getEmailFromDefaults()
                         
-                    Util.grantBadgeToUser(email, badgeName: badge, content: Awards(awardImageName: Badge.LEFT_IT_ON_THE_FIELD_IMAGE_NAME, awardDescription: NSLocalizedString("award_left_it_on_the_field_description", comment: "")), onlyAllowOne: false)
+                    Util.grantBadgeToUser(email, badgeName: badge, content: Awards(awardType: AwardType.LEFT_IT_ON_THE_FIELD, awardImageName: Badge.LEFT_IT_ON_THE_FIELD_IMAGE_NAME, awardDescription: NSLocalizedString("award_left_it_on_the_field_description", comment: "")), onlyAllowOne: false)
                         
                     awards[badge] = exerciseName
                 }

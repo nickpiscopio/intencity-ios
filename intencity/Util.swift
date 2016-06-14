@@ -282,14 +282,14 @@ class Util
      * @param points        The amount of points that will be granted.
      * @param description   The description of why points are being granted.
      */
-    static func grantPointsToUser(email: String, points: Int, description: String)
+    static func grantPointsToUser(email: String, awardType: AwardType, points: Int, description: String)
     {
         _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_POINTS, variables: [ email, String(points) ]))
     
         // Add an award to the notification handler.
-        NotificationHandler.getInstance(nil).addAward(Awards(awardTitle: "+\(points)", awardDescription: description));
+        NotificationHandler.getInstance(nil).addAward(Awards(awardType: awardType, awardTitle: "+\(points)", awardDescription: description));
     }
     
     /**
@@ -327,7 +327,7 @@ class Util
         // Only grant the badge to the user if he or she doesn't have it
         if (onlyAllowOne)
         {
-            if (!notificationHandler.hasAward(content))
+            if (notificationHandler.getAwardIndex(content) != Int(Constant.CODE_FAILED))
             {
                 grantBadgeToUser(email, badgeName: badgeName, content: content)
             }

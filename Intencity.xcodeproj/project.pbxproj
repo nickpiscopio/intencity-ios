@@ -65,6 +65,7 @@
 		BD5BDCAB1CC142090001DF37 /* CustomRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDCAA1CC142090001DF37 /* CustomRoutineViewController.swift */; };
 		BD5C6AF71C88B97700A9ED0A /* CheckboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5C6AF61C88B97700A9ED0A /* CheckboxCell.xib */; };
 		BD5C6AF91C88BB6500A9ED0A /* GenericCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */; };
+		BD5F97841D0F8702001E5A26 /* AwardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F97831D0F8702001E5A26 /* AwardType.swift */; };
 		BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */; };
 		BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */; };
 		BD640A4F1C85D1D7008895A2 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD640A4E1C85D1D7008895A2 /* RankingCell.xib */; };
@@ -239,6 +240,7 @@
 		BD5BDCAA1CC142090001DF37 /* CustomRoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRoutineViewController.swift; sourceTree = "<group>"; };
 		BD5C6AF61C88B97700A9ED0A /* CheckboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckboxCell.xib; sourceTree = "<group>"; };
 		BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCellController.swift; sourceTree = "<group>"; };
+		BD5F97831D0F8702001E5A26 /* AwardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardType.swift; sourceTree = "<group>"; };
 		BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
 		BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCellController.swift; sourceTree = "<group>"; };
 		BD640A4E1C85D1D7008895A2 /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				BD294ACA1CBE7C3B005718BA /* ExercisePriorityUtil.swift */,
 				BD9EF2C31C6B8A6700E520CB /* Util.swift */,
 				BD8811011C92FF3A0098FA64 /* Badge.swift */,
+				BD5F97831D0F8702001E5A26 /* AwardType.swift */,
 				BD0CD6FB1C985248004FF750 /* DateUtil.swift */,
 			);
 			name = Util;
@@ -1002,6 +1005,7 @@
 				BD7C7E7E1C7C9E48005AFFDD /* AboutViewController.swift in Sources */,
 				BD91FC0D1CAD710800965782 /* UploadImageTask.swift in Sources */,
 				BD56FB951CD1051B001404C5 /* IntencityRoutineDelegate.swift in Sources */,
+				BD5F97841D0F8702001E5A26 /* AwardType.swift in Sources */,
 				BD36EC271C70FD6D00F993CE /* DirectionCellController.swift in Sources */,
 				BD37B4AB1C8DB677008F3076 /* ExerciseSearchViewController.swift in Sources */,
 			);

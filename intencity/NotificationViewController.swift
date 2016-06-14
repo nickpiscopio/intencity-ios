@@ -69,6 +69,7 @@ class NotificationViewController: UIViewController
             cell.initCellWithTitle(notification.awardTitle)
         }
         
+        cell.setAwardAmounts(notification.amount)
         cell.awardDescription.text = notification.awardDescription
         
         return cell

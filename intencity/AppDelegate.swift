@@ -134,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             if (email != "" && ((now - lastLogin) >= Float(Constant.LOGIN_POINTS_THRESHOLD)))
             {
                 // Rewards the user for using the app after 12 hours.
-                Util.grantPointsToUser(email, points: Constant.POINTS_LOGIN, description: NSLocalizedString("award_login_description", comment: ""))
+                Util.grantPointsToUser(email, awardType: AwardType.LOG_IN, points: Constant.POINTS_LOGIN, description: NSLocalizedString("award_login_description", comment: ""))
 
                 defaults.setFloat(now, forKey: Constant.USER_LAST_LOGIN)
             }

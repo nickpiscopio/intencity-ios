@@ -10,20 +10,32 @@
 import Foundation
 
 class Awards: NSObject
-{
+{    
+    var awardType: AwardType!
     var awardTitle = ""
     var awardDescription = ""
     var awardImageName = ""
+    var amount = 1
     
-    init(awardTitle: String, awardDescription: String)
+    init(awardType: AwardType, awardTitle: String, awardDescription: String)
     {
+        self.awardType = awardType
         self.awardTitle = awardTitle
         self.awardDescription = awardDescription
     }
     
-    init(awardImageName: String, awardDescription: String)
+    init(awardType: AwardType, awardImageName: String, awardDescription: String)
     {
+        self.awardType = awardType
         self.awardImageName = awardImageName
         self.awardDescription = awardDescription
+    }
+    
+    /**
+     * Sets the amount of awards.
+     */
+    func setAmountValue(amount: Int)
+    {
+        self.amount  = amount
     }
 }

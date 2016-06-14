@@ -69,7 +69,7 @@ class OverviewViewController: UIViewController
         // Grant the user the "Kept Swimming" badge if he or she didn't skip an exercise.
         if (!DEFAULTS.boolForKey(Constant.BUNDLE_EXERCISE_SKIPPED))
         {
-            let keptSwimmingAward = Awards(awardImageName: Badge.KEPT_SWIMMING_IMAGE_NAME, awardDescription: NSLocalizedString("award_kept_swimming_description", comment: ""))
+            let keptSwimmingAward = Awards(awardType: AwardType.KEPT_SWIMMING, awardImageName: Badge.KEPT_SWIMMING_IMAGE_NAME, awardDescription: NSLocalizedString("award_kept_swimming_description", comment: ""))
             Util.grantBadgeToUser(email, badgeName: Badge.KEPT_SWIMMING, content: keptSwimmingAward, onlyAllowOne: true)
         }
         else
@@ -79,11 +79,11 @@ class OverviewViewController: UIViewController
         }
         
         let finisherDescription = NSLocalizedString("award_finisher_description", comment: "")
-        
-        let finisherAward = Awards(awardImageName: Badge.FINISHER_IMAGE_NAME, awardDescription: finisherDescription)
-        if (!notificationHandler.hasAward(finisherAward))
+
+        let finisherAward = Awards(awardType: AwardType.BADGE_FINISHER, awardImageName: Badge.FINISHER_IMAGE_NAME, awardDescription: finisherDescription)
+        if (notificationHandler.getAwardIndex(finisherAward) != Int(Constant.CODE_FAILED))
         {
-            Util.grantPointsToUser(email, points: Constant.POINTS_COMPLETING_WORKOUT, description: finisherDescription)
+            Util.grantPointsToUser(email, awardType: AwardType.POINTS_FINISHER, points: Constant.POINTS_COMPLETING_WORKOUT, description: finisherDescription)
             Util.grantBadgeToUser(email, badgeName: Badge.FINISHER, content: finisherAward, onlyAllowOne: true)
         }
     }
@@ -302,7 +302,7 @@ class OverviewViewController: UIViewController
             
             // There will be no way we can know if they actually tweeted or not, so we will
             // Grant points to the user for at least opening up twitter and thinking about tweeting.
-            Util.grantPointsToUser(email, points: Constant.POINTS_SHARING, description: NSLocalizedString("award_sharing_description", comment: ""))
+            Util.grantPointsToUser(email, awardType: AwardType.SHARE, points: Constant.POINTS_SHARING, description: NSLocalizedString("award_sharing_description", comment: ""))
             
             finishExercising()
         }
