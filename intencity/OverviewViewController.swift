@@ -57,11 +57,48 @@ class OverviewViewController: UIViewController
         Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_FOOTER_CELL, cellName: Constant.OVERVIEW_FOOTER_CELL)
         
         exerciseData = ExerciseData.getInstance()
+        
+        let shareBar: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem:.Action, target: self, action: #selector(OverviewViewController.shareOverview(_:)))
+        
+        self.navigationItem.rightBarButtonItem = shareBar
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    /**
+     * Shares an image and text with and "intent."
+     */
+    func shareOverview(sender: UIBarButtonItem)
+    {
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        var objectsToShare = [AnyObject]()
+        
+        if let shareTextObj = generateShareMessage()
+        {
+            objectsToShare.append(shareTextObj)
+        }
+        
+        if let shareImageObj = image
+        {
+            objectsToShare.append(shareImageObj)
+        }
+        
+        if image != nil
+        {
+            let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            
+            presentViewController(activityViewController, animated: true, completion: nil)
+        }else{
+            print("There is nothing to share")
+        }
     }
     
     func finish()
@@ -88,21 +125,21 @@ class OverviewViewController: UIViewController
         }
     }
     
-    /**
-     * Displays the finish alert.
-     */
-    func displayFinishAlert()
-    {
-        let actions = [ UIAlertAction(title: FACEBOOK_BUTTON, style: .Default, handler: share),
-                        UIAlertAction(title: TWEET_BUTTON, style: .Default, handler: share),
-                        UIAlertAction(title: NSLocalizedString("finish_button", comment: ""), style: .Destructive, handler: finishExercising),
-                        UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil) ]
-        
-        Util.displayAlert(self,
-                          title: NSLocalizedString("completed_workout_title", comment: ""),
-                          message: "",
-                          actions: actions)
-    }
+//    /**
+//     * Displays the finish alert.
+//     */
+//    func displayFinishAlert()
+//    {
+//        let actions = [ UIAlertAction(title: FACEBOOK_BUTTON, style: .Default, handler: share),
+//                        UIAlertAction(title: TWEET_BUTTON, style: .Default, handler: share),
+//                        UIAlertAction(title: NSLocalizedString("finish_button", comment: ""), style: .Destructive, handler: finishExercising),
+//                        UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil) ]
+//        
+//        Util.displayAlert(self,
+//                          title: NSLocalizedString("completed_workout_title", comment: ""),
+//                          message: "",
+//                          actions: actions)
+//    }
     
     /**
      * Remove the exercises from the database.
@@ -134,7 +171,7 @@ class OverviewViewController: UIViewController
      */
     func onFinishRoutine()
     {
-        displayFinishAlert()
+//        displayFinishAlert()
     }
     
     /**
@@ -227,25 +264,26 @@ class OverviewViewController: UIViewController
      *
      * @return  The generated tweet.
      */
-    func generateShareMessage(socialNetworkButton: String) -> String
+    func generateShareMessage() -> String?
     {
-        let shareMessage = ["I #dominated my #workout with #Intencity! #WOD #Fitness",
-                                "I #finished my #workout of the day with #Intencity! #WOD #Fitness",
-                                "I made it through #Intencity's #routine! #Fitness",
-                                "Making #gains with #Intencity! #WOD #Fitness #Exercise #Gainz",
-                                "#Finished my #Intencity #workout! #Retweet if you've #exercised today. #WOD #Fitness",
-                                "I #lifted with #Intencity today! #lift #lifting",
-                                "#Intencity #trained me today!",
-                                "Getting #strong with #Intencity! #GetStrong #DoWork #Fitness",
-                                "Getting that #BeachBody with #Intencity! #Lift #Exercise #Fitness",
-                                "Nothing feels better than finishing a great #workout!"]
+        let text = [ "#Dominated my #workout! #fitness",
+                        "Finished my #workout of the day!",
+                        "Made it through #Intencity!",
+                        "Making #gains with #Intencity!",
+                        "#Exercising completed! #WOD",
+                        "Share if you've #exercised today",
+                        "#Lifted with #Intencity! #lift",
+                        "#Intencity #trained me today!",
+                        "Getting #strong with #Intencity!",
+                        "Getting that #BeachBody! #fit",
+                        "#Hurt so good! #FitnessPain" ]
         
-        let intencityUrl = " www.Intencity.fit"
-        let via = " @Intencity" + (socialNetworkButton == TWEET_BUTTON ? "App" : "")
+        let url = " www.Intencity.fit"
+        let via = " @IntencityApp"
     
-        let message = Int(arc4random_uniform(UInt32(shareMessage.count)))
+        let index = Int(arc4random_uniform(UInt32(text.count)))
     
-        return shareMessage[message] + via + intencityUrl
+        return text[index] + via + url
     }
     
     /**
@@ -266,59 +304,5 @@ class OverviewViewController: UIViewController
         removeExercisesFromDatabase()
         
 //        initRoutineCard()
-    }
-    
-    /**
-     * Opens an alert for a user to share finishing Intencity's workout with social media.
-     *
-     * TUTORIAL: http://www.brianjcoleman.com/tutorial-share-facebook-twitter-swift/
-     */
-    func share(alertAction: UIAlertAction!) -> Void
-    {
-        let serviceType: String!
-        let loginMessageRes: String!
-        
-        let alertTitle = alertAction.title
-        
-        if (alertTitle == TWEET_BUTTON)
-        {
-            serviceType = SLServiceTypeTwitter
-            
-            loginMessageRes = "twitter_login_message"
-        }
-        else
-        {
-            serviceType = SLServiceTypeFacebook
-            
-            loginMessageRes = "facebook_login_message"
-        }
-        
-        if SLComposeViewController.isAvailableForServiceType(serviceType)
-        {
-            let sheet: SLComposeViewController = SLComposeViewController(forServiceType: serviceType)
-            sheet.setInitialText(generateShareMessage(alertTitle!))
-            
-            self.presentViewController(sheet, animated: true, completion: nil)
-            
-            // There will be no way we can know if they actually tweeted or not, so we will
-            // Grant points to the user for at least opening up twitter and thinking about tweeting.
-            Util.grantPointsToUser(email, awardType: AwardType.SHARE, points: Constant.POINTS_SHARING, description: NSLocalizedString("award_sharing_description", comment: ""))
-            
-            finishExercising()
-        }
-        else
-        {
-            let alert = UIAlertController(title: NO_LOGIN_ACCCOUNT_TITLE, message: NSLocalizedString(loginMessageRes, comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("open_settings", comment: ""), style: UIAlertActionStyle.Default, handler:
-            {
-                (alert: UIAlertAction!) in
-                
-                let shareUrl = NSURL(string:"prefs:root=" + (alertTitle == self.TWEET_BUTTON ? "TWITTER" : "FACEBOOK"))
-                
-                UIApplication.sharedApplication().openURL(shareUrl!)
-            }))
-            
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
     }
 }
