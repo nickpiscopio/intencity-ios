@@ -416,12 +416,6 @@
 /* Buttons */
 "start" = "START";
 
-/*  */
-"next_exercise" = "NEXT EXERCISE";
-
-/*  */
-"finish_workout" = "FINISH";
-
 /* Menu Strings */
 "notifications" = "Notifications %1$@";
 
@@ -517,12 +511,6 @@
 
 /*  */
 "try_again" = "TRY AGAIN";
-
-/*  */
-"finish_button" = "Finish";
-
-/*  */
-"tweet_button" = "Tweet";
 
 /* Overview Strings */
 "title_overview" = "Overview";

@@ -98,7 +98,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     }
     
     /**
-     * Calls the service to get the display muscle groups for the routine card.
+     * Tells the callback to load the routine view again.
      */
     func initRoutineCard()
     {
@@ -324,6 +324,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     func displayOverview()
     {
         let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.OVERVIEW_VIEW_CONTROLLER) as! OverviewViewController
+        vc.viewDelegate = viewDelegate
         self.navigationController!.pushViewController(vc, animated: true)
     }
     
@@ -695,7 +696,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func onFinishRoutine()
     {
-        displayOverview()
+        if (currentExercises.count > 1)
+        {
+            displayOverview()
+        }
+        else
+        {
+            displayFinishAlert()
+        }
     }
     
     /**
@@ -1024,9 +1032,20 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     }
     
     /**
-     * The finish exercise alert button click.
+     * Displays an alert to ask the user if he or she wants to finish exercising.
      */
-    func finishExercising(alertAction: UIAlertAction!)
+    func displayFinishAlert()
+    {
+        Util.displayAlert(self, title: NSLocalizedString("title_finish_routine", comment: ""),
+                          message: NSLocalizedString("description_finish_routine", comment: ""),
+                          actions: [ UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Cancel, handler: nil),
+                                     UIAlertAction(title: NSLocalizedString("title_finish", comment: ""), style: .Destructive, handler: finishExercising) ])
+    }
+    
+    /**
+     * The action for the finish button being clicked when the user is viewing the finish exercise alert.
+     */
+    func finishExercising(alertAction: UIAlertAction!) -> Void
     {
         finishExercising()
     }

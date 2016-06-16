@@ -13,12 +13,12 @@ import Social
 class OverviewViewController: UIViewController
 {
     @IBOutlet weak var tableView: UITableView!
+    
+    let FINISH_ICON_NAME = "icon_finish"
 
     let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
     let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
     let NO_LOGIN_ACCCOUNT_TITLE = NSLocalizedString("no_login_account_title", comment: "")
-    let FACEBOOK_BUTTON = NSLocalizedString("facebook_button", comment: "")
-    let TWEET_BUTTON = NSLocalizedString("tweet_button", comment: "")
 
     let DEFAULTS = NSUserDefaults.standardUserDefaults()
     
@@ -31,6 +31,8 @@ class OverviewViewController: UIViewController
     var awards = [String: String]()
     
     var notificationHandler: NotificationHandler!
+    
+    var viewDelegate: ViewDelegate!
     
     override func viewDidLoad()
     {
@@ -58,9 +60,10 @@ class OverviewViewController: UIViewController
         
         exerciseData = ExerciseData.getInstance()
         
-        let shareBar: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem:.Action, target: self, action: #selector(OverviewViewController.shareOverview(_:)))
-        
-        self.navigationItem.rightBarButtonItem = shareBar
+        let shareBar = [ UIBarButtonItem.init(image: UIImage(named: FINISH_ICON_NAME), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(OverviewViewController.finishOverview(_:))),
+                         UIBarButtonItem.init(barButtonSystemItem:.Action, target: self, action: #selector(OverviewViewController.shareOverview(_:))) ]
+
+        self.navigationItem.rightBarButtonItems = shareBar
     }
 
     override func didReceiveMemoryWarning()
@@ -125,22 +128,6 @@ class OverviewViewController: UIViewController
         }
     }
     
-//    /**
-//     * Displays the finish alert.
-//     */
-//    func displayFinishAlert()
-//    {
-//        let actions = [ UIAlertAction(title: FACEBOOK_BUTTON, style: .Default, handler: share),
-//                        UIAlertAction(title: TWEET_BUTTON, style: .Default, handler: share),
-//                        UIAlertAction(title: NSLocalizedString("finish_button", comment: ""), style: .Destructive, handler: finishExercising),
-//                        UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil) ]
-//        
-//        Util.displayAlert(self,
-//                          title: NSLocalizedString("completed_workout_title", comment: ""),
-//                          message: "",
-//                          actions: actions)
-//    }
-    
     /**
      * Remove the exercises from the database.
      */
@@ -169,9 +156,9 @@ class OverviewViewController: UIViewController
     /**
      * The callback for when the finish button is pressed.
      */
-    func onFinishRoutine()
+    func finishOverview(sender: UIBarButtonItem)
     {
-//        displayFinishAlert()
+        displayFinishAlert()
     }
     
     /**
@@ -287,9 +274,20 @@ class OverviewViewController: UIViewController
     }
     
     /**
-     * The finish exercise alert button click.
+     * Displays an alert to ask the user if he or she wants to finish exercising.
      */
-    func finishExercising(alertAction: UIAlertAction!)
+    func displayFinishAlert()
+    {
+        Util.displayAlert(self, title: NSLocalizedString("title_finish_routine", comment: ""),
+                          message: NSLocalizedString("description_finish_routine", comment: ""),
+                          actions: [ UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Cancel, handler: nil),
+                            UIAlertAction(title: NSLocalizedString("title_finish", comment: ""), style: .Destructive, handler: finishExercising) ])
+    }
+    
+    /**
+     * The action for the finish button being clicked when the user is viewing the finish exercise alert.
+     */
+    func finishExercising(alertAction: UIAlertAction!) -> Void
     {
         finishExercising()
     }
@@ -303,6 +301,16 @@ class OverviewViewController: UIViewController
         // the fitness log, it doesn't ask if we want to continue where we left off.
         removeExercisesFromDatabase()
         
-//        initRoutineCard()
+        initRoutineCard()
+    }
+    
+    /**
+     * Tells the callback to load the routine view again, and pops the view controller back.
+     */
+    func initRoutineCard()
+    {
+        viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil, state: RoutineState.NONE)
+        
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }
