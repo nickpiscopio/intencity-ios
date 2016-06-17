@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -17,7 +17,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBK-AS-9Oh" customClass="IntencityCardView" customModule="Intencity" customModuleProvider="target">
                         <rect key="frame" x="16" y="0.0" width="473" height="174.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="saved_routine_background" translatesAutoresizingMaskIntoConstraints="NO" id="G8y-UX-WC9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="saved_routine_background" translatesAutoresizingMaskIntoConstraints="NO" id="G8y-UX-WC9">
                                 <rect key="frame" x="209" y="0.5" width="264" height="174.5"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lL6-eJ-TiE">

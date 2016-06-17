@@ -46,7 +46,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="pJU-af-MoM">
-                        <barButtonItem key="rightBarButtonItem" image="B40C3496-DE22-4CE9-BD73-9D23C79E8DA1" id="6UB-wh-LYy">
+                        <barButtonItem key="rightBarButtonItem" image="440BDA46-995D-4A55-B4F1-F949013202E2" id="6UB-wh-LYy">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="Kz2-vl-MdR"/>
                             </connections>
@@ -2218,7 +2218,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="B40C3496-DE22-4CE9-BD73-9D23C79E8DA1" width="82" height="69">
+        <image name="440BDA46-995D-4A55-B4F1-F949013202E2" width="82" height="69">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

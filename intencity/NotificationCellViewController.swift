@@ -11,11 +11,14 @@ import UIKit
 
 class NotificationCellViewController: UITableViewCell
 {
+    @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var awardImage: UIImageView!
     @IBOutlet weak var awardTitle: UILabel!
     @IBOutlet weak var awardDescription: UILabel!
     @IBOutlet weak var amountView: UIView!
     @IBOutlet weak var amount: UILabel!
+    @IBOutlet weak var divider: UIView!
     
     override func awakeFromNib()
     {

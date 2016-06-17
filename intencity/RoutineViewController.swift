@@ -261,12 +261,14 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
             {
                 switch event
                 {
-                    case ServiceEvent.GET_LIST:
-                        rows = try UserRoutineDao().parseJson(json)
-                        break
                     case ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS:
                         rows = try IntencityRoutineDao().parseJson(json)
                         break
+                    
+                    case ServiceEvent.GET_LIST:
+                        rows = try UserRoutineDao().parseJson(json)
+                        break
+                    
                     default:
                         break
                 }
@@ -290,11 +292,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 getSavedRoutines()
                 
                 break
-            case ServiceEvent.GET_LIST:
-                
-                section = RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], routineGroups: rows)
-                
-                break
+        
             case ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS:
                 
                 getSavedRoutines()
@@ -302,6 +300,13 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 section = RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], routineGroups: rows)
                 
                 break
+            
+            case ServiceEvent.GET_LIST:
+            
+                section = RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], routineGroups: rows)
+            
+                break
+            
             default:
                 break
         }
@@ -311,7 +316,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
             routines.append(section)
         }
         
-        //            animateTable()
+//            animateTable()
         tableView.reloadData()
         
         hideLoading()

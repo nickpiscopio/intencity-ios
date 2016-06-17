@@ -24,11 +24,7 @@ class OverviewViewController: UIViewController
     
     var email = ""
     
-    var currentExercises = [Exercise]()
-    
     var exerciseData: ExerciseData!
-    
-    var awards = [String: String]()
     
     var notificationHandler: NotificationHandler!
     
@@ -56,19 +52,28 @@ class OverviewViewController: UIViewController
 
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_HEADER_CELL, cellName: Constant.OVERVIEW_HEADER_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_CARD, cellName: Constant.OVERVIEW_CARD)
         Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_FOOTER_CELL, cellName: Constant.OVERVIEW_FOOTER_CELL)
         
         exerciseData = ExerciseData.getInstance()
         
-        let shareBar = [ UIBarButtonItem.init(image: UIImage(named: FINISH_ICON_NAME), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(OverviewViewController.finishOverview(_:))),
-                         UIBarButtonItem.init(barButtonSystemItem:.Action, target: self, action: #selector(OverviewViewController.shareOverview(_:))) ]
-
-        self.navigationItem.rightBarButtonItems = shareBar
+        initMenuButtons()
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    /**
+     * Initializes the menu buttons.
+     */
+    func initMenuButtons()
+    {
+        let menu = [ UIBarButtonItem.init(image: UIImage(named: FINISH_ICON_NAME), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(OverviewViewController.finishOverview(_:))),
+                     UIBarButtonItem.init(barButtonSystemItem:.Action, target: self, action: #selector(OverviewViewController.shareOverview(_:))) ]
+        
+        self.navigationItem.rightBarButtonItems = menu
     }
     
     /**
@@ -136,9 +141,6 @@ class OverviewViewController: UIViewController
         // Remove all the exercises from the exercise list.
         ExerciseData.reset()
         
-        // Remove all the current exercises from the exercise list.
-        currentExercises.removeAll()
-        
         let dbHelper = DBHelper()
         dbHelper.resetDb(dbHelper.openDb())
     }
@@ -181,7 +183,7 @@ class OverviewViewController: UIViewController
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 0
+        return 2
     }
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
@@ -216,33 +218,29 @@ class OverviewViewController: UIViewController
         return 50
     }
 
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-//    {
-//        let index = indexPath.item
-//        let exercise = exerciseData.exerciseList[index]
-//        let description = exercise.exerciseDescription
-//        let sets = exercise.sets
-//        let set = sets[sets.count - 1]
-//        let exerciseFromIntencity = exercise.fromIntencity
-//
-//        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
-//        cell.selectionStyle = UITableViewCellSelectionStyle.None
-//        cell.delegate = self
-//        cell.tableView = tableView
-//        cell.exerciseButton.setTitle(exercise.exerciseName, forState: .Normal)
-//        cell.setEditText(set)
-//            
-//        if (!description.isEmpty)
-//        {
-//            cell.setDescription(description)
-//        }
-//        else
-//        {
-//            cell.setAsExercise(exerciseFromIntencity, routineState: routineState)
-//        }
-//            
-//        return cell
-//    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_CARD) as! OverviewCardController
+        
+        let index = indexPath.item
+        
+        switch index
+        {
+            case OverviewRowType.EXERCISES:
+                cell.cardIcon.image = UIImage(named: "icon_fitness_log")
+                cell.title.text = NSLocalizedString("title_exercises", comment: "")
+                break
+            case OverviewRowType.AWARDS:
+                cell.cardIcon.image = UIImage(named: "ranking_badge")
+                cell.title.text = NSLocalizedString("awards_title", comment: "").uppercaseString
+                cell.setAwards(NotificationHandler.getInstance(nil).awards)
+                break
+            default:
+                break
+        }
+        
+        return cell
+    }
     
     /**
      * Randomly generates a message to share with social media.

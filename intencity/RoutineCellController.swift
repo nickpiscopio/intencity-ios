@@ -73,7 +73,7 @@ class RoutineCellController: UITableViewCell
                 }
                 
                 titleStackView.addArrangedSubview(indicator)
-                titleStackView.translatesAutoresizingMaskIntoConstraints = false;
+                titleStackView.translatesAutoresizingMaskIntoConstraints = false
                 
                 hasKeys = true
             }
