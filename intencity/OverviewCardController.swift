@@ -17,6 +17,9 @@ class OverviewCardController: UITableViewCell
     
     @IBOutlet weak var itemStackView: UIStackView!
     
+    let WARM_UP_STRING = NSLocalizedString("warm_up", comment: "")
+    let STRETCH_STRING = NSLocalizedString("stretch", comment: "")
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()
@@ -27,13 +30,57 @@ class OverviewCardController: UITableViewCell
         title.textColor = Color.secondary_light
     }
     
-    func setAwards(awards: [Awards])
+    /**
+     * Adds exercises to the exercise stack view.
+     *
+     * @param exercises    The awards to add.
+     */
+    func addExercises(exercises: [Exercise])
+    {
+        let count = exercises.count
+        for i in 0 ..< count
+        {
+            let exercise = exercises[i]
+            let exerciseName = exercise.exerciseName
+            
+            if (exerciseName != WARM_UP_STRING && exerciseName != STRETCH_STRING)
+            {
+                let view = Util.loadNib(Constant.OVERVIEW_EXERCISE_CELL) as! OverviewExerciseCellController
+                view.heightAnchor.constraintEqualToConstant(view.bounds.size.height).active = true
+                view.title.text = exercise.exerciseName
+                view.title.textColor = exercise.fromIntencity ? Color.primary : Color.secondary_dark
+                view.divider.hidden = i == count - 1
+                
+                let sets = exercise.sets
+                let setCount = sets.count
+                
+                for z in 0 ..< setCount
+                {
+                    let setView = Util.loadNib(Constant.OVERVIEW_SET_CELL) as! OverviewSetCellController
+                    setView.heightAnchor.constraintEqualToConstant(setView.bounds.size.height).active = true
+                    setView.setEditText(sets[z])
+                    
+                    view.setStackView.addArrangedSubview(setView)
+                }
+                
+                itemStackView.addArrangedSubview(view)
+ 
+            }
+        }
+    }
+
+    /**
+     * Adds awards to the award stack view.
+     *
+     * @param awards    The awards to add.
+     */
+    func addAwards(awards: [Awards])
     {
         let count = awards.count
         for i in 0 ..< count
         {
-            let view = loadNib()
-            view.heightAnchor.constraintEqualToConstant(75).active = true
+            let view = Util.loadNib(Constant.NOTIFICATION_CELL) as! NotificationCellViewController
+            view.heightAnchor.constraintEqualToConstant(view.bounds.size.height).active = true
             
             let award = awards[i]
             let imageName = award.awardImageName
@@ -53,9 +100,5 @@ class OverviewCardController: UITableViewCell
             
             itemStackView.addArrangedSubview(view)
         }
-    }
-    
-    func loadNib() -> NotificationCellViewController {
-        return NSBundle.mainBundle().loadNibNamed(Constant.NOTIFICATION_CELL, owner: nil, options: nil)[0] as! NotificationCellViewController
     }
 }

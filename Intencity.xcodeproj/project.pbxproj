@@ -90,6 +90,11 @@
 		BD7C7E851C7CA0CF005AFFDD /* EditEquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E841C7CA0CF005AFFDD /* EditEquipmentViewController.swift */; };
 		BD7C7E871C7CA0DA005AFFDD /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E861C7CA0DA005AFFDD /* ChangePasswordViewController.swift */; };
 		BD7C7E891C7CA0E9005AFFDD /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C7E881C7CA0E9005AFFDD /* DeleteAccountViewController.swift */; };
+		BD85D5C71D1578AD0004F5C2 /* OverviewExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD85D5C61D1578AD0004F5C2 /* OverviewExerciseCell.xib */; };
+		BD85D5C91D1578E00004F5C2 /* OverviewExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85D5C81D1578E00004F5C2 /* OverviewExerciseCellController.swift */; };
+		BD85D5CB1D16CF6D0004F5C2 /* OverviewSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD85D5CA1D16CF6D0004F5C2 /* OverviewSetCell.xib */; };
+		BD85D5CD1D16CF820004F5C2 /* OverviewSetCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85D5CC1D16CF820004F5C2 /* OverviewSetCellController.swift */; };
+		BD85D5CF1D16D5BC0004F5C2 /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85D5CE1D16D5BC0004F5C2 /* ExerciseSet.swift */; };
 		BD8810FA1C91CA270098FA64 /* IntencityButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */; };
 		BD8810FC1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */; };
 		BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8811011C92FF3A0098FA64 /* Badge.swift */; };
@@ -269,6 +274,11 @@
 		BD7C7E841C7CA0CF005AFFDD /* EditEquipmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEquipmentViewController.swift; sourceTree = "<group>"; };
 		BD7C7E861C7CA0DA005AFFDD /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		BD7C7E881C7CA0E9005AFFDD /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
+		BD85D5C61D1578AD0004F5C2 /* OverviewExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewExerciseCell.xib; sourceTree = "<group>"; };
+		BD85D5C81D1578E00004F5C2 /* OverviewExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewExerciseCellController.swift; sourceTree = "<group>"; };
+		BD85D5CA1D16CF6D0004F5C2 /* OverviewSetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewSetCell.xib; sourceTree = "<group>"; };
+		BD85D5CC1D16CF820004F5C2 /* OverviewSetCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewSetCellController.swift; sourceTree = "<group>"; };
+		BD85D5CE1D16D5BC0004F5C2 /* ExerciseSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseSet.swift; sourceTree = "<group>"; };
 		BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackground.swift; sourceTree = "<group>"; };
 		BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundSmall.swift; sourceTree = "<group>"; };
 		BD8811011C92FF3A0098FA64 /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
@@ -395,6 +405,7 @@
 				BD5F97831D0F8702001E5A26 /* AwardType.swift */,
 				BD5F97891D149CEE001E5A26 /* OverviewRowType.swift */,
 				BD0CD6FB1C985248004FF750 /* DateUtil.swift */,
+				BD85D5CE1D16D5BC0004F5C2 /* ExerciseSet.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -425,6 +436,8 @@
 				BDF1E4A01D0D973B004CEAFC /* OverviewHeaderCellController.swift */,
 				BDF1E4A41D0DA0DD004CEAFC /* OverviewFooterCellController.swift */,
 				BD5F978D1D14A02A001E5A26 /* OverviewCardController.swift */,
+				BD85D5C81D1578E00004F5C2 /* OverviewExerciseCellController.swift */,
+				BD85D5CC1D16CF820004F5C2 /* OverviewSetCellController.swift */,
 				BDD53BF71C8A32A7001235AE /* FitnessRecHeaderCellController.swift */,
 				BDD53BF91C8A333D001235AE /* FitnessRecFooterCellController.swift */,
 				BD03C7B41C760A4E00D8911A /* SetCellController.swift */,
@@ -692,7 +705,9 @@
 				BD7A870F1CCE9F72005BC2DF /* RoutineContinueCell.xib */,
 				BD294ACC1CC13679005718BA /* RoutineCellFooter.xib */,
 				BD36EC281C71048600F993CE /* ExerciseCard.xib */,
+				BD85D5CA1D16CF6D0004F5C2 /* OverviewSetCell.xib */,
 				BD5F978B1D149F59001E5A26 /* OverviewCard.xib */,
+				BD85D5C61D1578AD0004F5C2 /* OverviewExerciseCell.xib */,
 				BD1F30E41CAAC69600002D06 /* AwardCell.xib */,
 				BD1F30E81CAACACA00002D06 /* AwardCollectionViewCell.xib */,
 				BDB45A191C849AAF009E509B /* SearchExerciseCell.xib */,
@@ -822,11 +837,13 @@
 				BD7A87101CCE9F72005BC2DF /* RoutineContinueCell.xib in Resources */,
 				BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */,
 				BD4B8EBB1C7CEB1D00AD579B /* DescriptionFooterCell.xib in Resources */,
+				BD85D5CB1D16CF6D0004F5C2 /* OverviewSetCell.xib in Resources */,
 				BDF1E4A31D0DA066004CEAFC /* OverviewFooterCell.xib in Resources */,
 				BDD89BF91C906C4D00530D79 /* NotificationCell.xib in Resources */,
 				BD4B7B841CD1275A00D83F91 /* NoItemCell.xib in Resources */,
 				BDD53BF41C8A2B13001235AE /* FitnessRecommendationCell.xib in Resources */,
 				BD5C6AF71C88B97700A9ED0A /* CheckboxCell.xib in Resources */,
+				BD85D5C71D1578AD0004F5C2 /* OverviewExerciseCell.xib in Resources */,
 				BDFE97141C68E62C00C2AEA3 /* Main.storyboard in Resources */,
 				BD56FB8B1CCFFCAA001404C5 /* IntencityRoutineFooterCell.xib in Resources */,
 			);
@@ -897,6 +914,7 @@
 				BDE493FB1C7B9A58005817D0 /* CheckboxCellController.swift in Sources */,
 				BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */,
 				BDC970801CD24B0D007BEE84 /* EditSavedRoutineViewController.swift in Sources */,
+				BD85D5CD1D16CF820004F5C2 /* OverviewSetCellController.swift in Sources */,
 				BD9325311CC8F17900D9581E /* MenuViewController.swift in Sources */,
 				BD9EF2B61C6A8AF500E520CB /* TermsViewController.swift in Sources */,
 				BDD721D31C6FAFDA003C242C /* IntencityCardButton.swift in Sources */,
@@ -1002,6 +1020,7 @@
 				BDD89BF51C9065EB00530D79 /* Awards.swift in Sources */,
 				BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */,
 				BDDAD8F31CC29E4D00C07DB2 /* AddRoutineViewController.swift in Sources */,
+				BD85D5CF1D16D5BC0004F5C2 /* ExerciseSet.swift in Sources */,
 				BD4B8EB91C7CEACD00AD579B /* DescriptionFooterCellController.swift in Sources */,
 				BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */,
 				BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */,
@@ -1019,6 +1038,7 @@
 				BD03C7BB1C761B6000D8911A /* SetDelegate.swift in Sources */,
 				BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */,
 				BD7C7E7E1C7C9E48005AFFDD /* AboutViewController.swift in Sources */,
+				BD85D5C91D1578E00004F5C2 /* OverviewExerciseCellController.swift in Sources */,
 				BD91FC0D1CAD710800965782 /* UploadImageTask.swift in Sources */,
 				BD56FB951CD1051B001404C5 /* IntencityRoutineDelegate.swift in Sources */,
 				BD5F97841D0F8702001E5A26 /* AwardType.swift in Sources */,

@@ -382,4 +382,16 @@ class Util
         
         return mutableString
     }
+    
+    /**
+     * Loads a nib with a specified name.
+     *
+     * @param nib   The name of the nib to load.
+     *
+     * @return The loaded nib as a UITableViewCell
+     */
+    static func loadNib(nib: String) -> UITableViewCell
+    {
+        return NSBundle.mainBundle().loadNibNamed(nib, owner: nil, options: nil)[0] as! UITableViewCell
+    }
 }

@@ -46,16 +46,16 @@ class OverviewViewController: UIViewController
         email = Util.getEmailFromDefaults()
         
         notificationHandler = NotificationHandler.getInstance(nil)
+        exerciseData = ExerciseData.getInstance()
         
         // Initialize the tableview.
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_HEADER_CELL, cellName: Constant.OVERVIEW_HEADER_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_CARD, cellName: Constant.OVERVIEW_CARD)
-        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_FOOTER_CELL, cellName: Constant.OVERVIEW_FOOTER_CELL)
         
-        exerciseData = ExerciseData.getInstance()
+        addHeader()
+        addFooter()
         
         initMenuButtons()
     }
@@ -185,39 +185,7 @@ class OverviewViewController: UIViewController
     {
         return 2
     }
-
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-    {
-        // The date formatter based on the locale of the device.
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .FullStyle
-        formatter.timeStyle = .NoStyle
-        
-        let dateString = formatter.stringFromDate(NSDate())
-        
-        let view = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_HEADER_CELL) as! OverviewHeaderCellController
-        view.routineTitle.text = String(format: NSLocalizedString("header_overview", comment: ""), exerciseData.routineName).uppercaseString
-        view.dateLabel.text = dateString
-        
-        return view.contentView
-    }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-    {
-        return 75
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
-    {
-        let view = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_FOOTER_CELL) as! OverviewFooterCellController
-        return view.contentView
-    }
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
-    {
-        return 50
-    }
-
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_CARD) as! OverviewCardController
@@ -229,17 +197,46 @@ class OverviewViewController: UIViewController
             case OverviewRowType.EXERCISES:
                 cell.cardIcon.image = UIImage(named: "icon_fitness_log")
                 cell.title.text = NSLocalizedString("title_exercises", comment: "")
+                cell.addExercises(exerciseData.exerciseList)
                 break
             case OverviewRowType.AWARDS:
                 cell.cardIcon.image = UIImage(named: "ranking_badge")
                 cell.title.text = NSLocalizedString("awards_title", comment: "").uppercaseString
-                cell.setAwards(NotificationHandler.getInstance(nil).awards)
+                cell.addAwards(NotificationHandler.getInstance(nil).awards)
                 break
             default:
                 break
         }
         
         return cell
+    }
+    
+    /**
+     * Adds the header to the tableview.
+     */
+    func addHeader()
+    {
+        // The date formatter based on the locale of the device.
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .FullStyle
+        formatter.timeStyle = .NoStyle
+        
+        let dateString = formatter.stringFromDate(NSDate())
+        
+        let view = Util.loadNib(Constant.OVERVIEW_HEADER_CELL) as! OverviewHeaderCellController
+        view.routineTitle.text = String(format: NSLocalizedString("header_overview", comment: ""), exerciseData.routineName).uppercaseString
+        view.dateLabel.text = dateString
+        
+        tableView.tableHeaderView = view.contentView
+    }
+    
+    /**
+     * Adds the footer to the tableview.
+     */
+    func addFooter()
+    {
+        let view = Util.loadNib(Constant.OVERVIEW_FOOTER_CELL) as! OverviewFooterCellController
+        tableView.tableFooterView = view.contentView
     }
     
     /**

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="I" selectionStyle="default" indentationWidth="10" reuseIdentifier="OverviewExerciseCell" rowHeight="183" id="F6e-yH-b9W" customClass="OverviewExerciseCellController" customModule="Intencity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="505" height="183"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F6e-yH-b9W" id="Q6E-4B-YMS">
+                <rect key="frame" x="0.0" y="0.0" width="505" height="182.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBK-AS-9Oh">
+                        <rect key="frame" x="0.0" y="0.0" width="505" height="182.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lL6-eJ-TiE">
+                                <rect key="frame" x="16" y="16" width="473" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXj-ep-ske">
+                                        <rect key="frame" x="0.0" y="0.0" width="473" height="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Gd8-QT-DD2">
+                                        <rect key="frame" x="0.0" y="25" width="473" height="125"/>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpC-hn-IgZ">
+                                <rect key="frame" x="0.0" y="181.5" width="505" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="qlz-ok-XfF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dpC-hn-IgZ" firstAttribute="top" secondItem="lL6-eJ-TiE" secondAttribute="bottom" constant="16" id="Djo-zb-2mb"/>
+                            <constraint firstItem="dpC-hn-IgZ" firstAttribute="leading" secondItem="IBK-AS-9Oh" secondAttribute="leading" id="aDj-qI-GGO"/>
+                            <constraint firstAttribute="bottom" secondItem="dpC-hn-IgZ" secondAttribute="bottom" id="lpF-eb-3ek"/>
+                            <constraint firstAttribute="trailing" secondItem="dpC-hn-IgZ" secondAttribute="trailing" id="o8A-Ez-ibD"/>
+                            <constraint firstItem="lL6-eJ-TiE" firstAttribute="leading" secondItem="IBK-AS-9Oh" secondAttribute="leading" constant="16" id="qcB-fR-8uw"/>
+                            <constraint firstItem="lL6-eJ-TiE" firstAttribute="top" secondItem="IBK-AS-9Oh" secondAttribute="top" constant="16" id="yWP-R6-COP"/>
+                            <constraint firstAttribute="trailing" secondItem="lL6-eJ-TiE" secondAttribute="trailing" constant="16" id="zta-xS-2IH"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="IBK-AS-9Oh" firstAttribute="leading" secondItem="Q6E-4B-YMS" secondAttribute="leading" id="YpU-va-eVl"/>
+                    <constraint firstAttribute="trailing" secondItem="IBK-AS-9Oh" secondAttribute="trailing" id="bkg-iR-geH"/>
+                    <constraint firstItem="IBK-AS-9Oh" firstAttribute="top" secondItem="Q6E-4B-YMS" secondAttribute="top" id="eoz-cj-wwk"/>
+                    <constraint firstAttribute="bottom" secondItem="IBK-AS-9Oh" secondAttribute="bottom" id="gCF-Lz-OZ2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="divider" destination="dpC-hn-IgZ" id="jbP-Ry-T58"/>
+                <outlet property="setStackView" destination="Gd8-QT-DD2" id="Pim-bh-v8O"/>
+                <outlet property="title" destination="BXj-ep-ske" id="R47-AQ-Gtz"/>
+            </connections>
+            <point key="canvasLocation" x="624.5" y="501.5"/>
+        </tableViewCell>
+    </objects>
+</document>
