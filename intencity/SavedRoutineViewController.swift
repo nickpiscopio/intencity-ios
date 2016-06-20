@@ -147,6 +147,8 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
         activityIndicator.hidden = false
         
         loadingView.hidden = false
+        
+        startButton.enabled = false
     }
     
     /**
@@ -157,6 +159,8 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
         loadingView.hidden = true
         
         activityIndicator.stopAnimating()
+        
+        startButton.enabled = true
     }
     /**
      * Shows there was a connection issue.
@@ -301,15 +305,16 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        // Gets the row in the section.
-        let row = routines[indexPath.section].rows[indexPath.row]
+        let section = indexPath.section
+        let row = indexPath.row
 
         let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
         cell.setCheckboxImage(Constant.RADIO_BUTTON_MARKED, uncheckedImage: Constant.RADIO_BUTTON_UNMARKED)
         cell.selectionStyle = .None
-        cell.titleLabel.text = row.title
-        cell.setChecked(false)
-            
+        cell.titleLabel.text = routines[section].rows[row].title
+        // Select the row if it is already selected.
+        cell.setChecked(selectedRoutineSection != nil && selectedRoutine != nil && selectedRoutineSection == section && selectedRoutine == row)
+        
         return cell
     }
     

@@ -145,6 +145,8 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         activityIndicator.hidden = false
         
         loadingView.hidden = false
+        
+        startButton.enabled = false
     }
     
     /**
@@ -155,6 +157,8 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         loadingView.hidden = true
         
         activityIndicator.stopAnimating()
+        
+        startButton.enabled = true
     }
     /**
      * Shows there was a connection issue.
@@ -334,8 +338,11 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
+        let section = indexPath.section
+        let row = indexPath.row
+        
         // Gets the row in the section.
-        let title = routines[indexPath.section].rows[indexPath.row].title
+        let title = routines[section].rows[row].title
         if (title == NO_CUSTOM_ROUTINE_STRING)
         {
             let cell = tableView.dequeueReusableCellWithIdentifier(Constant.NO_ITEM_CELL) as! NoItemCellController
@@ -351,7 +358,8 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
             cell.setCheckboxImage(Constant.RADIO_BUTTON_MARKED, uncheckedImage: Constant.RADIO_BUTTON_UNMARKED)
             cell.selectionStyle = .None
             cell.titleLabel.text = title
-            cell.setChecked(false)
+            // Select the row if it is already selected.
+            cell.setChecked(selectedRoutineSection != nil && selectedRoutine != nil && selectedRoutineSection == section && selectedRoutine == row)
             
             return cell
         }
