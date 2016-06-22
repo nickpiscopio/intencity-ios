@@ -60,11 +60,10 @@ class OverviewCardController: UITableViewCell
                     setView.heightAnchor.constraintEqualToConstant(setView.bounds.size.height).active = true
                     setView.setEditText(sets[z])
                     
-                    view.setStackView.addArrangedSubview(setView)
+//                    view.setStackView.addArrangedSubview(setView)
                 }
                 
                 itemStackView.addArrangedSubview(view)
- 
             }
         }
     }

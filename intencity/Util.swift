@@ -216,11 +216,16 @@ class Util
      * @param table         The UITableView to add the cell.
      * @param nibNamed      The XIB file to load.
      * @param cellNamed     The cell identifier.
+     *
+     * @return The size of the view.
      */
-    static func addUITableViewCell(table: UITableView, nibNamed: String, cellName: String)
+    static func addUITableViewCell(table: UITableView, nibNamed: String, cellName: String)// -> CGFloat
     {
         let nib = UINib(nibName: nibNamed, bundle: nil)
         table.registerNib(nib, forCellReuseIdentifier: cellName)
+        
+//        let view = nib.instantiateWithOwner(nil, options: nil).last
+//        return view!.frame.size.height
     }
     
     /**

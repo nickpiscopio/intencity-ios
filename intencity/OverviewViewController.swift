@@ -16,7 +16,7 @@ class OverviewViewController: UIViewController
     
     let FINISH_ICON_NAME = "icon_finish"
 
-    let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
+    let WARM_UP_NAME = NSLocalizedString("wvar_up", comment: "")
     let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
     let NO_LOGIN_ACCCOUNT_TITLE = NSLocalizedString("no_login_account_title", comment: "")
 
@@ -29,6 +29,8 @@ class OverviewViewController: UIViewController
     var notificationHandler: NotificationHandler!
     
     var viewDelegate: ViewDelegate!
+    
+    var cards = [OverviewCard]()
     
     override func viewDidLoad()
     {
@@ -52,10 +54,14 @@ class OverviewViewController: UIViewController
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_CARD, cellName: Constant.OVERVIEW_CARD)
+//        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_CARD, cellName: Constant.OVERVIEW_CARD)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_EXERCISE_CELL, cellName: Constant.OVERVIEW_EXERCISE_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.NOTIFICATION_CELL, cellName: Constant.NOTIFICATION_CELL)
         
         addHeader()
         addFooter()
+        
+        initCards()
         
         initMenuButtons()
     }
@@ -63,6 +69,15 @@ class OverviewViewController: UIViewController
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    /**
+     * Initializes the overview cards.
+     */
+    func initCards()
+    {
+        cards.append(OverviewCard(type: OverviewRowType.EXERCISES, icon: UIImage(named: "icon_fitness_log")!, title: NSLocalizedString("title_exercises", comment: ""), rows: exerciseData.exerciseList))
+        cards.append(OverviewCard(type: OverviewRowType.AWARDS, icon: UIImage(named: "ranking_badge")!, title: NSLocalizedString("awards_title", comment: "").uppercaseString, rows: notificationHandler.awards))
     }
     
     /**
@@ -178,37 +193,71 @@ class OverviewViewController: UIViewController
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 1
+        return cards.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 2
+        let rows = cards[section].rows
+        
+//        var rowsInSection = rows.count
+
+//        switch section
+//        {
+//            case OverviewRowType.EXERCISES:
+//                
+//                let length = rows.count
+//                for z in 0 ..< length
+//                {
+//                    let exercise = rows[z] as! Exercise
+//                    rowsInSection += exercise.sets.count
+//                }
+//                
+//                break;
+//            
+//            default:
+//                break;
+//        }
+        
+        return rows.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_CARD) as! OverviewCardController
+        let section = indexPath.section
         
-        let index = indexPath.item
+        let card = cards[section]
         
-        switch index
+        switch section
         {
             case OverviewRowType.EXERCISES:
-                cell.cardIcon.image = UIImage(named: "icon_fitness_log")
-                cell.title.text = NSLocalizedString("title_exercises", comment: "")
-                cell.addExercises(exerciseData.exerciseList)
-                break
-            case OverviewRowType.AWARDS:
-                cell.cardIcon.image = UIImage(named: "ranking_badge")
-                cell.title.text = NSLocalizedString("awards_title", comment: "").uppercaseString
-                cell.addAwards(NotificationHandler.getInstance(nil).awards)
-                break
+                
+                let exercise = card.rows[indexPath.row] as! Exercise
+                let exerciseName = exercise.exerciseName                
+                
+                let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_EXERCISE_CELL) as! OverviewExerciseCellController
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+                
+                if (exerciseName == WARM_UP_NAME || exerciseName == STRETCH_NAME)
+                {
+                    cell.hidden = true
+                }
+                else
+                {
+                    cell.title.text = exercise.exerciseName
+                    cell.title.textColor = exercise.fromIntencity ? Color.primary : Color.secondary_dark
+                }
+                
+                cell.sets = exercise.sets
+                cell.initializeTableView()
+                
+                return cell
             default:
-                break
+                
+                let awards = card.rows as! [Awards]
+                
+                return AwardCell.getCell(tableView, indexPath: indexPath, awards: awards)
         }
-        
-        return cell
     }
     
     /**

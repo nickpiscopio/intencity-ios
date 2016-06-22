@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="I" selectionStyle="default" indentationWidth="10" reuseIdentifier="OverviewExerciseCell" rowHeight="183" id="F6e-yH-b9W" customClass="OverviewExerciseCellController" customModule="Intencity" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="OverviewExerciseCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="OverviewExerciseCell" rowHeight="183" id="F6e-yH-b9W" customClass="OverviewExerciseCellController" customModule="Intencity" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="505" height="183"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F6e-yH-b9W" id="Q6E-4B-YMS">
@@ -20,15 +20,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lL6-eJ-TiE">
                                 <rect key="frame" x="16" y="16" width="473" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXj-ep-ske">
-                                        <rect key="frame" x="0.0" y="0.0" width="473" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXj-ep-ske">
+                                        <rect key="frame" x="0.0" y="0.0" width="473" height="20.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Gd8-QT-DD2">
-                                        <rect key="frame" x="0.0" y="25" width="473" height="125"/>
-                                    </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Jn-HL-JmP">
+                                        <rect key="frame" x="0.0" y="25.5" width="473" height="124.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableView>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpC-hn-IgZ">
@@ -60,7 +61,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="divider" destination="dpC-hn-IgZ" id="jbP-Ry-T58"/>
-                <outlet property="setStackView" destination="Gd8-QT-DD2" id="Pim-bh-v8O"/>
+                <outlet property="tableView" destination="8Jn-HL-JmP" id="pBb-XD-0PV"/>
                 <outlet property="title" destination="BXj-ep-ske" id="R47-AQ-Gtz"/>
             </connections>
             <point key="canvasLocation" x="624.5" y="501.5"/>

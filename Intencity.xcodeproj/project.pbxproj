@@ -95,6 +95,8 @@
 		BD85D5CB1D16CF6D0004F5C2 /* OverviewSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD85D5CA1D16CF6D0004F5C2 /* OverviewSetCell.xib */; };
 		BD85D5CD1D16CF820004F5C2 /* OverviewSetCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85D5CC1D16CF820004F5C2 /* OverviewSetCellController.swift */; };
 		BD85D5CF1D16D5BC0004F5C2 /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85D5CE1D16D5BC0004F5C2 /* ExerciseSet.swift */; };
+		BD85D5D31D19F5710004F5C2 /* OverviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85D5D21D19F5710004F5C2 /* OverviewCard.swift */; };
+		BD85D5D51D19FEC80004F5C2 /* AwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85D5D41D19FEC80004F5C2 /* AwardCell.swift */; };
 		BD8810FA1C91CA270098FA64 /* IntencityButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */; };
 		BD8810FC1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */; };
 		BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8811011C92FF3A0098FA64 /* Badge.swift */; };
@@ -279,6 +281,8 @@
 		BD85D5CA1D16CF6D0004F5C2 /* OverviewSetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewSetCell.xib; sourceTree = "<group>"; };
 		BD85D5CC1D16CF820004F5C2 /* OverviewSetCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewSetCellController.swift; sourceTree = "<group>"; };
 		BD85D5CE1D16D5BC0004F5C2 /* ExerciseSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseSet.swift; sourceTree = "<group>"; };
+		BD85D5D21D19F5710004F5C2 /* OverviewCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCard.swift; sourceTree = SOURCE_ROOT; };
+		BD85D5D41D19FEC80004F5C2 /* AwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardCell.swift; sourceTree = "<group>"; };
 		BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackground.swift; sourceTree = "<group>"; };
 		BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundSmall.swift; sourceTree = "<group>"; };
 		BD8811011C92FF3A0098FA64 /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
@@ -495,6 +499,7 @@
 		BD6E4B011C84A86B00C4E6FB /* Structs */ = {
 			isa = PBXGroup;
 			children = (
+				BD85D5D21D19F5710004F5C2 /* OverviewCard.swift */,
 				BDB37F9E1CCA71D400470479 /* RoutineSection.swift */,
 				BDB37F9C1CCA719700470479 /* RoutineGroup.swift */,
 				BDC970811CD390E2007BEE84 /* RoutineRow.swift */,
@@ -524,6 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				BD36EC221C70F0A400F993CE /* Exercise.swift */,
+				BD85D5D41D19FEC80004F5C2 /* AwardCell.swift */,
 				BDD89BF41C9065EB00530D79 /* Awards.swift */,
 				BD6E4B031C84A89900C4E6FB /* User.swift */,
 			);
@@ -1022,6 +1028,7 @@
 				BDDAD8F31CC29E4D00C07DB2 /* AddRoutineViewController.swift in Sources */,
 				BD85D5CF1D16D5BC0004F5C2 /* ExerciseSet.swift in Sources */,
 				BD4B8EB91C7CEACD00AD579B /* DescriptionFooterCellController.swift in Sources */,
+				BD85D5D31D19F5710004F5C2 /* OverviewCard.swift in Sources */,
 				BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */,
 				BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */,
 				BDFD87871CA196D700ECDDCE /* ExercisePriorityDelegate.swift in Sources */,
@@ -1034,6 +1041,7 @@
 				BDF1E4A11D0D973B004CEAFC /* OverviewHeaderCellController.swift in Sources */,
 				BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */,
 				BD294ACB1CBE7C3B005718BA /* ExercisePriorityUtil.swift in Sources */,
+				BD85D5D51D19FEC80004F5C2 /* AwardCell.swift in Sources */,
 				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,
 				BD03C7BB1C761B6000D8911A /* SetDelegate.swift in Sources */,
 				BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */,
