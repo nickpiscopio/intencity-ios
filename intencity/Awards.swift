@@ -36,6 +36,6 @@ class Awards: NSObject
      */
     func setAmountValue(amount: Int)
     {
-        self.amount  = amount
+        self.amount = amount
     }
 }

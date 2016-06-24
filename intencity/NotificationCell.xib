@@ -52,7 +52,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FV-hP-NJ4">
                                                                 <rect key="frame" x="-11" y="0.0" width="42" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -140,7 +140,7 @@
                 <outlet property="awardImage" destination="xJP-my-zYi" id="hen-1v-jF5"/>
                 <outlet property="awardTitle" destination="7qN-ig-4PB" id="P97-eF-6fl"/>
                 <outlet property="cellView" destination="QL2-Sm-QNm" id="UeG-lU-6g2"/>
-                <outlet property="divider" destination="dUV-Bc-J6Z" id="OeB-qS-Eg3"/>
+                <outlet property="divider" destination="dUV-Bc-J6Z" id="JaS-pY-tgU"/>
                 <outlet property="view" destination="wzV-wo-l7V" id="6cG-oX-hcN"/>
             </connections>
             <point key="canvasLocation" x="332" y="627"/>

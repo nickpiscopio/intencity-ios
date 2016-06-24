@@ -19,6 +19,8 @@ class NotificationCellViewController: UITableViewCell
     @IBOutlet weak var amountView: UIView!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var divider: UIView!
+    @IBOutlet weak var rightDivider: UIView!
+    @IBOutlet weak var leftDivider: UIView!
     
     override func awakeFromNib()
     {
@@ -27,6 +29,23 @@ class NotificationCellViewController: UITableViewCell
         awardTitle.font = awardTitle.font.fontWithSize(Dimention.FONT_SIZE_LARGE)
         awardTitle.textColor = Color.secondary_dark
         awardDescription.textColor = Color.secondary_dark
+        
+        if (leftDivider != nil)
+        {
+            leftDivider.backgroundColor = Color.shadow
+        }
+        
+        if (rightDivider != nil)
+        {
+            rightDivider.backgroundColor = Color.shadow
+        }
+        
+        if (cellView != nil)
+        {
+            cellView.backgroundColor = Color.page_background
+        }
+        
+        divider.backgroundColor = Color.shadow
     }
     
     /**

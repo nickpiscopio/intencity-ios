@@ -11,14 +11,12 @@ import UIKit
 
 class AwardCell: NSObject
 {
-    static func getCell(tableView: UITableView, indexPath: NSIndexPath, awards: [Awards]) -> UITableViewCell
+    static func getCell(tableView: UITableView, cellName: String, index: Int, awards: [Awards]) -> UITableViewCell
     {
-        let index = indexPath.row
-        
         let notification = awards[index]
         let imageName = notification.awardImageName
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.NOTIFICATION_CELL) as! NotificationCellViewController
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellName) as! NotificationCellViewController
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         if (imageName != "")

@@ -11,8 +11,11 @@ import UIKit
 
 class OverviewExerciseCellController: UITableViewCell, UITableViewDataSource, UITableViewDelegate
 {
+    @IBOutlet weak var view: UIView!
+    @IBOutlet weak var rightDivider: UIView!
     @IBOutlet weak var title: UILabel! 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var leftDivider: UIView!
     @IBOutlet weak var divider: UIView!
     
     private let ROW_HEIGHT: CGFloat = 18
@@ -27,6 +30,11 @@ class OverviewExerciseCellController: UITableViewCell, UITableViewDataSource, UI
         title.textColor = Color.secondary_light
         
         divider.backgroundColor = Color.shadow
+        
+        leftDivider.backgroundColor = Color.shadow
+        rightDivider.backgroundColor = Color.shadow
+        
+        view.backgroundColor = Color.page_background
     }
     
     func initializeTableView()

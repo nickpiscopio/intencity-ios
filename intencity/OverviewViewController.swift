@@ -25,6 +25,7 @@ class OverviewViewController: UIViewController
     var email = ""
     
     var exerciseData: ExerciseData!
+    var exercises = [Exercise]()
     
     var notificationHandler: NotificationHandler!
     
@@ -54,9 +55,8 @@ class OverviewViewController: UIViewController
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
-//        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_CARD, cellName: Constant.OVERVIEW_CARD)
         Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_EXERCISE_CELL, cellName: Constant.OVERVIEW_EXERCISE_CELL)
-        Util.addUITableViewCell(tableView, nibNamed: Constant.NOTIFICATION_CELL, cellName: Constant.NOTIFICATION_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_AWARD_CELL, cellName: Constant.OVERVIEW_AWARD_CELL)
         
         addHeader()
         addFooter()
@@ -76,7 +76,18 @@ class OverviewViewController: UIViewController
      */
     func initCards()
     {
-        cards.append(OverviewCard(type: OverviewRowType.EXERCISES, icon: UIImage(named: "icon_fitness_log")!, title: NSLocalizedString("title_exercises", comment: ""), rows: exerciseData.exerciseList))
+        exercises.appendContentsOf(exerciseData.exerciseList)
+        
+        // We remove the WARM-UP exercise.
+        exercises.removeAtIndex(0)
+        
+        let lastExercise = exercises.count - 1
+        if (exercises[lastExercise].exerciseName == STRETCH_NAME)
+        {
+            exercises.removeAtIndex(lastExercise)
+        }
+        
+        cards.append(OverviewCard(type: OverviewRowType.EXERCISES, icon: UIImage(named: "icon_fitness_log")!, title: NSLocalizedString("title_exercises", comment: ""), rows: exercises))
         cards.append(OverviewCard(type: OverviewRowType.AWARDS, icon: UIImage(named: "ranking_badge")!, title: NSLocalizedString("awards_title", comment: "").uppercaseString, rows: notificationHandler.awards))
     }
     
@@ -119,7 +130,9 @@ class OverviewViewController: UIViewController
             activityViewController.popoverPresentationController?.sourceView = self.view
             
             presentViewController(activityViewController, animated: true, completion: nil)
-        }else{
+        }
+        else
+        {
             print("There is nothing to share")
         }
     }
@@ -200,25 +213,6 @@ class OverviewViewController: UIViewController
     {
         let rows = cards[section].rows
         
-//        var rowsInSection = rows.count
-
-//        switch section
-//        {
-//            case OverviewRowType.EXERCISES:
-//                
-//                let length = rows.count
-//                for z in 0 ..< length
-//                {
-//                    let exercise = rows[z] as! Exercise
-//                    rowsInSection += exercise.sets.count
-//                }
-//                
-//                break;
-//            
-//            default:
-//                break;
-//        }
-        
         return rows.count
     }
     
@@ -228,25 +222,18 @@ class OverviewViewController: UIViewController
         
         let card = cards[section]
         
+        let index = indexPath.row
+        
         switch section
         {
             case OverviewRowType.EXERCISES:
                 
-                let exercise = card.rows[indexPath.row] as! Exercise
-                let exerciseName = exercise.exerciseName                
+                let exercise = card.rows[index] as! Exercise              
                 
                 let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_EXERCISE_CELL) as! OverviewExerciseCellController
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
-                
-                if (exerciseName == WARM_UP_NAME || exerciseName == STRETCH_NAME)
-                {
-                    cell.hidden = true
-                }
-                else
-                {
-                    cell.title.text = exercise.exerciseName
-                    cell.title.textColor = exercise.fromIntencity ? Color.primary : Color.secondary_dark
-                }
+                cell.title.text = exercise.exerciseName
+                cell.title.textColor = exercise.fromIntencity ? Color.primary : Color.secondary_dark
                 
                 cell.sets = exercise.sets
                 cell.initializeTableView()
@@ -256,7 +243,7 @@ class OverviewViewController: UIViewController
                 
                 let awards = card.rows as! [Awards]
                 
-                return AwardCell.getCell(tableView, indexPath: indexPath, awards: awards)
+                return AwardCell.getCell(tableView, cellName: Constant.OVERVIEW_AWARD_CELL, index: index, awards: awards)
         }
     }
     
