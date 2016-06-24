@@ -46,7 +46,7 @@ struct Constant
     
     static let OVERVIEW_HEADER_CELL = "OverviewHeaderCell"
     static let OVERVIEW_FOOTER_CELL = "OverviewFooterCell"
-    static let OVERVIEW_CARD = "OverviewCard"
+    static let OVERVIEW_CARD_HEADER = "OverviewCardHeader"
     static let OVERVIEW_EXERCISE_CELL = "OverviewExerciseCell"
     static let OVERVIEW_SET_CELL = "OverviewSetCell"
     static let OVERVIEW_AWARD_CELL = "OverviewAwardCell"

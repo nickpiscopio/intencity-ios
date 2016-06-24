@@ -9,6 +9,7 @@
 
 class OverviewRowType
 {
-    static let EXERCISES = 0
-    static let AWARDS = 1
+    static let HEADER = 0
+    static let EXERCISES = 1
+    static let AWARDS = 2
 }

@@ -55,6 +55,7 @@ class OverviewViewController: UIViewController
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
+        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_CARD_HEADER, cellName: Constant.OVERVIEW_CARD_HEADER)
         Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_EXERCISE_CELL, cellName: Constant.OVERVIEW_EXERCISE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_AWARD_CELL, cellName: Constant.OVERVIEW_AWARD_CELL)
         
@@ -87,8 +88,10 @@ class OverviewViewController: UIViewController
             exercises.removeAtIndex(lastExercise)
         }
         
-        cards.append(OverviewCard(type: OverviewRowType.EXERCISES, icon: UIImage(named: "icon_fitness_log")!, title: NSLocalizedString("title_exercises", comment: ""), rows: exercises))
-        cards.append(OverviewCard(type: OverviewRowType.AWARDS, icon: UIImage(named: "ranking_badge")!, title: NSLocalizedString("awards_title", comment: "").uppercaseString, rows: notificationHandler.awards))
+        cards.append(OverviewCard.init(type: OverviewRowType.HEADER, icon: UIImage(named: "icon_fitness_log")!, title: NSLocalizedString("title_exercises", comment: "")))
+        cards.append(OverviewCard.init(type: OverviewRowType.EXERCISES, rows: exercises))
+        cards.append(OverviewCard.init(type: OverviewRowType.HEADER, icon: UIImage(named: "ranking_badge")!, title: NSLocalizedString("awards_title", comment: "").uppercaseString))
+        cards.append(OverviewCard.init(type: OverviewRowType.AWARDS, rows: notificationHandler.awards))
     }
     
     /**
@@ -191,19 +194,6 @@ class OverviewViewController: UIViewController
         displayFinishAlert()
     }
     
-    /**
-     * Animates the table being added to the screen.
-     *
-     * @param loadNextExercise  A boolean value of whether to load the next exercise or not.
-     */
-    func animateTable(indexToLoad: Int)
-    {
-        let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = NSIndexSet(indexesInRange: range)
-            
-        tableView.reloadSections(sections, withRowAnimation: .Top)
-    }
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return cards.count
@@ -211,9 +201,9 @@ class OverviewViewController: UIViewController
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        let rows = cards[section].rows
+        let card = cards[section]
         
-        return rows.count
+        return card.type == OverviewRowType.HEADER ? 1 : card.rows.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -224,8 +214,16 @@ class OverviewViewController: UIViewController
         
         let index = indexPath.row
         
-        switch section
+        switch card.type
         {
+            case OverviewRowType.HEADER:
+                
+                let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_CARD_HEADER) as! OverviewCardHeaderController
+                cell.cardIcon.image = card.icon
+                cell.title.text = card.title
+                
+                return cell
+            
             case OverviewRowType.EXERCISES:
                 
                 let exercise = card.rows[index] as! Exercise              
@@ -239,6 +237,7 @@ class OverviewViewController: UIViewController
                 cell.initializeTableView()
                 
                 return cell
+            
             default:
                 
                 let awards = card.rows as! [Awards]
