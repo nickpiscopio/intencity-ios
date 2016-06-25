@@ -11,7 +11,7 @@ import UIKit
 
 class AwardCell: NSObject
 {
-    static func getCell(tableView: UITableView, cellName: String, index: Int, awards: [Awards]) -> UITableViewCell
+    static func getCell(tableView: UITableView, cellName: String, index: Int, awards: [Awards], roundLastCell: Bool) -> UITableViewCell
     {
         let notification = awards[index]
         let imageName = notification.awardImageName
@@ -30,6 +30,14 @@ class AwardCell: NSObject
         
         cell.setAwardAmounts(notification.amount)
         cell.awardDescription.text = notification.awardDescription
+        
+        if (roundLastCell)
+        {
+            // We round the corners of the last row.
+            cell.roundCorners = index == awards.count - 1
+            // Since we have the rounded corner view, we don't need the divider.
+            cell.divider.hidden = true
+        }
         
         return cell
     }

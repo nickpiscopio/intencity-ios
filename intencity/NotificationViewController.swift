@@ -52,6 +52,6 @@ class NotificationViewController: UIViewController
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        return AwardCell.getCell(tableView, cellName: Constant.NOTIFICATION_CELL, index: indexPath.row, awards: notifications)
+        return AwardCell.getCell(tableView, cellName: Constant.NOTIFICATION_CELL, index: indexPath.row, awards: notifications, roundLastCell: false)
     }
 }

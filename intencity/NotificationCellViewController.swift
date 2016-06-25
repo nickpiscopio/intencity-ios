@@ -12,6 +12,7 @@ import UIKit
 class NotificationCellViewController: UITableViewCell
 {
     @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var outline: UIView!
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var awardImage: UIImageView!
     @IBOutlet weak var awardTitle: UILabel!
@@ -19,8 +20,8 @@ class NotificationCellViewController: UITableViewCell
     @IBOutlet weak var amountView: UIView!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var divider: UIView!
-    @IBOutlet weak var rightDivider: UIView!
-    @IBOutlet weak var leftDivider: UIView!
+    
+    var roundCorners = false
     
     override func awakeFromNib()
     {
@@ -30,14 +31,9 @@ class NotificationCellViewController: UITableViewCell
         awardTitle.textColor = Color.secondary_dark
         awardDescription.textColor = Color.secondary_dark
         
-        if (leftDivider != nil)
+        if (outline != nil)
         {
-            leftDivider.backgroundColor = Color.shadow
-        }
-        
-        if (rightDivider != nil)
-        {
-            rightDivider.backgroundColor = Color.shadow
+            outline.backgroundColor = Color.shadow
         }
         
         if (cellView != nil)
@@ -46,6 +42,21 @@ class NotificationCellViewController: UITableViewCell
         }
         
         divider.backgroundColor = Color.shadow
+    }
+    
+    override func layoutSubviews()
+    {
+        super.layoutSubviews()
+        
+        // We only want to round the corners of the last row in the overview screen.
+        if (roundCorners)
+        {
+            // This needs to be called in layoutSubviews() because if it is called in awakeFromNib(), the width of the view is divided in half.
+            // Place in viewDidLayoutSubviews for normal ViewControllers.
+            // http://stackoverflow.com/questions/10316902/rounded-corners-only-on-top-of-a-uiview
+            outline.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
+            view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
+        }
     }
     
     /**

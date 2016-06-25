@@ -236,6 +236,7 @@ class OverviewViewController: UIViewController
                 
                 cell.sets = exercise.sets
                 cell.initializeTableView()
+                cell.roundCorners = index == card.rows.count - 1
                 
                 return cell
             
@@ -243,7 +244,7 @@ class OverviewViewController: UIViewController
                 
                 let awards = card.rows as! [Awards]
                 
-                return AwardCell.getCell(tableView, cellName: Constant.OVERVIEW_AWARD_CELL, index: index, awards: awards)
+                return AwardCell.getCell(tableView, cellName: Constant.OVERVIEW_AWARD_CELL, index: index, awards: awards, roundLastCell: true)
         }
     }
     

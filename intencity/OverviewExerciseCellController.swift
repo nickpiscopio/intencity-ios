@@ -11,16 +11,17 @@ import UIKit
 
 class OverviewExerciseCellController: UITableViewCell, UITableViewDataSource, UITableViewDelegate
 {
+    @IBOutlet weak var content: UIView!
+    @IBOutlet weak var outline: UIView!
     @IBOutlet weak var view: UIView!
-    @IBOutlet weak var rightDivider: UIView!
     @IBOutlet weak var title: UILabel! 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var leftDivider: UIView!
-    @IBOutlet weak var divider: UIView!
     
     private let ROW_HEIGHT: CGFloat = 18
     
     var sets = [Set]()
+    
+    var roundCorners = false
     
     override func awakeFromNib()
     {
@@ -29,12 +30,23 @@ class OverviewExerciseCellController: UITableViewCell, UITableViewDataSource, UI
         title.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_NORMAL)
         title.textColor = Color.secondary_light
         
-        divider.backgroundColor = Color.shadow
+        content.backgroundColor = Color.page_background
+        outline.backgroundColor = Color.shadow
+    }
+    
+    override func layoutSubviews()
+    {
+        super.layoutSubviews()
         
-        leftDivider.backgroundColor = Color.shadow
-        rightDivider.backgroundColor = Color.shadow
-        
-        view.backgroundColor = Color.page_background
+        // We only want to round the corners of the last row in the overview screen.
+        if (roundCorners)
+        {
+            // This needs to be called in layoutSubviews() because if it is called in awakeFromNib(), the width of the view is divided in half.
+            // Place in viewDidLayoutSubviews for normal ViewControllers.
+            // http://stackoverflow.com/questions/10316902/rounded-corners-only-on-top-of-a-uiview
+            outline.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
+            view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
+        }
     }
     
     func initializeTableView()
