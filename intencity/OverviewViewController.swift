@@ -219,6 +219,7 @@ class OverviewViewController: UIViewController
             case OverviewRowType.HEADER:
                 
                 let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_CARD_HEADER) as! OverviewCardHeaderController
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
                 cell.cardIcon.image = card.icon
                 cell.title.text = card.title
                 

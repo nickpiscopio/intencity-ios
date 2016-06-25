@@ -85,10 +85,10 @@
                                                                                 </constraints>
                                                                                 <variation key="default">
                                                                                     <mask key="constraints">
-                                                                                        <exclude reference="sqX-7n-Jwc"/>
-                                                                                        <exclude reference="fYg-cc-0dD"/>
-                                                                                        <exclude reference="5z5-7P-3TG"/>
                                                                                         <exclude reference="0gW-Z7-Z3q"/>
+                                                                                        <exclude reference="5z5-7P-3TG"/>
+                                                                                        <exclude reference="fYg-cc-0dD"/>
+                                                                                        <exclude reference="sqX-7n-Jwc"/>
                                                                                     </mask>
                                                                                 </variation>
                                                                             </view>
@@ -106,8 +106,8 @@
                                                                         </constraints>
                                                                         <variation key="default">
                                                                             <mask key="constraints">
-                                                                                <exclude reference="m0C-gK-Ujy"/>
                                                                                 <exclude reference="LxY-xr-Fuv"/>
+                                                                                <exclude reference="m0C-gK-Ujy"/>
                                                                             </mask>
                                                                         </variation>
                                                                     </view>
