@@ -36,6 +36,6 @@ class OverviewCardHeaderController: UITableViewCell
         // Place in viewDidLayoutSubviews for normal ViewControllers.
         // http://stackoverflow.com/questions/10316902/rounded-corners-only-on-top-of-a-uiview
         outline.roundCorners([.TopLeft, .TopRight], radius: Dimention.RADIUS)
-        headerView.roundCorners([.TopLeft, .TopRight], radius: Dimention.RADIUS)
+        headerView.roundCorners([.TopLeft, .TopRight], radius: Dimention.RADIUS_INNER)
     }
 }

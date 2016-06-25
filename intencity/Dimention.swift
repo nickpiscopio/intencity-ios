@@ -12,6 +12,7 @@ import UIKit
 struct Dimention
 {
     static let RADIUS: CGFloat = 3.0
+    static let RADIUS_INNER: CGFloat = RADIUS - 1
     // Needs to he half of one side of the smallest PNG.
     static let RADIUS_ROUNDED_BUTTON_LIGHT: CGFloat = 12.5
     static let RADIUS_ROUNDED_BUTTON_DARK: CGFloat = 25.0

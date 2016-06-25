@@ -55,7 +55,7 @@ class NotificationCellViewController: UITableViewCell
             // Place in viewDidLayoutSubviews for normal ViewControllers.
             // http://stackoverflow.com/questions/10316902/rounded-corners-only-on-top-of-a-uiview
             outline.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
-            view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
+            view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS_INNER)
         }
     }
     

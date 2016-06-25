@@ -45,7 +45,7 @@ class OverviewExerciseCellController: UITableViewCell, UITableViewDataSource, UI
             // Place in viewDidLayoutSubviews for normal ViewControllers.
             // http://stackoverflow.com/questions/10316902/rounded-corners-only-on-top-of-a-uiview
             outline.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
-            view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
+            view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS_INNER)
         }
     }
     
@@ -75,24 +75,6 @@ class OverviewExerciseCellController: UITableViewCell, UITableViewDataSource, UI
     {
         return sets.count
     }
-    
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-//    {
-//        if (exerciseListHeader == nil)
-//        {
-//            exerciseListHeader = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
-//            exerciseListHeader.routineName = exerciseData.routineName.uppercaseString
-//            exerciseListHeader.navigationController = self.navigationController
-//            exerciseListHeader.routineDelegate = self
-//        }
-//        
-//        return exerciseListHeader.contentView
-//    }
-    
-//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-//    {
-//        return 65
-//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
