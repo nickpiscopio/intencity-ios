@@ -27,15 +27,4 @@ class OverviewCardHeaderController: UITableViewCell
         title.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_SMALL)
         title.textColor = Color.secondary_light
     }
-    
-    override func layoutSubviews()
-    {
-        super.layoutSubviews()
-        
-        // This needs to be called in layoutSubviews() because if it is called in awakeFromNib(), the width of the view is divided in half.
-        // Place in viewDidLayoutSubviews for normal ViewControllers.
-        // http://stackoverflow.com/questions/10316902/rounded-corners-only-on-top-of-a-uiview
-        outline.roundCorners([.TopLeft, .TopRight], radius: Dimention.RADIUS)
-        headerView.roundCorners([.TopLeft, .TopRight], radius: Dimention.RADIUS_INNER)
-    }
 }

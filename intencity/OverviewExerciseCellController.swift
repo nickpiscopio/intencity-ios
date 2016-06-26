@@ -15,13 +15,12 @@ class OverviewExerciseCellController: UITableViewCell, UITableViewDataSource, UI
     @IBOutlet weak var outline: UIView!
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var title: UILabel! 
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var tableView: UITableView!
     
     private let ROW_HEIGHT: CGFloat = 18
     
     var sets = [Set]()
-    
-    var roundCorners = false
     
     override func awakeFromNib()
     {
@@ -34,35 +33,38 @@ class OverviewExerciseCellController: UITableViewCell, UITableViewDataSource, UI
         outline.backgroundColor = Color.shadow
     }
     
-    override func layoutSubviews()
-    {
-        super.layoutSubviews()
-        
-        // We only want to round the corners of the last row in the overview screen.
-        if (roundCorners)
-        {
-            // This needs to be called in layoutSubviews() because if it is called in awakeFromNib(), the width of the view is divided in half.
-            // Place in viewDidLayoutSubviews for normal ViewControllers.
-            // http://stackoverflow.com/questions/10316902/rounded-corners-only-on-top-of-a-uiview
-            outline.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
-            view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS_INNER)
-        }
-    }
-    
+    /**
+     * Initializes the tableview.
+     */
     func initializeTableView()
     {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.scrollEnabled = false
+        let set = sets[sets.count - 1]
+        let reps = set.reps
+        let duration = set.duration
+        
+        if (reps > 0 || Util.convertToInt(duration) > 0)
+        {
+            stackView.spacing = Dimention.LAYOUT_MARGIN_HALF
+            tableView.hidden = false
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.scrollEnabled = false
+            
+            // Initialize the tableview.
+            Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
+            
+            // Load the cells we are going to use in the tableview.
+            Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_SET_CELL, cellName: Constant.OVERVIEW_SET_CELL)
+            
+            let tableViewSize = ROW_HEIGHT * CGFloat(sets.count)
+            tableView.heightAnchor.constraintEqualToConstant(tableViewSize).active = true
 
-        // Initialize the tableview.
-        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
-        
-        // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_SET_CELL, cellName: Constant.OVERVIEW_SET_CELL)
-        
-        let tableViewSize = ROW_HEIGHT * CGFloat(sets.count)
-        tableView.heightAnchor.constraintEqualToConstant(tableViewSize).active = true
+        }
+        else
+        {
+            stackView.spacing = 0
+            tableView.hidden = true
+        }
     }
     
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift

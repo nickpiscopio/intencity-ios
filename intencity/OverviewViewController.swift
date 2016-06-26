@@ -110,34 +110,45 @@ class OverviewViewController: UIViewController
      */
     func shareOverview(sender: UIBarButtonItem)
     {
-        UIGraphicsBeginImageContext(view.frame.size)
-        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        var image: UIImage!
         
-        var objectsToShare = [AnyObject]()
-        
-        if let shareTextObj = generateShareMessage()
-        {
-            objectsToShare.append(shareTextObj)
-        }
-        
-        if let shareImageObj = image
-        {
-            objectsToShare.append(shareImageObj)
-        }
-        
-        if image != nil
-        {
-            let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = self.view
+        // Scrolls the tableview so we can take a screenshot of it to share.
+        tableView.screenshot(1.0) { (screenshot) -> Void in
             
-            presentViewController(activityViewController, animated: true, completion: nil)
+            image = screenshot
+            
+            var objectsToShare = [AnyObject]()
+            
+            if let shareTextObj = self.generateShareMessage()
+            {
+                objectsToShare.append(shareTextObj)
+            }
+            
+            if let shareImageObj = image
+            {
+                objectsToShare.append(shareImageObj)
+            }
+            
+            if image != nil
+            {
+                let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = self.view
+                
+                self.presentViewController(activityViewController, animated: true, completion: nil)
+            }
+            else
+            {
+                self.displayShareMessage()
+            }
         }
-        else
-        {
-            print("There is nothing to share")
-        }
+    }
+    
+    /**
+     * Displays the error message that we cannot share.
+     */
+    func displayShareMessage()
+    {
+        print("There is nothing to share")
     }
     
     func finish()
@@ -194,6 +205,11 @@ class OverviewViewController: UIViewController
         displayFinishAlert()
     }
     
+//    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation)
+//    {
+//        self.tableView.reloadData()
+//    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return cards.count
@@ -205,6 +221,65 @@ class OverviewViewController: UIViewController
         
         return card.type == OverviewRowType.HEADER ? 1 : card.rows.count
     }
+    
+//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+//    {
+//        let section = indexPath.section
+//        
+//        let card = cards[section]
+//        
+//        let index = indexPath.row
+//        
+//        switch card.type
+//        {
+//            case OverviewRowType.HEADER:
+//                
+//                let cell = cell as! OverviewCardHeaderController
+//                cell.outline.roundCorners([.TopLeft, .TopRight], radius: Dimention.RADIUS)
+//                cell.headerView.roundCorners([.TopLeft, .TopRight], radius: Dimention.RADIUS_INNER)
+//            
+//                break
+//                
+//            case OverviewRowType.EXERCISES:
+//                
+//                let cell = cell as! OverviewExerciseCellController
+//                
+//                // We only want to round the corners of the last row in the overview screen.
+//                if (index == card.rows.count - 1)
+//                {
+//                    cell.outline.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
+//                    cell.view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS_INNER)
+//                }
+//                else
+//                {
+//                    cell.outline.roundCorners([], radius: 0)
+//                    cell.view.roundCorners([], radius: 0)
+//                }
+//            
+//                break
+//                
+//            case OverviewRowType.AWARDS:
+//                
+//                let cell = cell as! NotificationCellViewController
+//                
+//                // We only want to round the corners of the last row in the overview screen.
+//                if (index == card.rows.count - 1)
+//                {
+//                    cell.outline.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
+//                    cell.view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS_INNER)
+//                }
+//                else
+//                {
+//                    cell.outline.roundCorners([], radius: 0)
+//                    cell.view.roundCorners([], radius: 0)
+//                }
+//                
+//                break
+//            
+//            default:
+//                break
+//        }
+//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
@@ -236,7 +311,6 @@ class OverviewViewController: UIViewController
                 
                 cell.sets = exercise.sets
                 cell.initializeTableView()
-                cell.roundCorners = index == card.rows.count - 1
                 
                 return cell
             
@@ -244,7 +318,7 @@ class OverviewViewController: UIViewController
                 
                 let awards = card.rows as! [Awards]
                 
-                return AwardCell.getCell(tableView, cellName: Constant.OVERVIEW_AWARD_CELL, index: index, awards: awards, roundLastCell: true)
+                return AwardCell.getCell(tableView, cellName: Constant.OVERVIEW_AWARD_CELL, index: index, awards: awards, includeDivider: true)
         }
     }
     

@@ -20,11 +20,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KW8-9t-b2q">
                                 <rect key="frame" x="1" y="0.0" width="471" height="181.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lL6-eJ-TiE">
-                                        <rect key="frame" x="0.0" y="0.0" width="471" height="181.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lL6-eJ-TiE">
+                                        <rect key="frame" x="0.0" y="0.0" width="471" height="182"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Q9-bG-c0l">
-                                                <rect key="frame" x="0.0" y="0.0" width="471" height="41.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="471" height="36.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXj-ep-ske">
                                                         <rect key="frame" x="16" y="16" width="439" height="20.5"/>
@@ -37,15 +37,15 @@
                                                 <constraints>
                                                     <constraint firstItem="BXj-ep-ske" firstAttribute="leading" secondItem="9Q9-bG-c0l" secondAttribute="leading" constant="16" id="Oyv-xF-7kZ"/>
                                                     <constraint firstItem="BXj-ep-ske" firstAttribute="top" secondItem="9Q9-bG-c0l" secondAttribute="top" constant="16" id="anQ-SU-nTL"/>
-                                                    <constraint firstAttribute="bottom" secondItem="BXj-ep-ske" secondAttribute="bottom" constant="5" id="dJg-NE-EQy"/>
+                                                    <constraint firstAttribute="bottom" secondItem="BXj-ep-ske" secondAttribute="bottom" id="dJg-NE-EQy"/>
                                                     <constraint firstAttribute="trailing" secondItem="BXj-ep-ske" secondAttribute="trailing" constant="16" id="nks-yS-g17"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpF-ui-q2F">
-                                                <rect key="frame" x="0.0" y="46.5" width="471" height="135"/>
+                                                <rect key="frame" x="0.0" y="36.5" width="471" height="145.5"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Jn-HL-JmP">
-                                                        <rect key="frame" x="16" y="0.0" width="439" height="119"/>
+                                                        <rect key="frame" x="16" y="0.0" width="439" height="129.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableView>
                                                 </subviews>
@@ -88,6 +88,7 @@
             <connections>
                 <outlet property="content" destination="Q6E-4B-YMS" id="y3x-Kb-7Ny"/>
                 <outlet property="outline" destination="IBK-AS-9Oh" id="FIO-tM-EE0"/>
+                <outlet property="stackView" destination="lL6-eJ-TiE" id="p2f-wU-Xok"/>
                 <outlet property="tableView" destination="8Jn-HL-JmP" id="pBb-XD-0PV"/>
                 <outlet property="title" destination="BXj-ep-ske" id="R47-AQ-Gtz"/>
                 <outlet property="view" destination="KW8-9t-b2q" id="5ji-hN-cPH"/>

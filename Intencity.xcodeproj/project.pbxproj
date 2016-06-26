@@ -77,6 +77,7 @@
 		BD6591591CA9B20800D892C3 /* ProfileLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6591581CA9B20800D892C3 /* ProfileLabel.swift */; };
 		BD6E4B041C84A89900C4E6FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E4B031C84A89900C4E6FB /* User.swift */; };
 		BD6E4B061C84B2AC00C4E6FB /* UserSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E4B051C84B2AC00C4E6FB /* UserSearchDelegate.swift */; };
+		BD72CAD51D1FFE14001C3F76 /* ScrollImager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD72CAD41D1FFE14001C3F76 /* ScrollImager.swift */; };
 		BD74A2591C735EA700E6ABD2 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74A2581C735EA700E6ABD2 /* StatViewController.swift */; };
 		BD7A87081CCE42D6005BC2DF /* RoutineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD7A87071CCE42D6005BC2DF /* RoutineCell.xib */; };
 		BD7A870A1CCE4542005BC2DF /* RoutineCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7A87091CCE4542005BC2DF /* RoutineCellController.swift */; };
@@ -264,6 +265,7 @@
 		BD6591581CA9B20800D892C3 /* ProfileLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileLabel.swift; sourceTree = "<group>"; };
 		BD6E4B031C84A89900C4E6FB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BD6E4B051C84B2AC00C4E6FB /* UserSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchDelegate.swift; sourceTree = "<group>"; };
+		BD72CAD41D1FFE14001C3F76 /* ScrollImager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollImager.swift; sourceTree = "<group>"; };
 		BD74A2581C735EA700E6ABD2 /* StatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
 		BD7A87071CCE42D6005BC2DF /* RoutineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutineCell.xib; sourceTree = "<group>"; };
 		BD7A87091CCE4542005BC2DF /* RoutineCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCellController.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 		BD1053971C6CC989004C10C7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BD72CAD41D1FFE14001C3F76 /* ScrollImager.swift */,
 				BD0CD6F91C984789004FF750 /* Toast.swift */,
 				BD91FC0E1CAD733600965782 /* NSMutableData.swift */,
 				BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */,
@@ -941,6 +944,7 @@
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,
 				BD93252B1CC55BD100D9581E /* IntencityButtonRoundLight.swift in Sources */,
 				BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */,
+				BD72CAD51D1FFE14001C3F76 /* ScrollImager.swift in Sources */,
 				BD43E11C1C847D77002F14C6 /* SearchViewController.swift in Sources */,
 				BD7A870A1CCE4542005BC2DF /* RoutineCellController.swift in Sources */,
 				BD7C7E7C1C7C9ABD005AFFDD /* MenuRow.swift in Sources */,

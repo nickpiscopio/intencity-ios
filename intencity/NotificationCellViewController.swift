@@ -21,8 +21,6 @@ class NotificationCellViewController: UITableViewCell
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var divider: UIView!
     
-    var roundCorners = false
-    
     override func awakeFromNib()
     {
         super.awakeFromNib()
@@ -42,21 +40,6 @@ class NotificationCellViewController: UITableViewCell
         }
         
         divider.backgroundColor = Color.shadow
-    }
-    
-    override func layoutSubviews()
-    {
-        super.layoutSubviews()
-        
-        // We only want to round the corners of the last row in the overview screen.
-        if (roundCorners)
-        {
-            // This needs to be called in layoutSubviews() because if it is called in awakeFromNib(), the width of the view is divided in half.
-            // Place in viewDidLayoutSubviews for normal ViewControllers.
-            // http://stackoverflow.com/questions/10316902/rounded-corners-only-on-top-of-a-uiview
-            outline.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
-            view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS_INNER)
-        }
     }
     
     /**
