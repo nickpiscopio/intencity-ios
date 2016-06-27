@@ -28,6 +28,8 @@ class OverviewCardController: UITableViewCell
         
         title.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_SMALL)
         title.textColor = Color.secondary_light
+        
+        itemStackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     /**
@@ -57,7 +59,7 @@ class OverviewCardController: UITableViewCell
                 for z in 0 ..< setCount
                 {
                     let setView = Util.loadNib(Constant.OVERVIEW_SET_CELL) as! OverviewSetCellController
-                    setView.heightAnchor.constraintEqualToConstant(setView.bounds.size.height).active = true
+                    setView.heightAnchor.constraintEqualToConstant(18).active = true
                     setView.setEditText(sets[z])
                     
                     view.setStackView.addArrangedSubview(setView)

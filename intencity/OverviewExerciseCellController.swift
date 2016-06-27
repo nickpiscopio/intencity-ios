@@ -23,5 +23,7 @@ class OverviewExerciseCellController: UITableViewCell
         title.textColor = Color.secondary_light
         
         divider.backgroundColor = Color.shadow
+        
+        setStackView.translatesAutoresizingMaskIntoConstraints = false
     }
 }
