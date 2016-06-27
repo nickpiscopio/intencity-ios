@@ -68,8 +68,8 @@
 		BD5F97841D0F8702001E5A26 /* AwardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F97831D0F8702001E5A26 /* AwardType.swift */; };
 		BD5F97861D10BEE4001E5A26 /* IntencityRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F97851D10BEE4001E5A26 /* IntencityRoundView.swift */; };
 		BD5F978A1D149CEE001E5A26 /* OverviewRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F97891D149CEE001E5A26 /* OverviewRowType.swift */; };
-		BD5F978C1D149F59001E5A26 /* OverviewCardHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5F978B1D149F59001E5A26 /* OverviewCardHeader.xib */; };
-		BD5F978E1D14A02A001E5A26 /* OverviewCardHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F978D1D14A02A001E5A26 /* OverviewCardHeaderController.swift */; };
+		BD5F978C1D149F59001E5A26 /* OverviewCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5F978B1D149F59001E5A26 /* OverviewCard.xib */; };
+		BD5F978E1D14A02A001E5A26 /* OverviewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F978D1D14A02A001E5A26 /* OverviewCardController.swift */; };
 		BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */; };
 		BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */; };
 		BD640A4F1C85D1D7008895A2 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD640A4E1C85D1D7008895A2 /* RankingCell.xib */; };
@@ -77,7 +77,6 @@
 		BD6591591CA9B20800D892C3 /* ProfileLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6591581CA9B20800D892C3 /* ProfileLabel.swift */; };
 		BD6E4B041C84A89900C4E6FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E4B031C84A89900C4E6FB /* User.swift */; };
 		BD6E4B061C84B2AC00C4E6FB /* UserSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E4B051C84B2AC00C4E6FB /* UserSearchDelegate.swift */; };
-		BD72CAD51D1FFE14001C3F76 /* ScrollImager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD72CAD41D1FFE14001C3F76 /* ScrollImager.swift */; };
 		BD74A2591C735EA700E6ABD2 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74A2581C735EA700E6ABD2 /* StatViewController.swift */; };
 		BD7A87081CCE42D6005BC2DF /* RoutineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD7A87071CCE42D6005BC2DF /* RoutineCell.xib */; };
 		BD7A870A1CCE4542005BC2DF /* RoutineCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7A87091CCE4542005BC2DF /* RoutineCellController.swift */; };
@@ -96,8 +95,6 @@
 		BD85D5CB1D16CF6D0004F5C2 /* OverviewSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD85D5CA1D16CF6D0004F5C2 /* OverviewSetCell.xib */; };
 		BD85D5CD1D16CF820004F5C2 /* OverviewSetCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85D5CC1D16CF820004F5C2 /* OverviewSetCellController.swift */; };
 		BD85D5CF1D16D5BC0004F5C2 /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85D5CE1D16D5BC0004F5C2 /* ExerciseSet.swift */; };
-		BD85D5D31D19F5710004F5C2 /* OverviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85D5D21D19F5710004F5C2 /* OverviewCard.swift */; };
-		BD85D5D51D19FEC80004F5C2 /* AwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85D5D41D19FEC80004F5C2 /* AwardCell.swift */; };
 		BD8810FA1C91CA270098FA64 /* IntencityButtonNoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */; };
 		BD8810FC1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */; };
 		BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8811011C92FF3A0098FA64 /* Badge.swift */; };
@@ -143,7 +140,6 @@
 		BDB45A1E1C849F52009E509B /* ExerciseDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB45A1D1C849F52009E509B /* ExerciseDao.swift */; };
 		BDB45A201C84A122009E509B /* ExerciseSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB45A1F1C84A122009E509B /* ExerciseSearchDelegate.swift */; };
 		BDBA605D1C85D61D002D5F4A /* UserDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA605C1C85D61D002D5F4A /* UserDao.swift */; };
-		BDBB2E881D1CA1D200BF0682 /* OverviewAwardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDBB2E871D1CA1D200BF0682 /* OverviewAwardCell.xib */; };
 		BDBDB56B1C87504E00A2EE2C /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = BDBDB56A1C87504E00A2EE2C /* privacy.html */; };
 		BDC970801CD24B0D007BEE84 /* EditSavedRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC9707F1CD24B0D007BEE84 /* EditSavedRoutineViewController.swift */; };
 		BDC970821CD390E2007BEE84 /* RoutineRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC970811CD390E2007BEE84 /* RoutineRow.swift */; };
@@ -256,8 +252,8 @@
 		BD5F97831D0F8702001E5A26 /* AwardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardType.swift; sourceTree = "<group>"; };
 		BD5F97851D10BEE4001E5A26 /* IntencityRoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityRoundView.swift; sourceTree = "<group>"; };
 		BD5F97891D149CEE001E5A26 /* OverviewRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewRowType.swift; sourceTree = "<group>"; };
-		BD5F978B1D149F59001E5A26 /* OverviewCardHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewCardHeader.xib; sourceTree = "<group>"; };
-		BD5F978D1D14A02A001E5A26 /* OverviewCardHeaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCardHeaderController.swift; sourceTree = "<group>"; };
+		BD5F978B1D149F59001E5A26 /* OverviewCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewCard.xib; sourceTree = "<group>"; };
+		BD5F978D1D14A02A001E5A26 /* OverviewCardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCardController.swift; sourceTree = "<group>"; };
 		BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
 		BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCellController.swift; sourceTree = "<group>"; };
 		BD640A4E1C85D1D7008895A2 /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
@@ -265,7 +261,6 @@
 		BD6591581CA9B20800D892C3 /* ProfileLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileLabel.swift; sourceTree = "<group>"; };
 		BD6E4B031C84A89900C4E6FB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BD6E4B051C84B2AC00C4E6FB /* UserSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchDelegate.swift; sourceTree = "<group>"; };
-		BD72CAD41D1FFE14001C3F76 /* ScrollImager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollImager.swift; sourceTree = "<group>"; };
 		BD74A2581C735EA700E6ABD2 /* StatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
 		BD7A87071CCE42D6005BC2DF /* RoutineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutineCell.xib; sourceTree = "<group>"; };
 		BD7A87091CCE4542005BC2DF /* RoutineCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCellController.swift; sourceTree = "<group>"; };
@@ -284,8 +279,6 @@
 		BD85D5CA1D16CF6D0004F5C2 /* OverviewSetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewSetCell.xib; sourceTree = "<group>"; };
 		BD85D5CC1D16CF820004F5C2 /* OverviewSetCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewSetCellController.swift; sourceTree = "<group>"; };
 		BD85D5CE1D16D5BC0004F5C2 /* ExerciseSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseSet.swift; sourceTree = "<group>"; };
-		BD85D5D21D19F5710004F5C2 /* OverviewCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCard.swift; sourceTree = SOURCE_ROOT; };
-		BD85D5D41D19FEC80004F5C2 /* AwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardCell.swift; sourceTree = "<group>"; };
 		BD8810F91C91CA270098FA64 /* IntencityButtonNoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackground.swift; sourceTree = "<group>"; };
 		BD8810FB1C91CA360098FA64 /* IntencityButtonNoBackgroundSmall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundSmall.swift; sourceTree = "<group>"; };
 		BD8811011C92FF3A0098FA64 /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
@@ -331,7 +324,6 @@
 		BDB45A1D1C849F52009E509B /* ExerciseDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDao.swift; sourceTree = "<group>"; };
 		BDB45A1F1C84A122009E509B /* ExerciseSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseSearchDelegate.swift; sourceTree = "<group>"; };
 		BDBA605C1C85D61D002D5F4A /* UserDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDao.swift; sourceTree = "<group>"; };
-		BDBB2E871D1CA1D200BF0682 /* OverviewAwardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewAwardCell.xib; sourceTree = "<group>"; };
 		BDBDB56A1C87504E00A2EE2C /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		BDC9707F1CD24B0D007BEE84 /* EditSavedRoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSavedRoutineViewController.swift; sourceTree = "<group>"; };
 		BDC970811CD390E2007BEE84 /* RoutineRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineRow.swift; sourceTree = "<group>"; };
@@ -421,7 +413,6 @@
 		BD1053971C6CC989004C10C7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BD72CAD41D1FFE14001C3F76 /* ScrollImager.swift */,
 				BD0CD6F91C984789004FF750 /* Toast.swift */,
 				BD91FC0E1CAD733600965782 /* NSMutableData.swift */,
 				BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */,
@@ -444,7 +435,7 @@
 				BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */,
 				BDF1E4A01D0D973B004CEAFC /* OverviewHeaderCellController.swift */,
 				BDF1E4A41D0DA0DD004CEAFC /* OverviewFooterCellController.swift */,
-				BD5F978D1D14A02A001E5A26 /* OverviewCardHeaderController.swift */,
+				BD5F978D1D14A02A001E5A26 /* OverviewCardController.swift */,
 				BD85D5C81D1578E00004F5C2 /* OverviewExerciseCellController.swift */,
 				BD85D5CC1D16CF820004F5C2 /* OverviewSetCellController.swift */,
 				BDD53BF71C8A32A7001235AE /* FitnessRecHeaderCellController.swift */,
@@ -504,7 +495,6 @@
 		BD6E4B011C84A86B00C4E6FB /* Structs */ = {
 			isa = PBXGroup;
 			children = (
-				BD85D5D21D19F5710004F5C2 /* OverviewCard.swift */,
 				BDB37F9E1CCA71D400470479 /* RoutineSection.swift */,
 				BDB37F9C1CCA719700470479 /* RoutineGroup.swift */,
 				BDC970811CD390E2007BEE84 /* RoutineRow.swift */,
@@ -534,7 +524,6 @@
 			isa = PBXGroup;
 			children = (
 				BD36EC221C70F0A400F993CE /* Exercise.swift */,
-				BD85D5D41D19FEC80004F5C2 /* AwardCell.swift */,
 				BDD89BF41C9065EB00530D79 /* Awards.swift */,
 				BD6E4B031C84A89900C4E6FB /* User.swift */,
 			);
@@ -717,9 +706,8 @@
 				BD294ACC1CC13679005718BA /* RoutineCellFooter.xib */,
 				BD36EC281C71048600F993CE /* ExerciseCard.xib */,
 				BD85D5CA1D16CF6D0004F5C2 /* OverviewSetCell.xib */,
-				BD5F978B1D149F59001E5A26 /* OverviewCardHeader.xib */,
+				BD5F978B1D149F59001E5A26 /* OverviewCard.xib */,
 				BD85D5C61D1578AD0004F5C2 /* OverviewExerciseCell.xib */,
-				BDBB2E871D1CA1D200BF0682 /* OverviewAwardCell.xib */,
 				BD1F30E41CAAC69600002D06 /* AwardCell.xib */,
 				BD1F30E81CAACACA00002D06 /* AwardCollectionViewCell.xib */,
 				BDB45A191C849AAF009E509B /* SearchExerciseCell.xib */,
@@ -826,7 +814,7 @@
 				BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */,
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
 				BDF1E49F1D0D9571004CEAFC /* OverviewHeaderCell.xib in Resources */,
-				BD5F978C1D149F59001E5A26 /* OverviewCardHeader.xib in Resources */,
+				BD5F978C1D149F59001E5A26 /* OverviewCard.xib in Resources */,
 				BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */,
 				BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */,
 				BDE493FD1C7B9B45005817D0 /* GenericHeaderCell.xib in Resources */,
@@ -845,7 +833,6 @@
 				BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */,
 				BD7A87081CCE42D6005BC2DF /* RoutineCell.xib in Resources */,
 				BDD53BFC1C8A336D001235AE /* FitnessRecFooterCell.xib in Resources */,
-				BDBB2E881D1CA1D200BF0682 /* OverviewAwardCell.xib in Resources */,
 				BD294ACD1CC13679005718BA /* RoutineCellFooter.xib in Resources */,
 				BD7A87101CCE9F72005BC2DF /* RoutineContinueCell.xib in Resources */,
 				BDE493F91C7B9A26005817D0 /* GenericCell.xib in Resources */,
@@ -944,7 +931,6 @@
 				BD9EF2B41C6A894E00E520CB /* CreateAccountViewController.swift in Sources */,
 				BD93252B1CC55BD100D9581E /* IntencityButtonRoundLight.swift in Sources */,
 				BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */,
-				BD72CAD51D1FFE14001C3F76 /* ScrollImager.swift in Sources */,
 				BD43E11C1C847D77002F14C6 /* SearchViewController.swift in Sources */,
 				BD7A870A1CCE4542005BC2DF /* RoutineCellController.swift in Sources */,
 				BD7C7E7C1C7C9ABD005AFFDD /* MenuRow.swift in Sources */,
@@ -962,7 +948,7 @@
 				BD56FB8F1CD0004A001404C5 /* ButtonDelegate.swift in Sources */,
 				BD7C7E851C7CA0CF005AFFDD /* EditEquipmentViewController.swift in Sources */,
 				BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */,
-				BD5F978E1D14A02A001E5A26 /* OverviewCardHeaderController.swift in Sources */,
+				BD5F978E1D14A02A001E5A26 /* OverviewCardController.swift in Sources */,
 				BD7A870C1CCE46A9005BC2DF /* IntencityRoutineViewController.swift in Sources */,
 				BD7A87121CCEA137005BC2DF /* RoutineContinueCellController.swift in Sources */,
 				BD1AE7761CD23E28001FAAA8 /* UserRoutineDao.swift in Sources */,
@@ -1036,7 +1022,6 @@
 				BDDAD8F31CC29E4D00C07DB2 /* AddRoutineViewController.swift in Sources */,
 				BD85D5CF1D16D5BC0004F5C2 /* ExerciseSet.swift in Sources */,
 				BD4B8EB91C7CEACD00AD579B /* DescriptionFooterCellController.swift in Sources */,
-				BD85D5D31D19F5710004F5C2 /* OverviewCard.swift in Sources */,
 				BDD53BED1C8A1881001235AE /* FitnessRecommendationViewController.swift in Sources */,
 				BD37E3AE1C7F4273004A30F7 /* SavedExercise.swift in Sources */,
 				BDFD87871CA196D700ECDDCE /* ExercisePriorityDelegate.swift in Sources */,
@@ -1049,7 +1034,6 @@
 				BDF1E4A11D0D973B004CEAFC /* OverviewHeaderCellController.swift in Sources */,
 				BD947A041C6CF252003F3767 /* IntencityError.swift in Sources */,
 				BD294ACB1CBE7C3B005718BA /* ExercisePriorityUtil.swift in Sources */,
-				BD85D5D51D19FEC80004F5C2 /* AwardCell.swift in Sources */,
 				BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */,
 				BD03C7BB1C761B6000D8911A /* SetDelegate.swift in Sources */,
 				BD4B8EB71C7CE22C00AD579B /* AboutSection.swift in Sources */,

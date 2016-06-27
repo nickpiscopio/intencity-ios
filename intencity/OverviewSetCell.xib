@@ -7,20 +7,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OverviewSetCell" rowHeight="32" id="uYB-jd-plL" customClass="OverviewSetCellController" customModule="Intencity" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="408" height="32"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OverviewSetCell" rowHeight="61" id="uYB-jd-plL" customClass="OverviewSetCellController" customModule="Intencity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="408" height="61"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uYB-jd-plL" id="UFj-wN-m2V">
-                <rect key="frame" x="0.0" y="0.0" width="408" height="31.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="408" height="60.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zle-31-bG7">
-                        <rect key="frame" x="0.0" y="0.0" width="408" height="31.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="408" height="60.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fs-o6-VMm">
-                                <rect key="frame" x="0.0" y="0.0" width="408" height="31.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="408" height="60.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -43,7 +43,7 @@
             <connections>
                 <outlet property="setLabel" destination="1Fs-o6-VMm" id="JdA-7j-Zxy"/>
             </connections>
-            <point key="canvasLocation" x="-331" y="224"/>
+            <point key="canvasLocation" x="-331" y="238.5"/>
         </tableViewCell>
     </objects>
 </document>

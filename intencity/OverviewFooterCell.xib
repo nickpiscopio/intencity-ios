@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZrI-oz-96W">
-                        <rect key="frame" x="232" y="8" width="126" height="21"/>
+                        <rect key="frame" x="232" y="0.0" width="126" height="21"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXJ-h8-Sex">
                                 <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
@@ -39,7 +39,7 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ZrI-oz-96W" firstAttribute="top" secondItem="jEe-t1-ffh" secondAttribute="top" constant="8" id="iEm-Hh-LV6"/>
+                    <constraint firstItem="ZrI-oz-96W" firstAttribute="top" secondItem="jEe-t1-ffh" secondAttribute="top" id="g7n-9y-VNN"/>
                     <constraint firstItem="ZrI-oz-96W" firstAttribute="centerX" secondItem="jEe-t1-ffh" secondAttribute="centerX" id="lah-ph-mIX"/>
                 </constraints>
             </tableViewCellContentView>

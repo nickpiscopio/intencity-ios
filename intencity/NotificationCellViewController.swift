@@ -12,7 +12,6 @@ import UIKit
 class NotificationCellViewController: UITableViewCell
 {
     @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var outline: UIView!
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var awardImage: UIImageView!
     @IBOutlet weak var awardTitle: UILabel!
@@ -28,18 +27,6 @@ class NotificationCellViewController: UITableViewCell
         awardTitle.font = awardTitle.font.fontWithSize(Dimention.FONT_SIZE_LARGE)
         awardTitle.textColor = Color.secondary_dark
         awardDescription.textColor = Color.secondary_dark
-        
-        if (outline != nil)
-        {
-            outline.backgroundColor = Color.shadow
-        }
-        
-        if (cellView != nil)
-        {
-            cellView.backgroundColor = Color.page_background
-        }
-        
-        divider.backgroundColor = Color.shadow
     }
     
     /**

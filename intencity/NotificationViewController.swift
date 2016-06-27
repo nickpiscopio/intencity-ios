@@ -52,6 +52,26 @@ class NotificationViewController: UIViewController
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        return AwardCell.getCell(tableView, cellName: Constant.NOTIFICATION_CELL, index: indexPath.row, awards: notifications, includeDivider: false)
+        let index = indexPath.row
+        
+        let notification = notifications[index]
+        let imageName = notification.awardImageName
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.NOTIFICATION_CELL) as! NotificationCellViewController
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
+        if (imageName != "")
+        {
+            cell.initCellWithImage(imageName)
+        }
+        else
+        {
+            cell.initCellWithTitle(notification.awardTitle)
+        }
+        
+        cell.setAwardAmounts(notification.amount)
+        cell.awardDescription.text = notification.awardDescription
+        
+        return cell
     }
 }

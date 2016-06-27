@@ -16,7 +16,7 @@ class OverviewViewController: UIViewController
     
     let FINISH_ICON_NAME = "icon_finish"
 
-    let WARM_UP_NAME = NSLocalizedString("wvar_up", comment: "")
+    let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
     let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
     let NO_LOGIN_ACCCOUNT_TITLE = NSLocalizedString("no_login_account_title", comment: "")
 
@@ -25,13 +25,10 @@ class OverviewViewController: UIViewController
     var email = ""
     
     var exerciseData: ExerciseData!
-    var exercises = [Exercise]()
     
     var notificationHandler: NotificationHandler!
     
     var viewDelegate: ViewDelegate!
-    
-    var cards = [OverviewCard]()
     
     override func viewDidLoad()
     {
@@ -55,14 +52,10 @@ class OverviewViewController: UIViewController
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
 
         // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_CARD_HEADER, cellName: Constant.OVERVIEW_CARD_HEADER)
-        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_EXERCISE_CELL, cellName: Constant.OVERVIEW_EXERCISE_CELL)
-        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_AWARD_CELL, cellName: Constant.OVERVIEW_AWARD_CELL)
+        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_CARD, cellName: Constant.OVERVIEW_CARD)
         
         addHeader()
         addFooter()
-        
-        initCards()
         
         initMenuButtons()
     }
@@ -70,28 +63,6 @@ class OverviewViewController: UIViewController
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-    }
-    
-    /**
-     * Initializes the overview cards.
-     */
-    func initCards()
-    {
-        exercises.appendContentsOf(exerciseData.exerciseList)
-        
-        // We remove the WARM-UP exercise.
-        exercises.removeAtIndex(0)
-        
-        let lastExercise = exercises.count - 1
-        if (exercises[lastExercise].exerciseName == STRETCH_NAME)
-        {
-            exercises.removeAtIndex(lastExercise)
-        }
-        
-        cards.append(OverviewCard.init(type: OverviewRowType.HEADER, icon: UIImage(named: "icon_fitness_log")!, title: NSLocalizedString("title_exercises", comment: "")))
-        cards.append(OverviewCard.init(type: OverviewRowType.EXERCISES, rows: exercises))
-        cards.append(OverviewCard.init(type: OverviewRowType.HEADER, icon: UIImage(named: "ranking_badge")!, title: NSLocalizedString("awards_title", comment: "").uppercaseString))
-        cards.append(OverviewCard.init(type: OverviewRowType.AWARDS, rows: notificationHandler.awards))
     }
     
     /**
@@ -110,45 +81,32 @@ class OverviewViewController: UIViewController
      */
     func shareOverview(sender: UIBarButtonItem)
     {
-        var image: UIImage!
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
         
-        // Scrolls the tableview so we can take a screenshot of it to share.
-        tableView.screenshot(1.0) { (screenshot) -> Void in
-            
-            image = screenshot
-            
-            var objectsToShare = [AnyObject]()
-            
-            if let shareTextObj = self.generateShareMessage()
-            {
-                objectsToShare.append(shareTextObj)
-            }
-            
-            if let shareImageObj = image
-            {
-                objectsToShare.append(shareImageObj)
-            }
-            
-            if image != nil
-            {
-                let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                activityViewController.popoverPresentationController?.sourceView = self.view
-                
-                self.presentViewController(activityViewController, animated: true, completion: nil)
-            }
-            else
-            {
-                self.displayShareMessage()
-            }
+        var objectsToShare = [AnyObject]()
+        
+        if let shareTextObj = generateShareMessage()
+        {
+            objectsToShare.append(shareTextObj)
         }
-    }
-    
-    /**
-     * Displays the error message that we cannot share.
-     */
-    func displayShareMessage()
-    {
-        print("There is nothing to share")
+        
+        if let shareImageObj = image
+        {
+            objectsToShare.append(shareImageObj)
+        }
+        
+        if image != nil
+        {
+            let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            
+            presentViewController(activityViewController, animated: true, completion: nil)
+        }else{
+            print("There is nothing to share")
+        }
     }
     
     func finish()
@@ -205,121 +163,52 @@ class OverviewViewController: UIViewController
         displayFinishAlert()
     }
     
-//    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation)
-//    {
-//        self.tableView.reloadData()
-//    }
+    /**
+     * Animates the table being added to the screen.
+     *
+     * @param loadNextExercise  A boolean value of whether to load the next exercise or not.
+     */
+    func animateTable(indexToLoad: Int)
+    {
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesInRange: range)
+            
+        tableView.reloadSections(sections, withRowAnimation: .Top)
+    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return cards.count
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        let card = cards[section]
-        
-        return card.type == OverviewRowType.HEADER ? 1 : card.rows.count
+        return 2
     }
-    
-//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//        let section = indexPath.section
-//        
-//        let card = cards[section]
-//        
-//        let index = indexPath.row
-//        
-//        switch card.type
-//        {
-//            case OverviewRowType.HEADER:
-//                
-//                let cell = cell as! OverviewCardHeaderController
-//                cell.outline.roundCorners([.TopLeft, .TopRight], radius: Dimention.RADIUS)
-//                cell.headerView.roundCorners([.TopLeft, .TopRight], radius: Dimention.RADIUS_INNER)
-//            
-//                break
-//                
-//            case OverviewRowType.EXERCISES:
-//                
-//                let cell = cell as! OverviewExerciseCellController
-//                
-//                // We only want to round the corners of the last row in the overview screen.
-//                if (index == card.rows.count - 1)
-//                {
-//                    cell.outline.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
-//                    cell.view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS_INNER)
-//                }
-//                else
-//                {
-//                    cell.outline.roundCorners([], radius: 0)
-//                    cell.view.roundCorners([], radius: 0)
-//                }
-//            
-//                break
-//                
-//            case OverviewRowType.AWARDS:
-//                
-//                let cell = cell as! NotificationCellViewController
-//                
-//                // We only want to round the corners of the last row in the overview screen.
-//                if (index == card.rows.count - 1)
-//                {
-//                    cell.outline.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS)
-//                    cell.view.roundCorners([.BottomLeft, .BottomRight], radius: Dimention.RADIUS_INNER)
-//                }
-//                else
-//                {
-//                    cell.outline.roundCorners([], radius: 0)
-//                    cell.view.roundCorners([], radius: 0)
-//                }
-//                
-//                break
-//            
-//            default:
-//                break
-//        }
-//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let section = indexPath.section
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_CARD) as! OverviewCardController
         
-        let card = cards[section]
+        let index = indexPath.item
         
-        let index = indexPath.row
-        
-        switch card.type
+        switch index
         {
-            case OverviewRowType.HEADER:
-                
-                let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_CARD_HEADER) as! OverviewCardHeaderController
-                cell.selectionStyle = UITableViewCellSelectionStyle.None
-                cell.cardIcon.image = card.icon
-                cell.title.text = card.title
-                
-                return cell
-            
             case OverviewRowType.EXERCISES:
-                
-                let exercise = card.rows[index] as! Exercise              
-                
-                let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_EXERCISE_CELL) as! OverviewExerciseCellController
-                cell.selectionStyle = UITableViewCellSelectionStyle.None
-                cell.title.text = exercise.exerciseName
-                cell.title.textColor = exercise.fromIntencity ? Color.primary : Color.secondary_dark
-                
-                cell.sets = exercise.sets
-                cell.initializeTableView()
-                
-                return cell
-            
+                cell.cardIcon.image = UIImage(named: "icon_fitness_log")
+                cell.title.text = NSLocalizedString("title_exercises", comment: "")
+                cell.addExercises(exerciseData.exerciseList)
+                break
+            case OverviewRowType.AWARDS:
+                cell.cardIcon.image = UIImage(named: "ranking_badge")
+                cell.title.text = NSLocalizedString("awards_title", comment: "").uppercaseString
+                cell.addAwards(NotificationHandler.getInstance(nil).awards)
+                break
             default:
-                
-                let awards = card.rows as! [Awards]
-                
-                return AwardCell.getCell(tableView, cellName: Constant.OVERVIEW_AWARD_CELL, index: index, awards: awards, includeDivider: true)
+                break
         }
+        
+        return cell
     }
     
     /**
