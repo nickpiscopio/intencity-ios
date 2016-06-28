@@ -12,7 +12,25 @@ import Social
 
 class OverviewViewController: UIViewController
 {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet weak var routineTitle: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var exerciseCardIcon: UIImageView!
+    @IBOutlet weak var exerciseTitle: UILabel!
+    @IBOutlet weak var exerciseItemStackView: UIStackView!
+    
+    @IBOutlet weak var awardCardIcon: UIImageView!
+    @IBOutlet weak var awardTitle: UILabel!
+    @IBOutlet weak var awardItemStackView: UIStackView!
+    
+    @IBOutlet weak var websiteView: UIView!
+    @IBOutlet weak var websitePrefix: UILabel!
+    @IBOutlet weak var websiteSuffix: UILabel!
+    @IBOutlet weak var websiteEnd: UILabel!
+    
     
     let FINISH_ICON_NAME = "icon_finish"
 
@@ -48,16 +66,53 @@ class OverviewViewController: UIViewController
         notificationHandler = NotificationHandler.getInstance(nil)
         exerciseData = ExerciseData.getInstance()
         
+        contentView.backgroundColor = Color.page_background
+        
+        // Header
+        routineTitle.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_NORMAL)
+        dateLabel.font = dateLabel.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
+        
+        routineTitle.textColor = Color.secondary_dark
+        dateLabel.textColor = Color.secondary_dark
+        
+        // Exercise card
+        exerciseTitle.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_SMALL)
+        exerciseTitle.textColor = Color.secondary_light
+        exerciseItemStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Award card
+        awardTitle.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_SMALL)
+        awardTitle.textColor = Color.secondary_light
+        awardItemStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Footer
+        websiteView.backgroundColor = Color.page_background
+        
+        websitePrefix.font = websitePrefix.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
+        websiteSuffix.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_SMALL)
+        websiteEnd.font = websiteEnd.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
+        
+        websitePrefix.textColor = Color.secondary_light
+        websiteSuffix.textColor = Color.secondary_light
+        websiteEnd.textColor = Color.secondary_light
+        
+        websitePrefix.text = NSLocalizedString("app_name_prefix", comment: "")
+        websiteSuffix.text = NSLocalizedString("app_name_suffix", comment: "")
+        websiteEnd.text = NSLocalizedString("website_suffix", comment: "")
+        
         // Initialize the tableview.
-        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
-
-        // Load the cells we are going to use in the tableview.
-        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_CARD, cellName: Constant.OVERVIEW_CARD)
+//        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
+//
+//        // Load the cells we are going to use in the tableview.
+//        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_CARD, cellName: Constant.OVERVIEW_CARD)
         
         addHeader()
-        addFooter()
+//        addFooter()
         
         initMenuButtons()
+        
+        addExercises(exerciseData.exerciseList)
+        addAwards(notificationHandler.awards)
     }
 
     override func didReceiveMemoryWarning()
@@ -77,35 +132,117 @@ class OverviewViewController: UIViewController
     }
     
     /**
+     * Adds exercises to the exercise stack view.
+     *
+     * @param exercises    The awards to add.
+     */
+    func addExercises(exercises: [Exercise])
+    {
+        exerciseCardIcon.image = UIImage(named: "icon_fitness_log")
+        exerciseTitle.text = NSLocalizedString("title_exercises", comment: "")
+        
+        let count = exercises.count
+        for i in 0 ..< count
+        {
+            let exercise = exercises[i]
+            let exerciseName = exercise.exerciseName
+            
+            if (exerciseName != WARM_UP_NAME && exerciseName != STRETCH_NAME)
+            {
+                let view = Util.loadNib(Constant.OVERVIEW_EXERCISE_CELL) as! OverviewExerciseCellController
+                view.heightAnchor.constraintEqualToConstant(view.bounds.size.height).active = true
+                view.title.text = exercise.exerciseName
+                view.title.textColor = exercise.fromIntencity ? Color.primary : Color.secondary_dark
+                view.divider.hidden = i == count - 1
+                
+                let sets = exercise.sets
+                let setCount = sets.count
+                
+                for z in 0 ..< setCount
+                {
+                    let setView = Util.loadNib(Constant.OVERVIEW_SET_CELL) as! OverviewSetCellController
+                    setView.heightAnchor.constraintEqualToConstant(18).active = true
+                    setView.setEditText(sets[z])
+                    
+                    view.setStackView.addArrangedSubview(setView)
+                }
+                
+                exerciseItemStackView.addArrangedSubview(view)
+            }
+        }
+    }
+    
+    /**
+     * Adds awards to the award stack view.
+     *
+     * @param awards    The awards to add.
+     */
+    func addAwards(awards: [Awards])
+    {
+        awardCardIcon.image = UIImage(named: "ranking_badge")
+        awardTitle.text = NSLocalizedString("awards_title", comment: "").uppercaseString
+        
+        let count = awards.count
+        for i in 0 ..< count
+        {
+            let view = Util.loadNib(Constant.NOTIFICATION_CELL) as! NotificationCellViewController
+            view.heightAnchor.constraintEqualToConstant(view.bounds.size.height).active = true
+            
+            let award = awards[i]
+            let imageName = award.awardImageName
+            
+            if (imageName != "")
+            {
+                view.initCellWithImage(imageName)
+            }
+            else
+            {
+                view.initCellWithTitle(award.awardTitle)
+            }
+            
+            view.setAwardAmounts(award.amount)
+            view.awardDescription.text = award.awardDescription
+            view.divider.hidden = i == count - 1
+            
+            awardItemStackView.addArrangedSubview(view)
+        }
+    }
+    
+    /**
      * Shares an image and text with and "intent."
      */
     func shareOverview(sender: UIBarButtonItem)
     {
-        UIGraphicsBeginImageContext(view.frame.size)
-        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        var image: UIImage!
         
-        var objectsToShare = [AnyObject]()
-        
-        if let shareTextObj = generateShareMessage()
-        {
-            objectsToShare.append(shareTextObj)
-        }
-        
-        if let shareImageObj = image
-        {
-            objectsToShare.append(shareImageObj)
-        }
-        
-        if image != nil
-        {
-            let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = self.view
+        // Scrolls the tableview so we can take a screenshot of it to share.
+        scrollView.screenshot(1.0) { (screenshot) -> Void in
             
-            presentViewController(activityViewController, animated: true, completion: nil)
-        }else{
-            print("There is nothing to share")
+            image = screenshot
+            
+            var objectsToShare = [AnyObject]()
+            
+            if let shareTextObj = self.generateShareMessage()
+            {
+                objectsToShare.append(shareTextObj)
+            }
+            
+            if let shareImageObj = image
+            {
+                objectsToShare.append(shareImageObj)
+            }
+            
+            if image != nil
+            {
+                let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = self.view
+                
+                self.presentViewController(activityViewController, animated: true, completion: nil)
+            }
+            else
+            {
+                print("There is nothing to share")
+            }
         }
     }
     
@@ -163,54 +300,41 @@ class OverviewViewController: UIViewController
         displayFinishAlert()
     }
     
-    /**
-     * Animates the table being added to the screen.
-     *
-     * @param loadNextExercise  A boolean value of whether to load the next exercise or not.
-     */
-    func animateTable(indexToLoad: Int)
-    {
-        let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = NSIndexSet(indexesInRange: range)
-            
-        tableView.reloadSections(sections, withRowAnimation: .Top)
-    }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return 2
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_CARD) as! OverviewCardController
-        
-        let index = indexPath.item
-        
-        switch index
-        {
-            case OverviewRowType.EXERCISES:
-                cell.cardIcon.image = UIImage(named: "icon_fitness_log")
-                cell.title.text = NSLocalizedString("title_exercises", comment: "")
-                cell.addExercises(exerciseData.exerciseList)
-                break
-            case OverviewRowType.AWARDS:
-                cell.cardIcon.image = UIImage(named: "ranking_badge")
-                cell.title.text = NSLocalizedString("awards_title", comment: "").uppercaseString
-                cell.addAwards(NotificationHandler.getInstance(nil).awards)
-                break
-            default:
-                break
-        }
-        
-        return cell
-    }
-    
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+//    {
+//        return 1
+//    }
+//    
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+//    {
+//        return 2
+//    }
+//    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+//    {
+//        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_CARD) as! OverviewCardController
+//        
+//        let index = indexPath.item
+//        
+//        switch index
+//        {
+//            case OverviewRowType.EXERCISES:
+//                cell.cardIcon.image = UIImage(named: "icon_fitness_log")
+//                cell.title.text = NSLocalizedString("title_exercises", comment: "")
+//                cell.addExercises(exerciseData.exerciseList)
+//                break
+//            case OverviewRowType.AWARDS:
+//                cell.cardIcon.image = UIImage(named: "ranking_badge")
+//                cell.title.text = NSLocalizedString("awards_title", comment: "").uppercaseString
+//                cell.addAwards(NotificationHandler.getInstance(nil).awards)
+//                break
+//            default:
+//                break
+//        }
+//        
+//        return cell
+//    }
+//    
     /**
      * Adds the header to the tableview.
      */
@@ -223,21 +347,24 @@ class OverviewViewController: UIViewController
         
         let dateString = formatter.stringFromDate(NSDate())
         
-        let view = Util.loadNib(Constant.OVERVIEW_HEADER_CELL) as! OverviewHeaderCellController
-        view.routineTitle.text = String(format: NSLocalizedString("header_overview", comment: ""), exerciseData.routineName).uppercaseString
-        view.dateLabel.text = dateString
+        routineTitle.text = String(format: NSLocalizedString("header_overview", comment: ""), exerciseData.routineName).uppercaseString
+        dateLabel.text = dateString
         
-        tableView.tableHeaderView = view.contentView
+//        let view = Util.loadNib(Constant.OVERVIEW_HEADER_CELL) as! OverviewHeaderCellController
+//        view.routineTitle.text = String(format: NSLocalizedString("header_overview", comment: ""), exerciseData.routineName).uppercaseString
+//        view.dateLabel.text = dateString
+//        
+//        tableView.tableHeaderView = view.contentView
     }
-    
-    /**
-     * Adds the footer to the tableview.
-     */
-    func addFooter()
-    {
-        let view = Util.loadNib(Constant.OVERVIEW_FOOTER_CELL) as! OverviewFooterCellController
-        tableView.tableFooterView = view.contentView
-    }
+//
+//    /**
+//     * Adds the footer to the tableview.
+//     */
+//    func addFooter()
+//    {
+//        let view = Util.loadNib(Constant.OVERVIEW_FOOTER_CELL) as! OverviewFooterCellController
+//        tableView.tableFooterView = view.contentView
+//    }
     
     /**
      * Randomly generates a message to share with social media.

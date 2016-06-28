@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wn-Lg-xYv" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="645.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="646"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="I4p-wS-zEt">
                                                 <rect key="frame" x="16" y="16" width="568" height="626"/>
@@ -204,7 +204,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ma0-9S-afZ" firstAttribute="top" secondItem="TJB-PJ-wYx" secondAttribute="bottom" id="DdJ-2X-6Er"/>
+                            <constraint firstItem="Ma0-9S-afZ" firstAttribute="top" secondItem="TJB-PJ-wYx" secondAttribute="bottom" id="5CL-yT-2A5"/>
                             <constraint firstItem="TJB-PJ-wYx" firstAttribute="leading" secondItem="38y-gE-STT" secondAttribute="leading" id="E3l-P5-N4V"/>
                             <constraint firstAttribute="trailing" secondItem="TJB-PJ-wYx" secondAttribute="trailing" id="jBg-vy-RuS"/>
                             <constraint firstItem="TJB-PJ-wYx" firstAttribute="top" secondItem="38y-gE-STT" secondAttribute="top" id="w5P-jH-NkX"/>
@@ -244,7 +244,7 @@
                                 <rect key="frame" x="0.0" y="16" width="600" height="520"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="y44-1h-ZaS">
-                                        <rect key="frame" x="76" y="0.0" width="449" height="18"/>
+                                        <rect key="frame" x="76" y="0.0" width="449" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="ypc-xk-jFf">
                                                 <variation key="heightClass=compact-widthClass=compact" constant="50"/>
@@ -252,7 +252,7 @@
                                         </constraints>
                                     </imageView>
                                     <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XIP-VO-jkI">
-                                        <rect key="frame" x="0.0" y="34" width="600" height="486"/>
+                                        <rect key="frame" x="0.0" y="30" width="600" height="490"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                                     </webView>
                                 </subviews>
@@ -302,7 +302,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSU-UC-b0f" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="633.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="634"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7AI-83-cIV">
                                                 <rect key="frame" x="16" y="16" width="568" height="429"/>
@@ -517,13 +517,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWL-ok-MxE" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="327"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aBl-ag-6Wh">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aBl-ag-6Wh">
                                                 <rect key="frame" x="16" y="16" width="568" height="295"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GeI-F1-HLl">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GeI-F1-HLl">
                                                         <rect key="frame" x="60" y="0.0" width="449" height="170"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="p2P-2m-kAb">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intencity_logo" translatesAutoresizingMaskIntoConstraints="NO" id="p2P-2m-kAb">
                                                                 <rect key="frame" x="0.0" y="0.0" width="449" height="150"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="N0b-js-HgK">
@@ -531,12 +531,12 @@
                                                                     </constraint>
                                                                 </constraints>
                                                             </imageView>
-                                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iV1-mM-G5A">
+                                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iV1-mM-G5A">
                                                                 <rect key="frame" x="215" y="150" width="20" height="20"/>
                                                             </activityIndicatorView>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aIr-be-UoI">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aIr-be-UoI">
                                                         <rect key="frame" x="0.0" y="186" width="568" height="63"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter email below" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QW8-Ob-Vs5">
@@ -555,7 +555,7 @@
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7n-Fx-jnc" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7n-Fx-jnc" customClass="IntencityButton" customModule="Intencity" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="265" width="568" height="30"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <state key="normal" title="RESET PASSWORD"/>

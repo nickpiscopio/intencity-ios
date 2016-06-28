@@ -132,6 +132,7 @@
 		BD9EF2C81C6BF4CC00E520CB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C71C6BF4CC00E520CB /* MainViewController.swift */; };
 		BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */; };
 		BDAEA25B1C971DFB005663F3 /* IntencityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAEA25A1C971DFB005663F3 /* IntencityCardView.swift */; };
+		BDB253141D23328700AD7547 /* ScrollImager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB253131D23328700AD7547 /* ScrollImager.swift */; };
 		BDB37F9D1CCA719700470479 /* RoutineGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB37F9C1CCA719700470479 /* RoutineGroup.swift */; };
 		BDB37F9F1CCA71D400470479 /* RoutineSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB37F9E1CCA71D400470479 /* RoutineSection.swift */; };
 		BDB37FA11CCA73C100470479 /* RoutineKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB37FA01CCA73C100470479 /* RoutineKeys.swift */; };
@@ -316,6 +317,7 @@
 		BD9EF2C71C6BF4CC00E520CB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		BDAEA25A1C971DFB005663F3 /* IntencityCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardView.swift; sourceTree = "<group>"; };
+		BDB253131D23328700AD7547 /* ScrollImager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollImager.swift; sourceTree = "<group>"; };
 		BDB37F9C1CCA719700470479 /* RoutineGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineGroup.swift; sourceTree = SOURCE_ROOT; };
 		BDB37F9E1CCA71D400470479 /* RoutineSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineSection.swift; sourceTree = SOURCE_ROOT; };
 		BDB37FA01CCA73C100470479 /* RoutineKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineKeys.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 		BD1053971C6CC989004C10C7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BDB253131D23328700AD7547 /* ScrollImager.swift */,
 				BD0CD6F91C984789004FF750 /* Toast.swift */,
 				BD91FC0E1CAD733600965782 /* NSMutableData.swift */,
 				BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */,
@@ -1010,6 +1013,7 @@
 				BD1F30E11CA9BA9500002D06 /* MenuSection.swift in Sources */,
 				BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */,
 				BD9EF2AE1C6A49C500E520CB /* Dimention.swift in Sources */,
+				BDB253141D23328700AD7547 /* ScrollImager.swift in Sources */,
 				BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */,
 				BD7C7E811C7CA0A6005AFFDD /* NotificationViewController.swift in Sources */,
 				BDF44A311C7798BA00B47CD1 /* IntencityButtonNoBackgroundDark.swift in Sources */,
