@@ -142,6 +142,7 @@ class OverviewViewController: UIViewController
         exerciseTitle.text = NSLocalizedString("title_exercises", comment: "")
         
         let count = exercises.count
+        var lastCellIndex = count
         for i in 0 ..< count
         {
             let exercise = exercises[i]
@@ -153,7 +154,14 @@ class OverviewViewController: UIViewController
                 view.heightAnchor.constraintEqualToConstant(view.bounds.size.height).active = true
                 view.title.text = exercise.exerciseName
                 view.title.textColor = exercise.fromIntencity ? Color.primary : Color.secondary_dark
-                view.divider.hidden = i == count - 1
+                
+                // We only hide the last divider.
+                // We only round the last corner radius.
+                if (i == lastCellIndex - 1)
+                {
+                    view.divider.hidden = true
+                    view.layer.cornerRadius = Dimention.RADIUS
+                }
                 
                 let sets = exercise.sets
                 let setCount = sets.count
@@ -168,6 +176,12 @@ class OverviewViewController: UIViewController
                 }
                 
                 exerciseItemStackView.addArrangedSubview(view)
+            }
+            else
+            {
+                // Subtract 1 from the total because we have found a warm-up or stretch.
+                // This will make surew e remove the divider on the last cell.
+                lastCellIndex -= 1
             }
         }
     }
@@ -202,7 +216,14 @@ class OverviewViewController: UIViewController
             
             view.setAwardAmounts(award.amount)
             view.awardDescription.text = award.awardDescription
-            view.divider.hidden = i == count - 1
+            
+            // We only hide the last divider.
+            // We only round the last corner radius.
+            if (i == count - 1)
+            {
+                view.divider.hidden = true
+                view.layer.cornerRadius = Dimention.RADIUS
+            }
             
             awardItemStackView.addArrangedSubview(view)
         }
