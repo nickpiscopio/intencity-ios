@@ -31,7 +31,6 @@ class OverviewViewController: UIViewController
     @IBOutlet weak var websiteSuffix: UILabel!
     @IBOutlet weak var websiteEnd: UILabel!
     
-    
     let FINISH_ICON_NAME = "icon_finish"
 
     let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
@@ -100,14 +99,7 @@ class OverviewViewController: UIViewController
         websiteSuffix.text = NSLocalizedString("app_name_suffix", comment: "")
         websiteEnd.text = NSLocalizedString("website_suffix", comment: "")
         
-        // Initialize the tableview.
-//        Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
-//
-//        // Load the cells we are going to use in the tableview.
-//        Util.addUITableViewCell(tableView, nibNamed: Constant.OVERVIEW_CARD, cellName: Constant.OVERVIEW_CARD)
-        
         addHeader()
-//        addFooter()
         
         initMenuButtons()
         
@@ -320,42 +312,7 @@ class OverviewViewController: UIViewController
     {
         displayFinishAlert()
     }
-    
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int
-//    {
-//        return 1
-//    }
-//    
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-//    {
-//        return 2
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-//    {
-//        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.OVERVIEW_CARD) as! OverviewCardController
-//        
-//        let index = indexPath.item
-//        
-//        switch index
-//        {
-//            case OverviewRowType.EXERCISES:
-//                cell.cardIcon.image = UIImage(named: "icon_fitness_log")
-//                cell.title.text = NSLocalizedString("title_exercises", comment: "")
-//                cell.addExercises(exerciseData.exerciseList)
-//                break
-//            case OverviewRowType.AWARDS:
-//                cell.cardIcon.image = UIImage(named: "ranking_badge")
-//                cell.title.text = NSLocalizedString("awards_title", comment: "").uppercaseString
-//                cell.addAwards(NotificationHandler.getInstance(nil).awards)
-//                break
-//            default:
-//                break
-//        }
-//        
-//        return cell
-//    }
-//    
+
     /**
      * Adds the header to the tableview.
      */
@@ -370,22 +327,7 @@ class OverviewViewController: UIViewController
         
         routineTitle.text = String(format: NSLocalizedString("header_overview", comment: ""), exerciseData.routineName).uppercaseString
         dateLabel.text = dateString
-        
-//        let view = Util.loadNib(Constant.OVERVIEW_HEADER_CELL) as! OverviewHeaderCellController
-//        view.routineTitle.text = String(format: NSLocalizedString("header_overview", comment: ""), exerciseData.routineName).uppercaseString
-//        view.dateLabel.text = dateString
-//        
-//        tableView.tableHeaderView = view.contentView
     }
-//
-//    /**
-//     * Adds the footer to the tableview.
-//     */
-//    func addFooter()
-//    {
-//        let view = Util.loadNib(Constant.OVERVIEW_FOOTER_CELL) as! OverviewFooterCellController
-//        tableView.tableFooterView = view.contentView
-//    }
     
     /**
      * Randomly generates a message to share with social media.
