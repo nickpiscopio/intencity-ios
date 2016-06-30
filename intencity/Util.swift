@@ -309,7 +309,7 @@ class Util
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_BADGE, variables: [ email, now, badgeName ]))
         
         // Add an award to the notification handler.
-        NotificationHandler.getInstance(nil).addAward(content);
+        NotificationHandler.getInstance(nil).addAward(content)
     }
     
     /**
@@ -322,12 +322,12 @@ class Util
      */
     static func grantBadgeToUser(email: String, badgeName: String, content: Awards, onlyAllowOne: Bool)
     {
-        let notificationHandler = NotificationHandler.getInstance(nil);
+        let notificationHandler = NotificationHandler.getInstance(nil)
     
         // Only grant the badge to the user if he or she doesn't have it
         if (onlyAllowOne)
         {
-            if (notificationHandler.getAwardIndex(content) != Int(Constant.CODE_FAILED))
+            if (notificationHandler.getAwardIndex(content) == Int(Constant.CODE_FAILED))
             {
                 grantBadgeToUser(email, badgeName: badgeName, content: content)
             }

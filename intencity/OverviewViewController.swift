@@ -103,6 +103,8 @@ class OverviewViewController: UIViewController
         
         initMenuButtons()
         
+        awardFinishAward()
+        
         addExercises(exerciseData.exerciseList)
         addAwards(notificationHandler.awards)
     }
@@ -143,7 +145,6 @@ class OverviewViewController: UIViewController
             if (exerciseName != WARM_UP_NAME && exerciseName != STRETCH_NAME)
             {
                 let view = Util.loadNib(Constant.OVERVIEW_EXERCISE_CELL) as! OverviewExerciseCellController
-                view.heightAnchor.constraintEqualToConstant(view.bounds.size.height).active = true
                 view.title.text = exercise.exerciseName
                 view.title.textColor = exercise.fromIntencity ? Color.primary : Color.secondary_dark
                 
@@ -155,17 +156,41 @@ class OverviewViewController: UIViewController
                     view.layer.cornerRadius = Dimention.RADIUS
                 }
                 
+                // Margins + ExerciseName height
+                var exerciseCellHeight = (Dimention.LAYOUT_MARGIN * 2) + Dimention.FONT_SIZE_NORMAL
+                // Add the diver height
+                exerciseCellHeight += (i == count - 1) ? 1 : 0
+                
+                exerciseCellHeight += 14
+
                 let sets = exercise.sets
                 let setCount = sets.count
                 
                 for z in 0 ..< setCount
                 {
+                    var setCellHeight: CGFloat = 0
+                    
+                    if (z == 0)
+                    {
+                        setCellHeight += Dimention.RELATED_ITEM_MARGIN
+                    }
+                    else if (z != setCount)
+                    {
+                        setCellHeight += Dimention.OVERVIEW_SET_MARGIN
+                    }
+                    
+                    setCellHeight += Dimention.FONT_SIZE_MEDIUM
+                    
+                    exerciseCellHeight += setCellHeight
+                    
                     let setView = Util.loadNib(Constant.OVERVIEW_SET_CELL) as! OverviewSetCellController
-                    setView.heightAnchor.constraintEqualToConstant(18).active = true
+                    setView.heightAnchor.constraintEqualToConstant(setCellHeight).active = true
                     setView.setEditText(sets[z])
                     
                     view.setStackView.addArrangedSubview(setView)
                 }
+                
+                view.heightAnchor.constraintEqualToConstant(exerciseCellHeight).active = true
                 
                 exerciseItemStackView.addArrangedSubview(view)
             }
@@ -259,7 +284,10 @@ class OverviewViewController: UIViewController
         }
     }
     
-    func finish()
+    /**
+     * Awards the finish award to the user if he or she didn't already receive it.
+     */
+    func awardFinishAward()
     {
         // Grant the user the "Kept Swimming" badge if he or she didn't skip an exercise.
         if (!DEFAULTS.boolForKey(Constant.BUNDLE_EXERCISE_SKIPPED))
@@ -276,7 +304,7 @@ class OverviewViewController: UIViewController
         let finisherDescription = NSLocalizedString("award_finisher_description", comment: "")
 
         let finisherAward = Awards(awardType: AwardType.BADGE_FINISHER, awardImageName: Badge.FINISHER_IMAGE_NAME, awardDescription: finisherDescription)
-        if (notificationHandler.getAwardIndex(finisherAward) != Int(Constant.CODE_FAILED))
+        if (notificationHandler.getAwardIndex(finisherAward) == Int(Constant.CODE_FAILED))
         {
             Util.grantPointsToUser(email, awardType: AwardType.POINTS_FINISHER, points: Constant.POINTS_COMPLETING_WORKOUT, description: finisherDescription)
             Util.grantBadgeToUser(email, badgeName: Badge.FINISHER, content: finisherAward, onlyAllowOne: true)

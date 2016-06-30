@@ -17,18 +17,30 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBK-AS-9Oh">
                         <rect key="frame" x="0.0" y="0.0" width="505" height="182.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lL6-eJ-TiE">
-                                <rect key="frame" x="16" y="16" width="473" height="150"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lL6-eJ-TiE">
+                                <rect key="frame" x="16" y="16" width="473" height="71"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXj-ep-ske">
-                                        <rect key="frame" x="0.0" y="0.0" width="473" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="473" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Gd8-QT-DD2">
-                                        <rect key="frame" x="0.0" y="25" width="473" height="125"/>
-                                    </stackView>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nmr-oW-qAb">
+                                        <rect key="frame" x="0.0" y="21" width="473" height="50"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Gd8-QT-DD2">
+                                                <rect key="frame" x="0.0" y="5" width="473" height="100"/>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Gd8-QT-DD2" firstAttribute="leading" secondItem="Nmr-oW-qAb" secondAttribute="leading" id="2nK-S0-iqb"/>
+                                            <constraint firstAttribute="bottom" secondItem="Gd8-QT-DD2" secondAttribute="bottom" id="GHo-X0-mEo"/>
+                                            <constraint firstItem="Gd8-QT-DD2" firstAttribute="top" secondItem="Nmr-oW-qAb" secondAttribute="top" constant="5" id="MxZ-ND-g5t"/>
+                                            <constraint firstAttribute="trailing" secondItem="Gd8-QT-DD2" secondAttribute="trailing" id="nwK-zS-Kfc"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpC-hn-IgZ">
@@ -41,7 +53,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dpC-hn-IgZ" firstAttribute="top" secondItem="lL6-eJ-TiE" secondAttribute="bottom" constant="16" id="Djo-zb-2mb"/>
                             <constraint firstItem="dpC-hn-IgZ" firstAttribute="leading" secondItem="IBK-AS-9Oh" secondAttribute="leading" id="aDj-qI-GGO"/>
                             <constraint firstAttribute="bottom" secondItem="dpC-hn-IgZ" secondAttribute="bottom" id="lpF-eb-3ek"/>
                             <constraint firstAttribute="trailing" secondItem="dpC-hn-IgZ" secondAttribute="trailing" id="o8A-Ez-ibD"/>
