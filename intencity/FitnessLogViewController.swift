@@ -9,7 +9,7 @@
 
 import UIKit
 
-class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDelegate, ExerciseSearchDelegate, RoutineDelegate
+class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDelegate, ExerciseSearchDelegate, RoutineDelegate, FitnessLogDelegate
 {    
     enum ActiveButtonState
     {
@@ -137,6 +137,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         loadingView.hidden = true
         
         activityIndicator.stopAnimating()
+    }
+    
+    func onHideLoading()
+    {
+        hideLoading()
     }
     
     func onRetrievalSuccessful(event: Int, result: String)
@@ -314,6 +319,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         }
         else
         {
+            showLoading()
+            
             displayOverview()
         }
     }
@@ -325,6 +332,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     {
         let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.OVERVIEW_VIEW_CONTROLLER) as! OverviewViewController
         vc.viewDelegate = viewDelegate
+        vc.fitnessLogDelegate = self
         self.navigationController!.pushViewController(vc, animated: true)
     }
     

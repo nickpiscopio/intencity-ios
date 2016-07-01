@@ -46,6 +46,7 @@ class OverviewViewController: UIViewController
     var notificationHandler: NotificationHandler!
     
     var viewDelegate: ViewDelegate!
+    var fitnessLogDelegate: FitnessLogDelegate!
     
     override func viewDidLoad()
     {
@@ -107,6 +108,8 @@ class OverviewViewController: UIViewController
         
         addExercises(exerciseData.exerciseList)
         addAwards(notificationHandler.awards)
+        
+        fitnessLogDelegate.onHideLoading()
     }
 
     override func didReceiveMemoryWarning()
@@ -185,6 +188,7 @@ class OverviewViewController: UIViewController
                     
                     let setView = Util.loadNib(Constant.OVERVIEW_SET_CELL) as! OverviewSetCellController
                     setView.heightAnchor.constraintEqualToConstant(setCellHeight).active = true
+                    setView.numberLabel.text = "\(z + 1)."
                     setView.setEditText(sets[z])
                     
                     view.setStackView.addArrangedSubview(setView)

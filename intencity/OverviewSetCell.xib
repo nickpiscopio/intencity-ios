@@ -17,19 +17,30 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zle-31-bG7">
                         <rect key="frame" x="0.0" y="0.0" width="408" height="60.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fs-o6-VMm">
-                                <rect key="frame" x="0.0" y="0.0" width="408" height="60.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hwk-ws-w1g">
+                                <rect key="frame" x="8" y="0.0" width="392" height="61"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAw-jc-RTh">
+                                        <rect key="frame" x="0.0" y="0.0" width="38" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fs-o6-VMm">
+                                        <rect key="frame" x="43" y="0.0" width="349" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="1Fs-o6-VMm" secondAttribute="trailing" id="5pr-ON-eKK"/>
-                            <constraint firstAttribute="bottom" secondItem="1Fs-o6-VMm" secondAttribute="bottom" id="S1F-Gq-jCm"/>
-                            <constraint firstItem="1Fs-o6-VMm" firstAttribute="top" secondItem="Zle-31-bG7" secondAttribute="top" id="T3V-0S-ctA"/>
-                            <constraint firstItem="1Fs-o6-VMm" firstAttribute="leading" secondItem="Zle-31-bG7" secondAttribute="leading" id="fut-Dr-w15"/>
+                            <constraint firstItem="hwk-ws-w1g" firstAttribute="leading" secondItem="Zle-31-bG7" secondAttribute="leading" constant="8" id="dAS-s3-thg"/>
+                            <constraint firstAttribute="bottom" secondItem="hwk-ws-w1g" secondAttribute="bottom" id="jfB-tC-VpP"/>
+                            <constraint firstAttribute="trailing" secondItem="hwk-ws-w1g" secondAttribute="trailing" constant="8" id="wLm-iC-IxG"/>
+                            <constraint firstItem="hwk-ws-w1g" firstAttribute="top" secondItem="Zle-31-bG7" secondAttribute="top" id="zde-RQ-q1o"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -41,6 +52,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="numberLabel" destination="LAw-jc-RTh" id="Icj-9n-Xg2"/>
                 <outlet property="setLabel" destination="1Fs-o6-VMm" id="JdA-7j-Zxy"/>
             </connections>
             <point key="canvasLocation" x="-331" y="238.5"/>

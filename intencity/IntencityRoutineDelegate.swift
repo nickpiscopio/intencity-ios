@@ -1,14 +1,13 @@
 //
-//  IntencityRoutineDelegate.swift
+//  FitnessLogDelegate.swift
 //  Intencity
 //
-//  Created by Nick Piscopio on 4/27/16.
+//  Created by Nick Piscopio on 7/1/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import Foundation
 
-protocol IntencityRoutineDelegate
+protocol FitnessLogDelegate
 {
-    func onRoutineSaved(hasMoreRoutines: Bool)
-    func onRoutineUpdated(groups: [RoutineGroup])
+    func onHideLoading()
 }

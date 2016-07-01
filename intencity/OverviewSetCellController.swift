@@ -11,11 +11,15 @@ import UIKit
 
 class OverviewSetCellController: UITableViewCell
 {
+    @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var setLabel: UILabel!
     
     override func awakeFromNib()
     {
         super.awakeFromNib()
+        
+        numberLabel.textColor = Color.secondary_light
+        numberLabel.font = numberLabel.font.fontWithSize(Dimention.FONT_SIZE_MEDIUM)
     }
     
     /**
