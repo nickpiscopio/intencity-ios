@@ -251,9 +251,25 @@ class OverviewViewController: UIViewController
     }
     
     /**
-     * Shares an image and text with and "intent."
+     * The share overview bar button item method to share an image and text with and "intent."
      */
     func shareOverview(sender: UIBarButtonItem)
+    {
+        shareOverview()
+    }
+    
+    /**
+     * The share alert button method to share an image and text with and "intent."
+     */
+    func shareOverviewAlertButtonClicked(alertAction: UIAlertAction!) -> Void
+    {
+        shareOverview()
+    }
+    
+    /**
+     * Shares an image and text with and "intent."
+     */
+    func shareOverview()
     {
         var image: UIImage!
         
@@ -398,6 +414,7 @@ class OverviewViewController: UIViewController
         Util.displayAlert(self, title: NSLocalizedString("title_finish_routine", comment: ""),
                           message: NSLocalizedString("description_finish_routine", comment: ""),
                           actions: [ UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Cancel, handler: nil),
+                            UIAlertAction(title: NSLocalizedString("title_share", comment: ""), style: .Default, handler: shareOverviewAlertButtonClicked),
                             UIAlertAction(title: NSLocalizedString("title_finish", comment: ""), style: .Destructive, handler: finishExercising) ])
     }
     

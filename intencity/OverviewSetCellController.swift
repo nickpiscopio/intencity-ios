@@ -19,7 +19,7 @@ class OverviewSetCellController: UITableViewCell
         super.awakeFromNib()
         
         numberLabel.textColor = Color.secondary_light
-        numberLabel.font = numberLabel.font.fontWithSize(Dimention.FONT_SIZE_MEDIUM)
+        numberLabel.font = numberLabel.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
     }
     
     /**
