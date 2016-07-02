@@ -1158,6 +1158,7 @@
 				);
 				INFOPLIST_FILE = intencity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.Intencity;
 				PRODUCT_NAME = Intencity;
 				PROVISIONING_PROFILE = "";
@@ -1177,6 +1178,7 @@
 				);
 				INFOPLIST_FILE = intencity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DRELEASE\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.Intencity;
 				PRODUCT_NAME = Intencity;
 				PROVISIONING_PROFILE = "";
