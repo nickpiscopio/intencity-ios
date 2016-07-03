@@ -22,6 +22,7 @@ class OverviewViewController: UIViewController
     @IBOutlet weak var exerciseTitle: UILabel!
     @IBOutlet weak var exerciseItemStackView: UIStackView!
     
+    @IBOutlet weak var awardCard: IntencityCardView!
     @IBOutlet weak var awardCardIcon: UIImageView!
     @IBOutlet weak var awardTitle: UILabel!
     @IBOutlet weak var awardItemStackView: UIStackView!
@@ -214,39 +215,46 @@ class OverviewViewController: UIViewController
      */
     func addAwards(awards: [Awards])
     {
-        awardCardIcon.image = UIImage(named: "ranking_badge")
-        awardTitle.text = NSLocalizedString("awards_title", comment: "").uppercaseString
-        
-        let count = awards.count
-        for i in 0 ..< count
+        let count = awards.count        
+        if (count > 0)
         {
-            let view = Util.loadNib(Constant.NOTIFICATION_CELL) as! NotificationCellViewController
-            view.heightAnchor.constraintEqualToConstant(view.bounds.size.height).active = true
+            awardCardIcon.image = UIImage(named: "ranking_badge")
+            awardTitle.text = NSLocalizedString("awards_title", comment: "").uppercaseString
             
-            let award = awards[i]
-            let imageName = award.awardImageName
-            
-            if (imageName != "")
+            for i in 0 ..< count
             {
-                view.initCellWithImage(imageName)
+                let view = Util.loadNib(Constant.NOTIFICATION_CELL) as! NotificationCellViewController
+                view.heightAnchor.constraintEqualToConstant(view.bounds.size.height).active = true
+                
+                let award = awards[i]
+                let imageName = award.awardImageName
+                
+                if (imageName != "")
+                {
+                    view.initCellWithImage(imageName)
+                }
+                else
+                {
+                    view.initCellWithTitle(award.awardTitle)
+                }
+                
+                view.setAwardAmounts(award.amount)
+                view.awardDescription.text = award.awardDescription
+                
+                // We only hide the last divider.
+                // We only round the last corner radius.
+                if (i == count - 1)
+                {
+                    view.divider.hidden = true
+                    view.layer.cornerRadius = Dimention.RADIUS
+                }
+                
+                awardItemStackView.addArrangedSubview(view)
             }
-            else
-            {
-                view.initCellWithTitle(award.awardTitle)
-            }
-            
-            view.setAwardAmounts(award.amount)
-            view.awardDescription.text = award.awardDescription
-            
-            // We only hide the last divider.
-            // We only round the last corner radius.
-            if (i == count - 1)
-            {
-                view.divider.hidden = true
-                view.layer.cornerRadius = Dimention.RADIUS
-            }
-            
-            awardItemStackView.addArrangedSubview(view)
+        }
+        else
+        {
+            awardCard.removeFromSuperview()
         }
     }
     
