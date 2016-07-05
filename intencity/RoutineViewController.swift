@@ -66,7 +66,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CELL, cellName: Constant.ROUTINE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CELL_FOOTER, cellName: Constant.ROUTINE_CELL_FOOTER)
         
-        showWelcome()
+        displayAppAlert()
         
         routineTitle.text = NSLocalizedString("title_routine", comment: "")
         routineTitle.textColor = Color.secondary_light
@@ -229,7 +229,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     /**
      * Shows the welcome alert to the user if needed.
      */
-    func showWelcome()
+    func displayAppAlert()
     {
         let lastLogin = DEFAULTS.floatForKey(Constant.USER_LAST_LOGIN)
         
@@ -238,8 +238,49 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
             Util.displayAlert(self,
                 title: NSLocalizedString("welcome_title", comment: ""),
                 message: NSLocalizedString("welcome_description", comment: ""),
-                actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil) ])
+                actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: showEditEquipmentAlert) ])
         }
+        else
+        {
+            showEditEquipmentAlert()
+        }
+    }
+    
+    /**
+     * The action for showing the edit equipment alert.
+     */
+    func showEditEquipmentAlert(alertAction: UIAlertAction!) -> Void
+    {
+        showEditEquipmentAlert()
+    }
+    
+    /**
+     * Displays the edit equipment alert.
+     */
+    func showEditEquipmentAlert()
+    {
+        Util.displayAlert(self,
+                          title: NSLocalizedString("edit_equipment_alert_title", comment: ""),
+                          message: NSLocalizedString("edit_equipment_alert_description", comment: ""),
+                          actions: [ UIAlertAction(title: NSLocalizedString("edit_equipment_alert_title", comment: ""), style: .Default, handler: setEquipment) ])
+    }
+    
+    /**
+     * The action for showing the edit equipment alert.
+     */
+    func setEquipment(alertAction: UIAlertAction!) -> Void
+    {
+        setEquipment()
+    }
+    
+    /**
+     * Opens the edit equipment screen.
+     */
+    func setEquipment()
+    {
+        let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.EDIT_EQUIPMENT_VIEW_CONTROLLER)
+        
+        self.navigationController!.pushViewController(viewController, animated: true)
     }
     
     /**

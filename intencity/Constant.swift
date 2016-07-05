@@ -64,6 +64,7 @@ struct Constant
     static let PRIVACY_POLICY_VIEW_CONTROLLER = "PrivacyPolicyViewController"
     static let CUSTOM_ROUTINE_VIEW_CONTROLLER = "CustomRoutineViewController"
     static let ADD_ROUTINE_VIEW_CONTROLLER = "AddRoutineViewController"
+    static let EDIT_EQUIPMENT_VIEW_CONTROLLER = "EditEquipmentViewController"
     static let RATE_INTENCITY = "RateIntencity"
     static let CONTRIBUTE_INTENCITY = "ContributeIntencity"
     static let LOG_OUT = "LogOut"

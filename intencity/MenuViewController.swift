@@ -42,7 +42,7 @@ class MenuViewController: UIViewController
         
         // The settings section.
         var settingsRows = [ MenuRow(title: NSLocalizedString("edit_priority", comment: ""), viewController: "EditExercisePrioritiesViewController"),
-                             MenuRow(title: NSLocalizedString("edit_equipment", comment: ""), viewController: "EditEquipmentViewController") ]
+                             MenuRow(title: NSLocalizedString("edit_equipment", comment: ""), viewController: Constant.EDIT_EQUIPMENT_VIEW_CONTROLLER) ]
         
         if (!isMobileTrial)
         {
