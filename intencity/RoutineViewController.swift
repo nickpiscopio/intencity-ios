@@ -262,7 +262,8 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         Util.displayAlert(self,
                           title: NSLocalizedString("edit_equipment_alert_title", comment: ""),
                           message: NSLocalizedString("edit_equipment_alert_description", comment: ""),
-                          actions: [ UIAlertAction(title: NSLocalizedString("edit_equipment_alert_title", comment: ""), style: .Default, handler: setEquipment) ])
+                          actions: [ UIAlertAction(title: NSLocalizedString("edit_equipment_alert_title", comment: ""), style: .Default, handler: setEquipment),
+                                     UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil)])
     }
     
     /**
