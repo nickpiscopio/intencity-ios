@@ -259,11 +259,16 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      */
     func showEditEquipmentAlert()
     {
-        Util.displayAlert(self,
-                          title: NSLocalizedString("edit_equipment_alert_title", comment: ""),
-                          message: NSLocalizedString("edit_equipment_alert_description", comment: ""),
-                          actions: [ UIAlertAction(title: NSLocalizedString("edit_equipment_alert_title", comment: ""), style: .Default, handler: setEquipment),
-                                     UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil)])
+        let hasSetEquipment = DEFAULTS.boolForKey(Constant.USER_SET_EQUIPMENT)
+        if (!hasSetEquipment)
+        {
+            Util.displayAlert(self,
+                              title: NSLocalizedString("edit_equipment_alert_title", comment: ""),
+                              message: NSLocalizedString("edit_equipment_alert_description", comment: ""),
+                              actions: [ UIAlertAction(title: NSLocalizedString("edit_equipment_alert_title", comment: ""), style: .Default, handler: setEquipment),
+                                UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil)])
+
+        }
     }
     
     /**

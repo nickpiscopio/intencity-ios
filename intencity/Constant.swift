@@ -123,6 +123,7 @@ struct Constant
     static let USER_TRIAL_CREATED_DATE = "com.intencity.intencity.user.trial.created.date";
     static let USER_LAST_LOGIN = "com.intencity.intencity.user.last.login";
     static let USER_LAST_EXERCISE_TIME = "com.intencity.intencity.user.last.exercise.time";
+    static let USER_SET_EQUIPMENT = "com.intencity.intencity.user.set.equipment";
 
     static let BUNDLE_EXERCISE_SKIPPED = "com.intencity.intencity.exercise.skipped";
     

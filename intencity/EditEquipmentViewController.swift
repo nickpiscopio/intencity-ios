@@ -53,6 +53,8 @@ class EditEquipmentViewController: UIViewController, ServiceDelegate
         
         email = Util.getEmailFromDefaults()
         
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: Constant.USER_SET_EQUIPMENT)
+        
         _ = ServiceTask(event: ServiceEvent.GET_LIST,
                         delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,

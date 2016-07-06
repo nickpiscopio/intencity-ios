@@ -54,7 +54,7 @@
 "welcome_description" = "Thank you for using Intencity; the fitness app designed to help you with your everyday fitness needs.\n\nPlease let us know of any issues or improvements you may have.\n\n—The Intencity Team";
 
 "edit_equipment_alert_title" = "Set Equipment";
-"edit_equipment_alert_description" = "You're using default exercise equipment.";
+"edit_equipment_alert_description" = "Would you like to change your exercise equipment?";
 
 /*  */
 "get_started" = "Get Started";
