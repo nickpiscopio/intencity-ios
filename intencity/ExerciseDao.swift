@@ -27,6 +27,7 @@ struct ExerciseDao
                 let reps = exercise[Constant.COLUMN_EXERCISE_REPS]
                 let duration = exercise[Constant.COLUMN_EXERCISE_DURATION]
                 let difficulty = exercise[Constant.COLUMN_EXERCISE_DIFFICULTY]
+                let priority = exercise[Constant.COLUMN_PRIORITY]
                 let notes = exercise[Constant.COLUMN_NOTES]
                 
                 let sets = [ Set(webId: Int(Constant.CODE_FAILED),
@@ -36,7 +37,7 @@ struct ExerciseDao
                                  difficulty: !(difficulty is NSNull) ? Int(difficulty as! String)! : 10,
                                  notes: !(notes is NSNull) ? notes as! String : "") ]
                 
-                let exercise = Exercise(exerciseName: exerciseName, exerciseDescription: "", sets: sets, fromIntencity: exerciseTableExerciseName == nil || !(exerciseTableExerciseName is NSNull))
+                let exercise = Exercise(exerciseName: exerciseName, exerciseDescription: "", priority: !(priority is NSNull) ? Int(priority as! String)! : ExercisePriorityUtil.PRIORITY_LIMIT_UPPER / 2, sets: sets, fromIntencity: exerciseTableExerciseName == nil || !(exerciseTableExerciseName is NSNull))
                 
                 // This determines if what we searched for has been returned from the database.
                 // This is not case sensitive.
@@ -64,7 +65,7 @@ struct ExerciseDao
     /**
      * Gets an exercise with default values.
      *
-     * @param exerciseName  The name of teh exercise.
+     * @param exerciseName  The name of the exercise.
      *
      * @return The exercise.
      */
@@ -77,6 +78,6 @@ struct ExerciseDao
                       difficulty: 10,
                       notes: "")
         
-        return Exercise(exerciseName: exerciseName, exerciseDescription: "", sets: [ set ], fromIntencity: false)
+        return Exercise(exerciseName: exerciseName, exerciseDescription: "", priority: Int(Constant.CODE_FAILED), sets: [ set ], fromIntencity: false)
     }
 }

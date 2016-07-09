@@ -13,13 +13,15 @@ class Exercise: NSObject
 {
     var exerciseName = ""
     var exerciseDescription = ""
+    var priority: Int
     var sets: [Set] = []
     var fromIntencity: Bool
     
-    init(exerciseName: String, exerciseDescription: String, sets: [Set], fromIntencity: Bool)
+    init(exerciseName: String, exerciseDescription: String, priority: Int, sets: [Set], fromIntencity: Bool)
     {
         self.exerciseName = exerciseName
         self.exerciseDescription = exerciseDescription
+        self.priority = priority
         self.sets = sets
         self.fromIntencity = fromIntencity
     }

@@ -16,7 +16,7 @@ class DBHelper
 {
     let DATABASE_NAME = "intencity.sqlite"
     
-    let DATABASE_VERSION: UInt32 = 1;
+    let DATABASE_VERSION: UInt32 = 2;
     
     let DB_COMMA_SEP = ","
     
@@ -56,6 +56,7 @@ class DBHelper
             ExerciseTable.COLUMN_REP + integerType + DB_COMMA_SEP +
             ExerciseTable.COLUMN_DURATION + textType + DB_COMMA_SEP +
             ExerciseTable.COLUMN_DIFFICULTY + integerType + DB_COMMA_SEP +
+            ExerciseTable.COLUMN_PRIORITY + integerType + DB_COMMA_SEP +
             ExerciseTable.COLUMN_NOTES + textType +
         " );"
         
@@ -145,6 +146,7 @@ class DBHelper
                 let reps = set.reps
                 let duration = set.duration
                 let difficulty = set.difficulty
+                let priority = exercise.priority
                 let fromIntencity = exercise.fromIntencity ? "1" : "0"
                 let notes = set.notes
                 
@@ -167,6 +169,7 @@ class DBHelper
                                     ExerciseTable.COLUMN_INDEX + DB_COMMA_SEP +
                                     ExerciseTable.COLUMN_NAME + DB_COMMA_SEP +
                                     ExerciseTable.COLUMN_DESCRIPTION + DB_COMMA_SEP +
+                                    ExerciseTable.COLUMN_PRIORITY + DB_COMMA_SEP +
                                     ExerciseTable.COLUMN_FROM_INTENCITY +
                                     webIdInsert +
                                     weightInsert +
@@ -180,6 +183,7 @@ class DBHelper
                                 String(index) + DB_COMMA_SEP +
                                 "'" + exercise.exerciseName + "'" + DB_COMMA_SEP +
                                 "'" + exercise.exerciseDescription + "'" + DB_COMMA_SEP +
+                                String(priority) + DB_COMMA_SEP +
                                 fromIntencity +
                                 webIdValue +
                                 weightValue +
@@ -240,6 +244,7 @@ class DBHelper
                 // Exercise
                 let name = result.stringForColumn(ExerciseTable.COLUMN_NAME)
                 let description = result.stringForColumn(ExerciseTable.COLUMN_DESCRIPTION)
+                let priority = result.stringForColumn(ExerciseTable.COLUMN_PRIORITY)
                 let fromIntencity = result.boolForColumn(ExerciseTable.COLUMN_FROM_INTENCITY);
                 
                 // If the last exercise name is equal to the last exercise we just got,
@@ -249,7 +254,7 @@ class DBHelper
                 {
                     lastExerciseName = name
                     
-                    exercise = Exercise(exerciseName: name, exerciseDescription: description != nil ? description : "", sets: [], fromIntencity: fromIntencity)
+                    exercise = Exercise(exerciseName: name, exerciseDescription: description != nil ? description : "", priority: priority != nil ? Int(priority)! : Int(Constant.CODE_FAILED), sets: [], fromIntencity: fromIntencity)
                     
                     exercises.append(exercise)
 

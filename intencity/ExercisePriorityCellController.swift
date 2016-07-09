@@ -27,8 +27,6 @@ class ExercisePriorityCellController: UITableViewCell
         super.awakeFromNib()
         
         exerciseNameLabel.textColor = Color.secondary_dark
-        
-        exercisePriority = ExercisePriorityUtil();
     }
     
     /**
@@ -45,7 +43,7 @@ class ExercisePriorityCellController: UITableViewCell
     
     @IBAction func morePriorityClicked(sender: AnyObject)
     {
-        priority = exercisePriority.getExercisePriority(priority, increment: true)
+        priority = ExercisePriorityUtil.getExercisePriority(priority, increment: true)
         
         setExercisePriority()
         
@@ -54,7 +52,7 @@ class ExercisePriorityCellController: UITableViewCell
     
     @IBAction func lessPriorityClicked(sender: AnyObject)
     {
-        priority = exercisePriority.getExercisePriority(priority, increment: false)
+        priority = ExercisePriorityUtil.getExercisePriority(priority, increment: false)
         
         setExercisePriority()
         
@@ -69,28 +67,28 @@ class ExercisePriorityCellController: UITableViewCell
         switch(priority)
         {
             // 40
-            case exercisePriority.PRIORITY_LIMIT_UPPER:
+            case ExercisePriorityUtil.PRIORITY_LIMIT_UPPER:
                 priorityLabel.textColor = Color.primary
-                priorityLabel.text = exercisePriority.HIGH_PRIORITY
+                priorityLabel.text = ExercisePriorityUtil.HIGH_PRIORITY
                 break;
             // 30
-            case exercisePriority.INCREMENTAL_VALUE * 3:
+            case ExercisePriorityUtil.INCREMENTAL_VALUE * 3:
                 priorityLabel.textColor = Color.primary_dark
-                priorityLabel.text = exercisePriority.MEDIUM_PRIORITY
+                priorityLabel.text = ExercisePriorityUtil.MEDIUM_PRIORITY
                 break;
             // 20
-            case exercisePriority.INCREMENTAL_VALUE * 2:
+            case ExercisePriorityUtil.INCREMENTAL_VALUE * 2:
                 priorityLabel.textColor = Color.secondary_dark
-                priorityLabel.text = exercisePriority.NORMAL_PRIORITY
+                priorityLabel.text = ExercisePriorityUtil.NORMAL_PRIORITY
                 break;
             // 10
-            case exercisePriority.INCREMENTAL_VALUE:
+            case ExercisePriorityUtil.INCREMENTAL_VALUE:
                 priorityLabel.textColor = Color.secondary_light
-                priorityLabel.text = exercisePriority.LOW_PRIORITY
+                priorityLabel.text = ExercisePriorityUtil.LOW_PRIORITY
                 break;
             default:
                 priorityLabel.textColor = Color.card_button_delete_select
-                priorityLabel.text = exercisePriority.HIDDEN
+                priorityLabel.text = ExercisePriorityUtil.HIDDEN
                 break;
         }
     }

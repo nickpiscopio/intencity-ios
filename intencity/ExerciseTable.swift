@@ -30,6 +30,7 @@ struct ExerciseTable
     static let COLUMN_REP = "ExerciseRep";
     static let COLUMN_DURATION = "ExerciseDuration";
     static let COLUMN_DIFFICULTY = "ExerciseDifficulty";
+    static let COLUMN_PRIORITY = "ExercisePriority";
     static let COLUMN_NOTES = "Notes";
     // Whether a search result is from Intencity or the user typed it in.
     static let COLUMN_FROM_INTENCITY = "FromIntencity";

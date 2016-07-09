@@ -11,15 +11,15 @@ import Foundation
 
 class ExercisePriorityUtil
 {
-    let PRIORITY_LIMIT_UPPER = 40
-    let PRIORITY_LIMIT_LOWER = 0
-    let INCREMENTAL_VALUE = 10
+    static let PRIORITY_LIMIT_UPPER = 40
+    static let PRIORITY_LIMIT_LOWER = 0
+    static let INCREMENTAL_VALUE = 10
     
-    let HIGH_PRIORITY = NSLocalizedString("high_priority", comment: "")
-    let MEDIUM_PRIORITY = NSLocalizedString("medium_priority", comment: "")
-    let NORMAL_PRIORITY = NSLocalizedString("normal_priority", comment: "")
-    let LOW_PRIORITY = NSLocalizedString("low_priority", comment: "")
-    let HIDDEN = NSLocalizedString("hidden_exercise", comment: "")
+    static let HIGH_PRIORITY = NSLocalizedString("high_priority", comment: "")
+    static let MEDIUM_PRIORITY = NSLocalizedString("medium_priority", comment: "")
+    static let NORMAL_PRIORITY = NSLocalizedString("normal_priority", comment: "")
+    static let LOW_PRIORITY = NSLocalizedString("low_priority", comment: "")
+    static let HIDDEN = NSLocalizedString("hidden_exercise", comment: "")
     
     /**
      * Sets the priority for the exercise.
@@ -29,7 +29,7 @@ class ExercisePriorityUtil
      *
      * @return The new exercise priority.
      */
-    func getExercisePriority(exercisePriority: Int, increment: Bool) -> Int
+    static func getExercisePriority(exercisePriority: Int, increment: Bool) -> Int
     {
         var priority = exercisePriority
         
