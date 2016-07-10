@@ -23,6 +23,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     weak var exerciseSearchDelegate: ExerciseSearchDelegate!
     weak var userSearchDelegate: UserSearchDelegate!
     
+    // The milliseconds it takes to search for an exercise.
+    // We want this because the user might be typing, and we don't want to flood the server with searches.
+    let SEARCH_EXECUTE_SECONDS = 1.3;
+    
     var state: Int!
     
     var searchBar: UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 300, 20))
@@ -38,6 +42,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     var addedUser = false
     
     var profileViewController: ProfileViewController!
+    
+    var searchExecutionTimer = NSTimer()
     
     override func viewDidLoad()
     {
@@ -156,14 +162,33 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     }
     
     /**
-     * The callback for the search button being clicked on the keyboard.
+     * The callback for when the search text changed.
      */
-    func searchBarSearchButtonClicked(searchBar: UISearchBar)
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String)
     {
         showLoading()
         
         hideConnectionIssue()
         
+        // Invalidate the search so we can start a new search in case the user isn't done typing.
+        searchExecutionTimer.invalidate()
+        // Start a timer to search after a specified time.
+        searchExecutionTimer = NSTimer.scheduledTimerWithTimeInterval(SEARCH_EXECUTE_SECONDS, target: self, selector: #selector(search), userInfo: nil, repeats: false)
+    }
+    
+    /**
+     * The callback for the search button being clicked on the keyboard.
+     */
+    func searchBarSearchButtonClicked(searchBar: UISearchBar)
+    {
+        search()
+    }
+    
+    /**
+     * Executes a search.
+     */
+    func search()
+    {
         let email = Util.getEmailFromDefaults()
         
         // The parameters to search on.
