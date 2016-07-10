@@ -13,6 +13,8 @@ class ExercisePriorityCellController: UITableViewCell
 {
     @IBOutlet weak var exerciseNameLabel: UILabel!    
     @IBOutlet weak var priorityLabel: UILabel!
+    @IBOutlet weak var morePriority: IntencityButtonNoBackground!
+    @IBOutlet weak var lessPriority: IntencityButtonNoBackground!
     @IBOutlet weak var separator: UIView!
     
     weak var delegate: ExercisePriorityDelegate?
@@ -64,6 +66,8 @@ class ExercisePriorityCellController: UITableViewCell
      */
     func setExercisePriority()
     {
+        ExercisePriorityUtil.setPriorityButtons(priority, morePriority: morePriority, lessPriority: lessPriority)
+        
         switch(priority)
         {
             // 40

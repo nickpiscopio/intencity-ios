@@ -5,6 +5,7 @@
 //  Created by Nick Piscopio on 2/15/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
+import UIKit
 import Foundation
 
 @objc protocol ExerciseDelegate
@@ -13,5 +14,5 @@ import Foundation
     func onHideClicked(indexPath: NSIndexPath)
     func onEditClicked(index: Int)
     func onSetUpdated(index: Int)
-    func onSetExercisePriority(indexPath: NSIndexPath, increasing: Bool)
+    func onSetExercisePriority(indexPath: NSIndexPath, morePriority: UIButton, lessPriority: UIButton, increment: Bool)
 }

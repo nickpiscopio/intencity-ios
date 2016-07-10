@@ -661,25 +661,37 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      * The callback for when an exercise priority is set.
      *
      * @param index         The index of the exercise we are setting.
+     * @param morePriority  The more priority button resource.
+     * @param lessPriority  The less priority button resource.
      * @param increasing    Boolean value of whether or not we are incresing or decreasing the priority of the exercise.
      */
-    func onSetExercisePriority(indexPath: NSIndexPath, increasing: Bool)
+    func onSetExercisePriority(indexPath: NSIndexPath, morePriority: UIButton, lessPriority: UIButton, increment: Bool)
     {
         let index = indexPath.row
         
-        let exerciseName = currentExercises[index].exerciseName
+        let exercise = currentExercises[index]
         
+        let exerciseName = exercise.exerciseName
+        
+        let priority = ExercisePriorityUtil.getExercisePriority(exercise.priority, increment: increment)
+        exercise.priority = priority
+        ExercisePriorityUtil.setPriorityButtons(priority, morePriority: morePriority, lessPriority: lessPriority);
+        
+        // Set the exercise priority on the web server.
+        // The ServiceListener is null because we don't care if it reached the server.
+        // The worst that will happen is a user will have to click the exercise priority again.
         _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_EXERCISE_PRIORITY, variables: [ email, exerciseName, String(increasing ? 1 : 0) ]))
+            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_EXERCISE_PRIORITY, variables: [ email, exerciseName, String(increment ? 1 : 0) ]))
         
-        if (!increasing)
+        // Remove the exercise if the user decremented it and it is less than 0.
+        if (priority == ExercisePriorityUtil.PRIORITY_LIMIT_LOWER && !increment)
         {
             hideExercise(indexPath, fromSearch: false, forever: false)
         }
         
         // Displays a toast to the user telling them they will see an exercise more or less.
-        self.tabBarController?.view.makeToast(String(format: increasing ? MORE_PRIORITY_STRING : LESS_PRIORITY_STRING, arguments: [ exerciseName ]))
+        self.tabBarController?.view.makeToast(String(format: increment ? MORE_PRIORITY_STRING : LESS_PRIORITY_STRING, arguments: [ exerciseName ]))
     }
     
     /**
@@ -983,7 +995,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         }
         else
         {
-            cell.setAsExercise(exerciseFromIntencity, routineState: routineState)
+            cell.setAsExercise(exerciseFromIntencity, priority: exercise.priority, routineState: routineState)
         }
             
         return cell

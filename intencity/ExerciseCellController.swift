@@ -16,6 +16,8 @@ class ExerciseCellController: UITableViewCell
     @IBOutlet weak var editStackView: UIStackView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var priorityStackView: UIStackView!
+    @IBOutlet weak var morePriority: IntencityExerciseCardButton!
+    @IBOutlet weak var lessPriority: IntencityExerciseCardButton!
     @IBOutlet weak var exerciseDescriptionView: UIView!
     @IBOutlet weak var hideButton: IntencityButtonNoBackground!
     
@@ -35,7 +37,7 @@ class ExerciseCellController: UITableViewCell
     /**
      * Sets the card as an exercise.
      */
-    func setAsExercise(fromIntencity: Bool, routineState: Int)
+    func setAsExercise(fromIntencity: Bool, priority: Int, routineState: Int)
     {
         exerciseDescriptionView.hidden = true
         
@@ -51,6 +53,8 @@ class ExerciseCellController: UITableViewCell
             // Hide the exercise priority buttons if we are not in the Intencity state of exercising.
             // Saved / Custom routines should hide the priorityStackView.
             priorityStackView.hidden = routineState != RoutineState.INTENCITY
+            
+            ExercisePriorityUtil.setPriorityButtons(priority, morePriority: morePriority, lessPriority: lessPriority)
         }
         else
         {
@@ -108,12 +112,12 @@ class ExerciseCellController: UITableViewCell
     
     @IBAction func setExerciseWithMorePriority(sender: AnyObject)
     {
-        delegate?.onSetExercisePriority(getIndexPath(sender), increasing: true)
+        delegate?.onSetExercisePriority(getIndexPath(sender), morePriority: morePriority, lessPriority: lessPriority, increment: true)
     }
     
     @IBAction func setExerciseWithLessPriority(sender: AnyObject)
     {
-        delegate?.onSetExercisePriority(getIndexPath(sender), increasing: false)
+        delegate?.onSetExercisePriority(getIndexPath(sender), morePriority: morePriority, lessPriority: lessPriority, increment: false)
     }
     
     func getIndexPath(sender: AnyObject) -> NSIndexPath

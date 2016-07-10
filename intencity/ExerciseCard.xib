@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="408" height="130"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uYB-jd-plL" id="UFj-wN-m2V">
-                <rect key="frame" x="0.0" y="0.0" width="408" height="130"/>
+                <rect key="frame" x="0.0" y="0.0" width="408" height="129.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zle-31-bG7" customClass="IntencityCardView" customModule="Intencity" customModuleProvider="target">
@@ -68,7 +68,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="54" id="Zt7-AT-7Jc"/>
                                                         </constraints>
-                                                        <state key="normal" image="thumb_up_normal"/>
+                                                        <state key="normal" image="thumb_up"/>
                                                         <connections>
                                                             <action selector="setExerciseWithMorePriority:" destination="uYB-jd-plL" eventType="touchUpInside" id="NIf-iw-MN5"/>
                                                         </connections>
@@ -78,7 +78,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="54" id="AKX-jm-4VV"/>
                                                         </constraints>
-                                                        <state key="normal" image="thumb_down_normal"/>
+                                                        <state key="normal" image="thumb_down"/>
                                                         <connections>
                                                             <action selector="setExerciseWithLessPriority:" destination="uYB-jd-plL" eventType="touchUpInside" id="Pyr-qz-4nc"/>
                                                         </connections>
@@ -132,6 +132,8 @@
                 <outlet property="exerciseDescriptionView" destination="Gr7-Dl-tBT" id="Xs6-E7-ard"/>
                 <outlet property="exerciseView" destination="UFj-wN-m2V" id="keH-UL-aDJ"/>
                 <outlet property="hideButton" destination="SNv-Ow-KFu" id="UHj-kg-Ey2"/>
+                <outlet property="lessPriority" destination="r7y-IN-Pcu" id="peB-Sz-cIp"/>
+                <outlet property="morePriority" destination="Ryq-FO-rQ4" id="XcU-uc-R1E"/>
                 <outlet property="priorityStackView" destination="tSa-Jk-I0Q" id="Qme-lp-2Jb"/>
                 <outlet property="view" destination="UFj-wN-m2V" id="a4g-jt-VcE"/>
             </connections>
@@ -141,7 +143,7 @@
     <resources>
         <image name="edit" width="18" height="12"/>
         <image name="hide" width="14" height="14"/>
-        <image name="thumb_down_normal" width="22" height="20"/>
-        <image name="thumb_up_normal" width="22" height="20"/>
+        <image name="thumb_down" width="22" height="20"/>
+        <image name="thumb_up" width="22" height="20"/>
     </resources>
 </document>
