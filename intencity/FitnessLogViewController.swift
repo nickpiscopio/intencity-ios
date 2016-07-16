@@ -10,19 +10,14 @@
 import UIKit
 
 class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDelegate, ExerciseSearchDelegate, RoutineDelegate, FitnessLogDelegate
-{    
-    enum ActiveButtonState
-    {
-        case SEARCH
-        case INTENCITY
-    }
+{
     
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var inactiveButton: IntencityButtonRoundLight!
-    @IBOutlet weak var activeButton: UIButton!
+    @IBOutlet weak var addExerciseButton: UIButton!
+    @IBOutlet weak var searchDirectionsLabel: UILabel!
     
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
     let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
@@ -58,7 +53,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     var awards = [String: String]()
     
     var routineState: Int!
-    var activeButtonState = ActiveButtonState.INTENCITY
     
     var textField: UITextField!
     
@@ -88,6 +82,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         
         exerciseData = ExerciseData.getInstance()
         exerciseData.routineState = routineState
+        
+        setAddButtonDirections()
         
         loadTableViewItems(result)
     }
@@ -244,55 +240,44 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     /**
      * Sets the next button images.
      */
-    func setButtons()
+    func setAddButtonDirections()
     {
-        var inactiveButtonImage: String!
-        var activeButtonImage: String!
-        
-        switch activeButtonState
+        if (routineState != RoutineState.CUSTOM)
         {
-            case .INTENCITY:
-                inactiveButtonImage = "search_button_small"                
-                activeButtonImage = "next_button"
-                break
-            case .SEARCH:
-                
-                activeButtonImage = "search_button_large"
-                inactiveButtonImage = "next_button_small"
-                break
+            let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(FitnessLogViewController.longClick))
+            addExerciseButton.addGestureRecognizer(longGesture)
+            
+            searchDirectionsLabel.textColor = Color.grey_text
+            searchDirectionsLabel.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_XX_SMALL)
+            searchDirectionsLabel.text = NSLocalizedString("action_button_search_directions", comment: "")
+            searchDirectionsLabel.hidden = false
         }
+        else
+        {
+            searchDirectionsLabel.hidden = true
+        }
+    }
 
-        inactiveButton.setImage(UIImage(named:inactiveButtonImage), forState: .Normal)
-        activeButton.setImage(UIImage(named:activeButtonImage), forState: .Normal)
-    }
     
-    @IBAction func inactiveButtonClicked(sender: AnyObject)
+    @IBAction func addExerciseButtonClicked(sender: AnyObject)
     {
-        switch activeButtonState
+        switch routineState
         {
-            case .INTENCITY:
-                activeButtonState = .SEARCH
-                break
-            case .SEARCH:
-                activeButtonState = .INTENCITY
-                break
-        }
-        
-        setButtons()
-    }
-    
-    @IBAction func activeButtonClicked(sender: AnyObject)
-    {
-        switch activeButtonState
-        {
-            case .INTENCITY:
-                nextExerciseClicked()
-                break
-            case .SEARCH:
+            case RoutineState.CUSTOM:
                 searchClicked()
                 break
+            default:
+                nextExerciseClicked()
+                break
         }
-
+    }
+    
+    func longClick(sender: AnyObject)
+    {
+        if (sender.state == .Began)
+        {
+            searchClicked()
+        }
     }
     
     /**
@@ -478,11 +463,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         {
             case RoutineState.CUSTOM:
             
-                activeButtonState = .SEARCH
-                inactiveButton.hidden = true
-                activeButton.hidden = false
+//                addExerciseButtonState = .SEARCH
                 
-                setButtons()
+//                setButtons()
             
                 animateTable(indexToLoad)
             
@@ -497,9 +480,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             
                 if (exerciseData.exerciseList.count >= EXERCISE_MINIMUM_THRESHOLD)
                 {
-                    activeButton.hidden = false
-                    inactiveButton.hidden = false
-                
                     animateTable(indexToLoad)
                 }
             

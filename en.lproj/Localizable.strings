@@ -277,6 +277,8 @@
 
 "routine_total_description" = "Completed Exercises: %1$@\nExercises in Routine: %2$@";
 
+"action_button_search_directions" = "HOLD";
+
 /* Exercise List Strings */
 "more_priority_string" = "You will see %1$@ more.";
 "less_priority_string" = "You will see %1$@ less.";

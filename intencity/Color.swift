@@ -23,7 +23,8 @@ struct Color
     static let page_background  = UIColor(red: 246.0/255.0, green: 246.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     static let shadow  = UIColor(red: 206.0/255.0, green: 206.0/255.0, blue: 206.0/255.0, alpha: 1.0)
     static let shadow_dark  = UIColor(red: 77.0/255.0, green: 86.0/255.0, blue: 101.0/255.0, alpha: 1.0)
-    static let card_button_select  = UIColor(red: 243.0/255.0, green: 243.0/255.0, blue: 243.0/255.0, alpha: 1.0)
     static let card_button_delete_select  = UIColor(red: 255.0/255.0, green: 1.0/255.0, blue: 1.0/255.0, alpha: 1.0)
     static let card_button_delete_deselect  = UIColor(red: 255.0/255.0, green: 60.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+    
+    static let grey_text = UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.2)
 }
