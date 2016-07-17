@@ -68,8 +68,6 @@
 		BD5F97841D0F8702001E5A26 /* AwardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F97831D0F8702001E5A26 /* AwardType.swift */; };
 		BD5F97861D10BEE4001E5A26 /* IntencityRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F97851D10BEE4001E5A26 /* IntencityRoundView.swift */; };
 		BD5F978A1D149CEE001E5A26 /* OverviewRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F97891D149CEE001E5A26 /* OverviewRowType.swift */; };
-		BD5F978C1D149F59001E5A26 /* OverviewCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5F978B1D149F59001E5A26 /* OverviewCard.xib */; };
-		BD5F978E1D14A02A001E5A26 /* OverviewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F978D1D14A02A001E5A26 /* OverviewCardController.swift */; };
 		BD5FC6941C7CDF5000E31D97 /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */; };
 		BD5FC6961C7CDFEA00E31D97 /* AboutCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */; };
 		BD640A4F1C85D1D7008895A2 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD640A4E1C85D1D7008895A2 /* RankingCell.xib */; };
@@ -250,8 +248,6 @@
 		BD5F97831D0F8702001E5A26 /* AwardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardType.swift; sourceTree = "<group>"; };
 		BD5F97851D10BEE4001E5A26 /* IntencityRoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityRoundView.swift; sourceTree = "<group>"; };
 		BD5F97891D149CEE001E5A26 /* OverviewRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewRowType.swift; sourceTree = "<group>"; };
-		BD5F978B1D149F59001E5A26 /* OverviewCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewCard.xib; sourceTree = "<group>"; };
-		BD5F978D1D14A02A001E5A26 /* OverviewCardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCardController.swift; sourceTree = "<group>"; };
 		BD5FC6931C7CDF5000E31D97 /* AboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
 		BD5FC6951C7CDFEA00E31D97 /* AboutCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCellController.swift; sourceTree = "<group>"; };
 		BD640A4E1C85D1D7008895A2 /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
@@ -430,7 +426,6 @@
 				BD640A501C85D1EE008895A2 /* RankingCellController.swift */,
 				BD4B8EB81C7CEACD00AD579B /* DescriptionFooterCellController.swift */,
 				BDE8BED51C77700900DBFB31 /* ExerciseListHeaderController.swift */,
-				BD5F978D1D14A02A001E5A26 /* OverviewCardController.swift */,
 				BD85D5C81D1578E00004F5C2 /* OverviewExerciseCellController.swift */,
 				BD85D5CC1D16CF820004F5C2 /* OverviewSetCellController.swift */,
 				BDD53BF71C8A32A7001235AE /* FitnessRecHeaderCellController.swift */,
@@ -700,7 +695,6 @@
 				BD294ACC1CC13679005718BA /* RoutineCellFooter.xib */,
 				BD36EC281C71048600F993CE /* ExerciseCard.xib */,
 				BD85D5CA1D16CF6D0004F5C2 /* OverviewSetCell.xib */,
-				BD5F978B1D149F59001E5A26 /* OverviewCard.xib */,
 				BD85D5C61D1578AD0004F5C2 /* OverviewExerciseCell.xib */,
 				BD1F30E41CAAC69600002D06 /* AwardCell.xib */,
 				BD1F30E81CAACACA00002D06 /* AwardCollectionViewCell.xib */,
@@ -807,7 +801,6 @@
 				BD36EC291C71048600F993CE /* ExerciseCard.xib in Resources */,
 				BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */,
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
-				BD5F978C1D149F59001E5A26 /* OverviewCard.xib in Resources */,
 				BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */,
 				BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */,
 				BDE493FD1C7B9B45005817D0 /* GenericHeaderCell.xib in Resources */,
@@ -940,7 +933,6 @@
 				BD56FB8F1CD0004A001404C5 /* ButtonDelegate.swift in Sources */,
 				BD7C7E851C7CA0CF005AFFDD /* EditEquipmentViewController.swift in Sources */,
 				BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */,
-				BD5F978E1D14A02A001E5A26 /* OverviewCardController.swift in Sources */,
 				BD7A870C1CCE46A9005BC2DF /* IntencityRoutineViewController.swift in Sources */,
 				BD7A87121CCEA137005BC2DF /* RoutineContinueCellController.swift in Sources */,
 				BD1AE7761CD23E28001FAAA8 /* UserRoutineDao.swift in Sources */,

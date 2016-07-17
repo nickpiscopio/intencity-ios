@@ -25,19 +25,8 @@ class OverviewSetCellController: UITableViewCell
     /**
      * Sets the edit button text
      */
-    func setEditText(set: Set)
+    func setEditText(mutableString: NSMutableAttributedString)
     {
-        let weight = set.weight
-        let reps = set.reps
-        let duration = set.duration
-        
-        let isReps = reps > 0
-        
-        let exerciseSet = ExerciseSet.getSetText(weight, duration: isReps ? String(reps) : duration, isReps: isReps)
-        
-        if (exerciseSet.hasValue)
-        {
-            setLabel.attributedText = exerciseSet.mutableString
-        }
+        setLabel.attributedText = mutableString
     }
 }

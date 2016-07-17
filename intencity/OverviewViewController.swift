@@ -141,14 +141,25 @@ class OverviewViewController: UIViewController
         exerciseCardIcon.image = UIImage(named: "icon_fitness_log")
         exerciseTitle.text = NSLocalizedString("title_exercises", comment: "")
         
-        let count = exercises.count
+        var exercisesToDisplay = exercises
+        
+        var count = exercisesToDisplay.count
+        
+        // Remove the last exercise from the list if it is a stretch.
+        if (exercisesToDisplay[count - 1].exerciseName == STRETCH_NAME)
+        {
+            exercisesToDisplay.removeLast()
+            
+            count -= 1
+        }
+        
         var lastCellIndex = count
         for i in 0 ..< count
         {
-            let exercise = exercises[i]
+            let exercise = exercisesToDisplay[i]
             let exerciseName = exercise.exerciseName
             
-            if (exerciseName != WARM_UP_NAME && exerciseName != STRETCH_NAME)
+            if (exerciseName != WARM_UP_NAME)
             {
                 let view = Util.loadNib(Constant.OVERVIEW_EXERCISE_CELL) as! OverviewExerciseCellController
                 view.title.text = exercise.exerciseName
@@ -156,7 +167,7 @@ class OverviewViewController: UIViewController
                 
                 // We only hide the last divider.
                 // We only round the last corner radius.
-                if (i == lastCellIndex - 1)
+                if (i == lastCellIndex)
                 {
                     view.divider.hidden = true
                     view.layer.cornerRadius = Dimention.RADIUS
@@ -167,34 +178,52 @@ class OverviewViewController: UIViewController
                 // Add the diver height
                 exerciseCellHeight += (i == count - 1) ? 1 : 0
                 
-                exerciseCellHeight += 14
+                exerciseCellHeight += 12
 
                 let sets = exercise.sets
                 let setCount = sets.count
                 
                 for z in 0 ..< setCount
                 {
-                    var setCellHeight: CGFloat = 0
+                    let set = sets[z]
+                
+                    let weight = set.weight
+                    let reps = set.reps
+                    let duration = set.duration
                     
-                    if (z == 0)
+                    let isReps = reps > 0
+                    
+                    let exerciseSet = ExerciseSet.getSetText(weight, duration: isReps ? String(reps) : duration, isReps: isReps)
+                    if (exerciseSet.hasValue)
                     {
-                        setCellHeight += Dimention.RELATED_ITEM_MARGIN
+                        var setCellHeight: CGFloat = 0
+                        
+                        if (z == 0)
+                        {
+                            setCellHeight += Dimention.RELATED_ITEM_MARGIN
+                        }
+                        else if (z != setCount)
+                        {
+                            setCellHeight += Dimention.OVERVIEW_SET_MARGIN
+                        }
+                        
+                        setCellHeight += Dimention.FONT_SIZE_MEDIUM
+                        
+                        exerciseCellHeight += setCellHeight
+                        
+                        let setView = Util.loadNib(Constant.OVERVIEW_SET_CELL) as! OverviewSetCellController
+                        setView.heightAnchor.constraintEqualToConstant(setCellHeight).active = true
+                        setView.numberLabel.text = "\(z + 1)."
+                        setView.setEditText(exerciseSet.mutableString)
+                        
+                        view.setStackView.addArrangedSubview(setView)
                     }
-                    else if (z != setCount)
-                    {
-                        setCellHeight += Dimention.OVERVIEW_SET_MARGIN
-                    }
-                    
-                    setCellHeight += Dimention.FONT_SIZE_MEDIUM
-                    
-                    exerciseCellHeight += setCellHeight
-                    
-                    let setView = Util.loadNib(Constant.OVERVIEW_SET_CELL) as! OverviewSetCellController
-                    setView.heightAnchor.constraintEqualToConstant(setCellHeight).active = true
-                    setView.numberLabel.text = "\(z + 1)."
-                    setView.setEditText(sets[z])
-                    
-                    view.setStackView.addArrangedSubview(setView)
+                }
+                
+                // Add padding between the sets and the exercise name if there are sets.
+                if (view.setStackView.arrangedSubviews.count > 0)
+                {
+                    exerciseCellHeight += 2
                 }
                 
                 view.heightAnchor.constraintEqualToConstant(exerciseCellHeight).active = true
