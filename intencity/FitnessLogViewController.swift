@@ -240,7 +240,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     }
     
     /**
-     * Sets the next button images.
+     * Sets the add button directions.
      */
     func setAddButtonDirections()
     {
@@ -252,7 +252,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             magnifyingGlassIcon.alpha = Integer.SEARCH_EXERCISE_DIRECTION_ALPHA
             
             searchDirectionsLabel.textColor = Color.grey_text
-            searchDirectionsLabel.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_XX_SMALL)
+            searchDirectionsLabel.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_X_SMALL)
             searchDirectionsLabel.text = NSLocalizedString("action_button_search_directions", comment: "")
             
             searchDirections.hidden = false

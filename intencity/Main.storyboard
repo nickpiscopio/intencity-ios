@@ -46,7 +46,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="pJU-af-MoM">
-                        <barButtonItem key="rightBarButtonItem" image="D5B17D56-1B2B-4C97-A263-D7B5A984EF14" id="6UB-wh-LYy">
+                        <barButtonItem key="rightBarButtonItem" image="F461057A-393A-4413-B2C7-D739954B09CC" id="6UB-wh-LYy">
                             <connections>
                                 <segue destination="rFy-xJ-61v" kind="show" id="Kz2-vl-MdR"/>
                             </connections>
@@ -1355,7 +1355,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="4ac-fi-aDN">
                                         <rect key="frame" x="0.0" y="0.0" width="55" height="21"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="magnifying_glass" translatesAutoresizingMaskIntoConstraints="NO" id="Ocy-6I-Fx6">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="magnifying_glass_dark" translatesAutoresizingMaskIntoConstraints="NO" id="Ocy-6I-Fx6">
                                                 <rect key="frame" x="0.0" y="6" width="10" height="10"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iQ-Hj-Vhb">
@@ -2432,7 +2432,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="D5B17D56-1B2B-4C97-A263-D7B5A984EF14" width="82" height="69">
+        <image name="F461057A-393A-4413-B2C7-D739954B09CC" width="82" height="69">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -2867,7 +2867,7 @@ Yn1ihWKIYo1ilWKYYqpirWKyAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAYrQ
         <image name="default_profile_pic" width="475" height="475"/>
         <image name="dropdown" width="18" height="9"/>
         <image name="intencity_logo" width="449" height="354"/>
-        <image name="magnifying_glass" width="10" height="10"/>
+        <image name="magnifying_glass_dark" width="10" height="10"/>
         <image name="next_button" width="50" height="50"/>
         <image name="no_connection" width="24" height="18"/>
         <image name="tab_icon_fitness_log" width="11" height="18"/>

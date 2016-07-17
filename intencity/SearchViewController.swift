@@ -144,7 +144,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
      */
     func initSearchBar()
     {
-        let image: UIImage = UIImage(named: "magnifying_glass")!
+        let image: UIImage = UIImage(named: "magnifying_glass_light")!
         searchBar.setImage(image, forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
         searchBar.delegate = self
         searchBar.becomeFirstResponder()
