@@ -468,10 +468,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         {
             case RoutineState.CUSTOM:
             
-//                addExerciseButtonState = .SEARCH
-                
-//                setButtons()
-            
                 animateTable(indexToLoad)
             
                 break

@@ -27,7 +27,6 @@ struct ExerciseDao
                 let reps = exercise[Constant.COLUMN_EXERCISE_REPS]
                 let duration = exercise[Constant.COLUMN_EXERCISE_DURATION]
                 let difficulty = exercise[Constant.COLUMN_EXERCISE_DIFFICULTY]
-                let priority = exercise[Constant.COLUMN_PRIORITY]
                 let notes = exercise[Constant.COLUMN_NOTES]
                 
                 let sets = [ Set(webId: Int(Constant.CODE_FAILED),
@@ -37,7 +36,15 @@ struct ExerciseDao
                                  difficulty: !(difficulty is NSNull) ? Int(difficulty as! String)! : 10,
                                  notes: !(notes is NSNull) ? notes as! String : "") ]
                 
-                let exercise = Exercise(exerciseName: exerciseName, exerciseDescription: "", priority: !(priority is NSNull) ? Int(priority as! String)! : ExercisePriorityUtil.PRIORITY_LIMIT_UPPER / 2, sets: sets, fromIntencity: exerciseTableExerciseName == nil || !(exerciseTableExerciseName is NSNull))
+                var priority = ExercisePriorityUtil.PRIORITY_LIMIT_UPPER / 2
+                // There is a possibility that this will be null.
+                // If it is, then we just don't set the priority.                
+                if let result = exercise[Constant.COLUMN_PRIORITY] as? String
+                {
+                    priority = Int(result)!
+                }
+
+                let exercise = Exercise(exerciseName: exerciseName, exerciseDescription: "", priority: priority, sets: sets, fromIntencity: exerciseTableExerciseName == nil || !(exerciseTableExerciseName is NSNull))
                 
                 // This determines if what we searched for has been returned from the database.
                 // This is not case sensitive.
