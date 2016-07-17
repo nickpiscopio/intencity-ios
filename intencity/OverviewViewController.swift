@@ -73,8 +73,8 @@ class OverviewViewController: UIViewController
         routineTitle.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_NORMAL)
         dateLabel.font = dateLabel.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
         
-        routineTitle.textColor = Color.secondary_dark
-        dateLabel.textColor = Color.secondary_dark
+        routineTitle.textColor = Color.secondary_light
+        dateLabel.textColor = Color.secondary_light
         
         // Exercise card
         exerciseTitle.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_SMALL)
@@ -107,7 +107,9 @@ class OverviewViewController: UIViewController
         
         awardFinishAward()
         
-        addExercises(exerciseData.exerciseList)
+        // We only want the completed exercises, so we filter out the incompleted ones.
+        let completedExercises = Array(exerciseData.exerciseList[0...exerciseData.exerciseIndex - 1])
+        addExercises(completedExercises)
         addAwards(notificationHandler.awards)
         
         fitnessLogDelegate.onHideLoading()
