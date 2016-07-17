@@ -7,6 +7,8 @@
 //  Created by Nick Piscopio on 2/11/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
+import UIKit
+
 struct Integer
 {
     static let TIME_CHARACTERS = 6
@@ -18,4 +20,6 @@ struct Integer
     static let EMAIL_LENGTH = 40
     static let PASSWORD_LENGTH = 40
     static let EXERCISE_NOTE_LENGTH = 255
+    
+    static let SEARCH_EXERCISE_DIRECTION_ALPHA: CGFloat = 0.2
 }

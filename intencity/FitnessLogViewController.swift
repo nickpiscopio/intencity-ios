@@ -17,6 +17,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addExerciseButton: UIButton!
+    @IBOutlet weak var searchDirections: UIStackView!
+    @IBOutlet weak var magnifyingGlassIcon: UIImageView!
     @IBOutlet weak var searchDirectionsLabel: UILabel!
     
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
@@ -247,14 +249,17 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(FitnessLogViewController.longClick))
             addExerciseButton.addGestureRecognizer(longGesture)
             
+            magnifyingGlassIcon.alpha = Integer.SEARCH_EXERCISE_DIRECTION_ALPHA
+            
             searchDirectionsLabel.textColor = Color.grey_text
             searchDirectionsLabel.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_XX_SMALL)
             searchDirectionsLabel.text = NSLocalizedString("action_button_search_directions", comment: "")
-            searchDirectionsLabel.hidden = false
+            
+            searchDirections.hidden = false
         }
         else
         {
-            searchDirectionsLabel.hidden = true
+            searchDirections.hidden = true
         }
     }
 

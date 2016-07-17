@@ -26,5 +26,5 @@ struct Color
     static let card_button_delete_select  = UIColor(red: 255.0/255.0, green: 1.0/255.0, blue: 1.0/255.0, alpha: 1.0)
     static let card_button_delete_deselect  = UIColor(red: 255.0/255.0, green: 60.0/255.0, blue: 60.0/255.0, alpha: 1.0)
     
-    static let grey_text = UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.2)
+    static let grey_text = UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: Integer.SEARCH_EXERCISE_DIRECTION_ALPHA)
 }
