@@ -240,18 +240,18 @@
 "title_routine" = "What routine would you like to do?";
 "title_custom_routine" = "Custom Routine";
 "title_custom_routines" = "Custom Routines";
-"title_intencity_routines" = "Intencity Routines";
+"title_featured_routines" = "Featured Routines";
 "title_default_routines" = "Default Routines";
 "title_saved_routines" = "Saved Routines";
 "description_custom_routines" = "BUILD A ROUTINE AS YOU EXERCISE";
 "description_default_routine" = "SELECT FROM %1$@ ROUTINE";
 "description_default_routines" = "SELECT FROM %1$@ ROUTINES";
 "key_user_selected" = "Users can input their own exercises.";
-"key_random" = "Utilizes Intencity's algorithm to select exercises.";
+"key_random" = "Intencity's algorithm is utilized to generate routines.";
 "key_consecutive" = "Consecutive list of exercises.";
 
-"intencity_routine_description" = "These routines utilize Intencity's algorithm to select exercises. They also allow users to input exercises.";
-"user_routine_description" = "These routines have a consecutive set of exercises. They also allow users to input exercises.";
+"intencity_routine_description" = "Intencity's algorithm is utilized to generate routines. Users also have the ability to input exercises.";
+"user_routine_description" = "These routines have a consecutive set of exercises. Users also have the ability to input exercises.";
 
 "edit_custom_routines_title" = "Edit Custom Routines";
 "edit_routines_description1" = "Below are the custom routines you have created.";

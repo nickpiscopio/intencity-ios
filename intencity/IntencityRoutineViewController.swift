@@ -54,7 +54,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         self.view.backgroundColor = Color.page_background
         
         // Sets the title for the screen.
-        self.navigationItem.title = NSLocalizedString("title_intencity_routines", comment: "")
+        self.navigationItem.title = NSLocalizedString("title_featured_routines", comment: "")
         
         // Hides the tab bar.
         self.tabBarController?.tabBar.hidden = true

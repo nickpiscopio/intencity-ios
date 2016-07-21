@@ -262,7 +262,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             searchDirections.hidden = true
         }
     }
-
     
     @IBAction func addExerciseButtonClicked(sender: AnyObject)
     {
