@@ -88,6 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/FMDB.framework"
   install_framework "Pods/IQKeyboardManagerSwift.framework"
   install_framework "Pods/RNCryptor.framework"
+  install_framework "Pods/TTGSnackbar.framework"
   install_framework "Pods/youtube_ios_player_helper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +96,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/FMDB.framework"
   install_framework "Pods/IQKeyboardManagerSwift.framework"
   install_framework "Pods/RNCryptor.framework"
+  install_framework "Pods/TTGSnackbar.framework"
   install_framework "Pods/youtube_ios_player_helper.framework"
 fi

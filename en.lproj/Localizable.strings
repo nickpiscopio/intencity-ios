@@ -279,6 +279,9 @@
 
 "action_button_search_directions" = "HOLD";
 
+"undo_hide_exercise_title" = "You removed %1$@ from today's workout.";
+"undo_hide_button" = "UNDO";
+
 /* Exercise List Strings */
 "more_priority_string" = "You will see %1$@ more.";
 "less_priority_string" = "You will see %1$@ less.";

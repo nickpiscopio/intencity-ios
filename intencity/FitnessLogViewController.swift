@@ -8,6 +8,7 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
+import TTGSnackbar
 
 class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDelegate, ExerciseSearchDelegate, RoutineDelegate, FitnessLogDelegate
 {
@@ -26,6 +27,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
     let MORE_PRIORITY_STRING = NSLocalizedString("more_priority_string", comment: "")
     let LESS_PRIORITY_STRING = NSLocalizedString("less_priority_string", comment: "")
+    let UNDO_STRING = NSLocalizedString("undo_hide_button", comment: "")
 
     let DEFAULTS = NSUserDefaults.standardUserDefaults()
     
@@ -994,6 +996,20 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         let index = indexPath.row
         
         let exerciseName = currentExercises[index].exerciseName
+        
+        let title = String(format: NSLocalizedString("undo_hide_exercise_title", comment: ""), exerciseName)
+        
+        let snackbar = TTGSnackbar.init(message: title, duration: .Forever, actionText: UNDO_STRING) { (snackbar) -> Void in
+            NSLog("Click action!")
+            snackbar.removeFromSuperview()
+        }
+        
+        snackbar.leftMargin = 0
+        snackbar.rightMargin = 0;
+        snackbar.bottomMargin = 0;
+        snackbar.cornerRadius = 0;
+        snackbar.actionTextColor = Color.accent
+        snackbar.show()
         
         currentExercises.removeAtIndex(index)
         

@@ -12,3 +12,6 @@ pod 'IQKeyboardManagerSwift'
 pod 'DropDown'
 
 pod 'FMDB'
+
+# DOCUMENTATION: https://github.com/zekunyan/TTGSnackbar
+pod 'TTGSnackbar'
