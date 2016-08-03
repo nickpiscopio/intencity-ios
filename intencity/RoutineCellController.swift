@@ -42,45 +42,6 @@ class RoutineCellController: UITableViewCell
     }
     
     /**
-     * Adds the key indicators to the stackview if they aren't already added.
-     * These keys inform the user what exercises are associated with each routine type.
-     * 
-     * @param keys  The key indicators to add to the stackview 
-     */
-    func setKeys(keys: [Int])
-    {
-        if (!hasKeys)
-        {
-            let keyCount = keys.count
-            for i in 0..<keyCount
-            {
-                let indicator = IntencityCircleView(frame: CGRectMake(0,0,8,8))
-                indicator.heightAnchor.constraintEqualToConstant(8).active = true;
-                indicator.widthAnchor.constraintEqualToConstant(8).active = true;
-                switch keys[i]
-                {
-                    case RoutineKeys.RANDOM:
-                        indicator.backgroundColor = Color.accent
-                        break
-                    case RoutineKeys.USER_SELECTED:
-                        indicator.backgroundColor = Color.card_button_delete_deselect
-                        break
-                    case RoutineKeys.CONSECUTIVE:
-                        indicator.backgroundColor = Color.primary_dark
-                        break
-                    default:
-                        break
-                }
-                
-                titleStackView.addArrangedSubview(indicator)
-                titleStackView.translatesAutoresizingMaskIntoConstraints = false
-                
-                hasKeys = true
-            }
-        }
-    }
-    
-    /**
      * Sets the background color pf the routine card.
      */
     func setBackground()

@@ -10,8 +10,5 @@
 struct RoutineSection
 {
     var title: String
-    // This is the int equivalents to what dot is being shown for each routine,
-    // which will correlate to the routine key.
-    var keys: [Int]
     var routineGroups: [RoutineGroup]
 }

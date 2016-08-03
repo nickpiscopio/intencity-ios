@@ -24,4 +24,6 @@ SPEC CHECKSUMS:
   TTGSnackbar: cb5cbecd868251268edef78b058c7ef089a3670a
   youtube-ios-player-helper: 84b1485ebb4b7c6b619c6e05edcb55186723a7c6
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 73ad051a36d60fabd5dc74a8da3cb10c6d50f6ee
+
+COCOAPODS: 1.0.1

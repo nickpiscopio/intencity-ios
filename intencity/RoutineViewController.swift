@@ -64,7 +64,6 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         // Load the cells we are going to use in the tableview.
         Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CONTINUE_CELL, cellName: Constant.ROUTINE_CONTINUE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CELL, cellName: Constant.ROUTINE_CELL)
-        Util.addUITableViewCell(tableView, nibNamed: Constant.ROUTINE_CELL_FOOTER, cellName: Constant.ROUTINE_CELL_FOOTER)
         
         displayAppAlert()
         
@@ -91,7 +90,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         exerciseData = ExerciseData.getInstance()
         
         routines.removeAll()
-        routines.append(RoutineSection(title:RoutineViewController.CUSTOM_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED ], routineGroups: []))
+        routines.append(RoutineSection(title:RoutineViewController.CUSTOM_ROUTINE_TITLE, routineGroups: []))
 
         _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
@@ -201,12 +200,12 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         switch routine
         {
             case RoutineViewController.INTENCITY_ROUTINE_TITLE:
-                routines.insert(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], routineGroups: groups), atIndex: selectedRoutineSection)
+                routines.insert(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, routineGroups: groups), atIndex: selectedRoutineSection)
                 break
             case RoutineViewController.SAVED_ROUTINE_TITLE:
                 if (groupCount > 0)
                 {
-                    routines.insert(RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], routineGroups: groups), atIndex: selectedRoutineSection)
+                    routines.insert(RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, routineGroups: groups), atIndex: selectedRoutineSection)
                 }                
                 break
             default:
@@ -344,13 +343,13 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 
                 getSavedRoutines()
                 
-                section = RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.RANDOM ], routineGroups: rows)
+                section = RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, routineGroups: rows)
                 
                 break
             
             case ServiceEvent.GET_LIST:
             
-                section = RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, keys: [ RoutineKeys.USER_SELECTED, RoutineKeys.CONSECUTIVE ], routineGroups: rows)
+                section = RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, routineGroups: rows)
             
                 break
             
@@ -389,7 +388,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
             
             if (savedExercises.routineName != "")
             {
-                routines.insert(RoutineSection(title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), keys: [], routineGroups: []), atIndex: 0)
+                routines.insert(RoutineSection(title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), routineGroups: []), atIndex: 0)
             }
         }
     }
@@ -414,28 +413,6 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return 1
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
-    {
-        if (section == routines.count - 1)
-        {
-            routineFooter = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL_FOOTER) as! RoutineCellFooterController
-            
-            return routineFooter != nil ? routineFooter.contentView : nil
-        }
-        
-        return nil
-    }
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
-    {
-        if (section == routines.count - 1)
-        {
-            return routineFooter != nil ? routineFooter.view.frame.height : 80
-        }
-        
-        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -465,7 +442,6 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
             cell.selectionStyle = .None
             cell.routineTitle.text = title
             cell.setDescription(totalIntencityRoutines)
-            cell.setKeys(routine.keys)
             cell.setBackground()
             
             return cell
