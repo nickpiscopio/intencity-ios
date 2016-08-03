@@ -62,6 +62,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     
     var result: String!
     
+    var snackbar: TTGSnackbar!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -357,6 +359,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func addExercise(initialLoad: Bool, fromSearch: Bool)
     {
+        removeSnackBar()
+        
         let currentExerciseCount = currentExercises.count
         // If there is 1 exercise left, we want to display the stretch.
         // We remove all the unnecessary exercises.
@@ -983,6 +987,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         return cell
     }
     
+    func removeSnackBar()
+    {
+        if (snackbar != nil)
+        {
+            snackbar.removeFromSuperview()
+        }
+    }
+    
     /**
      * Hides an exercise in the exercise list.
      *
@@ -999,9 +1011,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         
         let title = String(format: NSLocalizedString("undo_hide_exercise_title", comment: ""), exerciseName)
         
-        let snackbar = TTGSnackbar.init(message: title, duration: .Forever, actionText: UNDO_STRING) { (snackbar) -> Void in
+        removeSnackBar()
+        
+        snackbar = TTGSnackbar.init(message: title, duration: .Forever, actionText: UNDO_STRING) { (snackbar) -> Void in
             NSLog("Click action!")
-            snackbar.removeFromSuperview()
+            self.removeSnackBar()
         }
         
         snackbar.leftMargin = 0
