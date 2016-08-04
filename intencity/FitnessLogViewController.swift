@@ -996,17 +996,22 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func insertExercise()
     {
+        tableView.beginUpdates()
         let exercise = indexedExercise.exercise
         let index = indexedExercise.index
         
         exerciseData.exerciseList.insert(exercise, atIndex: index)
         currentExercises.insert(exercise, atIndex: index)
         
-        tableView.reloadData()
+        let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        
+        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
         
         exerciseData.exerciseIndex += 1
         
         updateExerciseTotal()
+        
+        tableView.endUpdates()
     }
     
     /**
