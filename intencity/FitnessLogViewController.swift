@@ -64,6 +64,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     
     var snackbar: TTGSnackbar!
     
+    var indexedExercise: IndexedExercise!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -391,7 +393,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         {
             let indexPath = NSIndexPath(forRow: position, inSection: 0)
             
-            hideExercise(indexPath, fromSearch: fromSearch, forever: false)
+            hideExercise(indexPath, fromSearch: fromSearch)
         }
         else
         {            
@@ -524,7 +526,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func onHideClicked(indexPath: NSIndexPath)
     {
-        hideExercise(indexPath, fromSearch: false, forever: false)
+        hideExercise(indexPath, fromSearch: false)
     }
     
     /**
@@ -673,7 +675,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         // Remove the exercise if the user decremented it and it is less than 0.
         if (priority == ExercisePriorityUtil.PRIORITY_LIMIT_LOWER && !increment)
         {
-            hideExercise(indexPath, fromSearch: false, forever: false)
+            hideExercise(indexPath, fromSearch: false)
         }
         
         // Displays a toast to the user telling them they will see an exercise more or less.
@@ -987,6 +989,29 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         return cell
     }
     
+    /**
+     * Insert an exercise back into the array.
+     *
+     * @param indexedExercise   The exercise with an index that is being inserted into the array.
+     */
+    func insertExercise()
+    {
+        let exercise = indexedExercise.exercise
+        let index = indexedExercise.index
+        
+        exerciseData.exerciseList.insert(exercise, atIndex: index)
+        currentExercises.insert(exercise, atIndex: index)
+        
+        tableView.reloadData()
+        
+        exerciseData.exerciseIndex += 1
+        
+        updateExerciseTotal()
+    }
+    
+    /**
+     * Removes the snackbar from the superview if it exists.
+     */
     func removeSnackBar()
     {
         if (snackbar != nil)
@@ -998,35 +1023,19 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     /**
      * Hides an exercise in the exercise list.
      *
-     * @param indexPath The index path for the exercise to hide.
-     * @param forever       Whether to call the stored proceedure to hide the exercise forever.
+     * @param indexPath     The index path for the exercise to hide.
+     * @param fromSearch    A boolean value of whether the exercise was hidden from search.
      */
-    func hideExercise(indexPath: NSIndexPath, fromSearch: Bool, forever: Bool)
+    func hideExercise(indexPath: NSIndexPath, fromSearch: Bool)
     {
         tableView.beginUpdates()
         
         let index = indexPath.row
-        
-        let exerciseName = currentExercises[index].exerciseName
-        
-        let title = String(format: NSLocalizedString("undo_hide_exercise_title", comment: ""), exerciseName)
-        
-        removeSnackBar()
-        
-        snackbar = TTGSnackbar.init(message: title, duration: .Forever, actionText: UNDO_STRING) { (snackbar) -> Void in
-            NSLog("Click action!")
-            self.removeSnackBar()
-        }
-        
-        snackbar.leftMargin = 0
-        snackbar.rightMargin = 0;
-        snackbar.bottomMargin = 0;
-        snackbar.cornerRadius = 0;
-        snackbar.actionTextColor = Color.accent
-        snackbar.show()
+        let exerciseToRemove = currentExercises[index]
         
         currentExercises.removeAtIndex(index)
         
+        let exerciseName = exerciseToRemove.exerciseName
         if (exerciseName != STRETCH_NAME)
         {
             exerciseData.exerciseList.removeAtIndex(index)
@@ -1043,19 +1052,32 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         {
             addExercise(false, fromSearch: fromSearch)
         }
-        
-        // Add that the user has skipped an exercise.
-        // Can't get the Kept Swimming badge.
-        setExerciseSkipped(true)
-        
-        if (forever && exerciseName != WARM_UP_NAME && exerciseName != STRETCH_NAME)
+        else
         {
-            // Hide the exercise on the web server.
-            // The delegate is nil because we don't care if it reached the server.
-            // The worst that will happen is a user will have to hide the exercise again.
-            _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
-                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_EXCLUDE_EXERCISE, variables: [ email, exerciseName ]))
+            indexedExercise = IndexedExercise.init(index: index, exercise: exerciseToRemove)
+            
+            let title = String(format: NSLocalizedString("undo_hide_exercise_title", comment: ""), exerciseName)
+            
+            removeSnackBar()
+            
+            snackbar = TTGSnackbar.init(message: title, duration: .Forever, actionText: UNDO_STRING) { (snackbar) -> Void in
+                
+                self.insertExercise()
+                
+                self.removeSnackBar()
+            }
+            
+            snackbar.leftMargin = 0
+            snackbar.rightMargin = 0;
+            snackbar.bottomMargin = 0;
+            snackbar.cornerRadius = 0;
+            snackbar.actionTextColor = Color.accent
+            snackbar.show()
+            
+            // Add that the user has skipped an exercise.
+            // Can't get the Kept Swimming badge.
+            setExerciseSkipped(true)
+
         }
         
         tableView.endUpdates()
