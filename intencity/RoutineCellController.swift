@@ -48,17 +48,17 @@ class RoutineCellController: UITableViewCell
     {
         switch routineTitle.text!
         {
-            case RoutineViewController.CUSTOM_ROUTINE_TITLE:
-                view.backgroundColor = Color.secondary_dark
-                backgroundImage.image = UIImage(named: "custom_routine_background")
-                break
-            case RoutineViewController.INTENCITY_ROUTINE_TITLE:
+            case RoutineViewController.FEATURED_ROUTINE_TITLE:
                 view.backgroundColor = Color.secondary_light
                 backgroundImage.image = UIImage(named: "intencity_routine_background")
                 break
             case RoutineViewController.SAVED_ROUTINE_TITLE:
-                view.backgroundColor = Color.primary
+                view.backgroundColor = Color.primary_dark
                 backgroundImage.image = UIImage(named: "saved_routine_background")
+                break
+            case RoutineViewController.CUSTOM_ROUTINE_TITLE:
+                view.backgroundColor = Color.secondary_dark
+                backgroundImage.image = UIImage(named: "custom_routine_background")
                 break
             default:
                 break

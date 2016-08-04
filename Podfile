@@ -5,17 +5,17 @@ use_frameworks!
 
 target “intencity” do
 
-pod 'youtube-ios-player-helper', '0.1.4'
+    pod 'youtube-ios-player-helper', '0.1.4'
 
-pod 'RNCryptor', '~> 4.0.0-beta'
+    pod 'RNCryptor', '~> 4.0.0-beta'
 
-pod 'IQKeyboardManagerSwift'
+    pod 'IQKeyboardManagerSwift'
 
-pod 'DropDown'
+    pod 'DropDown'
 
-pod 'FMDB'
+    pod 'FMDB'
 
-# DOCUMENTATION: https://github.com/zekunyan/TTGSnackbar
-pod 'TTGSnackbar'
+    # DOCUMENTATION: https://github.com/zekunyan/TTGSnackbar
+    pod 'TTGSnackbar'
 
 end

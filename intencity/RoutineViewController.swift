@@ -23,7 +23,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
     static let CUSTOM_ROUTINE_TITLE = NSLocalizedString("title_custom_routines", comment: "")
-    static let INTENCITY_ROUTINE_TITLE = NSLocalizedString("title_featured_routines", comment: "")
+    static let FEATURED_ROUTINE_TITLE = NSLocalizedString("title_featured_routines", comment: "")
     static let DEFAULT_ROUTINE_TITLE = NSLocalizedString("title_default_routines", comment: "")
     static let SAVED_ROUTINE_TITLE = NSLocalizedString("title_saved_routines", comment: "")
     static let CUSTOM_ROUTINE_DESCRIPTION = NSLocalizedString("description_custom_routines", comment: "")
@@ -199,8 +199,8 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         
         switch routine
         {
-            case RoutineViewController.INTENCITY_ROUTINE_TITLE:
-                routines.insert(RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, routineGroups: groups), atIndex: selectedRoutineSection)
+            case RoutineViewController.FEATURED_ROUTINE_TITLE:
+                routines.insert(RoutineSection(title: RoutineViewController.FEATURED_ROUTINE_TITLE, routineGroups: groups), atIndex: selectedRoutineSection)
                 break
             case RoutineViewController.SAVED_ROUTINE_TITLE:
                 if (groupCount > 0)
@@ -343,7 +343,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 
                 getSavedRoutines()
                 
-                section = RoutineSection(title: RoutineViewController.INTENCITY_ROUTINE_TITLE, routineGroups: rows)
+                section = RoutineSection(title: RoutineViewController.FEATURED_ROUTINE_TITLE, routineGroups: rows)
                 
                 break
             
@@ -467,7 +467,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 viewDelegate.onLoadView(View.FITNESS_LOG_VIEW, result: "", savedExercises: nil, state: RoutineState.CUSTOM)
                 
                 break
-            case RoutineViewController.INTENCITY_ROUTINE_TITLE:
+            case RoutineViewController.FEATURED_ROUTINE_TITLE:
                 
                 let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.INTENCITY_ROUTINE_VIEW_CONTROLLER) as! IntencityRoutineViewController
                 vc.viewDelegate = viewDelegate
