@@ -30,8 +30,6 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     
     var viewDelegate: ViewDelegate!
     
-    var routineFooter: RoutineCellFooterController!
-    
     var email = ""
 
     var recommended = 0

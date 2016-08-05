@@ -17,7 +17,8 @@ struct Color
     
     static let primary = UIColor(red: 48.0/255.0, green: 157.0/255.0, blue: 219.0/255.0, alpha: 1.0)
     static let primary_dark = UIColor(red: 36.0/255.0, green: 118.0/255.0, blue: 165.0/255.0, alpha: 1.0)
-    static let accent  = UIColor(red: 108.0/255.0, green: 242.0/255.0, blue: 145.0/255.0, alpha: 1.0)
+    static let accent  = UIColor(red: 69.0/255.0, green: 178.0/255.0, blue: 157.0/255.0, alpha: 1.0)
+    static let active  = UIColor(red: 108.0/255.0, green: 242.0/255.0, blue: 145.0/255.0, alpha: 1.0)
     static let secondary_light  = UIColor(red: 100.0/255.0, green: 112.0/255.0, blue: 130.0/255.0, alpha: 1.0)
     static let secondary_dark  = UIColor(red: 65.0/255.0, green: 64.0/255.0, blue: 66.0/255.0, alpha: 1.0)
     static let page_background  = UIColor(red: 246.0/255.0, green: 246.0/255.0, blue: 255.0/255.0, alpha: 1.0)

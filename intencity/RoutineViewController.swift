@@ -34,8 +34,6 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     
     var viewDelegate: ViewDelegate!
     
-    var routineFooter: RoutineCellFooterController!
-    
     var email = ""
 
     var recommended = 0
@@ -265,7 +263,6 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         {
             tableView.reloadData()
         }
-        
     }
     
     /**

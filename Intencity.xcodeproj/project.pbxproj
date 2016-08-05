@@ -29,7 +29,6 @@
 		BD294AC51CAEAE09005718BA /* ImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD294AC41CAEAE09005718BA /* ImageDelegate.swift */; };
 		BD294AC71CAEB579005718BA /* RetrieveImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD294AC61CAEB579005718BA /* RetrieveImageTask.swift */; };
 		BD294ACB1CBE7C3B005718BA /* ExercisePriorityUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD294ACA1CBE7C3B005718BA /* ExercisePriorityUtil.swift */; };
-		BD294ACF1CC13883005718BA /* RoutineCellFooterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD294ACE1CC13883005718BA /* RoutineCellFooterController.swift */; };
 		BD3480C51CD24158007A5402 /* SavedRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3480C41CD24158007A5402 /* SavedRoutineViewController.swift */; };
 		BD36EC1F1C70EB5D00F993CE /* ExerciseCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */; };
 		BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36EC221C70F0A400F993CE /* Exercise.swift */; };
@@ -205,7 +204,6 @@
 		BD294AC41CAEAE09005718BA /* ImageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDelegate.swift; sourceTree = "<group>"; };
 		BD294AC61CAEB579005718BA /* RetrieveImageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveImageTask.swift; sourceTree = "<group>"; };
 		BD294ACA1CBE7C3B005718BA /* ExercisePriorityUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePriorityUtil.swift; sourceTree = "<group>"; };
-		BD294ACE1CC13883005718BA /* RoutineCellFooterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCellFooterController.swift; sourceTree = "<group>"; };
 		BD3480C41CD24158007A5402 /* SavedRoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRoutineViewController.swift; sourceTree = "<group>"; };
 		BD36EC1E1C70EB5D00F993CE /* ExerciseCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellController.swift; sourceTree = "<group>"; };
 		BD36EC221C70F0A400F993CE /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -452,7 +450,6 @@
 				BD56FB8C1CCFFD08001404C5 /* IntencityRoutineFooterCellController.swift */,
 				BD7A87091CCE4542005BC2DF /* RoutineCellController.swift */,
 				BD7A87111CCEA137005BC2DF /* RoutineContinueCellController.swift */,
-				BD294ACE1CC13883005718BA /* RoutineCellFooterController.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -926,7 +923,6 @@
 				BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */,
 				BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */,
 				BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */,
-				BD294ACF1CC13883005718BA /* RoutineCellFooterController.swift in Sources */,
 				BD56FB931CD101A0001404C5 /* IntencityRoutineDao.swift in Sources */,
 				BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */,
 				BD56FB8F1CD0004A001404C5 /* ButtonDelegate.swift in Sources */,

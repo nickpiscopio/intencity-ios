@@ -38,7 +38,6 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     var notificationHandler: NotificationHandler!
     
     var exerciseListHeader: ExerciseListHeaderController!
-    var routineFooter: RoutineCellFooterController!
 
     var insertIntoWebSetsIndex: Int!
     var totalExercises = 7

@@ -42,14 +42,14 @@ class RoutineCellController: UITableViewCell
     }
     
     /**
-     * Sets the background color pf the routine card.
+     * Sets the background color of the routine card.
      */
     func setBackground()
     {
         switch routineTitle.text!
         {
             case RoutineViewController.FEATURED_ROUTINE_TITLE:
-                view.backgroundColor = Color.secondary_light
+                view.backgroundColor = Color.accent
                 backgroundImage.image = UIImage(named: "intencity_routine_background")
                 break
             case RoutineViewController.SAVED_ROUTINE_TITLE:
