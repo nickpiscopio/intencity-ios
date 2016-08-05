@@ -44,7 +44,8 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     
     var exerciseData: ExerciseData!
     
-    var routines = [RoutineSection]()
+    var sectionMap = [Int : RoutineSection]()
+    var sections = [RoutineSection]()
     var selectedRoutineSection: Int!
     
     override func viewDidLoad()
@@ -89,13 +90,28 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         ExerciseData.reset()
         exerciseData = ExerciseData.getInstance()
         
-        routines.removeAll()
-        routines.append(RoutineSection(title:RoutineViewController.CUSTOM_ROUTINE_TITLE, routineGroups: []))
+        // Clear the entire map because we are reinitializing it.
+        sectionMap.removeAll()
+        
+        let size = sections.count
+        if (size > 0 && sections[RoutineType.CONTINUE].routineType == RoutineType.CONTINUE)
+        {
+            // Only reinsert the first section because it is the CONTINUE card.
+        
+            sectionMap[RoutineType.CONTINUE] = sections[RoutineType.CONTINUE]
+        }
+    
+        // Clear the entire section array because we are reinstantiating it.
+        sections.removeAll()
+   
+        insertSection(RoutineType.CUSTOM, routineSection: RoutineSection(routineType: RoutineType.CUSTOM, title:RoutineViewController.CUSTOM_ROUTINE_TITLE, routineGroups: []), notifyChange: true)
 
+        // Get the Featured Routines
         _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
         
+        // Get the Saved Routines
         _ = ServiceTask(event: ServiceEvent.GET_LIST, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_ROUTINE, variables: [ email ]))
@@ -156,6 +172,33 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         connectionView.hidden = true
     }
     
+    /**
+     * Inserts a routine section into the map and then into the section ArrayList.
+     * We do this so we can give an order to the sections.
+     *
+     * @param routineType       The RoutineType of the section. This will be it's index.
+     * @param routineSection    The RoutineSection we are adding.
+     * @param notifyChange      Boolean value of whether we are notifying the adapter that we've added an item.
+     */
+    func insertSection(routineType: Int, routineSection: RoutineSection, notifyChange: Bool)
+    {
+        sectionMap[routineType] = routineSection
+        let sectionArr = sectionMap.sort{ $1.0 > $0.0 }
+
+        // sort and add to sections.
+        sections.removeAll()
+        
+        for (_, section) in sectionArr
+        {
+            sections.append(section)
+        }
+
+        if (notifyChange)
+        {
+            tableView.reloadData()
+        }
+    }
+
     @IBAction func tryAgainClick(sender: AnyObject)
     {
         initRoutineCard()
@@ -194,18 +237,18 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     func onRoutineUpdated(groups: [RoutineGroup])
     {
         let groupCount = groups.count
-        let routine = routines[selectedRoutineSection].title
-        routines.removeAtIndex(selectedRoutineSection)
+        let routine = sections[selectedRoutineSection].title
+        sections.removeAtIndex(selectedRoutineSection)
         
         switch routine
         {
             case RoutineViewController.FEATURED_ROUTINE_TITLE:
-                routines.insert(RoutineSection(title: RoutineViewController.FEATURED_ROUTINE_TITLE, routineGroups: groups), atIndex: selectedRoutineSection)
+                sections.insert(RoutineSection(routineType: RoutineType.FEATURED, title: RoutineViewController.FEATURED_ROUTINE_TITLE, routineGroups: groups), atIndex: selectedRoutineSection)
                 break
             case RoutineViewController.SAVED_ROUTINE_TITLE:
                 if (groupCount > 0)
                 {
-                    routines.insert(RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, routineGroups: groups), atIndex: selectedRoutineSection)
+                    sections.insert(RoutineSection(routineType: RoutineType.SAVED, title: RoutineViewController.SAVED_ROUTINE_TITLE, routineGroups: groups), atIndex: selectedRoutineSection)
                 }                
                 break
             default:
@@ -335,21 +378,21 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         {
             case ServiceEvent.NO_RETURN:
                 
-                getSavedRoutines()
+                getContinueExerciseRoutine()
                 
                 break
         
             case ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS:
                 
-                getSavedRoutines()
+                getContinueExerciseRoutine()
                 
-                section = RoutineSection(title: RoutineViewController.FEATURED_ROUTINE_TITLE, routineGroups: rows)
+                section = RoutineSection(routineType: RoutineType.FEATURED, title: RoutineViewController.FEATURED_ROUTINE_TITLE, routineGroups: rows)
                 
                 break
             
             case ServiceEvent.GET_LIST:
             
-                section = RoutineSection(title: RoutineViewController.SAVED_ROUTINE_TITLE, routineGroups: rows)
+                section = RoutineSection(routineType: RoutineType.SAVED, title: RoutineViewController.SAVED_ROUTINE_TITLE, routineGroups: rows)
             
                 break
             
@@ -359,7 +402,23 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
             
         if (rows.count > 0)
         {
-            routines.append(section)
+            switch section.routineType
+            {
+                case RoutineType.FEATURED:
+                    
+                    insertSection(RoutineType.FEATURED, routineSection: RoutineSection(routineType: RoutineType.FEATURED, title: RoutineViewController.FEATURED_ROUTINE_TITLE, routineGroups: rows), notifyChange: true)
+                    
+                    break
+                    
+                case RoutineType.SAVED:
+                    
+                    insertSection(RoutineType.SAVED, routineSection: RoutineSection(routineType: RoutineType.SAVED, title: RoutineViewController.SAVED_ROUTINE_TITLE, routineGroups: rows), notifyChange: true)
+                    
+                    break
+                    
+                default:
+                    break
+            }
         }
         
 //            animateTable()
@@ -377,18 +436,18 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     }
     
     /**
-     * Gets the saved routines if they exist and if they haven't already been added to the list.
+     * Gets the routine from the database if they exist and if they haven't already been added to the list.
      */
-    func getSavedRoutines()
+    func getContinueExerciseRoutine()
     {
         // We get routine[0] because the saved routines are always added to the first element of the list.
-        if (routines[0].title != getContinueString())
+        if (sections[0].title != getContinueString())
         {
             savedExercises = DBHelper().getRecords()
             
             if (savedExercises.routineName != "")
             {
-                routines.insert(RoutineSection(title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), routineGroups: []), atIndex: 0)
+                insertSection(RoutineType.CONTINUE, routineSection: RoutineSection(routineType: RoutineType.CONTINUE, title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), routineGroups: []), notifyChange: true)
             }
         }
     }
@@ -407,7 +466,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return routines.count
+        return sections.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -418,7 +477,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         // Gets the row in the section.
-        let routine = routines[indexPath.section]
+        let routine = sections[indexPath.section]
         let title = routine.title
         
         if (savedExercises != nil && title == getContinueString())
@@ -453,7 +512,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         // This is so we know which routine section to remove from the routines array when we update the RoutineGroups
         selectedRoutineSection = indexPath.section
         
-        let routine = routines[selectedRoutineSection]
+        let routine = sections[selectedRoutineSection]
         let title = routine.title
         switch title
         {

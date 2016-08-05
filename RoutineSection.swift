@@ -9,6 +9,7 @@
 
 struct RoutineSection
 {
+    var routineType: Int
     var title: String
     var routineGroups: [RoutineGroup]
 }
