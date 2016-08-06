@@ -60,7 +60,7 @@ class NotificationCellViewController: UITableViewCell
     {
         if (awardTotal > 1)
         {
-            amount.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_X_SMALL)
+            amount.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_XX_SMALL)
             amount.text = String(awardTotal)
             amount.textColor = Color.white
             amountView.hidden = false

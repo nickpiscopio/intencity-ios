@@ -37,7 +37,8 @@ struct Dimention
     static let FONT_SIZE_NORMAL: CGFloat = 17.0
     static let FONT_SIZE_MEDIUM: CGFloat = 15.0
     static let FONT_SIZE_SMALL: CGFloat = 13.0
-    static let FONT_SIZE_X_SMALL: CGFloat = 8.0
+    static let FONT_SIZE_X_SMALL: CGFloat = 10.0
+    static let FONT_SIZE_XX_SMALL: CGFloat = 8.0
     static let TAB_PADDING_TOP_BOTTOM: CGFloat = 12.0
     static let TAB_PADDING_SIDES: CGFloat = 8.0
 }

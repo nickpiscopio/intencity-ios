@@ -237,6 +237,9 @@
 "rankings_updated" = "Approximate ranking reset:\n%1$@";
 
 /* Routine Strings */
+"routine_level_beginner" = "BEGINNER";
+"routine_level_advanced" = "ADVANCED";
+"routine_level_expert" = "EXPERT";
 "title_routine" = "What routine would you like to do?";
 "title_custom_routine" = "Custom Routine";
 "title_custom_routines" = "Custom Routines";

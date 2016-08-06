@@ -256,8 +256,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             
             magnifyingGlassIcon.alpha = Integer.SEARCH_EXERCISE_DIRECTION_ALPHA
             
-            searchDirectionsLabel.textColor = Color.grey_text
-            searchDirectionsLabel.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_X_SMALL)
+            searchDirectionsLabel.textColor = Color.grey_text_x_transparent
+            searchDirectionsLabel.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_XX_SMALL)
             searchDirectionsLabel.text = NSLocalizedString("action_button_search_directions", comment: "")
             
             searchDirections.hidden = false

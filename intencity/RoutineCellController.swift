@@ -15,6 +15,7 @@ class RoutineCellController: UITableViewCell
     
     @IBOutlet weak var backgroundImage: UIImageView!
     
+    @IBOutlet weak var routineLevel: UILabel!
     @IBOutlet weak var titleStackView: UIStackView!
     @IBOutlet weak var routineTitle: UILabel!
     @IBOutlet weak var routineDescription: UILabel!
@@ -24,6 +25,9 @@ class RoutineCellController: UITableViewCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
+        
+        routineLevel.textColor = Color.grey_text_transparent
+        routineLevel.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_X_SMALL)
         
         routineTitle.textColor = Color.page_background
         routineDescription.textColor = Color.page_background
@@ -44,21 +48,24 @@ class RoutineCellController: UITableViewCell
     /**
      * Sets the background color of the routine card.
      */
-    func setBackground()
+    func setCard()
     {
         switch routineTitle.text!
         {
             case RoutineViewController.FEATURED_ROUTINE_TITLE:
                 view.backgroundColor = Color.accent
                 backgroundImage.image = UIImage(named: "intencity_routine_background")
+                routineLevel.text = NSLocalizedString("routine_level_beginner", comment: "")
                 break
             case RoutineViewController.SAVED_ROUTINE_TITLE:
                 view.backgroundColor = Color.primary_dark
                 backgroundImage.image = UIImage(named: "saved_routine_background")
+                routineLevel.text = NSLocalizedString("routine_level_advanced", comment: "")
                 break
             case RoutineViewController.CUSTOM_ROUTINE_TITLE:
                 view.backgroundColor = Color.secondary_dark
                 backgroundImage.image = UIImage(named: "custom_routine_background")
+                routineLevel.text = NSLocalizedString("routine_level_expert", comment: "")
                 break
             default:
                 break

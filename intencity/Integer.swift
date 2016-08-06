@@ -22,4 +22,5 @@ struct Integer
     static let EXERCISE_NOTE_LENGTH = 255
     
     static let SEARCH_EXERCISE_DIRECTION_ALPHA: CGFloat = 0.2
+    static let ROUTINE_LEVEL_ALPHA: CGFloat = 0.65
 }

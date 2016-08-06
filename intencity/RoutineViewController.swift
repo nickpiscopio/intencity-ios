@@ -498,7 +498,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
             cell.selectionStyle = .None
             cell.routineTitle.text = title
             cell.setDescription(totalIntencityRoutines)
-            cell.setBackground()
+            cell.setCard()
             
             return cell
         }
