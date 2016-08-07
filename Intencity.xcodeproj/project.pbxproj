@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		010CBBAF1D5539A40061B787 /* RoutineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CBBAE1D5539A40061B787 /* RoutineType.swift */; };
 		018588771D52BEBC00607157 /* IndexedExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018588761D52BEBC00607157 /* IndexedExercise.swift */; };
+		01AE07111D56CDE200ED5087 /* SnackBarUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AE07101D56CDE200ED5087 /* SnackBarUtil.swift */; };
 		38887FDCE90906A29FE4CDC2 /* Pods_intencity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF2696D21F3A67016206E9 /* Pods_intencity.framework */; };
 		BD03C7B31C76082B00D8911A /* Set.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD03C7B21C76082B00D8911A /* Set.xib */; };
 		BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD03C7B41C760A4E00D8911A /* SetCellController.swift */; };
@@ -184,6 +185,7 @@
 /* Begin PBXFileReference section */
 		010CBBAE1D5539A40061B787 /* RoutineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineType.swift; sourceTree = "<group>"; };
 		018588761D52BEBC00607157 /* IndexedExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexedExercise.swift; sourceTree = "<group>"; };
+		01AE07101D56CDE200ED5087 /* SnackBarUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackBarUtil.swift; sourceTree = "<group>"; };
 		70D17A2123266F2E629BCBB1 /* Pods-intencity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intencity.release.xcconfig"; path = "Pods/Target Support Files/Pods-intencity/Pods-intencity.release.xcconfig"; sourceTree = "<group>"; };
 		BD03C7B21C76082B00D8911A /* Set.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Set.xib; sourceTree = "<group>"; };
 		BD03C7B41C760A4E00D8911A /* SetCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCellController.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				BD5F97891D149CEE001E5A26 /* OverviewRowType.swift */,
 				BD0CD6FB1C985248004FF750 /* DateUtil.swift */,
 				BD85D5CE1D16D5BC0004F5C2 /* ExerciseSet.swift */,
+				01AE07101D56CDE200ED5087 /* SnackBarUtil.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -929,6 +932,7 @@
 				BD7C7E851C7CA0CF005AFFDD /* EditEquipmentViewController.swift in Sources */,
 				BD9EF2AC1C6A496800E520CB /* IntencityTextField.swift in Sources */,
 				BD7A870C1CCE46A9005BC2DF /* IntencityRoutineViewController.swift in Sources */,
+				01AE07111D56CDE200ED5087 /* SnackBarUtil.swift in Sources */,
 				BD7A87121CCEA137005BC2DF /* RoutineContinueCellController.swift in Sources */,
 				BD1AE7761CD23E28001FAAA8 /* UserRoutineDao.swift in Sources */,
 				BD74A2591C735EA700E6ABD2 /* StatViewController.swift in Sources */,

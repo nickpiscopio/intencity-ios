@@ -1071,11 +1071,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
                 self.removeSnackBar()
             }
             
-            snackbar.leftMargin = 0
-            snackbar.rightMargin = 0;
-            snackbar.bottomMargin = 0;
-            snackbar.cornerRadius = 0;
-            snackbar.actionTextColor = Color.accent
+            SnackBarUtil.initSnackbar(snackbar)
+            
             snackbar.show()
             
             // Add that the user has skipped an exercise.
