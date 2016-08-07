@@ -9,6 +9,7 @@
 
 import UIKit
 import Social
+import SSSnackbar
 
 class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutineDelegate
 {
@@ -301,12 +302,12 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         let hasSetEquipment = DEFAULTS.boolForKey(Constant.USER_SET_EQUIPMENT)
         if (!hasSetEquipment)
         {
-            Util.displayAlert(self,
-                              title: NSLocalizedString("edit_equipment_alert_title", comment: ""),
-                              message: NSLocalizedString("edit_equipment_alert_description", comment: ""),
-                              actions: [ UIAlertAction(title: NSLocalizedString("edit_equipment_alert_title", comment: ""), style: .Default, handler: setEquipment),
-                                UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil)])
-
+            let sb = SSSnackbar(message:NSLocalizedString("edit_equipment_alert_description", comment: ""), actionText: NSLocalizedString("edit_equipment_alert_title", comment: ""), duration : NSTimeInterval(5),
+                       actionBlock: {snackbar in
+                        self.setEquipment()
+            }, dismissalBlock:nil)
+        
+            sb.show()
         }
     }
     

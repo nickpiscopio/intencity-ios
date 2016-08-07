@@ -11,7 +11,6 @@
 
 import UIKit
 
-
 extension UIView {
     
     /**
@@ -35,9 +34,7 @@ extension UIView {
     }
 }
 
-
 extension UIScrollView {
-    
     
     /**
      Generate a screenshot by resizing the scrollview
@@ -64,7 +61,6 @@ extension UIScrollView {
         
     }
     
-    
     /**
      Generate a screenshot from the content
      - display acts a bit glitchy
@@ -86,7 +82,6 @@ extension UIScrollView {
             
         }
     }
-    
     
     private func makeScreenshots(points points_I: [[CGPoint]], frames frames_I: [[CGRect]], scale:CGFloat, completion: (screenshots: [[UIImage]]) -> Void) {
         
@@ -114,7 +109,6 @@ extension UIScrollView {
         internalScreenshotRow() // start first run
     }
     
-    
     private func makeScreenshotRow(points points_I: [CGPoint], frames frames_I: [CGRect], scale:CGFloat, completion: (screenshots: [UIImage]) -> Void) {
         
         var counter: Int = 0
@@ -140,7 +134,6 @@ extension UIScrollView {
         
         internalTakeScreenshotAtPoint() // start first run
     }
-    
     
     private func getScreenshotRects() -> (points: [[CGPoint]], frames: [[CGRect]]) {
         
@@ -223,7 +216,6 @@ extension UIScrollView {
         return (points: offsets, frames: rects)
     }
     
-    
     private func takeScreenshotAtPoint(point point_I: CGPoint, scale:CGFloat, completion: (screenshot: UIImage) -> Void) {
         
         let rect = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
@@ -287,7 +279,6 @@ extension UIScrollView {
         
         return newImage
     }
-    
     
     private func stitchImages(images images_I: [[UIImage]], finalSize finalSize_I: CGSize) -> UIImage? {
         

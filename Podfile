@@ -3,7 +3,7 @@
 # Uncomment this line if you're using Swift
 use_frameworks!
 
-target “intencity” do
+target "intencity" do
 
     pod 'youtube-ios-player-helper', '0.1.4'
 
@@ -14,8 +14,8 @@ target “intencity” do
     pod 'DropDown'
 
     pod 'FMDB'
-
-    # DOCUMENTATION: https://github.com/zekunyan/TTGSnackbar
-    pod 'TTGSnackbar'
+    
+    # DOCUMENTATION: https://github.com/stonesam92/SSSnackbar
+    pod 'SSSnackbar'
 
 end

@@ -8,7 +8,7 @@
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
-import TTGSnackbar
+import SSSnackbar
 
 class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDelegate, ExerciseSearchDelegate, RoutineDelegate, FitnessLogDelegate
 {
@@ -61,7 +61,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     
     var result: String!
     
-    var snackbar: TTGSnackbar!
+    var snackbar: SSSnackbar!
     
     var indexedExercise: IndexedExercise!
     
@@ -285,6 +285,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     {
         if (sender.state == .Began)
         {
+            removeSnackBar()
+
             searchClicked()
         }
     }
@@ -1020,7 +1022,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     {
         if (snackbar != nil)
         {
-            snackbar.removeFromSuperview()
+            snackbar.dismissAnimated(true)
         }
     }
     
@@ -1064,15 +1066,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             
             removeSnackBar()
             
-            snackbar = TTGSnackbar.init(message: title, duration: .Forever, actionText: UNDO_STRING) { (snackbar) -> Void in
-                
-                self.insertExercise()
-                
-                self.removeSnackBar()
-            }
-            
-            SnackBarUtil.initSnackbar(snackbar)
-            
+            snackbar = SSSnackbar(message: title, actionText: UNDO_STRING, duration: NSTimeInterval(20), actionBlock: {snackbar in
+                                    self.insertExercise()
+                                    
+                                    self.removeSnackBar()
+            }, dismissalBlock: nil)
             snackbar.show()
             
             // Add that the user has skipped an exercise.
