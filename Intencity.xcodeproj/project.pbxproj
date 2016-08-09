@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		010CBBAF1D5539A40061B787 /* RoutineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CBBAE1D5539A40061B787 /* RoutineType.swift */; };
-		011A25251D579AEC00B7CB59 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A25241D579AEC00B7CB59 /* UIColor.swift */; };
 		018588771D52BEBC00607157 /* IndexedExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018588761D52BEBC00607157 /* IndexedExercise.swift */; };
 		38887FDCE90906A29FE4CDC2 /* Pods_intencity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF2696D21F3A67016206E9 /* Pods_intencity.framework */; };
 		BD03C7B31C76082B00D8911A /* Set.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD03C7B21C76082B00D8911A /* Set.xib */; };
@@ -184,7 +183,6 @@
 
 /* Begin PBXFileReference section */
 		010CBBAE1D5539A40061B787 /* RoutineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineType.swift; sourceTree = "<group>"; };
-		011A25241D579AEC00B7CB59 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		018588761D52BEBC00607157 /* IndexedExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexedExercise.swift; sourceTree = "<group>"; };
 		70D17A2123266F2E629BCBB1 /* Pods-intencity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intencity.release.xcconfig"; path = "Pods/Target Support Files/Pods-intencity/Pods-intencity.release.xcconfig"; sourceTree = "<group>"; };
 		BD03C7B21C76082B00D8911A /* Set.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Set.xib; sourceTree = "<group>"; };
@@ -417,7 +415,6 @@
 			children = (
 				BDB253131D23328700AD7547 /* ScrollImager.swift */,
 				BD0CD6F91C984789004FF750 /* Toast.swift */,
-				011A25241D579AEC00B7CB59 /* UIColor.swift */,
 				BD91FC0E1CAD733600965782 /* NSMutableData.swift */,
 				BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */,
 				BD43E1191C8355E9002F14C6 /* UIView+RoundedCorners.swift */,
@@ -919,7 +916,6 @@
 				BD7A870A1CCE4542005BC2DF /* RoutineCellController.swift in Sources */,
 				BD7C7E7C1C7C9ABD005AFFDD /* MenuRow.swift in Sources */,
 				BDF1E49D1D0D8A46004CEAFC /* OverviewViewController.swift in Sources */,
-				011A25251D579AEC00B7CB59 /* UIColor.swift in Sources */,
 				BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */,
 				BD1F30E31CA9BBAA00002D06 /* ProfileRow.swift in Sources */,
 				BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */,
