@@ -29,7 +29,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     let LESS_PRIORITY_STRING = NSLocalizedString("less_priority_string", comment: "")
     let UNDO_STRING = NSLocalizedString("undo_hide_button", comment: "")
 
-    let DEFAULTS = NSUserDefaults.standardUserDefaults()
+    let DEFAULTS = UserDefaults.standard
     
     let EXERCISE_MINIMUM_THRESHOLD = 3
     
@@ -85,7 +85,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         Util.addUITableViewCell(tableView, nibNamed: "ExerciseCard", cellName: Constant.EXERCISE_CELL)
         Util.addUITableViewCell(tableView, nibNamed: Constant.EXERCISE_LIST_HEADER, cellName: Constant.EXERCISE_LIST_HEADER)
         
-        textField = UITextField(frame: CGRectMake(0, 0, 10, 10))
+        textField = UITextField(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
         
         exerciseData = ExerciseData.getInstance()
         exerciseData.routineState = routineState
@@ -115,10 +115,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     {
         loadingView.backgroundColor = Color.page_background
         
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
     }
     
     /**
@@ -127,9 +127,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     func showLoading()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
-        loadingView.hidden = false
+        loadingView.isHidden = false
     }
     
     /**
@@ -137,7 +137,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func hideLoading()
     {
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.stopAnimating()
     }
@@ -147,7 +147,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         hideLoading()
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         switch (event)
         {
@@ -155,10 +155,10 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
                 
                 // Remove the first and last character because they are "[" and "]";
                 var response = result
-                response.removeAtIndex(response.startIndex)
-                response.removeAtIndex(response.endIndex.predecessor())
+                response.remove(at: response.startIndex)
+                response.remove(at: response.characters.index(before: response.endIndex))
                 
-                var ids =  response.componentsSeparatedByString(Constant.PARAMETER_DELIMITER)
+                var ids =  response.components(separatedBy: Constant.PARAMETER_DELIMITER)
                 
                 var sets = exerciseData.exerciseList[insertIntoWebSetsIndex].sets
                 let setCount = sets.count
@@ -193,7 +193,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         }
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         switch (event)
         {
@@ -216,7 +216,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     /**
      * The callback for when an exercise is added from searching.
      */
-    func onExerciseAdded(exercise: Exercise)
+    func onExerciseAdded(_ exercise: Exercise)
     {
         var exercises = exerciseData.exerciseList
         let exerciseCount = exercises.count
@@ -225,7 +225,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         {
             if (exercise.exerciseName == exercises[i].exerciseName)
             {
-                exercises.removeAtIndex(i)
+                exercises.remove(at: i)
             }
         }
         
@@ -237,7 +237,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             removeStretch = true
         }
         
-        exercises.insert(exercise, atIndex: removeStretch ? currentExerciseCount - 1 : currentExerciseCount)
+        exercises.insert(exercise, at: removeStretch ? currentExerciseCount - 1 : currentExerciseCount)
         
         exerciseData.exerciseList = exercises
 
@@ -257,18 +257,18 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             magnifyingGlassIcon.alpha = Integer.SEARCH_EXERCISE_DIRECTION_ALPHA
             
             searchDirectionsLabel.textColor = Color.grey_text_x_transparent
-            searchDirectionsLabel.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_XX_SMALL)
+            searchDirectionsLabel.font = UIFont.boldSystemFont(ofSize: Dimention.FONT_SIZE_XX_SMALL)
             searchDirectionsLabel.text = NSLocalizedString("action_button_search_directions", comment: "")
             
-            searchDirections.hidden = false
+            searchDirections.isHidden = false
         }
         else
         {
-            searchDirections.hidden = true
+            searchDirections.isHidden = true
         }
     }
     
-    @IBAction func addExerciseButtonClicked(sender: AnyObject)
+    @IBAction func addExerciseButtonClicked(_ sender: AnyObject)
     {
         switch routineState
         {
@@ -281,9 +281,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         }
     }
     
-    func longClick(sender: AnyObject)
+    func longClick(_ sender: AnyObject)
     {
-        if (sender.state == .Began)
+        if (sender.state == .began)
         {
             removeSnackBar()
 
@@ -296,7 +296,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func searchClicked()
     {
-        let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.SEARCH_VIEW_CONTROLLER) as! SearchViewController
+        let viewController = storyboard!.instantiateViewController(withIdentifier: Constant.SEARCH_VIEW_CONTROLLER) as! SearchViewController
         viewController.state = ServiceEvent.SEARCH_FOR_EXERCISE
         viewController.exerciseSearchDelegate = self
         viewController.currentExercises = currentExercises
@@ -326,7 +326,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func displayOverview()
     {
-        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.OVERVIEW_VIEW_CONTROLLER) as! OverviewViewController
+        let vc = storyboard!.instantiateViewController(withIdentifier: Constant.OVERVIEW_VIEW_CONTROLLER) as! OverviewViewController
         vc.viewDelegate = viewDelegate
         vc.fitnessLogDelegate = self
         self.navigationController!.pushViewController(vc, animated: true)
@@ -352,15 +352,15 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      *
      * @param skipped   Boolean of if the user ahs skipped an exercise.
      */
-    func setExerciseSkipped(skipped: Bool)
+    func setExerciseSkipped(_ skipped: Bool)
     {
-        DEFAULTS.setBool(skipped, forKey: Constant.BUNDLE_EXERCISE_SKIPPED)
+        DEFAULTS.set(skipped, forKey: Constant.BUNDLE_EXERCISE_SKIPPED)
     }
     
     /**
      * Adds an exercise to the currentExercises.
      */
-    func addExercise(initialLoad: Bool, fromSearch: Bool)
+    func addExercise(_ initialLoad: Bool, fromSearch: Bool)
     {
         removeSnackBar()
         
@@ -376,23 +376,23 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             exerciseData.exerciseList.append(stretch)
         }
         
-        let lastExerciseTime = DEFAULTS.floatForKey(Constant.USER_LAST_EXERCISE_TIME)
-        let now = Float(NSDate().timeIntervalSince1970 * 1000)
+        let lastExerciseTime = DEFAULTS.float(forKey: Constant.USER_LAST_EXERCISE_TIME)
+        let now = Float(Date().timeIntervalSince1970 * 1000)
         
         if ((now - lastExerciseTime) >= Float(Constant.EXERCISE_POINTS_THRESHOLD))
         {
-            DEFAULTS.setFloat(now, forKey: Constant.USER_LAST_EXERCISE_TIME)
+            DEFAULTS.set(now, forKey: Constant.USER_LAST_EXERCISE_TIME)
             
             // Reward the user for exercising.
             // We use a relaxed system for giving points, so we only try to make it so they can't game the system.
-            Util.grantPointsToUser(email, awardType: AwardType.NEXT_EXERCISE, points: Constant.POINTS_EXERCISE, description: NSLocalizedString("award_exercise_description", comment: ""))
+            Util.grantPointsToUser(email, awardType: AwardType.next_EXERCISE, points: Constant.POINTS_EXERCISE, description: NSLocalizedString("award_exercise_description", comment: ""))
         }
         
         let position = currentExerciseCount - 1
         
         if (fromSearch && currentExercises[position].exerciseName == STRETCH_NAME)
         {
-            let indexPath = NSIndexPath(forRow: position, inSection: 0)
+            let indexPath = IndexPath(row: position, section: 0)
             
             hideExercise(indexPath, fromSearch: fromSearch)
         }
@@ -427,7 +427,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         // The first exercise is the warm-up.
         // We only want to show the save button if a user has an exercise showing.
         let currentExerciseCount = currentExercises.count
-        exerciseListHeader.saveButton.hidden = currentExerciseCount < 2 || (currentExerciseCount == 2 && currentExercises[currentExerciseCount - 1].exerciseName == STRETCH_NAME)
+        exerciseListHeader.saveButton.isHidden = currentExerciseCount < 2 || (currentExerciseCount == 2 && currentExercises[currentExerciseCount - 1].exerciseName == STRETCH_NAME)
         
         exerciseListHeader.setExerciseTotalLabel(currentExercises.count, totalExercises: totalExercises)
     }
@@ -437,7 +437,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      *
      * @param result    The results to parse from the webservice.
      */
-    func loadTableViewItems(result: String)
+    func loadTableViewItems(_ result: String)
     {
         // This gets saved as NSDictionary, so there is no order
         let json: AnyObject? = result.parseJSONString
@@ -457,7 +457,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         {
             do
             {
-                exerciseData.exerciseList.appendContentsOf(try ExerciseDao().parseJson(json, searchString: ""))
+                exerciseData.exerciseList.append(contentsOf: try ExerciseDao().parseJson(json as? [AnyObject], searchString: ""))
                 exerciseData.addStretch()
             }
             catch
@@ -501,11 +501,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      *
      * @param name  The name of the exercise clicked.
      */
-    func onExerciseClicked(name: String)
+    func onExerciseClicked(_ name: String)
     {
         if (name == WARM_UP_NAME || name == STRETCH_NAME)
         {
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.EXERCISE_SEARCH_VIEW_CONTROLLER) as! ExerciseSearchViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: Constant.EXERCISE_SEARCH_VIEW_CONTROLLER) as! ExerciseSearchViewController
             vc.searchType = name
             vc.routineName = exerciseListHeader.routineName
                 
@@ -513,7 +513,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         }
         else
         {
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
             vc.exerciseName = name
                 
             self.navigationController!.pushViewController(vc, animated: true)
@@ -525,7 +525,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      *
      * @param indexPath     The indexPath of the exercise to hide.
      */
-    func onHideClicked(indexPath: NSIndexPath)
+    func onHideClicked(_ indexPath: IndexPath)
     {
         hideExercise(indexPath, fromSearch: false)
     }
@@ -535,9 +535,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      *
      * @param index     The index of the exercise that was clicked.
      */
-    func onEditClicked(index: Int)
+    func onEditClicked(_ index: Int)
     {
-        let statViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StatViewController") as! StatViewController
+        let statViewController = self.storyboard?.instantiateViewController(withIdentifier: "StatViewController") as! StatViewController
         statViewController.delegate = self
         statViewController.index = index
         
@@ -547,7 +547,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     /**
      * The callback for when the sets are updated.
      */
-    func onSetUpdated(index: Int)
+    func onSetUpdated(_ index: Int)
     {
         // We notify the data set changed just in case something changed in the stat activity.
         // This will update the last set the user did.
@@ -601,7 +601,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
                 {
                     let email = Util.getEmailFromDefaults()
                         
-                    Util.grantBadgeToUser(email, badgeName: badge, content: Awards(awardType: AwardType.LEFT_IT_ON_THE_FIELD, awardImageName: Badge.LEFT_IT_ON_THE_FIELD_IMAGE_NAME, awardDescription: NSLocalizedString("award_left_it_on_the_field_description", comment: "")), onlyAllowOne: false)
+                    Util.grantBadgeToUser(email, badgeName: badge, content: Awards(awardType: AwardType.left_IT_ON_THE_FIELD, awardImageName: Badge.LEFT_IT_ON_THE_FIELD_IMAGE_NAME, awardDescription: NSLocalizedString("award_left_it_on_the_field_description", comment: "")), onlyAllowOne: false)
                         
                     awards[badge] = exerciseName
                 }
@@ -629,7 +629,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             _ = ServiceTask(event: ServiceEvent.UPDATE_EXERCISES_TO_WEB_DB,
                             delegate: self,
                             serviceURL: Constant.SERVICE_COMPLEX_UPDATE,
-                            params: updateString)
+                            params: updateString as NSString)
         }
         
         if (conductInsert)
@@ -642,7 +642,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             _ = ServiceTask(event: ServiceEvent.INSERT_EXERCISES_TO_WEB_DB,
                             delegate: self,
                             serviceURL: Constant.SERVICE_COMPLEX_INSERT,
-                            params: insertString)
+                            params: insertString as NSString)
         }
     }
     
@@ -652,11 +652,11 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      * @param index         The index of the exercise we are setting.
      * @param morePriority  The more priority button resource.
      * @param lessPriority  The less priority button resource.
-     * @param increasing    Boolean value of whether or not we are incresing or decreasing the priority of the exercise.
+     * @param increment     Boolean value of whether or not we are incresing or decreasing the priority of the exercise.
      */
-    func onSetExercisePriority(indexPath: NSIndexPath, morePriority: UIButton, lessPriority: UIButton, increment: Bool)
+    func onSetExercisePriority(_ indexPath: IndexPath, morePriority: UIButton, lessPriority: UIButton, increment: Bool)
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
         let exercise = currentExercises[index]
         
@@ -666,12 +666,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         exercise.priority = priority
         ExercisePriorityUtil.setPriorityButtons(priority, morePriority: morePriority, lessPriority: lessPriority);
         
+        let incrementVal = increment ? 1 : 0
+        
         // Set the exercise priority on the web server.
         // The ServiceListener is null because we don't care if it reached the server.
         // The worst that will happen is a user will have to click the exercise priority again.
         _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_EXERCISE_PRIORITY, variables: [ email, exerciseName, String(increment ? 1 : 0) ]))
+            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_EXERCISE_PRIORITY, variables: [ email, exerciseName, String(incrementVal) ]) as NSString)
         
         // Remove the exercise if the user decremented it and it is less than 0.
         if (priority == ExercisePriorityUtil.PRIORITY_LIMIT_LOWER && !increment)
@@ -718,7 +720,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     /**
      * Configures the textfield for saving a routine.
      */
-    func configurationTextField(textField: UITextField!)
+    func configurationTextField(_ textField: UITextField!)
     {
         self.textField = textField!
     }
@@ -728,7 +730,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      * 
      * @param saveState     The state in which we already came.
      */
-    func displaySaveAlert(saveState: Int)
+    func displaySaveAlert(_ saveState: Int)
     {
         var title: String!
         var description: String!
@@ -749,15 +751,15 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
                 break
         }
         
-        let alert = UIAlertController(title: NSLocalizedString(title, comment: ""), message: NSLocalizedString(description, comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addTextFieldWithConfigurationHandler(configurationTextField)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("save", comment: ""), style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+        let alert = UIAlertController(title: NSLocalizedString(title, comment: ""), message: NSLocalizedString(description, comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addTextField(configurationHandler: configurationTextField)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("save", comment: ""), style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
             
             self.showLoading()
             
             let text = self.textField.text!
-            let textWithoutSpace = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            let textWithoutSpace = text.trimmingCharacters(in: CharacterSet.whitespaces)
             
             // We add 1 to the name length because we don't want it to equal 31 characters.
             if (Util.isFieldValid(text, regEx: Constant.REGEX_SAVE_ROUTINE_NAME_FIELD) && Util.checkStringLength(textWithoutSpace, length: 1) && !Util.checkStringLength(textWithoutSpace, length: Integer.NAME_LENGTH + 1))
@@ -765,7 +767,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
                 _ = ServiceTask(event: ServiceEvent.SAVE_ROUTINE,
                     delegate: self,
                     serviceURL: Constant.SERVICE_SET_ROUTINE,
-                    params: Constant.generateRoutineListVariables(self.email, routineName: self.textField.text!, exercises: self.currentExercises))
+                    params: Constant.generateRoutineListVariables(self.email, routineName: self.textField.text!, exercises: self.currentExercises) as NSString)
             }
             else
             {
@@ -776,7 +778,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             }
         }))
         
-        self.navigationController!.presentViewController(alert, animated: true, completion: nil)
+        self.navigationController!.present(alert, animated: true, completion: nil)
     }
     
     /**
@@ -787,7 +789,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      *
      * @return  The constructed snippet of the complex update parameter String.
      */
-    func generateComplexUpdateParameters(index: Int, set: Set) -> String
+    func generateComplexUpdateParameters(_ index: Int, set: Set) -> String
     {
         let equals = "="
         let setParam = "set"
@@ -797,7 +799,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         let weight = set.weight
         let duration = set.duration
         let notes = set.notes
-        let isDuration = !duration.isEmpty && duration.rangeOfString(":") != nil
+        let isDuration = !duration.isEmpty && duration.range(of: ":") != nil
     
         let weightParam = Constant.COLUMN_EXERCISE_WEIGHT + equals + String(weight) + Constant.PARAMETER_DELIMITER;
         // Choose whether we are inserting reps or duration.
@@ -827,7 +829,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      *
      * @return  The constructed snippet of the complex insert parameter String.
      */
-    func generateComplexInsertParameters(index: Int, name: String, set: Set) -> String
+    func generateComplexInsertParameters(_ index: Int, name: String, set: Set) -> String
     {
         let columns = "columns"
         let inserts = "inserts"
@@ -838,7 +840,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         let weight = set.weight
         let duration = set.duration
         let hasWeight = weight > 0
-        let isDuration = !duration.isEmpty && duration.rangeOfString(":") != nil && Util.convertToInt(duration) > 0
+        let isDuration = !duration.isEmpty && duration.range(of: ":") != nil && Util.convertToInt(duration) > 0
     
         let weightParam = hasWeight ? Constant.COLUMN_EXERCISE_WEIGHT + Constant.PARAMETER_DELIMITER : ""
         let weightValue = hasWeight ? String(weight) + Constant.PARAMETER_DELIMITER : ""
@@ -875,7 +877,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      * @return  The formatted parameter to send to the service.
      *          i.e. &columns0=
      */
-    func getParameterTitle(name: String, index: Int) -> String
+    func getParameterTitle(_ name: String, index: Int) -> String
     {
         return Constant.PARAMETER_AMPERSAND + name + String(index) + "=";
     }
@@ -885,12 +887,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      *
      * @param loadNextExercise  A boolean value of whether to load the next exercise or not.
      */
-    func animateTable(indexToLoad: Int)
+    func animateTable(_ indexToLoad: Int)
     {
         let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = NSIndexSet(indexesInRange: range)
+        let sections = IndexSet(integersIn: range.toRange() ?? 0..<0)
             
-        tableView.reloadSections(sections, withRowAnimation: .Top)
+        tableView.reloadSections(sections, with: .top)
 
         for _ in 0 ..< indexToLoad
         {
@@ -903,20 +905,20 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      *
      * This does hide the white space behind the tab view.
      */
-    func tableViewScrollToBottom(animated: Bool)
+    func tableViewScrollToBottom(_ animated: Bool)
     {
         let delay = 0.1 * Double(NSEC_PER_SEC)
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
         
-        dispatch_after(time, dispatch_get_main_queue(), {
+        DispatchQueue.main.asyncAfter(deadline: time, execute: {
             
             let numberOfSections = self.tableView.numberOfSections
-            let numberOfRows = self.tableView.numberOfRowsInSection(numberOfSections - 1)
+            let numberOfRows = self.tableView.numberOfRows(inSection: numberOfSections - 1)
             
             if numberOfRows > 0
             {
-                let indexPath = NSIndexPath(forRow: numberOfRows - 1, inSection: (numberOfSections - 1))
-                self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
+                let indexPath = IndexPath(row: numberOfRows - 1, section: (numberOfSections - 1))
+                self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: animated)
             }
             
         })
@@ -927,29 +929,29 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func insertRow()
     {
-        let indexPath = NSIndexPath(forRow: currentExercises.count - 1, inSection: 0)
-        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        let indexPath = IndexPath(row: currentExercises.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
         
         tableViewScrollToBottom(true)
     }
     
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return currentExercises.count
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
         if (exerciseListHeader == nil)
         {
-            exerciseListHeader = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
-            exerciseListHeader.routineName = exerciseData.routineName.uppercaseString
+            exerciseListHeader = tableView.dequeueReusableCell(withIdentifier: Constant.EXERCISE_LIST_HEADER) as! ExerciseListHeaderController
+            exerciseListHeader.routineName = exerciseData.routineName.uppercased()
             exerciseListHeader.navigationController = self.navigationController
             exerciseListHeader.routineDelegate = self
         }
@@ -957,25 +959,25 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         return exerciseListHeader.contentView
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
         return 65
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.item
+        let index = (indexPath as NSIndexPath).item
         let exercise = exerciseData.exerciseList[index]
         let description = exercise.exerciseDescription
         let sets = exercise.sets
         let set = sets[sets.count - 1]
         let exerciseFromIntencity = exercise.fromIntencity
 
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_CELL) as! ExerciseCellController
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.EXERCISE_CELL) as! ExerciseCellController
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.delegate = self
         cell.tableView = tableView
-        cell.exerciseButton.setTitle(exercise.exerciseName, forState: .Normal)
+        cell.exerciseButton.setTitle(exercise.exerciseName, for: UIControlState())
         cell.setEditText(set)
             
         if (!description.isEmpty)
@@ -1001,12 +1003,12 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         let exercise = indexedExercise.exercise
         let index = indexedExercise.index
         
-        exerciseData.exerciseList.insert(exercise, atIndex: index)
-        currentExercises.insert(exercise, atIndex: index)
+        exerciseData.exerciseList.insert(exercise!, at: index!)
+        currentExercises.insert(exercise!, at: index!)
         
-        let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        let indexPath = IndexPath(row: index!, section: 0)
         
-        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
+        tableView.insertRows(at: [indexPath], with: .right)
         
         exerciseData.exerciseIndex += 1
         
@@ -1022,7 +1024,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     {
         if (snackbar != nil)
         {
-            snackbar.dismissAnimated(true)
+            snackbar.dismiss(animated: true)
         }
     }
     
@@ -1032,19 +1034,19 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      * @param indexPath     The index path for the exercise to hide.
      * @param fromSearch    A boolean value of whether the exercise was hidden from search.
      */
-    func hideExercise(indexPath: NSIndexPath, fromSearch: Bool)
+    func hideExercise(_ indexPath: IndexPath, fromSearch: Bool)
     {
         tableView.beginUpdates()
         
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         let exerciseToRemove = currentExercises[index]
         
-        currentExercises.removeAtIndex(index)
+        currentExercises.remove(at: index)
         
         let exerciseName = exerciseToRemove.exerciseName
         if (exerciseName != STRETCH_NAME)
         {
-            exerciseData.exerciseList.removeAtIndex(index)
+            exerciseData.exerciseList.remove(at: index)
         }
         
         exerciseData.exerciseIndex -= 1
@@ -1052,7 +1054,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         updateExerciseTotal()
         
         // Note that indexPath is wrapped in an array: [indexPath]
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
+        tableView.deleteRows(at: [indexPath], with: .right)
         
         if (fromSearch)
         {
@@ -1066,7 +1068,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
             
             removeSnackBar()
             
-            snackbar = SSSnackbar(message: title, actionText: UNDO_STRING, duration: NSTimeInterval(20), actionBlock: {snackbar in
+            snackbar = SSSnackbar(message: title, actionText: UNDO_STRING, duration: TimeInterval(20), actionBlock: {snackbar in
                                     self.insertExercise()
                                     
                                     self.removeSnackBar()
@@ -1089,14 +1091,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     {
         Util.displayAlert(self, title: NSLocalizedString("title_finish_routine", comment: ""),
                           message: NSLocalizedString("description_finish_routine", comment: ""),
-                          actions: [ UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Cancel, handler: nil),
-                                     UIAlertAction(title: NSLocalizedString("title_finish", comment: ""), style: .Destructive, handler: finishExercising) ])
+                          actions: [ UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil),
+                                     UIAlertAction(title: NSLocalizedString("title_finish", comment: ""), style: .destructive, handler: finishExercising) ])
     }
     
     /**
      * The action for the finish button being clicked when the user is viewing the finish exercise alert.
      */
-    func finishExercising(alertAction: UIAlertAction!) -> Void
+    func finishExercising(_ alertAction: UIAlertAction!) -> Void
     {
         finishExercising()
     }

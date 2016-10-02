@@ -27,7 +27,7 @@ class RoutineCellController: UITableViewCell
         super.awakeFromNib()
         
         routineLevel.textColor = Color.grey_text_transparent
-        routineLevel.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_X_SMALL)
+        routineLevel.font = UIFont.boldSystemFont(ofSize: Dimention.FONT_SIZE_X_SMALL)
         
         routineTitle.textColor = Color.page_background
         routineDescription.textColor = Color.page_background
@@ -38,7 +38,7 @@ class RoutineCellController: UITableViewCell
     /**
      * Sets the description of the routine card.
      */
-    func setDescription(totalRoutines: Int)
+    func setDescription(_ totalRoutines: Int)
     {
         let description = totalRoutines > 1 ? RoutineViewController.DEFAULT_ROUTINES_DESCRIPTION : RoutineViewController.DEFAULT_ROUTINE_DESCRIPTION
         

@@ -31,7 +31,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     static let DEFAULT_ROUTINE_DESCRIPTION = NSLocalizedString("description_default_routine", comment: "")
     static let DEFAULT_ROUTINES_DESCRIPTION = NSLocalizedString("description_default_routines", comment: "")
 
-    let DEFAULTS = NSUserDefaults.standardUserDefaults()
+    let DEFAULTS = UserDefaults.standard
     
     var viewDelegate: ViewDelegate!
     
@@ -108,12 +108,12 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         // Get the Featured Routines
         _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]) as NSString)
         
         // Get the Saved Routines
         _ = ServiceTask(event: ServiceEvent.GET_LIST, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_ROUTINE, variables: [ email ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_ROUTINE, variables: [ email ]) as NSString)
     }
     
     /**
@@ -124,15 +124,15 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         loadingView.backgroundColor = Color.page_background
         connectionView.backgroundColor = Color.page_background
         
-        loadingView.hidden = true
-        connectionView.hidden = true
+        loadingView.isHidden = true
+        connectionView.isHidden = true
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
         
         noConnectionLabel.textColor = Color.secondary_light
         noConnectionLabel.text = NSLocalizedString("generic_error", comment: "")
-        tryAgainButton.setTitle(NSLocalizedString("try_again", comment: ""), forState: .Normal)
+        tryAgainButton.setTitle(NSLocalizedString("try_again", comment: ""), for: UIControlState())
     }
     
     /**
@@ -141,9 +141,9 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     func showLoading()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
-        loadingView.hidden = false
+        loadingView.isHidden = false
     }
     
     /**
@@ -151,7 +151,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      */
     func hideLoading()
     {
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.stopAnimating()
     }
@@ -160,7 +160,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      */
     func showConnectionIssue()
     {
-        connectionView.hidden = false
+        connectionView.isHidden = false
     }
     
     /**
@@ -168,7 +168,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      */
     func hideConnectionIssue()
     {
-        connectionView.hidden = true
+        connectionView.isHidden = true
     }
     
     /**
@@ -179,10 +179,10 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      * @param routineSection    The RoutineSection we are adding.
      * @param notifyChange      Boolean value of whether we are notifying the adapter that we've added an item.
      */
-    func insertSection(routineType: Int, routineSection: RoutineSection, notifyChange: Bool)
+    func insertSection(_ routineType: Int, routineSection: RoutineSection, notifyChange: Bool)
     {
         sectionMap[routineType] = routineSection
-        let sectionArr = sectionMap.sort{ $1.0 > $0.0 }
+        let sectionArr = sectionMap.sorted{ $1.0 > $0.0 }
 
         // sort and add to sections.
         sections.removeAll()
@@ -198,12 +198,12 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         }
     }
 
-    @IBAction func tryAgainClick(sender: AnyObject)
+    @IBAction func tryAgainClick(_ sender: AnyObject)
     {
         initRoutineCard()
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         switch (event)
         {
@@ -222,7 +222,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         }
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         showConnectionIssue()
         
@@ -231,34 +231,34 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         hideLoading()
     }
     
-    func onRoutineSaved(hasMoreRoutines: Bool) { }
+    func onRoutineSaved(_ hasMoreRoutines: Bool) { }
     
-    func onRoutineUpdated(groups: [RoutineGroup])
+    func onRoutineUpdated(_ groups: [RoutineGroup])
     {
         let groupCount = groups.count
         let routine = sections[selectedRoutineSection].title
-        sections.removeAtIndex(selectedRoutineSection)
+        sections.remove(at: selectedRoutineSection)
         
         switch routine
         {
             case RoutineViewController.FEATURED_ROUTINE_TITLE:
-                sections.insert(RoutineSection(routineType: RoutineType.FEATURED, title: RoutineViewController.FEATURED_ROUTINE_TITLE, routineGroups: groups), atIndex: selectedRoutineSection)
+                sections.insert(RoutineSection(routineType: RoutineType.FEATURED, title: RoutineViewController.FEATURED_ROUTINE_TITLE, routineGroups: groups), at: selectedRoutineSection)
                 break
             case RoutineViewController.SAVED_ROUTINE_TITLE:
                 if (groupCount > 0)
                 {
-                    sections.insert(RoutineSection(routineType: RoutineType.SAVED, title: RoutineViewController.SAVED_ROUTINE_TITLE, routineGroups: groups), atIndex: selectedRoutineSection)
+                    sections.insert(RoutineSection(routineType: RoutineType.SAVED, title: RoutineViewController.SAVED_ROUTINE_TITLE, routineGroups: groups), at: selectedRoutineSection)
                 }                
                 break
             default:
                 break
         }        
         
-        let indexPath = NSIndexPath(forRow: 0, inSection: selectedRoutineSection)
+        let indexPath = IndexPath(row: 0, section: selectedRoutineSection)
         
         if (groupCount > 0)
         {
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         else
         {
@@ -271,14 +271,14 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      */
     func displayAppAlert()
     {
-        let lastLogin = DEFAULTS.floatForKey(Constant.USER_LAST_LOGIN)
+        let lastLogin = DEFAULTS.float(forKey: Constant.USER_LAST_LOGIN)
         
         if (Util.getEmailFromDefaults() != "" && lastLogin == 0)
         {
             Util.displayAlert(self,
                 title: NSLocalizedString("welcome_title", comment: ""),
                 message: NSLocalizedString("welcome_description", comment: ""),
-                actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: showEditEquipmentAlert) ])
+                actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: showEditEquipmentAlert) ])
         }
         else
         {
@@ -289,7 +289,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     /**
      * The action for showing the edit equipment alert.
      */
-    func showEditEquipmentAlert(alertAction: UIAlertAction!) -> Void
+    func showEditEquipmentAlert(_ alertAction: UIAlertAction!) -> Void
     {
         showEditEquipmentAlert()
     }
@@ -299,22 +299,22 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      */
     func showEditEquipmentAlert()
     {
-        let hasSetEquipment = DEFAULTS.boolForKey(Constant.USER_SET_EQUIPMENT)
+        let hasSetEquipment = DEFAULTS.bool(forKey: Constant.USER_SET_EQUIPMENT)
         if (!hasSetEquipment)
         {
-            let sb = SSSnackbar(message:NSLocalizedString("edit_equipment_alert_description", comment: ""), actionText: NSLocalizedString("edit_equipment_alert_title", comment: ""), duration : NSTimeInterval(5),
+            let sb = SSSnackbar(message:NSLocalizedString("edit_equipment_alert_description", comment: ""), actionText: NSLocalizedString("edit_equipment_alert_title", comment: ""), duration : TimeInterval(5),
                        actionBlock: {snackbar in
                         self.setEquipment()
             }, dismissalBlock:nil)
         
-            sb.show()
+            sb?.show()
         }
     }
     
     /**
      * The action for showing the edit equipment alert.
      */
-    func setEquipment(alertAction: UIAlertAction!) -> Void
+    func setEquipment(_ alertAction: UIAlertAction!) -> Void
     {
         setEquipment()
     }
@@ -324,7 +324,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      */
     func setEquipment()
     {
-        let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.EDIT_EQUIPMENT_VIEW_CONTROLLER)
+        let viewController = storyboard!.instantiateViewController(withIdentifier: Constant.EDIT_EQUIPMENT_VIEW_CONTROLLER)
         
         self.navigationController!.pushViewController(viewController, animated: true)
     }
@@ -334,7 +334,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      *
      * @param result    The results to parse from the webservice.
      */
-    func loadTableViewItems(event: Int, result: String)
+    func loadTableViewItems(_ event: Int, result: String)
     {
         var section: RoutineSection!
         var rows = [RoutineGroup]()
@@ -349,11 +349,11 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 switch event
                 {
                     case ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS:
-                        rows = try IntencityRoutineDao().parseJson(json)
+                        rows = try IntencityRoutineDao().parseJson(json as? [AnyObject])
                         break
                     
                     case ServiceEvent.GET_LIST:
-                        rows = try UserRoutineDao().parseJson(json)
+                        rows = try UserRoutineDao().parseJson(json as? [AnyObject])
                         break
                     
                     default:
@@ -430,7 +430,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      */
     func getContinueString() -> String
     {
-        return savedExercises != nil ? String(format: CONTINUE_STRING, arguments: [savedExercises.routineName.uppercaseString]) : Constant.RETURN_NULL
+        return savedExercises != nil ? String(format: CONTINUE_STRING, arguments: [savedExercises.routineName.uppercased()]) : Constant.RETURN_NULL
     }
     
     /**
@@ -445,7 +445,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
             
             if (savedExercises.routineName != "")
             {
-                insertSection(RoutineType.CONTINUE, routineSection: RoutineSection(routineType: RoutineType.CONTINUE, title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercaseString ]), routineGroups: []), notifyChange: true)
+                insertSection(RoutineType.CONTINUE, routineSection: RoutineSection(routineType: RoutineType.CONTINUE, title: String(format: CONTINUE_STRING, arguments: [ savedExercises.routineName.uppercased() ]), routineGroups: []), notifyChange: true)
             }
         }
     }
@@ -456,32 +456,32 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     func animateTable()
     {
         let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = NSIndexSet(indexesInRange: range)
+        let sections = IndexSet(integersIn: range.toRange() ?? 0..<0)
             
-        tableView.reloadSections(sections, withRowAnimation: .Top)
+        tableView.reloadSections(sections, with: .top)
     }
     
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         return sections.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
         // Gets the row in the section.
-        let routine = sections[indexPath.section]
+        let routine = sections[(indexPath as NSIndexPath).section]
         let title = routine.title
         
         if (savedExercises != nil && title == getContinueString())
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CONTINUE_CELL) as! RoutineContinueCellController
-            cell.selectionStyle = .None
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ROUTINE_CONTINUE_CELL) as! RoutineContinueCellController
+            cell.selectionStyle = .none
             cell.routineTitle.text = title
             return cell
         }
@@ -495,8 +495,8 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 totalIntencityRoutines += rows[i].rows.count
             }
             
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ROUTINE_CELL) as! RoutineCellController
-            cell.selectionStyle = .None
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ROUTINE_CELL) as! RoutineCellController
+            cell.selectionStyle = .none
             cell.routineTitle.text = title
             cell.setDescription(totalIntencityRoutines)
             cell.setCard()
@@ -505,10 +505,10 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath)
     {
         // This is so we know which routine section to remove from the routines array when we update the RoutineGroups
-        selectedRoutineSection = indexPath.section
+        selectedRoutineSection = (indexPath as NSIndexPath).section
         
         let routine = sections[selectedRoutineSection]
         let title = routine.title
@@ -526,7 +526,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 break
             case RoutineViewController.FEATURED_ROUTINE_TITLE:
                 
-                let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.INTENCITY_ROUTINE_VIEW_CONTROLLER) as! IntencityRoutineViewController
+                let vc = storyboard!.instantiateViewController(withIdentifier: Constant.INTENCITY_ROUTINE_VIEW_CONTROLLER) as! IntencityRoutineViewController
                 vc.viewDelegate = viewDelegate
                 vc.intencityRoutineDelegate = self
                 vc.routines = routine.routineGroups
@@ -536,7 +536,7 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
                 break
             case RoutineViewController.SAVED_ROUTINE_TITLE:
                 
-                let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.SAVED_ROUTINE_VIEW_CONTROLLER) as! SavedRoutineViewController
+                let vc = storyboard!.instantiateViewController(withIdentifier: Constant.SAVED_ROUTINE_VIEW_CONTROLLER) as! SavedRoutineViewController
                 vc.viewDelegate = viewDelegate
                 vc.intencityRoutineDelegate = self
                 vc.routines = routine.routineGroups

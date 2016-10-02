@@ -17,20 +17,20 @@ class IntencityButtonNoBackground: UIButton
         super.init(coder: aDecoder)
         
         // The default parameters for the button.
-        self.layer.backgroundColor = Color.transparent.CGColor
-        self.layer.borderColor = Color.transparent.CGColor
-        self.setTitleColor(Color.primary, forState: .Normal)
-        self.setTitleColor(Color.primary, forState: .Highlighted)
+        self.layer.backgroundColor = Color.transparent.cgColor
+        self.layer.borderColor = Color.transparent.cgColor
+        self.setTitleColor(Color.primary, for: UIControlState())
+        self.setTitleColor(Color.primary, for: .highlighted)
         
         self.layer.borderWidth = Dimention.BORDER_WIDTH
         self.layer.cornerRadius = Dimention.RADIUS
         self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.LAYOUT_MARGIN, Dimention.LAYOUT_MARGIN, Dimention.LAYOUT_MARGIN, Dimention.LAYOUT_MARGIN)
         
         // The callbacks for the button states.
-        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonUp), forControlEvents: .TouchUpInside)
-        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonUp), forControlEvents: .TouchUpOutside)
-        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonUp), forControlEvents: .TouchCancel)
-        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonDown), forControlEvents: .TouchDown)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonUp), for: .touchUpInside)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonUp), for: .touchUpOutside)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonUp), for: .touchCancel)
+        self.addTarget(self, action: #selector(IntencityButtonNoBackground.buttonDown), for: .touchDown)
     }
     
     /*
@@ -38,7 +38,7 @@ class IntencityButtonNoBackground: UIButton
     */
     func buttonUp()
     {
-        self.layer.backgroundColor = Color.transparent.CGColor
+        self.layer.backgroundColor = Color.transparent.cgColor
     }
     
     /*
@@ -46,6 +46,6 @@ class IntencityButtonNoBackground: UIButton
     */
     func buttonDown()
     {
-        self.layer.backgroundColor = Color.shadow.CGColor
+        self.layer.backgroundColor = Color.shadow.cgColor
     }
 }

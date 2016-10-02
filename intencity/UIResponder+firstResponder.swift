@@ -9,12 +9,12 @@ import UIKit
 extension UIResponder
 {
     // Class var not supported in 1.0
-    private struct CurrentFirstResponder
+    fileprivate struct CurrentFirstResponder
     {
         weak static var currentFirstResponder: UIResponder?
     }
     
-    private class var currentFirstResponder: UIResponder?
+    fileprivate class var currentFirstResponder: UIResponder?
     {
         get
         {
@@ -31,7 +31,7 @@ extension UIResponder
     {
         currentFirstResponder = nil
         
-        UIApplication.sharedApplication().sendAction(#selector(UIResponder.findFirstResponder), to: nil, from: nil, forEvent: nil)
+        UIApplication.shared.sendAction(#selector(UIResponder.findFirstResponder), to: nil, from: nil, for: nil)
         
         return currentFirstResponder
     }

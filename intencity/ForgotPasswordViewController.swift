@@ -31,12 +31,12 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
         forgotPasswordLabel.text = NSLocalizedString("reset_password_message", comment: "")
         forgotPasswordLabel.textColor = Color.secondary_light
         emailTextField?.placeholder = NSLocalizedString("email", comment: "")
-        resetPasswordButton?.setTitle(NSLocalizedString("reset", comment: ""), forState: .Normal)
+        resetPasswordButton?.setTitle(NSLocalizedString("reset", comment: ""), for: UIControlState())
         
         activityIndicator.hidesWhenStopped = true
     }
     
-    @IBAction func resetPassword(sender: AnyObject)
+    @IBAction func resetPassword(_ sender: AnyObject)
     {
         let email = emailTextField.text!
         if (!Util.isFieldValid(email, regEx: Constant.REGEX_EMAIL))
@@ -47,28 +47,28 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
         {
             startResetPassword()
             
-            _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self, serviceURL: Constant.SERVICE_FORGOT_PASSWORD, params: Constant.getForgotPasswordParameter(Util.replacePlus(email)))
+            _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self, serviceURL: Constant.SERVICE_FORGOT_PASSWORD, params: Constant.getForgotPasswordParameter(Util.replacePlus(email)) as NSString)
         }
     }
     
     func startResetPassword()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
-        emailTextField.hidden = true
-        resetPasswordButton.hidden = true
-        forgotPasswordLabel.hidden = true
+        activityIndicator.isHidden = false
+        emailTextField.isHidden = true
+        resetPasswordButton.isHidden = true
+        forgotPasswordLabel.isHidden = true
     }
     
     func stopRestPassword()
     {
         activityIndicator.stopAnimating()
-        emailTextField.hidden = false
-        resetPasswordButton.hidden = false
-        forgotPasswordLabel.hidden = false
+        emailTextField.isHidden = false
+        resetPasswordButton.isHidden = false
+        forgotPasswordLabel.isHidden = false
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         
             Util.displayAlert(self, title:  NSLocalizedString("forgot_password_email_sent_title", comment: ""), message: NSLocalizedString("forgot_password_email_sent", comment: ""), actions: [])
@@ -76,7 +76,7 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
             self.stopRestPassword()
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error_email", comment: ""), actions: [])
         

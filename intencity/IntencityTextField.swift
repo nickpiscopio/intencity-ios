@@ -17,27 +17,27 @@ class IntencityTextField: UITextField
         super.init(coder: aDecoder)
         
         self.textColor = Color.secondary_dark
-        self.layer.backgroundColor = Color.white.CGColor
-        self.layer.borderColor = Color.white.CGColor
+        self.layer.backgroundColor = Color.white.cgColor
+        self.layer.borderColor = Color.white.cgColor
         self.layer.borderWidth = Dimention.BORDER_WIDTH
         self.layer.cornerRadius = Dimention.RADIUS
         self.layer.masksToBounds = false
-        self.layer.shadowColor = Color.shadow.CGColor
-        self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW, Dimention.SHADOW)
+        self.layer.shadowColor = Color.shadow.cgColor
+        self.layer.shadowOffset = CGSize(width: Dimention.SHADOW, height: Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
         self.layer.shadowRadius = Dimention.SHADOW
     }
     
-    override func textRectForBounds(bounds: CGRect) -> CGRect
+    override func textRect(forBounds bounds: CGRect) -> CGRect
     {
-        return CGRectMake(bounds.origin.x + Dimention.TEXTFIELD_MARGIN,
-                          bounds.origin.y + Dimention.TEXTFIELD_PADDING,
-                          bounds.size.width - Dimention.TEXTFIELD_MARGIN,
-                          bounds.size.height - Dimention.TEXTFIELD_PADDING);
+        return CGRect(x: bounds.origin.x + Dimention.TEXTFIELD_MARGIN,
+                          y: bounds.origin.y + Dimention.TEXTFIELD_PADDING,
+                          width: bounds.size.width - Dimention.TEXTFIELD_MARGIN,
+                          height: bounds.size.height - Dimention.TEXTFIELD_PADDING);
     }
     
-    override func editingRectForBounds(bounds: CGRect) -> CGRect
+    override func editingRect(forBounds bounds: CGRect) -> CGRect
     {
-        return self.textRectForBounds(bounds);
+        return self.textRect(forBounds: bounds);
     }
 }

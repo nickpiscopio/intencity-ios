@@ -11,5 +11,5 @@ import Foundation
 
 @objc protocol ExercisePriorityDelegate
 {
-    func onSetExercisePriority(index: Int, priority: Int)
+    func onSetExercisePriority(_ index: Int, priority: Int)
 }

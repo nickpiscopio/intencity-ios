@@ -19,7 +19,7 @@ class NotificationHandler
     
     var hasNewNotifications = false
     
-    static func getInstance(delegate: NotificationDelegate?) -> NotificationHandler
+    static func getInstance(_ delegate: NotificationDelegate?) -> NotificationHandler
     {
         if instance == nil
         {
@@ -52,23 +52,23 @@ class NotificationHandler
      *
      * @param award     The award to add.
      */
-    func addAward(award: Awards)
+    func addAward(_ award: Awards)
     {
         let index = getAwardIndex(award)
         if (index != Int(Constant.CODE_FAILED))
         {
             let awardAmount = awards[index].amount + 1
             
-            awards.removeAtIndex(index)
+            awards.remove(at: index)
             
             award.setAmountValue(awardAmount)
             
-            awards.insert(award, atIndex: index)
+            awards.insert(award, at: index)
         }
         else
         {
             // Adds the award to the first index so we can display them in reverse order.
-            awards.insert(award, atIndex: 0)
+            awards.insert(award, at: 0)
         }
         
         hasNewNotifications = true
@@ -99,13 +99,13 @@ class NotificationHandler
     *
     * @return   The award.
     */
-    func getAwardIndex(award: Awards) -> Int
+    func getAwardIndex(_ award: Awards) -> Int
     {
         for awd in awards
         {
             if (awd.awardType == award.awardType)
             {
-                return awards.indexOf(awd)!
+                return awards.index(of: awd)!
             }
         }
     

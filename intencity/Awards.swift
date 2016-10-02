@@ -34,7 +34,7 @@ class Awards: NSObject
     /**
      * Sets the amount of awards.
      */
-    func setAmountValue(amount: Int)
+    func setAmountValue(_ amount: Int)
     {
         self.amount  = amount
     }

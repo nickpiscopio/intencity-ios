@@ -20,9 +20,9 @@ class Util
      * @param message       The message of the alert.
      * @param actions       The array of callbacks for the alert.
      */
-    static func displayAlert(controller: UIViewController, title: String, message: String, actions: [UIAlertAction])
+    static func displayAlert(_ controller: UIViewController, title: String, message: String, actions: [UIAlertAction])
     {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         if actions.count > 0
         {
@@ -33,37 +33,37 @@ class Util
         }
         else
         {
-            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: nil))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: nil))
         }
         
-        controller.presentViewController(alert, animated: true, completion: nil)
+        controller.present(alert, animated: true, completion: nil)
     }
 
     /**
      * Saves the login information to NSUserDefaults.
      */
-    static func loadIntencity(controller: UIViewController, email: String, accountType: String, createdDate: Double)
+    static func loadIntencity(_ controller: UIViewController, email: String, accountType: String, createdDate: Double)
     {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        let emailAsData = replacePlus(email).dataUsingEncoding(NSUTF8StringEncoding)
+        let emailAsData = replacePlus(email).data(using: String.Encoding.utf8)
         
         // Documentation: https://github.com/RNCryptor/RNCryptor
-        let encryptedEmail = RNCryptor.encryptData(emailAsData!, password: Key.key)
+        let encryptedEmail = RNCryptor.encrypt(data: emailAsData!, withPassword: Key.key)
         
-        defaults.setObject(encryptedEmail, forKey: Constant.USER_ACCOUNT_EMAIL)
-        defaults.setObject(accountType, forKey: Constant.USER_ACCOUNT_TYPE)
+        defaults.set(encryptedEmail, forKey: Constant.USER_ACCOUNT_EMAIL)
+        defaults.set(accountType, forKey: Constant.USER_ACCOUNT_TYPE)
         
         if (createdDate > 0)
         {
-            defaults.setObject(String(format:"%f", createdDate), forKey: Constant.USER_TRIAL_CREATED_DATE)
+            defaults.set(String(format:"%f", createdDate), forKey: Constant.USER_TRIAL_CREATED_DATE)
         }
         
         let storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
         
-        let viewController = storyboard.instantiateViewControllerWithIdentifier("IntencityTabView")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "IntencityTabView")
         
-        controller.presentViewController(viewController, animated: true, completion: nil)
+        controller.present(viewController, animated: true, completion: nil)
     }
     
     /**
@@ -71,20 +71,20 @@ class Util
      *
      * We don't clear the user's last login time because we only want to show the welcome once per app install.
      */
-    static func logOut(controller: UIViewController)
+    static func logOut(_ controller: UIViewController)
     {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.removeObjectForKey(Constant.USER_ACCOUNT_EMAIL)
-        defaults.removeObjectForKey(Constant.USER_ACCOUNT_TYPE)
-        defaults.removeObjectForKey(Constant.USER_TRIAL_CREATED_DATE)
-        defaults.removeObjectForKey(Constant.USER_LAST_EXERCISE_TIME)
-        defaults.removeObjectForKey(Constant.USER_SET_EQUIPMENT)
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: Constant.USER_ACCOUNT_EMAIL)
+        defaults.removeObject(forKey: Constant.USER_ACCOUNT_TYPE)
+        defaults.removeObject(forKey: Constant.USER_TRIAL_CREATED_DATE)
+        defaults.removeObject(forKey: Constant.USER_LAST_EXERCISE_TIME)
+        defaults.removeObject(forKey: Constant.USER_SET_EQUIPMENT)
 
         let storyboard = UIStoryboard(name: Constant.LOGIN_STORYBOARD, bundle: nil)
         
-        let viewController = storyboard.instantiateViewControllerWithIdentifier(Constant.LOGIN_NAV_CONTROLLER)
+        let viewController = storyboard.instantiateViewController(withIdentifier: Constant.LOGIN_NAV_CONTROLLER)
         
-        controller.presentViewController(viewController, animated: true, completion: nil)
+        controller.present(viewController, animated: true, completion: nil)
         
         // Remove all the exercises from the exercise list.
         ExerciseData.reset()
@@ -100,9 +100,9 @@ class Util
     /**
      * Validates a string of text against a regular expression.
      */
-    static func isFieldValid(str: String, regEx: String) -> Bool
+    static func isFieldValid(_ str: String, regEx: String) -> Bool
     {
-        return NSPredicate(format:"SELF MATCHES %@", regEx).evaluateWithObject(str)
+        return NSPredicate(format:"SELF MATCHES %@", regEx).evaluate(with: str)
     }
 
     /**
@@ -113,7 +113,7 @@ class Util
      *
      * @return Boolean value of if the user has entered text in the edit text.
      */
-    static func checkStringLength(text: String, length: Int) -> Bool
+    static func checkStringLength(_ text: String, length: Int) -> Bool
     {
         return text.characters.count >= length;
     }
@@ -125,15 +125,15 @@ class Util
      */
     static func getEmailFromDefaults() -> String
     {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let encryptedEmail = defaults.dataForKey(Constant.USER_ACCOUNT_EMAIL)
+        let defaults = UserDefaults.standard
+        let encryptedEmail = defaults.data(forKey: Constant.USER_ACCOUNT_EMAIL)
         
         if (encryptedEmail != nil)
         {
             do
             {
-                let originalData = try RNCryptor.decryptData(encryptedEmail!, password: Key.key)
-                return String(data: originalData, encoding: NSUTF8StringEncoding)!
+                let originalData = try RNCryptor.decrypt(data: encryptedEmail!, withPassword: Key.key)
+                return String(data: originalData, encoding: String.Encoding.utf8)!
                 
             }
             catch
@@ -152,7 +152,7 @@ class Util
      */
     static func isAccountTypeTrial() -> Bool
     {
-        return NSUserDefaults.standardUserDefaults().stringForKey(Constant.USER_ACCOUNT_TYPE) == Constant.ACCOUNT_TYPE_MOBILE_TRIAL
+        return UserDefaults.standard.string(forKey: Constant.USER_ACCOUNT_TYPE) == Constant.ACCOUNT_TYPE_MOBILE_TRIAL
     }
     
     /**
@@ -162,12 +162,12 @@ class Util
      * @param addFooter             Adds a footer to the table.
      * @param emptyTableStringRes   The resource of the string that will tell the user there isn't any data.
      */
-    static func initTableView(tableView: UITableView, footerHeight: CGFloat, emptyTableStringRes: String)
+    static func initTableView(_ tableView: UITableView, footerHeight: CGFloat, emptyTableStringRes: String)
     {
         tableView.backgroundColor = Color.transparent
 
         // Removes the cell separators.
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         // Sets the height of the cell to be automatic.
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -179,13 +179,13 @@ class Util
         {
             // Adds a label to the background view if we can't find data.
             tableView.backgroundView = getEmptyTableLabel(tableView, emptyTableStringRes: emptyTableStringRes)
-            tableView.backgroundView?.hidden = true
+            tableView.backgroundView?.isHidden = true
         }        
         
         if (footerHeight > 0)
         {
             let footerView = UIView()
-            footerView.frame = CGRectMake(0, 0, tableView.frame.size.width, footerHeight)
+            footerView.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: footerHeight)
             footerView.backgroundColor = Color.transparent
             tableView.tableFooterView = footerView
         }
@@ -199,13 +199,13 @@ class Util
      * 
      * @return  The label telling the user there isn't information to display.
      */
-    static func getEmptyTableLabel(tableView: UITableView, emptyTableStringRes: String) -> UILabel
+    static func getEmptyTableLabel(_ tableView: UITableView, emptyTableStringRes: String) -> UILabel
     {
-        let label = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, 50))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 50))
         label.text = NSLocalizedString(emptyTableStringRes, comment: "")
         label.textColor = Color.secondary_light
-        label.font = label.font.fontWithSize(Dimention.FONT_SIZE_MEDIUM)
-        label.textAlignment = .Center
+        label.font = label.font.withSize(Dimention.FONT_SIZE_MEDIUM)
+        label.textAlignment = .center
         label.sizeToFit()
         
         return label
@@ -218,10 +218,10 @@ class Util
      * @param nibNamed      The XIB file to load.
      * @param cellNamed     The cell identifier.
      */
-    static func addUITableViewCell(table: UITableView, nibNamed: String, cellName: String)
+    static func addUITableViewCell(_ table: UITableView, nibNamed: String, cellName: String)
     {
         let nib = UINib(nibName: nibNamed, bundle: nil)
-        table.registerNib(nib, forCellReuseIdentifier: cellName)
+        table.register(nib, forCellReuseIdentifier: cellName)
     }
     
     /**
@@ -231,9 +231,9 @@ class Util
      *
      * @return  The converted value.
      */
-    static func convertToInt(duration: String) -> Int
+    static func convertToInt(_ duration: String) -> Int
     {
-        return duration != "" && duration != Constant.RETURN_NULL && duration != String(Constant.CODE_FAILED) ? Int(duration.stringByReplacingOccurrencesOfString(":", withString: ""))! : Int(Constant.CODE_FAILED)
+        return duration != "" && duration != Constant.RETURN_NULL && duration != String(Constant.CODE_FAILED) ? Int(duration.replacingOccurrences(of: ":", with: ""))! : Int(Constant.CODE_FAILED)
     }
     
     /**
@@ -243,15 +243,15 @@ class Util
      *
      * @return  The converted value.
      */
-    static func convertToTime(reps: Int) -> String
+    static func convertToTime(_ reps: Int) -> String
     {
         let time = String(format: "%06d", reps)
         
         var duration = ""
         
-        if let regex = try? NSRegularExpression(pattern: "..(?!$)", options: .CaseInsensitive)
+        if let regex = try? NSRegularExpression(pattern: "..(?!$)", options: .caseInsensitive)
         {
-            duration = regex.stringByReplacingMatchesInString(time, options: .WithTransparentBounds, range: NSMakeRange(0, time.characters.count), withTemplate: "$0:")
+            duration = regex.stringByReplacingMatches(in: time, options: .withTransparentBounds, range: NSMakeRange(0, time.characters.count), withTemplate: "$0:")
         }
         
         return duration
@@ -264,14 +264,14 @@ class Util
      *
      * @return  The converted value.
      */
-    static func convertToWeight(weight: String) -> String
+    static func convertToWeight(_ weight: String) -> String
     {
         let decimal = "."
-        let weightInt = Int(weight.stringByReplacingOccurrencesOfString(decimal, withString: ""))!
+        let weightInt = Int(weight.replacingOccurrences(of: decimal, with: ""))!
         var padded = String(format: "%02d", weightInt)
 
-        let index = padded.endIndex.predecessor()
-        padded.insert(Character(decimal), atIndex: index)
+        let index = padded.characters.index(before: padded.endIndex)
+        padded.insert(Character(decimal), at: index)
         
         return padded
     }
@@ -283,11 +283,11 @@ class Util
      * @param points        The amount of points that will be granted.
      * @param description   The description of why points are being granted.
      */
-    static func grantPointsToUser(email: String, awardType: AwardType, points: Int, description: String)
+    static func grantPointsToUser(_ email: String, awardType: AwardType, points: Int, description: String)
     {
         _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_POINTS, variables: [ email, String(points) ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_POINTS, variables: [ email, String(points) ]) as NSString)
     
         // Add an award to the notification handler.
         NotificationHandler.getInstance(nil).addAward(Awards(awardType: awardType, awardTitle: "+\(points)", awardDescription: description));
@@ -300,14 +300,14 @@ class Util
      * @param badgeName     The name of the badge that is being awarded.
      * @param content       The content that will be displayed to the user.
      */
-    static func grantBadgeToUser(email: String, badgeName: String, content: Awards)
+    static func grantBadgeToUser(_ email: String, badgeName: String, content: Awards)
     {
         // We won't display the date anywhere, so we probably don't need this in local time.
-        let now = String(format:"%.0f", NSDate().timeIntervalSince1970 * 1000)
+        let now = String(format:"%.0f", Date().timeIntervalSince1970 * 1000)
         
         _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_BADGE, variables: [ email, now, badgeName ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_BADGE, variables: [ email, now, badgeName ]) as NSString)
         
         // Add an award to the notification handler.
         NotificationHandler.getInstance(nil).addAward(content)
@@ -321,7 +321,7 @@ class Util
      * @param content       The content that will be displayed to the user.
      * @param onlyAllowOne  Boolean value to only allow one instance of a specifed badge.
      */
-    static func grantBadgeToUser(email: String, badgeName: String, content: Awards, onlyAllowOne: Bool)
+    static func grantBadgeToUser(_ email: String, badgeName: String, content: Awards, onlyAllowOne: Bool)
     {
         let notificationHandler = NotificationHandler.getInstance(nil)
     
@@ -347,9 +347,9 @@ class Util
      *
      *  return  The new String with its replaced character.
      */
-    static func replacePlus(text: String) -> String
+    static func replacePlus(_ text: String) -> String
     {
-        return text.stringByReplacingOccurrencesOfString("+", withString: "%2B")
+        return text.replacingOccurrences(of: "+", with: "%2B")
     }
     
     /**
@@ -360,9 +360,9 @@ class Util
      *
      *  return  The new String with its replaced character.
      */
-    static func replaceApostrophe(text: String) -> String
+    static func replaceApostrophe(_ text: String) -> String
     {
-        return text.stringByReplacingOccurrencesOfString("'", withString: "%27")
+        return text.replacingOccurrences(of: "'", with: "%27")
     }
     
     /**
@@ -373,9 +373,9 @@ class Util
      * @param color     The color the text should be.
      * @param isBold    Whether or not the text should be bold.
      */
-    static func getMutableString(string: String, fontSize: CGFloat, color: UIColor, isBold: Bool) -> NSMutableAttributedString
+    static func getMutableString(_ string: String, fontSize: CGFloat, color: UIColor, isBold: Bool) -> NSMutableAttributedString
     {
-        let attributes = isBold ? UIFont.boldSystemFontOfSize(fontSize) : UIFont.systemFontOfSize(fontSize)
+        let attributes = isBold ? UIFont.boldSystemFont(ofSize: fontSize) : UIFont.systemFont(ofSize: fontSize)
         
         var mutableString = NSMutableAttributedString()
         mutableString = NSMutableAttributedString(string: string, attributes: [ NSFontAttributeName:  attributes])
@@ -391,8 +391,8 @@ class Util
      *
      * @return The loaded nib as a UITableViewCell
      */
-    static func loadNib(nib: String) -> UITableViewCell
+    static func loadNib(_ nib: String) -> UITableViewCell
     {
-        return NSBundle.mainBundle().loadNibNamed(nib, owner: nil, options: nil)[0] as! UITableViewCell
+        return Bundle.main.loadNibNamed(nib, owner: nil, options: nil)![0] as! UITableViewCell
     }
 }

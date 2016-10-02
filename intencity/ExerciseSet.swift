@@ -21,7 +21,7 @@ class ExerciseSet
      *
      * @return The mutable attributed string, boolean value whether we have a weight or a duration.
      */
-    static func getSetText(weight: Float, duration: String, isReps: Bool) -> (mutableString: NSMutableAttributedString, hasValue: Bool)
+    static func getSetText(_ weight: Float, duration: String, isReps: Bool) -> (mutableString: NSMutableAttributedString, hasValue: Bool)
     {
         let mutableString = NSMutableAttributedString()
         
@@ -32,24 +32,24 @@ class ExerciseSet
         {
             if (addWeight)
             {
-                mutableString.appendAttributedString(Util.getMutableString(String(weight), fontSize: Dimention.FONT_SIZE_MEDIUM, color: Color.secondary_light, isBold: true))
-                mutableString.appendAttributedString(Util.getMutableString(SPACE, fontSize: Dimention.FONT_SIZE_XX_SMALL, color: Color.secondary_light, isBold: false))
-                mutableString.appendAttributedString(Util.getMutableString(LBS_STRING, fontSize: Dimention.FONT_SIZE_SMALL, color: Color.secondary_light, isBold: false))
+                mutableString.append(Util.getMutableString(String(weight), fontSize: Dimention.FONT_SIZE_MEDIUM, color: Color.secondary_light, isBold: true))
+                mutableString.append(Util.getMutableString(SPACE, fontSize: Dimention.FONT_SIZE_XX_SMALL, color: Color.secondary_light, isBold: false))
+                mutableString.append(Util.getMutableString(LBS_STRING, fontSize: Dimention.FONT_SIZE_SMALL, color: Color.secondary_light, isBold: false))
                 
-                mutableString.appendAttributedString(Util.getMutableString(SLASH, fontSize: Dimention.FONT_SIZE_MEDIUM, color: Color.secondary_light, isBold: false))
+                mutableString.append(Util.getMutableString(SLASH, fontSize: Dimention.FONT_SIZE_MEDIUM, color: Color.secondary_light, isBold: false))
             }
             
-            mutableString.appendAttributedString(Util.getMutableString(duration, fontSize: Dimention.FONT_SIZE_MEDIUM, color: Color.secondary_light, isBold: true))
+            mutableString.append(Util.getMutableString(duration, fontSize: Dimention.FONT_SIZE_MEDIUM, color: Color.secondary_light, isBold: true))
             
             if (isReps)
             {
-                mutableString.appendAttributedString(Util.getMutableString(SPACE, fontSize: Dimention.FONT_SIZE_XX_SMALL, color: Color.secondary_light, isBold: false))
-                mutableString.appendAttributedString(Util.getMutableString(REPS_STRING, fontSize: Dimention.FONT_SIZE_SMALL, color: Color.secondary_light, isBold: false))
+                mutableString.append(Util.getMutableString(SPACE, fontSize: Dimention.FONT_SIZE_XX_SMALL, color: Color.secondary_light, isBold: false))
+                mutableString.append(Util.getMutableString(REPS_STRING, fontSize: Dimention.FONT_SIZE_SMALL, color: Color.secondary_light, isBold: false))
             }
         }
         else
         {
-            mutableString.appendAttributedString(Util.getMutableString(EDIT_STRING, fontSize: Dimention.FONT_SIZE_MEDIUM, color: Color.secondary_light, isBold: true))
+            mutableString.append(Util.getMutableString(EDIT_STRING, fontSize: Dimention.FONT_SIZE_MEDIUM, color: Color.secondary_light, isBold: true))
         }
         
         return (mutableString, addWeight || addDuration)

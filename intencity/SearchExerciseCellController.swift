@@ -28,19 +28,19 @@ class SearchExerciseCellController: UITableViewCell
     {
         super.awakeFromNib()
         
-        resultName.setTitleColor(Color.secondary_dark, forState: .Normal)
-        resultName.setTitleColor(Color.secondary_dark, forState: .Highlighted)
+        resultName.setTitleColor(Color.secondary_dark, for: UIControlState())
+        resultName.setTitleColor(Color.secondary_dark, for: .highlighted)
         
         resultDescription.textColor = Color.card_button_delete_deselect
         resultDescription.text = NSLocalizedString("search_exercise_not_found", comment: "")
     }
     
-    @IBAction func addClicked(sender: AnyObject)
+    @IBAction func addClicked(_ sender: AnyObject)
     {
         exerciseSearchDelegate.onExerciseAdded(exercise)
     }
     
-    @IBAction func resultClicked(sender: AnyObject)
+    @IBAction func resultClicked(_ sender: AnyObject)
     {
         exerciseSearchDelegate?.onExerciseClicked((resultName.titleLabel?.text)!)
     }
@@ -50,25 +50,25 @@ class SearchExerciseCellController: UITableViewCell
      *
      * @param result    Either the exercise or user result to set the cell view.
      */
-    func setExerciseResult(exercise: Exercise)
+    func setExerciseResult(_ exercise: Exercise)
     {
         self.exercise = exercise
             
-        resultName.setTitle(exercise.exerciseName, forState: .Normal)
+        resultName.setTitle(exercise.exerciseName, for: UIControlState())
         
         if (exercise.fromIntencity)
         {
             cellBackgroundView.backgroundColor = Color.white
             
-            resultName.enabled = true
-            descriptionView.hidden = true
+            resultName.isEnabled = true
+            descriptionView.isHidden = true
         }
         else
         {
             cellBackgroundView.backgroundColor = Color.page_background
             
-            resultName.enabled = false
-            descriptionView.hidden = false
+            resultName.isEnabled = false
+            descriptionView.isHidden = false
         }
     }
 }

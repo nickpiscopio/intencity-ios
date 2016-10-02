@@ -29,7 +29,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     
     var state: Int!
     
-    var searchBar: UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 300, 20))
+    var searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 20))
     
     var currentExercises = [Exercise]()
     var exercises = [Exercise]()
@@ -43,7 +43,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     
     var profileViewController: ProfileViewController!
     
-    var searchExecutionTimer = NSTimer()
+    var searchExecutionTimer = Timer()
     
     override func viewDidLoad()
     {
@@ -53,7 +53,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         self.view.backgroundColor = Color.page_background
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         initConnectionViews()
         
@@ -78,11 +78,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         connectionContainer.backgroundColor = Color.page_background
         connectionView.backgroundColor = Color.page_background
     
-        loadingView.hidden = true
-        connectionView.hidden = true
+        loadingView.isHidden = true
+        connectionView.isHidden = true
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
         
         noConnectionLabel.text = NSLocalizedString("generic_error", comment: "")
         noConnectionLabel.textColor = Color.secondary_light
@@ -94,9 +94,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     func showLoading()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
-        loadingView.hidden = false
+        loadingView.isHidden = false
     }
     
     /**
@@ -104,7 +104,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
      */
     func hideLoading()
     {
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.stopAnimating()
     }
@@ -113,7 +113,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
      */
     func showConnectionIssue()
     {
-        connectionView.hidden = false
+        connectionView.isHidden = false
     }
     
     /**
@@ -121,10 +121,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
      */
     func hideConnectionIssue()
     {
-        connectionView.hidden = true
+        connectionView.isHidden = true
     }
     
-    override func viewWillDisappear(animated : Bool)
+    override func viewWillDisappear(_ animated : Bool)
     {
         super.viewWillDisappear(animated)
         
@@ -145,18 +145,18 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     func initSearchBar()
     {
         let image: UIImage = UIImage(named: "magnifying_glass_light")!
-        searchBar.setImage(image, forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
+        searchBar.setImage(image, for: UISearchBarIcon.search, state: UIControlState())
         searchBar.delegate = self
         searchBar.becomeFirstResponder()
         
         let searchPlaceholder = state == ServiceEvent.SEARCH_FOR_EXERCISE ? NSLocalizedString("search_exercise", comment: "") : NSLocalizedString("search_user", comment: "")
         
-        let textField = searchBar.valueForKey("searchField") as! UITextField
+        let textField = searchBar.value(forKey: "searchField") as! UITextField
         textField.backgroundColor = Color.primary
         textField.textColor = Color.white
         textField.attributedPlaceholder = NSAttributedString(string: searchPlaceholder, attributes:[NSForegroundColorAttributeName: Color.white])
-        textField.keyboardType = UIKeyboardType.ASCIICapable
-        textField.clearButtonMode = UITextFieldViewMode.Never
+        textField.keyboardType = UIKeyboardType.asciiCapable
+        textField.clearButtonMode = UITextFieldViewMode.never
         
         self.navigationItem.titleView = searchBar
     }
@@ -164,7 +164,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     /**
      * The callback for when the search text changed.
      */
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String)
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
         showLoading()
         
@@ -173,13 +173,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         // Invalidate the search so we can start a new search in case the user isn't done typing.
         searchExecutionTimer.invalidate()
         // Start a timer to search after a specified time.
-        searchExecutionTimer = NSTimer.scheduledTimerWithTimeInterval(SEARCH_EXECUTE_SECONDS, target: self, selector: #selector(search), userInfo: nil, repeats: false)
+        searchExecutionTimer = Timer.scheduledTimer(timeInterval: SEARCH_EXECUTE_SECONDS, target: self, selector: #selector(search), userInfo: nil, repeats: false)
     }
     
     /**
      * The callback for the search button being clicked on the keyboard.
      */
-    func searchBarSearchButtonClicked(searchBar: UISearchBar)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         search()
     }
@@ -207,9 +207,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         }
         else
         {
-            if let regex = try? NSRegularExpression(pattern: Constant.SPACE_REGEX, options: .CaseInsensitive)
+            if let regex = try? NSRegularExpression(pattern: Constant.SPACE_REGEX, options: .caseInsensitive)
             {
-                query = regex.stringByReplacingMatchesInString(query, options: .WithTransparentBounds, range: NSMakeRange(0, query.characters.count), withTemplate: "")
+                query = regex.stringByReplacingMatches(in: query, options: .withTransparentBounds, range: NSMakeRange(0, query.characters.count), withTemplate: "")
             }
             
             query = Util.replaceApostrophe(query)
@@ -219,12 +219,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             event = ServiceEvent.SEARCH_FOR_USER
         }
         
-        _ = ServiceTask(event: event, delegate: self, serviceURL: Constant.SERVICE_STORED_PROCEDURE, params: urlParameters)
+        _ = ServiceTask(event: event, delegate: self, serviceURL: Constant.SERVICE_STORED_PROCEDURE, params: urlParameters as NSString)
         
         searchBar.endEditing(true)
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         // This gets saved as NSDictionary, so there is no order
         let json: AnyObject? = result.parseJSONString
@@ -242,7 +242,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
                 {
                     do
                     {
-                        exercises = try exerciseDao.parseJson(json, searchString: searchString)
+                        exercises = try exerciseDao.parseJson(json as? [AnyObject], searchString: searchString)
                     }
                     catch
                     {
@@ -266,7 +266,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
                 {
                     do
                     {
-                        users = try UserDao().parseJson(json)
+                        users = try UserDao().parseJson(json as! [AnyObject]?)
                     }
                     catch
                     {
@@ -289,7 +289,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         hideLoading()
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         exercises.removeAll()        
         exercises.append(ExerciseDao().getExercise(searchBar.text!))
@@ -304,20 +304,20 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     /**
      * The callback for when an exercise is added from searching.
      */
-    func onExerciseAdded(exercise: Exercise)
+    func onExerciseAdded(_ exercise: Exercise)
     {
         exerciseSearchDelegate.onExerciseAdded(exercise)
         
         // Navigates the user back to the previous screen.
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     /**
      * The callback for when an exercise is clicked from searching.
      */
-    func onExerciseClicked(exerciseName: String)
+    func onExerciseClicked(_ exerciseName: String)
     {
-        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController        
+        let vc = storyboard!.instantiateViewController(withIdentifier: Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController        
         vc.exerciseName = exerciseName
         
         self.navigationController!.pushViewController(vc, animated: true)
@@ -331,7 +331,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         addedUser = true
     }
     
-    func onImageRetrieved(index: Int, image: UIImage, newUpload: Bool)
+    func onImageRetrieved(_ index: Int, image: UIImage, newUpload: Bool)
     {
         users[index].profilePic = image
         
@@ -343,22 +343,22 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     
     func onImageRetrievalFailed() { }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
-        tableView.backgroundView?.hidden = exercises.count > 0 || users.count > 0
+        tableView.backgroundView?.isHidden = exercises.count > 0 || users.count > 0
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // Return the number of rows in the section.
         return state == ServiceEvent.SEARCH_FOR_EXERCISE ? exercises.count : users.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
         if (state == ServiceEvent.SEARCH_FOR_EXERCISE)
         {
@@ -378,11 +378,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
                 }
             }
             
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.SEARCH_EXERCISE_CELL) as! SearchExerciseCellController
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.SEARCH_EXERCISE_CELL) as! SearchExerciseCellController
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.exerciseSearchDelegate = self
             cell.setExerciseResult(exercise)
-            cell.addButton.hidden = hasExerciseAlready
+            cell.addButton.isHidden = hasExerciseAlready
             
             return cell
         }
@@ -390,10 +390,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         {
             let user = users[index]
             
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.RANKING_CELL) as! RankingCellController
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.RANKING_CELL) as! RankingCellController
             cell.user = user
-            cell.rankingLabel.hidden = true
-            cell.userNotification.hidden = true
+            cell.rankingLabel.isHidden = true
+            cell.userNotification.isHidden = true
             cell.name.text = user.getName()
             cell.pointsLabel.text = String(user.earnedPoints)
             cell.delegate = self
@@ -403,28 +403,28 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
             
             if (totalBadges > 0)
             {
-                cell.badgeView.hidden = false
+                cell.badgeView.isHidden = false
                 cell.badgeTotalLabel.text = String(totalBadges)
             }
             else
             {
-                cell.badgeView.hidden = true
+                cell.badgeView.isHidden = true
             }
             
             return cell
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath)
     {
         if (state == ServiceEvent.SEARCH_FOR_USER)
         {
             // Deselects the row.
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
             
-            let index = indexPath.row
+            let index = (indexPath as NSIndexPath).row
             
-            profileViewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
+            profileViewController = storyboard!.instantiateViewController(withIdentifier: Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
             profileViewController.index = index
             profileViewController.user = users[index]
             profileViewController.delegate = self

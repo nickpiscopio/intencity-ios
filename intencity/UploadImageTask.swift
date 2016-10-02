@@ -14,7 +14,7 @@ class UploadImageTask
 {
     init(event: Int, delegate: ServiceDelegate?, image: UIImage, id: String)
     {
-        let myUrl = NSURL(string: Constant.SERVICE_UPLOAD_PROFILE_PIC);
+        let myUrl = URL(string: Constant.SERVICE_UPLOAD_PROFILE_PIC);
         
         let param = [ "id" : id ]
         
@@ -23,13 +23,12 @@ class UploadImageTask
         let imageData = UIImageJPEGRepresentation(image, 1)
         if(imageData == nil)  { return; }
         
-        let request = NSMutableURLRequest(URL:myUrl!);
-        request.HTTPMethod = "POST";
+        let request = NSMutableURLRequest(url:myUrl!);
+        request.httpMethod = "POST";
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = createBodyWithParameters(param, filePathKey: "file", imageDataKey: imageData!, boundary: boundary)
+        request.httpBody = createBodyWithParameters(param, filePathKey: "file", imageDataKey: imageData!, boundary: boundary)
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request)
-        {
+        let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {
             data, response, error in
             
             if error != nil {
@@ -41,28 +40,29 @@ class UploadImageTask
             }
             
             // Print out reponse body
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
-            let parsedResponse = responseString.stringByReplacingOccurrencesOfString("\"", withString: "")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
+            let parsedResponse = responseString.replacingOccurrences(of: "\"", with: "")
             if (parsedResponse != ServiceTask.FAILED)
             {
-                dispatch_async(dispatch_get_main_queue())
+                DispatchQueue.main.async
                 {
                     delegate!.onRetrievalSuccessful(event, result: responseString as String)
                 }
             }
             else
             {
-                dispatch_async(dispatch_get_main_queue())
+                DispatchQueue.main.async
                 {
                     delegate!.onRetrievalFailed(event)
                 }
             }
-        }
+        })        
+
         
         task.resume()
     }
     
-    func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData
+    func createBodyWithParameters(_ parameters: [String: String]?, filePathKey: String?, imageDataKey: Data, boundary: String) -> Data
     {
         let body = NSMutableData();
         
@@ -83,18 +83,18 @@ class UploadImageTask
         body.appendString("--\(boundary)\r\n")
         body.appendString("Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n")
         body.appendString("Content-Type: \(mimetype)\r\n\r\n")
-        body.appendData(imageDataKey)
+        body.append(imageDataKey)
         body.appendString("\r\n")
         
         
         
         body.appendString("--\(boundary)--\r\n")
         
-        return body
+        return body as Data
     }
     
     func generateBoundaryString() -> String
     {
-        return "Boundary-\(NSUUID().UUIDString)"
+        return "Boundary-\(UUID().uuidString)"
     }
 }

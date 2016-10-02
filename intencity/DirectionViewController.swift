@@ -31,7 +31,7 @@ class DirectionViewController: UIViewController, ServiceDelegate
         self.navigationItem.title = exerciseName
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         youTubePlayerView.backgroundColor = Color.transparent
         
@@ -41,7 +41,7 @@ class DirectionViewController: UIViewController, ServiceDelegate
         
         _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISE_DIRECTION, variables: [ exerciseName ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISE_DIRECTION, variables: [ exerciseName ]) as NSString)
     }
     
     override func didReceiveMemoryWarning()
@@ -49,12 +49,12 @@ class DirectionViewController: UIViewController, ServiceDelegate
         super.didReceiveMemoryWarning()
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         // This gets saved as NSDictionary, so there is no order
-        let json: AnyObject? = result.parseJSONString
+        let json: [AnyObject] = result.parseJSONString as! [AnyObject]
         
-        for steps in json as! NSArray
+        for steps in json
         {
             videoId = steps[Constant.COLUMN_VIDEO_URL] as! String
             submittedBy = steps[Constant.COLUMN_SUBMITTED_BY] as! String
@@ -63,18 +63,18 @@ class DirectionViewController: UIViewController, ServiceDelegate
             // Start at the third character so we can remove the number from the string.
             // This also means we can never have more than 9 steps in the directions.
             // We add the number later so it can be formatted properly.
-            self.steps.append(step.substringFromIndex(step.startIndex.advancedBy(3)))
+            self.steps.append(step.substring(from: step.index(step.startIndex, offsetBy: 3)))
         }
         
         populateDirections()
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         Util.displayAlert(self,
                             title: NSLocalizedString("generic_error", comment: ""),
                             message: NSLocalizedString("intencity_communication_error", comment: ""),
-                            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack) ])
+                            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: goBack) ])
     }
     
     /**
@@ -90,7 +90,7 @@ class DirectionViewController: UIViewController, ServiceDelegate
         
         // This is so we don't get suggested videos after the exercise video ends.
         let vars = ["rel" : 0]
-        youTubePlayerView.loadWithVideoId(videoId, playerVars: vars)
+        youTubePlayerView.load(withVideoId: videoId, playerVars: vars)
         
         reloadTable()
     }
@@ -101,9 +101,9 @@ class DirectionViewController: UIViewController, ServiceDelegate
     func reloadTable()
     {
         let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = NSIndexSet(indexesInRange: range)
+        let sections = NSIndexSet(indexesIn: range)
         
-        self.tableView.reloadSections(sections, withRowAnimation: .Top)
+        self.tableView.reloadSections(sections as IndexSet, with: .top)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -121,8 +121,8 @@ class DirectionViewController: UIViewController, ServiceDelegate
     {
         let index = indexPath.row
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.DIRECTION_CELL) as! DirectionCellController
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.DIRECTION_CELL) as! DirectionCellController
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.stepNumber.text =  String(index + 1) + "."
         cell.stepDescription.text = steps[index]
         
@@ -134,6 +134,6 @@ class DirectionViewController: UIViewController, ServiceDelegate
      */
     func goBack(alertAction: UIAlertAction!) -> Void
     {
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
 }

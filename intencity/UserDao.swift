@@ -11,11 +11,11 @@ import Foundation
 
 struct UserDao
 {
-    func parseJson(json: AnyObject?) throws -> [User]
+    func parseJson(_ json: [AnyObject]?) throws -> [User]
     {
         var users = [User]()
         
-        if let jsonArray = json as? NSArray
+        if let jsonArray = json
         {
             for jsonUser in jsonArray
             {
@@ -49,7 +49,7 @@ struct UserDao
         }
         else
         {
-            throw IntencityError.ParseError
+            throw IntencityError.parseError
         }
         
         return users

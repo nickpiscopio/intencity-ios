@@ -32,7 +32,7 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
         self.view.backgroundColor = Color.page_background
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("edit_priority", comment: "")
@@ -58,9 +58,9 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
         _ = ServiceTask(event: ServiceEvent.GET_LIST,
                         delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISE_PRIORITIES, variables: [ email ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISE_PRIORITIES, variables: [ email ]) as NSString)
         
-        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(EditExercisePrioritiesViewController.savePressed(_:)))
+        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(EditExercisePrioritiesViewController.savePressed(_:)))
         
         self.navigationItem.rightBarButtonItem = saveButtonItem
     }
@@ -70,28 +70,28 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
         super.didReceiveMemoryWarning()
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         let showTable = priorityList.count > 0
 
-        tableView.backgroundView?.hidden = showTable
-        priorityTitleView.hidden = !showTable
-        stackSeparator.hidden = !showTable
+        tableView.backgroundView?.isHidden = showTable
+        priorityTitleView.isHidden = !showTable
+        stackSeparator.isHidden = !showTable
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return priorityList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.EXERCISE_PRIORITY_CELL) as! ExercisePriorityCellController
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.EXERCISE_PRIORITY_CELL) as! ExercisePriorityCellController
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.index = index
         cell.setListItem(exerciseNameList[index], priority: Int(priorityList[index])!)
         cell.delegate = self
@@ -99,7 +99,7 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
         return cell
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         switch(event)
         {
@@ -108,9 +108,9 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
                 if (result != Constant.RETURN_NULL)
                 {
                     // This gets saved as NSDictionary, so there is no order
-                    let json: AnyObject? = result.parseJSONString
+                    let json: [AnyObject] = result.parseJSONString as! [AnyObject]
                     
-                    for exercise in json as! NSArray
+                    for exercise in json
                     {
                         let exerciseName = exercise[Constant.COLUMN_EXERCISE_NAME] as! String
                         let priority = exercise[Constant.COLUMN_PRIORITY] as! String
@@ -135,16 +135,16 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
         hideLoading()
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         hideLoading()
         
         Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""),
             message: NSLocalizedString("intencity_communication_error", comment: ""),
-            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack)])
+            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: goBack)])
     }
     
-    func onSetExercisePriority(index: Int, priority: Int)
+    func onSetExercisePriority(_ index: Int, priority: Int)
     {
         priorityList[index] = String(priority)
     }
@@ -152,14 +152,14 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
     /**
      * The function for when the save button is pressed.
      */
-    func savePressed(sender:UIBarButtonItem)
+    func savePressed(_ sender:UIBarButtonItem)
     {
         showLoading()
         
         _ = ServiceTask(event: ServiceEvent.UPDATE_LIST,
                         delegate: self,
                         serviceURL: Constant.SERVICE_UPDATE_EXERCISE_PRIORITY,
-                        params: Constant.generateExercisePriorityListVariables(email, exercises: exerciseNameList, priorities: priorityList))
+                        params: Constant.generateExercisePriorityListVariables(email, exercises: exerciseNameList, priorities: priorityList) as NSString)
     }
     
     /**
@@ -167,13 +167,13 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
      */
     func goBack()
     {
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     /**
      * The action for the ok button being clicked when there was a communication error.
      */
-    func goBack(alertAction: UIAlertAction!) -> Void
+    func goBack(_ alertAction: UIAlertAction!) -> Void
     {
         goBack()
     }
@@ -185,10 +185,10 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
     {
         loadingView.backgroundColor = Color.page_background
         
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
     }
     
     /**
@@ -197,9 +197,9 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
     func showLoading()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
-        loadingView.hidden = false
+        loadingView.isHidden = false
     }
     
     /**
@@ -207,7 +207,7 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
      */
     func hideLoading()
     {
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.stopAnimating()
     }

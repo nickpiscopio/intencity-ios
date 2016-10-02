@@ -22,15 +22,15 @@ extension UIView {
         }
     }
     
-    private func generateMockup() -> UIImage {
+    fileprivate func generateMockup() -> UIImage {
         
         let rect = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.mainScreen().scale)
-        self.drawViewHierarchyInRect(rect, afterScreenUpdates: true)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.main.scale)
+        self.drawHierarchy(in: rect, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return image
+        return image!
     }
 }
 
@@ -40,24 +40,24 @@ extension UIScrollView {
      Generate a screenshot by resizing the scrollview
      - unsafe with memory intensive cells
      */
-    func screenshot(scale: CGFloat) -> UIImage {
+    func screenshot(_ scale: CGFloat) -> UIImage {
         let currentSize = frame.size
         let currentOffset = contentOffset // temp store current offset
         
         frame.size = contentSize
-        setContentOffset(CGPointZero, animated: false)
+        setContentOffset(CGPoint.zero, animated: false)
         
         
         let rect = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.mainScreen().scale)
-        self.drawViewHierarchyInRect(rect, afterScreenUpdates: true)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.main.scale)
+        self.drawHierarchy(in: rect, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
         frame.size = currentSize
         setContentOffset(currentOffset, animated: false)
         
-        return resizeUIImage(image, scale: scale)
+        return resizeUIImage(image!, scale: scale)
         
     }
     
@@ -66,7 +66,7 @@ extension UIScrollView {
      - display acts a bit glitchy
      - scrollview will scroll when doing this
      */
-    func screenshot(scale: CGFloat, completion: (screenshot: UIImage?) -> Void) {
+    func screenshot(_ scale: CGFloat, completion: @escaping (_ screenshot: UIImage?) -> Void) {
         
         let pointsAndFrames = self.getScreenshotRects()
         let points = pointsAndFrames.points
@@ -78,12 +78,12 @@ extension UIScrollView {
             
             let stitched = self.stitchImages(images: screenshots, finalSize: finalSize)
             
-            completion(screenshot: stitched)
+            completion(stitched)
             
         }
     }
     
-    private func makeScreenshots(points points_I: [[CGPoint]], frames frames_I: [[CGRect]], scale:CGFloat, completion: (screenshots: [[UIImage]]) -> Void) {
+    fileprivate func makeScreenshots(points points_I: [[CGPoint]], frames frames_I: [[CGRect]], scale:CGFloat, completion: @escaping (_ screenshots: [[UIImage]]) -> Void) {
         
         var counter: Int = 0
         
@@ -93,7 +93,7 @@ extension UIScrollView {
                 if counter < points_I.count {
                     internalScreenshotRow()
                 } else {
-                    completion(screenshots: images)
+                    completion(images)
                 }
             }
         }
@@ -109,7 +109,7 @@ extension UIScrollView {
         internalScreenshotRow() // start first run
     }
     
-    private func makeScreenshotRow(points points_I: [CGPoint], frames frames_I: [CGRect], scale:CGFloat, completion: (screenshots: [UIImage]) -> Void) {
+    fileprivate func makeScreenshotRow(points points_I: [CGPoint], frames frames_I: [CGRect], scale:CGFloat, completion: @escaping (_ screenshots: [UIImage]) -> Void) {
         
         var counter: Int = 0
         
@@ -119,7 +119,7 @@ extension UIScrollView {
                 if counter < points_I.count {
                     internalTakeScreenshotAtPoint()
                 } else {
-                    completion(screenshots: images)
+                    completion(images)
                 }
             }
         }
@@ -135,15 +135,15 @@ extension UIScrollView {
         internalTakeScreenshotAtPoint() // start first run
     }
     
-    private func getScreenshotRects() -> (points: [[CGPoint]], frames: [[CGRect]]) {
+    fileprivate func getScreenshotRects() -> (points: [[CGPoint]], frames: [[CGRect]]) {
         
         // start with zero offsets
         let zeroOriginBounds = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
         var currentOffset = CGPoint(x: 0, y: 0)
         
         // get the remainder -> last offset in eacht direction will probably not be an exact multipe of bounds width/height
-        let xPartial = contentSize.width % bounds.size.width
-        let yPartial = contentSize.height % bounds.size.height
+        let xPartial = contentSize.width.truncatingRemainder(dividingBy: bounds.size.width)
+        let yPartial = contentSize.height.truncatingRemainder(dividingBy: bounds.size.height)
         
         // get the number of screenshots needed in each direction, without the partials
         let xSlices = Int((contentSize.width - xPartial) / bounds.size.width)
@@ -216,7 +216,7 @@ extension UIScrollView {
         return (points: offsets, frames: rects)
     }
     
-    private func takeScreenshotAtPoint(point point_I: CGPoint, scale:CGFloat, completion: (screenshot: UIImage) -> Void) {
+    fileprivate func takeScreenshotAtPoint(point point_I: CGPoint, scale:CGFloat, completion: @escaping (_ screenshot: UIImage) -> Void) {
         
         let rect = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
         let currentOffset = contentOffset // temp store current offset
@@ -226,65 +226,61 @@ extension UIScrollView {
         // add delay to allow redraw
         delay(0.001) {
             
-            UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.mainScreen().scale)
-            self.drawViewHierarchyInRect(rect, afterScreenUpdates: true)
+            UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.main.scale)
+            self.drawHierarchy(in: rect, afterScreenUpdates: true)
             
             var image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             
             if scale != 1 {
-                image = self.resizeUIImage(image, scale: scale)
+                image = self.resizeUIImage(image!, scale: scale)
             }
             
             self.setContentOffset(currentOffset, animated: false) // reset offset to previous value
             
-            completion(screenshot: image)
+            completion(image!)
         }
     }
     
     
-    private func delay(delay:Double, closure:()->()) {
+    fileprivate func delay(_ delay:Double, closure:@escaping ()->()) {
         
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
+        DispatchQueue.main.asyncAfter(
+            deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
     
     
-    private func crop(image image_I:UIImage, toRect toRect_I:CGRect) -> UIImage? {
+    fileprivate func crop(image image_I:UIImage, toRect toRect_I:CGRect) -> UIImage? {
         
-        guard let imageRef: CGImageRef = CGImageCreateWithImageInRect(image_I.CGImage, toRect_I) else {
+        guard let imageRef: CGImage = image_I.cgImage?.cropping(to: toRect_I) else {
             return nil
         }
-        return UIImage(CGImage:imageRef)
+        return UIImage(cgImage:imageRef)
     }
     
-    private func resizeUIImage(image: UIImage, scale: CGFloat) -> UIImage {
+    fileprivate func resizeUIImage(_ image: UIImage, scale: CGFloat) -> UIImage {
         
         let size = image.size
         
         let targetSize = CGSize(width: size.width * scale, height: size.height * scale)
         
         // This is the rect that we've calculated out and this is what is actually used below
-        let rect = CGRectMake(0, 0, targetSize.width, targetSize.height)
+        let rect = CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height)
         
         // Actually do the resizing to the rect using the ImageContext stuff
         UIGraphicsBeginImageContextWithOptions(targetSize, false, 1.0)
-        image.drawInRect(rect)
+        image.draw(in: rect)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return newImage
+        return newImage!
     }
     
-    private func stitchImages(images images_I: [[UIImage]], finalSize finalSize_I: CGSize) -> UIImage? {
+    fileprivate func stitchImages(images images_I: [[UIImage]], finalSize finalSize_I: CGSize) -> UIImage? {
         
         let finalRect = CGRect(x: 0, y: 0, width: finalSize_I.width, height: finalSize_I.height)
         
-        guard let firstRow = images_I.first, _ = firstRow.first else {
+        guard let firstRow = images_I.first, let _ = firstRow.first else {
             return nil
         }
         
@@ -302,7 +298,7 @@ extension UIScrollView {
                 let height = image.size.height
                 
                 let rect = CGRect(x: offsetX, y: offsetY, width: width, height: height)
-                image.drawInRect(rect)
+                image.draw(in: rect)
                 
                 offsetX += width
                 

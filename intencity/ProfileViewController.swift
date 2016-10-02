@@ -84,36 +84,36 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         {
             // Only show the camera button if the photo library is available.
             // We check for the camera if the user clicks on the camera.
-            if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum))
+            if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.savedPhotosAlbum))
             {
-                cameraButton.hidden = false
+                cameraButton.isHidden = false
             }
             
-            addRemoveButton.hidden = true
+            addRemoveButton.isHidden = true
         }
 
         userId = String(user.id)
         
         _ = ServiceTask(event: ServiceEvent.GET_BADGES, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_BADGES, variables: [ userId ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_BADGES, variables: [ userId ]) as NSString)
         
         _ = ServiceTask(event: ServiceEvent.GET_LAST_WEEK_ROUTINES, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_LAST_WEEK_ROUTINES, variables: [ userId ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_LAST_WEEK_ROUTINES, variables: [ userId ]) as NSString)
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         // Shows the tab bar again.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
     }
     
-    override func viewWillDisappear(animated: Bool)
+    override func viewWillDisappear(_ animated: Bool)
     {
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         
         let followingId = user.followingId
         
@@ -124,14 +124,14 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
                 // Unfollow the user.
                 _ = ServiceTask(event: ServiceEvent.UNFOLLOW, delegate: self,
                                 serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_FROM_FOLLOWING, variables: [ String(originalFollowingId) ]))
+                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_FROM_FOLLOWING, variables: [ String(originalFollowingId) ]) as NSString)
             }
             else
             {
                 // Follow the user
                 _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
                                 serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_FOLLOW_USER, variables: [ Util.getEmailFromDefaults(), userId ]))
+                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_FOLLOW_USER, variables: [ Util.getEmailFromDefaults(), userId ]) as NSString)
             }
             
             delegate?.onUserAdded()
@@ -143,16 +143,16 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func cameraClicked(sender: AnyObject)
+    @IBAction func cameraClicked(_ sender: AnyObject)
     {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         {
             Util.displayAlert(self,
                               title: NSLocalizedString("profile_pic_dialog_title", comment: ""),
                               message: NSLocalizedString("profile_pic_dialog_message", comment: ""),
-                              actions: [ UIAlertAction(title: NSLocalizedString("profile_pic_dialog_camera_button", comment: ""), style: .Default, handler: self.openCamera),
-                                UIAlertAction(title: NSLocalizedString("profile_pic_dialog_pictures_button", comment: ""), style: .Default, handler: self.openPhotos),
-                                UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Default, handler: nil)])
+                              actions: [ UIAlertAction(title: NSLocalizedString("profile_pic_dialog_camera_button", comment: ""), style: .default, handler: self.openCamera),
+                                UIAlertAction(title: NSLocalizedString("profile_pic_dialog_pictures_button", comment: ""), style: .default, handler: self.openPhotos),
+                                UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .default, handler: nil)])
         }
         else
         {
@@ -160,7 +160,7 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         }
     }
     
-    @IBAction func addRemoveClicked(sender: AnyObject)
+    @IBAction func addRemoveClicked(_ sender: AnyObject)
     {
         if (isUserAdded())
         {
@@ -182,30 +182,30 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     @IBAction func goBack()
     {
         // Navigates the user back to the previous screen.
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         let sectionsTotal = sections.count
         
-        tableView.backgroundView?.hidden = sectionsTotal > 0
+        tableView.backgroundView?.isHidden = sectionsTotal > 0
         
         return sectionsTotal
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // Return the number of rows in the section.
         return sections[section].rows.count
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
         let title = sections[section].title
         if (title != "")
         {
-            let  headerCell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_HEADER_CELL) as! GenericHeaderCellController
+            let  headerCell = tableView.dequeueReusableCell(withIdentifier: Constant.GENERIC_HEADER_CELL) as! GenericHeaderCellController
             headerCell.title.text = title
             return headerCell
         }
@@ -213,61 +213,60 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         return nil
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
         return sections[section].title != "" ? Constant.GENERIC_HEADER_HEIGHT : 0
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: IndexPath) -> CGFloat
     {
-        let row = sections[indexPath.section].rows[indexPath.row]
+        let row = sections[(indexPath as NSIndexPath).section].rows[(indexPath as NSIndexPath).row]
         let awards = row.awards
 
         return (awards.count > 0) ? awardCollectionHeight : UITableViewAutomaticDimension
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
         // Gets the row in the section.
-        let row = sections[indexPath.section].rows[indexPath.row]
+        let row = sections[(indexPath as NSIndexPath).section].rows[(indexPath as NSIndexPath).row]
         let awards = row.awards
         
         if (awards.count > 0)
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.AWARD_CELL) as! AwardCellController
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.AWARD_CELL) as! AwardCellController
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.awards = awards
             // DOCUMENTATION: http://stackoverflow.com/questions/13788522/how-to-determine-height-of-uicollectionview-with-flowlayout
-            awardCollectionHeight = cell.collectionView.collectionViewLayout.collectionViewContentSize().height
+            awardCollectionHeight = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
             
             return cell
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_CELL) as! GenericCellController
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.GENERIC_CELL) as! GenericCellController
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.title.text = row.title
             
             return cell
         }
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         var sectionTitle = ""
         var rows = [ProfileRow]()
         var awards = [AwardRow]()
         
         // This gets saved as NSDictionary, so there is no order
-        let json: AnyObject? = result.parseJSONString
-        
-        if (json != nil)
+        let json: [AnyObject] = result.parseJSONString as! [AnyObject]        
+        if (json.count > 0)
         {
             switch(event)
             {
                 case ServiceEvent.GET_BADGES:
                 
-                    for badge in json as! NSArray
+                    for badge in json
                     {
                         let title = badge[Constant.COLUMN_BADGE_NAME] as! String
                         let amount = badge[Constant.COLUMN_TOTAL_BADGES] as! String
@@ -282,7 +281,7 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
                     break
                 case ServiceEvent.GET_LAST_WEEK_ROUTINES:
                 
-                    for routine in json as! NSArray
+                    for routine in json
                     {
                         let title = routine[Constant.COLUMN_DISPLAY_NAME] as! String
                     
@@ -301,7 +300,7 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
             
             if (sectionTitle == AWARDS_TITLE)
             {
-                sections.insert(ProfileSection(title: sectionTitle, rows: rows), atIndex: 0)
+                sections.insert(ProfileSection(title: sectionTitle, rows: rows), at: 0)
             }
             else
             {
@@ -312,7 +311,7 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         }
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         print("failed: \(event)")
     }
@@ -320,11 +319,11 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     /**
      * DOCUMENTATION: http://www.techotopia.com/index.php/An_Example_Swift_iOS_8_iPhone_Camera_Application
      */
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         let mediaType = info[UIImagePickerControllerMediaType] as! String
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
         if mediaType == (kUTTypeImage as String)
         {
@@ -344,9 +343,9 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         }
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     /**
@@ -354,9 +353,9 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
      *
      * @param imageNamed    The name of the image to set.
      */
-    func setAddRemoveButtonImage(imageNamed: String)
+    func setAddRemoveButtonImage(_ imageNamed: String)
     {
-        addRemoveButton.setImage(UIImage(named: imageNamed), forState: .Normal)
+        addRemoveButton.setImage(UIImage(named: imageNamed), for: UIControlState())
     }
     
     /**
@@ -375,10 +374,10 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         let imagePicker = UIImagePickerController()
             
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         imagePicker.mediaTypes = [kUTTypeImage as NSString as String]
         imagePicker.allowsEditing = false
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        self.present(imagePicker, animated: true, completion: nil)
             
         newMedia = false
     }
@@ -386,7 +385,7 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     /**
      * The action to open the photos from an alert.
      */
-    func openPhotos(alertAction: UIAlertAction!)
+    func openPhotos(_ alertAction: UIAlertAction!)
     {
         openPhotos()
     }
@@ -394,17 +393,17 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     /**
      * The action to open the camera from an alert.
      */
-    func openCamera(alertAction: UIAlertAction!)
+    func openCamera(_ alertAction: UIAlertAction!)
     {
         let imagePicker = UIImagePickerController()
         
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.front
         imagePicker.mediaTypes = [kUTTypeImage as NSString as String]
         imagePicker.allowsEditing = false
         
-        self.presentViewController(imagePicker, animated: true,
+        self.present(imagePicker, animated: true,
                                    completion: nil)
         newMedia = true
     }

@@ -2,7 +2,7 @@
 
 [![Twitter: @kevinh6113](http://img.shields.io/badge/contact-%40kevinh6113-70a1fb.svg?style=flat)](https://twitter.com/kevinh6113)
 [![License: MIT](http://img.shields.io/badge/license-MIT-70a1fb.svg?style=flat)](https://github.com/AssistoLab/DropDown/blob/master/README.md)
-[![Version](http://img.shields.io/badge/version-1.0.1-green.svg?style=flat)](https://github.com/AssistoLab/DropDown)
+[![Version](http://img.shields.io/badge/version-2-green.svg?style=flat)](https://github.com/AssistoLab/DropDown)
 [![Cocoapods](http://img.shields.io/badge/Cocoapods-available-green.svg?style=flat)](http://cocoadocs.org/docsets/DropDown/)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
@@ -19,7 +19,9 @@ A Material Design drop down for iOS written in Swift.
 Do `pod try DropDown` in your console and run the project to try a demo.
 To install [CocoaPods](http://www.cocoapods.org), run `sudo gem install cocoapods` in your console.
 
-## Installation
+## Installation 📱
+
+This branch supports Swift 3. If you need Swift 2.2: check `swift-2.2` branch.
 
 ### CocoaPods
 
@@ -40,10 +42,27 @@ Use [Carthage](https://github.com/Carthage/Carthage).
 
 ### Source files
 
-1. Download the [latest code version](http://github.com/AssistoLab/DropDown/archive/master.zip) or add the repository as a git submodule to your git-tracked project.
-2. Drag and drop the **src**, **helpers** and also the **resources** directory from the archive in your project navigator. Make sure to select *Copy items* when asked if you extracted the code archive outside of your project.
+A regular way to use DropDown in your project would be using Embedded Framework. There are two approaches, using source code and adding submodule.
 
-## Basic usage
+Add source code:
+
+1. Download the [latest code version](http://github.com/AssistoLab/DropDown/archive/master.zip).
+2. Unzip the download file, copy `DropDown` folder to your project folder
+
+Add submodule
+
+1. In your favorite terminal, `cd` into your top-level project directory, and entering the following command:
+``` bash
+$ git submodule add git@github.com:AssistoLab/DropDown.git
+```
+
+After you get the source code either by adding it directly or using submodule, then do the following steps:
+
+- Open `DropDown` folder, and drag `DropDown.xcodeproj` into the file navigator of your app project, under you app project.
+- In Xcode, navigate to the target configuration window by clicking the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
+- Open "Build Phases" panel in the tab bar at the top of the window, expend the "Target Dependencies" group and add `DropDown.framework` under DropDown icon in the popup window by clicking `+`. Similarly, you can also add `DropDown.framework` in "Embedded Binaries" under "General" tab.
+
+## Basic usage ✨
 
 ```swift
 let dropDown = DropDown()
@@ -74,7 +93,7 @@ dropDown.show()
 dropDown.hide()
 ```
 
-## Important
+## Important ⚠️
 
 Don't forget to put:
 
@@ -84,37 +103,39 @@ DropDown.startListeningToKeyboard()
 
 in your `AppDelegate`'s `didFinishLaunching` method so that the drop down will handle its display with the keyboard displayed even the first time a drop down is showed.
 
-## Advanced usage
+## Advanced usage 🛠
 
 ### Direction
 
 The drop down can be shown below or above the anchor view with:
 ```swift
-dropDown.direction = .Any
+dropDown.direction = .any
 ```
 
-With `.Any` the drop down will try to displa itself below the anchor view when possible, otherwise above if there is more place than below.
-You can restrict the possible directions by using `.Top` or `.Bottom`.
+With `.any` the drop down will try to displa itself below the anchor view when possible, otherwise above if there is more place than below.
+You can restrict the possible directions by using `.top` or `.bottom`.
 
 ### Offset
 
 By default, the drop down will be shown onto to anchor view. It will hide it.
-If you need the drop down to be below your anchor view when the direction of the drop down is `.Bottom`, you can precise an offset like this:
+If you need the drop down to be below your anchor view when the direction of the drop down is `.bottom`, you can precise an offset like this:
 
 ```swift
 // Top of drop down will be below the anchorView
-dropDown.bottomOffset = CGPoint(x: 0, y:dropDown.anchorView.bounds.height)
+dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
 ```
 
-If you set the drop down direction to `.Any` or `.Top` you can also precise the offset when the drop down will shown above like this:
+If you set the drop down direction to `.any` or `.top` you can also precise the offset when the drop down will shown above like this:
 
 ```swift
-// When drop down is displayed with `Direction.Top`, it will be above the anchorView
-dropDown.topOffset = CGPoint(x: 0, y:-dropDown.anchorView.bounds.height)
+// When drop down is displayed with `Direction.top`, it will be above the anchorView
+dropDown.topOffset = CGPoint(x: 0, y:-(dropDown.anchorView?.plainView.bounds.height)!)
 ```
-*Note the minus sign used here to offset to the top.*
+*Note the minus sign here that is use to offset to the top.*
 
-### Formatted text
+### Cell configuration
+
+#### Formatted text
 
 By default, the cells in the drop down have the `dataSource` values as text.
 If you want a custom formatted text for the cells, you can set `cellConfiguration` like this:
@@ -124,6 +145,50 @@ dropDown.cellConfiguration = { [unowned self] (index, item) in
   return "- \(item) (option \(index))"
 }
 ```
+
+#### Custom cell
+
+You can also create your own custom cell, from your .xib file. To have something like this for example:
+<br/>[![](Screenshots/3.png)](Screenshots/3.png)
+
+For this you have to:
+
+- Create a [`DropDownCell`](DropDown/src/DropDownCell.swift) subclass (e.g. *MyCell.swift*)
+```swift
+class MyCell: DropDownCell {
+   @IBOutlet weak var suffixLabel: UILabel!
+}
+```
+- Create your custom xib (e.g. *MyCell.xib*) and design your cell view in it
+<br/>![](https://s3.postimg.org/8k3s2ya0z/custom_1.png)
+- Link the cell in your xib to your custom class
+<br/>![](https://s3.postimg.org/wcd3ehc1v/custom_2.png)
+- At least have a label in your xib to link to the [`optionLabel`](DropDown/src/DropDownCell.swift#L14) `IBOutlet` in code (`optionLabel` is a property of `DropDownCell`)
+<br/>![](https://s3.postimg.org/3o05b99vn/custom_3.png)
+- Then, you simply need to do this:
+```swift
+let dropDown = DropDown()
+
+// The view to which the drop down will appear on
+dropDown.anchorView = view // UIView or UIBarButtonItem
+
+// The list of items to display. Can be changed dynamically
+dropDown.dataSource = ["Car", "Motorcycle", "Truck"]
+
+/*** IMPORTANT PART FOR CUSTOM CELLS ***/
+dropDown.cellNib = UINib(nibName: "MyCell", bundle: nil)
+
+dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+   guard let cell = cell as? MyCell else { return }
+
+   // Setup your custom UI components
+   cell.suffixLabel.text = "Suffix \(index)"
+}
+/*** END - IMPORTANT PART FOR CUSTOM CELLS ***/
+```
+- And you're good to go! 🙆
+
+For a complete example, don't hesitate to check the demo app and code.
 
 ### Events
 
@@ -140,21 +205,21 @@ dropDown.willShowAction = { [unowned self] in
 ### Dismiss modes
 
 ```swift
-dropDown.dismissMode = .OnTap
+dropDown.dismissMode = .onTap
 ```
 
 You have 3 dismiss mode with the `DismissMode` enum:
 
-- `OnTap`: A tap oustide the drop down is needed to dismiss it (Default)
-- `Automatic`: No tap is needed to dismiss the drop down. As soon as the user interact with anything else than the drop down, the drop down is dismissed
-- `Manual`: The drop down can only be dismissed manually (in code)
+- `onTap`: A tap oustide the drop down is needed to dismiss it (Default)
+- `automatic`: No tap is needed to dismiss the drop down. As soon as the user interact with anything else than the drop down, the drop down is dismissed
+- `manual`: The drop down can only be dismissed manually (in code)
 
 ### Others
 
 You can manually (pre)select a row with:
 
 ```swift
-dropDown.selectRowAtIndex(3)
+dropDown.selectRow(at: 3)
 ```
 
 The data source is reloaded automatically when changing the `dataSource` property.
@@ -167,11 +232,11 @@ dropDown.reloadAllComponents()
 You can get info about the selected item at any time with this:
 
 ```swift
-dropDown.selectedItem() // -> String?
-dropDown.indexForSelectedRow() // -> Int?
+dropDown.selectedItem // String?
+dropDown.indexForSelectedRow // Int?
 ```
 
-## Customize UI
+## Customize UI 🖌
 
 You can customize these properties of the drop down:
 
@@ -184,14 +249,14 @@ You can customize these properties of the drop down:
 You can change them through each instance of `DropDown` or via `UIAppearance` like this for example:
 
 ```swift
-DropDown.appearance().textColor = UIColor.blackColor()
-DropDown.appearance().textFont = UIFont.systemFontOfSize(15)
-DropDown.appearance().backgroundColor = UIColor.whiteColor()
-DropDown.appearance().selectionBackgroundColor = UIColor.lightGrayColor()
+DropDown.appearance().textColor = UIColor.black
+DropDown.appearance().textFont = UIFont.systemFont(ofSize: 15)
+DropDown.appearance().backgroundColor = UIColor.white
+DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
 DropDown.appearance().cellHeight = 60
 ```
 
-## Expert mode
+## Expert mode 🤓
 
 when calling the `show` method, it returns a tuple like this:
 
@@ -204,7 +269,8 @@ when calling the `show` method, it returns a tuple like this:
 
 ## Requirements
 
-* Xcode 7+
+* Xcode 8+
+* Swift 3.0
 * iOS 8+
 * ARC
 

@@ -55,9 +55,9 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
         setSaveButtonVisibility()
     }
     
-    override func viewWillDisappear(animated : Bool)
+    override func viewWillDisappear(_ animated : Bool)
     {
-        if (self.isMovingFromParentViewController() && saveButtonPressed)
+        if (self.isMovingFromParentViewController && saveButtonPressed)
         {
             delegate!.onRoutineSaved(routinesToRemove.count != routines.count)
         }
@@ -75,7 +75,7 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
     {
         if (routinesToRemove.count > 0)
         {
-            let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
+            let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
             
             self.navigationItem.rightBarButtonItem = saveButtonItem
         }
@@ -85,47 +85,47 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
         }
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return routines.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
         let routineName = routines[index].title
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CHECKBOX_CELL) as! CheckboxCellController
         cell.setCheckboxImage(Constant.CHECKBOX_CHECKED, uncheckedImage: Constant.CHECKBOX_UNCHECKED)
         cell.setListItem(routineName, checked: true)
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath)
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
         let routineName = routines[index].title
         
         onCheckboxChecked(routineName)
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+        let cell = tableView.cellForRow(at: indexPath) as! CheckboxCellController
         cell.setChecked(!cell.isChecked())
         
         setSaveButtonVisibility()
         
         // Deselects the row.
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         switch(event)
         {
@@ -141,19 +141,19 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
         hideLoading()
     }
 
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         hideLoading()
         
         Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""),
             message: NSLocalizedString("intencity_communication_error", comment: ""),
-            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack)])
+            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: goBack)])
     }
     
     /**
      * The function for when the save button is pressed.
      */
-    func savePressed(sender: UIBarButtonItem)
+    func savePressed(_ sender: UIBarButtonItem)
     {
         saveButtonPressed = true
 
@@ -161,7 +161,7 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
             
         _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
                         serviceURL: Constant.SERVICE_UPDATE_USER_ROUTINE,
-                        params: Constant.generateServiceListVariables(email, variables: routinesToRemove, isInserting: false))
+                        params: Constant.generateServiceListVariables(email, variables: routinesToRemove, isInserting: false) as NSString)
     }
     
     /**
@@ -169,13 +169,13 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
      */
     func goBack()
     {
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     /**
      * The action for the ok button being clicked when there was a communication error.
      */
-    func goBack(alertAction: UIAlertAction!) -> Void
+    func goBack(_ alertAction: UIAlertAction!) -> Void
     {
         goBack()
     }
@@ -183,13 +183,13 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
     /**
      * Edits a list of items that is going to be sent to the server.
      */
-    func onCheckboxChecked(name: String)
+    func onCheckboxChecked(_ name: String)
     {
         // Add or remove equipment from the user's routine list
         // if he or she clicks on a list item.
         if (routinesToRemove.contains(name))
         {
-            routinesToRemove.removeAtIndex(routinesToRemove.indexOf(name)!)
+            routinesToRemove.remove(at: routinesToRemove.index(of: name)!)
         }
         else
         {
@@ -204,10 +204,10 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
     {
         loadingView.backgroundColor = Color.page_background
         
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
     }
 
     /**
@@ -216,9 +216,9 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
     func showLoading()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
-        loadingView.hidden = false
+        loadingView.isHidden = false
     }
     
     /**
@@ -226,7 +226,7 @@ class EditSavedRoutineViewController: UIViewController, ServiceDelegate
      */
     func hideLoading()
     {
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.stopAnimating()
     }

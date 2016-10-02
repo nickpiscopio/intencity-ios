@@ -49,7 +49,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         confirmEmailTextField?.placeholder = NSLocalizedString("confirm_email", comment: "")
         passwordTextField?.placeholder = NSLocalizedString("password", comment: "")
         confirmPasswordTextField?.placeholder = NSLocalizedString("confirm_password", comment: "")
-        createAccountButton?.setTitle(NSLocalizedString("create_account_button", comment: ""), forState: .Normal)
+        createAccountButton?.setTitle(NSLocalizedString("create_account_button", comment: ""), for: UIControlState())
         
         activityIndicator.hidesWhenStopped = true
     }
@@ -64,7 +64,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
      */
     func initTermsText()
     {
-        let termsStrings = termsString.componentsSeparatedByString("@")
+        let termsStrings = termsString.components(separatedBy: "@")
         
         let termsCount = termsStrings.count
         
@@ -78,32 +78,32 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
             tempMutableString = NSMutableAttributedString(string: attributredTerms, attributes: nil)
             tempMutableString.addAttribute(NSForegroundColorAttributeName, value: (i % 2 == 0) ? Color.secondary_dark : Color.primary, range: NSRange(location: 0, length: attributredTerms.characters.count))
             
-            termsMutableString.appendAttributedString(tempMutableString)
+            termsMutableString.append(tempMutableString)
         }
         
-        termsLabel.setAttributedTitle(termsMutableString, forState: .Normal)
+        termsLabel.setAttributedTitle(termsMutableString, for: UIControlState())
     }
     
-    @IBAction func termsOfUseClicked(sender: UIButton)
+    @IBAction func termsOfUseClicked(_ sender: UIButton)
     {
-        let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
+        let viewController = storyboard!.instantiateViewController(withIdentifier: Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
         viewController.includeNavButton = true
         viewController.isTerms = true
             
         self.navigationController!.pushViewController(viewController, animated: true)
     }
     
-    @IBAction func checkNameLength(sender: AnyObject)
+    @IBAction func checkNameLength(_ sender: AnyObject)
     {
         checkStringLength(sender as! UITextField, maxLength: Integer.NAME_LENGTH)
     }
     
-    @IBAction func checkEmailLength(sender: AnyObject)
+    @IBAction func checkEmailLength(_ sender: AnyObject)
     {
         checkStringLength(sender as! UITextField, maxLength: Integer.EMAIL_LENGTH)
     }
     
-    @IBAction func checkPasswordLength(sender: AnyObject)
+    @IBAction func checkPasswordLength(_ sender: AnyObject)
     {
         checkStringLength(sender as! UITextField, maxLength: Integer.PASSWORD_LENGTH)
     }
@@ -111,7 +111,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
     /**
      * The click function for creating an account.
      */
-    @IBAction func createAccountClicked(sender: UIButton)
+    @IBAction func createAccountClicked(_ sender: UIButton)
     {
         let firstName = firstNameTextField.text!
         let lastName = lastNameTextField.text!
@@ -159,7 +159,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
 
             _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
                             serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
-                            params: Constant.getAccountParameters(firstName, lastName: lastName, email: Util.replacePlus(email), password: Util.replaceApostrophe(password), accountType: Constant.ACCOUNT_TYPE_NORMAL))
+                            params: Constant.getAccountParameters(firstName, lastName: lastName, email: Util.replacePlus(email), password: Util.replaceApostrophe(password), accountType: Constant.ACCOUNT_TYPE_NORMAL) as NSString)
         }
     }
     
@@ -169,18 +169,18 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
     func startCreateAccount()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
-        createAccountDescription.hidden = true
-        createAccountPromise.hidden = true
-        firstNameTextField.hidden = true
-        lastNameTextField.hidden = true
-        emailTextField.hidden = true
-        confirmEmailTextField.hidden = true
-        passwordTextField.hidden = true
-        confirmPasswordTextField.hidden = true
-        termsLabel.hidden = true
-        createAccountButton.hidden = true
+        createAccountDescription.isHidden = true
+        createAccountPromise.isHidden = true
+        firstNameTextField.isHidden = true
+        lastNameTextField.isHidden = true
+        emailTextField.isHidden = true
+        confirmEmailTextField.isHidden = true
+        passwordTextField.isHidden = true
+        confirmPasswordTextField.isHidden = true
+        termsLabel.isHidden = true
+        createAccountButton.isHidden = true
     }
     
     /**
@@ -188,23 +188,23 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
      */
     func stopCreateAccount()
     {
-        createAccountDescription.hidden = false
-        createAccountPromise.hidden = false
-        firstNameTextField.hidden = false
-        lastNameTextField.hidden = false
-        emailTextField.hidden = false
-        confirmEmailTextField.hidden = false
-        passwordTextField.hidden = false
-        confirmPasswordTextField.hidden = false
-        termsLabel.hidden = false
-        createAccountButton.hidden = false
+        createAccountDescription.isHidden = false
+        createAccountPromise.isHidden = false
+        firstNameTextField.isHidden = false
+        lastNameTextField.isHidden = false
+        emailTextField.isHidden = false
+        confirmEmailTextField.isHidden = false
+        passwordTextField.isHidden = false
+        confirmPasswordTextField.isHidden = false
+        termsLabel.isHidden = false
+        createAccountButton.isHidden = false
         
         activityIndicator.stopAnimating()
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
-        let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "")
+        let parsedResponse = result.replacingOccurrences(of: "\"", with: "")
         if (parsedResponse == Constant.EMAIL_EXISTS)
         {
             stopCreateAccount()
@@ -223,7 +223,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         }
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
         
@@ -233,7 +233,7 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
     /**
      * Deletes extra characters in a textfield if it exceeds the allotted amount.
      */
-    func checkStringLength(textField: UITextField!, maxLength: Int)
+    func checkStringLength(_ textField: UITextField!, maxLength: Int)
     {
         if (Util.checkStringLength(textField.text!, length: maxLength))
         {

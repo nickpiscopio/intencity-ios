@@ -34,7 +34,7 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
         self.view.backgroundColor = Color.page_background
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         // Sets the title for the screen.
         self.navigationItem.title = String(format: NSLocalizedString(searchType == WARM_UP_STRING ? "warm_ups_title" : "stretches_title", comment: ""), routineName)
@@ -58,11 +58,11 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
         loadingView.backgroundColor = Color.page_background
         connectionView.backgroundColor = Color.page_background
     
-        loadingView.hidden = true
-        connectionView.hidden = true
+        loadingView.isHidden = true
+        connectionView.isHidden = true
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
         
         connectionIssueLabel.text = NSLocalizedString("generic_error", comment: "")
         connectionIssueLabel.textColor = Color.secondary_light
@@ -74,9 +74,9 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
     func showLoading()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
-        loadingView.hidden = false
+        loadingView.isHidden = false
     }
     
     /**
@@ -84,7 +84,7 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
      */
     func hideLoading()
     {
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.stopAnimating()
     }
@@ -93,7 +93,7 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
      */
     func showConnectionIssue()
     {
-        connectionView.hidden = false
+        connectionView.isHidden = false
     }
     
     /**
@@ -101,7 +101,7 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
      */
     func hideConnectionIssue()
     {
-        connectionView.hidden = true
+        connectionView.isHidden = true
     }
 
     override func didReceiveMemoryWarning()
@@ -122,17 +122,16 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
         
         _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_INJURY_PREVENTION_WORKOUTS, variables: [ searchType, routineName.stringByReplacingOccurrencesOfString("&", withString: "%26") ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_INJURY_PREVENTION_WORKOUTS, variables: [ searchType, routineName.replacingOccurrences(of: "&", with: "%26") ]) as NSString)
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         // This gets saved as NSDictionary, so there is no order
-        let json: AnyObject? = result.parseJSONString
-        
-        if (json != nil)
+        let json: [AnyObject] = result.parseJSONString as! [AnyObject]
+        if (json.count > 0)
         {
-            for exercise in json as! NSArray
+            for exercise in json
             {
                 exercises.append(exercise[Constant.COLUMN_EXERCISE_NAME] as! String)
             }
@@ -147,7 +146,7 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
         hideLoading()
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         exercises.removeAll()
         
@@ -158,37 +157,37 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
         showConnectionIssue()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // Return the number of rows in the section.
         return exercises.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
             
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_CELL) as! GenericCellController
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.GENERIC_CELL) as! GenericCellController
         cell.title.text = exercises[index]
             
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath)
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
-        let directionViewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
+        let directionViewController = self.storyboard?.instantiateViewController(withIdentifier: Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
         directionViewController.exerciseName = exercises[index]
         
         self.navigationController!.pushViewController(directionViewController, animated: true)
         
         // Deselects the row.
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }

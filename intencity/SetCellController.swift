@@ -39,12 +39,12 @@ class SetCellController: UITableViewCell
         
         weightTextField.textColor = Color.secondary_dark
         durationTextField.textColor = Color.secondary_dark
-        intensityButton.setTitleColor(Color.secondary_dark, forState: .Normal)
+        intensityButton.setTitleColor(Color.secondary_dark, for: UIControlState())
         
         // Initialize the duration dropdown.
         dropDown.dataSource = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ]
         dropDown.selectionAction = { [unowned self] (index, item) in
-            self.intensityButton.setTitle(item, forState: .Normal)
+            self.intensityButton.setTitle(item, for: .normal)
             // Call the delegate to update the intensity.
             self.delegate?.onIntensityUpdated(self.index, intensity: Int(item)!)
         }
@@ -55,7 +55,7 @@ class SetCellController: UITableViewCell
         dropDown.width = 35
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
+    func textField(_ textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
     {
         let text = textField.text!
         
@@ -80,7 +80,7 @@ class SetCellController: UITableViewCell
                 
                 // Allow up to max value.
                 // This makes the value 1 digit higher, but at that point we will return false.
-                return value < maxValue
+                return value! < maxValue
             }
         }
         else
@@ -92,9 +92,9 @@ class SetCellController: UITableViewCell
     /**
      * The drop down click.
      */
-    @IBAction func showOrDismiss(sender: AnyObject)
+    @IBAction func showOrDismiss(_ sender: AnyObject)
     {
-        if dropDown.hidden
+        if dropDown.isHidden
         {
             dropDown.show()
         }
@@ -107,7 +107,7 @@ class SetCellController: UITableViewCell
     /**
      * The weight change function to format the weight.
      */
-    @IBAction func weightChanged(sender: AnyObject)
+    @IBAction func weightChanged(_ sender: AnyObject)
     {
         let weight = weightTextField.text!
         
@@ -117,7 +117,7 @@ class SetCellController: UITableViewCell
     /**
      * The duration change function to format the duration.
      */
-    @IBAction func durationChanged(sender: AnyObject)
+    @IBAction func durationChanged(_ sender: AnyObject)
     {
         if (!isReps)
         {
@@ -130,7 +130,7 @@ class SetCellController: UITableViewCell
     /**
      * Calls the callback when the weight is done being edited.
      */
-    @IBAction func weightFinishedEditing(sender: AnyObject)
+    @IBAction func weightFinishedEditing(_ sender: AnyObject)
     {
         let weight = weightTextField.text
         
@@ -140,7 +140,7 @@ class SetCellController: UITableViewCell
     /**
      * Calls the callback when the duration is done being edited.
      */
-    @IBAction func durationFinishedEditing(sender: AnyObject)
+    @IBAction func durationFinishedEditing(_ sender: AnyObject)
     {
         let duration: String? = durationTextField.text!
         if (duration != nil)

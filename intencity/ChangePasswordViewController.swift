@@ -29,7 +29,7 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
         self.view.backgroundColor = Color.page_background
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("change_password", comment: "")
@@ -38,11 +38,11 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
         newPasswordTextField.placeholder = NSLocalizedString("new_password", comment: "")
         confirmNewPasswordTextField.placeholder = NSLocalizedString("confirm_new_password", comment: "")
         
-        forgotPasswordButton.setTitle(NSLocalizedString("forgot_password", comment: ""), forState: .Normal)
-        changePasswordButton.setTitle(NSLocalizedString("change_password_button_title", comment: ""), forState: .Normal)
+        forgotPasswordButton.setTitle(NSLocalizedString("forgot_password", comment: ""), for: UIControlState())
+        changePasswordButton.setTitle(NSLocalizedString("change_password_button_title", comment: ""), for: UIControlState())
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
         
         // Get the user's email.
         email = Util.getEmailFromDefaults()
@@ -53,21 +53,21 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func forgotPasswordClicked(sender: AnyObject)
+    @IBAction func forgotPasswordClicked(_ sender: AnyObject)
     {
         let storyboard = UIStoryboard(name: Constant.LOGIN_STORYBOARD, bundle: nil)
         
-        let viewController = storyboard.instantiateViewControllerWithIdentifier("ForgotPasswordViewController")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ForgotPasswordViewController")
         
         self.navigationController!.pushViewController(viewController, animated: true)
     }
     
-    @IBAction func checkPasswordLength(sender: AnyObject)
+    @IBAction func checkPasswordLength(_ sender: AnyObject)
     {
         checkStringLength(sender as! UITextField, maxLength: Integer.PASSWORD_LENGTH)
     }
     
-    @IBAction func changePasswordClicked(sender: AnyObject)
+    @IBAction func changePasswordClicked(_ sender: AnyObject)
     {
         let oldPassword = oldPasswordTextField.text!
         let newPassword = newPasswordTextField.text!
@@ -92,18 +92,18 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
         else
         {
             activityIndicator.startAnimating()
-            activityIndicator.hidden = false
+            activityIndicator.isHidden = false
             
             _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
                             serviceURL: Constant.SERVICE_CHANGE_PASSWORD,
-                            params: Constant.generateChangePasswordVariables(email, currentPassword: Util.replaceApostrophe(oldPassword), newPassword: Util.replaceApostrophe(newPassword)))
+                            params: Constant.generateChangePasswordVariables(email, currentPassword: Util.replaceApostrophe(oldPassword), newPassword: Util.replaceApostrophe(newPassword)) as NSString)
         }
     }
     
     /**
      * Deletes extra characters in a textfield if it exceeds the allotted amount.
      */
-    func checkStringLength(textField: UITextField!, maxLength: Int)
+    func checkStringLength(_ textField: UITextField!, maxLength: Int)
     {
         if (Util.checkStringLength(textField.text!, length: maxLength))
         {
@@ -111,9 +111,9 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
         }
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
-        let response = result.stringByReplacingOccurrencesOfString("\"", withString: "")
+        let response = result.replacingOccurrences(of: "\"", with: "")
         
         if (response == Constant.INVALID_PASSWORD)
         {
@@ -122,7 +122,7 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
         else if (response == Constant.SUCCESS)
         {
             Util.displayAlert(self, title: NSLocalizedString("password_changed_title", comment: ""), message: NSLocalizedString("password_changed", comment: ""),
-                                    actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack) ])
+                                    actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: goBack) ])
         }
         else
         {
@@ -132,7 +132,7 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
         activityIndicator.stopAnimating()
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         activityIndicator.stopAnimating()
         
@@ -142,9 +142,9 @@ class ChangePasswordViewController: UIViewController, ServiceDelegate
     /**
      * Navigates the user back to the previous screen.
      */
-    func goBack(alertAction: UIAlertAction!) -> Void
+    func goBack(_ alertAction: UIAlertAction!) -> Void
     {
         // Navigates the user back to the previous screen.
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
 }

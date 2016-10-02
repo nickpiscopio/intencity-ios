@@ -11,6 +11,6 @@ import Foundation
 
 @objc protocol ServiceDelegate
 {    
-    func onRetrievalSuccessful(event: Int, result: String)
-    func onRetrievalFailed(event: Int)
+    func onRetrievalSuccessful(_ event: Int, result: String)
+    func onRetrievalFailed(_ event: Int)
 }

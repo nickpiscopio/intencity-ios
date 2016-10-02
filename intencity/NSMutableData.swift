@@ -11,10 +11,10 @@ import UIKit
 
 extension NSMutableData
 {
-    func appendString(string: String)
+    func appendString(_ string: String)
     {
-        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
         
-        appendData(data!)
+        append(data!)
     }
 }

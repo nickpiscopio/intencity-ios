@@ -9,6 +9,6 @@ import Foundation
 
 @objc protocol ExerciseSearchDelegate
 {
-    func onExerciseAdded(exercise: Exercise)
-    func onExerciseClicked(exerciseName: String)
+    func onExerciseAdded(_ exercise: Exercise)
+    func onExerciseClicked(_ exerciseName: String)
 }

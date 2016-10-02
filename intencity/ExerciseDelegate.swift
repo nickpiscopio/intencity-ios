@@ -10,9 +10,9 @@ import Foundation
 
 @objc protocol ExerciseDelegate
 {
-    func onExerciseClicked(name: String)
-    func onHideClicked(indexPath: NSIndexPath)
-    func onEditClicked(index: Int)
-    func onSetUpdated(index: Int)
-    func onSetExercisePriority(indexPath: NSIndexPath, morePriority: UIButton, lessPriority: UIButton, increment: Bool)
+    func onExerciseClicked(_ name: String)
+    func onHideClicked(_ indexPath: IndexPath)
+    func onEditClicked(_ index: Int)
+    func onSetUpdated(_ index: Int)
+    func onSetExercisePriority(_ indexPath: IndexPath, morePriority: UIButton, lessPriority: UIButton, increment: Bool)
 }

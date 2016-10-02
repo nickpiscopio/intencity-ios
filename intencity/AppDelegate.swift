@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: Color.white]
         
@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UINavigationBar.appearance().barTintColor = Color.primary
         UINavigationBar.appearance().titleTextAttributes = titleDict as? [String : AnyObject]
         UINavigationBar.appearance().tintColor = Color.white
-        UINavigationBar.appearance().translucent = false
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        UINavigationBar.appearance().isTranslucent = false
+        UIApplication.shared.statusBarStyle = .lightContent
         
         // Sets the tab bar colors.
         UITabBar.appearance().tintColor = Color.primary
@@ -33,8 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         var storyboardName: String
         var viewName: String
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if (defaults.dataForKey(Constant.USER_ACCOUNT_EMAIL) != nil)
+        let defaults = UserDefaults.standard
+        if (defaults.data(forKey: Constant.USER_ACCOUNT_EMAIL) != nil)
         {
             storyboardName = Constant.MAIN_STORYBOARD
             viewName = Constant.MAIN_VIEW
@@ -45,11 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             viewName = Constant.DEMO_VIEW
         }
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
         
-        let initialViewController = storyboard.instantiateViewControllerWithIdentifier(viewName)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: viewName)
         
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
@@ -68,13 +68,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         return true
     }
 
-    func applicationWillResignActive(application: UIApplication)
+    func applicationWillResignActive(_ application: UIApplication)
     {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
-    func applicationDidEnterBackground(application: UIApplication)
+    func applicationDidEnterBackground(_ application: UIApplication)
     {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
@@ -87,19 +87,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         }
     }
 
-    func applicationWillEnterForeground(application: UIApplication)
+    func applicationWillEnterForeground(_ application: UIApplication)
     {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 
-    func applicationDidBecomeActive(application: UIApplication)
+    func applicationDidBecomeActive(_ application: UIApplication)
     {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         handleUserAccount()
     }
 
-    func applicationWillTerminate(application: UIApplication)
+    func applicationWillTerminate(_ application: UIApplication)
     {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
@@ -109,23 +109,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate
      */
     func handleUserAccount()
     {
-        let now = Float(NSDate().timeIntervalSince1970 * 1000)
+        let now = Float(Date().timeIntervalSince1970 * 1000)
         
         let viewController = self.window!.rootViewController!
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        let trialAccountCreatedDate = defaults.floatForKey(Constant.USER_TRIAL_CREATED_DATE)
+        let trialAccountCreatedDate = defaults.float(forKey: Constant.USER_TRIAL_CREATED_DATE)
         if (trialAccountCreatedDate > 0 && ((now - trialAccountCreatedDate) >= Float(Constant.TRIAL_ACCOUNT_THRESHOLD)))
         {
             Util.displayAlert(viewController,
                 title: NSLocalizedString("trial_account_done_title", comment: ""),
                 message: NSLocalizedString("trial_account_done_message", comment: ""),
-                actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: self.logOut) ])
+                actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: self.logOut) ])
         }
         else
         {
-            let lastLogin = defaults.floatForKey(Constant.USER_LAST_LOGIN)
+            let lastLogin = defaults.float(forKey: Constant.USER_LAST_LOGIN)
             
             let email = Util.getEmailFromDefaults()
             
@@ -134,9 +134,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             if (email != "" && ((now - lastLogin) >= Float(Constant.LOGIN_POINTS_THRESHOLD)))
             {
                 // Rewards the user for using the app after 12 hours.
-                Util.grantPointsToUser(email, awardType: AwardType.LOG_IN, points: Constant.POINTS_LOGIN, description: NSLocalizedString("award_login_description", comment: ""))
+                Util.grantPointsToUser(email, awardType: AwardType.log_IN, points: Constant.POINTS_LOGIN, description: NSLocalizedString("award_login_description", comment: ""))
 
-                defaults.setFloat(now, forKey: Constant.USER_LAST_LOGIN)
+                defaults.set(now, forKey: Constant.USER_LAST_LOGIN)
             }
         }
     }
@@ -144,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     /**
      * The log out action from the alert notifying the user that his or her trial account has expired.
      */
-    func logOut(alertAction: UIAlertAction!)
+    func logOut(_ alertAction: UIAlertAction!)
     {
         Util.logOut(self.window!.rootViewController!)
     }

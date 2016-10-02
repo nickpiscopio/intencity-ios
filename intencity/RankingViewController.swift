@@ -18,7 +18,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     
     var currentUsers = [User]()
     
-    var indexPath: NSIndexPath!
+    var indexPath: IndexPath!
     var indexToRemove: Int!
     
     var refreshControl: UIRefreshControl!
@@ -47,7 +47,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("pull_to_refresh", comment: ""))
-        self.refreshControl.addTarget(self, action: #selector(RankingViewController.refreshRankingList), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(RankingViewController.refreshRankingList), for: UIControlEvents.valueChanged)
         self.tableView.addSubview(self.refreshControl)
         
         notificationHandler = NotificationHandler.getInstance(nil)
@@ -55,13 +55,13 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         getMenuIcon()
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         // Shows the tab bar again.
-        self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
     
-    override func viewDidAppear(animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
         getMenuIcon()
     }
@@ -71,11 +71,11 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func addFollowerClicked(sender: AnyObject)
+    @IBAction func addFollowerClicked(_ sender: AnyObject)
     {
         let storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
         
-        let viewController = storyboard.instantiateViewControllerWithIdentifier(Constant.SEARCH_VIEW_CONTROLLER) as! SearchViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier: Constant.SEARCH_VIEW_CONTROLLER) as! SearchViewController
         viewController.state = ServiceEvent.SEARCH_FOR_USER
         viewController.userSearchDelegate = self
         viewController.currentUsers = currentUsers
@@ -103,7 +103,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         
         _ = ServiceTask(event: ServiceEvent.GET_FOLLOWING, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_FOLLOWING, variables: [ email ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_FOLLOWING, variables: [ email ]) as NSString)
     }
     
     /**
@@ -119,27 +119,27 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
      *
      * @param type  The button type to set.
      */
-    func setMenuButton(type: Int)
+    func setMenuButton(_ type: Int)
     {
         var icon: UIImage!
         
         switch(type)
         {
             case Constant.MENU_INITIALIZED:
-                icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
                 break
             case Constant.MENU_NOTIFICATION_PRESENT:
-                icon = UIImage(named: Constant.MENU_NOTIFICATION_PRESENT_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                icon = UIImage(named: Constant.MENU_NOTIFICATION_PRESENT_IMAGE)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
                 break
             default:
                 break
         }
 
-        let iconSize = CGRect(origin: CGPointZero, size: CGSizeMake(Constant.MENU_IMAGE_WIDTH, Constant.MENU_IMAGE_HEIGHT))
+        let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: Constant.MENU_IMAGE_WIDTH, height: Constant.MENU_IMAGE_HEIGHT))
 
         let iconButton = UIButton(frame: iconSize)
-        iconButton.setImage(icon, forState: .Normal)
-        iconButton.addTarget(self, action: #selector(RankingViewController.menuClicked), forControlEvents: .TouchUpInside)
+        iconButton.setImage(icon, for: UIControlState())
+        iconButton.addTarget(self, action: #selector(RankingViewController.menuClicked), for: .touchUpInside)
         
         self.navigationItem.rightBarButtonItem?.customView = iconButton
     }
@@ -149,7 +149,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
      */
     func menuClicked()
     {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.MENU_VIEW_CONTROLLER) as! MenuViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Constant.MENU_VIEW_CONTROLLER) as! MenuViewController
         
         self.navigationController!.pushViewController(vc, animated: true)
     }
@@ -162,7 +162,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         switch(event)
         {
@@ -171,7 +171,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
                 do
                 {
                     // This gets saved as NSDictionary, so there is no order
-                    currentUsers = try UserDao().parseJson(result.parseJSONString)
+                    currentUsers = try UserDao().parseJson(result.parseJSONString as! [AnyObject]?)
                 }
                 catch
                 {
@@ -186,9 +186,9 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
                 break
             case ServiceEvent.UNFOLLOW:
                 
-                currentUsers.removeAtIndex(indexPath.row)
+                currentUsers.remove(at: indexPath.row)
                 
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 
                 break
             default:
@@ -196,7 +196,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         }
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         switch(event)
         {
@@ -221,7 +221,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         getFollowing()
     }
     
-    func onImageRetrieved(index: Int, image: UIImage, newUpload: Bool)
+    func onImageRetrieved(_ index: Int, image: UIImage, newUpload: Bool)
     {
         currentUsers[index].profilePic = image
         
@@ -232,35 +232,35 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         
         if (newUpload)
         {
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+            let indexPath = IndexPath(row: index, section: 0)
+            self.tableView.reloadRows(at: [indexPath], with: .none)
         }
     }
     
     func onImageRetrievalFailed() { }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
-        tableView.backgroundView?.hidden = currentUsers.count > 1
+        tableView.backgroundView?.isHidden = currentUsers.count > 1
         
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // Return the number of rows in the section.
         return currentUsers.count
     }
    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         let user = currentUsers[index]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.RANKING_CELL) as! RankingCellController
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.RANKING_CELL) as! RankingCellController
         cell.user = user
         cell.name.text = user.getName()
-        cell.userNotification.hidden = user.followingId > Int(Constant.CODE_FAILED)
+        cell.userNotification.isHidden = user.followingId > Int(Constant.CODE_FAILED)
         cell.rankingLabel.text = String(index + 1)
         cell.pointsLabel.text = String(user.earnedPoints)
         cell.delegate = self
@@ -270,28 +270,28 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         
         if (totalBadges > 0)
         {
-            cell.badgeView.hidden = false
+            cell.badgeView.isHidden = false
             cell.badgeTotalLabel.text = String(totalBadges)
         }
         else
         {
-            cell.badgeView.hidden = true
+            cell.badgeView.isHidden = true
         }
         
         return cell
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath)
     {
         // Deselects the row.
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
         // Gets the row in the section.
         let user = currentUsers[index]
         
-        profileViewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
+        profileViewController = storyboard!.instantiateViewController(withIdentifier: Constant.PROFILE_VIEW_CONTROLLER) as! ProfileViewController
         profileViewController.index = index
         profileViewController.user = user
         // Only add the addRemoveButton if it is not the user.

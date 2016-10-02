@@ -27,12 +27,12 @@ class FitnessRecommendationViewController: UIViewController
         self.navigationItem.title = NSLocalizedString("how_to_workout_title", comment: "")
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
-        gainButton.setTitle(NSLocalizedString("gain", comment: ""), forState: .Normal)
-        sustainButton.setTitle(NSLocalizedString("sustain", comment: ""), forState: .Normal)
-        loseButton.setTitle(NSLocalizedString("lose", comment: ""), forState: .Normal)
-        toneButton.setTitle(NSLocalizedString("tone", comment: ""), forState: .Normal)
+        gainButton.setTitle(NSLocalizedString("gain", comment: ""), for: UIControlState())
+        sustainButton.setTitle(NSLocalizedString("sustain", comment: ""), for: UIControlState())
+        loseButton.setTitle(NSLocalizedString("lose", comment: ""), for: UIControlState())
+        toneButton.setTitle(NSLocalizedString("tone", comment: ""), for: UIControlState())
 
         // Initialize the tableview.
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
@@ -50,22 +50,22 @@ class FitnessRecommendationViewController: UIViewController
         super.didReceiveMemoryWarning()
     }
 
-    @IBAction func gainClicked(sender: AnyObject)
+    @IBAction func gainClicked(_ sender: AnyObject)
     {
         goalSelected(gainButton, weight: "weight_gain", duration: "duration_gain", rest: "rest_gain", cardio: "cardio_day_gain")
     }
     
-    @IBAction func sustainClicked(sender: AnyObject)
+    @IBAction func sustainClicked(_ sender: AnyObject)
     {
         setSelectionSustain()
     }
     
-    @IBAction func loseClicked(sender: AnyObject)
+    @IBAction func loseClicked(_ sender: AnyObject)
     {
         goalSelected(loseButton, weight: "weight_lose", duration: "duration_lose", rest: "rest_lose", cardio: "cardio_day_lose")
     }
     
-    @IBAction func toneClicked(sender: AnyObject)
+    @IBAction func toneClicked(_ sender: AnyObject)
     {
         goalSelected(toneButton, weight: "weight_tone", duration: "duration_tone", rest: "rest_tone", cardio: "cardio_day_tone")
     }
@@ -75,7 +75,7 @@ class FitnessRecommendationViewController: UIViewController
         goalSelected(sustainButton, weight: "weight_sustain", duration: "duration_sustain", rest: "rest_sustain", cardio: "cardio_day_sustain")
     }
     
-    func goalSelected(button: UIButton, weight: String, duration: String, rest: String, cardio: String)
+    func goalSelected(_ button: UIButton, weight: String, duration: String, rest: String, cardio: String)
     {
         gainButton.backgroundColor = button == gainButton ? Color.shadow : Color.transparent
         sustainButton.backgroundColor = button == sustainButton ? Color.shadow : Color.transparent
@@ -91,45 +91,45 @@ class FitnessRecommendationViewController: UIViewController
         tableView.reloadData()
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return fitnessRecommendationRows.count
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
-        return tableView.dequeueReusableCellWithIdentifier(Constant.FITNESS_RECOMMENDATION_HEADER_CELL) as! FitnessRecHeaderCellController
+        return tableView.dequeueReusableCell(withIdentifier: Constant.FITNESS_RECOMMENDATION_HEADER_CELL) as! FitnessRecHeaderCellController
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
         return 40
     }
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
     {
-        return tableView.dequeueReusableCellWithIdentifier(Constant.FITNESS_RECOMMENDATION_FOOTER_CELL) as! FitnessRecFooterCellController
+        return tableView.dequeueReusableCell(withIdentifier: Constant.FITNESS_RECOMMENDATION_FOOTER_CELL) as! FitnessRecFooterCellController
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
     {
         return 90
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         let fitnessRecommendationRow = fitnessRecommendationRows[index]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.FITNESS_RECOMMENDATION_CELL) as! FitnessRecommendationCellViewController
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.FITNESS_RECOMMENDATION_CELL) as! FitnessRecommendationCellViewController
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.cellHeader.text = fitnessRecommendationRow.title
-        cell.cellHeaderAstricks.hidden = !fitnessRecommendationRow.includeDecoration
+        cell.cellHeaderAstricks.isHidden = !fitnessRecommendationRow.includeDecoration
         cell.cellDescription.text = fitnessRecommendationRow.description
         
         return cell

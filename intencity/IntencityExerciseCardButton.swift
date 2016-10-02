@@ -15,8 +15,8 @@ class IntencityExerciseCardButton: IntencityButtonNoBackground
         super.init(coder: aDecoder)
         
         // The default parameters for the button.
-        self.setTitleColor(Color.secondary_light, forState: .Normal)
-        self.setTitleColor(Color.secondary_light, forState: .Highlighted)
+        self.setTitleColor(Color.secondary_light, for: UIControlState())
+        self.setTitleColor(Color.secondary_light, for: .highlighted)
         
         self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.EXERCISE_CARD_BUTTON_LAYOUT_MARGIN, Dimention.EXERCISE_CARD_BUTTON_LAYOUT_MARGIN, Dimention.EXERCISE_CARD_BUTTON_LAYOUT_MARGIN, Dimention.EXERCISE_CARD_BUTTON_LAYOUT_MARGIN)
     }

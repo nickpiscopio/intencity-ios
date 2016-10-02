@@ -18,30 +18,30 @@ class IntencityButton: UIButton
         super.init(coder: aDecoder)
         
         // The default parameters for the button.
-        self.layer.borderColor = Color.transparent.CGColor
-        self.setTitleColor(Color.page_background, forState: .Normal)
-        self.setTitleColor(Color.page_background, forState: .Highlighted)
+        self.layer.borderColor = Color.transparent.cgColor
+        self.setTitleColor(Color.page_background, for: UIControlState())
+        self.setTitleColor(Color.page_background, for: .highlighted)
         self.layer.borderWidth = Dimention.BORDER_WIDTH
         self.layer.cornerRadius = Dimention.RADIUS
         self.layer.masksToBounds = false
-        self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW, Dimention.SHADOW)
+        self.layer.shadowOffset = CGSize(width: Dimention.SHADOW, height: Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
-        self.layer.shadowColor = Color.shadow_dark.CGColor
-        self.layer.backgroundColor = Color.secondary_dark.CGColor
+        self.layer.shadowColor = Color.shadow_dark.cgColor
+        self.layer.backgroundColor = Color.secondary_dark.cgColor
         
         self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.BUTTON_PADDING, Dimention.BUTTON_PADDING, Dimention.BUTTON_PADDING, Dimention.BUTTON_PADDING)
         
         buttonUp()
         
         // The callbacks for the button states.
-        self.addTarget(self, action: #selector(IntencityButton.buttonUp), forControlEvents: .TouchUpInside)
-        self.addTarget(self, action: #selector(IntencityButton.buttonUp), forControlEvents: .TouchUpOutside)
-        self.addTarget(self, action: #selector(IntencityButton.buttonUp), forControlEvents: .TouchCancel)
-        self.addTarget(self, action: #selector(IntencityButton.buttonDown), forControlEvents: .TouchDown)
+        self.addTarget(self, action: #selector(IntencityButton.buttonUp), for: .touchUpInside)
+        self.addTarget(self, action: #selector(IntencityButton.buttonUp), for: .touchUpOutside)
+        self.addTarget(self, action: #selector(IntencityButton.buttonUp), for: .touchCancel)
+        self.addTarget(self, action: #selector(IntencityButton.buttonDown), for: .touchDown)
         
-        self.setTitleColor(Color.white, forState: UIControlState.Highlighted)
-        self.setTitleColor(Color.white, forState: UIControlState.Selected)
-        self.setTitleColor(Color.white, forState: UIControlState.Normal)
+        self.setTitleColor(Color.white, for: UIControlState.highlighted)
+        self.setTitleColor(Color.white, for: UIControlState.selected)
+        self.setTitleColor(Color.white, for: UIControlState())
     }
     
     /**

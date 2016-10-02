@@ -11,13 +11,13 @@ import Foundation
 
 struct UserRoutineDao
 {
-    func parseJson(json: AnyObject?) throws -> [RoutineGroup]
+    func parseJson(_ json: [AnyObject]?) throws -> [RoutineGroup]
     {
         var groups = [RoutineGroup]()
 
         var routineNames = [RoutineRow]()
         
-        if let jsonArray = json as? NSArray
+        if let jsonArray = json
         {
             for routines in jsonArray
             {
@@ -31,7 +31,7 @@ struct UserRoutineDao
         }
         else
         {
-            throw IntencityError.ParseError
+            throw IntencityError.parseError
         }
         
         return groups

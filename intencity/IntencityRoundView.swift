@@ -18,14 +18,14 @@ class IntencityRoundView: UIView
         super.init(coder: aDecoder)
         
         // The default parameters for the button.
-        self.layer.borderColor = Color.transparent.CGColor
+        self.layer.borderColor = Color.transparent.cgColor
         self.layer.borderWidth = Dimention.BORDER_WIDTH
         self.layer.masksToBounds = false
-        self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW_SMALL, Dimention.SHADOW_SMALL)
+        self.layer.shadowOffset = CGSize(width: Dimention.SHADOW_SMALL, height: Dimention.SHADOW_SMALL)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
         self.layer.shadowRadius = Dimention.SHADOW_SMALL
-        self.layer.shadowColor = Color.shadow_dark.CGColor
+        self.layer.shadowColor = Color.shadow_dark.cgColor
         self.layer.cornerRadius = self.frame.size.width / 2
-        self.layer.backgroundColor = Color.card_button_delete_deselect.CGColor
+        self.layer.backgroundColor = Color.card_button_delete_deselect.cgColor
     }
 }

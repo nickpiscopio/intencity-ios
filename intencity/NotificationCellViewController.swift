@@ -24,7 +24,7 @@ class NotificationCellViewController: UITableViewCell
     {
         super.awakeFromNib()
         
-        awardTitle.font = awardTitle.font.fontWithSize(Dimention.FONT_SIZE_LARGE)
+        awardTitle.font = awardTitle.font.withSize(Dimention.FONT_SIZE_LARGE)
         awardTitle.textColor = Color.secondary_dark
         awardDescription.textColor = Color.secondary_dark
     }
@@ -32,23 +32,23 @@ class NotificationCellViewController: UITableViewCell
     /**
      * Sets the cell with an image.
      */
-    func initCellWithImage(imageName: String)
+    func initCellWithImage(_ imageName: String)
     {
         awardImage.image = UIImage(named: imageName)!
         
-        awardTitle.hidden = true
-        awardImage.hidden = false
+        awardTitle.isHidden = true
+        awardImage.isHidden = false
     }
     
     /**
      * Sets the cell with a title.
      */
-    func initCellWithTitle(title: String)
+    func initCellWithTitle(_ title: String)
     {
         awardTitle.text = title
         
-        awardImage.hidden = true
-        awardTitle.hidden = false
+        awardImage.isHidden = true
+        awardTitle.isHidden = false
     }
     
     /**
@@ -56,18 +56,18 @@ class NotificationCellViewController: UITableViewCell
      * 
      * @param amountTotal   The number of awards.
      */
-    func setAwardAmounts(awardTotal: Int)
+    func setAwardAmounts(_ awardTotal: Int)
     {
         if (awardTotal > 1)
         {
-            amount.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_XX_SMALL)
+            amount.font = UIFont.boldSystemFont(ofSize: Dimention.FONT_SIZE_XX_SMALL)
             amount.text = String(awardTotal)
             amount.textColor = Color.white
-            amountView.hidden = false
+            amountView.isHidden = false
         }
         else
         {
-            amountView.hidden = true
+            amountView.isHidden = true
         }
     }
 }

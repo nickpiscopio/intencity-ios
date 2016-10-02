@@ -23,7 +23,7 @@ class NotificationViewController: UIViewController
         self.view.backgroundColor = Color.page_background
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("title_notifications", comment: "")
@@ -38,27 +38,27 @@ class NotificationViewController: UIViewController
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
-        tableView.backgroundView?.hidden = notifications.count > 0
+        tableView.backgroundView?.isHidden = notifications.count > 0
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return notifications.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
         let notification = notifications[index]
         let imageName = notification.awardImageName
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.NOTIFICATION_CELL) as! NotificationCellViewController
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.NOTIFICATION_CELL) as! NotificationCellViewController
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         if (imageName != "")
         {

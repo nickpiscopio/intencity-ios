@@ -28,7 +28,7 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
         self.view.backgroundColor = Color.page_background
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("title_delete_account", comment: "")
@@ -37,11 +37,11 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
         deleteDescription.text = NSLocalizedString("delete_account_message", comment: "")
         passwordTextField.placeholder = NSLocalizedString("password", comment: "")
         
-        forgotPasswordButton.setTitle(NSLocalizedString("forgot_password", comment: ""), forState: .Normal)
-        deleteButton.setTitle(NSLocalizedString("delete_account_button", comment: ""), forState: .Normal)
+        forgotPasswordButton.setTitle(NSLocalizedString("forgot_password", comment: ""), for: UIControlState())
+        deleteButton.setTitle(NSLocalizedString("delete_account_button", comment: ""), for: UIControlState())
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
         
         // Get the user's email.
         email = Util.getEmailFromDefaults()
@@ -52,16 +52,16 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func forgotPasswordClicked(sender: AnyObject)
+    @IBAction func forgotPasswordClicked(_ sender: AnyObject)
     {
         let storyboard = UIStoryboard(name: Constant.LOGIN_STORYBOARD, bundle: nil)
         
-        let viewController = storyboard.instantiateViewControllerWithIdentifier("ForgotPasswordViewController")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ForgotPasswordViewController")
         
         self.navigationController!.pushViewController(viewController, animated: true)
     }
     
-    @IBAction func deleteClicked(sender: AnyObject)
+    @IBAction func deleteClicked(_ sender: AnyObject)
     {
         password = passwordTextField.text!
         
@@ -73,30 +73,30 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
         else
         {
             Util.displayAlert(self, title: NSLocalizedString("title_delete_account", comment: ""), message: NSLocalizedString("delete_account_dialog_message", comment: ""),
-                actions: [ UIAlertAction(title: NSLocalizedString("delete_account", comment: ""), style: .Destructive, handler: deleteAccount),
-                           UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Cancel, handler: nil)])
+                actions: [ UIAlertAction(title: NSLocalizedString("delete_account", comment: ""), style: .destructive, handler: deleteAccount),
+                           UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil)])
         }
     }
     
     /**
      * Navigates the user back to the previous screen.
      */
-    func deleteAccount(alertAction: UIAlertAction!) -> Void
+    func deleteAccount(_ alertAction: UIAlertAction!) -> Void
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
         _ = ServiceTask(event: ServiceEvent.VALIDATE_USER_CREDENTIALS, delegate: self,
                         serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS,
-                        params: Constant.getValidateUserCredentialsServiceParameters(email, password: Util.replaceApostrophe(password)))
+                        params: Constant.getValidateUserCredentialsServiceParameters(email, password: Util.replaceApostrophe(password)) as NSString)
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         switch(event)
         {
             case ServiceEvent.VALIDATE_USER_CREDENTIALS:
-                let response = result.stringByReplacingOccurrencesOfString("\"", withString: "")
+                let response = result.replacingOccurrences(of: "\"", with: "")
                 
                 if (response == Constant.INVALID_PASSWORD)
                 {
@@ -112,7 +112,7 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
                 {
                     _ = ServiceTask(event: ServiceEvent.REMOVE_ACCOUNT, delegate: self,
                                     serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                                    params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_ACCOUNT, variables: [ email ]))
+                                    params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_ACCOUNT, variables: [ email ]) as NSString)
                 }
 
                 break
@@ -124,7 +124,7 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
         }
     }
 
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         // There isn't a need for a switch here.
         // The reactions are the same if the user cannot connect to Intencity's server.

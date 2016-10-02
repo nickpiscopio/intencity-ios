@@ -10,9 +10,9 @@
 import UIKit
 
 class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate
-{
+{    
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var next: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     var pageViewController: UIPageViewController!
     var demoPages: [DemoView] = []
@@ -32,7 +32,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         createNewDemoPage("demo_ranking_title", description: "demo_ranking_description", imageName: "demo_screen_ranking", backgroundColor: Color.primary)
         createNewDemoPage("", description: "", imageName: "", backgroundColor: Color.page_background)
         
-        pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
+        pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController
         pageViewController.dataSource = self
         pageViewController.delegate = self
         
@@ -40,16 +40,16 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
-        self.pageViewController.didMoveToParentViewController(self)
+        self.pageViewController.didMove(toParentViewController: self)
         
         // Bring the common elements to the front.
-        self.view.bringSubviewToFront(pageControl)
-        self.view.bringSubviewToFront(next)
+        self.view.bringSubview(toFront: pageControl)
+        self.view.bringSubview(toFront: nextButton)
         
         // Sets the number of dots in the page control.
         self.pageControl.numberOfPages = demoPages.count
         
-        next.userInteractionEnabled = true
+        nextButton.isUserInteractionEnabled = true
     }
 
     override func didReceiveMemoryWarning()
@@ -66,7 +66,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
      *                     This can be found in the Assets.xcassets.
      * @param backgroundColor     The background color for the demo screen.
      */
-    func createNewDemoPage(title: String, description: String, imageName: String, backgroundColor: UIColor)
+    func createNewDemoPage(_ title: String, description: String, imageName: String, backgroundColor: UIColor)
     {
         self.demoPages.append(DemoView(title: NSLocalizedString(title, comment: ""), description: NSLocalizedString(description, comment: ""), imageName: imageName, backgroundColor: backgroundColor))
     }
@@ -78,7 +78,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
      *
      * @return The view controller to show.
     */
-    func displayViewControllerAtIndex(index: Int) -> UIViewController
+    func displayViewControllerAtIndex(_ index: Int) -> UIViewController
     {
         let pageCount = self.demoPages.count
         let demoView = self.demoPages[index]
@@ -96,14 +96,14 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         if (pageTitle == "")
         {
             let storyboard : UIStoryboard = UIStoryboard(name: Constant.LOGIN_STORYBOARD, bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier(Constant.LOGIN_NAV_CONTROLLER) as! LoginNavController
+            let vc = storyboard.instantiateViewController(withIdentifier: Constant.LOGIN_NAV_CONTROLLER) as! LoginNavController
             vc.backgroundColor = demoView.backgroundColor
             
             return vc
         }
         else
         {
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("DemoContentViewController") as! DemoContentViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "DemoContentViewController") as! DemoContentViewController
             vc.titleText = pageTitle
             vc.descriptionText = demoView.description
             vc.imageFile = demoView.imageName
@@ -117,7 +117,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     /**
      * The function that is called to create a view before the current view.
      */
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController?
     {
         var index = currentIndex
         
@@ -134,7 +134,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     /**
      * The function that is called to create a view after the current view.
      */
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
         var index = currentIndex
 
@@ -156,7 +156,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     /**
      * The function that is called after the transition is completed from a pageViewController control swipe.
      */
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)
     {
         if (completed)
         {
@@ -177,7 +177,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         }
     }
     
-    @IBAction func nextClicked(sender: AnyObject)
+    @IBAction func nextClicked(_ sender: AnyObject)
     {
         currentIndex += 1
         setViewController(currentIndex)
@@ -188,12 +188,12 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
      *
      * @param index    The index of the demo pages to show.
      */
-    func setViewController(index: Int)
+    func setViewController(_ index: Int)
     {
-        next.userInteractionEnabled = false
+        nextButton.isUserInteractionEnabled = false
 
         // Pushes a view onto the pageViewController and forward.
-        pageViewController.setViewControllers([displayViewControllerAtIndex(index)], direction: .Forward, animated: true, completion: { (finished) in
+        pageViewController.setViewControllers([displayViewControllerAtIndex(index)], direction: .forward, animated: true, completion: { (finished) in
             
             if (finished)
             {
@@ -201,7 +201,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
             }
             else
             {
-                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(DemoViewController.enableNextButton), userInfo: nil, repeats: false)
+                Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(DemoViewController.enableNextButton), userInfo: nil, repeats: false)
             }
         })
         
@@ -213,7 +213,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
      */
     func enableNextButton()
     {
-        self.next.userInteractionEnabled = true
+        self.nextButton.isUserInteractionEnabled = true
     }
     
     /**
@@ -223,13 +223,13 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     {
         if (currentIndex == demoPages.count - 1)
         {
-            next.hidden = true
-            pageControl.hidden = true
+            nextButton.isHidden = true
+            pageControl.isHidden = true
         }
         else
         {
-            next.hidden = false
-            pageControl.hidden = false
+            nextButton.isHidden = false
+            pageControl.isHidden = false
         }
         
         pageControl.currentPage = currentIndex
@@ -241,13 +241,13 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
      * @returns     The view controller index.
      * @throws      A cast error if it cannot get the index.
      */
-    func getCurrentIndex(viewController: UIViewController) throws -> Int
+    func getCurrentIndex(_ viewController: UIViewController) throws -> Int
     {
         if let vc = viewController as? PageViewController
         {
             return vc.pageIndex
         }
         
-        throw IntencityError.CastError
+        throw IntencityError.castError
     }
 }

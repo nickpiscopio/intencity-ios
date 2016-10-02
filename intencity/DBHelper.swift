@@ -22,16 +22,16 @@ class DBHelper
     
     func openDb() -> FMDatabase
     {
-        let documents = try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
-        let fileURL = documents.URLByAppendingPathComponent(DATABASE_NAME)
+        let documents = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        let fileURL = documents.appendingPathComponent(DATABASE_NAME)
         let database = FMDatabase(path: fileURL.path)
         
-        if !database.open()
+        if !(database?.open())!
         {
             print("Unable to open database")
         }
         
-        return database
+        return database!
     }
     
     /**
@@ -87,7 +87,7 @@ class DBHelper
     /**
      * Drops the table so we can recreate it.
      */
-    func deleteDB(database: FMDatabase)
+    func deleteDB(_ database: FMDatabase)
     {
         let SQL_CREATE_ENTRIES = "DROP TABLE IF EXISTS " + ExerciseTable.TABLE_NAME + ";"
         
@@ -106,7 +106,7 @@ class DBHelper
     /**
      * Updates the database with new columns,
      */
-    func updateDB(database: FMDatabase)
+    func updateDB(_ database: FMDatabase)
     {
         deleteDB(database)
         createDB()
@@ -115,7 +115,7 @@ class DBHelper
     /**
      *  Resets the database.
      */
-    func resetDb(database: FMDatabase)
+    func resetDb(_ database: FMDatabase)
     {
         do
         {
@@ -130,7 +130,7 @@ class DBHelper
     /**
      *  Inserts records into the database.
      */
-    func insertIntoDb(exercises: Array<Exercise>, index: Int, routineName: String, state: String)
+    func insertIntoDb(_ exercises: Array<Exercise>, index: Int, routineName: String, state: String)
     {
         let database = openDb()
         
@@ -235,26 +235,26 @@ class DBHelper
 
                 if (index <= 0)
                 {
-                    index = Int(result.stringForColumn(ExerciseTable.COLUMN_INDEX))!
+                    index = Int(result.string(forColumn: ExerciseTable.COLUMN_INDEX))!
                 }
                 
-                state = Int(result.stringForColumn(ExerciseTable.COLUMN_ROUTINE_STATE))!
-                routineName = result.stringForColumn(ExerciseTable.COLUMN_ROUTINE_NAME)
+                state = Int(result.string(forColumn: ExerciseTable.COLUMN_ROUTINE_STATE))!
+                routineName = result.string(forColumn: ExerciseTable.COLUMN_ROUTINE_NAME)
                 
                 // Exercise
-                let name = result.stringForColumn(ExerciseTable.COLUMN_NAME)
-                let description = result.stringForColumn(ExerciseTable.COLUMN_DESCRIPTION)
-                let priority = result.stringForColumn(ExerciseTable.COLUMN_PRIORITY)
-                let fromIntencity = result.boolForColumn(ExerciseTable.COLUMN_FROM_INTENCITY);
+                let name = result.string(forColumn: ExerciseTable.COLUMN_NAME)
+                let description = result.string(forColumn: ExerciseTable.COLUMN_DESCRIPTION)
+                let priority = result.string(forColumn: ExerciseTable.COLUMN_PRIORITY)
+                let fromIntencity = result.bool(forColumn: ExerciseTable.COLUMN_FROM_INTENCITY);
                 
                 // If the last exercise name is equal to the last exercise we just got,
                 // or if the exercise is the first in the list,
                 // then we want to create a new exercise object.
                 if (lastExerciseName != name)
                 {
-                    lastExerciseName = name
+                    lastExerciseName = name!
                     
-                    exercise = Exercise(exerciseName: name, exerciseDescription: description != nil ? description : "", priority: priority != nil ? Int(priority)! : Int(Constant.CODE_FAILED), sets: [], fromIntencity: fromIntencity)
+                    exercise = Exercise(exerciseName: name!, exerciseDescription: description != nil ? description! : "", priority: priority != nil ? Int(priority!)! : Int(Constant.CODE_FAILED), sets: [], fromIntencity: fromIntencity)
                     
                     exercises.append(exercise)
 
@@ -262,19 +262,19 @@ class DBHelper
                 }
                 
                 // Sets
-                let webId = result.stringForColumn(ExerciseTable.COLUMN_WEB_ID)
-                let weight = result.stringForColumn(ExerciseTable.COLUMN_WEIGHT)
-                let reps = result.stringForColumn(ExerciseTable.COLUMN_REP)
-                let duration = result.stringForColumn(ExerciseTable.COLUMN_DURATION)
-                let difficulty = result.stringForColumn(ExerciseTable.COLUMN_DIFFICULTY)
-                let notes = result.stringForColumn(ExerciseTable.COLUMN_NOTES)
+                let webId = result.string(forColumn: ExerciseTable.COLUMN_WEB_ID)
+                let weight = result.string(forColumn: ExerciseTable.COLUMN_WEIGHT)
+                let reps = result.string(forColumn: ExerciseTable.COLUMN_REP)
+                let duration = result.string(forColumn: ExerciseTable.COLUMN_DURATION)
+                let difficulty = result.string(forColumn: ExerciseTable.COLUMN_DIFFICULTY)
+                let notes = result.string(forColumn: ExerciseTable.COLUMN_NOTES)
                 
-                let set = Set(webId: webId != nil ? Int(webId)! : Int(Constant.CODE_FAILED),
-                                 weight: weight != nil ? Float(weight)! : 0.0,
-                                 reps: reps != nil ? Int(reps)! : Int(Constant.CODE_FAILED),
-                                 duration: duration != nil ? duration : Constant.RETURN_NULL,
-                                 difficulty: difficulty != nil ? Int(difficulty)! : Int(Constant.CODE_FAILED),
-                                 notes: notes != nil ? notes : Constant.RETURN_NULL)
+                let set = Set(webId: webId != nil ? Int(webId!)! : Int(Constant.CODE_FAILED),
+                                 weight: weight != nil ? Float(weight!)! : 0.0,
+                                 reps: reps != nil ? Int(reps!)! : Int(Constant.CODE_FAILED),
+                                 duration: duration != nil ? duration! : Constant.RETURN_NULL,
+                                 difficulty: difficulty != nil ? Int(difficulty!)! : Int(Constant.CODE_FAILED),
+                                 notes: notes != nil ? notes! : Constant.RETURN_NULL)
                 
                 var sets = exercises[exerciseIndex].sets
                 sets.append(set)

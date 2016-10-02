@@ -35,24 +35,24 @@ class ExerciseListHeaderController: UITableViewCell
         storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
     }
     
-    @IBAction func routineNameClicked(sender: AnyObject)
+    @IBAction func routineNameClicked(_ sender: AnyObject)
     {
         routineDelegate.onRoutineNameClicked()
     }
     
-    @IBAction func finishClicked(sender: AnyObject)
+    @IBAction func finishClicked(_ sender: AnyObject)
     {
         routineDelegate.onFinishRoutine()
     }
     
-    @IBAction func saveClicked(sender: AnyObject)
+    @IBAction func saveClicked(_ sender: AnyObject)
     {
         routineDelegate.onSaveRoutine()
     }
     
-    @IBAction func infoClicked(sender: AnyObject)
+    @IBAction func infoClicked(_ sender: AnyObject)
     {        
-        let vc = storyboard.instantiateViewControllerWithIdentifier(Constant.FITNESS_RECOMMENDATION_VIEW_CONTROLLER) as! FitnessRecommendationViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: Constant.FITNESS_RECOMMENDATION_VIEW_CONTROLLER) as! FitnessRecommendationViewController
         
         self.navigationController!.pushViewController(vc, animated: true)
     }
@@ -63,15 +63,15 @@ class ExerciseListHeaderController: UITableViewCell
      * @param completedExerciseTotal    The total number of exercises that have been completed.
      * @param totalExercises            The total number of exercises to complete in this routine.
      */
-    func setExerciseTotalLabel(completedExerciseTotal: Int, totalExercises: Int)
+    func setExerciseTotalLabel(_ completedExerciseTotal: Int, totalExercises: Int)
     {
         let mutableString = NSMutableAttributedString()
 
         let exerciseTotal = routineName == NSLocalizedString("title_custom_routine", comment: "") ? "?" : String(totalExercises)
         
-        mutableString.appendAttributedString(Util.getMutableString(String(completedExerciseTotal) + "/" + exerciseTotal + "  ", fontSize: Dimention.FONT_SIZE_NORMAL, color: Color.white, isBold: true))
-        mutableString.appendAttributedString(Util.getMutableString(routineName, fontSize: Dimention.FONT_SIZE_MEDIUM, color: Color.white, isBold: false))
+        mutableString.append(Util.getMutableString(String(completedExerciseTotal) + "/" + exerciseTotal + "  ", fontSize: Dimention.FONT_SIZE_NORMAL, color: Color.white, isBold: true))
+        mutableString.append(Util.getMutableString(routineName, fontSize: Dimention.FONT_SIZE_MEDIUM, color: Color.white, isBold: false))
         
-        routineNameButton.setAttributedTitle(mutableString, forState: .Normal)
+        routineNameButton.setAttributedTitle(mutableString, for: UIControlState())
     }
 }

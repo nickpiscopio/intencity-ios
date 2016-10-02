@@ -9,5 +9,5 @@ import Foundation
 
 protocol ViewDelegate
 {    
-    func onLoadView(view: Int, result: String, savedExercises: SavedExercise?, state: Int)
+    func onLoadView(_ view: Int, result: String, savedExercises: SavedExercise?, state: Int)
 }

@@ -15,7 +15,7 @@ class IntencityCardButtonNoBackground: UIButton
         super.init(coder: aDecoder)
         
         // The default parameters for the button.
-        self.setTitleColor(Color.secondary_light, forState: .Normal)
-        self.setTitleColor(Color.secondary_light, forState: .Highlighted)
+        self.setTitleColor(Color.secondary_light, for: UIControlState())
+        self.setTitleColor(Color.secondary_light, for: .highlighted)
     }
 }

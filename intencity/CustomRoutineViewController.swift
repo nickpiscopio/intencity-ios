@@ -55,7 +55,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
         initLoadingView()
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         routines.removeAll()
         routinesToRemove.removeAll()
@@ -64,12 +64,12 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
         
         _ = ServiceTask(event: ServiceEvent.GET_LIST, delegate: self,
                         serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_MUSCLE_GROUP_ROUTINE, variables: [ email ]))
+                        params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_MUSCLE_GROUP_ROUTINE, variables: [ email ]) as NSString)
     }
     
-    override func viewWillDisappear(animated : Bool)
+    override func viewWillDisappear(_ animated : Bool)
     {
-        if (self.isMovingFromParentViewController() && editRoutinesSaved)
+        if (self.isMovingFromParentViewController && editRoutinesSaved)
         {
             delegate!.onRoutineSaved(true)
         }
@@ -87,7 +87,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     {
         if (routinesToRemove.count > 0)
         {
-            let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
+            let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
             
             self.navigationItem.rightBarButtonItem = saveButtonItem
         }
@@ -97,60 +97,60 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
         }
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         if (routines.count > 0)
         {
-            descriptionView.hidden = false
-            tableView.backgroundView?.hidden = true
+            descriptionView.isHidden = false
+            tableView.backgroundView?.isHidden = true
             
             setSaveButtonVisibility()
         }
         else
         {
-            descriptionView.hidden = true
-            tableView.backgroundView?.hidden = false
+            descriptionView.isHidden = true
+            tableView.backgroundView?.isHidden = false
         }
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return routines.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
         let routineName = routines[index]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CHECKBOX_CELL) as! CheckboxCellController
         cell.setCheckboxImage(Constant.CHECKBOX_CHECKED, uncheckedImage: Constant.CHECKBOX_UNCHECKED)
         cell.setListItem(routineName, checked: true)
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath)
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
         let routineName = routines[index]
         
         onCheckboxChecked(routineName)
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+        let cell = tableView.cellForRow(at: indexPath) as! CheckboxCellController
         cell.setChecked(!cell.isChecked())
         
         setSaveButtonVisibility()
         
         // Deselects the row.
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         switch(event)
         {
@@ -159,9 +159,9 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
                 if (result != Constant.RETURN_NULL)
                 {
                     // This gets saved as NSDictionary, so there is no order
-                    let json: AnyObject? = result.parseJSONString
-                
-                    for routines in json as! NSArray
+                    let json: [AnyObject] = result.parseJSONString as! [AnyObject]
+                    
+                    for routines in json
                     {
                         let routine = routines[Constant.COLUMN_DISPLAY_NAME] as! String
                 
@@ -184,41 +184,41 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
         hideLoading()
     }
 
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         hideLoading()
         
         Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""),
             message: NSLocalizedString("intencity_communication_error", comment: ""),
-            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack)])
+            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: goBack)])
     }
     
     /**
      * The function for when the save button is pressed.
      */
-    func savePressed(sender: UIBarButtonItem)
+    func savePressed(_ sender: UIBarButtonItem)
     {
         showLoading()
             
         _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
                         serviceURL: Constant.SERVICE_UPDATE_USER_MUSCLE_GROUP_ROUTINE,
-                        params: Constant.generateServiceListVariables(email, variables: routinesToRemove, isInserting: false))
+                        params: Constant.generateServiceListVariables(email, variables: routinesToRemove, isInserting: false) as NSString)
     }
     
     /**
      * Navigates the user back to the previous screen.
      */
-    func navigateBack(saved: Bool)
+    func navigateBack(_ saved: Bool)
     {
         editRoutinesSaved = saved
         
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     /**
      * The action for the ok button being clicked when there was a communication error.
      */
-    func goBack(alertAction: UIAlertAction!) -> Void
+    func goBack(_ alertAction: UIAlertAction!) -> Void
     {
         navigateBack(false)
     }
@@ -226,13 +226,13 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     /**
      * Edits a list of items that is going to be sent to the server.
      */
-    func onCheckboxChecked(name: String)
+    func onCheckboxChecked(_ name: String)
     {
         // Add or remove equipment from the user's routine list
         // if he or she clicks on a list item.
         if (routinesToRemove.contains(name))
         {
-            routinesToRemove.removeAtIndex(routinesToRemove.indexOf(name)!)
+            routinesToRemove.remove(at: routinesToRemove.index(of: name)!)
         }
         else
         {
@@ -247,10 +247,10 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     {
         loadingView.backgroundColor = Color.page_background
         
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
     }
 
     /**
@@ -259,9 +259,9 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     func showLoading()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
-        loadingView.hidden = false
+        loadingView.isHidden = false
     }
     
     /**
@@ -269,14 +269,14 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
      */
     func hideLoading()
     {
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.stopAnimating()
     }
     
-    @IBAction func addRoutine(sender: AnyObject)
+    @IBAction func addRoutine(_ sender: AnyObject)
     {
-        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.ADD_ROUTINE_VIEW_CONTROLLER) as! AddRoutineViewController
+        let vc = storyboard!.instantiateViewController(withIdentifier: Constant.ADD_ROUTINE_VIEW_CONTROLLER) as! AddRoutineViewController
         vc.delegate = delegate
         
         self.navigationController!.pushViewController(vc, animated: true)

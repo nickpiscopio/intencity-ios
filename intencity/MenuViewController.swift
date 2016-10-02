@@ -26,7 +26,7 @@ class MenuViewController: UIViewController
         self.navigationItem.title = NSLocalizedString("title_menu", comment: "")
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         let notificationHandler = NotificationHandler.getInstance(nil)
         notificationHandler.setNotificationViewed()
@@ -83,22 +83,22 @@ class MenuViewController: UIViewController
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         return menu.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return menu[section].rows.count
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
         let title = menu[section].title
         if (title != "")
         {
-            let  headerCell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_HEADER_CELL) as! GenericHeaderCellController
+            let  headerCell = tableView.dequeueReusableCell(withIdentifier: Constant.GENERIC_HEADER_CELL) as! GenericHeaderCellController
             headerCell.title.text = title
             return headerCell
         }
@@ -106,29 +106,29 @@ class MenuViewController: UIViewController
         return nil
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
         return menu[section].title != "" ? Constant.GENERIC_HEADER_HEIGHT : 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
         // Gets the row in the section.
-        let row = menu[indexPath.section].rows[indexPath.row]
+        let row = menu[(indexPath as NSIndexPath).section].rows[(indexPath as NSIndexPath).row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_CELL) as! GenericCellController
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.GENERIC_CELL) as! GenericCellController
         cell.title.text = row.title
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath)
     {
         // Deselects the row.
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
         // Gets the row in the section.
-        let row = menu[indexPath.section].rows[indexPath.row]
+        let row = menu[(indexPath as NSIndexPath).section].rows[(indexPath as NSIndexPath).row]
         
         let viewController = row.viewController
         
@@ -138,10 +138,10 @@ class MenuViewController: UIViewController
                 Util.logOut(self)
                 break;
             case Constant.RATE_INTENCITY:
-                UIApplication.sharedApplication().openURL(NSURL(string: "https://itunes.apple.com/app/id786650617")!)
+                UIApplication.shared.open(URL(string: "https://itunes.apple.com/app/id786650617")!, options: [:], completionHandler: nil)
                 break;
             case Constant.CONTRIBUTE_INTENCITY:
-                UIApplication.sharedApplication().openURL(NSURL(string: "http://intencity.fit/contribute.html")!)
+                UIApplication.shared.open(URL(string: "http://intencity.fit/contribute.html")!, options: [:], completionHandler: nil)
                 break;
             default:
                 var storyboardName = ""
@@ -170,13 +170,13 @@ class MenuViewController: UIViewController
      *
      * @param identifier    The string identifier of the view to open.
      */
-    func pushViewController(storyboardName: String, identifier: String)
+    func pushViewController(_ storyboardName: String, identifier: String)
     {
         let storyboard = storyboardName == "" ? self.storyboard : UIStoryboard(name: storyboardName, bundle: nil)
         
         if (identifier == Constant.TERMS_VIEW_CONTROLLER || identifier == Constant.PRIVACY_POLICY_VIEW_CONTROLLER)
         {
-            let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
+            let viewController = storyboard!.instantiateViewController(withIdentifier: Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
             viewController.includeNavButton = false
             
             if (identifier == Constant.PRIVACY_POLICY_VIEW_CONTROLLER)
@@ -188,7 +188,7 @@ class MenuViewController: UIViewController
         }
         else
         {
-            let viewController = storyboard!.instantiateViewControllerWithIdentifier(identifier)
+            let viewController = storyboard!.instantiateViewController(withIdentifier: identifier)
             
             self.navigationController!.pushViewController(viewController, animated: true)
         }

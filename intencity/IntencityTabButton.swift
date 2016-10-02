@@ -17,20 +17,20 @@ class IntencityTabButton: UIButton
         super.init(coder: aDecoder)
         
         // The default parameters for the button.
-        self.layer.backgroundColor = Color.transparent.CGColor
-        self.layer.borderColor = Color.transparent.CGColor
-        self.setTitleColor(Color.secondary_dark, forState: .Normal)
-        self.setTitleColor(Color.secondary_dark, forState: .Highlighted)
+        self.layer.backgroundColor = Color.transparent.cgColor
+        self.layer.borderColor = Color.transparent.cgColor
+        self.setTitleColor(Color.secondary_dark, for: UIControlState())
+        self.setTitleColor(Color.secondary_dark, for: .highlighted)
         
         self.layer.borderWidth = Dimention.BORDER_WIDTH
         
         self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.TAB_PADDING_TOP_BOTTOM, Dimention.TAB_PADDING_SIDES, Dimention.TAB_PADDING_TOP_BOTTOM, Dimention.TAB_PADDING_SIDES)
         
         // The callbacks for the button states.
-        self.addTarget(self, action: #selector(IntencityTabButton.buttonUp), forControlEvents: .TouchUpInside)
-        self.addTarget(self, action: #selector(IntencityTabButton.buttonUp), forControlEvents: .TouchUpOutside)
-        self.addTarget(self, action: #selector(IntencityTabButton.buttonUp), forControlEvents: .TouchCancel)
-        self.addTarget(self, action: #selector(IntencityTabButton.buttonDown), forControlEvents: .TouchDown)
+        self.addTarget(self, action: #selector(IntencityTabButton.buttonUp), for: .touchUpInside)
+        self.addTarget(self, action: #selector(IntencityTabButton.buttonUp), for: .touchUpOutside)
+        self.addTarget(self, action: #selector(IntencityTabButton.buttonUp), for: .touchCancel)
+        self.addTarget(self, action: #selector(IntencityTabButton.buttonDown), for: .touchDown)
     }
     
     /*
@@ -38,7 +38,7 @@ class IntencityTabButton: UIButton
      */
     func buttonUp()
     {
-        self.layer.backgroundColor = Color.transparent.CGColor
+        self.layer.backgroundColor = Color.transparent.cgColor
     }
     
     /*
@@ -46,6 +46,6 @@ class IntencityTabButton: UIButton
      */
     func buttonDown()
     {
-        self.layer.backgroundColor = Color.shadow.CGColor
+        self.layer.backgroundColor = Color.shadow.cgColor
     }
 }

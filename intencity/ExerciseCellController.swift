@@ -37,53 +37,53 @@ class ExerciseCellController: UITableViewCell
     /**
      * Sets the card as an exercise.
      */
-    func setAsExercise(fromIntencity: Bool, priority: Int, routineState: Int)
+    func setAsExercise(_ fromIntencity: Bool, priority: Int, routineState: Int)
     {
-        exerciseDescriptionView.hidden = true
+        exerciseDescriptionView.isHidden = true
         
-        hideButton.hidden = false
+        hideButton.isHidden = false
         
-        editStackView.hidden = false
+        editStackView.isHidden = false
         
         if (fromIntencity)
         {
-            exerciseButton.enabled = true
-            exerciseButton.setTitleColor(Color.primary, forState: UIControlState.Normal)
+            exerciseButton.isEnabled = true
+            exerciseButton.setTitleColor(Color.primary, for: UIControlState())
             
             // Hide the exercise priority buttons if we are not in the Intencity state of exercising.
             // Saved / Custom routines should hide the priorityStackView.
-            priorityStackView.hidden = routineState != RoutineState.INTENCITY
+            priorityStackView.isHidden = routineState != RoutineState.INTENCITY
             
             ExercisePriorityUtil.setPriorityButtons(priority, morePriority: morePriority, lessPriority: lessPriority)
         }
         else
         {
-            exerciseButton.enabled = false
-            exerciseButton.setTitleColor(Color.secondary_dark, forState: UIControlState.Normal)
-            priorityStackView.hidden = true
+            exerciseButton.isEnabled = false
+            exerciseButton.setTitleColor(Color.secondary_dark, for: UIControlState())
+            priorityStackView.isHidden = true
         }
     }
     
     /**
      * Sets the description, then edits the card to show the proper views associated with it.
      */
-    func setDescription(description: String)
+    func setDescription(_ description: String)
     {
         exerciseDescription.text = description
         exerciseDescription.textColor = Color.secondary_light
-        exerciseDescriptionView.hidden = false
+        exerciseDescriptionView.isHidden = false
         
-        editStackView.hidden = true
+        editStackView.isHidden = true
 
-        hideButton.hidden = true
+        hideButton.isHidden = true
         
-        exerciseButton.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
+        exerciseButton.setTitleColor(Color.secondary_light, for: UIControlState())
     }
     
     /**
      * Sets the edit button text
      */
-    func setEditText(set: Set)
+    func setEditText(_ set: Set)
     {
         let weight = set.weight
         let reps = set.reps
@@ -92,36 +92,36 @@ class ExerciseCellController: UITableViewCell
         let isReps = reps > 0
         
         let mutableString = ExerciseSet.getSetText(weight, duration: isReps ? String(reps) : duration, isReps: isReps).mutableString
-        editButton.setAttributedTitle(mutableString, forState: .Normal)
+        editButton.setAttributedTitle(mutableString, for: UIControlState())
     }
     
-    @IBAction func hideClicked(sender: AnyObject)
+    @IBAction func hideClicked(_ sender: AnyObject)
     {
         delegate?.onHideClicked(getIndexPath(sender))
     }
     
-    @IBAction func editClicked(sender: AnyObject)
+    @IBAction func editClicked(_ sender: AnyObject)
     {
-        delegate?.onEditClicked(getIndexPath(sender).row)
+        delegate?.onEditClicked((getIndexPath(sender) as NSIndexPath).row)
     }
     
-    @IBAction func exerciseClicked(sender: AnyObject)
+    @IBAction func exerciseClicked(_ sender: AnyObject)
     {
         delegate?.onExerciseClicked((exerciseButton.titleLabel?.text)!)
     }
     
-    @IBAction func setExerciseWithMorePriority(sender: AnyObject)
+    @IBAction func setExerciseWithMorePriority(_ sender: AnyObject)
     {
         delegate?.onSetExercisePriority(getIndexPath(sender), morePriority: morePriority, lessPriority: lessPriority, increment: true)
     }
     
-    @IBAction func setExerciseWithLessPriority(sender: AnyObject)
+    @IBAction func setExerciseWithLessPriority(_ sender: AnyObject)
     {
         delegate?.onSetExercisePriority(getIndexPath(sender), morePriority: morePriority, lessPriority: lessPriority, increment: false)
     }
     
-    func getIndexPath(sender: AnyObject) -> NSIndexPath
+    func getIndexPath(_ sender: AnyObject) -> IndexPath
     {
-        return tableView.indexPathForCell(self)!
+        return tableView.indexPath(for: self)!
     }
 }

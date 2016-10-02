@@ -35,7 +35,7 @@ class ExercisePriorityUtil
      *
      * @return The new exercise priority.
      */
-    static func getExercisePriority(exercisePriority: Int, increment: Bool) -> Int
+    static func getExercisePriority(_ exercisePriority: Int, increment: Bool) -> Int
     {
         var priority = exercisePriority
         
@@ -58,36 +58,36 @@ class ExercisePriorityUtil
      * @param morePriority      The more priority ImageButton.
      * @param lessPriority      The less priority ImageButton.
      */
-    static func setPriorityButtons(priority: Int, morePriority: UIButton, lessPriority: UIButton)
+    static func setPriorityButtons(_ priority: Int, morePriority: UIButton, lessPriority: UIButton)
     {
         switch (priority)
         {
             case PRIORITY_LIMIT_UPPER:
-                morePriority.hidden = true
-                lessPriority.hidden = false
+                morePriority.isHidden = true
+                lessPriority.isHidden = false
                 setButtonImage(lessPriority, imageName: LESS_PRIORITY_NORMAL_IMAGE_RES)
                 break;
             case PRIORITY_LIMIT_UPPER -  INCREMENTAL_VALUE:
-                morePriority.hidden = false
+                morePriority.isHidden = false
                 setButtonImage(morePriority, imageName: MORE_PRIORITY_HIGH_IMAGE_RES)
-                lessPriority.hidden = false
+                lessPriority.isHidden = false
                 setButtonImage(lessPriority, imageName: LESS_PRIORITY_NORMAL_IMAGE_RES)
                 break;
             case PRIORITY_LIMIT_LOWER + INCREMENTAL_VALUE:
-                morePriority.hidden = false
+                morePriority.isHidden = false
                 setButtonImage(morePriority, imageName: MORE_PRIORITY_NORMAL_IMAGE_RES)
-                lessPriority.hidden = false
+                lessPriority.isHidden = false
                 setButtonImage(lessPriority, imageName: LESS_PRIORITY_HIGH_IMAGE_RES)
                 break;
             case PRIORITY_LIMIT_LOWER:
-                morePriority.hidden = false
+                morePriority.isHidden = false
                 setButtonImage(morePriority, imageName: MORE_PRIORITY_NORMAL_IMAGE_RES)
-                lessPriority.hidden = true
+                lessPriority.isHidden = true
                 break;
             default:
-                morePriority.hidden = false
+                morePriority.isHidden = false
                 setButtonImage(morePriority, imageName: MORE_PRIORITY_NORMAL_IMAGE_RES)
-                lessPriority.hidden = false
+                lessPriority.isHidden = false
                 setButtonImage(lessPriority, imageName: LESS_PRIORITY_NORMAL_IMAGE_RES)
                 break;
         }
@@ -99,8 +99,8 @@ class ExercisePriorityUtil
      * @param button        The button to set the iamge.
      * @param imageName     The name of the image resource.
      */
-    static func setButtonImage(button: UIButton, imageName: String)
+    static func setButtonImage(_ button: UIButton, imageName: String)
     {
-        button.setImage(UIImage(named: imageName), forState: UIControlState.Normal)
+        button.setImage(UIImage(named: imageName), for: UIControlState())
     }
 }

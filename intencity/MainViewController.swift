@@ -20,7 +20,7 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("app_name", comment: "")
         
-        NotificationHandler.getInstance(self)
+        _ = NotificationHandler.getInstance(self)
         
         setMenuButton(Constant.MENU_INITIALIZED)
         
@@ -32,19 +32,19 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         // Shows the tab bar again.
-        self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
     
-    func onLoadView(view: Int, result: String, savedExercises: SavedExercise?, state: Int)
+    func onLoadView(_ view: Int, result: String, savedExercises: SavedExercise?, state: Int)
     {
         switch view
         {
             case View.ROUTINE_VIEW:
                 
-                let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.ROUTINE_VIEW_CONTROLLER) as! RoutineViewController
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: Constant.ROUTINE_VIEW_CONTROLLER) as! RoutineViewController
                 vc.viewDelegate = self
                 
                 loadView(vc)
@@ -53,7 +53,7 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
             
             case View.FITNESS_LOG_VIEW:
                 
-                let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.FITNESS_LOG_VIEW_CONTROLLER) as! FitnessLogViewController
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: Constant.FITNESS_LOG_VIEW_CONTROLLER) as! FitnessLogViewController
                 vc.viewDelegate = self
                 vc.result = result
                 vc.savedExercises = savedExercises
@@ -71,12 +71,12 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
     /**
      * Loads the child view.
      */
-    func loadView(vc: UIViewController)
+    func loadView(_ vc: UIViewController)
     {
         self.addChildViewController(vc)
-        vc.view.frame = CGRectMake(0, 0, self.container.frame.size.width, self.container.frame.size.height);
+        vc.view.frame = CGRect(x: 0, y: 0, width: self.container.frame.size.width, height: self.container.frame.size.height);
         self.container.addSubview(vc.view)
-        vc.didMoveToParentViewController(self)
+        vc.didMove(toParentViewController: self)
     }
     
     /**
@@ -84,36 +84,36 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
      *
      * @param type  The button type to set.
      */
-    func setMenuButton(type: Int)
+    func setMenuButton(_ type: Int)
     {
         var icon: UIImage!
         
         switch(type)
         {
             case Constant.MENU_INITIALIZED:
-                icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
                 break
             case Constant.MENU_NOTIFICATION_FOUND:
             
                 let duration = 0.5
             
-                NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(MainViewController.stopAnimation), userInfo: nil, repeats: false)
+                Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(MainViewController.stopAnimation), userInfo: nil, repeats: false)
             
-                icon = UIImage.animatedImageNamed(Constant.MENU_NOTIFICATION_FOUND_IMAGE, duration: duration)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                icon = UIImage.animatedImageNamed(Constant.MENU_NOTIFICATION_FOUND_IMAGE, duration: duration)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
             
                 break
             case Constant.MENU_NOTIFICATION_PRESENT:
-                icon = UIImage(named: Constant.MENU_NOTIFICATION_PRESENT_IMAGE)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                icon = UIImage(named: Constant.MENU_NOTIFICATION_PRESENT_IMAGE)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
                 break
             default:
                 break
         }
         
-        let iconSize = CGRect(origin: CGPointZero, size: CGSizeMake(Constant.MENU_IMAGE_WIDTH, Constant.MENU_IMAGE_HEIGHT))
+        let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: Constant.MENU_IMAGE_WIDTH, height: Constant.MENU_IMAGE_HEIGHT))
         
         let iconButton = UIButton(frame: iconSize)
-        iconButton.setImage(icon, forState: .Normal)
-        iconButton.addTarget(self, action: #selector(MainViewController.menuClicked), forControlEvents: .TouchUpInside)
+        iconButton.setImage(icon, for: UIControlState())
+        iconButton.addTarget(self, action: #selector(MainViewController.menuClicked), for: .touchUpInside)
         
         self.navigationItem.rightBarButtonItem?.customView = iconButton
     }
@@ -123,7 +123,7 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
      */
     func menuClicked()
     {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.MENU_VIEW_CONTROLLER) as! MenuViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Constant.MENU_VIEW_CONTROLLER) as! MenuViewController
         
         self.navigationController!.pushViewController(vc, animated: true)
     }

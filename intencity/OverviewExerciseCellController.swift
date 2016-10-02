@@ -19,7 +19,7 @@ class OverviewExerciseCellController: UITableViewCell
     {
         super.awakeFromNib()
         
-        title.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_NORMAL)
+        title.font = UIFont.boldSystemFont(ofSize: Dimention.FONT_SIZE_NORMAL)
         title.textColor = Color.secondary_light
         
         divider.backgroundColor = Color.shadow

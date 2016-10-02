@@ -52,7 +52,7 @@ class RankingCellController: UITableViewCell, ImageDelegate
     /**
      * Retrieves the profile picture from the server.
      */
-    func retrieveProfilePic(index: Int)
+    func retrieveProfilePic(_ index: Int)
     {
         let profilePic = user.profilePic
         if (profilePic == nil)
@@ -67,7 +67,7 @@ class RankingCellController: UITableViewCell, ImageDelegate
         }
     }
     
-    func onImageRetrieved(index: Int, image: UIImage, newUpload: Bool)
+    func onImageRetrieved(_ index: Int, image: UIImage, newUpload: Bool)
     {
         delegate?.onImageRetrieved(self.index, image: image, newUpload: false)
         

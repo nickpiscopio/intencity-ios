@@ -48,7 +48,7 @@ class StatViewController: UIViewController, SetDelegate
         self.view.backgroundColor = Color.page_background
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         repsString = NSLocalizedString("title_reps", comment: "")
         timeString = NSLocalizedString("title_time", comment: "")
@@ -58,7 +58,7 @@ class StatViewController: UIViewController, SetDelegate
         
         weightTitleLabel.textColor = Color.secondary_light
         IntensityTitleLabel.textColor = Color.secondary_light
-        durationTitleLabel.setTitleColor(Color.secondary_light, forState: UIControlState.Normal)
+        durationTitleLabel.setTitleColor(Color.secondary_light, for: UIControlState())
         
         let notes = sets[0].notes
         
@@ -75,7 +75,7 @@ class StatViewController: UIViewController, SetDelegate
         // Initialize the duration dropdown.
         dropDown.dataSource = [ repsString, timeString ]
         dropDown.selectionAction = { [unowned self] (index, item) in
-            self.durationTitleLabel.setTitle(item, forState: .Normal)
+            self.durationTitleLabel.setTitle(item, for: .normal)
             
             self.setDuration(item)
         }
@@ -88,26 +88,26 @@ class StatViewController: UIViewController, SetDelegate
         let duration = sets[0].duration
         if(duration != Constant.RETURN_NULL && Util.convertToInt(duration) > 0)
         {
-            durationTitleLabel.setTitle(timeString, forState: .Normal)
-            dropDown.selectRowAtIndex(1)
+            durationTitleLabel.setTitle(timeString, for: UIControlState())
+            dropDown.selectRow(at: 1)
         }
         else
         {
-            durationTitleLabel.setTitle(repsString, forState: .Normal)
-            dropDown.selectRowAtIndex(0)
+            durationTitleLabel.setTitle(repsString, for: UIControlState())
+            dropDown.selectRow(at: 0)
         }
         
-        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(StatViewController.savePressed(_:)))
+        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(StatViewController.savePressed(_:)))
         
         let infoIcon = UIImage(named: "info")
         
         let size = infoIcon!.size
         
-        let iconSize = CGRect(origin: CGPointZero, size: CGSize(width: size.width + 20, height: size.height))
+        let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: size.width + 20, height: size.height))
     
         let infoButton = UIButton(frame: iconSize)
-        infoButton.setImage(infoIcon, forState: .Normal)
-        infoButton.addTarget(self, action: #selector(StatViewController.infoPressed(_:)), forControlEvents: .TouchUpInside)
+        infoButton.setImage(infoIcon, for: UIControlState())
+        infoButton.addTarget(self, action: #selector(StatViewController.infoPressed(_:)), for: .touchUpInside)
         
         let infoButtonItem: UIBarButtonItem = UIBarButtonItem(customView: infoButton)
     
@@ -117,9 +117,9 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * The drop down click.
      */
-    @IBAction func showOrDismiss(sender: AnyObject)
+    @IBAction func showOrDismiss(_ sender: AnyObject)
     {
-        if dropDown.hidden
+        if dropDown.isHidden
         {
             dropDown.show()
             
@@ -136,20 +136,20 @@ class StatViewController: UIViewController, SetDelegate
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // Return the number of rows in the section.
         return sets.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         let set = sets[index]
         let weight: Float = set.weight
         let weightValue: String = weight > 0.0 ? String(weight) : ""
@@ -159,20 +159,20 @@ class StatViewController: UIViewController, SetDelegate
         let time = set.duration
         let timeValue = time != Constant.RETURN_NULL ? time : ""
         let duration = Util.convertToInt(time) > 0 ? timeValue : repsValue
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.SET_CELL) as! SetCellController
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.SET_CELL) as! SetCellController
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.delegate = self
         cell.index = index
         cell.weightTextField.text = weightValue
         cell.durationTextField.text = duration
-        cell.dropDown.selectRowAtIndex(difficulty - 1)
-        cell.intensityButton.setTitle(String(difficulty), forState: .Normal)
+        cell.dropDown.selectRow(at: difficulty - 1)
+        cell.intensityButton.setTitle(String(difficulty), for: UIControlState())
         cell.setNumberLabel.text = "\(index + 1)"
         cell.isReps = dropDown.selectedItem! == repsString
         return cell
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
+    func textField(_ textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
     {
         return Util.isFieldValid(string, regEx: "[0-9a-zA-z\\.\\-_~\\s\\n]+") || string == ""
     }
@@ -180,7 +180,7 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * The button click for adding the next set.
      */
-    @IBAction func addSet(sender: AnyObject)
+    @IBAction func addSet(_ sender: AnyObject)
     {
         // Removed the first responder when the save is clicked
         // We do this so we can save values if the cursor is still in the textfield.
@@ -201,7 +201,7 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * Changes the sets to either be time or reps based.
      */
-    func setDuration(type: String)
+    func setDuration(_ type: String)
     {
         let length = sets.count
         for i in 0 ..< length
@@ -248,9 +248,9 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * The function for when the info button is pressed.
      */
-    func infoPressed(sender: UIBarButtonItem)
+    func infoPressed(_ sender: UIBarButtonItem)
     {
-        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
         viewController.exerciseName = exerciseName
         
         self.navigationController!.pushViewController(viewController, animated: true)
@@ -259,7 +259,7 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * The function for when the save button is pressed.
      */
-    func savePressed(sender: UIBarButtonItem)
+    func savePressed(_ sender: UIBarButtonItem)
     {
         // Removed the first responder when the save is clicked
         // We do this so we can save values if the cursor is still in the textfield.
@@ -277,15 +277,15 @@ class StatViewController: UIViewController, SetDelegate
         {
             Util.displayAlert(self, title: NSLocalizedString("button_remove_set", comment: ""),
                 message: NSLocalizedString("message_remove_last_set", comment: ""),
-                actions: [ UIAlertAction(title: NSLocalizedString("button_remove_set", comment: ""), style: .Destructive, handler: removeLastSetClicked),
-                    UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Cancel, handler: nil) ])
+                actions: [ UIAlertAction(title: NSLocalizedString("button_remove_set", comment: ""), style: .destructive, handler: removeLastSetClicked),
+                    UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil) ])
         }
     }
     
     /**
      * The action for the remove last set alert button.
      */
-    func removeLastSetClicked(alertAction: UIAlertAction!) -> Void
+    func removeLastSetClicked(_ alertAction: UIAlertAction!) -> Void
     {
         saveSets(true)
     }
@@ -293,7 +293,7 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * The function for when the save button is pressed.
      */
-    func saveSets(removeLastSet: Bool)
+    func saveSets(_ removeLastSet: Bool)
     {
         if (removeLastSet)
         {
@@ -306,7 +306,7 @@ class StatViewController: UIViewController, SetDelegate
         }
         
         // Navigates the user back to the previous screen.
-        self.navigationController!.popToRootViewControllerAnimated(true)
+        self.navigationController!.popToRootViewController(animated: true)
         
         // Takes all the sets and puts them back into the exercise.
         ExerciseData.getInstance().exerciseList[index].sets = sets
@@ -347,13 +347,13 @@ class StatViewController: UIViewController, SetDelegate
      */
     func insertRow()
     {
-        let indexPath = NSIndexPath(forRow: sets.count - 1, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Bottom)
+        let indexPath = IndexPath(row: sets.count - 1, section: 0)
+        self.tableView.insertRows(at: [indexPath], with: .bottom)
         
-        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
     }
     
-    @IBAction func onNotesUpdated(sender: AnyObject)
+    @IBAction func onNotesUpdated(_ sender: AnyObject)
     {
         let totalSets = sets.count
         
@@ -365,7 +365,7 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * The callback for when the weight is updated.
      */
-    func onWeightUpdated(index: Int, weight: Float)
+    func onWeightUpdated(_ index: Int, weight: Float)
     {
         if (index <= sets.count - 1)
         {
@@ -376,7 +376,7 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * The callback for when the reps are updated.
      */
-    func onDurationUpdated(index: Int, duration: String)
+    func onDurationUpdated(_ index: Int, duration: String)
     {
         if (index <= sets.count - 1)
         {
@@ -394,7 +394,7 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * The callback for when the intensity is updated.
      */
-    func onIntensityUpdated(index: Int, intensity: Int)
+    func onIntensityUpdated(_ index: Int, intensity: Int)
     {
         if (index <= sets.count - 1)
         {

@@ -55,7 +55,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         self.navigationItem.title = NSLocalizedString("title_featured_routines", comment: "")
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         initConnectionViews()
         
@@ -77,7 +77,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         
         resetRoutines = false
         
-        let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(SavedRoutineViewController.editPressed(_:)))
+        let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.edit, target: self, action: #selector(SavedRoutineViewController.editPressed(_:)))
         
         self.navigationItem.rightBarButtonItem = editButton
     }
@@ -87,7 +87,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         initRoutines(resetRoutines)
     }
@@ -95,9 +95,9 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     /**
      * Calls the service to get the display muscle groups for the routine card.
      */
-    func initRoutines(reset: Bool)
+    func initRoutines(_ reset: Bool)
     {
-        startButton.hidden = true
+        startButton.isHidden = true
         
         // Creates the instance of the exercise data so we can store the exercises in the database later.
         exerciseData = ExerciseData.getInstance()
@@ -108,7 +108,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
             
             _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
                             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]))
+                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]) as NSString)
         }
         else if (routines.count > 0)
         {
@@ -124,11 +124,11 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         loadingView.backgroundColor = Color.page_background
         connectionView.backgroundColor = Color.page_background
         
-        loadingView.hidden = true
-        connectionView.hidden = true
+        loadingView.isHidden = true
+        connectionView.isHidden = true
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
         
         noConnectionLabel.textColor = Color.secondary_light
         noConnectionLabel.text = NSLocalizedString("generic_error", comment: "")
@@ -140,11 +140,11 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     func showLoading()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
-        loadingView.hidden = false
+        loadingView.isHidden = false
         
-        startButton.enabled = false
+        startButton.isEnabled = false
     }
     
     /**
@@ -152,18 +152,18 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
      */
     func hideLoading()
     {
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.stopAnimating()
         
-        startButton.enabled = true
+        startButton.isEnabled = true
     }
     /**
      * Shows there was a connection issue.
      */
     func showConnectionIssue()
     {
-        connectionView.hidden = false
+        connectionView.isHidden = false
     }
     
     /**
@@ -171,10 +171,10 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
      */
     func hideConnectionIssue()
     {
-        connectionView.hidden = true
+        connectionView.isHidden = true
     }
     
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         switch (event)
         {
@@ -189,7 +189,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
                 
                 _ = ServiceTask(event: ServiceEvent.GET_EXERCISES_FOR_TODAY, delegate: self,
                                 serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY, variables: [ email ]))
+                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY, variables: [ email ]) as NSString)
                 
                 break
             
@@ -215,9 +215,9 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         }
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
-        startButton.hidden = true
+        startButton.isHidden = true
         
         showConnectionIssue()
         
@@ -231,7 +231,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
      *
      * @param result    The results to parse from the webservice.
      */
-    func loadTableViewItems(result: String)
+    func loadTableViewItems(_ result: String)
     {
         // This means we got results back from the web database.
         if (result != "" && result != Constant.RETURN_NULL)
@@ -241,7 +241,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
             do
             {
                 routines.removeAll()
-                routines = try IntencityRoutineDao().parseJson(json)
+                routines = try IntencityRoutineDao().parseJson(json as? [AnyObject])
                 
                 intencityRoutineDelegate!.onRoutineUpdated(routines)
                 
@@ -262,7 +262,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         hideLoading()
     }
     
-    @IBAction func startExercisingClicked(sender: AnyObject)
+    @IBAction func startExercisingClicked(_ sender: AnyObject)
     {
         showLoading()
         
@@ -274,23 +274,23 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         // We add 1 because the routines start at 1 on the server.
         _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
                             serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine)]))
+                            params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine)]) as NSString)
     }
     
     func onButtonClicked()
     {
-        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
+        let vc = storyboard!.instantiateViewController(withIdentifier: Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
         vc.delegate = self
         
         self.navigationController!.pushViewController(vc, animated: true)
     }
     
-    func onRoutineSaved(hasMoreRoutines: Bool)
+    func onRoutineSaved(_ hasMoreRoutines: Bool)
     {
         resetRoutines = true
     }
     
-    func onRoutineUpdated(groups: [RoutineGroup]) { }
+    func onRoutineUpdated(_ groups: [RoutineGroup]) { }
 
     /**
      * Animates the table being added to the screen.
@@ -298,29 +298,29 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
     func animateTable()
     {
         let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = NSIndexSet(indexesInRange: range)
+        let sections = IndexSet(integersIn: range.toRange() ?? 0..<0)
             
-        tableView.reloadSections(sections, withRowAnimation: .Top)
+        tableView.reloadSections(sections, with: .top)
     }
     
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         return routines.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return routines[section].rows.count
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
         let routine = routines[section]
         
         if (routine.rows.count > 0)
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.GENERIC_HEADER_CELL) as! GenericHeaderCellController
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.GENERIC_HEADER_CELL) as! GenericHeaderCellController
             cell.title.text = routine.title
             
             return cell
@@ -329,32 +329,32 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         return nil
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
         return routines[section].rows.count > 0 ? Constant.GENERIC_HEADER_HEIGHT : 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let section = indexPath.section
-        let row = indexPath.row
+        let section = (indexPath as NSIndexPath).section
+        let row = (indexPath as NSIndexPath).row
         
         // Gets the row in the section.
         let title = routines[section].rows[row].title
         if (title == NO_CUSTOM_ROUTINE_STRING)
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.NO_ITEM_CELL) as! NoItemCellController
-            cell.selectionStyle = .None
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.NO_ITEM_CELL) as! NoItemCellController
+            cell.selectionStyle = .none
             cell.titleLabel.text = title
-            cell.userInteractionEnabled = false
+            cell.isUserInteractionEnabled = false
             
             return cell
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CHECKBOX_CELL) as! CheckboxCellController
             cell.setCheckboxImage(Constant.RADIO_BUTTON_MARKED, uncheckedImage: Constant.RADIO_BUTTON_UNMARKED)
-            cell.selectionStyle = .None
+            cell.selectionStyle = .none
             cell.titleLabel.text = title
             // Select the row if it is already selected.
             cell.setChecked(selectedRoutineSection != nil && selectedRoutine != nil && selectedRoutineSection == section && selectedRoutine == row)
@@ -363,20 +363,20 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath)
     {
-        selectedRoutineSection = indexPath.section
-        selectedRoutine = indexPath.row
+        selectedRoutineSection = (indexPath as NSIndexPath).section
+        selectedRoutine = (indexPath as NSIndexPath).row
 
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+        let cell = tableView.cellForRow(at: indexPath) as! CheckboxCellController
         cell.setChecked(true)
         
-        startButton.hidden = false
+        startButton.isHidden = false
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didDeselectRowAtIndexPath indexPath: IndexPath)
     {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+        let cell = tableView.cellForRow(at: indexPath) as! CheckboxCellController
         cell.setChecked(false)
     }
     
@@ -385,15 +385,15 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
      */
     func goBack()
     {
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     /**
      * The function for when the edit button is pressed.
      */
-    func editPressed(sender:UIBarButtonItem)
+    func editPressed(_ sender:UIBarButtonItem)
     {
-        let vc = storyboard!.instantiateViewControllerWithIdentifier(Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
+        let vc = storyboard!.instantiateViewController(withIdentifier: Constant.CUSTOM_ROUTINE_VIEW_CONTROLLER) as! CustomRoutineViewController
         vc.delegate = self
         
         self.navigationController!.pushViewController(vc, animated: true)

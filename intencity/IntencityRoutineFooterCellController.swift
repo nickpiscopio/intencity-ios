@@ -19,7 +19,7 @@ class IntencityRoutineFooterCellController: UITableViewCell
         super.awakeFromNib()
     }
     
-    @IBAction func onFooterClicked(sender: AnyObject)
+    @IBAction func onFooterClicked(_ sender: AnyObject)
     {
         delegate?.onButtonClicked()
     }

@@ -11,13 +11,13 @@ import Foundation
 
 struct ExerciseDao
 {
-    func parseJson(json: AnyObject?, searchString: String) throws -> [Exercise]
+    func parseJson(_ json: [AnyObject]?, searchString: String) throws -> [Exercise]
     {
         var foundSearchResult = false
         
         var exercises = [Exercise]()
         
-        if let jsonArray = json as? NSArray
+        if let jsonArray = json
         {
             for exercise in jsonArray
             {
@@ -48,7 +48,7 @@ struct ExerciseDao
                 
                 // This determines if what we searched for has been returned from the database.
                 // This is not case sensitive.
-                if (searchString != "" && !foundSearchResult && exerciseName.caseInsensitiveCompare(searchString) == NSComparisonResult.OrderedSame)
+                if (searchString != "" && !foundSearchResult && exerciseName.caseInsensitiveCompare(searchString) == ComparisonResult.orderedSame)
                 {
                     foundSearchResult = true
                 }
@@ -63,7 +63,7 @@ struct ExerciseDao
         }
         else
         {
-            throw IntencityError.ParseError
+            throw IntencityError.parseError
         }
         
         return exercises
@@ -76,7 +76,7 @@ struct ExerciseDao
      *
      * @return The exercise.
      */
-    func getExercise(exerciseName: String) -> Exercise
+    func getExercise(_ exerciseName: String) -> Exercise
     {
         let set = Set(webId: Int(Constant.CODE_FAILED),
                       weight: Float(Constant.CODE_FAILED),

@@ -9,8 +9,8 @@
 
 import Foundation
 
-enum IntencityError : ErrorType
+enum IntencityError : Error
 {
-    case CastError
-    case ParseError
+    case castError
+    case parseError
 }

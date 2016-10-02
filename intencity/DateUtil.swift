@@ -20,13 +20,13 @@ class DateUtil
      */
     func getMondayAt12AM() -> String
     {
-        let dateFormat = NSDateFormatter.dateFormatFromTemplate("j", options: 0, locale: NSLocale.currentLocale())!
+        let dateFormat = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)!
         
-        let is24HourFormat = dateFormat.rangeOfString("a") == nil
+        let is24HourFormat = dateFormat.range(of: "a") == nil
         
-        let calendar = NSCalendar.currentCalendar()
+        let calendar = Calendar.current
         
-        let today = NSDate()
+        let today = Date()
         
         let currentDayOfWeek = getDayOfWeek(today)
         
@@ -43,17 +43,17 @@ class DateUtil
         let daysToAdd = currentDayOfWeek < MONDAY ? MONDAY - currentDayOfWeek : DAYS_IN_WEEK - currentDayOfWeek + MONDAY
         
         // Add the number of days we need to get to Monday.
-        let monday = calendar.dateByAddingUnit(.Day, value: daysToAdd, toDate: today, options: NSCalendarOptions(rawValue: 0))
+        let monday = (calendar as NSCalendar).date(byAdding: .day, value: daysToAdd, to: today, options: NSCalendar.Options(rawValue: 0))
         
         // Get the start of the day.
-        let startOfMonday = calendar.startOfDayForDate(monday!)
+        let startOfMonday = calendar.startOfDay(for: monday!)
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         // We set the timezone to New York because this is where the server is located.
-        formatter.timeZone = NSTimeZone(name: "America/New_York")
+        formatter.timeZone = TimeZone(identifier: "America/New_York")
         formatter.dateFormat = "EEE, MMM d " + (is24HourFormat ? "HH:mm" : "h:mm a")
         
-        return formatter.stringFromDate(startOfMonday)
+        return formatter.string(from: startOfMonday)
     }
     
     /**
@@ -62,12 +62,12 @@ class DateUtil
      * @return  The day of the week as an integer.
      *          ex. (1-7)
      */
-    func getDayOfWeek(today: NSDate) -> Int
+    func getDayOfWeek(_ today: Date) -> Int
     {
-        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let myComponents = myCalendar.components(.Weekday, fromDate: today)
+        let myCalendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let myComponents = (myCalendar as NSCalendar).components(.weekday, from: today)
         let weekDay = myComponents.weekday
         
-        return weekDay
+        return weekDay!
     }
 }

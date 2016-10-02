@@ -22,36 +22,36 @@ class AwardCellController: UITableViewCell
         
         let nib = UINib(nibName: Constant.AWARD_COLLECTION_VIEW_CELL, bundle: nil)
         
-        collectionView.registerNib(nib, forCellWithReuseIdentifier: Constant.AWARD_COLLECTION_VIEW_CELL)
+        collectionView.register(nib, forCellWithReuseIdentifier: Constant.AWARD_COLLECTION_VIEW_CELL)
         collectionView.backgroundColor = Color.white
     }
     
     // MARK: UICollectionViewDataSource
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+    func numberOfSectionsInCollectionView(_ collectionView: UICollectionView) -> Int
     {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return awards.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell
     {
-        let award = awards[indexPath.row]
+        let award = awards[(indexPath as NSIndexPath).row]
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constant.AWARD_COLLECTION_VIEW_CELL, forIndexPath: indexPath) as! AwardViewCollectionCellController
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.AWARD_COLLECTION_VIEW_CELL, for: indexPath) as! AwardViewCollectionCellController
         cell.amount.text = award.amount
         cell.setImage(award.title)
         
-        cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)
+        cell.frame = CGRect(x: cell.frame.origin.x, y: cell.frame.origin.y, width: cell.frame.size.width, height: cell.frame.size.height)
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize
     {
-        return CGSizeMake(AwardCellController.AWARD_CELL_BOUNDS, AwardCellController.AWARD_CELL_BOUNDS)
+        return CGSize(width: AwardCellController.AWARD_CELL_BOUNDS, height: AwardCellController.AWARD_CELL_BOUNDS)
     }
 }

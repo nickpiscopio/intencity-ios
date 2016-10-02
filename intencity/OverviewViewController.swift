@@ -38,7 +38,7 @@ class OverviewViewController: UIViewController
     let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
     let NO_LOGIN_ACCCOUNT_TITLE = NSLocalizedString("no_login_account_title", comment: "")
 
-    let DEFAULTS = NSUserDefaults.standardUserDefaults()
+    let DEFAULTS = UserDefaults.standard
     
     var email = ""
     
@@ -60,7 +60,7 @@ class OverviewViewController: UIViewController
         self.view.backgroundColor = Color.page_background
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         email = Util.getEmailFromDefaults()
         
@@ -70,28 +70,28 @@ class OverviewViewController: UIViewController
         contentView.backgroundColor = Color.page_background
         
         // Header
-        routineTitle.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_NORMAL)
-        dateLabel.font = dateLabel.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
+        routineTitle.font = UIFont.boldSystemFont(ofSize: Dimention.FONT_SIZE_NORMAL)
+        dateLabel.font = dateLabel.font.withSize(Dimention.FONT_SIZE_SMALL)
         
         routineTitle.textColor = Color.secondary_light
         dateLabel.textColor = Color.secondary_light
         
         // Exercise card
-        exerciseTitle.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_SMALL)
+        exerciseTitle.font = UIFont.boldSystemFont(ofSize: Dimention.FONT_SIZE_SMALL)
         exerciseTitle.textColor = Color.secondary_light
         exerciseItemStackView.translatesAutoresizingMaskIntoConstraints = false
         
         // Award card
-        awardTitle.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_SMALL)
+        awardTitle.font = UIFont.boldSystemFont(ofSize: Dimention.FONT_SIZE_SMALL)
         awardTitle.textColor = Color.secondary_light
         awardItemStackView.translatesAutoresizingMaskIntoConstraints = false
         
         // Footer
         websiteView.backgroundColor = Color.page_background
         
-        websitePrefix.font = websitePrefix.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
-        websiteSuffix.font = UIFont.boldSystemFontOfSize(Dimention.FONT_SIZE_SMALL)
-        websiteEnd.font = websiteEnd.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
+        websitePrefix.font = websitePrefix.font.withSize(Dimention.FONT_SIZE_SMALL)
+        websiteSuffix.font = UIFont.boldSystemFont(ofSize: Dimention.FONT_SIZE_SMALL)
+        websiteEnd.font = websiteEnd.font.withSize(Dimention.FONT_SIZE_SMALL)
         
         websitePrefix.textColor = Color.secondary_light
         websiteSuffix.textColor = Color.secondary_light
@@ -125,8 +125,8 @@ class OverviewViewController: UIViewController
      */
     func initMenuButtons()
     {
-        let menu = [ UIBarButtonItem.init(image: UIImage(named: FINISH_ICON_NAME), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(OverviewViewController.finishOverview(_:))),
-                     UIBarButtonItem.init(barButtonSystemItem:.Action, target: self, action: #selector(OverviewViewController.shareOverview(_:))) ]
+        let menu = [ UIBarButtonItem.init(image: UIImage(named: FINISH_ICON_NAME), style: UIBarButtonItemStyle.plain, target: self, action: #selector(OverviewViewController.finishOverview(_:))),
+                     UIBarButtonItem.init(barButtonSystemItem:.action, target: self, action: #selector(OverviewViewController.shareOverview(_:))) ]
         
         self.navigationItem.rightBarButtonItems = menu
     }
@@ -136,7 +136,7 @@ class OverviewViewController: UIViewController
      *
      * @param exercises    The awards to add.
      */
-    func addExercises(exercises: [Exercise])
+    func addExercises(_ exercises: [Exercise])
     {
         exerciseCardIcon.image = UIImage(named: "icon_fitness_log")
         exerciseTitle.text = NSLocalizedString("title_exercises", comment: "")
@@ -169,7 +169,7 @@ class OverviewViewController: UIViewController
                 // We only round the last corner radius.
                 if (i == lastCellIndex)
                 {
-                    view.divider.hidden = true
+                    view.divider.isHidden = true
                     view.layer.cornerRadius = Dimention.RADIUS
                 }
                 
@@ -212,7 +212,7 @@ class OverviewViewController: UIViewController
                         exerciseCellHeight += setCellHeight
                         
                         let setView = Util.loadNib(Constant.OVERVIEW_SET_CELL) as! OverviewSetCellController
-                        setView.heightAnchor.constraintEqualToConstant(setCellHeight).active = true
+                        setView.heightAnchor.constraint(equalToConstant: setCellHeight).isActive = true
                         setView.numberLabel.text = "\(z + 1)."
                         setView.setEditText(exerciseSet.mutableString)
                         
@@ -226,7 +226,7 @@ class OverviewViewController: UIViewController
                     exerciseCellHeight += 2
                 }
                 
-                view.heightAnchor.constraintEqualToConstant(exerciseCellHeight).active = true
+                view.heightAnchor.constraint(equalToConstant: exerciseCellHeight).isActive = true
                 
                 exerciseItemStackView.addArrangedSubview(view)
             }
@@ -244,18 +244,18 @@ class OverviewViewController: UIViewController
      *
      * @param awards    The awards to add.
      */
-    func addAwards(awards: [Awards])
+    func addAwards(_ awards: [Awards])
     {
         let count = awards.count        
         if (count > 0)
         {
             awardCardIcon.image = UIImage(named: "ranking_badge")
-            awardTitle.text = NSLocalizedString("awards_title", comment: "").uppercaseString
+            awardTitle.text = NSLocalizedString("awards_title", comment: "").uppercased()
             
             for i in 0 ..< count
             {
                 let view = Util.loadNib(Constant.NOTIFICATION_CELL) as! NotificationCellViewController
-                view.heightAnchor.constraintEqualToConstant(view.bounds.size.height).active = true
+                view.heightAnchor.constraint(equalToConstant: view.bounds.size.height).isActive = true
                 
                 let award = awards[i]
                 let imageName = award.awardImageName
@@ -276,7 +276,7 @@ class OverviewViewController: UIViewController
                 // We only round the last corner radius.
                 if (i == count - 1)
                 {
-                    view.divider.hidden = true
+                    view.divider.isHidden = true
                     view.layer.cornerRadius = Dimention.RADIUS
                 }
                 
@@ -292,7 +292,7 @@ class OverviewViewController: UIViewController
     /**
      * The share overview bar button item method to share an image and text with and "intent."
      */
-    func shareOverview(sender: UIBarButtonItem)
+    func shareOverview(_ sender: UIBarButtonItem)
     {
         shareOverview()
     }
@@ -300,7 +300,7 @@ class OverviewViewController: UIViewController
     /**
      * The share alert button method to share an image and text with and "intent."
      */
-    func shareOverviewAlertButtonClicked(alertAction: UIAlertAction!) -> Void
+    func shareOverviewAlertButtonClicked(_ alertAction: UIAlertAction!) -> Void
     {
         shareOverview()
     }
@@ -321,7 +321,7 @@ class OverviewViewController: UIViewController
             
             if let shareTextObj = self.generateShareMessage()
             {
-                objectsToShare.append(shareTextObj)
+                objectsToShare.append(shareTextObj as AnyObject)
             }
             
             if let shareImageObj = image
@@ -334,7 +334,7 @@ class OverviewViewController: UIViewController
                 let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
                 activityViewController.popoverPresentationController?.sourceView = self.view
                 
-                self.presentViewController(activityViewController, animated: true, completion: nil)
+                self.present(activityViewController, animated: true, completion: nil)
             }
             else
             {
@@ -349,9 +349,9 @@ class OverviewViewController: UIViewController
     func awardFinishAward()
     {
         // Grant the user the "Kept Swimming" badge if he or she didn't skip an exercise.
-        if (!DEFAULTS.boolForKey(Constant.BUNDLE_EXERCISE_SKIPPED))
+        if (!DEFAULTS.bool(forKey: Constant.BUNDLE_EXERCISE_SKIPPED))
         {
-            let keptSwimmingAward = Awards(awardType: AwardType.KEPT_SWIMMING, awardImageName: Badge.KEPT_SWIMMING_IMAGE_NAME, awardDescription: NSLocalizedString("award_kept_swimming_description", comment: ""))
+            let keptSwimmingAward = Awards(awardType: AwardType.kept_SWIMMING, awardImageName: Badge.KEPT_SWIMMING_IMAGE_NAME, awardDescription: NSLocalizedString("award_kept_swimming_description", comment: ""))
             Util.grantBadgeToUser(email, badgeName: Badge.KEPT_SWIMMING, content: keptSwimmingAward, onlyAllowOne: true)
         }
         else
@@ -362,10 +362,10 @@ class OverviewViewController: UIViewController
         
         let finisherDescription = NSLocalizedString("award_finisher_description", comment: "")
 
-        let finisherAward = Awards(awardType: AwardType.BADGE_FINISHER, awardImageName: Badge.FINISHER_IMAGE_NAME, awardDescription: finisherDescription)
+        let finisherAward = Awards(awardType: AwardType.badge_FINISHER, awardImageName: Badge.FINISHER_IMAGE_NAME, awardDescription: finisherDescription)
         if (notificationHandler.getAwardIndex(finisherAward) == Int(Constant.CODE_FAILED))
         {
-            Util.grantPointsToUser(email, awardType: AwardType.POINTS_FINISHER, points: Constant.POINTS_COMPLETING_WORKOUT, description: finisherDescription)
+            Util.grantPointsToUser(email, awardType: AwardType.points_FINISHER, points: Constant.POINTS_COMPLETING_WORKOUT, description: finisherDescription)
             Util.grantBadgeToUser(email, badgeName: Badge.FINISHER, content: finisherAward, onlyAllowOne: true)
         }
     }
@@ -387,15 +387,15 @@ class OverviewViewController: UIViewController
      *
      * @param skipped   Boolean of if the user ahs skipped an exercise.
      */
-    func setExerciseSkipped(skipped: Bool)
+    func setExerciseSkipped(_ skipped: Bool)
     {
-        DEFAULTS.setBool(skipped, forKey: Constant.BUNDLE_EXERCISE_SKIPPED)
+        DEFAULTS.set(skipped, forKey: Constant.BUNDLE_EXERCISE_SKIPPED)
     }
     
     /**
      * The callback for when the finish button is pressed.
      */
-    func finishOverview(sender: UIBarButtonItem)
+    func finishOverview(_ sender: UIBarButtonItem)
     {
         displayFinishAlert()
     }
@@ -406,13 +406,13 @@ class OverviewViewController: UIViewController
     func addHeader()
     {
         // The date formatter based on the locale of the device.
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .FullStyle
-        formatter.timeStyle = .NoStyle
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .none
         
-        let dateString = formatter.stringFromDate(NSDate())
+        let dateString = formatter.string(from: Date())
         
-        routineTitle.text = String(format: NSLocalizedString("header_overview", comment: ""), exerciseData.routineName).uppercaseString
+        routineTitle.text = String(format: NSLocalizedString("header_overview", comment: ""), exerciseData.routineName).uppercased()
         dateLabel.text = dateString
     }
     
@@ -452,15 +452,15 @@ class OverviewViewController: UIViewController
     {
         Util.displayAlert(self, title: NSLocalizedString("title_finish_routine", comment: ""),
                           message: NSLocalizedString("description_finish_routine", comment: ""),
-                          actions: [ UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Cancel, handler: nil),
-                            UIAlertAction(title: NSLocalizedString("title_share", comment: ""), style: .Default, handler: shareOverviewAlertButtonClicked),
-                            UIAlertAction(title: NSLocalizedString("title_finish", comment: ""), style: .Destructive, handler: finishExercising) ])
+                          actions: [ UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil),
+                            UIAlertAction(title: NSLocalizedString("title_share", comment: ""), style: .default, handler: shareOverviewAlertButtonClicked),
+                            UIAlertAction(title: NSLocalizedString("title_finish", comment: ""), style: .destructive, handler: finishExercising) ])
     }
     
     /**
      * The action for the finish button being clicked when the user is viewing the finish exercise alert.
      */
-    func finishExercising(alertAction: UIAlertAction!) -> Void
+    func finishExercising(_ alertAction: UIAlertAction!) -> Void
     {
         finishExercising()
     }
@@ -484,6 +484,6 @@ class OverviewViewController: UIViewController
     {
         viewDelegate.onLoadView(View.ROUTINE_VIEW, result: "", savedExercises: nil, state: RoutineState.NONE)
         
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
 }

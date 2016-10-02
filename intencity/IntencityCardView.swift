@@ -14,13 +14,13 @@ class IntencityCardView: UIView
     {
         super.init(coder: aDecoder)
         
-        self.layer.backgroundColor = Color.white.CGColor
-        self.layer.borderColor = Color.white.CGColor
+        self.layer.backgroundColor = Color.white.cgColor
+        self.layer.borderColor = Color.white.cgColor
         self.layer.borderWidth = 0
         self.layer.cornerRadius = Dimention.RADIUS
         self.layer.masksToBounds = false
-        self.layer.shadowColor = Color.shadow.CGColor
-        self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW, Dimention.SHADOW)
+        self.layer.shadowColor = Color.shadow.cgColor
+        self.layer.shadowOffset = CGSize(width: Dimention.SHADOW, height: Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
         self.layer.shadowRadius = Dimention.SHADOW
     }

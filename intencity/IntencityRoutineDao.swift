@@ -11,7 +11,7 @@ import Foundation
 
 struct IntencityRoutineDao
 {
-    func parseJson(json: AnyObject?) throws -> [RoutineGroup]
+    func parseJson(_ json: [AnyObject]?) throws -> [RoutineGroup]
     {
         var group = [RoutineGroup]()
         
@@ -20,15 +20,12 @@ struct IntencityRoutineDao
         var defaultRoutines = [RoutineRow]()
         var customRoutines = [RoutineRow]()
         
-//        var recommended: String?
-        
-        if let jsonArray = json as? NSArray
+        if let jsonArray = json
         {
             for routines in jsonArray
             {
                 let muscleGroup = routines[Constant.COLUMN_DISPLAY_NAME] as! String
                 let exerciseDay = routines[Constant.COLUMN_EXERCISE_DAY] as! String
-//                recommended = routines[Constant.COLUMN_CURRENT_MUSCLE_GROUP] as? String
                 
                 i += 1
                 
@@ -48,7 +45,7 @@ struct IntencityRoutineDao
         }
         else
         {
-            throw IntencityError.ParseError
+            throw IntencityError.parseError
         }
         
         return group

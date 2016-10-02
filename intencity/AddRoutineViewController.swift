@@ -53,7 +53,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         
         _ = ServiceTask(event: ServiceEvent.GET_LIST, delegate: self,
                                 serviceURL: Constant.SERVICE_STORED_PROCEDURE,
-                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_CUSTOM_ROUTINE_MUSCLE_GROUP, variables: [] ))
+                                params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_CUSTOM_ROUTINE_MUSCLE_GROUP, variables: [] ) as NSString)
     }
     
     override func didReceiveMemoryWarning()
@@ -68,7 +68,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
     {
         if (routines.count > 0)
         {
-            let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
+            let saveButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(CustomRoutineViewController.savePressed(_:)))
             
             self.navigationItem.rightBarButtonItem = saveButtonItem
         }
@@ -78,16 +78,16 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return muscleGroups.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.CHECKBOX_CELL) as! CheckboxCellController
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CHECKBOX_CELL) as! CheckboxCellController
         cell.titleLabel.text = muscleGroups[index]
         cell.setCheckboxImage(Constant.CHECKBOX_CHECKED, uncheckedImage: Constant.CHECKBOX_UNCHECKED)
         cell.setChecked(false)
@@ -95,24 +95,24 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath)
     {
-        let index = indexPath.row
+        let index = (indexPath as NSIndexPath).row
         
         let muscleGroup = muscleGroups[index]
         
         onCheckboxChecked(muscleGroup)
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CheckboxCellController
+        let cell = tableView.cellForRow(at: indexPath) as! CheckboxCellController
         cell.setChecked(!cell.isChecked())
         
         setSaveButtonVisibility()
         
         // Deselects the row.
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         switch(event)
         {
@@ -121,9 +121,9 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
             if (result != Constant.RETURN_NULL)
             {
                 // This gets saved as NSDictionary, so there is no order
-                let json: AnyObject? = result.parseJSONString
+                let json: [AnyObject] = result.parseJSONString as! [AnyObject]
                 
-                for retrievedMuscleGroups in json as! NSArray
+                for retrievedMuscleGroups in json
                 {
                     let muscleGroup = retrievedMuscleGroups[Constant.COLUMN_DISPLAY_NAME] as! String
                     muscleGroups.append(muscleGroup)
@@ -145,28 +145,28 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         hideLoading()
     }
     
-    func onRetrievalFailed(event: Int)
+    func onRetrievalFailed(_ event: Int)
     {
         hideLoading()
         
         Util.displayAlert(self, title: NSLocalizedString("generic_error", comment: ""),
             message: NSLocalizedString("intencity_communication_error", comment: ""),
-            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .Default, handler: goBack)])
+            actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: goBack)])
     }
     
     /**
      * The function for when the save button is pressed.
      */
-    func savePressed(sender:UIBarButtonItem)
+    func savePressed(_ sender:UIBarButtonItem)
     {
         showLoading()
         
-        routines = routines.sort()
+        routines = routines.sorted()
 
         // Save the routine
         _ = ServiceTask(event: ServiceEvent.UPDATE_LIST, delegate: self,
                         serviceURL: Constant.SERVICE_SET_USER_MUSCLE_GROUP_ROUTINE,
-                        params: Constant.generateServiceListVariables(email, variables: routines, isInserting: true))
+                        params: Constant.generateServiceListVariables(email, variables: routines, isInserting: true) as NSString)
     }
     
     /**
@@ -176,24 +176,24 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
     {
         delegate!.onRoutineSaved(true)
         
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     /**
      * The action for the ok button being clicked when there was a communication error.
      */
-    func goBack(alertAction: UIAlertAction!) -> Void
+    func goBack(_ alertAction: UIAlertAction!) -> Void
     {
         goBack()
     }
     
-    func onCheckboxChecked(name: String)
+    func onCheckboxChecked(_ name: String)
     {
         // Add or remove equipment from the user's list of equipment
         // if he or she clicks on a list item.
         if (routines.contains(name))
         {
-            routines.removeAtIndex(routines.indexOf(name)!)
+            routines.remove(at: routines.index(of: name)!)
         }
         else
         {
@@ -208,10 +208,10 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
     {
         loadingView.backgroundColor = Color.page_background
         
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
     }
 
     /**
@@ -220,9 +220,9 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
     func showLoading()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
-        loadingView.hidden = false
+        loadingView.isHidden = false
     }
     
     /**
@@ -230,7 +230,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
      */
     func hideLoading()
     {
-        loadingView.hidden = true
+        loadingView.isHidden = true
         
         activityIndicator.stopAnimating()
     }

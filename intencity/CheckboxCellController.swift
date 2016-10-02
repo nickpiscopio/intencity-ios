@@ -30,7 +30,7 @@ class CheckboxCellController: UITableViewCell
     /**
      * Sets the default checked and unchecked images.
      */
-    func setCheckboxImage(checkedImage: String, uncheckedImage: String)
+    func setCheckboxImage(_ checkedImage: String, uncheckedImage: String)
     {
         self.uncheckedImage = UIImage(named: uncheckedImage)
         self.checkedImage = UIImage(named: checkedImage)
@@ -39,7 +39,7 @@ class CheckboxCellController: UITableViewCell
     /**
      * Sets the exercise name in the cell.
      */
-    func setListItem(name: String, checked: Bool)
+    func setListItem(_ name: String, checked: Bool)
     {
         listItemName = name
         
@@ -51,7 +51,7 @@ class CheckboxCellController: UITableViewCell
     /**
      * Sets the checkbox check value.
      */
-    func setChecked(checked: Bool)
+    func setChecked(_ checked: Bool)
     {
         checkBox.image = checked ? checkedImage : uncheckedImage
     }

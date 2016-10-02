@@ -25,7 +25,7 @@ class AwardViewCollectionCellController: UICollectionViewCell
         self.contentView.setNeedsLayout()
     }
     
-    func setImage(badgeName: String)
+    func setImage(_ badgeName: String)
     {
         var imageName: String
         

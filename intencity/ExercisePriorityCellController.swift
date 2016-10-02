@@ -34,7 +34,7 @@ class ExercisePriorityCellController: UITableViewCell
     /**
      * Sets the exercise name in the cell.
      */
-    func setListItem(exercise: String, priority: Int)
+    func setListItem(_ exercise: String, priority: Int)
     {
         exerciseNameLabel.text = exercise
         
@@ -43,7 +43,7 @@ class ExercisePriorityCellController: UITableViewCell
         setExercisePriority()
     }
     
-    @IBAction func morePriorityClicked(sender: AnyObject)
+    @IBAction func morePriorityClicked(_ sender: AnyObject)
     {
         priority = ExercisePriorityUtil.getExercisePriority(priority, increment: true)
         
@@ -52,7 +52,7 @@ class ExercisePriorityCellController: UITableViewCell
         delegate?.onSetExercisePriority(index, priority: priority)
     }
     
-    @IBAction func lessPriorityClicked(sender: AnyObject)
+    @IBAction func lessPriorityClicked(_ sender: AnyObject)
     {
         priority = ExercisePriorityUtil.getExercisePriority(priority, increment: false)
         

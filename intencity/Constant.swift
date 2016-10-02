@@ -235,7 +235,7 @@ struct Constant
     static let REGEX_NAME_FIELD = "[a-zA-Z\\s\\-\\.']+";
     static let REGEX_SAVE_ROUTINE_NAME_FIELD = "[a-zA-Z\\s\\-\\.'0-9]+";
     
-    static func getValidateUserCredentialsServiceParameters(email: String, password: String) -> String
+    static func getValidateUserCredentialsServiceParameters(_ email: String, password: String) -> String
     {
         return PARAMETER_EMAIL + email + PARAMETER_AMPERSAND + PARAMETER_PASSWORD + password;
     }
@@ -248,7 +248,7 @@ struct Constant
      *
      * @return  The generated url parameter.
      */
-    static func getForgotPasswordParameter(email: String) -> String
+    static func getForgotPasswordParameter(_ email: String) -> String
     {
         return PARAMETER_EMAIL + email;
     }
@@ -264,7 +264,7 @@ struct Constant
      *
      * @return  The parameters for creating an account.
      */
-    static func getAccountParameters(firstName: String, lastName: String, email: String, password: String, accountType: String) -> String
+    static func getAccountParameters(_ firstName: String, lastName: String, email: String, password: String, accountType: String) -> String
     {
         return PARAMETER_FIRST_NAME + firstName + PARAMETER_AMPERSAND +
                 PARAMETER_LAST_NAME + lastName + PARAMETER_AMPERSAND +
@@ -281,7 +281,7 @@ struct Constant
      *
      * @return  The stored procedure method call with the parameters included.
      */
-    static func generateStoredProcedureParameters(name: String, variables: Array<String>) -> String
+    static func generateStoredProcedureParameters(_ name: String, variables: Array<String>) -> String
     {
         let length = variables.count
         
@@ -303,7 +303,7 @@ struct Constant
      *
      * @return  The generated URL string.
      */
-    static func generateServiceListVariables(email: String, variables: Array<String>, isInserting: Bool) -> String
+    static func generateServiceListVariables(_ email: String, variables: Array<String>, isInserting: Bool) -> String
     {
         var parameters = PARAMETER_EMAIL + email
         parameters += isInserting ? generateListVariables(PARAMETER_AMPERSAND + PARAMETER_INSERTS, variables: variables) : generateRemoveListVariables(PARAMETER_AMPERSAND + PARAMETER_REMOVE, variables: variables)
@@ -320,7 +320,7 @@ struct Constant
      *
      * @return  The generated URL string.
      */
-    static func generateRoutineListVariables(email: String, routineName: String, exercises: Array<Exercise>) -> String
+    static func generateRoutineListVariables(_ email: String, routineName: String, exercises: Array<Exercise>) -> String
     {
         let PARAMETER_ROUTINE_NAME = "&routine=";
         
@@ -339,7 +339,7 @@ struct Constant
      *
      * @return  The generated URL string.
      */
-    static func generateExercisePriorityListVariables(email: String, exercises: Array<String>, priorities: Array<String>) -> String
+    static func generateExercisePriorityListVariables(_ email: String, exercises: Array<String>, priorities: Array<String>) -> String
     {
         let PARAMETER_EXERCISES = "&exercises=";
         let PARAMETER_PRIORITIES = "&priorities=";
@@ -359,7 +359,7 @@ struct Constant
      *
      * @return  The generated URL string.
      */
-    static func generateExerciseListVariables(variableName: String, exercises: Array<Exercise>) -> String
+    static func generateExerciseListVariables(_ variableName: String, exercises: Array<Exercise>) -> String
     {
         // We want to skip the warm-up, so we are starting at 1.
         let START_INDEX = 1
@@ -395,7 +395,7 @@ struct Constant
      *
      * @return  The generated URL string.
      */
-    static func generateListVariables(variableName: String, variables: Array<String>) -> String
+    static func generateListVariables(_ variableName: String, variables: Array<String>) -> String
     {
         var parameters = ""
         
@@ -407,7 +407,7 @@ struct Constant
                 parameters += variableName
             }
             
-            parameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i].stringByReplacingOccurrencesOfString("&", withString: "%26")
+            parameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i].replacingOccurrences(of: "&", with: "%26")
         }
         
         return parameters
@@ -421,7 +421,7 @@ struct Constant
      *
      * @return  The generated URL string.
      */
-    static func generateRemoveListVariables(variableName: String, variables: Array<String>) -> String
+    static func generateRemoveListVariables(_ variableName: String, variables: Array<String>) -> String
     {
         var parameters = ""
         
@@ -433,7 +433,7 @@ struct Constant
                 parameters += variableName
             }
             
-            parameters += ((i > 0) ? PARAMETER_DELIMITER_REMOVE : "") + variables[i].stringByReplacingOccurrencesOfString("&", withString: "%26")
+            parameters += ((i > 0) ? PARAMETER_DELIMITER_REMOVE : "") + variables[i].replacingOccurrences(of: "&", with: "%26")
         }
         
         return parameters
@@ -448,7 +448,7 @@ struct Constant
      *
      * @return  The change password URL string.
      */
-    static func generateChangePasswordVariables(email: String, currentPassword: String, newPassword: String) -> String
+    static func generateChangePasswordVariables(_ email: String, currentPassword: String, newPassword: String) -> String
     {
         return PARAMETER_EMAIL + email +
                 PARAMETER_AMPERSAND + PARAMETER_CURRENT_PASSWORD + currentPassword +

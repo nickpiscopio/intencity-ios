@@ -25,7 +25,7 @@ class AboutViewController: UIViewController
         self.view.backgroundColor = Color.page_background
         
         // Hides the tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         // Sets the title for the screen.
         self.navigationItem.title = NSLocalizedString("title_about", comment: "")
@@ -34,7 +34,7 @@ class AboutViewController: UIViewController
         versionDescription.textColor = Color.secondary_light
         
         versionTitle.text = NSLocalizedString("title_version", comment: "")
-        versionDescription.text = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as? String
+        versionDescription.text = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
         
         // Initialize the tableview.
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
@@ -54,24 +54,24 @@ class AboutViewController: UIViewController
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         return sections.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // Return the number of rows in the section.
         return 1
     }
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
     {
         if (section == sections.count - 1)
         {
-            let footer = tableView.dequeueReusableCellWithIdentifier(Constant.DESCRIPTION_FOOTER_CELL) as! DescriptionFooterCellController
+            let footer = tableView.dequeueReusableCell(withIdentifier: Constant.DESCRIPTION_FOOTER_CELL) as! DescriptionFooterCellController
             footer.title.text = NSLocalizedString("copyright", comment: "")
-            footer.separator.hidden = true
+            footer.separator.isHidden = true
             
             return footer
         }
@@ -79,19 +79,19 @@ class AboutViewController: UIViewController
         return nil
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
     {
         return section == sections.count - 1 ? 35 : 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
         // Gets the section from the index.
         // Gets the row in the section.
-        let section = sections[indexPath.section]
+        let section = sections[(indexPath as NSIndexPath).section]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constant.ABOUT_CELL) as! AboutCellController
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ABOUT_CELL) as! AboutCellController
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.cellHeader.text = section.header
         cell.cellDescription.text = section.description
         

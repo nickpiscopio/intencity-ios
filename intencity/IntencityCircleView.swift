@@ -31,8 +31,8 @@ class IntencityCircleView: UIView
      */
     func createView()
     {
-        self.layer.borderColor = Color.transparent.CGColor
+        self.layer.borderColor = Color.transparent.cgColor
         self.layer.cornerRadius = Dimention.RADIUS_ROUNDED_BUTTON_RANKING_USER
-        self.layer.backgroundColor = Color.active.CGColor
+        self.layer.backgroundColor = Color.active.cgColor
     }
 }

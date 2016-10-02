@@ -15,10 +15,10 @@ class RetrieveImageTask
     init(delegate: ImageDelegate?, link: String)
     {        
         guard
-            let url = NSURL(string: link)
+            let url = URL(string: link)
             else
             {
-                dispatch_async(dispatch_get_main_queue())
+                DispatchQueue.main.async
                 {
                     delegate?.onImageRetrievalFailed()
                 }
@@ -26,15 +26,15 @@ class RetrieveImageTask
                 return
             }
         
-        NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
             guard
-                let httpURLResponse = response as? NSHTTPURLResponse where httpURLResponse.statusCode == 200,
-                let mimeType = response?.MIMEType where mimeType.hasPrefix("image"),
-                let data = data where error == nil,
+                let httpURLResponse = response as? HTTPURLResponse , httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType , mimeType.hasPrefix("image"),
+                let data = data , error == nil,
                 let image = UIImage(data: data)
                 else
                 {
-                    dispatch_async(dispatch_get_main_queue())
+                    DispatchQueue.main.async
                     {
                         delegate?.onImageRetrievalFailed()
                     }
@@ -42,7 +42,7 @@ class RetrieveImageTask
                     return
                 }
             
-            dispatch_async(dispatch_get_main_queue())
+            DispatchQueue.main.async
             {
                 delegate?.onImageRetrieved(Int(Constant.CODE_FAILED), image: image, newUpload: false)
             }

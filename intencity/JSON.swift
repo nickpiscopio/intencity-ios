@@ -13,14 +13,14 @@ extension String
 {
     var parseJSONString: AnyObject?
     {
-        let data = self.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        let data = self.data(using: String.Encoding.utf8, allowLossyConversion: false)
             
         if let jsonData = data
         {
             do
             {
                 // Returns the JSON object if it can parse it properly.
-                return try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
+                return try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
             }
             catch let error as NSError
             {

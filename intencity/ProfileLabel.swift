@@ -19,9 +19,9 @@ class ProfileLabel: UILabel
         
         // The default parameters for the label.
         self.textColor = Color.white
-        self.layer.shadowOffset = CGSizeMake(Dimention.SHADOW, Dimention.SHADOW)
+        self.layer.shadowOffset = CGSize(width: Dimention.SHADOW, height: Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
-        self.layer.shadowColor = Color.shadow_dark.CGColor
+        self.layer.shadowColor = Color.shadow_dark.cgColor
         self.layer.shadowRadius = Dimention.SHADOW / 5
     }
 }

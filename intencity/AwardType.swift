@@ -9,11 +9,11 @@
 
 enum AwardType: Equatable
 {
-    case LOG_IN
-    case NEXT_EXERCISE
-    case SHARE
-    case POINTS_FINISHER
-    case BADGE_FINISHER
-    case LEFT_IT_ON_THE_FIELD
-    case KEPT_SWIMMING
+    case log_IN
+    case next_EXERCISE
+    case share
+    case points_FINISHER
+    case badge_FINISHER
+    case left_IT_ON_THE_FIELD
+    case kept_SWIMMING
 }

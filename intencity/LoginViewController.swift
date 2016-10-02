@@ -42,10 +42,10 @@ class LoginViewController: PageViewController, ServiceDelegate
         emailTextField?.placeholder = NSLocalizedString("email", comment: "")
         passwordTextField?.placeholder = NSLocalizedString("password", comment: "")
         
-        forgotPasswordButton?.setTitle(NSLocalizedString("forgot_password", comment: ""), forState: .Normal)
-        createAccountButton?.setTitle(NSLocalizedString("create_account", comment: ""), forState: .Normal)
-        signInButton?.setTitle(NSLocalizedString("sign_in", comment: ""), forState: .Normal)
-        tryIntencityButton?.setTitle(NSLocalizedString("try_intencity", comment: ""), forState: .Normal)
+        forgotPasswordButton?.setTitle(NSLocalizedString("forgot_password", comment: ""), for: UIControlState())
+        createAccountButton?.setTitle(NSLocalizedString("create_account", comment: ""), for: UIControlState())
+        signInButton?.setTitle(NSLocalizedString("sign_in", comment: ""), for: UIControlState())
+        tryIntencityButton?.setTitle(NSLocalizedString("try_intencity", comment: ""), for: UIControlState())
     
         initTermsText()
         
@@ -62,7 +62,7 @@ class LoginViewController: PageViewController, ServiceDelegate
      */
     func initTermsText()
     {
-        let termsStrings = termsString.componentsSeparatedByString("@")
+        let termsStrings = termsString.components(separatedBy: "@")
         
         let termsCount = termsStrings.count
         
@@ -76,16 +76,16 @@ class LoginViewController: PageViewController, ServiceDelegate
             tempMutableString = NSMutableAttributedString(string: attributredTerms, attributes: nil)
             tempMutableString.addAttribute(NSForegroundColorAttributeName, value: (i % 2 == 0) ? Color.secondary_dark : Color.primary, range: NSRange(location: 0, length: attributredTerms.characters.count))
 
-            termsMutableString.appendAttributedString(tempMutableString)
+            termsMutableString.append(tempMutableString)
         }
 
-        termsLabel.setAttributedTitle(termsMutableString, forState: .Normal)
+        termsLabel.setAttributedTitle(termsMutableString, for: UIControlState())
     }
     
     /**
      * The click function for the login button.
      */
-    @IBAction func loginClicked(sender: UIButton)
+    @IBAction func loginClicked(_ sender: UIButton)
     {
         let email = emailTextField.text!
         let password = passwordTextField.text!
@@ -98,18 +98,18 @@ class LoginViewController: PageViewController, ServiceDelegate
         {
             startLogin()
             
-            _ = ServiceTask(event: ServiceEvent.LOGIN, delegate: self, serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS, params: Constant.getValidateUserCredentialsServiceParameters(Util.replacePlus(email), password: Util.replaceApostrophe(password)))
+            _ = ServiceTask(event: ServiceEvent.LOGIN, delegate: self, serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS, params: Constant.getValidateUserCredentialsServiceParameters(Util.replacePlus(email), password: Util.replaceApostrophe(password)) as NSString)
         }
     }
     
     /**
      * The button click for trying Intencity.
      */
-    @IBAction func tryIntencityClicked(sender: AnyObject)
+    @IBAction func tryIntencityClicked(_ sender: AnyObject)
     {
-        let actions = [ UIAlertAction(title: NSLocalizedString("terms_button", comment: ""), style: .Default, handler: self.openTerms),
-                        UIAlertAction(title: NSLocalizedString("create_trial", comment: ""), style: .Default, handler: self.createTrial),
-                        UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .Cancel, handler: nil)]
+        let actions = [ UIAlertAction(title: NSLocalizedString("terms_button", comment: ""), style: .default, handler: self.openTerms),
+                        UIAlertAction(title: NSLocalizedString("create_trial", comment: ""), style: .default, handler: self.createTrial),
+                        UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil)]
         
         Util.displayAlert(self, title:  NSLocalizedString("trial_account_title", comment: ""), message: NSLocalizedString("trial_account_message", comment: ""), actions: actions)
     }
@@ -117,7 +117,7 @@ class LoginViewController: PageViewController, ServiceDelegate
     /**
      * The alert function for opening the terms.
      */
-    func openTerms(alertAction: UIAlertAction!)
+    func openTerms(_ alertAction: UIAlertAction!)
     {
         openTerms()
     }
@@ -125,10 +125,10 @@ class LoginViewController: PageViewController, ServiceDelegate
     /**
      * Creates the trial account.
      */
-    func createTrial(alertAction: UIAlertAction!)
+    func createTrial(_ alertAction: UIAlertAction!)
     {
         trialAccountType = Constant.ACCOUNT_TYPE_MOBILE_TRIAL
-        trialDateCreated = NSDate().timeIntervalSince1970 * 1000
+        trialDateCreated = Date().timeIntervalSince1970 * 1000
         let createdDateString = String(format:"%f", trialDateCreated)
         let firstName = "Anonymous";
         let lastName = "User";
@@ -139,17 +139,17 @@ class LoginViewController: PageViewController, ServiceDelegate
         
         _ = ServiceTask(event: ServiceEvent.TRIAL, delegate: self,
                         serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
-                        params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType))
+                        params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType) as NSString)
     }
     
     /**
      * The function called when we get the user's credentials back from the server successfully.
      */
-    func onRetrievalSuccessful(event: Int, result: String)
+    func onRetrievalSuccessful(_ event: Int, result: String)
     {
         if (event == ServiceEvent.LOGIN)
         {
-            let parsedResponse = result.stringByReplacingOccurrencesOfString("\"", withString: "")
+            let parsedResponse = result.replacingOccurrences(of: "\"", with: "")
             if (parsedResponse == Constant.COULD_NOT_FIND_EMAIL || parsedResponse == Constant.INVALID_PASSWORD)
             {
                 Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""), actions: [])
@@ -177,7 +177,7 @@ class LoginViewController: PageViewController, ServiceDelegate
     /**
      * The function called when we fail to get the user's credentials back from the server.
      */
-    func onRetrievalFailed(Event: Int)
+    func onRetrievalFailed(_ Event: Int)
     {
         Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("intencity_communication_error", comment: ""), actions: [])
         
@@ -187,28 +187,28 @@ class LoginViewController: PageViewController, ServiceDelegate
     func startLogin()
     {
         activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         
-        emailTextField.hidden = true
-        passwordTextField.hidden = true
-        forgotPasswordButton.hidden = true
-        createAccountButton.hidden = true
-        termsLabel.hidden = true
-        signInButton.hidden = true
-        tryIntencityButton.hidden = true
-        separator.hidden = true
+        emailTextField.isHidden = true
+        passwordTextField.isHidden = true
+        forgotPasswordButton.isHidden = true
+        createAccountButton.isHidden = true
+        termsLabel.isHidden = true
+        signInButton.isHidden = true
+        tryIntencityButton.isHidden = true
+        separator.isHidden = true
     }
     
     func stopLogin()
     {
-        emailTextField.hidden = false
-        passwordTextField.hidden = false
-        forgotPasswordButton.hidden = false
-        createAccountButton.hidden = false
-        termsLabel.hidden = false
-        signInButton.hidden = false
-        tryIntencityButton.hidden = false
-        separator.hidden = false
+        emailTextField.isHidden = false
+        passwordTextField.isHidden = false
+        forgotPasswordButton.isHidden = false
+        createAccountButton.isHidden = false
+        termsLabel.isHidden = false
+        signInButton.isHidden = false
+        tryIntencityButton.isHidden = false
+        separator.isHidden = false
         
         activityIndicator.stopAnimating()
     }
@@ -218,7 +218,7 @@ class LoginViewController: PageViewController, ServiceDelegate
      */
     func openTerms()
     {
-        let viewController = storyboard!.instantiateViewControllerWithIdentifier(Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
+        let viewController = storyboard!.instantiateViewController(withIdentifier: Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
         viewController.includeNavButton = true
         viewController.isTerms = true
         
@@ -228,7 +228,7 @@ class LoginViewController: PageViewController, ServiceDelegate
     /**
      * The click function for the terms of use checkbox and label.
      */
-    @IBAction func termsOfUseClicked(sender: UIButton)
+    @IBAction func termsOfUseClicked(_ sender: UIButton)
     {
         openTerms()
     }

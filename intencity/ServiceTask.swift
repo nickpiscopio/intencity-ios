@@ -15,11 +15,11 @@ class ServiceTask
 
     init(event: Int, delegate: ServiceDelegate?, serviceURL: String, params: NSString)
     {
-        let request = NSMutableURLRequest(URL: NSURL(string: serviceURL)!)
-        request.HTTPMethod = "POST"
-        request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
+        let request = NSMutableURLRequest(url: URL(string: serviceURL)!)
+        request.httpMethod = "POST"
+        request.httpBody = params.data(using: String.Encoding.utf8.rawValue)
   
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             if (event != ServiceEvent.NO_RETURN)
             {
                 // Check for fundamental networking errors.
@@ -27,7 +27,7 @@ class ServiceTask
                 {
                     print("error=\(error)")
                     
-                    dispatch_async(dispatch_get_main_queue())
+                    DispatchQueue.main.async
                     {
                         delegate!.onRetrievalFailed(event)
                     }
@@ -36,9 +36,9 @@ class ServiceTask
                 }
                 
                 // Check for HTTP errors.
-                if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200
+                if let httpStatus = response as? HTTPURLResponse , httpStatus.statusCode != 200
                 {
-                    dispatch_async(dispatch_get_main_queue())
+                    DispatchQueue.main.async
                     {
                         delegate!.onRetrievalFailed(event)
                     }
@@ -46,24 +46,24 @@ class ServiceTask
                     return
                 }
                 
-                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
-                let parsedResponse = responseString.stringByReplacingOccurrencesOfString("\"", withString: "")
+                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
+                let parsedResponse = responseString.replacingOccurrences(of: "\"", with: "")
                 if (parsedResponse != ServiceTask.FAILED)
                 {
-                    dispatch_async(dispatch_get_main_queue())
+                    DispatchQueue.main.async
                     {
                         delegate!.onRetrievalSuccessful(event, result: responseString as String)
                     }
                 }
                 else
                 {
-                    dispatch_async(dispatch_get_main_queue())
+                    DispatchQueue.main.async
                     {
                         delegate!.onRetrievalFailed(event)
                     }
                 }
             }
-        }
+        }) 
         
         task.resume()
     }

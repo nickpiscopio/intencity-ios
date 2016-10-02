@@ -19,13 +19,13 @@ class OverviewSetCellController: UITableViewCell
         super.awakeFromNib()
         
         numberLabel.textColor = Color.secondary_light
-        numberLabel.font = numberLabel.font.fontWithSize(Dimention.FONT_SIZE_SMALL)
+        numberLabel.font = numberLabel.font.withSize(Dimention.FONT_SIZE_SMALL)
     }
     
     /**
      * Sets the edit button text
      */
-    func setEditText(mutableString: NSMutableAttributedString)
+    func setEditText(_ mutableString: NSMutableAttributedString)
     {
         setLabel.attributedText = mutableString
     }
