@@ -1,22 +1,20 @@
 //
-//  LoginViewController.swift
+//  GetStartedViewController.swift
 //  Intencity
 //
-//  The controller for the login view.
+//  The controller for the get started view.
 //
-//  Created by Nick Piscopio on 2/8/16.
+//  Created by Nick Piscopio on 10/8/16.
 //  Copyright © 2016 Nick Piscopio. All rights reserved.
 
 import UIKit
 
-class LoginViewController: PageViewController, ServiceDelegate
+class GetStartedViewController: PageViewController, ServiceDelegate
 {
-    @IBOutlet weak var emailTextField: IntencityTextField!
-    @IBOutlet weak var passwordTextField: IntencityTextField!
-    @IBOutlet weak var forgotPasswordButton: IntencityButtonNoBackground!
+    @IBOutlet weak var loginButton: IntencityButtonNoBackground!
     @IBOutlet weak var createAccountButton: IntencityButtonNoBackground!
     @IBOutlet weak var termsLabel: UIButton!
-    @IBOutlet weak var signInButton: IntencityButton!
+    @IBOutlet weak var getStartedButton: IntencityButton!
     
     @IBOutlet weak var separator: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -24,7 +22,7 @@ class LoginViewController: PageViewController, ServiceDelegate
     var trialEmail: String = ""
     var trialAccountType: String = ""
     var trialDateCreated: Double = 0
-    var termsString = NSLocalizedString("terms_login", comment: "")
+    var termsString = NSLocalizedString("terms_agreement", comment: "")
     
     override func viewDidLoad()
     {
@@ -35,15 +33,14 @@ class LoginViewController: PageViewController, ServiceDelegate
         
         separator.textColor = Color.secondary_dark
         
+        let getStartedText = NSLocalizedString("get_started", comment: "")
+        
         // Sets the title for the screen.
-        self.navigationItem.title = NSLocalizedString("sign_in_title", comment: "")
+        self.navigationItem.title = getStartedText
         
-        emailTextField?.placeholder = NSLocalizedString("email", comment: "")
-        passwordTextField?.placeholder = NSLocalizedString("password", comment: "")
-        
-        forgotPasswordButton?.setTitle(NSLocalizedString("forgot_password", comment: ""), for: UIControlState())
+        loginButton?.setTitle(NSLocalizedString("have_an_account", comment: ""), for: UIControlState())
         createAccountButton?.setTitle(NSLocalizedString("create_account", comment: ""), for: UIControlState())
-        signInButton?.setTitle(NSLocalizedString("sign_in", comment: ""), for: UIControlState())
+        getStartedButton?.setTitle(getStartedText.uppercased(), for: UIControlState())
     
         initTermsText()
         
@@ -81,23 +78,23 @@ class LoginViewController: PageViewController, ServiceDelegate
     }
     
     /**
-     * The click function for the login button.
+     * The button click for trying Intencity.
      */
-    @IBAction func loginClicked(_ sender: UIButton)
+    @IBAction func getStartedClicked(_ sender: AnyObject)
     {
-        let email = emailTextField.text!
-        let password = passwordTextField.text!
+        trialAccountType = Constant.ACCOUNT_TYPE_MOBILE_TRIAL
+        trialDateCreated = Date().timeIntervalSince1970 * 1000
+        let createdDateString = String(format:"%f", trialDateCreated)
+        let firstName = "Anonymous";
+        let lastName = "User";
+        trialEmail = lastName +  createdDateString + "@intencity.fit";
+        let password = createdDateString;
         
-        if (email.isEmpty || password.isEmpty)
-        {
-            Util.displayAlert(self, title:  NSLocalizedString("generic_error", comment: ""), message: NSLocalizedString("fill_in_fields", comment: ""), actions: [])
-        }
-        else
-        {
-            startLogin()
-            
-            _ = ServiceTask(event: ServiceEvent.LOGIN, delegate: self, serviceURL: Constant.SERVICE_VALIDATE_USER_CREDENTIALS, params: Constant.getValidateUserCredentialsServiceParameters(Util.replacePlus(email), password: Util.replaceApostrophe(password)) as NSString)
-        }
+        startLogin()
+        
+        _ = ServiceTask(event: ServiceEvent.TRIAL, delegate: self,
+                        serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
+                        params: Constant.getAccountParameters(firstName, lastName: lastName, email: trialEmail, password: password, accountType: trialAccountType) as NSString)
     }
     
     /**
@@ -109,28 +106,19 @@ class LoginViewController: PageViewController, ServiceDelegate
     }
     
     /**
-     * The function called when we get the user's credentials back from the server successfully.
+     * Creates the trial account.
+     */
+    func createTrial(_ alertAction: UIAlertAction!)
+    {
+        
+    }
+    
+    /**
+     * The function called when we get the user's credentials come back from the server successfully.
      */
     func onRetrievalSuccessful(_ event: Int, result: String)
     {
-        let parsedResponse = result.replacingOccurrences(of: "\"", with: "")
-        if (parsedResponse == Constant.COULD_NOT_FIND_EMAIL || parsedResponse == Constant.INVALID_PASSWORD)
-        {
-            Util.displayAlert(self, title:  NSLocalizedString("login_error_title", comment: ""), message: NSLocalizedString("login_error_message", comment: ""), actions: [])
-            
-            stopLogin()
-        }
-        else
-        {
-            // This gets saved as NSDictionary, so there is no order
-            // ID, Email, Hashed password, AccountType
-            let json: AnyObject? = result.parseJSONString
-            
-            let accountType = json![Constant.COLUMN_ACCOUNT_TYPE] as! String
-            let email = json![Constant.COLUMN_EMAIL] as! String
-            
-            Util.loadIntencity(self, email: email, accountType: accountType, createdDate: 0)
-        }
+        Util.loadIntencity(self, email: trialEmail, accountType: trialAccountType, createdDate: trialDateCreated)
     }
     
     /**
@@ -148,23 +136,19 @@ class LoginViewController: PageViewController, ServiceDelegate
         activityIndicator.startAnimating()
         activityIndicator.isHidden = false
         
-        emailTextField.isHidden = true
-        passwordTextField.isHidden = true
-        forgotPasswordButton.isHidden = true
+        loginButton.isHidden = true
         createAccountButton.isHidden = true
         termsLabel.isHidden = true
-        signInButton.isHidden = true
+        getStartedButton.isHidden = true
         separator.isHidden = true
     }
     
     func stopLogin()
     {
-        emailTextField.isHidden = false
-        passwordTextField.isHidden = false
-        forgotPasswordButton.isHidden = false
+        loginButton.isHidden = false
         createAccountButton.isHidden = false
         termsLabel.isHidden = false
-        signInButton.isHidden = false
+        getStartedButton.isHidden = false
         separator.isHidden = false
         
         activityIndicator.stopAnimating()

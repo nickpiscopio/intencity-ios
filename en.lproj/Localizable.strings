@@ -52,6 +52,7 @@
 
 /*  */
 "welcome_description" = "Thank you for using Intencity; the fitness app designed to help you with your everyday fitness needs.\n\nPlease let us know of any issues or improvements you may have.\n\n—The Intencity Team";
+"get_started" = "Get Started";
 
 "edit_equipment_alert_title" = "Set Equipment";
 "edit_equipment_alert_description" = "Would you like to change your exercise equipment?";
@@ -104,16 +105,13 @@
 /*  */
 "confirm_password" = "Confirm Password";
 
-/*  */
-"terms_button" = "Terms of Use & Privacy Policy";
-"terms_log_in" = "By signing in, you agree to the @Terms of Use@ and @Privacy Policy@.";
+"terms_agreement" = "By using Intencity, you agree to the @Terms of Use@ and @Privacy Policy@.";
+"terms_login" = "By signing in, you agree to the @Terms of Use@ and @Privacy Policy@.";
 "terms_create_account" = "By creating an account, you agree to the @Terms of Use@ and @Privacy Policy@.";
+"have_an_account" = "Already have an account?";
 
 /*  */
 "sign_in" = "SIGN IN";
-
-/*  */
-"try_intencity" = "SKIP";
 
 /*  */
 "title_forgot_password" = "Forgot Password";
@@ -138,15 +136,6 @@
 
 /*  */
 "create_account" = "Create an account";
-
-/*  */
-"trial_account_title" = "You are creating a trial account";
-
-/*  */
-"trial_account_message" = "By creating a trial account, you agree to the Terms of Use and Privacy Policy. This account will be automatically deleted after 1 week.";
-
-/*  */
-"create_trial" = "Create trial account";
 
 /*  */
 "title_create_account" = "Create Account";

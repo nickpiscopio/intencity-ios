@@ -90,7 +90,7 @@ class DemoViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         }
         else if (index >= pageCount)
         {
-            return LoginViewController()
+            return GetStartedViewController()
         }
         
         if (pageTitle == "")

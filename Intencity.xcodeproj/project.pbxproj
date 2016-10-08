@@ -130,6 +130,7 @@
 		BD9EF2C61C6BEFB800E520CB /* IntencityTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C51C6BEFB800E520CB /* IntencityTabBarController.swift */; };
 		BD9EF2C81C6BF4CC00E520CB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C71C6BF4CC00E520CB /* MainViewController.swift */; };
 		BD9EF2CA1C6BF4D600E520CB /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */; };
+		BDA6358D1DA94D740035740C /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA6358C1DA94D740035740C /* GetStartedViewController.swift */; };
 		BDAEA25B1C971DFB005663F3 /* IntencityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAEA25A1C971DFB005663F3 /* IntencityCardView.swift */; };
 		BDB253141D23328700AD7547 /* ScrollImager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB253131D23328700AD7547 /* ScrollImager.swift */; };
 		BDB253161D269AB600AD7547 /* FitnessLogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB253151D269AB600AD7547 /* FitnessLogDelegate.swift */; };
@@ -307,6 +308,7 @@
 		BD9EF2C51C6BEFB800E520CB /* IntencityTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityTabBarController.swift; sourceTree = "<group>"; };
 		BD9EF2C71C6BF4CC00E520CB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BD9EF2C91C6BF4D600E520CB /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		BDA6358C1DA94D740035740C /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		BDAEA25A1C971DFB005663F3 /* IntencityCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCardView.swift; sourceTree = "<group>"; };
 		BDB253131D23328700AD7547 /* ScrollImager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollImager.swift; sourceTree = "<group>"; };
 		BDB253151D269AB600AD7547 /* FitnessLogDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogDelegate.swift; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 			children = (
 				BD9EF2B31C6A894E00E520CB /* CreateAccountViewController.swift */,
 				BD9EF2491C68F48E00E520CB /* LoginViewController.swift */,
+				BDA6358C1DA94D740035740C /* GetStartedViewController.swift */,
 				BD9EF2B51C6A8AF500E520CB /* TermsViewController.swift */,
 				BD9EF2A71C6A310200E520CB /* ForgotPasswordViewController.swift */,
 			);
@@ -905,6 +908,7 @@
 				BD9EF2BF1C6B829500E520CB /* ServiceDelegate.swift in Sources */,
 				BDD53BF81C8A32A7001235AE /* FitnessRecHeaderCellController.swift in Sources */,
 				BDFD878B1CA9AB5200ECDDCE /* ProfileViewController.swift in Sources */,
+				BDA6358D1DA94D740035740C /* GetStartedViewController.swift in Sources */,
 				BDB37F9D1CCA719700470479 /* RoutineGroup.swift in Sources */,
 				BD294AC71CAEB579005718BA /* RetrieveImageTask.swift in Sources */,
 				BD36EC231C70F0A400F993CE /* Exercise.swift in Sources */,
