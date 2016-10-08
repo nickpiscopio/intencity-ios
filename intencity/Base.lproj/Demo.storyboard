@@ -87,8 +87,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxQ-mi-DHK">
-                                <state key="normal" image="button_next"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxQ-mi-DHK" customClass="IntencityButtonRoundDark" customModule="Intencity" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Oz6-LV-Cii"/>
+                                    <constraint firstAttribute="width" constant="50" id="RRO-pQ-2dP"/>
+                                </constraints>
+                                <state key="normal" image="next_button"/>
                                 <connections>
                                     <action selector="nextClicked:" destination="Wma-3H-cLi" eventType="touchUpInside" id="CUS-xz-CxQ"/>
                                 </connections>
@@ -107,9 +111,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Klq-FY-qD1"/>
                                 <exclude reference="1H0-mk-VUb"/>
                                 <exclude reference="bzR-Gf-JJ7"/>
+                                <exclude reference="Klq-FY-qD1"/>
                             </mask>
                         </variation>
                     </view>
@@ -124,6 +128,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button_next" width="43" height="43"/>
+        <image name="next_button" width="50" height="50"/>
     </resources>
 </document>

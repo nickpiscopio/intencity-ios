@@ -27,7 +27,7 @@ class IntencityButton: UIButton
         self.layer.shadowOffset = CGSize(width: Dimention.SHADOW, height: Dimention.SHADOW)
         self.layer.shadowOpacity = Dimention.SHADOW_OPACITY
         self.layer.shadowColor = Color.shadow_dark.cgColor
-        self.layer.backgroundColor = Color.secondary_dark.cgColor
+        self.layer.backgroundColor = Color.accent.cgColor
         
         self.contentEdgeInsets = UIEdgeInsetsMake(Dimention.BUTTON_PADDING, Dimention.BUTTON_PADDING, Dimention.BUTTON_PADDING, Dimention.BUTTON_PADDING)
         

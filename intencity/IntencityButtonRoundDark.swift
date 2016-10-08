@@ -17,7 +17,7 @@ class IntencityButtonRoundDark: IntencityButtonRound
     {
         super.init(coder: aDecoder)
         
-        self.layer.backgroundColor = Color.secondary_light.cgColor
+        self.layer.backgroundColor = Color.accent.cgColor
         self.layer.cornerRadius = Dimention.RADIUS_ROUNDED_BUTTON_DARK
     }
 }
