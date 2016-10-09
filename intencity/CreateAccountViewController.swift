@@ -25,6 +25,9 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
     
     var termsString = NSLocalizedString("terms_create_account", comment: "")
     
+    // We assume the user is just creating an account if we aren't notified that the user is creating a trial.
+    var createAccountFromTrial = false
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -32,8 +35,10 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         // Sets the background color of this view.
         self.view.backgroundColor = Color.page_background
         
+        let title = createAccountFromTrial ? NSLocalizedString("title_convert_account", comment: "") : NSLocalizedString("title_create_account", comment: "")
+        
         // Sets the title for the screen.
-        self.navigationItem.title = NSLocalizedString("title_create_account", comment: "")
+        self.navigationItem.title = title
         
         initTermsText()
         
@@ -49,7 +54,8 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         confirmEmailTextField?.placeholder = NSLocalizedString("confirm_email", comment: "")
         passwordTextField?.placeholder = NSLocalizedString("password", comment: "")
         confirmPasswordTextField?.placeholder = NSLocalizedString("confirm_password", comment: "")
-        createAccountButton?.setTitle(NSLocalizedString("create_account_button", comment: ""), for: UIControlState())
+        
+        createAccountButton?.setTitle(title.uppercased(), for: UIControlState())
         
         activityIndicator.hidesWhenStopped = true
     }
@@ -156,10 +162,20 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         else
         {
             startCreateAccount()
+            
+            if (createAccountFromTrial)
+            {
+                _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
+                                serviceURL: Constant.SERVICE_UPDATE_ACCOUNT,
+                                params: Constant.getUpdateAccountParameters(Util.getEmailFromDefaults(), firstName: firstName, lastName: lastName, email: Util.replacePlus(email), password: Util.replaceApostrophe(password)) as NSString)
+            }
+            else
+            {
+                _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
+                                serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
+                                params: Constant.getAccountParameters(firstName, lastName: lastName, email: Util.replacePlus(email), password: Util.replaceApostrophe(password), accountType: Constant.ACCOUNT_TYPE_NORMAL) as NSString)
 
-            _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
-                            serviceURL: Constant.SERVICE_CREATE_ACCOUNT,
-                            params: Constant.getAccountParameters(firstName, lastName: lastName, email: Util.replacePlus(email), password: Util.replaceApostrophe(password), accountType: Constant.ACCOUNT_TYPE_NORMAL) as NSString)
+            }
         }
     }
     
@@ -204,6 +220,8 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
     
     func onRetrievalSuccessful(_ event: Int, result: String)
     {
+        let email = emailTextField.text!
+        
         let parsedResponse = result.replacingOccurrences(of: "\"", with: "")
         if (parsedResponse == Constant.EMAIL_EXISTS)
         {
@@ -213,7 +231,15 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         }
         else if (parsedResponse == Constant.ACCOUNT_CREATED)
         {
-            Util.loadIntencity(self, email: emailTextField.text!, accountType: Constant.ACCOUNT_TYPE_NORMAL, createdDate: 0);
+            Util.loadIntencity(self, email: email, accountType: Constant.ACCOUNT_TYPE_NORMAL, createdDate: 0);
+        }
+        else if (parsedResponse == Constant.ACCOUNT_UPDATED)
+        {
+            Util.convertAccount(email)
+            
+            Util.displayAlert(self, title: NSLocalizedString("success", comment: ""),
+                              message: NSLocalizedString("account_converted", comment: ""),
+                              actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: loadIntencity)])
         }
         else
         {
@@ -239,5 +265,14 @@ class CreateAccountViewController: UIViewController, ServiceDelegate
         {
             textField.deleteBackward()
         }
+    }
+    
+    /**
+     * The action for the ok button being clicked when we the user's account was converted successfully.
+     */
+    func loadIntencity(_ alertAction: UIAlertAction!) -> Void
+    {
+        // There is only one button here, so we aren't switching.
+        Util.loadIntencity(self);
     }
 }

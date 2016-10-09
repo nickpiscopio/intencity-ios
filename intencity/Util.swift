@@ -41,6 +41,11 @@ class Util
 
     /**
      * Saves the login information to NSUserDefaults.
+     
+     * @param controller            The view that called this method, so we know what is pushing the next screen.
+     * @param email                 The email of the user.
+     * @param accountType           The account type of the user.
+     * @param trialCreatedDate      The long value of the date the trial account was created.
      */
     static func loadIntencity(_ controller: UIViewController, email: String, accountType: String, createdDate: Double)
     {
@@ -59,11 +64,41 @@ class Util
             defaults.set(String(format:"%f", createdDate), forKey: Constant.USER_TRIAL_CREATED_DATE)
         }
         
+        loadIntencity(controller);
+    }
+    
+    /**
+     * Loads the Main view from the beginning.
+     *
+     * @param controller      The view that called this method, so we know what is pushing the next screen.
+     */
+    static func loadIntencity(_ controller: UIViewController)
+    {
         let storyboard = UIStoryboard(name: Constant.MAIN_STORYBOARD, bundle: nil)
         
         let viewController = storyboard.instantiateViewController(withIdentifier: "IntencityTabView")
         
         controller.present(viewController, animated: true, completion: nil)
+    }
+    
+    /**
+     * Saves the user information for Intencity when converting to a full account.
+     *
+     * @param email         The email of the user.
+     */
+    static func convertAccount(_ email: String)
+    {
+        let defaults = UserDefaults.standard
+        
+        let emailAsData = replacePlus(email).data(using: String.Encoding.utf8)
+        
+        // Documentation: https://github.com/RNCryptor/RNCryptor
+        let encryptedEmail = RNCryptor.encrypt(data: emailAsData!, withPassword: Key.key)
+    
+        defaults.set(encryptedEmail, forKey: Constant.USER_ACCOUNT_EMAIL)
+        defaults.set(Constant.ACCOUNT_TYPE_NORMAL, forKey: Constant.USER_ACCOUNT_TYPE)
+    
+        defaults.removeObject(forKey: Constant.USER_TRIAL_CREATED_DATE)
     }
     
     /**

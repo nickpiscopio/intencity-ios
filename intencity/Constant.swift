@@ -113,6 +113,7 @@ struct Constant
     static let COULD_NOT_FIND_EMAIL = "Could not find email";
     static let INVALID_PASSWORD = "Invalid password";
     static let ACCOUNT_CREATED = "Account created";
+    static let ACCOUNT_UPDATED = "Account updated";
     static let SHARED_PREFERENCES = "com.intencity.intencity.shared.preferences";
     
     static let USER_ACCOUNT_ID = "com.intencity.intencity.user.id";
@@ -125,6 +126,7 @@ struct Constant
 
     static let BUNDLE_EXERCISE_SKIPPED = "com.intencity.intencity.exercise.skipped";
     
+    // Service Endpoint
     static let ENDPOINT = "http://www.intencityapp.com/";
     
     #if RELEASE
@@ -136,6 +138,8 @@ struct Constant
     static let UPLOAD_FOLDER = ENDPOINT + BUILD_TYPE + "uploads/";
     static let SERVICE_FOLDER = ENDPOINT + BUILD_TYPE + "services/";
     static let SERVICE_FOLDER_MOBILE = SERVICE_FOLDER + "mobile/";
+    
+    // Services
     static let SERVICE_VALIDATE_USER_CREDENTIALS = SERVICE_FOLDER_MOBILE + "user_credentials.php";
     static let SERVICE_CREATE_ACCOUNT = SERVICE_FOLDER_MOBILE + "account.php";
     static let SERVICE_UPDATE_USER_LOGIN_DATE = SERVICE_FOLDER_MOBILE + "update_user_login_date.php";
@@ -150,13 +154,18 @@ struct Constant
     static let SERVICE_UPDATE_EXERCISE_PRIORITY = SERVICE_FOLDER_MOBILE + "update_priority.php";
     static let SERVICE_UPLOAD_PROFILE_PIC = SERVICE_FOLDER_MOBILE + "upload_file.php";
     static let SERVICE_CHANGE_PASSWORD = SERVICE_FOLDER_MOBILE + "change_password.php";
+    static let SERVICE_UPDATE_ACCOUNT = SERVICE_FOLDER_MOBILE + "update_account.php";
     static let SERVICE_FORGOT_PASSWORD = SERVICE_FOLDER + "forgot_password.php";
     
+    // Parameters
     static let PARAMETER_AMPERSAND = "&";
     static let PARAMETER_DELIMITER = ",";
     static let PARAMETER_DELIMITER_REMOVE = "|";
+    // This does not have "=" because it usually has a number followed by it.
+    // i.e. &table0
     static let PARAMETER_TABLE = "table";
     static let PARAMETER_EMAIL = "email=";
+    static let PARAMETER_TRIAL_EMAIL = "trial_email=";
     static let PARAMETER_PASSWORD = "password=";
     static let PARAMETER_CURRENT_PASSWORD = "oldPassword=";
     static let PARAMETER_DATA = "d=";
@@ -167,6 +176,7 @@ struct Constant
     static let PARAMETER_INSERTS = "inserts=";
     static let PARAMETER_REMOVE = "remove=";
     
+    // Stored Procedure Names
     static let STORED_PROCEDURE_GET_USER_ROUTINE = "getUserRoutine";
     static let STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS = "getAllDisplayMuscleGroups";
     static let STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY = "getExercisesForToday";
@@ -191,6 +201,7 @@ struct Constant
     static let STORED_PROCEDURE_EXCLUDE_EXERCISE = "excludeExercise";
     static let STORED_PROCEDURE_REMOVE_ACCOUNT = "removeAccount";
     
+    // Column Values
     static let ACCOUNT_TYPE_ADMIN = "A";
     static let ACCOUNT_TYPE_BETA = "B";
     static let ACCOUNT_TYPE_NORMAL = "N";
@@ -272,6 +283,27 @@ struct Constant
                 PARAMETER_EMAIL + email + PARAMETER_AMPERSAND +
                 PARAMETER_PASSWORD + password + PARAMETER_AMPERSAND +
                 PARAMETER_ACCOUNT_TYPE + accountType;
+    }
+    
+    /**
+     * Generates the update account parameters to convert a trial account to a full account.
+     *
+     * @param trialEmail    The email used when for the trial account.
+     *                      This is the email we are converting to the user's real email.
+     * @param firstName     The first name of the user.
+     * @param lastName      The last name of the user.
+     * @param email         The user's email.
+     * @param password      The password of the user.
+     *
+     * @return  The parameters for updating an account.
+     */
+    static func getUpdateAccountParameters(_ trialEmail: String, firstName: String, lastName: String, email: String, password: String) -> String
+    {
+        return PARAMETER_TRIAL_EMAIL + trialEmail + PARAMETER_AMPERSAND +
+                PARAMETER_FIRST_NAME + firstName + PARAMETER_AMPERSAND +
+                PARAMETER_LAST_NAME + lastName + PARAMETER_AMPERSAND +
+                PARAMETER_EMAIL + email + PARAMETER_AMPERSAND +
+                PARAMETER_PASSWORD + password
     }
 
     /**

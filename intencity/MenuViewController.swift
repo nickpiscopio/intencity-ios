@@ -193,6 +193,13 @@ class MenuViewController: UIViewController
             
             self.navigationController!.pushViewController(viewController, animated: true)
         }
+        else if (identifier == Constant.CREATE_ACCOUNT_VIEW_CONTROLLER)
+        {
+            let viewController = storyboard!.instantiateViewController(withIdentifier: Constant.CREATE_ACCOUNT_VIEW_CONTROLLER) as! CreateAccountViewController
+            viewController.createAccountFromTrial = true
+            
+            self.navigationController!.pushViewController(viewController, animated: true)
+        }
         else
         {
             let viewController = storyboard!.instantiateViewController(withIdentifier: identifier)

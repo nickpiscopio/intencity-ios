@@ -141,7 +141,6 @@
 
 /*  */
 "title_create_account" = "Create Account";
-"create_account_button" = "CREATE ACCOUNT";
 "create_account_description" = "Sign up below for the best possible experience with Intencity.";
 "create_account_promise" = "We promise we won\'t send you spam.";
 
@@ -178,6 +177,8 @@
 
 /*  */
 "field_validation_error" = "Fields cannot contain < > \" = +";
+"success" = "Success";
+"account_converted" = "Your trial account has been converted into a full account!";
 
 /* Intencity Strings */
 "title_rankings" = "Leaderboard";
