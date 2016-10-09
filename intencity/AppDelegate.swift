@@ -111,33 +111,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         let now = Float(Date().timeIntervalSince1970 * 1000)
         
-        let viewController = self.window!.rootViewController!
-        
         let defaults = UserDefaults.standard
         
-        let trialAccountCreatedDate = defaults.float(forKey: Constant.USER_TRIAL_CREATED_DATE)
-        if (trialAccountCreatedDate > 0 && ((now - trialAccountCreatedDate) >= Float(Constant.TRIAL_ACCOUNT_THRESHOLD)))
+        let lastLogin = defaults.float(forKey: Constant.USER_LAST_LOGIN)
+        
+        let email = Util.getEmailFromDefaults()
+        
+        // If the user has logged in.
+        // If the user's last login time is after 12 hours.
+        if (email != "" && ((now - lastLogin) >= Float(Constant.LOGIN_POINTS_THRESHOLD)))
         {
-            Util.displayAlert(viewController,
-                title: NSLocalizedString("trial_account_done_title", comment: ""),
-                message: NSLocalizedString("trial_account_done_message", comment: ""),
-                actions: [ UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: self.logOut) ])
-        }
-        else
-        {
-            let lastLogin = defaults.float(forKey: Constant.USER_LAST_LOGIN)
-            
-            let email = Util.getEmailFromDefaults()
-            
-            // If the user has logged in.
-            // If the user's last login time is after 12 hours.
-            if (email != "" && ((now - lastLogin) >= Float(Constant.LOGIN_POINTS_THRESHOLD)))
-            {
-                // Rewards the user for using the app after 12 hours.
-                Util.grantPointsToUser(email, awardType: AwardType.log_IN, points: Constant.POINTS_LOGIN, description: NSLocalizedString("award_login_description", comment: ""))
+            // Rewards the user for using the app after 12 hours.
+            Util.grantPointsToUser(email, awardType: AwardType.log_IN, points: Constant.POINTS_LOGIN, description: NSLocalizedString("award_login_description", comment: ""))
 
-                defaults.set(now, forKey: Constant.USER_LAST_LOGIN)
-            }
+            defaults.set(now, forKey: Constant.USER_LAST_LOGIN)
+            
+            // Update the web database that the user logged in.
+            // We do this so we don't delete trial users that are still using their account.
+            // We don't need a callback for this because we don't care if it reaches the server.
+            // If it doesn't reach the server, then we try again when the user logs back in.
+            _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
+                            serviceURL: Constant.SERVICE_UPDATE_USER_LOGIN_DATE,
+                            params: Constant.getStandardServiceUrlParams(Util.replacePlus(email)) as NSString)
         }
     }
     

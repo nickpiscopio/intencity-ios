@@ -138,6 +138,7 @@ struct Constant
     static let SERVICE_FOLDER_MOBILE = SERVICE_FOLDER + "mobile/";
     static let SERVICE_VALIDATE_USER_CREDENTIALS = SERVICE_FOLDER_MOBILE + "user_credentials.php";
     static let SERVICE_CREATE_ACCOUNT = SERVICE_FOLDER_MOBILE + "account.php";
+    static let SERVICE_UPDATE_USER_LOGIN_DATE = SERVICE_FOLDER_MOBILE + "update_user_login_date.php";
     static let SERVICE_STORED_PROCEDURE = SERVICE_FOLDER_MOBILE + "stored_procedure.php";
     static let SERVICE_COMPLEX_INSERT = SERVICE_FOLDER_MOBILE + "complex_insert.php";
     static let SERVICE_COMPLEX_UPDATE = SERVICE_FOLDER_MOBILE + "complex_update.php";
@@ -241,15 +242,14 @@ struct Constant
         return PARAMETER_EMAIL + email + PARAMETER_AMPERSAND + PARAMETER_PASSWORD + password;
     }
     
-
     /**
-     * Generates the forgot password parameter to send to the server.
+     * Generates the standard parameters for a service.
      *
      * @param email     The user's email to add to the url.
      *
      * @return  The generated url parameter.
      */
-    static func getForgotPasswordParameter(_ email: String) -> String
+    static func getStandardServiceUrlParams(_ email: String) -> String
     {
         return PARAMETER_EMAIL + email;
     }

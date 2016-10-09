@@ -47,7 +47,7 @@ class ForgotPasswordViewController: UIViewController, ServiceDelegate
         {
             startResetPassword()
             
-            _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self, serviceURL: Constant.SERVICE_FORGOT_PASSWORD, params: Constant.getForgotPasswordParameter(Util.replacePlus(email)) as NSString)
+            _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self, serviceURL: Constant.SERVICE_FORGOT_PASSWORD, params: Constant.getStandardServiceUrlParams(Util.replacePlus(email)) as NSString)
         }
     }
     
