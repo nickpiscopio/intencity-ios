@@ -136,6 +136,8 @@
 
 /*  */
 "create_account" = "Create an account";
+"convert_account" = "Convert Trial Account to Full Account";
+"title_convert_account" = "Convert Account";
 
 /*  */
 "title_create_account" = "Create Account";

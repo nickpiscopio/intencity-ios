@@ -58,6 +58,7 @@ struct Constant
     static let SEARCH_VIEW_CONTROLLER = "SearchViewController"
     static let FITNESS_RECOMMENDATION_VIEW_CONTROLLER = "FitnessRecommendationViewController"
     static let TERMS_VIEW_CONTROLLER = "TermsViewController"
+    static let CREATE_ACCOUNT_VIEW_CONTROLLER = "CreateAccountViewController"
     static let PRIVACY_POLICY_VIEW_CONTROLLER = "PrivacyPolicyViewController"
     static let CUSTOM_ROUTINE_VIEW_CONTROLLER = "CustomRoutineViewController"
     static let ADD_ROUTINE_VIEW_CONTROLLER = "AddRoutineViewController"

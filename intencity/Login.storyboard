@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Ma0-9S-afZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="38y-gE-STT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="TJB-PJ-wYx">
@@ -195,7 +195,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Y9e-kB-RW9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rky-4M-9tW">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YqC-f8-E7l">
@@ -250,7 +250,7 @@
                         <viewControllerLayoutGuide type="bottom" id="MEQ-g5-SoC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PrH-sx-anP">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="y4v-RN-0Gu">
@@ -450,7 +450,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ybS-G5-TRD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NUu-GR-43m">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="GYP-zY-ich">
@@ -581,7 +581,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ZEp-Ob-12k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ETB-vh-HRI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Gvr-9f-j09">

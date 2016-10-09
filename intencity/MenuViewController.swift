@@ -44,9 +44,14 @@ class MenuViewController: UIViewController
         var settingsRows = [ MenuRow(title: NSLocalizedString("edit_priority", comment: ""), viewController: "EditExercisePrioritiesViewController"),
                              MenuRow(title: NSLocalizedString("edit_equipment", comment: ""), viewController: Constant.EDIT_EQUIPMENT_VIEW_CONTROLLER) ]
         
-        if (!isMobileTrial)
+        if (isMobileTrial)
         {
-           settingsRows.append(MenuRow(title: NSLocalizedString("change_password", comment: ""), viewController: "ChangePasswordViewController"))
+            settingsRows.append(MenuRow(title: NSLocalizedString("convert_account", comment: ""), viewController: Constant.CREATE_ACCOUNT_VIEW_CONTROLLER))
+        }
+        else
+        {
+            settingsRows.append(MenuRow(title: NSLocalizedString("change_password", comment: ""), viewController: "ChangePasswordViewController"))
+
         }
         
         settingsRows.append(MenuRow(title: NSLocalizedString("title_log_out", comment: ""), viewController: Constant.LOG_OUT))
@@ -147,7 +152,9 @@ class MenuViewController: UIViewController
                 var storyboardName = ""
                 var viewControllerName = ""
                 
-                if (viewController == Constant.TERMS_VIEW_CONTROLLER || viewController == Constant.PRIVACY_POLICY_VIEW_CONTROLLER)
+                if (viewController == Constant.TERMS_VIEW_CONTROLLER ||
+                    viewController == Constant.PRIVACY_POLICY_VIEW_CONTROLLER ||
+                    viewController == Constant.CREATE_ACCOUNT_VIEW_CONTROLLER)
                 {
                     storyboardName = Constant.LOGIN_STORYBOARD
                     
