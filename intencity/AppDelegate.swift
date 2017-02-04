@@ -41,8 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         }
         else
         {
-            storyboardName = Constant.DEMO_STORYBOARD
-            viewName = Constant.DEMO_VIEW
+            storyboardName = Constant.LOGIN_STORYBOARD
+            viewName = Constant.LOGIN_NAV_CONTROLLER
         }
         
         self.window = UIWindow(frame: UIScreen.main.bounds)

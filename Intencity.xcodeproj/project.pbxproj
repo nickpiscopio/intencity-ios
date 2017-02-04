@@ -50,10 +50,7 @@
 		BD53AED61CAAD02B00077B0D /* AwardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD53AED51CAAD02B00077B0D /* AwardRow.swift */; };
 		BD53AED81CAD517600077B0D /* IntencityCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD53AED71CAD517600077B0D /* IntencityCircleView.swift */; };
 		BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460ED1C68D34400F60ADC /* AppDelegate.swift */; };
-		BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460EF1C68D34400F60ADC /* DemoViewController.swift */; };
-		BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F11C68D34400F60ADC /* Demo.storyboard */; };
 		BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5460F41C68D34400F60ADC /* Assets.xcassets */; };
-		BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5460FF1C68D53200F60ADC /* PageViewController.swift */; };
 		BD56FB8B1CCFFCAA001404C5 /* IntencityRoutineFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD56FB8A1CCFFCAA001404C5 /* IntencityRoutineFooterCell.xib */; };
 		BD56FB8D1CCFFD08001404C5 /* IntencityRoutineFooterCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB8C1CCFFD08001404C5 /* IntencityRoutineFooterCellController.swift */; };
 		BD56FB8F1CD0004A001404C5 /* ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD56FB8E1CD0004A001404C5 /* ButtonDelegate.swift */; };
@@ -111,7 +108,6 @@
 		BD947A061C6D3F30003F3767 /* Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A051C6D3F30003F3767 /* Integer.swift */; };
 		BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD947A091C6D4B90003F3767 /* ServiceEvent.swift */; };
 		BD9EF24A1C68F48E00E520CB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2491C68F48E00E520CB /* LoginViewController.swift */; };
-		BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */; };
 		BD9EF2511C691C7100E520CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD9EF2531C691C7100E520CB /* Localizable.strings */; };
 		BD9EF2571C692A6900E520CB /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2561C692A6900E520CB /* DemoView.swift */; };
 		BD9EF2591C693A6400E520CB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EF2581C693A6400E520CB /* Color.swift */; };
@@ -227,11 +223,8 @@
 		BD53AED71CAD517600077B0D /* IntencityCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityCircleView.swift; sourceTree = "<group>"; };
 		BD5460EA1C68D34400F60ADC /* Intencity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intencity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5460ED1C68D34400F60ADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BD5460EF1C68D34400F60ADC /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
-		BD5460F21C68D34400F60ADC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Demo.storyboard; sourceTree = "<group>"; };
 		BD5460F41C68D34400F60ADC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5460F91C68D34400F60ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD5460FF1C68D53200F60ADC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		BD56FB8A1CCFFCAA001404C5 /* IntencityRoutineFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntencityRoutineFooterCell.xib; sourceTree = "<group>"; };
 		BD56FB8C1CCFFD08001404C5 /* IntencityRoutineFooterCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityRoutineFooterCellController.swift; sourceTree = "<group>"; };
 		BD56FB8E1CD0004A001404C5 /* ButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDelegate.swift; sourceTree = "<group>"; };
@@ -290,7 +283,6 @@
 		BD947A051C6D3F30003F3767 /* Integer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integer.swift; sourceTree = "<group>"; };
 		BD947A091C6D4B90003F3767 /* ServiceEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceEvent.swift; path = ../ServiceEvent.swift; sourceTree = "<group>"; };
 		BD9EF2491C68F48E00E520CB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoContentViewController.swift; sourceTree = "<group>"; };
 		BD9EF2561C692A6900E520CB /* DemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
 		BD9EF2581C693A6400E520CB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BD9EF2651C6A278800E520CB /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -542,16 +534,6 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
-		BD947A2C1C6E3297003F3767 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				BD5460FF1C68D53200F60ADC /* PageViewController.swift */,
-				BD5460EF1C68D34400F60ADC /* DemoViewController.swift */,
-				BD9EF24B1C69066100E520CB /* DemoContentViewController.swift */,
-			);
-			name = Demo;
-			sourceTree = "<group>";
-		};
 		BD947A2D1C6E32AC003F3767 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,7 +591,6 @@
 			isa = PBXGroup;
 			children = (
 				BDD53BEE1C8A1928001235AE /* Cells */,
-				BD5460F11C68D34400F60ADC /* Demo.storyboard */,
 				BD9EF2651C6A278800E520CB /* Login.storyboard */,
 				BDFE97131C68E62C00C2AEA3 /* Main.storyboard */,
 				BD9479FC1C6CE452003F3767 /* Loading.storyboard */,
@@ -629,7 +610,6 @@
 		BD9EF2621C6A212C00E520CB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BD947A2C1C6E3297003F3767 /* Demo */,
 				BD947A2D1C6E32AC003F3767 /* Login */,
 				BD947A2E1C6E32C1003F3767 /* Intencity */,
 			);
@@ -802,7 +782,6 @@
 				BD36EC291C71048600F993CE /* ExerciseCard.xib in Resources */,
 				BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */,
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
-				BD5460F31C68D34400F60ADC /* Demo.storyboard in Resources */,
 				BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */,
 				BDE493FD1C7B9B45005817D0 /* GenericHeaderCell.xib in Resources */,
 				BD640A4F1C85D1D7008895A2 /* RankingCell.xib in Resources */,
@@ -925,8 +904,6 @@
 				BD1F30E31CA9BBAA00002D06 /* ProfileRow.swift in Sources */,
 				BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */,
 				BD5F978A1D149CEE001E5A26 /* OverviewRowType.swift in Sources */,
-				BD5460F01C68D34400F60ADC /* DemoViewController.swift in Sources */,
-				BD5461001C68D53200F60ADC /* PageViewController.swift in Sources */,
 				BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */,
 				BD56FB931CD101A0001404C5 /* IntencityRoutineDao.swift in Sources */,
 				BD5460EE1C68D34400F60ADC /* AppDelegate.swift in Sources */,
@@ -948,7 +925,6 @@
 				BD7C7E891C7CA0E9005AFFDD /* DeleteAccountViewController.swift in Sources */,
 				BD58AB2B1CC8F4A5006D7EF4 /* ViewDelegate.swift in Sources */,
 				BD58AB2D1CC8F70A006D7EF4 /* View.swift in Sources */,
-				BD9EF24C1C69066100E520CB /* DemoContentViewController.swift in Sources */,
 				BD4B7B861CD127C400D83F91 /* NoItemCellController.swift in Sources */,
 				BDD89BFB1C906D9F00530D79 /* NotificationCellViewController.swift in Sources */,
 				BD6E4B061C84B2AC00C4E6FB /* UserSearchDelegate.swift in Sources */,
@@ -1035,14 +1011,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BD5460F11C68D34400F60ADC /* Demo.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BD5460F21C68D34400F60ADC /* Base */,
-			);
-			name = Demo.storyboard;
-			sourceTree = "<group>";
-		};
 		BD9EF2531C691C7100E520CB /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1091,7 +1059,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
@@ -1131,7 +1099,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
@@ -1147,11 +1115,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = N2GZ9B2SHK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = intencity/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1184,11 +1154,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = N2GZ9B2SHK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = intencity/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (

@@ -141,7 +141,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         
         activityIndicator.stopAnimating()
     }
-    
+
     func onHideLoading()
     {
         hideLoading()

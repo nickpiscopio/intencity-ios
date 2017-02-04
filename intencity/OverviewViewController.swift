@@ -162,8 +162,8 @@ class OverviewViewController: UIViewController
             if (exerciseName != WARM_UP_NAME)
             {
                 let view = Util.loadNib(Constant.OVERVIEW_EXERCISE_CELL) as! OverviewExerciseCellController
-                view.title.text = exercise.exerciseName
-                view.title.textColor = exercise.fromIntencity ? Color.primary : Color.secondary_dark
+//                view.title.text = exercise.exerciseName
+//                view.title.textColor = exercise.fromIntencity ? Color.primary : Color.secondary_dark
                 
                 // We only hide the last divider.
                 // We only round the last corner radius.

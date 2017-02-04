@@ -13,10 +13,10 @@ import UIKit
 struct Constant
 {
     // -- START iOS CONSTANTS --
-    static let DEMO_STORYBOARD = "Demo"
     static let LOGIN_STORYBOARD = "Login"    
     static let MAIN_STORYBOARD = "Main"
     
+    static let MAIN_VIEW = "IntencityTabView"
     static let LOGIN_NAV_CONTROLLER = "LoginNavController"
     
     static let EXERCISE_LIST_HEADER = "ExerciseListHeader"
@@ -67,8 +67,6 @@ struct Constant
     static let CONTRIBUTE_INTENCITY = "ContributeIntencity"
     static let LOG_OUT = "LogOut"
     
-    static let MAIN_VIEW = "IntencityTabView"
-    static let DEMO_VIEW = "DemoViewController"
     static let CHECKBOX_UNCHECKED = "checkbox_unchecked"
     static let CHECKBOX_CHECKED = "checkbox_checked"
     static let RADIO_BUTTON_UNMARKED = "radio_button_unmarked"

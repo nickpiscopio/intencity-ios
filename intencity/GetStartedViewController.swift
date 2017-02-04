@@ -9,7 +9,7 @@
 
 import UIKit
 
-class GetStartedViewController: PageViewController, ServiceDelegate
+class GetStartedViewController: UIViewController, ServiceDelegate
 {
     @IBOutlet weak var loginButton: IntencityButtonNoBackground!
     @IBOutlet weak var createAccountButton: IntencityButtonNoBackground!

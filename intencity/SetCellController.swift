@@ -57,7 +57,8 @@ class SetCellController: UITableViewCell
     
     func textField(_ textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
     {
-        let text = textField.text!
+        let textFieldText = textField.text
+        let text = textFieldText != "" ? textFieldText : string
         
         // Allow a backspace.
         if (string == "")
@@ -65,17 +66,17 @@ class SetCellController: UITableViewCell
             return true
         }
         // Allow numbers in the textfields.
-        else if (Util.isFieldValid(string, regEx: "[0-9]+"))
+        else if (Util.isFieldValid(string, regEx: "[0-9]+") && text != "")
         {
             if (textField == weightTextField)
             {
                 // Allow up to 5 characters.
                 // Allow backspaces here. The reason we need this is because if a backspace is being pressed, then nothing happens if we don't allow string == "" if the character count is already 5.
-                return text.characters.count < 5
+                return text!.characters.count < 5
             }
             else
             {
-                let value = isReps ? Int(text) : Util.convertToInt(text)
+                let value = isReps ? Int(text!) : Util.convertToInt(text!)
                 let maxValue = 100000
                 
                 // Allow up to max value.

@@ -9,7 +9,7 @@
 
 import UIKit
 
-class LoginViewController: PageViewController, ServiceDelegate
+class LoginViewController: UIViewController, ServiceDelegate
 {
     @IBOutlet weak var emailTextField: IntencityTextField!
     @IBOutlet weak var passwordTextField: IntencityTextField!
