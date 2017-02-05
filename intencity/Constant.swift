@@ -133,6 +133,8 @@ struct Constant
         static let BUILD_TYPE = "dev/";
     #endif
     
+    static let DEBUG = "(DEBUG)"
+    
     static let UPLOAD_FOLDER = ENDPOINT + BUILD_TYPE + "uploads/";
     static let SERVICE_FOLDER = ENDPOINT + BUILD_TYPE + "services/";
     static let SERVICE_FOLDER_MOBILE = SERVICE_FOLDER + "mobile/";

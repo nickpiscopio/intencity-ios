@@ -36,6 +36,10 @@ class AboutViewController: UIViewController
         versionTitle.text = NSLocalizedString("title_version", comment: "")
         versionDescription.text = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
         
+        #if DEBUG
+            versionDescription.text = versionDescription.text! + " " + Constant.DEBUG
+        #endif
+        
         // Initialize the tableview.
         Util.initTableView(tableView, footerHeight: 0, emptyTableStringRes: "")
         tableView.backgroundColor = Color.transparent
