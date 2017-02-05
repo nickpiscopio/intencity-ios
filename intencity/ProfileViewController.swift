@@ -122,14 +122,14 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
             if (followingId < 0)
             {
                 // Unfollow the user.
-                _ = ServiceTask(event: ServiceEvent.UNFOLLOW, delegate: self,
+                _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: self,
                                 serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                                 params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_FROM_FOLLOWING, variables: [ String(originalFollowingId) ]) as NSString)
             }
             else
             {
                 // Follow the user
-                _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
+                _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: self,
                                 serviceURL: Constant.SERVICE_STORED_PROCEDURE,
                                 params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_FOLLOW_USER, variables: [ Util.getEmailFromDefaults(), userId ]) as NSString)
             }
@@ -254,63 +254,70 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     
     func onRetrievalSuccessful(_ event: Int, result: String)
     {
-        if (result != Constant.RETURN_NULL)
+        if (result != Constant.RETURN_NULL && event != ServiceEvent.NO_RETURN)
         {
             var sectionTitle = ""
             var rows = [ProfileRow]()
             var awards = [AwardRow]()
             
             // This gets saved as NSDictionary, so there is no order
-            let json: [AnyObject] = result.parseJSONString as! [AnyObject]
-            if (json.count > 0)
+            if (event != ServiceEvent.UPLOAD_IMAGE)
             {
-                switch(event)
+                let json: [AnyObject] = result.parseJSONString as! [AnyObject]
+                if (json.count > 0)
                 {
-                case ServiceEvent.GET_BADGES:
-                    
-                    for badge in json
+                    switch(event)
                     {
-                        let title = badge[Constant.COLUMN_BADGE_NAME] as! String
-                        let amount = badge[Constant.COLUMN_TOTAL_BADGES] as! String
-                        
-                        awards.append(AwardRow(title: title, amount: amount))
+                        case ServiceEvent.GET_BADGES:
+                            
+                            for badge in json
+                            {
+                                let title = badge[Constant.COLUMN_BADGE_NAME] as! String
+                                let amount = badge[Constant.COLUMN_TOTAL_BADGES] as! String
+                                
+                                awards.append(AwardRow(title: title, amount: amount))
+                            }
+                            
+                            rows.append(ProfileRow(title: "", awards: awards))
+                            
+                            sectionTitle = NSLocalizedString("awards_title", comment: "")
+                            
+                            break
+                        case ServiceEvent.GET_LAST_WEEK_ROUTINES:
+                            
+                            for routine in json
+                            {
+                                let title = routine[Constant.COLUMN_DISPLAY_NAME] as! String
+                                
+                                rows.append(ProfileRow(title: title, awards: []))
+                            }
+                            
+                            sectionTitle = NSLocalizedString("profile_routines_title", comment: "")
+                            
+                            break
+                        default:
+                            break
                     }
                     
-                    rows.append(ProfileRow(title: "", awards: awards))
-                    
-                    sectionTitle = NSLocalizedString("awards_title", comment: "")
-                    
-                    break
-                case ServiceEvent.GET_LAST_WEEK_ROUTINES:
-                    
-                    for routine in json
+                    if (sectionTitle == AWARDS_TITLE)
                     {
-                        let title = routine[Constant.COLUMN_DISPLAY_NAME] as! String
-                        
-                        rows.append(ProfileRow(title: title, awards: []))
+                        sections.insert(ProfileSection(title: sectionTitle, rows: rows), at: 0)
+                    }
+                    else
+                    {
+                        sections.append(ProfileSection(title: sectionTitle, rows: rows))
                     }
                     
-                    sectionTitle = NSLocalizedString("profile_routines_title", comment: "")
-                    
-                    break
-                case ServiceEvent.UPLOAD_IMAGE:
-                    imageDelegate?.onImageRetrieved(index, image: profilePic.image!, newUpload: true)
-                    break;
-                default:
-                    break
-                }
-                
-                if (sectionTitle == AWARDS_TITLE)
-                {
-                    sections.insert(ProfileSection(title: sectionTitle, rows: rows), at: 0)
-                }
-                else
-                {
-                    sections.append(ProfileSection(title: sectionTitle, rows: rows))
-                }
-                
-                tableView.reloadData()
-            }   
+                    tableView.reloadData()
+                }   
+
+            }
+            else
+            {
+                // This is for ServiceEvent.UPLOAD_IMAGE
+                // Callback for upload image successfully called here.
+                imageDelegate?.onImageRetrieved(index, image: profilePic.image!, newUpload: true)
+            }
         }
     }
     
