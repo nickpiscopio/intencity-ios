@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Intencity
+
+  Created by Nick Piscopio on 2/5/17.
+  Copyright © 2017 Nick Piscopio. All rights reserved.
+*/
+"NSCameraUsageDescription" = "Access to the camera is needed to take a profile picture.";
+"NSPhotoLibraryUsageDescription" = "Access to the photo library is needed to upload a photo.";

@@ -157,6 +157,7 @@
 		BDD89BF91C906C4D00530D79 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDD89BF81C906C4D00530D79 /* NotificationCell.xib */; };
 		BDD89BFB1C906D9F00530D79 /* NotificationCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD89BFA1C906D9F00530D79 /* NotificationCellViewController.swift */; };
 		BDD89BFF1C91C55300530D79 /* IntencityButtonNoBackgroundLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD89BFE1C91C55300530D79 /* IntencityButtonNoBackgroundLarge.swift */; };
+		BDDA163B1E47B2E800535AF9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BDDA16391E47B2E800535AF9 /* InfoPlist.strings */; };
 		BDDAD8F31CC29E4D00C07DB2 /* AddRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDAD8F21CC29E4D00C07DB2 /* AddRoutineViewController.swift */; };
 		BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F01C7A0445005817D0 /* ExerciseData.swift */; };
 		BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */; };
@@ -331,6 +332,7 @@
 		BDD89BF81C906C4D00530D79 /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		BDD89BFA1C906D9F00530D79 /* NotificationCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCellViewController.swift; sourceTree = "<group>"; };
 		BDD89BFE1C91C55300530D79 /* IntencityButtonNoBackgroundLarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntencityButtonNoBackgroundLarge.swift; sourceTree = "<group>"; };
+		BDDA163A1E47B2E800535AF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		BDDAD8F21CC29E4D00C07DB2 /* AddRoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoutineViewController.swift; sourceTree = "<group>"; };
 		BDE493F01C7A0445005817D0 /* ExerciseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
 		BDE493F41C7B5957005817D0 /* UIResponder+firstResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+firstResponder.swift"; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 			children = (
 				BD5460F41C68D34400F60ADC /* Assets.xcassets */,
 				BD5460F91C68D34400F60ADC /* Info.plist */,
+				BDDA16391E47B2E800535AF9 /* InfoPlist.strings */,
 				BD9EF2531C691C7100E520CB /* Localizable.strings */,
 				BD9EF2B71C6A941F00E520CB /* terms.html */,
 				BDBDB56A1C87504E00A2EE2C /* privacy.html */,
@@ -780,6 +783,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD36EC291C71048600F993CE /* ExerciseCard.xib in Resources */,
+				BDDA163B1E47B2E800535AF9 /* InfoPlist.strings in Resources */,
 				BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */,
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
 				BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */,
@@ -1018,6 +1022,14 @@
 			);
 			name = Localizable.strings;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		BDDA16391E47B2E800535AF9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDDA163A1E47B2E800535AF9 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
