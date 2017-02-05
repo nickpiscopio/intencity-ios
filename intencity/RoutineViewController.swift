@@ -364,12 +364,18 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
             }
             catch
             {
-                showConnectionIssue()
+                if (event == ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS)
+                {
+                   showConnectionIssue()
+                }
             }
         }
         else
         {
-            showConnectionIssue()
+            if (event == ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS)
+            {
+                showConnectionIssue()
+            }
         }
             
         switch event

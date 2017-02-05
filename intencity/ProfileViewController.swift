@@ -254,60 +254,63 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
     
     func onRetrievalSuccessful(_ event: Int, result: String)
     {
-        var sectionTitle = ""
-        var rows = [ProfileRow]()
-        var awards = [AwardRow]()
-        
-        // This gets saved as NSDictionary, so there is no order
-        let json: [AnyObject] = result.parseJSONString as! [AnyObject]        
-        if (json.count > 0)
+        if (result != Constant.RETURN_NULL)
         {
-            switch(event)
+            var sectionTitle = ""
+            var rows = [ProfileRow]()
+            var awards = [AwardRow]()
+            
+            // This gets saved as NSDictionary, so there is no order
+            let json: [AnyObject] = result.parseJSONString as! [AnyObject]
+            if (json.count > 0)
             {
+                switch(event)
+                {
                 case ServiceEvent.GET_BADGES:
-                
+                    
                     for badge in json
                     {
                         let title = badge[Constant.COLUMN_BADGE_NAME] as! String
                         let amount = badge[Constant.COLUMN_TOTAL_BADGES] as! String
-                    
+                        
                         awards.append(AwardRow(title: title, amount: amount))
                     }
                     
                     rows.append(ProfileRow(title: "", awards: awards))
-                
+                    
                     sectionTitle = NSLocalizedString("awards_title", comment: "")
-                
+                    
                     break
                 case ServiceEvent.GET_LAST_WEEK_ROUTINES:
-                
+                    
                     for routine in json
                     {
                         let title = routine[Constant.COLUMN_DISPLAY_NAME] as! String
-                    
+                        
                         rows.append(ProfileRow(title: title, awards: []))
                     }
-                
+                    
                     sectionTitle = NSLocalizedString("profile_routines_title", comment: "")
-                
+                    
                     break
                 case ServiceEvent.UPLOAD_IMAGE:
                     imageDelegate?.onImageRetrieved(index, image: profilePic.image!, newUpload: true)
                     break;
                 default:
                     break
-            }
-            
-            if (sectionTitle == AWARDS_TITLE)
-            {
-                sections.insert(ProfileSection(title: sectionTitle, rows: rows), at: 0)
-            }
-            else
-            {
-                sections.append(ProfileSection(title: sectionTitle, rows: rows))
-            }
-            
-            tableView.reloadData()
+                }
+                
+                if (sectionTitle == AWARDS_TITLE)
+                {
+                    sections.insert(ProfileSection(title: sectionTitle, rows: rows), at: 0)
+                }
+                else
+                {
+                    sections.append(ProfileSection(title: sectionTitle, rows: rows))
+                }
+                
+                tableView.reloadData()
+            }   
         }
     }
     

@@ -315,22 +315,24 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         }
         else
         {
-            showLoading()
+//            showLoading()
+//            
+//            displayOverview()
             
-            displayOverview()
+            displayFinishAlert()
         }
     }
     
     /**
      * Displays the Overview screen.
      */
-    func displayOverview()
-    {
-        let vc = storyboard!.instantiateViewController(withIdentifier: Constant.OVERVIEW_VIEW_CONTROLLER) as! OverviewViewController
-        vc.viewDelegate = viewDelegate
-        vc.fitnessLogDelegate = self
-        self.navigationController!.pushViewController(vc, animated: true)
-    }
+//    func displayOverview()
+//    {
+//        let vc = storyboard!.instantiateViewController(withIdentifier: Constant.OVERVIEW_VIEW_CONTROLLER) as! OverviewViewController
+//        vc.viewDelegate = viewDelegate
+//        vc.fitnessLogDelegate = self
+//        self.navigationController!.pushViewController(vc, animated: true)
+//    }
     
     /**
      * Remove the exercises from the database.
@@ -707,14 +709,14 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func onFinishRoutine()
     {
-        if (currentExercises.count > 1)
-        {
-            displayOverview()
-        }
-        else
-        {
+//        if (currentExercises.count > 1)
+//        {
+//            displayOverview()
+//        }
+//        else
+//        {
             displayFinishAlert()
-        }
+//        }
     }
     
     /**
