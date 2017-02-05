@@ -39,9 +39,9 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string> </string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string> </string>
 	<key>UILaunchStoryboardName</key>
 	<string>Loading</string>
 	<key>UIRequiredDeviceCapabilities</key>
