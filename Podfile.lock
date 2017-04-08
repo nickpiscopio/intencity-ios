@@ -6,7 +6,7 @@ PODS:
   - IQKeyboardManagerSwift (4.0.6)
   - RNCryptor (5.0.1)
   - SSSnackbar (0.1.2)
-  - youtube-ios-player-helper (0.1.4)
+  - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - DropDown
@@ -14,7 +14,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - RNCryptor
   - SSSnackbar
-  - youtube-ios-player-helper (= 0.1.4)
+  - youtube-ios-player-helper (= 0.1.6)
 
 SPEC CHECKSUMS:
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
@@ -22,8 +22,8 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
   RNCryptor: 2e352a488779d1a9184ab629be22a7c5bc84acb5
   SSSnackbar: 6a16cf8ab848d99a03ba21a7dab94d4478beabed
-  youtube-ios-player-helper: 84b1485ebb4b7c6b619c6e05edcb55186723a7c6
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 6e62a3c0a975ab6a2603ae0be32c28a6c641d040
+PODFILE CHECKSUM: 1800a4f7621938637373e513e1173ac360f7ac42
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.2.0.beta.1
