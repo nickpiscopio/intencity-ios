@@ -23,6 +23,9 @@ struct ExerciseTable
     static let COLUMN_ROUTINE_NAME = "RoutineName";
     // The last exercise we left off at.
     static let COLUMN_INDEX = "LastExerciseIndex";
+    // This is the ID that groups all the exercises together in a single workout session.
+    // We use this to retrieve all the exercises to show the overview screen on the web.
+    static let COLUMN_SESSION_ID = "SessionID";
     static let COLUMN_NAME = "ExerciseName";
     static let COLUMN_DESCRIPTION = "ExerciseDescription";
     static let COLUMN_WEB_ID = "WebId";

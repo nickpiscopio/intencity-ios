@@ -459,7 +459,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         {
             do
             {
-                exerciseData.exerciseList.append(contentsOf: try ExerciseDao().parseJson(json as? [AnyObject], searchString: ""))
+                exerciseData.exerciseList.append(try ExerciseDao().parseJson(json as? [AnyObject], searchString: ""))
                 exerciseData.addStretch()
             }
             catch

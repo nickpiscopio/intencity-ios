@@ -11,14 +11,16 @@ import Foundation
 
 class Exercise: NSObject
 {
+    var sessionId: Int
     var exerciseName = ""
     var exerciseDescription = ""
     var priority: Int
     var sets: [Set] = []
     var fromIntencity: Bool
     
-    init(exerciseName: String, exerciseDescription: String, priority: Int, sets: [Set], fromIntencity: Bool)
+    init(sessionId: Int, exerciseName: String, exerciseDescription: String, priority: Int, sets: [Set], fromIntencity: Bool)
     {
+        self.sessionId = sessionId
         self.exerciseName = exerciseName
         self.exerciseDescription = exerciseDescription
         self.priority = priority

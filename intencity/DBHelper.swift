@@ -16,7 +16,7 @@ class DBHelper
 {
     let DATABASE_NAME = "intencity.sqlite"
     
-    let DATABASE_VERSION: UInt32 = 2;
+    let DATABASE_VERSION: UInt32 = 3;
     
     let DB_COMMA_SEP = ","
     
@@ -47,6 +47,7 @@ class DBHelper
         let SQL_CREATE_ENTRIES = "CREATE TABLE IF NOT EXISTS " + ExerciseTable.TABLE_NAME + " (" +
             ExerciseTable.COLUMN_INDEX + integerType + DB_COMMA_SEP +
             ExerciseTable.COLUMN_ROUTINE_STATE + integerType + DB_COMMA_SEP +
+            ExerciseTable.COLUMN_SESSION_ID + integerType + DB_COMMA_SEP +
             ExerciseTable.COLUMN_ROUTINE_NAME + textType + DB_COMMA_SEP +
             ExerciseTable.COLUMN_WEB_ID + integerType + DB_COMMA_SEP +
             ExerciseTable.COLUMN_NAME + textType + notNull + DB_COMMA_SEP +
@@ -142,6 +143,7 @@ class DBHelper
             for set in sets
             {
                 let webId = set.webId
+                let sessionId = exercise.sessionId
                 let weight = set.weight
                 let reps = set.reps
                 let duration = set.duration
@@ -165,6 +167,7 @@ class DBHelper
                 let notesValue = notes != Constant.RETURN_NULL && notes != "" ? DB_COMMA_SEP + "'" + notes + "'" : ""
                 
                 let columns = "(" + ExerciseTable.COLUMN_ROUTINE_STATE + DB_COMMA_SEP +
+                                    ExerciseTable.COLUMN_SESSION_ID + DB_COMMA_SEP +
                                     ExerciseTable.COLUMN_ROUTINE_NAME + DB_COMMA_SEP +
                                     ExerciseTable.COLUMN_INDEX + DB_COMMA_SEP +
                                     ExerciseTable.COLUMN_NAME + DB_COMMA_SEP +
@@ -179,6 +182,7 @@ class DBHelper
                                     notesInsert + ")"
                 
                 let values = state + DB_COMMA_SEP +
+                                String(sessionId) + DB_COMMA_SEP +
                                 "'" + routineName + "'" + DB_COMMA_SEP +
                                 String(index) + DB_COMMA_SEP +
                                 "'" + exercise.exerciseName + "'" + DB_COMMA_SEP +
@@ -211,6 +215,7 @@ class DBHelper
     func getRecords() -> SavedExercise
     {
         var state = 0
+        var sessionId = 0
         var routineName = ""
         var exercises = [Exercise]()
         var index = 0
@@ -239,6 +244,7 @@ class DBHelper
                 }
                 
                 state = Int(result.string(forColumn: ExerciseTable.COLUMN_ROUTINE_STATE))!
+                sessionId = Int(result.string(forColumn: ExerciseTable.COLUMN_SESSION_ID))!
                 routineName = result.string(forColumn: ExerciseTable.COLUMN_ROUTINE_NAME)
                 
                 // Exercise
@@ -254,7 +260,7 @@ class DBHelper
                 {
                     lastExerciseName = name!
                     
-                    exercise = Exercise(exerciseName: name!, exerciseDescription: description != nil ? description! : "", priority: priority != nil ? Int(priority!)! : Int(Constant.CODE_FAILED), sets: [], fromIntencity: fromIntencity)
+                    exercise = Exercise(sessionId: sessionId, exerciseName: name!, exerciseDescription: description != nil ? description! : "", priority: priority != nil ? Int(priority!)! : Int(Constant.CODE_FAILED), sets: [], fromIntencity: fromIntencity)
                     
                     exercises.append(exercise)
 

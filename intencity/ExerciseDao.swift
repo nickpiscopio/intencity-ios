@@ -11,7 +11,7 @@ import Foundation
 
 struct ExerciseDao
 {
-    func parseJson(_ json: [AnyObject]?, searchString: String) throws -> [Exercise]
+    func parseJson(_ json: [AnyObject]?, sessionId: Int, searchString: String) throws -> [Exercise]
     {
         var foundSearchResult = false
         
@@ -44,7 +44,7 @@ struct ExerciseDao
                     priority = Int(result)!
                 }
 
-                let exercise = Exercise(exerciseName: exerciseName, exerciseDescription: "", priority: priority, sets: sets, fromIntencity: exerciseTableExerciseName == nil || !(exerciseTableExerciseName is NSNull))
+                let exercise = Exercise(sessionId: sessionId, exerciseName: exerciseName, exerciseDescription: "", priority: priority, sets: sets, fromIntencity: exerciseTableExerciseName == nil || !(exerciseTableExerciseName is NSNull))
                 
                 // This determines if what we searched for has been returned from the database.
                 // This is not case sensitive.
@@ -58,7 +58,7 @@ struct ExerciseDao
             
             if (searchString != "" && !foundSearchResult)
             {
-                exercises.append(getExercise(searchString))
+                exercises.append(getExercise(sessionId: sessionId, exerciseName: searchString))
             }
         }
         else
@@ -76,7 +76,7 @@ struct ExerciseDao
      *
      * @return The exercise.
      */
-    func getExercise(_ exerciseName: String) -> Exercise
+    func getExercise(sessionId: Int, exerciseName: String) -> Exercise
     {
         let set = Set(webId: Int(Constant.CODE_FAILED),
                       weight: Float(Constant.CODE_FAILED),
@@ -85,6 +85,6 @@ struct ExerciseDao
                       difficulty: 10,
                       notes: "")
         
-        return Exercise(exerciseName: exerciseName, exerciseDescription: "", priority: Int(Constant.CODE_FAILED), sets: [ set ], fromIntencity: false)
+        return Exercise(sessionId: sessionId, exerciseName: exerciseName, exerciseDescription: "", priority: Int(Constant.CODE_FAILED), sets: [ set ], fromIntencity: false)
     }
 }
