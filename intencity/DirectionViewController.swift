@@ -106,18 +106,18 @@ class DirectionViewController: UIViewController, ServiceDelegate
         self.tableView.reloadSections(sections as IndexSet, with: .top)
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // Return the number of rows in the section.
         return steps.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let index = indexPath.row
         

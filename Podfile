@@ -5,7 +5,7 @@ use_frameworks!
 
 target "intencity" do
 
-    pod 'youtube-ios-player-helper', '0.1.4'
+    pod 'youtube-ios-player-helper', '0.1.6'
 
     pod 'RNCryptor'
 
