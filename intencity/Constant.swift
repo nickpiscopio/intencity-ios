@@ -63,6 +63,7 @@ struct Constant
     static let CUSTOM_ROUTINE_VIEW_CONTROLLER = "CustomRoutineViewController"
     static let ADD_ROUTINE_VIEW_CONTROLLER = "AddRoutineViewController"
     static let EDIT_EQUIPMENT_VIEW_CONTROLLER = "EditEquipmentViewController"
+    static let EDIT_LOCATIONS_VIEW_CONTROLLER = "EditLocationsViewController"
     static let RATE_INTENCITY = "RateIntencity"
     static let CONTRIBUTE_INTENCITY = "ContributeIntencity"
     static let LOG_OUT = "LogOut"
@@ -188,6 +189,7 @@ struct Constant
     static let STORED_PROCEDURE_SEARCH_EXERCISES = "searchExercises";
     static let STORED_PROCEDURE_SEARCH_USERS = "searchUsers";
     static let STORED_PROCEDURE_FOLLOW_USER = "followUser";
+    static let STORED_PROCEDURE_GET_FITNESS_LOCATIONS = "getUserFitnessLocations";
     static let STORED_PROCEDURE_GET_EXERCISE_DIRECTION = "getDirection";
     static let STORED_PROCEDURE_GET_EQUIPMENT = "getEquipment";
     static let STORED_PROCEDURE_GET_EXERCISE_PRIORITIES = "getPriority";

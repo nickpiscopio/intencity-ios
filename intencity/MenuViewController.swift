@@ -38,11 +38,13 @@ class MenuViewController: UIViewController
 
         menu.append(MenuSection(title: "", rows: notificationRow))
         
+        
+        
         let isMobileTrial = Util.isAccountTypeTrial()
         
         // The settings section.
         var settingsRows = [ MenuRow(title: NSLocalizedString("edit_priority", comment: ""), viewController: "EditExercisePrioritiesViewController"),
-                             MenuRow(title: NSLocalizedString("edit_equipment", comment: ""), viewController: Constant.EDIT_EQUIPMENT_VIEW_CONTROLLER) ]
+                             MenuRow(title: NSLocalizedString("edit_locations", comment: ""), viewController: Constant.EDIT_LOCATIONS_VIEW_CONTROLLER) ]
         
         if (isMobileTrial)
         {

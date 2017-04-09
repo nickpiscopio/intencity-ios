@@ -38,44 +38,44 @@
 "name_validation_error" = "Names must be less than 30 characters and can only contain letters, spaces, and . ' -";
 
 // Intencity Strings
-/*  */
+ 
 "app_name" = "Intencity";
 "app_name_prefix" = "Inten";
 "app_name_suffix" = "city";
 "website_suffix" = ".fit";
 
-/*  */
+ 
 "copyright" = "© Intencity 2017. All Rights Reserved.";
 
-/*  */
+ 
 "welcome_title" = "Welcome!";
 
-/*  */
+ 
 "welcome_description" = "Thank you for using Intencity; the fitness app designed to help you with your everyday fitness needs.\n\nPlease let us know of any issues or improvements you may have.\n\n—The Intencity Team";
 "get_started" = "Get Started";
 
 "edit_equipment_alert_title" = "Set Equipment";
 "edit_equipment_alert_description" = "Would you like to change your exercise equipment?";
 
-/*  */
+ 
 "get_started" = "Get Started";
 
-/*  */
+ 
 "first_name" = "First Name";
 
-/*  */
+ 
 "last_name" = "Last Name";
 
-/*  */
+ 
 "email" = "Email";
 
-/*  */
+ 
 "confirm_email" = "Confirm Email";
 
-/*  */
+ 
 "password" = "Password";
 
-/*  */
+ 
 "confirm_password" = "Confirm Password";
 
 "terms_agreement" = "By using Intencity, you agree to the @Terms of Use@ and @Privacy Policy@.";
@@ -83,72 +83,72 @@
 "terms_create_account" = "By creating an account, you agree to the @Terms of Use@ and @Privacy Policy@.";
 "have_an_account" = "Already have an account?";
 
-/*  */
+ 
 "sign_in" = "SIGN IN";
 
-/*  */
+ 
 "title_forgot_password" = "Forgot Password";
 
-/*  */
+ 
 "reset_password_message" = "Enter your email, and we'll send you a new password.";
 
-/*  */
+ 
 "forgot_password_email_sent_title" = "Password reset";
 
-/*  */
+ 
 "forgot_password_email_sent" = "Please check your email for your new password.";
 
-/*  */
+ 
 "reset" = "RESET PASSWORD";
 
-/*  */
+ 
 "forgot_password" = "Forgot password?";
 
-/*  */
+ 
 "separator" = "·";
 
-/*  */
+ 
 "create_account" = "Create an account";
 "convert_account" = "Convert Trial Account to Full Account";
 "title_convert_account" = "Convert Account";
 
-/*  */
+ 
 "title_create_account" = "Create Account";
 "create_account_description" = "Sign up below for the best possible experience with Intencity.";
 "create_account_promise" = "We promise we won\'t send you spam.";
 
-/*  */
+ 
 "title_terms" = "Terms of Use";
 "title_privacy_policy" = "Privacy Policy";
 
 /* Login Strings */
 "login_error_title" = "Error logging in";
 
-/*  */
+ 
 "login_error_message" = "Please check your email and password, and try again.";
 
 /* Create account Strings */
 "generic_error" = "A problem occurred";
 
-/*  */
+ 
 "fill_in_fields" = "Please fill in all fields.";
 
-/*  */
+ 
 "email_validation_error" = "Please enter a valid email.";
 
-/*  */
+ 
 "email_match_error" = "Emails do not match.";
 
-/*  */
+ 
 "email_exists" = "Email already exists.";
 
-/*  */
+ 
 "password_match_error" = "Passwords do not match.";
 
-/*  */
+ 
 "password_validation_error" = "Passwords must be between 8 and 40 characters and cannot contain < > \" = +";
 
-/*  */
+ 
 "field_validation_error" = "Fields cannot contain < > \" = +";
 "success" = "Success";
 "account_converted" = "Your trial account has been converted into a full account!";
@@ -156,32 +156,32 @@
 /* Intencity Strings */
 "title_rankings" = "Leaderboard";
 
-/*  */
+ 
 "title_fitness_guru" = "Fitness Guru";
 
-/*  */
+ 
 "title_menu" = "Menu";
 
-/*  */
+ 
 "menu_search" = "Search";
 
-/*  */
+ 
 "title_app" = "App";
 
 "title_rate_intencity" = "Rate Intencity";
 "title_contribute_intencity" = "Contribute to Intencity";
 
-/*  */
+ 
 "direction" = "Don't know how to do this exercise?";
 
 /* Search Strings */
 "search_exercise" = "Search for an exercise";
 "search_exercise_not_found" = "Intencity doesn't have directions for this exercise.";
 
-/*  */
+ 
 "search_user" = "Search for a user";
 
-/*  */
+ 
 "no_results" = "No results to display.";
 
 /* Ranking Strings */
@@ -195,10 +195,10 @@
 "profile_pic_dialog_pictures_button" = "Open my photos";
 "empty_profile_awards" = "No activity found.";
 
-/*  */
+ 
 "no_friends" = "We couldn't find the users you follow.";
 
-/*  */
+ 
 "rankings_updated" = "Approximate ranking reset:\n%1$@";
 
 /* Routine Strings */
@@ -230,7 +230,7 @@
 "add_routines_title" = "Add Routine";
 "add_routines_description" = "Select the muscle groups you would like in this routine.";
 
-/*  */
+ 
 "routine_continue" = "CONTINUE %1$@";
 "create_routine_title" = "Want a custom routine?";
 "create_routine_button" = "CREATE ROUTINE";
@@ -256,137 +256,137 @@
 
 "how_to_workout_title" = "What is your fitness goal?";
 
-/*  */
+ 
 "gain" = "GAIN";
 
-/*  */
+ 
 "sustain" = "SUSTAIN";
 
-/*  */
+ 
 "lose" = "LOSE";
 
-/*  */
+ 
 "tone" = "TONE";
 
-/*  */
+ 
 "recommendations" = "FITNESS RECOMMENDATIONS";
 
-/*  */
+ 
 "weight_title" = "Weight:";
 
-/*  */
+ 
 "asterisk" = "*";
 
-/*  */
+ 
 "weight_description" = "The difficulty of weight is relative to each person. Low weight for one person might be heavy weight for another. Choose your weight carefully.";
 
-/*  */
+ 
 "rest_title" = "REST BETWEEN EXERCISES";
 
-/*  */
+ 
 "cardio_day_title" = "CARDIO DAY";
 
-/*  */
+ 
 "weight_gain" = "medium–high";
 
-/*  */
+ 
 "duration_gain" = "3–5 reps or 30 seconds";
 
-/*  */
+ 
 "rest_gain" = "2–2.5 minutes";
 
-/*  */
+ 
 "cardio_day_gain" = "~25 minutes total";
 
-/*  */
+ 
 "weight_sustain" = "medium";
 
-/*  */
+ 
 "duration_sustain" = "8–10 reps or 45 seconds";
 
-/*  */
+ 
 "rest_sustain" = "1.5–2 minutes";
 
-/*  */
+ 
 "cardio_day_sustain" = "~30 minutes total";
 
-/*  */
+ 
 "weight_lose" = "low–medium";
 
-/*  */
+ 
 "duration_lose" = "8–12 reps or 1 minute";
 
-/*  */
+ 
 "rest_lose" = "45 seconds–1 minute";
 
-/*  */
+ 
 "cardio_day_lose" = "~35 minutes total";
 
-/*  */
+ 
 "weight_tone" = "low–medium";
 
-/*  */
+ 
 "duration_tone" = "8–12 reps or 1 minute";
 
-/*  */
+ 
 "rest_tone" = "20–30 seconds";
 
-/*  */
+ 
 "cardio_day_tone" = "~45 minutes total";
 
 /* Exercise Strings */
 "title_weight" = "WEIGHT";
 
-/*  */
+ 
 "title_lbs" = "LBS";
 
-/*  */
+ 
 "title_duration" = "DURATION";
 
-/*  */
+ 
 "title_reps" = "REPS";
 
-/*  */
+ 
 "title_time" = "TIME";
 
-/*  */
+ 
 "title_intensity" = "INTENSITY";
 
-/*  */
+ 
 "note_hint" = "Notes…";
 
-/*  */
+ 
 "edit" = "EDIT";
 "edit_camel_case" = "Edit";
 
-/*  */
+ 
 "warm_up" = "WARM-UP";
 
-/*  */
+ 
 "warm_up_description" = "Perform a moderate activity for 3–5 minutes or until warm. This activity can be a light jog, riding a bike, jumping jacks, etc.";
 
-/*  */
+ 
 "stretch" = "STRETCH";
 
-/*  */
+ 
 "stretch_description" = "To combat soreness and encourage muscle development, stretch the muscles that were exercised in this workout.";
 
-/*  */
+ 
 "stretches_title" = "Stretches for %1$@";
 
-/*  */
+ 
 "warm_ups_title" = "Warm-Ups for %1$@";
 
-/*  */
+ 
 "title_add_set_error" = "Missing duration";
 
-/*  */
+ 
 "message_add_set_error" = "Please enter reps or time in your last set.";
 
-/*  */
+ 
 "message_remove_last_set" = "Would you like to remove the last set?";
 
-/*  */
+ 
 "button_remove_set" = "Remove last set";
 
 /* Buttons */
@@ -395,22 +395,21 @@
 /* Menu Strings */
 "notifications" = "Notifications %1$@";
 
-/*  */
+ 
 "title_notifications" = "Notifications";
-
-/*  */
+ 
 "title_settings" = "Settings";
 
-/*  */
+ 
 "title_account_settings" = "Account Settings";
 
-/*  */
+ 
 "title_about" = "About";
 
-/*  */
+ 
 "title_log_out" = "Log Out";
 
-/*  */
+ 
 "title_delete_account" = "Delete Account";
 
 /* Settings Strings */
@@ -418,15 +417,15 @@
 "edit_priority_title" = "Change the priority for each exercise to fit your needs.";
 "edit_priority_description" = "Priorities change the frequency at which an exercise occurs during a workout. This helps Intencity generate exercises to fit your needs.";
 
-/*  */
+"edit_locations" = "Edit Fitness Locations";
 "edit_equipment" = "Edit Equipment";
 "edit_equipment_title" = "Select your current equipment.";
 "edit_equipment_description" = "This helps Intencity generate exercises to fit your needs.";
 
-/*  */
+ 
 "change_password" = "Change Password";
 
-/*  */
+ 
 "no_priorities" = "Priorities have not been set for any exercises.";
 "high_priority" = "HIGH PRIORITY";
 "medium_priority" = "MEDIUM PRIORITY";
@@ -434,58 +433,58 @@
 "low_priority" = "LOW PRIORITY";
 "hidden_exercise" = "EXERCISE HIDDEN";
 
-/*  */
+ 
 "no_notifications" = "No notifications found.";
 
-/*  */
+ 
 "invalid_password" = "The password you entered as your current password isn't correct. Please try again.";
 
-/*  */
+ 
 "password_changed_title" = "Password changed";
 
-/*  */
+ 
 "password_changed" = "Your password has been changed.";
 
-/*  */
+ 
 "current_password" = "Current password";
 
-/*  */
+ 
 "new_password" = "New password";
 
-/*  */
+ 
 "confirm_new_password" = "Confirm new password";
 
 /* Directions */
 "title_direction" = "DIRECTIONS";
 
-/*  */
+ 
 "submitted_by" = "Submitted by: %1$@";
 
 /* About */
 "title_mission" = "MISSION";
 
-/*  */
+ 
 "title_founders" = "FOUNDERS";
 
-/*  */
+ 
 "title_contributors" = "CONTRIBUTIONS";
 
-/*  */
+ 
 "title_version" = "VERSION";
 
-/*  */
+ 
 "mission" = "We strive to deliver the greatest platform that will influence, motivate, and connect people, which will help them achieve their fitness goals.";
 
-/*  */
+ 
 "youtube_communication_error" = "YouTube retrieval problem.";
 
-/*  */
+ 
 "intencity_communication_error" = "There was a problem communicating with Intencity's server. Please try again later.";
 
-/*  */
+ 
 "intencity_communication_error_email" = "There was either a problem communicating with Intencity's server or with the email you provided. Please check your email or try again later.";
 
-/*  */
+ 
 "try_again" = "TRY AGAIN";
 
 /* Overview Strings */
@@ -500,38 +499,38 @@
 /* Award Strings */
 "award_login_description" = "Points for logging in.";
 
-/*  */
+ 
 "award_exercise_description" = "Points for doing the next exercise.";
 
-/*  */
+ 
 "award_completed_workout_description" = "Points for completing Intencity's workout!";
 
-/*  */
+ 
 "award_sharing_description" = "Points for sharing your experience of Intencity!";
 
-/*  */
+ 
 "award_left_it_on_the_field_description" = "You earned the \"Left it on the Field\" badge for doing an exercise with at least two sets of 10 or more reps or a duration of greater than 1 minute.";
 
-/*  */
+ 
 "award_kept_swimming_description" = "You earned the \"Kept Swimming\" badge for not skipping an exercise.";
 
-/*  */
+ 
 "award_finisher_description" = "You've earned the \"Finisher\" badge for completing your workout with Intencity!";
 
 /* Delete Account Strings */
 "fill_in_password" = "Please enter your password.";
 
-/*  */
+ 
 "delete_account_message" = "If you really want to delete your account, type your password below and click, \"DELETE MY ACCOUNT\".";
 
-/*  */
+ 
 "delete_account_button" = "DELETE MY ACCOUNT";
 
-/*  */
+ 
 "delete_account_dialog_message" = "Are you sure you want to delete your account?";
 
 /* Trial account done */
 "trial_account_done_title" = "Trial ended";
 
-/*  */
+ 
 "trial_account_done_message" = "Thank you for trying Intencity!\n\nUnfortunately, your trial has ended, but you can still use Intencity for free; just sign up. If you're not ready to commit, just click the \"TRY INTENCITY\" button again. We're fine with that too.";
