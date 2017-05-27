@@ -411,6 +411,25 @@ class Util
     static func getMutableString(_ string: String, fontSize: CGFloat, color: UIColor, isBold: Bool) -> NSMutableAttributedString
     {
         let attributes = isBold ? UIFont.boldSystemFont(ofSize: fontSize) : UIFont.systemFont(ofSize: fontSize)
+
+        var mutableString = NSMutableAttributedString()
+        mutableString = NSMutableAttributedString(string: string, attributes: [ NSFontAttributeName:  attributes])
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: color, range: NSRange(location: 0, length: string.characters.count))
+        
+        return mutableString
+    }
+    
+    /**
+     * Returns a mutable string for labels and buttons.
+     *
+     * @param string    The string we are mutating.
+     * @param fontSize  The font size of the string.
+     * @param color     The color the text should be.
+     * @param isItalic    Whether or not the text should be bold.
+     */
+    static func getMutableString(_ string: String, fontSize: CGFloat, color: UIColor, isItalic: Bool) -> NSMutableAttributedString
+    {
+        let attributes = isItalic ? UIFont.italicSystemFont(ofSize: fontSize) : UIFont.systemFont(ofSize: fontSize)
         
         var mutableString = NSMutableAttributedString()
         mutableString = NSMutableAttributedString(string: string, attributes: [ NSFontAttributeName:  attributes])

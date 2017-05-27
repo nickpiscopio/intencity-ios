@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GenericDescriptionCell" rowHeight="117" id="icG-md-GiK" customClass="GenericDescriptionCellController" customModule="Intencity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="524" height="117"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="icG-md-GiK" id="XCx-xf-xSG">
+                <rect key="frame" x="0.0" y="0.0" width="524" height="116.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iF8-y4-Xxv">
+                        <rect key="frame" x="8" y="8" width="508" height="100.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zip-jz-GbM">
+                                <rect key="frame" x="8" y="8" width="492" height="84.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ds-Xm-l3e">
+                                        <rect key="frame" x="0.0" y="0.0" width="492" height="63.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0K2-8j-WRU">
+                                        <rect key="frame" x="0.0" y="68.5" width="492" height="16"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Zip-jz-GbM" secondAttribute="trailing" constant="8" id="51b-ew-cje"/>
+                            <constraint firstItem="Zip-jz-GbM" firstAttribute="top" secondItem="iF8-y4-Xxv" secondAttribute="top" constant="8" id="6AU-vl-PAg"/>
+                            <constraint firstItem="Zip-jz-GbM" firstAttribute="leading" secondItem="iF8-y4-Xxv" secondAttribute="leading" constant="8" id="A2G-s3-l0v"/>
+                            <constraint firstAttribute="bottom" secondItem="Zip-jz-GbM" secondAttribute="bottom" constant="8" id="Saz-ik-OAZ"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AW5-Xg-FF3">
+                        <rect key="frame" x="0.0" y="115.5" width="524" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="F7u-8M-4HR"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="iF8-y4-Xxv" firstAttribute="top" secondItem="XCx-xf-xSG" secondAttribute="topMargin" id="BZk-hl-LHR"/>
+                    <constraint firstAttribute="bottom" secondItem="AW5-Xg-FF3" secondAttribute="bottom" id="Do4-qS-d2W"/>
+                    <constraint firstItem="AW5-Xg-FF3" firstAttribute="leading" secondItem="XCx-xf-xSG" secondAttribute="leading" id="QHn-nE-aQ4"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="iF8-y4-Xxv" secondAttribute="trailing" id="T3w-UW-pX0"/>
+                    <constraint firstAttribute="trailing" secondItem="AW5-Xg-FF3" secondAttribute="trailing" id="Yjb-5E-o3V"/>
+                    <constraint firstItem="iF8-y4-Xxv" firstAttribute="leading" secondItem="XCx-xf-xSG" secondAttribute="leadingMargin" id="bvu-TB-hos"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="iF8-y4-Xxv" secondAttribute="bottom" id="s8C-ji-fAH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellBackgroundView" destination="XCx-xf-xSG" id="2QD-f6-Irx"/>
+                <outlet property="cellBorderBottom" destination="AW5-Xg-FF3" id="WFy-Lr-Ltl"/>
+                <outlet property="cellDescription" destination="0K2-8j-WRU" id="y7c-cv-59z"/>
+                <outlet property="cellHeader" destination="3ds-Xm-l3e" id="8Sa-fw-WPx"/>
+            </connections>
+            <point key="canvasLocation" x="-75" y="112.5"/>
+        </tableViewCell>
+    </objects>
+</document>

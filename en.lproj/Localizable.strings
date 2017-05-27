@@ -534,3 +534,8 @@
 
  
 "trial_account_done_message" = "Thank you for trying Intencity!\n\nUnfortunately, your trial has ended, but you can still use Intencity for free; just sign up. If you're not ready to commit, just click the \"TRY INTENCITY\" button again. We're fine with that too.";
+
+/* Alert strings */
+"location_settings_error_title" = "Couldn't determine location";
+"location_settings_error_description" = "Allow Intencity to access your location by going to Settings > Privacy > Location Services.";
+"location_none_found" = "No locations found";

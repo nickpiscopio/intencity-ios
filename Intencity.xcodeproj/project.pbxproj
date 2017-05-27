@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		010CBBAF1D5539A40061B787 /* RoutineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CBBAE1D5539A40061B787 /* RoutineType.swift */; };
 		018588771D52BEBC00607157 /* IndexedExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018588761D52BEBC00607157 /* IndexedExercise.swift */; };
+		375B8A221E99C8BE0061F270 /* EditLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375B8A211E99C8BE0061F270 /* EditLocationViewController.swift */; };
+		37D276441EAC032B00E92CF2 /* GenericDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37D276431EAC032B00E92CF2 /* GenericDescriptionCell.xib */; };
+		37D276461EAC03AD00E92CF2 /* GenericDescriptionCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D276451EAC03AD00E92CF2 /* GenericDescriptionCellController.swift */; };
+		37E260D81EAD14FF0092ED56 /* GoogleGeocode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E260D71EAD14FF0092ED56 /* GoogleGeocode.swift */; };
+		37E260DA1EAD16F30092ED56 /* GeocodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E260D91EAD16F20092ED56 /* GeocodeDelegate.swift */; };
+		37F08DB11E9AB6E800857E86 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F08DB01E9AB6E800857E86 /* Location.swift */; };
 		38887FDCE90906A29FE4CDC2 /* Pods_intencity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF2696D21F3A67016206E9 /* Pods_intencity.framework */; };
 		BD03C7B31C76082B00D8911A /* Set.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD03C7B21C76082B00D8911A /* Set.xib */; };
 		BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD03C7B41C760A4E00D8911A /* SetCellController.swift */; };
@@ -182,6 +188,12 @@
 /* Begin PBXFileReference section */
 		010CBBAE1D5539A40061B787 /* RoutineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineType.swift; sourceTree = "<group>"; };
 		018588761D52BEBC00607157 /* IndexedExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexedExercise.swift; sourceTree = "<group>"; };
+		375B8A211E99C8BE0061F270 /* EditLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLocationViewController.swift; sourceTree = "<group>"; };
+		37D276431EAC032B00E92CF2 /* GenericDescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericDescriptionCell.xib; sourceTree = "<group>"; };
+		37D276451EAC03AD00E92CF2 /* GenericDescriptionCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericDescriptionCellController.swift; sourceTree = "<group>"; };
+		37E260D71EAD14FF0092ED56 /* GoogleGeocode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleGeocode.swift; sourceTree = "<group>"; };
+		37E260D91EAD16F20092ED56 /* GeocodeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodeDelegate.swift; sourceTree = "<group>"; };
+		37F08DB01E9AB6E800857E86 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		70D17A2123266F2E629BCBB1 /* Pods-intencity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intencity.release.xcconfig"; path = "Pods/Target Support Files/Pods-intencity/Pods-intencity.release.xcconfig"; sourceTree = "<group>"; };
 		BD03C7B21C76082B00D8911A /* Set.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Set.xib; sourceTree = "<group>"; };
 		BD03C7B41C760A4E00D8911A /* SetCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCellController.swift; sourceTree = "<group>"; };
@@ -402,6 +414,7 @@
 				BD5F97891D149CEE001E5A26 /* OverviewRowType.swift */,
 				BD0CD6FB1C985248004FF750 /* DateUtil.swift */,
 				BD85D5CE1D16D5BC0004F5C2 /* ExerciseSet.swift */,
+				37E260D71EAD14FF0092ED56 /* GoogleGeocode.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -443,6 +456,7 @@
 				BD0CD7071CA08223004FF750 /* ExercisePriorityCellController.swift */,
 				BD5C6AF81C88BB6500A9ED0A /* GenericCellController.swift */,
 				BDE493FE1C7B9B5B005817D0 /* GenericHeaderCellController.swift */,
+				37D276451EAC03AD00E92CF2 /* GenericDescriptionCellController.swift */,
 				BD56FB8C1CCFFD08001404C5 /* IntencityRoutineFooterCellController.swift */,
 				BD7A87091CCE4542005BC2DF /* RoutineCellController.swift */,
 				BD7A87111CCEA137005BC2DF /* RoutineContinueCellController.swift */,
@@ -498,6 +512,7 @@
 				BD4B8EB61C7CE22C00AD579B /* AboutSection.swift */,
 				BD7C7E7B1C7C9ABD005AFFDD /* MenuRow.swift */,
 				BD1F30E21CA9BBAA00002D06 /* ProfileRow.swift */,
+				37F08DB01E9AB6E800857E86 /* Location.swift */,
 				BD53AED51CAAD02B00077B0D /* AwardRow.swift */,
 				BD9EF2561C692A6900E520CB /* DemoView.swift */,
 				BD03C7B61C760DE200D8911A /* Set.swift */,
@@ -532,6 +547,7 @@
 				BD7C7E861C7CA0DA005AFFDD /* ChangePasswordViewController.swift */,
 				BD7C7E7D1C7C9E48005AFFDD /* AboutViewController.swift */,
 				BD7C7E881C7CA0E9005AFFDD /* DeleteAccountViewController.swift */,
+				375B8A211E99C8BE0061F270 /* EditLocationViewController.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -669,6 +685,7 @@
 				BD294AC41CAEAE09005718BA /* ImageDelegate.swift */,
 				BD56FB941CD1051B001404C5 /* IntencityRoutineDelegate.swift */,
 				BDB253151D269AB600AD7547 /* FitnessLogDelegate.swift */,
+				37E260D91EAD16F20092ED56 /* GeocodeDelegate.swift */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -698,6 +715,7 @@
 				BD36EC321C720C6B00F993CE /* Direction.xib */,
 				BDE493F81C7B9A26005817D0 /* GenericCell.xib */,
 				BDE493FC1C7B9B45005817D0 /* GenericHeaderCell.xib */,
+				37D276431EAC032B00E92CF2 /* GenericDescriptionCell.xib */,
 				BD56FB8A1CCFFCAA001404C5 /* IntencityRoutineFooterCell.xib */,
 				BD03C7B21C76082B00D8911A /* Set.xib */,
 			);
@@ -786,6 +804,7 @@
 				BDDA163B1E47B2E800535AF9 /* InfoPlist.strings in Resources */,
 				BD0CD7061CA08185004FF750 /* ExercisePriorityCell.xib in Resources */,
 				BD5460F51C68D34400F60ADC /* Assets.xcassets in Resources */,
+				37D276441EAC032B00E92CF2 /* GenericDescriptionCell.xib in Resources */,
 				BDE8BED41C776E5600DBFB31 /* ExerciseListHeader.xib in Resources */,
 				BDE493FD1C7B9B45005817D0 /* GenericHeaderCell.xib in Resources */,
 				BD640A4F1C85D1D7008895A2 /* RankingCell.xib in Resources */,
@@ -906,6 +925,7 @@
 				BDF1E49D1D0D8A46004CEAFC /* OverviewViewController.swift in Sources */,
 				BD9479FB1C6CE43C003F3767 /* JSON.swift in Sources */,
 				BD1F30E31CA9BBAA00002D06 /* ProfileRow.swift in Sources */,
+				37D276461EAC03AD00E92CF2 /* GenericDescriptionCellController.swift in Sources */,
 				BDE493F11C7A0445005817D0 /* ExerciseData.swift in Sources */,
 				BD5F978A1D149CEE001E5A26 /* OverviewRowType.swift in Sources */,
 				BDE493F51C7B5957005817D0 /* UIResponder+firstResponder.swift in Sources */,
@@ -931,6 +951,7 @@
 				BD58AB2D1CC8F70A006D7EF4 /* View.swift in Sources */,
 				BD4B7B861CD127C400D83F91 /* NoItemCellController.swift in Sources */,
 				BDD89BFB1C906D9F00530D79 /* NotificationCellViewController.swift in Sources */,
+				37E260D81EAD14FF0092ED56 /* GoogleGeocode.swift in Sources */,
 				BD6E4B061C84B2AC00C4E6FB /* UserSearchDelegate.swift in Sources */,
 				BD36EC2F1C72068900F993CE /* ExerciseDelegate.swift in Sources */,
 				BDD89BF31C90654800530D79 /* NotificationHandler.swift in Sources */,
@@ -945,6 +966,7 @@
 				BD9EF2C21C6B869E00E520CB /* Constant.swift in Sources */,
 				BDD53BF01C8A1CEB001235AE /* IntencityTabButton.swift in Sources */,
 				BD9EF2C41C6B8A6700E520CB /* Util.swift in Sources */,
+				37E260DA1EAD16F30092ED56 /* GeocodeDelegate.swift in Sources */,
 				010CBBAF1D5539A40061B787 /* RoutineType.swift in Sources */,
 				BD947A061C6D3F30003F3767 /* Integer.swift in Sources */,
 				BD91FC0F1CAD733600965782 /* NSMutableData.swift in Sources */,
@@ -959,9 +981,11 @@
 				BD947A0A1C6D4B90003F3767 /* ServiceEvent.swift in Sources */,
 				BD53AED81CAD517600077B0D /* IntencityCircleView.swift in Sources */,
 				BD7C7E831C7CA0C6005AFFDD /* EditExercisePrioritiesViewController.swift in Sources */,
+				37F08DB11E9AB6E800857E86 /* Location.swift in Sources */,
 				BD56FB8D1CCFFD08001404C5 /* IntencityRoutineFooterCellController.swift in Sources */,
 				BD8811021C92FF3A0098FA64 /* Badge.swift in Sources */,
 				BD1F30E71CAACA0300002D06 /* AwardCellController.swift in Sources */,
+				375B8A221E99C8BE0061F270 /* EditLocationViewController.swift in Sources */,
 				BD0CD6FA1C984789004FF750 /* Toast.swift in Sources */,
 				BDE493FF1C7B9B5B005817D0 /* GenericHeaderCellController.swift in Sources */,
 				BD7C7E871C7CA0DA005AFFDD /* ChangePasswordViewController.swift in Sources */,

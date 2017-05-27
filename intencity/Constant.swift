@@ -27,6 +27,7 @@ struct Constant
     static let SET_CELL = "SetCell"
     static let GENERIC_CELL = "GenericCell"
     static let GENERIC_HEADER_CELL = "GenericHeaderCell"
+    static let GENERIC_DESCRIPTION_CELL = "GenericDescriptionCell"
     static let ABOUT_CELL = "AboutCell"
     static let DESCRIPTION_FOOTER_CELL = "DescriptionFooterCell"
     static let SEARCH_EXERCISE_CELL = "SearchExerciseCell"
@@ -38,6 +39,8 @@ struct Constant
     static let NOTIFICATION_CELL = "NotificationCell"
     static let AWARD_CELL = "AwardCell"
     static let AWARD_COLLECTION_VIEW_CELL = "AwardCollectionViewCell"
+    
+    static let ROOT_LOCATION_SERVICES = "App-Prefs:root=LOCATION_SERVICES"
     
     static let FITNESS_RECOMMENDATION_HEADER_CELL = "FitnessRecHeaderCell"
     static let FITNESS_RECOMMENDATION_FOOTER_CELL = "FitnessRecFooterCell"    
@@ -233,6 +236,7 @@ struct Constant
     static let COLUMN_ID = "ID";
     static let COLUMN_FIRST_NAME = "FirstName";
     static let COLUMN_LAST_NAME = "LastName";
+    static let COLUMN_LOCATION = "Location";
     static let COLUMN_EARNED_POINTS = "EarnedPoints";
     static let COLUMN_BADGE_NAME = "BadgeName";
     static let COLUMN_TOTAL_BADGES = "TotalBadges";
