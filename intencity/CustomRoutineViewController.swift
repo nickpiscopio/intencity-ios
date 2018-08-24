@@ -63,7 +63,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
         showLoading()
         
         _ = ServiceTask(event: ServiceEvent.GET_LIST, delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_MUSCLE_GROUP_ROUTINE, variables: [ email ]) as NSString)
     }
     

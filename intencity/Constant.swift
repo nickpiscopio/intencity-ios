@@ -143,7 +143,7 @@ struct Constant
     static let SERVICE_VALIDATE_USER_CREDENTIALS = SERVICE_FOLDER_MOBILE + "user_credentials.php";
     static let SERVICE_CREATE_ACCOUNT = SERVICE_FOLDER_MOBILE + "account.php";
     static let SERVICE_UPDATE_USER_LOGIN_DATE = SERVICE_FOLDER_MOBILE + "update_user_login_date.php";
-    static let SERVICE_STORED_PROCEDURE = SERVICE_FOLDER_MOBILE + "stored_procedure.php";
+    static let SERVICE_EXECUTE_STORED_PROCEDURE = SERVICE_FOLDER_MOBILE + "execute_stored_procedure.php";
     static let SERVICE_COMPLEX_INSERT = SERVICE_FOLDER_MOBILE + "complex_insert.php";
     static let SERVICE_COMPLEX_UPDATE = SERVICE_FOLDER_MOBILE + "complex_update.php";
     static let SERVICE_UPDATE_EQUIPMENT = SERVICE_FOLDER_MOBILE + "update_equipment.php";
@@ -160,7 +160,7 @@ struct Constant
     // Parameters
     static let PARAMETER_AMPERSAND = "&";
     static let PARAMETER_DELIMITER = ",";
-    static let PARAMETER_DELIMITER_REMOVE = "|";
+    static let PARAMETER_DELIMITER_SECONDARY = "|";
     // This does not have "=" because it usually has a number followed by it.
     // i.e. &table0
     static let PARAMETER_TABLE = "table";
@@ -322,7 +322,7 @@ struct Constant
     
         for i in 0 ..< length
         {
-            storedProcedureParameters += ((i > 0) ? PARAMETER_DELIMITER : "") + variables[i]
+            storedProcedureParameters += ((i > 0) ? PARAMETER_DELIMITER_SECONDARY : "") + variables[i]
         }
 
         return storedProcedureParameters;
@@ -466,7 +466,7 @@ struct Constant
                 parameters += variableName
             }
             
-            parameters += ((i > 0) ? PARAMETER_DELIMITER_REMOVE : "") + variables[i].replacingOccurrences(of: "&", with: "%26")
+            parameters += ((i > 0) ? PARAMETER_DELIMITER_SECONDARY : "") + variables[i].replacingOccurrences(of: "&", with: "%26")
         }
         
         return parameters

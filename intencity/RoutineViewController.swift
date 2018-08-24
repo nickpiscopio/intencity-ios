@@ -107,12 +107,12 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
 
         // Get the Featured Routines
         _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]) as NSString)
         
         // Get the Saved Routines
         _ = ServiceTask(event: ServiceEvent.GET_LIST, delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_ROUTINE, variables: [ email ]) as NSString)
     }
     
@@ -468,17 +468,17 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
     }
     
     // http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
-    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
+    @objc func numberOfSectionsInTableView(_ tableView: UITableView) -> Int
     {
         return sections.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
+    @objc func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
     {
         // Gets the row in the section.
         let routine = sections[(indexPath as NSIndexPath).section]

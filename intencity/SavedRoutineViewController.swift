@@ -111,7 +111,7 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
             showLoading()
             
             _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
-                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                            serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_ROUTINE, variables: [ email ]) as NSString)
         }
         else if (routines.count > 0)
@@ -269,7 +269,7 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
         // We use GET_EXERCISES_FOR_TODAY because when setting a routine, we set the saved RoutineNumber to the CompletedRoutine,
         // then we get the exercises from the same stored procedure.
         _ = ServiceTask(event: ServiceEvent.GET_EXERCISES_FOR_TODAY, delegate: self,
-                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                            serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_USER_ROUTINE_EXERCISES, variables: [ email, String(selectedRoutine)]) as NSString)
     }
     

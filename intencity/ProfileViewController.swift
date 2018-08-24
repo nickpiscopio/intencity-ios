@@ -95,11 +95,11 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
         userId = String(user.id)
         
         _ = ServiceTask(event: ServiceEvent.GET_BADGES, delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_BADGES, variables: [ userId ]) as NSString)
         
         _ = ServiceTask(event: ServiceEvent.GET_LAST_WEEK_ROUTINES, delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_LAST_WEEK_ROUTINES, variables: [ userId ]) as NSString)
     }
     
@@ -123,14 +123,14 @@ class ProfileViewController: UIViewController, ServiceDelegate, UIImagePickerCon
             {
                 // Unfollow the user.
                 _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: self,
-                                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                                serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                                 params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_FROM_FOLLOWING, variables: [ String(originalFollowingId) ]) as NSString)
             }
             else
             {
                 // Follow the user
                 _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: self,
-                                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                                serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                                 params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_FOLLOW_USER, variables: [ Util.getEmailFromDefaults(), userId ]) as NSString)
             }
             

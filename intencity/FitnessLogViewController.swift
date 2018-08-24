@@ -24,7 +24,9 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
     
     let CONTINUE_STRING = NSLocalizedString("routine_continue", comment: "")
     let WARM_UP_NAME = NSLocalizedString("warm_up", comment: "")
+    let WARM_UP_SEARCH = NSLocalizedString("warm_up_search", comment: "")
     let STRETCH_NAME = NSLocalizedString("stretch", comment: "")
+    let STRETCH_SEARCH = NSLocalizedString("stretch_search", comment: "")
     let MORE_PRIORITY_STRING = NSLocalizedString("more_priority_string", comment: "")
     let LESS_PRIORITY_STRING = NSLocalizedString("less_priority_string", comment: "")
     let UNDO_STRING = NSLocalizedString("undo_hide_button", comment: "")
@@ -508,7 +510,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         if (name == WARM_UP_NAME || name == STRETCH_NAME)
         {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: Constant.EXERCISE_SEARCH_VIEW_CONTROLLER) as! ExerciseSearchViewController
-            vc.searchType = name
+            vc.searchType = name == WARM_UP_NAME ? WARM_UP_SEARCH : STRETCH_SEARCH
             vc.routineName = exerciseListHeader.routineName
                 
             self.navigationController!.pushViewController(vc, animated: true)
@@ -674,7 +676,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         // The ServiceListener is null because we don't care if it reached the server.
         // The worst that will happen is a user will have to click the exercise priority again.
         _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
-            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+            serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_EXERCISE_PRIORITY, variables: [ email, exerciseName, String(incrementVal) ]) as NSString)
         
         // Remove the exercise if the user decremented it and it is less than 0.

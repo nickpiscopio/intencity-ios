@@ -107,7 +107,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
             showLoading()
             
             _ = ServiceTask(event: ServiceEvent.GET_ALL_DISPLAY_MUSCLE_GROUPS, delegate: self,
-                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                            serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_ALL_DISPLAY_MUSCLE_GROUPS, variables: [ email ]) as NSString)
         }
         else if (routines.count > 0)
@@ -188,7 +188,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
                 showLoading()
                 
                 _ = ServiceTask(event: ServiceEvent.GET_EXERCISES_FOR_TODAY, delegate: self,
-                                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                                serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                                 params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISES_FOR_TODAY, variables: [ email ]) as NSString)
                 
                 break
@@ -273,7 +273,7 @@ class IntencityRoutineViewController: UIViewController, ServiceDelegate, ButtonD
         
         // We add 1 because the routines start at 1 on the server.
         _ = ServiceTask(event: ServiceEvent.SET_CURRENT_MUSCLE_GROUP, delegate: self,
-                            serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                            serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                             params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_SET_CURRENT_MUSCLE_GROUP, variables: [ email, String(selectedRoutine)]) as NSString)
     }
     

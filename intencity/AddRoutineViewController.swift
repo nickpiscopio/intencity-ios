@@ -52,7 +52,7 @@ class AddRoutineViewController: UIViewController, ServiceDelegate
         setSaveButtonVisibility()
         
         _ = ServiceTask(event: ServiceEvent.GET_LIST, delegate: self,
-                                serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                                serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                                 params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_CUSTOM_ROUTINE_MUSCLE_GROUP, variables: [] ) as NSString)
     }
     

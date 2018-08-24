@@ -24,7 +24,7 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
     var searchType: String!
     var routineName: String!
     
-    var WARM_UP_STRING = NSLocalizedString("warm_up", comment: "")
+    var WARM_UP_SEARCH = NSLocalizedString("warm_up_search", comment: "")
     
     override func viewDidLoad()
     {
@@ -37,7 +37,7 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
         self.tabBarController?.tabBar.isHidden = true
         
         // Sets the title for the screen.
-        self.navigationItem.title = String(format: NSLocalizedString(searchType == WARM_UP_STRING ? "warm_ups_title" : "stretches_title", comment: ""), routineName)
+        self.navigationItem.title = String(format: NSLocalizedString(searchType == WARM_UP_SEARCH ? "warm_ups_title" : "stretches_title", comment: ""), routineName)
         
         initConnectionViews()
         
@@ -121,7 +121,7 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
         routineName = routineName == Constant.ROUTINE_CARDIO ? Constant.ROUTINE_LEGS_AND_LOWER_BACK : routineName
         
         _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_INJURY_PREVENTION_WORKOUTS, variables: [ searchType, routineName.replacingOccurrences(of: "&", with: "%26") ]) as NSString)
     }
     
@@ -144,6 +144,10 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
             {
                 showConnectionIssue()
             }
+        }
+        else
+        {
+            showConnectionIssue()
         }
         
         hideLoading()

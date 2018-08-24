@@ -40,7 +40,7 @@ class DirectionViewController: UIViewController, ServiceDelegate
         Util.addUITableViewCell(tableView, nibNamed: "Direction", cellName: Constant.DIRECTION_CELL)
         
         _ = ServiceTask(event: ServiceEvent.GENERIC, delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_EXERCISE_DIRECTION, variables: [ exerciseName ]) as NSString)
     }
     

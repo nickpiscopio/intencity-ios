@@ -102,7 +102,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
         let email = Util.getEmailFromDefaults()
         
         _ = ServiceTask(event: ServiceEvent.GET_FOLLOWING, delegate: self,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GET_FOLLOWING, variables: [ email ]) as NSString)
     }
     

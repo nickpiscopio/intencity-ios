@@ -111,7 +111,7 @@ class DeleteAccountViewController: UIViewController, ServiceDelegate
                 else
                 {
                     _ = ServiceTask(event: ServiceEvent.REMOVE_ACCOUNT, delegate: self,
-                                    serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                                    serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                                     params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_REMOVE_ACCOUNT, variables: [ email ]) as NSString)
                 }
 

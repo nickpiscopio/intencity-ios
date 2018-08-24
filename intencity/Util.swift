@@ -321,7 +321,7 @@ class Util
     static func grantPointsToUser(_ email: String, awardType: AwardType, points: Int, description: String)
     {
         _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_POINTS, variables: [ email, String(points) ]) as NSString)
     
         // Add an award to the notification handler.
@@ -341,7 +341,7 @@ class Util
         let now = String(format:"%.0f", Date().timeIntervalSince1970 * 1000)
         
         _ = ServiceTask(event: ServiceEvent.NO_RETURN, delegate: nil,
-                        serviceURL: Constant.SERVICE_STORED_PROCEDURE,
+                        serviceURL: Constant.SERVICE_EXECUTE_STORED_PROCEDURE,
                         params: Constant.generateStoredProcedureParameters(Constant.STORED_PROCEDURE_GRANT_BADGE, variables: [ email, now, badgeName ]) as NSString)
         
         // Add an award to the notification handler.

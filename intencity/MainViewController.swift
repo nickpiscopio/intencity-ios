@@ -94,7 +94,6 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
                 icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
                 break
             case Constant.MENU_NOTIFICATION_FOUND:
-            
                 let duration = 0.5
             
                 Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(MainViewController.stopAnimation), userInfo: nil, repeats: false)
