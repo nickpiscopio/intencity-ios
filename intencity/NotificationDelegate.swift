@@ -9,7 +9,7 @@
 
 import Foundation
 
-@objc protocol NotificationDelegate
+protocol NotificationDelegate: class
 {
     func onNotificationAdded()
     func onNotificationsViewed()

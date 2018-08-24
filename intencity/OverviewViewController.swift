@@ -292,7 +292,7 @@ class OverviewViewController: UIViewController
     /**
      * The share overview bar button item method to share an image and text with and "intent."
      */
-    func shareOverview(_ sender: UIBarButtonItem)
+    @objc func shareOverview(_ sender: UIBarButtonItem)
     {
         shareOverview()
     }
@@ -395,7 +395,7 @@ class OverviewViewController: UIViewController
     /**
      * The callback for when the finish button is pressed.
      */
-    func finishOverview(_ sender: UIBarButtonItem)
+    @objc func finishOverview(_ sender: UIBarButtonItem)
     {
         displayFinishAlert()
     }

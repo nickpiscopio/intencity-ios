@@ -32,7 +32,7 @@ class UploadImageTask
             data, response, error in
             
             if error != nil {
-                print("error=\(error)")
+                print("Error: \(error!)")
                 
                 delegate!.onRetrievalFailed(event)
                 

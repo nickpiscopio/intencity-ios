@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-@objc protocol ImageDelegate
+protocol ImageDelegate: class
 {
     func onImageRetrieved(_ index: Int, image: UIImage, newUpload: Bool)
     func onImageRetrievalFailed()

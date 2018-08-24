@@ -121,7 +121,7 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
     /**
      * Opens the menu.
      */
-    func menuClicked()
+    @objc func menuClicked()
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Constant.MENU_VIEW_CONTROLLER) as! MenuViewController
         
@@ -131,7 +131,7 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
     /**
      * Sets the menu button animation.
      */
-    func stopAnimation()
+    @objc func stopAnimation()
     {
         setMenuButton(Constant.MENU_NOTIFICATION_PRESENT)
     }

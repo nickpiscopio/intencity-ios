@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-@objc protocol ExerciseDelegate
+protocol ExerciseDelegate: class
 {
     func onExerciseClicked(_ name: String)
     func onHideClicked(_ indexPath: IndexPath)

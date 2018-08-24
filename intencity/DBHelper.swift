@@ -26,12 +26,12 @@ class DBHelper
         let fileURL = documents.appendingPathComponent(DATABASE_NAME)
         let database = FMDatabase(path: fileURL.path)
         
-        if !(database?.open())!
+        if !(database.open())
         {
             print("Unable to open database")
         }
         
-        return database!
+        return database
     }
     
     /**
@@ -62,10 +62,10 @@ class DBHelper
         
         let database = openDb()
 
-        let version = database.userVersion()
+        let version = database.userVersion
         if (version < DATABASE_VERSION)
         {
-            database.setUserVersion(DATABASE_VERSION)
+            database.userVersion = DATABASE_VERSION
                 
             updateDB(database)
         }
@@ -235,11 +235,11 @@ class DBHelper
 
                 if (index <= 0)
                 {
-                    index = Int(result.string(forColumn: ExerciseTable.COLUMN_INDEX))!
+                    index = Int(result.string(forColumn: ExerciseTable.COLUMN_INDEX)!)!
                 }
                 
-                state = Int(result.string(forColumn: ExerciseTable.COLUMN_ROUTINE_STATE))!
-                routineName = result.string(forColumn: ExerciseTable.COLUMN_ROUTINE_NAME)
+                state = Int(result.string(forColumn: ExerciseTable.COLUMN_ROUTINE_STATE)!)!
+                routineName = result.string(forColumn: ExerciseTable.COLUMN_ROUTINE_NAME)!
                 
                 // Exercise
                 let name = result.string(forColumn: ExerciseTable.COLUMN_NAME)

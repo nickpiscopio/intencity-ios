@@ -156,7 +156,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
                 // Remove the first and last character because they are "[" and "]";
                 var response = result
                 response.remove(at: response.startIndex)
-                response.remove(at: response.characters.index(before: response.endIndex))
+                response.remove(at: response.index(before: response.endIndex))
                 
                 var ids =  response.components(separatedBy: Constant.PARAMETER_DELIMITER)
                 
@@ -281,7 +281,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
         }
     }
     
-    func longClick(_ sender: AnyObject)
+    @objc func longClick(_ sender: AnyObject)
     {
         if (sender.state == .began)
         {
@@ -811,7 +811,7 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
                                 Constant.COLUMN_EXERCISE_DURATION + equals + nullString + Constant.PARAMETER_DELIMITER
                                     + Constant.COLUMN_EXERCISE_REPS + equals + String(set.reps) + Constant.PARAMETER_DELIMITER
     
-        let notesParam = !notes.isEmpty && notes.characters.count > 0 ? "'" + notes + "'" : nullString
+        let notesParam = !notes.isEmpty && notes.count > 0 ? "'" + notes + "'" : nullString
     
         return getParameterTitle(Constant.PARAMETER_TABLE, index: index) + Constant.TABLE_COMPLETED_EXERCISE
                 + getParameterTitle(setParam, index: index)
@@ -891,8 +891,8 @@ class FitnessLogViewController: UIViewController, ServiceDelegate, ExerciseDeleg
      */
     func animateTable(_ indexToLoad: Int)
     {
-        let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = IndexSet(integersIn: range.toRange() ?? 0..<0)
+        let range = 0..<self.tableView.numberOfSections
+        let sections = IndexSet(integersIn: range)
             
         tableView.reloadSections(sections, with: .top)
 

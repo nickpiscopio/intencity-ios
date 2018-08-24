@@ -9,7 +9,7 @@
 
 import Foundation
 
-@objc protocol SetDelegate
+protocol SetDelegate: class
 {
     func onWeightUpdated(_ index: Int, weight: Float)
     func onDurationUpdated(_ index: Int, duration: String)

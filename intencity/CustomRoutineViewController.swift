@@ -196,7 +196,7 @@ class CustomRoutineViewController: UIViewController, ServiceDelegate
     /**
      * The function for when the save button is pressed.
      */
-    func savePressed(_ sender: UIBarButtonItem)
+    @objc func savePressed(_ sender: UIBarButtonItem)
     {
         showLoading()
             

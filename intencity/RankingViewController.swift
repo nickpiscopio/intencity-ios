@@ -86,7 +86,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     /**
      * Refreshes the ranking list.
      */
-    func refreshRankingList()
+    @objc func refreshRankingList()
     {
         getFollowing()
 
@@ -147,7 +147,7 @@ class RankingViewController: UIViewController, ServiceDelegate, UserSearchDelega
     /**
      * Opens the menu.
      */
-    func menuClicked()
+    @objc func menuClicked()
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Constant.MENU_VIEW_CONTROLLER) as! MenuViewController
         

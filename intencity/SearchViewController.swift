@@ -154,7 +154,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         let textField = searchBar.value(forKey: "searchField") as! UITextField
         textField.backgroundColor = Color.primary
         textField.textColor = Color.white
-        textField.attributedPlaceholder = NSAttributedString(string: searchPlaceholder, attributes:[NSForegroundColorAttributeName: Color.white])
+        textField.attributedPlaceholder = NSAttributedString(string: searchPlaceholder, attributes:[NSAttributedStringKey.foregroundColor: Color.white])
         textField.keyboardType = UIKeyboardType.asciiCapable
         textField.clearButtonMode = UITextFieldViewMode.never
         
@@ -187,7 +187,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
     /**
      * Executes a search.
      */
-    func search()
+    @objc func search()
     {
         let email = Util.getEmailFromDefaults()
         
@@ -209,7 +209,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, ServiceDelega
         {
             if let regex = try? NSRegularExpression(pattern: Constant.SPACE_REGEX, options: .caseInsensitive)
             {
-                query = regex.stringByReplacingMatches(in: query, options: .withTransparentBounds, range: NSMakeRange(0, query.characters.count), withTemplate: "")
+                query = regex.stringByReplacingMatches(in: query, options: .withTransparentBounds, range: NSMakeRange(0, query.count), withTemplate: "")
             }
             
             query = Util.replaceApostrophe(query)

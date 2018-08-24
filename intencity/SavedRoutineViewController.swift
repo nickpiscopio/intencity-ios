@@ -286,8 +286,8 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
      */
     func animateTable()
     {
-        let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = IndexSet(integersIn: range.toRange() ?? 0..<0)
+        let range = 0..<self.tableView.numberOfSections
+        let sections = IndexSet(integersIn: range)
             
         tableView.reloadSections(sections, with: .top)
     }
@@ -346,7 +346,7 @@ class SavedRoutineViewController: UIViewController, ServiceDelegate, IntencityRo
     /**
      * The function for when the edit button is pressed.
      */
-    func editPressed(_ sender:UIBarButtonItem)
+    @objc func editPressed(_ sender:UIBarButtonItem)
     {
         let vc = storyboard!.instantiateViewController(withIdentifier: Constant.EDIT_SAVED_ROUTINE_VIEW_CONTROLLER) as! EditSavedRoutineViewController
         vc.delegate = self

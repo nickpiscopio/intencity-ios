@@ -49,7 +49,7 @@ class TermsViewController: UIViewController
     /**
      * The privacy policy button click.
      */
-    func privacyPolicyClicked()
+    @objc func privacyPolicyClicked()
     {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: Constant.TERMS_VIEW_CONTROLLER) as! TermsViewController
         viewController.isTerms = false

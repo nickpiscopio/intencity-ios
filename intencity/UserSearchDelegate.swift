@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc protocol UserSearchDelegate
+protocol UserSearchDelegate: class
 {
     func onUserAdded()
 }

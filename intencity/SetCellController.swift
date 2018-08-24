@@ -72,7 +72,7 @@ class SetCellController: UITableViewCell
             {
                 // Allow up to 5 characters.
                 // Allow backspaces here. The reason we need this is because if a backspace is being pressed, then nothing happens if we don't allow string == "" if the character count is already 5.
-                return text!.characters.count < 5
+                return text!.count < 5
             }
             else
             {

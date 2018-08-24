@@ -1,10 +1,10 @@
 PODS:
-  - DropDown (2)
-  - FMDB (2.6.2):
-    - FMDB/standard (= 2.6.2)
-  - FMDB/standard (2.6.2)
-  - IQKeyboardManagerSwift (4.0.6)
-  - RNCryptor (5.0.1)
+  - DropDown (2.3.2)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - IQKeyboardManagerSwift (6.1.1)
+  - RNCryptor (5.0.3)
   - SSSnackbar (0.1.2)
   - youtube-ios-player-helper (0.1.6)
 
@@ -16,14 +16,23 @@ DEPENDENCIES:
   - SSSnackbar
   - youtube-ios-player-helper (= 0.1.6)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - DropDown
+    - FMDB
+    - IQKeyboardManagerSwift
+    - RNCryptor
+    - SSSnackbar
+    - youtube-ios-player-helper
+
 SPEC CHECKSUMS:
-  DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
-  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
-  RNCryptor: 2e352a488779d1a9184ab629be22a7c5bc84acb5
+  DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
+  RNCryptor: c93d19029dcf7ff160aca0f24d6c9e7b0d82f664
   SSSnackbar: 6a16cf8ab848d99a03ba21a7dab94d4478beabed
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 1800a4f7621938637373e513e1173ac360f7ac42
+PODFILE CHECKSUM: 04d2251a3ceb23f374c26b1b4c8d04d618596ca7
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.5.3

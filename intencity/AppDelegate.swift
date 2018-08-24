@@ -15,12 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
-    {
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: Color.white]
-        
+    {        
         // Sets the title bar color.
         UINavigationBar.appearance().barTintColor = Color.primary
-        UINavigationBar.appearance().titleTextAttributes = titleDict as? [String : AnyObject]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: Color.white]
         UINavigationBar.appearance().tintColor = Color.white
         UINavigationBar.appearance().isTranslucent = false
         UIApplication.shared.statusBarStyle = .lightContent
@@ -55,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         self.window?.makeKeyAndVisible()
         
         // Moves the view up with the keyboard is active.
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         
         // Starts the DropDown listening for the keyboard.
         // Documentation: https://cocoapods.org/pods/DropDown

@@ -63,7 +63,8 @@ class DirectionViewController: UIViewController, ServiceDelegate
             // Start at the third character so we can remove the number from the string.
             // This also means we can never have more than 9 steps in the directions.
             // We add the number later so it can be formatted properly.
-            self.steps.append(step.substring(from: step.index(step.startIndex, offsetBy: 3)))
+            let indices = step.index(step.startIndex, offsetBy: 3)
+            self.steps.append(String(step[indices...]))
         }
         
         populateDirections()

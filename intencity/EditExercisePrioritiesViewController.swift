@@ -152,7 +152,7 @@ class EditExercisePrioritiesViewController: UIViewController, ServiceDelegate, E
     /**
      * The function for when the save button is pressed.
      */
-    func savePressed(_ sender:UIBarButtonItem)
+    @objc func savePressed(_ sender:UIBarButtonItem)
     {
         showLoading()
         

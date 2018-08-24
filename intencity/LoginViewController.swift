@@ -72,7 +72,7 @@ class LoginViewController: UIViewController, ServiceDelegate
             
             var tempMutableString = NSMutableAttributedString()
             tempMutableString = NSMutableAttributedString(string: attributredTerms, attributes: nil)
-            tempMutableString.addAttribute(NSForegroundColorAttributeName, value: (i % 2 == 0) ? Color.secondary_dark : Color.primary, range: NSRange(location: 0, length: attributredTerms.characters.count))
+            tempMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: (i % 2 == 0) ? Color.secondary_dark : Color.primary, range: NSRange(location: 0, length: attributredTerms.count))
 
             termsMutableString.append(tempMutableString)
         }

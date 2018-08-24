@@ -42,7 +42,7 @@ class IntencityButtonRound: UIButton
     /**
      * The function for when the button has been released.
      */
-    func buttonUp()
+    @objc func buttonUp()
     {
         self.layer.shadowRadius = Dimention.SHADOW
     }
@@ -50,7 +50,7 @@ class IntencityButtonRound: UIButton
     /**
      * The function for when the button is being pressed.
      */
-    func buttonDown()
+    @objc func buttonDown()
     {
         self.layer.shadowRadius = Dimention.SHADOW * 2
     }

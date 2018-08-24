@@ -128,19 +128,22 @@ class ExerciseSearchViewController: UIViewController, ServiceDelegate
     func onRetrievalSuccessful(_ event: Int, result: String)
     {
         // This gets saved as NSDictionary, so there is no order
-        let json: [AnyObject] = result.parseJSONString as! [AnyObject]
-        if (json.count > 0)
+        if (result != Constant.RETURN_NULL)
         {
-            for exercise in json
+            let json: [AnyObject] = result.parseJSONString as! [AnyObject]
+            if (json.count > 0)
             {
-                exercises.append(exercise[Constant.COLUMN_EXERCISE_NAME] as! String)
+                for exercise in json
+                {
+                    exercises.append(exercise[Constant.COLUMN_EXERCISE_NAME] as! String)
+                }
+                
+                tableView.reloadData()
             }
-            
-            tableView.reloadData()
-        }
-        else
-        {
-            showConnectionIssue()
+            else
+            {
+                showConnectionIssue()
+            }
         }
         
         hideLoading()

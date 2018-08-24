@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		010CBBAF1D5539A40061B787 /* RoutineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CBBAE1D5539A40061B787 /* RoutineType.swift */; };
 		018588771D52BEBC00607157 /* IndexedExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018588761D52BEBC00607157 /* IndexedExercise.swift */; };
-		38887FDCE90906A29FE4CDC2 /* Pods_intencity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF2696D21F3A67016206E9 /* Pods_intencity.framework */; };
+		826F735CCD25A4D2943B4102 /* Pods_intencity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB84B152F29401E0DBA2AB25 /* Pods_intencity.framework */; };
 		BD03C7B31C76082B00D8911A /* Set.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD03C7B21C76082B00D8911A /* Set.xib */; };
 		BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD03C7B41C760A4E00D8911A /* SetCellController.swift */; };
 		BD03C7B71C760DE200D8911A /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD03C7B61C760DE200D8911A /* Set.swift */; };
@@ -182,7 +182,8 @@
 /* Begin PBXFileReference section */
 		010CBBAE1D5539A40061B787 /* RoutineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineType.swift; sourceTree = "<group>"; };
 		018588761D52BEBC00607157 /* IndexedExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexedExercise.swift; sourceTree = "<group>"; };
-		70D17A2123266F2E629BCBB1 /* Pods-intencity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intencity.release.xcconfig"; path = "Pods/Target Support Files/Pods-intencity/Pods-intencity.release.xcconfig"; sourceTree = "<group>"; };
+		84AEB6F9B114B0BA26E67A82 /* Pods-intencity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intencity.release.xcconfig"; path = "Pods/Target Support Files/Pods-intencity/Pods-intencity.release.xcconfig"; sourceTree = "<group>"; };
+		8BE84F7635CCA1A95E578C0A /* Pods-intencity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intencity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-intencity/Pods-intencity.debug.xcconfig"; sourceTree = "<group>"; };
 		BD03C7B21C76082B00D8911A /* Set.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Set.xib; sourceTree = "<group>"; };
 		BD03C7B41C760A4E00D8911A /* SetCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCellController.swift; sourceTree = "<group>"; };
 		BD03C7B61C760DE200D8911A /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
@@ -353,8 +354,7 @@
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
 		C82B639B36984DE79BC8DABA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAAF2696D21F3A67016206E9 /* Pods_intencity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intencity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDF947EF1E2DD96947F426AC /* Pods-intencity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intencity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-intencity/Pods-intencity.debug.xcconfig"; sourceTree = "<group>"; };
+		CB84B152F29401E0DBA2AB25 /* Pods_intencity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intencity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,18 +362,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38887FDCE90906A29FE4CDC2 /* Pods_intencity.framework in Frameworks */,
+				826F735CCD25A4D2943B4102 /* Pods_intencity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		46F374E1C1CC26528D157A8C /* Pods */ = {
+		406B98965EFF6AF40D9D3577 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DDF947EF1E2DD96947F426AC /* Pods-intencity.debug.xcconfig */,
-				70D17A2123266F2E629BCBB1 /* Pods-intencity.release.xcconfig */,
+				8BE84F7635CCA1A95E578C0A /* Pods-intencity.debug.xcconfig */,
+				84AEB6F9B114B0BA26E67A82 /* Pods-intencity.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -382,7 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				C82B639B36984DE79BC8DABA /* Pods.framework */,
-				DAAF2696D21F3A67016206E9 /* Pods_intencity.framework */,
+				CB84B152F29401E0DBA2AB25 /* Pods_intencity.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -457,7 +457,7 @@
 				BD9EF2551C691C8900E520CB /* Resources */,
 				BD5460EB1C68D34400F60ADC /* Products */,
 				8E71F0E20D049781B6EB533F /* Frameworks */,
-				46F374E1C1CC26528D157A8C /* Pods */,
+				406B98965EFF6AF40D9D3577 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -726,12 +726,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD5460FC1C68D34400F60ADC /* Build configuration list for PBXNativeTarget "intencity" */;
 			buildPhases = (
-				1A28DD751954189C1ADEA845 /* [CP] Check Pods Manifest.lock */,
+				EF73150680491DD75A74DBAA /* [CP] Check Pods Manifest.lock */,
 				BD5460E61C68D34400F60ADC /* Sources */,
 				BD5460E71C68D34400F60ADC /* Frameworks */,
 				BD5460E81C68D34400F60ADC /* Resources */,
-				959C6227876E376E1EEEBFF1 /* [CP] Embed Pods Frameworks */,
-				ADD44B619555AAD7CDB89785 /* [CP] Copy Pods Resources */,
+				21DA79FE9404471C0CF29D25 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -749,13 +748,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Nick Piscopio";
 				TargetAttributes = {
 					BD5460E91C68D34400F60ADC = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = N2GZ9B2SHK;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -820,49 +819,58 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A28DD751954189C1ADEA845 /* [CP] Check Pods Manifest.lock */ = {
+		21DA79FE9404471C0CF29D25 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		959C6227876E376E1EEEBFF1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-intencity/Pods-intencity-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework",
+				"${BUILT_PRODUCTS_DIR}/SSSnackbar/SSSnackbar.framework",
+				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCryptor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSSnackbar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-intencity/Pods-intencity-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ADD44B619555AAD7CDB89785 /* [CP] Copy Pods Resources */ = {
+		EF73150680491DD75A74DBAA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-intencity-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-intencity/Pods-intencity-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1043,13 +1051,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1071,7 +1089,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
@@ -1089,13 +1107,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1111,10 +1139,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1122,7 +1151,7 @@
 		};
 		BD5460FD1C68D34400F60ADC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDF947EF1E2DD96947F426AC /* Pods-intencity.debug.xcconfig */;
+			baseConfigurationReference = 8BE84F7635CCA1A95E578C0A /* Pods-intencity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1133,7 +1162,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = intencity/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1154,14 +1183,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.Intencity;
 				PRODUCT_NAME = Intencity;
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
 		BD5460FE1C68D34400F60ADC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70D17A2123266F2E629BCBB1 /* Pods-intencity.release.xcconfig */;
+			baseConfigurationReference = 84AEB6F9B114B0BA26E67A82 /* Pods-intencity.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1172,7 +1202,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = intencity/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -1194,7 +1224,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.intencity.Intencity;
 				PRODUCT_NAME = Intencity;
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

@@ -461,8 +461,8 @@ class RoutineViewController: UIViewController, ServiceDelegate, IntencityRoutine
      */
     func animateTable()
     {
-        let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = IndexSet(integersIn: range.toRange() ?? 0..<0)
+        let range = 0..<self.tableView.numberOfSections
+        let sections = IndexSet(integersIn: range)
             
         tableView.reloadSections(sections, with: .top)
     }

@@ -150,7 +150,7 @@ class Util
      */
     static func checkStringLength(_ text: String, length: Int) -> Bool
     {
-        return text.characters.count >= length;
+        return text.count >= length;
     }
     
     /**
@@ -286,7 +286,7 @@ class Util
         
         if let regex = try? NSRegularExpression(pattern: "..(?!$)", options: .caseInsensitive)
         {
-            duration = regex.stringByReplacingMatches(in: time, options: .withTransparentBounds, range: NSMakeRange(0, time.characters.count), withTemplate: "$0:")
+            duration = regex.stringByReplacingMatches(in: time, options: .withTransparentBounds, range: NSMakeRange(0, time.count), withTemplate: "$0:")
         }
         
         return duration
@@ -305,7 +305,7 @@ class Util
         let weightInt = Int(weight.replacingOccurrences(of: decimal, with: ""))!
         var padded = String(format: "%02d", weightInt)
 
-        let index = padded.characters.index(before: padded.endIndex)
+        let index = padded.index(before: padded.endIndex)
         padded.insert(Character(decimal), at: index)
         
         return padded
@@ -413,8 +413,8 @@ class Util
         let attributes = isBold ? UIFont.boldSystemFont(ofSize: fontSize) : UIFont.systemFont(ofSize: fontSize)
         
         var mutableString = NSMutableAttributedString()
-        mutableString = NSMutableAttributedString(string: string, attributes: [ NSFontAttributeName:  attributes])
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: color, range: NSRange(location: 0, length: string.characters.count))
+        mutableString = NSMutableAttributedString(string: string, attributes: [ NSAttributedStringKey.font:  attributes])
+        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSRange(location: 0, length: string.count))
         
         return mutableString
     }

@@ -36,7 +36,7 @@ class IntencityButtonNoBackgroundDark: UIButton
     /*
      * The function for when the button has been released.
      */
-    func buttonUp()
+    @objc func buttonUp()
     {
         self.layer.backgroundColor = Color.transparent.cgColor
     }
@@ -44,7 +44,7 @@ class IntencityButtonNoBackgroundDark: UIButton
     /*
      * The function for when the button is being pressed.
      */
-    func buttonDown()
+    @objc func buttonDown()
     {
         self.layer.backgroundColor = Color.shadow_dark.cgColor
     }

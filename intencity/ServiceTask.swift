@@ -24,8 +24,8 @@ class ServiceTask
             {
                 // Check for fundamental networking errors.
                 guard error == nil && data != nil else
-                {
-                    print("error=\(error)")
+                {                    
+                    print("Error: \(error as! String)")
                     
                     DispatchQueue.main.async
                     {

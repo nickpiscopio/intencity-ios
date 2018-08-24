@@ -9,7 +9,7 @@
 
 import Foundation
 
-@objc protocol ButtonDelegate
+protocol ButtonDelegate: class
 {    
     func onButtonClicked()
 }

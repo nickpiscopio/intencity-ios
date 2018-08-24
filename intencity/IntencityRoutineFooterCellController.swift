@@ -11,7 +11,6 @@ import UIKit
 
 class IntencityRoutineFooterCellController: UITableViewCell
 {
-    
     weak var delegate: ButtonDelegate?
     
     override func awakeFromNib()

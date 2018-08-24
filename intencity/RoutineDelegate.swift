@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc protocol RoutineDelegate
+protocol RoutineDelegate: class
 {
     func onRoutineNameClicked()
     func onSaveRoutine()

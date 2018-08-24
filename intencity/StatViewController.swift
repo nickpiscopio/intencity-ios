@@ -248,7 +248,7 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * The function for when the info button is pressed.
      */
-    func infoPressed(_ sender: UIBarButtonItem)
+    @objc func infoPressed(_ sender: UIBarButtonItem)
     {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: Constant.DIRECTION_VIEW_CONTROLLER) as! DirectionViewController
         viewController.exerciseName = exerciseName
@@ -259,7 +259,7 @@ class StatViewController: UIViewController, SetDelegate
     /**
      * The function for when the save button is pressed.
      */
-    func savePressed(_ sender: UIBarButtonItem)
+    @objc func savePressed(_ sender: UIBarButtonItem)
     {
         // Removed the first responder when the save is clicked
         // We do this so we can save values if the cursor is still in the textfield.

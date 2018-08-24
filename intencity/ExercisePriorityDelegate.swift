@@ -9,7 +9,7 @@
 
 import Foundation
 
-@objc protocol ExercisePriorityDelegate
+protocol ExercisePriorityDelegate: class
 {
     func onSetExercisePriority(_ index: Int, priority: Int)
 }

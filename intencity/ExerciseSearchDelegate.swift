@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc protocol ExerciseSearchDelegate
+protocol ExerciseSearchDelegate: class
 {
     func onExerciseAdded(_ exercise: Exercise)
     func onExerciseClicked(_ exerciseName: String)
