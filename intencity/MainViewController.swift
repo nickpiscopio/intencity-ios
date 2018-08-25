@@ -88,25 +88,27 @@ class MainViewController: UIViewController, ViewDelegate, NotificationDelegate
     {
         var icon: UIImage!
         
-        switch(type)
-        {
-            case Constant.MENU_INITIALIZED:
-                icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-                break
-            case Constant.MENU_NOTIFICATION_FOUND:
-                let duration = 0.5
-            
-                Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(MainViewController.stopAnimation), userInfo: nil, repeats: false)
-            
-                icon = UIImage.animatedImageNamed(Constant.MENU_NOTIFICATION_FOUND_IMAGE, duration: duration)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-            
-                break
-            case Constant.MENU_NOTIFICATION_PRESENT:
-                icon = UIImage(named: Constant.MENU_NOTIFICATION_PRESENT_IMAGE)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-                break
-            default:
-                break
-        }
+//        switch(type)
+//        {
+//            case Constant.MENU_INITIALIZED:
+//                icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+//                break
+//            case Constant.MENU_NOTIFICATION_FOUND:
+//                let duration = 0.5
+//            
+//                Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(MainViewController.stopAnimation), userInfo: nil, repeats: false)
+//            
+//                icon = UIImage.animatedImageNamed(Constant.MENU_NOTIFICATION_FOUND_IMAGE, duration: duration)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+//            
+//                break
+//            case Constant.MENU_NOTIFICATION_PRESENT:
+//                icon = UIImage(named: Constant.MENU_NOTIFICATION_PRESENT_IMAGE)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+//                break
+//            default:
+//                break
+//        }
+        
+        icon = UIImage(named: Constant.MENU_INITIALIZED_IMAGE)!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
         let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: Constant.MENU_IMAGE_WIDTH, height: Constant.MENU_IMAGE_HEIGHT))
         

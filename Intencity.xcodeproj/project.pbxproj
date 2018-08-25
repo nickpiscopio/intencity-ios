@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		010CBBAF1D5539A40061B787 /* RoutineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CBBAE1D5539A40061B787 /* RoutineType.swift */; };
 		018588771D52BEBC00607157 /* IndexedExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018588761D52BEBC00607157 /* IndexedExercise.swift */; };
-		826F735CCD25A4D2943B4102 /* Pods_intencity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB84B152F29401E0DBA2AB25 /* Pods_intencity.framework */; };
+		9199E028924E188256085DC9 /* Pods_intencity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E2B4B2CDE75E526E518A2A /* Pods_intencity.framework */; };
 		BD03C7B31C76082B00D8911A /* Set.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD03C7B21C76082B00D8911A /* Set.xib */; };
 		BD03C7B51C760A4E00D8911A /* SetCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD03C7B41C760A4E00D8911A /* SetCellController.swift */; };
 		BD03C7B71C760DE200D8911A /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD03C7B61C760DE200D8911A /* Set.swift */; };
@@ -182,8 +182,8 @@
 /* Begin PBXFileReference section */
 		010CBBAE1D5539A40061B787 /* RoutineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineType.swift; sourceTree = "<group>"; };
 		018588761D52BEBC00607157 /* IndexedExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexedExercise.swift; sourceTree = "<group>"; };
-		84AEB6F9B114B0BA26E67A82 /* Pods-intencity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intencity.release.xcconfig"; path = "Pods/Target Support Files/Pods-intencity/Pods-intencity.release.xcconfig"; sourceTree = "<group>"; };
-		8BE84F7635CCA1A95E578C0A /* Pods-intencity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intencity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-intencity/Pods-intencity.debug.xcconfig"; sourceTree = "<group>"; };
+		79A47142917AA61C9F92CF5F /* Pods-intencity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intencity.release.xcconfig"; path = "Pods/Target Support Files/Pods-intencity/Pods-intencity.release.xcconfig"; sourceTree = "<group>"; };
+		B1260253BEBF16D1322CFB45 /* Pods-intencity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intencity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-intencity/Pods-intencity.debug.xcconfig"; sourceTree = "<group>"; };
 		BD03C7B21C76082B00D8911A /* Set.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Set.xib; sourceTree = "<group>"; };
 		BD03C7B41C760A4E00D8911A /* SetCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCellController.swift; sourceTree = "<group>"; };
 		BD03C7B61C760DE200D8911A /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
@@ -353,8 +353,8 @@
 		BDFD878A1CA9AB5200ECDDCE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BDFE97131C68E62C00C2AEA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDFE97151C68E6FC00C2AEA3 /* FitnessLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLogViewController.swift; sourceTree = "<group>"; };
+		C6E2B4B2CDE75E526E518A2A /* Pods_intencity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intencity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82B639B36984DE79BC8DABA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB84B152F29401E0DBA2AB25 /* Pods_intencity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intencity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,18 +362,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				826F735CCD25A4D2943B4102 /* Pods_intencity.framework in Frameworks */,
+				9199E028924E188256085DC9 /* Pods_intencity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		406B98965EFF6AF40D9D3577 /* Pods */ = {
+		03D14588E501AEBBA67E5908 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8BE84F7635CCA1A95E578C0A /* Pods-intencity.debug.xcconfig */,
-				84AEB6F9B114B0BA26E67A82 /* Pods-intencity.release.xcconfig */,
+				B1260253BEBF16D1322CFB45 /* Pods-intencity.debug.xcconfig */,
+				79A47142917AA61C9F92CF5F /* Pods-intencity.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -382,7 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				C82B639B36984DE79BC8DABA /* Pods.framework */,
-				CB84B152F29401E0DBA2AB25 /* Pods_intencity.framework */,
+				C6E2B4B2CDE75E526E518A2A /* Pods_intencity.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -457,7 +457,7 @@
 				BD9EF2551C691C8900E520CB /* Resources */,
 				BD5460EB1C68D34400F60ADC /* Products */,
 				8E71F0E20D049781B6EB533F /* Frameworks */,
-				406B98965EFF6AF40D9D3577 /* Pods */,
+				03D14588E501AEBBA67E5908 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -726,11 +726,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD5460FC1C68D34400F60ADC /* Build configuration list for PBXNativeTarget "intencity" */;
 			buildPhases = (
-				EF73150680491DD75A74DBAA /* [CP] Check Pods Manifest.lock */,
+				F0B849EB944AD411EC0E6815 /* [CP] Check Pods Manifest.lock */,
 				BD5460E61C68D34400F60ADC /* Sources */,
 				BD5460E71C68D34400F60ADC /* Frameworks */,
 				BD5460E81C68D34400F60ADC /* Resources */,
-				21DA79FE9404471C0CF29D25 /* [CP] Embed Pods Frameworks */,
+				D8C06C4F5BBDFE1F9E60F5FC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -819,12 +819,10 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		21DA79FE9404471C0CF29D25 /* [CP] Embed Pods Frameworks */ = {
+		D8C06C4F5BBDFE1F9E60F5FC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-intencity/Pods-intencity-frameworks.sh",
@@ -836,8 +834,6 @@
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
@@ -851,20 +847,16 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-intencity/Pods-intencity-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EF73150680491DD75A74DBAA /* [CP] Check Pods Manifest.lock */ = {
+		F0B849EB944AD411EC0E6815 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-intencity-checkManifestLockResult.txt",
 			);
@@ -1151,7 +1143,7 @@
 		};
 		BD5460FD1C68D34400F60ADC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BE84F7635CCA1A95E578C0A /* Pods-intencity.debug.xcconfig */;
+			baseConfigurationReference = B1260253BEBF16D1322CFB45 /* Pods-intencity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1191,7 +1183,7 @@
 		};
 		BD5460FE1C68D34400F60ADC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84AEB6F9B114B0BA26E67A82 /* Pods-intencity.release.xcconfig */;
+			baseConfigurationReference = 79A47142917AA61C9F92CF5F /* Pods-intencity.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
